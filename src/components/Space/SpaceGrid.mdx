@@ -1,0 +1,24 @@
+import { Meta, Canvas, Controls } from "@storybook/blocks";
+import * as Stories from "./SpaceGrid.stories";
+
+import { Typography } from "../Typography";
+
+<Meta of={Stories} />
+
+# Space.Grid
+
+`<Space.Grid>` is used for gird layout, which simplifies the in-line style.
+
+Of course the flex layout can still be precisely controlled by the `style` attribute.
+
+<Canvas of={Stories.Default} sourceState="hidden" />
+
+<Controls />
+
+## TroubleShotting
+
+<br />
+
+#### The shadow of the child element is partially obscured
+
+It is necessary to manually add `style={{ padding: ? }}` to `<Space.Grid>`.

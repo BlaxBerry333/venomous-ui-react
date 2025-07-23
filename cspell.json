@@ -1,0 +1,33 @@
+{
+  "ignorePaths": [
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/.next/**",
+    "**/.vscode/**",
+    "**/.git/**",
+    "**/.DS_Store/**",
+    "**/__tests__/**",
+    "**/__mocks__/**",
+    "**/__snapshots__/**",
+    "**/coverage/**",
+    "**/reports/**",
+    "**/logs/**",
+    "**/temp/**",
+    "**/temp_*/**",
+    "**/.storybook/**",
+    "**/storybook-static/**"
+  ],
+
+  "words": [
+    "venomous",
+    "nextjs",
+    "vercel",
+    "autodocs",
+    "prettierrc",
+    "eslintcache",
+    "tsbuildinfo",
+    "Iconify",
+    "Bothrops",
+    "hugeicons"
+  ]
+}

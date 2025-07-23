@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const e={h1:"4rem",h2:"3rem",h3:"2.25rem",h4:"1.875rem",h5:"1.5rem",h6:"1.25rem",text:"1rem",small:"0.875rem"};exports.TypographySize=e;

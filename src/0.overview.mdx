@@ -1,0 +1,77 @@
+import { Meta } from "@storybook/blocks";
+import { Card, Space, Typography } from "./components";
+
+<Meta title="Overview" />
+
+# Venomous UI
+
+<Typography.Code text="venomous-ui-react" /> is a React component library built entirely with React Hooks and JSX
+inline-styles.
+
+This library is a personal learning project aimed at exploring the architecture and abstraction of UI components in
+React. It is not meant for production use, and thus, not suitable for commercial applications at this stage.
+
+<Space.Grid columns={3} spacing={6} style={{ margin: "32px 0 48px" }}>
+  {[
+    {
+      title: "On-Demand Imports",
+      description:
+        "Supports on-demand imports, meaning developers can import only the components and tools they actually need. This reduces the final bundle size and improves application performance by eliminating unused code.",
+    },
+    {
+      title: "Only JSX Inline Styles",
+      description: "Styles are defined directly within inline JSX, avoiding external CSS files or CSS-in-JS solutions.",
+    },
+    {
+      title: "No External UI Frameworks",
+      description:
+        "Built from the ground up, focusing on custom components rather than relying on frameworks like MUI, Ant Design, or class-based libraries like Tailwind CSS.",
+    },
+  ].map((item, index) => (
+    <Card key={index} style={{ width: "100%" }}>
+      <Typography.Title as="h6" text={item.title} />
+      <Typography.Paragraph style={{ padding: "16px 0px 8px" }}>{item.description}</Typography.Paragraph>
+    </Card>
+  ))}
+</Space.Grid>
+
+## Instal
+
+```shell
+# Install the library from Github repository:
+% npm install git+https://github.com/BlaxBerry333/venomous-ui-react
+
+# Additionally, install the required peer dependencies:
+% npm install @iconify/react@5 react-hook-form@7 motion@12 sonner@2 zod@4
+```
+
+```json
+{
+  "peerDependencies": {
+    "@iconify/react": "^5.2.1",
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0",
+    "react-hook-form": "^7.55.0",
+    "motion": "^12.23.6",
+    "sonner": "^2.0.6",
+    "zod": "^4.0.5"
+  }
+}
+```
+
+## How to import
+
+```tsx
+// 1st import style
+import { Button, type ButtonProps, getColors, useThemeMode } from "venomous-ui-react";
+
+// 2nd import style
+import { Button, type ButtonProps } from "venomous-ui-react/components";
+import { useThemeMode } from "venomous-ui-react/hooks";
+import { getColors } from "venomous-ui-react/utils";
+
+// 3rd import style
+import { Buttons, type ButtonProps } from "venomous-ui-react/components/Button";
+import useThemeMode from "venomous-ui-react/hooks/useThemeMode";
+import getColors from "venomous-ui-react/utils/getColors";
+```

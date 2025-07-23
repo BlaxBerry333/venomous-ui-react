@@ -1,0 +1,40 @@
+import { Meta, Canvas, Controls } from "@storybook/blocks";
+import * as Stories from "./Container.stories";
+
+<Meta of={Stories} />
+
+# Container
+
+`<Container>` is used to limit the `max-width` of content and center it when used for page or component layout.
+
+<Canvas
+  of={Stories.Default}
+  sourceState="hidden"
+  source={{
+    code: [
+      'import { Progress } from "venomous-ui-react/components";',
+      "",
+      "function App() {",
+      "  return (",
+      "    <>",
+      "      <Progress.LoadingBar />",
+      "",
+      '      <div style={{ width: "100%" }}>',
+      "        <Progress.LoadingBar />",
+      "      </div>",
+      "",
+      '      <div style={{ width: "80%" }}>',
+      "        <Progress.LoadingBar />",
+      "      </div>",
+      "",
+      '      <div style={{ width: "300px" }}>',
+      "        <Progress.LoadingBar />",
+      "      </div>",
+      "    </>",
+      "  );",
+      "}",
+    ].join("\n"),
+  }}
+/>
+
+<Controls />

@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const i=require("sonner");function n(t){const e={description:t.description};return t.type==="success"?i.toast.success(t.title,e):t.type==="error"?i.toast.error(t.title,e):t.type==="warning"?i.toast.warning(t.title,e):i.toast.info(t.title,e)}exports.notify=n;

@@ -1,0 +1,1 @@
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=require("react");function o(){const[s,e]=t.useState(!1),l=t.useCallback(()=>e(!0),[]),u=t.useCallback(()=>e(!1),[]),a=t.useCallback(()=>e(n=>!n),[]);return{isOpen:s,setIsOpen:e,open:l,close:u,toggle:a}}exports.default=o;

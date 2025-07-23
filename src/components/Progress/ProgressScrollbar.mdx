@@ -1,0 +1,41 @@
+import { Meta, Canvas, Controls } from "@storybook/blocks";
+import * as Stories from "./ProgressScrollbar.stories";
+
+<Meta of={Stories} />
+
+# Progress.Scrollbar
+
+`<Progress.Scrollbar>` is used to display the scrolling progress of the page.
+
+It is fixed at the top of the page by default.
+
+<Canvas
+  of={Stories.Default}
+  sourceState="hidden"
+  source={{
+    code: [
+      'import { Progress, Typography } from "venomous-ui-react/components";',
+      "",
+      "function App() {",
+      "  return (",
+      "    <>",
+      "      <Progress.Scrollbar />",
+      "",
+      '      <Typography.Paragraph style={{ height: "100vh" }}>',
+      "        Please scroll the page",
+      "      </Typography.Paragraph>",
+      "  );",
+      "}",
+    ].join("\n"),
+  }}
+/>
+
+<Controls />
+
+## TroubleShotting
+
+<br />
+
+#### The bar always show 100% progress status
+
+When using `<Progress.Scrollbar>` pages should ideally have a more than 100vh height, otherwise they will be treated as "already scrolled to the bottom".

@@ -1,0 +1,42 @@
+import { Meta, Canvas, Controls } from "@storybook/blocks";
+import * as Stories from "./ProgressLoadingBar.stories";
+
+<Meta of={Stories} />
+
+# Progress.LoadingBar
+
+`<Progress.LoadingBar>` is used to display the animated loading status.
+
+The width defaults to `100%` of the parent element.
+
+<Canvas
+  of={Stories.Default}
+  sourceState="hidden"
+  source={{
+    code: [
+      'import { Progress } from "venomous-ui-react/components";',
+      "",
+      "function App() {",
+      "  return (",
+      "    <>",
+      "      <Progress.LoadingBar />",
+      "",
+      '      <div style={{ width: "100%" }}>',
+      "        <Progress.LoadingBar />",
+      "      </div>",
+      "",
+      '      <div style={{ width: "80%" }}>',
+      "        <Progress.LoadingBar />",
+      "      </div>",
+      "",
+      '      <div style={{ width: "300px" }}>',
+      "        <Progress.LoadingBar />",
+      "      </div>",
+      "    </>",
+      "  );",
+      "}",
+    ].join("\n"),
+  }}
+/>
+
+<Controls />

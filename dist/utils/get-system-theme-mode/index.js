@@ -1,0 +1,1 @@
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const e=require("../theme-mode/index.js");function t(){return window.matchMedia("(prefers-color-scheme: dark)").matches?e.ThemeMode.Dark:e.ThemeMode.Light}exports.default=t;

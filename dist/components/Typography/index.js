@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const e=require("./TypographyCode.js"),r=require("./TypographyParagraph.js"),t=require("./TypographyText.js"),a=require("./TypographyTitle.js"),o={Title:a.default,Text:t.default,Code:e.default,Paragraph:r.default};exports.Typography=o;

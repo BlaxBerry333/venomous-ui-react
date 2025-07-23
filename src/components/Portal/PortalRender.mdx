@@ -1,0 +1,34 @@
+import { Meta, Canvas, Controls } from "@storybook/blocks";
+import * as Stories from "./PortalRender.stories";
+
+<Meta of={Stories} />
+
+# Portal.Render
+
+`<Portal.Render>` is used to implement `createPortal` from `react-dom`, but implemented as a child component for better readability.
+
+<Canvas
+  of={Stories.Default}
+  sourceState="hidden"
+  source={{
+    code: [
+      'import { Portal, Typography } from "venomous-ui-react/components";',
+      "",
+      'const PORTAL_TARGET_ID = "xxxxxx";',
+      "",
+      "function App() {",
+      "  return (",
+      "    <>",
+      "      <div id={PORTAL_TARGET_ID} />",
+      "",
+      "      <Portal.Render targetElementID={PORTAL_TARGET_ID}>",
+      "        <Typography.Paragraph>xxx</Typography.Paragraph>",
+      "      </Portal.Render>",
+      "    </>",
+      "  );",
+      "}",
+    ].join("\n"),
+  }}
+/>
+
+<Controls />

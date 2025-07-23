@@ -1,0 +1,16 @@
+import { Meta, Canvas, Controls } from "@storybook/blocks";
+import * as Stories from "./CardsProduct.stories";
+
+<Meta of={Stories} />
+
+# Cards.Product
+
+`<Cards.Product>` is used to display product information, summary content, and operation menus.
+
+The width defaults to `100%` of the parent element.
+
+It is recommended to be defined as child element of `<Space.Grid>` or manually add `style={{ width: ? }}` to itself.
+
+<Canvas of={Stories.Default} />
+
+<Controls />

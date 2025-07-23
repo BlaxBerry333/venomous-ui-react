@@ -1,0 +1,36 @@
+import { Meta, Canvas, Controls } from "@storybook/blocks";
+import * as Stories from "./Notification.stories";
+
+<Meta of={Stories} />
+
+# Notification + notify
+
+`<Notification>` is used to show the notification information.
+
+It is recommended to be defined in the root component, and it is also necessary to be triggered manually with the `notify` function.
+
+```tsx
+import { Notification, notify, ThemeProvider } from "venomous-ui-react/components";
+
+function App() {
+  return (
+    <ThemeProvider>
+      <Notification />
+
+      <Button
+        text="Show Notification"
+        onClick={() => {
+          notify({ type: "success", title: "Success", description: "..." });
+          notify({ type: "error", title: "Error", description: "..." });
+          notify({ type: "warning", title: "Warning", description: "..." });
+          notify({ type: "info", title: "Info", description: "..." });
+        }}
+      />
+    </ThemeProvider>
+  );
+}
+```
+
+<Canvas of={Stories.Default} sourceState="none" />
+
+<Controls />

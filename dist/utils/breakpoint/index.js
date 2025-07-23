@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});var x=(l=>(l.xs="xs",l.sm="sm",l.md="md",l.lg="lg",l.xl="xl",l.xxl="xxl",l))(x||{});const s={xs:444,sm:600,md:960,lg:1280,xl:1920,xxl:2560};exports.BreakPoint=x;exports.BreakPointWidth=s;

@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const t=require("react"),o=require("./ThemeContext.js");function n(){const e=t.use(o.ThemeContext);if(e===void 0)throw new Error("useThemeContext must be used within a ThemeProvider");return e}exports.useThemeContext=n;

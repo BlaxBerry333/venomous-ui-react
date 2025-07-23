@@ -1,0 +1,24 @@
+import { Meta, Canvas, Controls } from "@storybook/blocks";
+import * as Stories from "./SpaceFlex.stories";
+
+import { Typography } from "../Typography";
+
+<Meta of={Stories} />
+
+# Space.Flex
+
+`<Space.Flex>` is used for flex layout, which simplifies the in-line style.
+
+Of course the flex layout can still be precisely controlled by the `style` attribute.
+
+<Canvas of={Stories.Default} sourceState="hidden" />
+
+<Controls />
+
+## TroubleShotting
+
+<br />
+
+#### Child elements can't hold up the placeholder when `row` attribute is `true`
+
+It is necessary to manually add `style={{ flex: 1 }}` or `style={{ width: "100%" }}` to all child elements within `<Space.Flex>`.
