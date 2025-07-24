@@ -1,0 +1,1 @@
+{"version":3,"file":"index.types.d.ts","sourceRoot":"","sources":["../../../src/components/ThemePreset/index.types.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,UAAU,EAAE,SAAS,EAAE,MAAM,SAAS,CAAC;AAErD,MAAM,WAAW,gBAAgB;IAC/B,gBAAgB,CAAC,EAAE,SAAS,CAAC;IAC7B,iBAAiB,CAAC,EAAE,UAAU,CAAC;CAChC"}

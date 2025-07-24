@@ -1,24 +1,34 @@
 "use client";
 
-import React from "react";
+import { create, useStore } from "zustand";
+import { devtools, persist } from "zustand/middleware";
 
-import { _setStoredThemeColor } from "@/components/ThemeProvider/_store";
-import { useThemeContext } from "@/components/ThemeProvider/_useThemeContext";
-import type { ThemeColor } from "@/utils";
+import { ThemeColor } from "@/utils";
+
+const DEFAULT_THEME_COLOR = ThemeColor.JadeAnaconda;
+
+const _themeColorStore = create<{
+  themeColor: ThemeColor;
+  setThemeColor: (themeColor: ThemeColor) => void;
+  resetThemeColor: VoidFunction;
+}>()(
+  devtools(
+    persist(
+      (set) => ({
+        themeColor: DEFAULT_THEME_COLOR,
+        setThemeColor: (themeColor) => set({ themeColor }),
+        resetThemeColor: () => set({ themeColor: DEFAULT_THEME_COLOR }),
+      }),
+      {
+        name: "VENOMOUS_UI__THEME_COLOR",
+      },
+    ),
+  ),
+);
 
 export default function useThemeColor() {
-  const context = useThemeContext();
-
-  const setThemeColor = React.useCallback(
-    (color: ThemeColor) => {
-      context.setThemeColor(color);
-      _setStoredThemeColor(color);
-    },
-    [context],
-  );
-
+  const store = useStore(_themeColorStore);
   return {
-    themeColor: context.themeColor,
-    setThemeColor,
+    ...store,
   };
 }

@@ -11,7 +11,7 @@ inline-styles.
 This library is a personal learning project aimed at exploring the architecture and abstraction of UI components in
 React. It is not meant for production use, and thus, not suitable for commercial applications at this stage.
 
-<Space.Grid columns={3} spacing={6} style={{ margin: "32px 0 48px" }}>
+<Space.Grid columns={{ xs: 1, sm: 2, md: 3, lg: 3, xl: 3, xxl: 3 }} spacing={6} style={{ margin: "32px 0 48px" }}>
   {[
     {
       title: "On-Demand Imports",
@@ -42,7 +42,7 @@ React. It is not meant for production use, and thus, not suitable for commercial
 % npm install git+https://github.com/BlaxBerry333/venomous-ui-react
 
 # Additionally, install the required peer dependencies:
-% npm install @iconify/react@5 react-hook-form@7 motion@12 sonner@2 zod@4
+% npm install @iconify/react@5 react-hook-form@7 motion@12 sonner@2 zod@4 zustand@5
 ```
 
 ```json
@@ -54,7 +54,8 @@ React. It is not meant for production use, and thus, not suitable for commercial
     "react-hook-form": "^7.55.0",
     "motion": "^12.23.6",
     "sonner": "^2.0.6",
-    "zod": "^4.0.5"
+    "zod": "^4.0.5",
+    "zustand": "^5.0.3"
   }
 }
 ```

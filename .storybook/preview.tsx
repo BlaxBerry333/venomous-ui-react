@@ -3,7 +3,6 @@ import { themes } from "@storybook/theming";
 import React from "react";
 import { useDarkMode } from "storybook-dark-mode";
 
-import { ThemeProvider } from "../src/components";
 import { useThemeMode } from "../src/hooks";
 import { ThemeMode } from "../src/utils";
 
@@ -21,28 +20,26 @@ const preview: Preview = {
       const isDark = useDarkMode();
       return (
         <React.Fragment>
-          <ThemeProvider>
-            <ThemeModeObserver isDark={isDark} />
-            <div
-              style={{
-                minHeight: "100svh",
-                maxHeight: "90svh",
-                maxWidth: "998px",
-                height: "100svh",
-                width: "90svw",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
-                borderRadius: "8px",
-                backgroundColor: isDark ? "#000000" : "#FFFFFF",
-                overflow: "scroll",
-                position: "relative",
-              }}
-            >
-              <Story />
-            </div>
-          </ThemeProvider>
+          <ThemeModeObserver isDark={isDark} />
+          <div
+            style={{
+              minHeight: "100svh",
+              maxHeight: "90svh",
+              maxWidth: "998px",
+              height: "100svh",
+              width: "90svw",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              borderRadius: "8px",
+              backgroundColor: isDark ? "#000000" : "#FFFFFF",
+              overflow: "scroll",
+              position: "relative",
+            }}
+          >
+            <Story />
+          </div>
         </React.Fragment>
       );
     },

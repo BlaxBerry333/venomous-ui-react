@@ -1,23 +1,29 @@
-import m from "react";
-import { _setStoredThemeMode as r } from "../../components/ThemeProvider/_store.esm.js";
-import { useThemeContext as s } from "../../components/ThemeProvider/_useThemeContext.esm.js";
+import { useStore as r, create as M } from "zustand";
+import { devtools as d, persist as h } from "../../node_modules/zustand/esm/middleware.esm.js";
 import { ThemeMode as o } from "../../utils/theme-mode/index.esm.js";
-function i() {
-  const e = s(), d = m.useCallback(
-    (t) => {
-      e.setThemeMode(t), r(t);
-    },
-    [e]
-  ), h = m.useCallback(() => {
-    e.toggleThemeMode(), r(e.themeMode === o.Dark ? o.Light : o.Dark);
-  }, [e]);
+import s from "../../utils/get-system-theme-mode/index.esm.js";
+const m = s(), T = M()(
+  d(
+    h(
+      (e) => ({
+        themeMode: m,
+        setThemeMode: (t) => e({ themeMode: t }),
+        toggleThemeMode: () => e((t) => ({ themeMode: t.themeMode === o.Dark ? o.Light : o.Dark })),
+        resetThemeMode: () => e({ themeMode: m })
+      }),
+      {
+        name: "VENOMOUS_UI__THEME_MODE"
+      }
+    )
+  )
+);
+function D() {
+  const e = r(T);
   return {
-    themeMode: e.themeMode,
-    isDarkThemeMode: e.isDarkThemeMode,
-    setThemeMode: d,
-    toggleThemeMode: h
+    ...e,
+    isDarkThemeMode: e.themeMode === o.Dark
   };
 }
 export {
-  i as default
+  D as default
 };

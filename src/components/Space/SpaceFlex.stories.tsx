@@ -15,12 +15,13 @@ const meta = {
     },
     row: {
       description: "Whether the flex container is a row flex container",
+      if: { arg: "column", neq: true },
       control: { type: "boolean" },
       table: { type: { summary: "boolean" }, defaultValue: { summary: "true" } },
     },
     column: {
       description: "Whether the flex container is a column flex container",
-      if: { arg: "row", truthy: false },
+      if: { arg: "row", neq: true },
       control: { type: "boolean" },
       table: { type: { summary: "boolean" }, defaultValue: { summary: "false" } },
     },
@@ -47,9 +48,9 @@ export const Default: Story = {
   render: function RenderStory(args) {
     return (
       <Space.Flex {...args}>
-        <div style={{ backgroundColor: "red" }}>A</div>
-        <div style={{ backgroundColor: "skyblue" }}>B</div>
-        <div style={{ backgroundColor: "cadetblue" }}>C</div>
+        <div style={{ width: "100%", backgroundColor: "red" }}>A</div>
+        <div style={{ width: "100%", backgroundColor: "skyblue" }}>B</div>
+        <div style={{ width: "100%", backgroundColor: "cadetblue" }}>C</div>
       </Space.Flex>
     );
   },

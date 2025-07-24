@@ -16,7 +16,7 @@ const r = {
 }, e = {
   darkMode: "rgba(255, 255, 255, 0.1)",
   lightMode: "rgba(0, 0, 0, 0.1)"
-}, d = {
+}, n = {
   darkMode: `
     rgba(255, 255, 255, 0.2) 0px 3px 5px -1px, 
     rgba(255, 255, 255, 0.14) 0px 6px 10px 0px, 
@@ -27,7 +27,7 @@ const r = {
     rgba(0, 0, 0, 0.14) 0px 6px 10px 0px, 
     rgba(0, 0, 0, 0.12) 0px 1px 8px 0px
     `
-}, n = {
+}, c = {
   darkMode: "#cccccc",
   lightMode: "#212121",
   grey: "#666666",
@@ -37,25 +37,24 @@ const r = {
   success: r.success,
   error: r.error,
   warning: r.warning
-}, c = {
+}, t = {
   auto: "auto",
   white: "#ffffff",
   success: r.success,
   error: r.error,
   warning: r.warning,
   info: r.info
-}, t = {
+}, f = {
   auto: "auto",
-  disabled: r.disabled,
   error: r.error
 };
 export {
   s as BackgroundColors,
   e as BorderColors,
-  t as ButtonColors,
+  f as ButtonColors,
   r as Colors,
-  c as IconColors,
-  d as ShadowColors,
-  n as TextColors,
+  t as IconColors,
+  n as ShadowColors,
+  c as TextColors,
   a as ThemeColor
 };

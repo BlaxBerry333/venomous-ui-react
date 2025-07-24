@@ -6,4 +6,4 @@
     rgba(0, 0, 0, 0.2) 0px 3px 5px -1px, 
     rgba(0, 0, 0, 0.14) 0px 6px 10px 0px, 
     rgba(0, 0, 0, 0.12) 0px 1px 8px 0px
-    `},d={darkMode:"#cccccc",lightMode:"#212121",grey:"#666666",white:"#ffffff",link:"#1976d2",disabled:o.disabled,success:o.success,error:o.error,warning:o.warning},n={auto:"auto",white:"#ffffff",success:o.success,error:o.error,warning:o.warning,info:o.info},c={auto:"auto",disabled:o.disabled,error:o.error};exports.BackgroundColors=e;exports.BorderColors=a;exports.ButtonColors=c;exports.Colors=o;exports.IconColors=n;exports.ShadowColors=t;exports.TextColors=d;exports.ThemeColor=s;
+    `},n={darkMode:"#cccccc",lightMode:"#212121",grey:"#666666",white:"#ffffff",link:"#1976d2",disabled:o.disabled,success:o.success,error:o.error,warning:o.warning},c={auto:"auto",white:"#ffffff",success:o.success,error:o.error,warning:o.warning,info:o.info},d={auto:"auto",error:o.error};exports.BackgroundColors=e;exports.BorderColors=a;exports.ButtonColors=d;exports.Colors=o;exports.IconColors=c;exports.ShadowColors=t;exports.TextColors=n;exports.ThemeColor=s;

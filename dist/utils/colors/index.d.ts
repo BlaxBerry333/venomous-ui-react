@@ -45,7 +45,6 @@ export declare const IconColors: {
 };
 export declare const ButtonColors: {
     readonly auto: "auto";
-    readonly disabled: "#e4edf4";
     readonly error: "#f44336";
 };
 //# sourceMappingURL=index.d.ts.map

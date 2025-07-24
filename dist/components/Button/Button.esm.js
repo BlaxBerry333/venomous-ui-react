@@ -1,87 +1,69 @@
-import { jsxs as b, jsx as d } from "react/jsx-runtime";
-import y from "react";
-import { Typography as w } from "../Typography/index.esm.js";
-import T from "../../hooks/useThemeMode/index.esm.js";
-import k from "../../hooks/useThemeColor/index.esm.js";
-import { ButtonColors as M, ShadowColors as s, TextColors as B, BorderColors as l, IconColors as p } from "../../utils/colors/index.esm.js";
-import { TypographySize as S } from "../../utils/sizes/index.esm.js";
-import j from "../Icon/Icon.esm.js";
-const z = y.memo(
+import { jsxs as c, jsx as t } from "react/jsx-runtime";
+import f from "react";
+import { Typography as y } from "../Typography/index.esm.js";
+import { useButtonStyle as h } from "./_useButtonStyle.esm.js";
+import l from "../Icon/Icon.esm.js";
+const b = f.memo(
   ({
-    type: a = "button",
-    style: m,
-    text: r,
-    variant: o = "contained",
-    color: i = "auto",
-    isLoading: c,
-    isDisabled: h,
-    icon: e,
-    iconPosition: f = "start",
-    iconWidth: u = 20,
-    iconColor: x = "auto",
-    ...g
+    type: i = "button",
+    style: p,
+    text: s,
+    variant: a = "contained",
+    color: m = "auto",
+    isLoading: e,
+    isDisabled: o,
+    icon: n,
+    iconPosition: r = "start",
+    iconWidth: d = 20,
+    ...u
   }) => {
-    const { isDarkThemeMode: n } = T(), { themeColor: C } = k(), t = i !== "auto" ? M[i] : C;
-    return /* @__PURE__ */ b(
+    const { buttonStyles: x } = h({
+      isLoading: e,
+      isDisabled: o,
+      variant: a,
+      color: m
+    });
+    return /* @__PURE__ */ c(
       "button",
       {
-        type: a,
-        disabled: c || h,
+        type: i,
+        disabled: e || o,
         style: {
-          height: "40px",
-          display: "flex",
-          flexDirection: f === "start" ? "row" : "row-reverse",
-          alignItems: "center",
-          justifyContent: "center",
-          textTransform: "capitalize",
-          fontSize: S.text,
-          fontWeight: "bold",
-          borderRadius: "8px",
-          borderColor: n ? l.darkMode : l.lightMode,
-          cursor: "pointer",
-          ...r ? {
-            width: "auto",
-            padding: "0px 16px"
-          } : {
-            width: "40px",
-            padding: "0px 0px"
-          },
-          ...o === "contained" ? {
-            backgroundColor: t,
-            color: B.white,
-            boxShadow: n ? s.darkMode : s.lightMode
-          } : {},
-          ...o === "outline" ? {
-            color: t,
-            backgroundColor: "transparent",
-            border: `1px solid ${t}`
-          } : {},
-          ...o === "ghost" ? {
-            color: t,
-            backgroundColor: "transparent"
-          } : {},
-          ...m
+          flexDirection: r === "start" ? "row" : "row-reverse",
+          ...x,
+          ...p
         },
-        ...g,
+        ...u,
         children: [
-          e && /* @__PURE__ */ d(
-            j,
+          n && /* @__PURE__ */ t(
+            l,
             {
-              icon: e,
-              width: u,
+              icon: n,
+              width: d,
               style: {
-                color: o === "contained" ? p.white : p[x] || "inherit"
+                marginLeft: r === "start" ? "0px" : "8px",
+                marginRight: r === "end" ? "0px" : "8px"
               }
             }
           ),
-          r && /* @__PURE__ */ d(
-            w.Text,
+          /* @__PURE__ */ t(y.Text, { text: s, style: { color: "inherit" } }),
+          /* @__PURE__ */ t(
+            "div",
             {
-              text: r,
               style: {
-                margin: e ? "0px 8px" : "0px",
-                color: o === "contained" ? "#ffffff" : "inherit"
-              }
+                display: e ? "flex" : "none",
+                borderRadius: "4px",
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                alignItems: "center",
+                justifyContent: "center",
+                backdropFilter: "blur(2px)",
+                WebkitBackdropFilter: "blur(2px)"
+              },
+              children: /* @__PURE__ */ t(l, { icon: "eos-icons:loading", width: 24 })
             }
           )
         ]
@@ -89,7 +71,7 @@ const z = y.memo(
     );
   }
 );
-z.displayName = "Button";
+b.displayName = "Button";
 export {
-  z as default
+  b as default
 };

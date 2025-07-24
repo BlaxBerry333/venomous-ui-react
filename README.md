@@ -17,6 +17,9 @@ This is a personal learning project, not intended for production or npm distribu
 ```shell
 # Install the library from Github repository:
 % npm install git+https://github.com/BlaxBerry333/venomous-ui-react
+
+# Additionally, install the required peer dependencies:
+% npm install @iconify/react@5 react-hook-form@7 motion@12 sonner@2 zod@4 zustand@5
 ```
 
 ## Usage

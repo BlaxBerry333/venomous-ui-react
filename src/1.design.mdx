@@ -20,7 +20,7 @@ import {
 
 ## ThemeColor
 
-<Space.Grid columns={{ xs: 2, sm: 3, md: 3, lg: 3, xl: 3, xxl: 3 }}>
+<Space.Grid columns={{ xs: 1, sm: 2, md: 3, lg: 3, xl: 3, xxl: 3 }}>
   {Object.entries(ThemeColor).map(([name, value]) => (
     <Card key={name} isOutline style={{ backgroundColor: value }}>
       <Typography.Text as="strong" color="white" text={`ThemeColor.${name}`} />
@@ -64,7 +64,7 @@ const Colors = {
 
 ## BackgroundColors
 
-<Space.Grid columns={{ xs: 2, sm: 3, md: 3, lg: 3, xl: 3, xxl: 3 }}>
+<Space.Grid columns={{ xs: 1, sm: 2, md: 3, lg: 3, xl: 3, xxl: 3 }}>
   {Object.entries(BackgroundColors).map(([name, value]) => (
     <Card key={name} isOutline style={{ backgroundColor: value }}>
       <Typography.Text as="strong" text={`BackgroundColors.${name}`} style={{ color: "#7a818c" }} />
@@ -84,7 +84,7 @@ const BackgroundColors = {
 ## BorderColors
 
 <Space.Grid
-  columns={{ xs: 2, sm: 3, md: 3, lg: 3, xl: 3, xxl: 3 }}
+  columns={{ xs: 1, sm: 2, md: 3, lg: 3, xl: 3, xxl: 3 }}
   style={{ backgroundColor: "#7a818c", padding: "32px 16px" }}
 >
   {Object.entries(BorderColors).map(([name, value]) => (
@@ -106,7 +106,7 @@ const BorderColors = {
 ## ShadowColors
 
 <Space.Grid
-  columns={{ xs: 2, sm: 3, md: 3, lg: 3, xl: 3, xxl: 3 }}
+  columns={{ xs: 1, sm: 2, md: 3, lg: 3, xl: 3, xxl: 3 }}
   style={{ backgroundColor: "#7a818c", padding: "32px 16px" }}
 >
   {Object.entries(ShadowColors).map(([name, value]) => (
@@ -135,7 +135,7 @@ const ShadowColors = {
 
 ## TextColors
 
-<Space.Grid columns={{ xs: 2, sm: 3, md: 3, lg: 3, xl: 3, xxl: 3 }}>
+<Space.Grid columns={{ xs: 1, sm: 2, md: 3, lg: 3, xl: 3, xxl: 3 }}>
   {Object.entries(TextColors).map(([name, value]) => (
     <Card key={name} isOutline style={{ backgroundColor: value }}>
       <Typography.Text as="strong" text={`TextColors.${name}`} style={{ color: "#7a818c" }} />
@@ -161,7 +161,7 @@ const TextColors = {
 
 ## IconColors
 
-<Space.Grid columns={{ xs: 2, sm: 3, md: 4, lg: 4, xl: 4, xxl: 4 }}>
+<Space.Grid columns={{ xs: 1, sm: 2, md: 3, lg: 4, xl: 4, xxl: 4 }}>
   {Object.entries(IconColors).map(([name, value]) => (
     <Card key={name} isOutline style={{ backgroundColor: value }}>
       <Typography.Text as="strong" text={`IconColors.${name}`} style={{ color: "#7a818c" }} />
@@ -173,7 +173,7 @@ const TextColors = {
 // import { IconColors } from "venomous-ui-react/utils";
 
 const IconColors = {
-  auto: "auto",
+  auto: "auto", // color: "inherit"
   white: "#ffffff",
   success: Colors.success,
   error: Colors.error,
@@ -184,7 +184,7 @@ const IconColors = {
 
 ## ButtonColors
 
-<Space.Grid columns={{ xs: 2, sm: 3, md: 4, lg: 4, xl: 4, xxl: 4 }}>
+<Space.Grid columns={{ xs: 1, sm: 2, md: 3, lg: 4, xl: 4, xxl: 4 }}>
   {Object.entries(ButtonColors).map(([name, value]) => (
     <Card key={name} isOutline style={{ backgroundColor: value }}>
       <Typography.Text as="strong" text={`ButtonColors.${name}`} style={{ color: "#7a818c" }} />
@@ -196,7 +196,7 @@ const IconColors = {
 // import { ButtonColors } from "venomous-ui-react/utils";
 
 const ButtonColors = {
-  auto: "auto",
+  auto: "auto", // color: "inherit"
   disabled: Colors.disabled,
   error: Colors.error,
 } as const;

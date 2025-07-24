@@ -1,6 +1,7 @@
-import type { ThemeColor } from "@/utils";
+import { ThemeColor } from "@/utils";
 export default function useThemeColor(): {
     themeColor: ThemeColor;
-    setThemeColor: (color: ThemeColor) => void;
+    setThemeColor: (themeColor: ThemeColor) => void;
+    resetThemeColor: VoidFunction;
 };
 //# sourceMappingURL=index.d.ts.map

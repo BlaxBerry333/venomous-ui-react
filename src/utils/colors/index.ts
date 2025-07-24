@@ -50,7 +50,7 @@ export const TextColors = {
 } as const;
 
 export const IconColors = {
-  auto: "auto",
+  auto: "auto", // color: "inherit"
   white: "#ffffff",
   success: Colors.success,
   error: Colors.error,
@@ -59,7 +59,6 @@ export const IconColors = {
 } as const;
 
 export const ButtonColors = {
-  auto: "auto",
-  disabled: Colors.disabled,
+  auto: "auto", // color: "inherit"
   error: Colors.error,
 } as const;

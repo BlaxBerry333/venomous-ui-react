@@ -8,6 +8,6 @@ export * from "./Notification";
 export * from "./Portal";
 export * from "./Progress";
 export * from "./Space";
-export * from "./ThemeProvider";
+export * from "./ThemePreset";
 export * from "./Typography";
 //# sourceMappingURL=index.d.ts.map

@@ -1,7 +1,7 @@
 import type { ButtonColors } from "@/utils";
 import type { IconProps } from "../Icon";
 export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "children"> {
-    text?: string;
+    text: string;
     variant?: "contained" | "outline" | "ghost";
     color?: keyof typeof ButtonColors;
     isLoading?: boolean;
@@ -9,7 +9,6 @@ export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonE
     icon?: IconProps["icon"];
     iconPosition?: "start" | "end";
     iconWidth?: IconProps["width"];
-    iconColor?: IconProps["color"];
 }
 export interface ButtonsIconProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "children"> {
     variant?: "contained" | "outline" | "ghost";
@@ -18,6 +17,5 @@ export interface ButtonsIconProps extends Omit<React.ButtonHTMLAttributes<HTMLBu
     isDisabled?: boolean;
     icon: IconProps["icon"];
     iconWidth?: IconProps["width"];
-    iconColor?: IconProps["color"];
 }
 //# sourceMappingURL=index.types.d.ts.map

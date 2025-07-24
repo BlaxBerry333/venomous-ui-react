@@ -1,8 +1,9 @@
 import { ThemeMode } from "@/utils";
 export default function useThemeMode(): {
-    themeMode: ThemeMode;
     isDarkThemeMode: boolean;
+    themeMode: ThemeMode;
     setThemeMode: (themeMode: ThemeMode) => void;
-    toggleThemeMode: () => void;
+    toggleThemeMode: VoidFunction;
+    resetThemeMode: VoidFunction;
 };
 //# sourceMappingURL=index.d.ts.map

@@ -39,6 +39,7 @@ export default defineConfig({
         "framer-motion",
         "sonner",
         "zod",
+        "zustand",
         "@iconify/react",
       ],
       output: [
