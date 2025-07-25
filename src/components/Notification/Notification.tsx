@@ -3,12 +3,12 @@
 import React from "react";
 import { Toaster } from "sonner";
 
-import { useThemeMode } from "@/hooks";
+import { Theme } from "@/components";
 import { Icon } from "../Icon";
 import type { NotificationProps } from "./index.types";
 
 const Notification = React.memo<NotificationProps>(({ position = "top-center", offset = 0, collapsable = false }) => {
-  const { isDarkThemeMode } = useThemeMode();
+  const { isDarkThemeMode } = Theme.useThemeMode();
   return (
     <Toaster
       closeButton

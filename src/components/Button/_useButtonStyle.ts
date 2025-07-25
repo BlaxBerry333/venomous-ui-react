@@ -1,6 +1,5 @@
 import React from "react";
 
-import { useThemeColor, useThemeMode } from "@/hooks";
 import {
   BackgroundColors,
   BorderColors,
@@ -10,6 +9,7 @@ import {
   TextColors,
   TypographySize,
 } from "@/utils";
+import { Theme } from "../Theme";
 import type { ButtonProps } from "./index.types";
 
 export function useButtonStyle({
@@ -18,11 +18,12 @@ export function useButtonStyle({
   color = "auto",
   variant,
 }: Pick<ButtonProps, "isLoading" | "isDisabled" | "color" | "variant">) {
-  const { isDarkThemeMode } = useThemeMode();
-  const { themeColor } = useThemeColor();
+  const { isDarkThemeMode } = Theme.useThemeMode();
+  const { themeColor } = Theme.useThemeColor();
 
   const backgroundColor = React.useMemo<React.CSSProperties["backgroundColor"]>(() => {
     if (variant === "contained") return color !== "auto" ? ButtonColors[color] : themeColor;
+    if (variant === "ghost") return "transparent";
     return BackgroundColors[isDarkThemeMode ? "darkMode" : "lightMode"];
   }, [variant, color, themeColor, isDarkThemeMode]);
 
@@ -34,8 +35,7 @@ export function useButtonStyle({
   const textColor = React.useMemo<React.CSSProperties["color"]>(() => {
     if (variant === "contained") return TextColors.white;
     if (variant === "outline") return color !== "auto" ? ButtonColors[color] : themeColor;
-    if (variant === "ghost") return TextColors[isDarkThemeMode ? "darkMode" : "lightMode"]; // 优先度: ghost > color
-    return TextColors[isDarkThemeMode ? "darkMode" : "lightMode"];
+    if (variant === "ghost") return TextColors[isDarkThemeMode ? "darkMode" : "lightMode"];
   }, [variant, color, themeColor, isDarkThemeMode]);
 
   const buttonStyles = React.useMemo<React.CSSProperties>(

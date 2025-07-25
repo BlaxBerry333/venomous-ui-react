@@ -3,14 +3,14 @@
 import { motion, useAnimation } from "motion/react";
 import React from "react";
 
-import { useThemeColor } from "@/hooks";
 import { Colors, getColors } from "@/utils";
+import { Theme } from "../Theme";
 import type { ProgressLoadingBarProps } from "./index.types";
 
 const ProgressLoadingBar = React.memo<ProgressLoadingBarProps>(({ height = 8, color }) => {
   const controls = useAnimation();
 
-  const { themeColor } = useThemeColor();
+  const { themeColor } = Theme.useThemeColor();
 
   const containerRef = React.useRef<HTMLDivElement>(null);
   const [maxX, setMaxX] = React.useState<number>(0);

@@ -3,7 +3,7 @@ import { themes } from "@storybook/theming";
 import React from "react";
 import { useDarkMode } from "storybook-dark-mode";
 
-import { useThemeMode } from "../src/hooks";
+import { Theme } from "../src/components";
 import { ThemeMode } from "../src/utils";
 
 const preview: Preview = {
@@ -19,7 +19,8 @@ const preview: Preview = {
     (Story) => {
       const isDark = useDarkMode();
       return (
-        <React.Fragment>
+        // eslint-disable-next-line react-x/no-context-provider
+        <Theme.Provider>
           <ThemeModeObserver isDark={isDark} />
           <div
             style={{
@@ -40,7 +41,7 @@ const preview: Preview = {
           >
             <Story />
           </div>
-        </React.Fragment>
+        </Theme.Provider>
       );
     },
   ],
@@ -50,7 +51,7 @@ export default preview;
 
 // eslint-disable-next-line react-refresh/only-export-components
 const ThemeModeObserver: React.FC<{ isDark: boolean }> = ({ isDark }) => {
-  const { setThemeMode } = useThemeMode();
+  const { setThemeMode } = Theme.useThemeMode();
   React.useEffect(() => {
     setThemeMode(isDark ? ThemeMode.Dark : ThemeMode.Light);
   }, [isDark]);

@@ -1,16 +1,16 @@
 import { jsx as a } from "react/jsx-runtime";
 import e from "react";
-import m from "../../hooks/useThemeColor/index.esm.js";
+import { Theme as l } from "../Theme/index.esm.js";
 import f from "../../utils/get-colors/index.esm.js";
 import { Colors as p } from "../../utils/colors/index.esm.js";
 import { useAnimation as x, motion as w } from "framer-motion";
-const b = e.memo(({ height: i = 8, color: d }) => {
-  const o = x(), { themeColor: c } = m(), s = e.useRef(null), [t, u] = e.useState(0);
+const h = e.memo(({ height: i = 8, color: d }) => {
+  const o = x(), { themeColor: c } = l.useThemeColor(), s = e.useRef(null), [t, u] = e.useState(0);
   return e.useEffect(() => {
     const r = () => {
       if (s.current) {
-        const n = s.current.offsetWidth, l = n * 0.3;
-        u(n - l);
+        const n = s.current.offsetWidth, m = n * 0.3;
+        u(n - m);
       }
     };
     return r(), window.addEventListener("resize", r), () => window.removeEventListener("resize", r);
@@ -51,7 +51,7 @@ const b = e.memo(({ height: i = 8, color: d }) => {
     }
   );
 });
-b.displayName = "Progress.LoadingBar";
+h.displayName = "Progress.LoadingBar";
 export {
-  b as default
+  h as default
 };

@@ -2,8 +2,8 @@
 
 import React from "react";
 
-import { useThemeMode } from "@/hooks";
 import { TextColors } from "@/utils";
+import { Theme } from "../Theme";
 
 type Props = Partial<{
   color: keyof typeof TextColors;
@@ -13,7 +13,7 @@ type Props = Partial<{
 export const _defaultTypographyColor: keyof typeof TextColors = "lightMode";
 
 export function useTypographyStyle({ color = _defaultTypographyColor, ellipsis = 0 }: Props) {
-  const { isDarkThemeMode } = useThemeMode();
+  const { isDarkThemeMode } = Theme.useThemeMode();
 
   const fontColor = React.useMemo<React.CSSProperties["color"]>(() => {
     if (isDarkThemeMode) return color === "lightMode" ? TextColors.darkMode : TextColors[color];

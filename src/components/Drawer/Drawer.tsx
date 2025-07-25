@@ -2,13 +2,13 @@
 
 import React from "react";
 
-import { useThemeMode } from "@/hooks";
 import { BackgroundColors, BorderColors, ShadowColors } from "@/utils";
+import { Theme } from "../Theme";
 import type { DrawerProps } from "./index.types";
 
 const Drawer = React.memo<DrawerProps>(
   ({ isOpen, onClose, children, position = "left", maskClosable = true, width = 300, height = 300, style }) => {
-    const { isDarkThemeMode } = useThemeMode();
+    const { isDarkThemeMode } = Theme.useThemeMode();
 
     const borderColor = isDarkThemeMode ? BorderColors.darkMode : BorderColors.lightMode;
     const backgroundColor = isDarkThemeMode ? BackgroundColors.darkMode : BackgroundColors.lightMode;

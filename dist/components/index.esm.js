@@ -1,12 +1,11 @@
-import { jsx as d, jsxs as z, Fragment as te } from "react/jsx-runtime";
-import a from "react";
-import { useStore as oe, create as re } from "zustand";
-import { Icon as ke } from "@iconify/react";
-import { AnimatePresence as Ce, motion as H, useAnimation as we, useScroll as Me } from "framer-motion";
-import { Toaster as Te, toast as F } from "sonner";
-import { createPortal as Ie } from "react-dom";
-var k = /* @__PURE__ */ ((e) => (e.xs = "xs", e.sm = "sm", e.md = "md", e.lg = "lg", e.xl = "xl", e.xxl = "xxl", e))(k || {});
-const R = {
+import { jsx as a, jsxs as v, Fragment as G } from "react/jsx-runtime";
+import i from "react";
+import { Icon as de } from "@iconify/react";
+import { AnimatePresence as ce, motion as $, useAnimation as ue, useScroll as he } from "framer-motion";
+import { Toaster as pe, toast as z } from "sonner";
+import { createPortal as me } from "react-dom";
+var m = /* @__PURE__ */ ((e) => (e.xs = "xs", e.sm = "sm", e.md = "md", e.lg = "lg", e.xl = "xl", e.xxl = "xxl", e))(m || {});
+const T = {
   xs: 444,
   sm: 600,
   md: 960,
@@ -14,8 +13,8 @@ const R = {
   xl: 1920,
   xxl: 2560
 };
-var ne = /* @__PURE__ */ ((e) => (e.ScarletViper = "#C62828", e.JadeAnaconda = "#26A69A", e.AmethystRattlesnake = "#7E57C2", e.AmberCobra = "#FFA000", e.ObsidianBothrops = "#546E7A", e))(ne || {});
-const S = {
+var B = /* @__PURE__ */ ((e) => (e.ScarletViper = "#C62828", e.JadeAnaconda = "#26A69A", e.AmethystRattlesnake = "#7E57C2", e.AmberCobra = "#FFA000", e.ObsidianBothrops = "#546E7A", e))(B || {});
+const p = {
   disabled: "#e4edf4",
   // 禁用
   success: "#4caf50",
@@ -26,13 +25,13 @@ const S = {
   // 警告
   info: "#2196f3"
   // 信息
-}, _ = {
+}, M = {
   darkMode: "#181818",
   lightMode: "#ffffff"
-}, $ = {
+}, E = {
   darkMode: "rgba(255, 255, 255, 0.1)",
   lightMode: "rgba(0, 0, 0, 0.1)"
-}, D = {
+}, I = {
   darkMode: `
     rgba(255, 255, 255, 0.2) 0px 3px 5px -1px, 
     rgba(255, 255, 255, 0.14) 0px 6px 10px 0px, 
@@ -43,60 +42,65 @@ const S = {
     rgba(0, 0, 0, 0.14) 0px 6px 10px 0px, 
     rgba(0, 0, 0, 0.12) 0px 1px 8px 0px
     `
-}, N = {
+}, S = {
   darkMode: "#cccccc",
   lightMode: "#212121",
   grey: "#666666",
   white: "#ffffff",
   link: "#1976d2",
-  disabled: S.disabled,
-  success: S.success,
-  error: S.error,
-  warning: S.warning
-}, _e = {
+  disabled: p.disabled,
+  success: p.success,
+  error: p.error,
+  warning: p.warning
+}, fe = {
   auto: "auto",
+  // color: "inherit"
   white: "#ffffff",
-  success: S.success,
-  error: S.error,
-  warning: S.warning,
-  info: S.info
-}, U = {
+  success: p.success,
+  error: p.error,
+  warning: p.warning,
+  info: p.info
+}, N = {
   auto: "auto",
-  error: S.error
+  // color: "inherit"
+  error: p.error
 };
-function Ee(e) {
+function ge(e) {
   return e = e.replace("#", ""), e.length === 3 && (e = e.split("").map((t) => t + t).join("")), `#${e}`;
 }
-function ie(e) {
+function U(e) {
   e = e.replace("#", "");
-  const t = parseInt(e, 16), o = t >> 16 & 255, n = t >> 8 & 255, r = t & 255;
-  return { r: o, g: n, b: r };
+  const t = parseInt(e, 16), r = t >> 16 & 255, o = t >> 8 & 255, n = t & 255;
+  return { r, g: o, b: n };
 }
-function Re(e, t, o) {
-  const n = (r) => {
-    const i = r.toString(16);
-    return i.length === 1 ? "0" + i : i;
+function xe(e, t, r) {
+  const o = (n) => {
+    const s = n.toString(16);
+    return s.length === 1 ? "0" + s : s;
   };
-  return `#${n(e)}${n(t)}${n(o)}`;
+  return `#${o(e)}${o(t)}${o(r)}`;
 }
-function K(e, t) {
-  const { r: o, g: n, b: r } = ie(e), i = (c) => Math.min(255, Math.max(0, Math.round(c + t / 100 * 255)));
-  return Re(i(o), i(n), i(r));
+function j(e, t) {
+  const { r, g: o, b: n } = U(e), s = (l) => Math.min(255, Math.max(0, Math.round(l + t / 100 * 255)));
+  return xe(s(r), s(o), s(n));
 }
-function M(e, t) {
-  const o = Ee(e), n = K(o, 25), r = K(o, -25), { r: i, g: c, b: s } = ie(o), u = `rgba(${i}, ${c}, ${s}, ${(t == null ? void 0 : t.opacity) || 0.25})`;
+function b(e, t) {
+  const r = ge(e), o = j(r, 25), n = j(r, -25), { r: s, g: l, b: c } = U(r), d = `rgba(${s}, ${l}, ${c}, ${(t == null ? void 0 : t.opacity) || 0.25})`;
   return {
-    origin: o,
-    light: n,
-    dark: r,
-    opacity: u
+    origin: r,
+    light: o,
+    dark: n,
+    opacity: d
   };
 }
-var T = /* @__PURE__ */ ((e) => (e.Light = "light", e.Dark = "dark", e))(T || {});
-function Ne() {
-  return window.matchMedia("(prefers-color-scheme: dark)").matches ? T.Dark : T.Light;
+var f = /* @__PURE__ */ ((e) => (e.Light = "light", e.Dark = "dark", e))(f || {});
+function be() {
+  return typeof window < "u" ? window.matchMedia("(prefers-color-scheme: dark)").matches : !1;
 }
-const I = {
+function Le() {
+  return be() ? f.Dark : f.Light;
+}
+const y = {
   h1: "4rem",
   // 64px
   h2: "3rem",
@@ -113,1133 +117,48 @@ const I = {
   // 16px
   small: "0.875rem"
   // 14px
-}, C = a.memo(({ style: e, icon: t, width: o = 20, color: n = "auto", ...r }) => {
-  const i = a.useMemo(() => _e[n], [n]);
-  return /* @__PURE__ */ d(
-    ke,
+}, x = i.memo(({ style: e, icon: t, width: r = 20, color: o = "auto", ...n }) => {
+  const s = i.useMemo(() => fe[o], [o]);
+  return /* @__PURE__ */ a(
+    de,
     {
       ssr: !0,
       icon: t,
       style: {
-        width: o,
-        minWidth: o,
-        height: o,
-        minHeight: o,
+        width: r,
+        minWidth: r,
+        height: r,
+        minHeight: r,
         flexShrink: 0,
         display: "inline-flex",
-        color: i,
+        color: s,
         ...e
       },
-      ...r
+      ...n
     }
   );
 });
-C.displayName = "Icon";
-function it() {
-  const [e, t] = a.useState(!1), o = a.useCallback(() => t(!0), []), n = a.useCallback(() => t(!1), []), r = a.useCallback(() => t((i) => !i), []);
-  return {
-    isOpen: e,
-    setIsOpen: t,
-    open: o,
-    close: n,
-    toggle: r
-  };
-}
-function Oe() {
-  const [e, t] = a.useState(k.xs);
-  return a.useEffect(() => {
-    const o = () => {
-      const r = window.innerWidth;
-      return r >= R.xxl ? k.xxl : r >= R.xl ? k.xl : r >= R.lg ? k.lg : r >= R.md ? k.md : r >= R.sm ? k.sm : k.xs;
-    }, n = () => {
-      t(o());
-    };
-    return n(), window.addEventListener("resize", n), () => window.removeEventListener("resize", n);
-  }, []), {
-    screenSize: e
-  };
-}
-const V = { BASE_URL: "/", DEV: !1, MODE: "production", PROD: !0, SSR: !1 }, P = /* @__PURE__ */ new Map(), A = (e) => {
-  const t = P.get(e);
-  return t ? Object.fromEntries(
-    Object.entries(t.stores).map(([o, n]) => [o, n.getState()])
-  ) : {};
-}, ze = (e, t, o) => {
-  if (e === void 0)
-    return {
-      type: "untracked",
-      connection: t.connect(o)
-    };
-  const n = P.get(o.name);
-  if (n)
-    return { type: "tracked", store: e, ...n };
-  const r = {
-    connection: t.connect(o),
-    stores: {}
-  };
-  return P.set(o.name, r), { type: "tracked", store: e, ...r };
-}, $e = (e, t) => {
-  if (t === void 0) return;
-  const o = P.get(e);
-  o && (delete o.stores[t], Object.keys(o.stores).length === 0 && P.delete(e));
-}, De = (e) => {
-  var t, o;
-  if (!e) return;
-  const n = e.split(`
-`), r = n.findIndex(
-    (c) => c.includes("api.setState")
-  );
-  if (r < 0) return;
-  const i = ((t = n[r + 1]) == null ? void 0 : t.trim()) || "";
-  return (o = /.+ (.+) .+/.exec(i)) == null ? void 0 : o[1];
-}, Pe = (e, t = {}) => (o, n, r) => {
-  const { enabled: i, anonymousActionType: c, store: s, ...u } = t;
-  let p;
-  try {
-    p = (i ?? (V ? "production" : void 0) !== "production") && window.__REDUX_DEVTOOLS_EXTENSION__;
-  } catch {
-  }
-  if (!p)
-    return e(o, n, r);
-  const { connection: f, ...v } = ze(s, p, u);
-  let y = !0;
-  r.setState = (l, g, h) => {
-    const m = o(l, g);
-    if (!y) return m;
-    const b = h === void 0 ? {
-      type: c || De(new Error().stack) || "anonymous"
-    } : typeof h == "string" ? { type: h } : h;
-    return s === void 0 ? (f == null || f.send(b, n()), m) : (f == null || f.send(
-      {
-        ...b,
-        type: `${s}/${b.type}`
-      },
-      {
-        ...A(u.name),
-        [s]: r.getState()
-      }
-    ), m);
-  }, r.devtools = {
-    cleanup: () => {
-      f && typeof f.unsubscribe == "function" && f.unsubscribe(), $e(u.name, s);
-    }
-  };
-  const x = (...l) => {
-    const g = y;
-    y = !1, o(...l), y = g;
-  }, w = e(r.setState, n, r);
-  if (v.type === "untracked" ? f == null || f.init(w) : (v.stores[v.store] = r, f == null || f.init(
-    Object.fromEntries(
-      Object.entries(v.stores).map(([l, g]) => [
-        l,
-        l === v.store ? w : g.getState()
-      ])
-    )
-  )), r.dispatchFromDevtools && typeof r.dispatch == "function") {
-    let l = !1;
-    const g = r.dispatch;
-    r.dispatch = (...h) => {
-      (V ? "production" : void 0) !== "production" && h[0].type === "__setState" && !l && (console.warn(
-        '[zustand devtools middleware] "__setState" action type is reserved to set state from the devtools. Avoid using it.'
-      ), l = !0), g(...h);
-    };
-  }
-  return f.subscribe((l) => {
-    var g;
-    switch (l.type) {
-      case "ACTION":
-        if (typeof l.payload != "string") {
-          console.error(
-            "[zustand devtools middleware] Unsupported action format"
-          );
-          return;
-        }
-        return J(
-          l.payload,
-          (h) => {
-            if (h.type === "__setState") {
-              if (s === void 0) {
-                x(h.state);
-                return;
-              }
-              Object.keys(h.state).length !== 1 && console.error(
-                `
-                    [zustand devtools middleware] Unsupported __setState action format.
-                    When using 'store' option in devtools(), the 'state' should have only one key, which is a value of 'store' that was passed in devtools(),
-                    and value of this only key should be a state object. Example: { "type": "__setState", "state": { "abc123Store": { "foo": "bar" } } }
-                    `
-              );
-              const m = h.state[s];
-              if (m == null)
-                return;
-              JSON.stringify(r.getState()) !== JSON.stringify(m) && x(m);
-              return;
-            }
-            r.dispatchFromDevtools && typeof r.dispatch == "function" && r.dispatch(h);
-          }
-        );
-      case "DISPATCH":
-        switch (l.payload.type) {
-          case "RESET":
-            return x(w), s === void 0 ? f == null ? void 0 : f.init(r.getState()) : f == null ? void 0 : f.init(A(u.name));
-          case "COMMIT":
-            if (s === void 0) {
-              f == null || f.init(r.getState());
-              return;
-            }
-            return f == null ? void 0 : f.init(A(u.name));
-          case "ROLLBACK":
-            return J(l.state, (h) => {
-              if (s === void 0) {
-                x(h), f == null || f.init(r.getState());
-                return;
-              }
-              x(h[s]), f == null || f.init(A(u.name));
-            });
-          case "JUMP_TO_STATE":
-          case "JUMP_TO_ACTION":
-            return J(l.state, (h) => {
-              if (s === void 0) {
-                x(h);
-                return;
-              }
-              JSON.stringify(r.getState()) !== JSON.stringify(h[s]) && x(h[s]);
-            });
-          case "IMPORT_STATE": {
-            const { nextLiftedState: h } = l.payload, m = (g = h.computedStates.slice(-1)[0]) == null ? void 0 : g.state;
-            if (!m) return;
-            x(s === void 0 ? m : m[s]), f == null || f.send(
-              null,
-              // FIXME no-any
-              h
-            );
-            return;
-          }
-          case "PAUSE_RECORDING":
-            return y = !y;
-        }
-        return;
-    }
-  }), w;
-}, se = Pe, J = (e, t) => {
-  let o;
-  try {
-    o = JSON.parse(e);
-  } catch (n) {
-    console.error(
-      "[zustand devtools middleware] Could not parse the received json",
-      n
-    );
-  }
-  o !== void 0 && t(o);
-};
-function Be(e, t) {
-  let o;
-  try {
-    o = e();
-  } catch {
-    return;
-  }
-  return {
-    getItem: (r) => {
-      var i;
-      const c = (u) => u === null ? null : JSON.parse(u, void 0), s = (i = o.getItem(r)) != null ? i : null;
-      return s instanceof Promise ? s.then(c) : c(s);
-    },
-    setItem: (r, i) => o.setItem(r, JSON.stringify(i, void 0)),
-    removeItem: (r) => o.removeItem(r)
-  };
-}
-const X = (e) => (t) => {
-  try {
-    const o = e(t);
-    return o instanceof Promise ? o : {
-      then(n) {
-        return X(n)(o);
-      },
-      catch(n) {
-        return this;
-      }
-    };
-  } catch (o) {
-    return {
-      then(n) {
-        return this;
-      },
-      catch(n) {
-        return X(n)(o);
-      }
-    };
-  }
-}, Fe = (e, t) => (o, n, r) => {
-  let i = {
-    storage: Be(() => localStorage),
-    partialize: (l) => l,
-    version: 0,
-    merge: (l, g) => ({
-      ...g,
-      ...l
-    }),
-    ...t
-  }, c = !1;
-  const s = /* @__PURE__ */ new Set(), u = /* @__PURE__ */ new Set();
-  let p = i.storage;
-  if (!p)
-    return e(
-      (...l) => {
-        console.warn(
-          `[zustand persist middleware] Unable to update item '${i.name}', the given storage is currently unavailable.`
-        ), o(...l);
-      },
-      n,
-      r
-    );
-  const f = () => {
-    const l = i.partialize({ ...n() });
-    return p.setItem(i.name, {
-      state: l,
-      version: i.version
-    });
-  }, v = r.setState;
-  r.setState = (l, g) => {
-    v(l, g), f();
-  };
-  const y = e(
-    (...l) => {
-      o(...l), f();
-    },
-    n,
-    r
-  );
-  r.getInitialState = () => y;
-  let x;
-  const w = () => {
-    var l, g;
-    if (!p) return;
-    c = !1, s.forEach((m) => {
-      var b;
-      return m((b = n()) != null ? b : y);
-    });
-    const h = ((g = i.onRehydrateStorage) == null ? void 0 : g.call(i, (l = n()) != null ? l : y)) || void 0;
-    return X(p.getItem.bind(p))(i.name).then((m) => {
-      if (m)
-        if (typeof m.version == "number" && m.version !== i.version) {
-          if (i.migrate) {
-            const b = i.migrate(
-              m.state,
-              m.version
-            );
-            return b instanceof Promise ? b.then((j) => [!0, j]) : [!0, b];
-          }
-          console.error(
-            "State loaded from storage couldn't be migrated since no migrate function was provided"
-          );
-        } else
-          return [!1, m.state];
-      return [!1, void 0];
-    }).then((m) => {
-      var b;
-      const [j, Se] = m;
-      if (x = i.merge(
-        Se,
-        (b = n()) != null ? b : y
-      ), o(x, !0), j)
-        return f();
-    }).then(() => {
-      h == null || h(x, void 0), x = n(), c = !0, u.forEach((m) => m(x));
-    }).catch((m) => {
-      h == null || h(void 0, m);
-    });
-  };
-  return r.persist = {
-    setOptions: (l) => {
-      i = {
-        ...i,
-        ...l
-      }, l.storage && (p = l.storage);
-    },
-    clearStorage: () => {
-      p == null || p.removeItem(i.name);
-    },
-    getOptions: () => i,
-    rehydrate: () => w(),
-    hasHydrated: () => c,
-    onHydrate: (l) => (s.add(l), () => {
-      s.delete(l);
-    }),
-    onFinishHydration: (l) => (u.add(l), () => {
-      u.delete(l);
-    })
-  }, i.skipHydration || w(), x || y;
-}, ae = Fe, Q = ne.JadeAnaconda, Ae = re()(
-  se(
-    ae(
-      (e) => ({
-        themeColor: Q,
-        setThemeColor: (t) => e({ themeColor: t }),
-        resetThemeColor: () => e({ themeColor: Q })
-      }),
-      {
-        name: "VENOMOUS_UI__THEME_COLOR"
-      }
-    )
-  )
-);
-function B() {
-  return {
-    ...oe(Ae)
-  };
-}
-const Z = Ne(), He = re()(
-  se(
-    ae(
-      (e) => ({
-        themeMode: Z,
-        setThemeMode: (t) => e({ themeMode: t }),
-        toggleThemeMode: () => e((t) => ({ themeMode: t.themeMode === T.Dark ? T.Light : T.Dark })),
-        resetThemeMode: () => e({ themeMode: Z })
-      }),
-      {
-        name: "VENOMOUS_UI__THEME_MODE"
-      }
-    )
-  )
-);
-function E() {
-  const e = oe(He);
-  return {
-    ...e,
-    isDarkThemeMode: e.themeMode === T.Dark
-  };
-}
-function le({
-  isLoading: e,
-  isDisabled: t,
-  color: o = "auto",
-  variant: n
-}) {
-  const { isDarkThemeMode: r } = E(), { themeColor: i } = B(), c = a.useMemo(() => n === "contained" ? o !== "auto" ? U[o] : i : _[r ? "darkMode" : "lightMode"], [n, o, i, r]), s = a.useMemo(() => n === "outline" ? o !== "auto" ? U[o] : i : M($[r ? "darkMode" : "lightMode"]).opacity, [n, o, i, r]), u = a.useMemo(() => n === "contained" ? N.white : n === "outline" ? o !== "auto" ? U[o] : i : N[r ? "darkMode" : "lightMode"], [n, o, i, r]);
-  return {
-    buttonStyles: a.useMemo(
-      () => ({
-        boxSizing: "border-box",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        position: "relative",
-        overflow: "hidden",
-        width: "auto",
-        minWidth: "40px",
-        height: "40px",
-        padding: "0px 16px",
-        textTransform: "capitalize",
-        fontSize: I.text,
-        fontWeight: "bold",
-        borderRadius: "8px",
-        cursor: e ? "wait" : t ? "not-allowed" : "pointer",
-        boxShadow: D[r ? "darkMode" : "lightMode"],
-        borderColor: e || t ? M(s).opacity : s,
-        backgroundColor: e || t ? M(c).opacity : c,
-        color: e || t ? M(u).opacity : u
-      }),
-      [e, t, s, c, u, r]
-    )
-  };
-}
-const ce = a.memo(
-  ({
-    type: e = "button",
-    style: t,
-    variant: o = "contained",
-    color: n = "auto",
-    isLoading: r,
-    isDisabled: i,
-    icon: c,
-    iconWidth: s = 20,
-    ...u
-  }) => {
-    const { buttonStyles: p } = le({
-      isLoading: r,
-      isDisabled: i,
-      variant: o,
-      color: n
-    });
-    return /* @__PURE__ */ d(
-      "button",
-      {
-        type: e,
-        disabled: r || i,
-        style: {
-          ...p,
-          padding: 0,
-          ...t
-        },
-        ...u,
-        children: /* @__PURE__ */ d(C, { icon: r ? "eos-icons:loading" : c, width: s })
-      }
-    );
-  }
-);
-ce.displayName = "Buttons.Icon";
-const de = a.memo(({ style: e, text: t, ...o }) => /* @__PURE__ */ d(
-  "code",
-  {
-    style: {
-      color: "#B71D18",
-      backgroundColor: "#E7E9EB",
-      border: "1px solid #CCCCCC",
-      borderRadius: "4px",
-      padding: "2px 4px",
-      fontSize: I.small,
-      fontWeight: 600,
-      ...e
-    },
-    ...o,
-    children: t
-  }
-));
-de.displayName = "Typography.Code";
-const L = "lightMode";
-function Y({ color: e = L, ellipsis: t = 0 }) {
-  const { isDarkThemeMode: o } = E(), n = a.useMemo(() => o && e === "lightMode" ? N.darkMode : N[e], [e, o]), r = a.useMemo(() => t ? {
-    textOverflow: "ellipsis",
-    display: "-webkit-box",
-    WebkitLineClamp: t,
-    WebkitBoxOrient: "vertical",
-    overflow: "hidden"
-  } : {}, [t]);
-  return {
-    fontColor: n,
-    ellipsisStyles: r
-  };
-}
-const ue = a.memo(
-  ({ children: e, style: t, color: o = L, ellipsis: n = 0, ...r }) => {
-    const { fontColor: i, ellipsisStyles: c } = Y({ color: o, ellipsis: n });
-    return /* @__PURE__ */ d(
-      "p",
-      {
-        style: {
-          boxSizing: "border-box",
-          margin: 0,
-          width: "100%",
-          fontSize: I.text,
-          lineHeight: 1.5,
-          color: i,
-          ...c,
-          ...t
-        },
-        ...r,
-        children: e
-      }
-    );
-  }
-);
-ue.displayName = "Typography.Paragraph";
-const fe = a.memo(
-  ({ style: e, text: t, as: o = "span", color: n = L, ...r }) => {
-    const { fontColor: i } = Y({ color: n });
-    return o === "strong" ? /* @__PURE__ */ d(
-      "strong",
-      {
-        style: {
-          fontSize: I.text,
-          fontWeight: "bold",
-          color: i,
-          ...e
-        },
-        ...r,
-        children: t
-      }
-    ) : o === "small" ? /* @__PURE__ */ d(
-      "small",
-      {
-        style: {
-          fontSize: I.small,
-          color: i,
-          ...e
-        },
-        ...r,
-        children: t
-      }
-    ) : /* @__PURE__ */ d(
-      "span",
-      {
-        style: {
-          fontSize: I.text,
-          fontWeight: "normal",
-          color: i,
-          ...e
-        },
-        ...r,
-        children: t
-      }
-    );
-  }
-);
-fe.displayName = "Typography.Text";
-const ee = {
-  h1: "h1",
-  h2: "h2",
-  h3: "h3",
-  h4: "h4",
-  h5: "h5",
-  h6: "h6"
-}, pe = a.memo(
-  ({ text: e, as: t = ee.h4, color: o = L, ellipsis: n = 0, style: r, ...i }) => {
-    const c = a.useMemo(() => ee[t], [t]), s = a.useMemo(() => I[t], [t]), { fontColor: u, ellipsisStyles: p } = Y({ color: o, ellipsis: n });
-    return /* @__PURE__ */ d(
-      c,
-      {
-        style: {
-          boxSizing: "border-box",
-          margin: 0,
-          padding: 0,
-          width: "100%",
-          fontSize: s,
-          fontFamily: "inherit",
-          fontWeight: "bold",
-          lineHeight: "inherit",
-          textAlign: "inherit",
-          color: u,
-          ...p,
-          ...r
-        },
-        ...i,
-        children: e
-      }
-    );
-  }
-);
-pe.displayName = "Typography.Title";
-const W = {
-  Title: pe,
-  Text: fe,
-  Code: de,
-  Paragraph: ue
-}, We = a.memo(
-  ({
-    type: e = "button",
-    style: t,
-    text: o,
-    variant: n = "contained",
-    color: r = "auto",
-    isLoading: i,
-    isDisabled: c,
-    icon: s,
-    iconPosition: u = "start",
-    iconWidth: p = 20,
-    ...f
-  }) => {
-    const { buttonStyles: v } = le({
-      isLoading: i,
-      isDisabled: c,
-      variant: n,
-      color: r
-    });
-    return /* @__PURE__ */ z(
-      "button",
-      {
-        type: e,
-        disabled: i || c,
-        style: {
-          flexDirection: u === "start" ? "row" : "row-reverse",
-          ...v,
-          ...t
-        },
-        ...f,
-        children: [
-          s && /* @__PURE__ */ d(
-            C,
-            {
-              icon: s,
-              width: p,
-              style: {
-                marginLeft: u === "start" ? "0px" : "8px",
-                marginRight: u === "end" ? "0px" : "8px"
-              }
-            }
-          ),
-          /* @__PURE__ */ d(W.Text, { text: o, style: { color: "inherit" } }),
-          /* @__PURE__ */ d(
-            "div",
-            {
-              style: {
-                display: i ? "flex" : "none",
-                borderRadius: "4px",
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: "100%",
-                height: "100%",
-                alignItems: "center",
-                justifyContent: "center",
-                backdropFilter: "blur(2px)",
-                WebkitBackdropFilter: "blur(2px)"
-              },
-              children: /* @__PURE__ */ d(C, { icon: "eos-icons:loading", width: 24 })
-            }
-          )
-        ]
-      }
-    );
-  }
-);
-We.displayName = "Button";
-const Le = {
-  Icon: ce
-}, he = a.memo(({ children: e, style: t, row: o = !0, column: n = !1, gap: r = "8px", ...i }) => /* @__PURE__ */ d(
-  "div",
-  {
-    style: {
-      boxSizing: "border-box",
-      display: "flex",
-      width: "100%",
-      flexDirection: n ? "column" : "row",
-      alignItems: o ? "flex-start" : t == null ? void 0 : t.alignItems,
-      ...Array.isArray(r) ? { rowGap: r[0], columnGap: r[1] } : { gap: r },
-      position: "relative",
-      ...t
-    },
-    ...i,
-    children: e
-  }
-));
-he.displayName = "Space.Flex";
-const me = a.memo(({ children: e, style: t, columns: o = 1, spacing: n = 16, ...r }) => {
-  const { screenSize: i } = Oe(), c = a.useMemo(() => je(o, i), [o, i]), s = a.useMemo(() => Ue(n, i), [n, i]);
-  return /* @__PURE__ */ d(
-    "div",
-    {
-      style: {
-        boxSizing: "border-box",
-        width: "100%",
-        display: "grid",
-        gridTemplateColumns: `repeat(${c}, 1fr)`,
-        gap: `${s}px`,
-        ...t
-      },
-      ...r,
-      children: e
-    }
-  );
-});
-me.displayName = "Space.Grid";
-const O = Object.keys(k);
-function je(e = 1, t) {
-  if (typeof e == "number")
-    return e;
-  const o = O.indexOf(t);
-  for (let n = o; n < O.length; n++) {
-    const r = e[O[n]];
-    if (r !== void 0) return r;
-  }
-  return 1;
-}
-function Ue(e = 16, t) {
-  if (typeof e == "number")
-    return e;
-  const o = O.indexOf(t);
-  for (let n = o; n < O.length; n++) {
-    const r = e[O[n]];
-    if (r !== void 0) return r;
-  }
-  return 16;
-}
-const G = {
-  Flex: he,
-  Grid: me
-}, q = a.memo(
-  ({ children: e, style: t, isTransparent: o = !1, isFrostedGlass: n = !1, isOutline: r = !1, ...i }) => {
-    const { isDarkThemeMode: c } = E(), s = c ? $.darkMode : $.lightMode, u = c ? _.darkMode : _.lightMode, p = r ? "none" : c ? D.darkMode : D.lightMode;
-    return /* @__PURE__ */ d(
-      "div",
-      {
-        style: {
-          boxSizing: "border-box",
-          borderRadius: "8px",
-          padding: "16px",
-          boxShadow: p,
-          backgroundColor: o ? "transparent" : u,
-          backdropFilter: n ? "blur(8px) brightness(0.8)" : "none",
-          WebkitBackdropFilter: n ? "blur(8px) brightness(0.8)" : "none",
-          border: `1px solid ${s}`,
-          ...t
-        },
-        ...i,
-        children: e
-      }
-    );
-  }
-);
-q.displayName = "Card";
-const ge = a.memo(({ children: e, height: t = 300, width: o = 200, title: n, coverImage: r }) => /* @__PURE__ */ z(
-  q,
-  {
-    style: {
-      height: t,
-      width: o,
-      padding: "16px 24px",
-      overflow: "hidden",
-      position: "relative",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "flex-end",
-      backgroundColor: "transparent",
-      backgroundImage: `url(${r})`,
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      backgroundRepeat: "no-repeat",
-      color: "#ffffff"
-    },
-    children: [
-      e,
-      /* @__PURE__ */ d(
-        "div",
-        {
-          style: {
-            position: "absolute",
-            left: 0,
-            top: 0,
-            zIndex: 1,
-            width: "16px",
-            height: "100%",
-            background: "linear-gradient(-90deg, #fff0, #ffffff1a 80%, #ffffff4d 95%, #fff6 96.5%, #cbcbcb14 98%, #6a6a6a1a)",
-            borderRadius: "8px"
-          }
-        }
-      ),
-      /* @__PURE__ */ d(
-        G.Flex,
-        {
-          column: !0,
-          style: {
-            height: "max-content",
-            width: "100%",
-            position: "relative",
-            zIndex: 1,
-            left: 6,
-            top: 40
-          },
-          children: n && /* @__PURE__ */ d(
-            W.Title,
-            {
-              text: n,
-              as: "h4",
-              ellipsis: 4,
-              style: {
-                lineHeight: 1.15,
-                color: "#ffffff",
-                textShadow: "2px 2px 2px rgba(0, 0, 0, 0.5)"
-              }
-            }
-          )
-        }
-      )
-    ]
-  }
-));
-ge.displayName = "Cards.Book";
-const xe = a.memo(({ children: e, title: t = "", description: o = "" }) => /* @__PURE__ */ z(q, { style: { position: "relative" }, children: [
-  (t || o) && /* @__PURE__ */ z(G.Flex, { column: !0, gap: 2, style: { paddingRight: "48px" }, children: [
-    /* @__PURE__ */ d(W.Title, { as: "h6", text: t, ellipsis: 1 }),
-    /* @__PURE__ */ d(W.Paragraph, { ellipsis: 3, color: "grey", children: o })
-  ] }),
-  /* @__PURE__ */ d(
-    Le.Icon,
-    {
-      icon: "solar:hamburger-menu-line-duotone",
-      variant: "ghost",
-      style: { position: "absolute", top: "4px", right: "4px" }
-    }
-  ),
-  e && /* @__PURE__ */ d(G.Flex, { column: !0, children: e })
-] }));
-xe.displayName = "Cards.Product";
-const st = {
-  Book: ge,
-  Product: xe
-}, Je = a.memo(({ children: e, breakpoint: t = "lg", style: o, ...n }) => {
-  const r = a.useMemo(() => R[t], [t]);
-  return /* @__PURE__ */ d(
-    "div",
-    {
-      style: {
-        margin: "0 auto",
-        width: "100%",
-        maxWidth: r,
-        ...o
-      },
-      ...n,
-      children: e
-    }
-  );
-});
-Je.displayName = "Container";
-const Xe = a.memo(
-  ({ isOpen: e, onClose: t, children: o, position: n = "left", maskClosable: r = !0, width: i = 300, height: c = 300, style: s }) => {
-    const { isDarkThemeMode: u } = E(), p = u ? $.darkMode : $.lightMode, f = u ? _.darkMode : _.lightMode, v = u ? D.darkMode : D.lightMode;
-    return /* @__PURE__ */ z(te, { children: [
-      /* @__PURE__ */ d(
-        "div",
-        {
-          onClick: r ? t : void 0,
-          style: {
-            boxSizing: "border-box",
-            display: e ? "block" : "none",
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100vw",
-            height: "100svh",
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
-            opacity: e ? 1 : 0,
-            pointerEvents: e ? "auto" : "none",
-            transition: "opacity 0.3s ease",
-            zIndex: 999
-          }
-        }
-      ),
-      /* @__PURE__ */ d(
-        "div",
-        {
-          style: {
-            boxSizing: "border-box",
-            position: "fixed",
-            backgroundColor: f,
-            boxShadow: `2px 0 8px ${v}`,
-            transition: "transform 0.3s ease",
-            zIndex: 1e3,
-            transform: n === "left" ? e ? "translateX(0)" : "translateX(-100%)" : n === "right" ? e ? "translateX(0)" : "translateX(100%)" : n === "top" ? e ? "translateY(0)" : "translateY(-100%)" : e ? "translateY(0)" : "translateY(100%)",
-            ...n === "left" && {
-              top: 0,
-              left: 0,
-              width: i,
-              height: "100svh",
-              borderRight: `1px solid ${p}`
-            },
-            ...n === "right" && {
-              top: 0,
-              right: 0,
-              width: i,
-              height: "100svh",
-              borderLeft: `1px solid ${p}`
-            },
-            ...n === "top" && {
-              top: 0,
-              left: 0,
-              width: "100svw",
-              height: c,
-              borderBottom: `1px solid ${p}`
-            },
-            ...n === "bottom" && {
-              bottom: 0,
-              left: 0,
-              width: "100svw",
-              height: c,
-              borderTop: `1px solid ${p}`
-            },
-            ...s
-          },
-          children: o
-        }
-      )
-    ] });
-  }
-);
-Xe.displayName = "Drawer";
-const Ge = a.memo(({ children: e, style: t, isOpen: o, onClose: n, maskClosable: r = !0 }) => {
-  const { isDarkThemeMode: i } = E();
-  return /* @__PURE__ */ d(Ce, { children: o && /* @__PURE__ */ d(
-    H.div,
-    {
-      onClick: r ? n : void 0,
-      initial: { opacity: 0 },
-      animate: { opacity: 1 },
-      exit: { opacity: 0 },
-      transition: { duration: 0.2 },
-      style: {
-        position: "fixed",
-        top: 0,
-        left: 0,
-        width: "100svw",
-        height: "100svh",
-        backgroundColor: "rgba(0, 0, 0, 0.5)",
-        backdropFilter: "blur(4px)",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        zIndex: 1e3
-      },
-      children: /* @__PURE__ */ d(
-        H.div,
-        {
-          initial: { opacity: 0, scale: 0.95 },
-          animate: { opacity: 1, scale: 1 },
-          exit: { opacity: 0, scale: 0.95 },
-          transition: { duration: 0.2, ease: "easeOut" },
-          onClick: (c) => c.stopPropagation(),
-          style: {
-            backgroundColor: i ? _.darkMode : _.lightMode,
-            border: `1px solid ${i ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.1)"}`,
-            borderRadius: "8px",
-            minWidth: "300px",
-            maxWidth: "90%",
-            maxHeight: "90%",
-            padding: "24px 32px",
-            boxShadow: `
-                rgba(0, 0, 0, 0.2) 0px 3px 5px -1px, 
-                rgba(0, 0, 0, 0.14) 0px 6px 10px 0px, 
-                rgba(0, 0, 0, 0.12) 0px 1px 8px 0px
-              `,
-            overflow: "auto",
-            ...t
-          },
-          children: e
-        }
-      )
-    }
-  ) });
-});
-Ge.displayName = "Modal";
-const Ye = a.memo(({ position: e = "top-center", offset: t = 0, collapsable: o = !1 }) => {
-  const { isDarkThemeMode: n } = E();
-  return /* @__PURE__ */ d(
-    Te,
-    {
-      closeButton: !0,
-      richColors: !0,
-      invert: n,
-      visibleToasts: 4,
-      gap: 8,
-      position: e,
-      offset: t,
-      mobileOffset: t / 2,
-      expand: !o,
-      icons: {
-        success: /* @__PURE__ */ d(C, { icon: "solar:shield-check-line-duotone", color: "success" }),
-        error: /* @__PURE__ */ d(C, { icon: "solar:shield-cross-line-duotone", color: "error" }),
-        warning: /* @__PURE__ */ d(C, { icon: "solar:shield-warning-line-duotone", color: "warning" }),
-        info: /* @__PURE__ */ d(C, { icon: "solar:info-circle-line-duotone", color: "info" })
-      }
-    }
-  );
-});
-Ye.displayName = "Notification";
-function at(e) {
-  const t = {
-    description: e.description
-  };
-  return e.type === "success" ? F.success(e.title, t) : e.type === "error" ? F.error(e.title, t) : e.type === "warning" ? F.warning(e.title, t) : F.info(e.title, t);
-}
-const be = a.memo(({ children: e, targetElementID: t }) => {
-  const [o, n] = a.useState(null);
-  return a.useEffect(() => {
-    const r = document.getElementById(t);
-    r && n(r);
-  }, [t]), o ? Ie(/* @__PURE__ */ d(te, { children: e }), o, t) : null;
-});
-be.displayName = "PortalRender";
-const lt = {
-  Render: be
-}, ye = a.memo(({ height: e = 8, color: t }) => {
-  const o = we(), { themeColor: n } = B(), r = a.useRef(null), [i, c] = a.useState(0);
-  return a.useEffect(() => {
-    const s = () => {
-      if (r.current) {
-        const u = r.current.offsetWidth, p = u * 0.3;
-        c(u - p);
-      }
-    };
-    return s(), window.addEventListener("resize", s), () => window.removeEventListener("resize", s);
-  }, []), a.useEffect(() => {
-    if (i === 0) return;
-    (async () => {
-      for (; ; )
-        await o.start({ x: [0, i], transition: { duration: 1.2, ease: [0.68, -0.55, 0.27, 1.55] } }), await o.start({ x: [i, 0], transition: { duration: 1.2, ease: [0.68, -0.55, 0.27, 1.55] } });
-    })();
-  }, [o, i]), /* @__PURE__ */ d(
-    "div",
-    {
-      ref: r,
-      style: {
-        position: "relative",
-        width: "100%",
-        height: e,
-        overflow: "hidden",
-        backgroundColor: M(S.disabled).opacity,
-        borderRadius: e / 2,
-        boxShadow: "rgba(0, 0, 0, 0.14) 0px 6px 10px 0px"
-      },
-      children: /* @__PURE__ */ d(
-        H.div,
-        {
-          animate: o,
-          style: {
-            position: "absolute",
-            top: 0,
-            left: 0,
-            height: "100%",
-            width: "50%",
-            backgroundColor: t || n,
-            borderRadius: e / 2
-          }
-        }
-      )
-    }
-  );
-});
-ye.displayName = "Progress.LoadingBar";
-const ve = a.memo(({ height: e = 8, color: t }) => {
-  const { scrollYProgress: o } = Me(), { themeColor: n } = B(), r = a.useMemo(() => M(t || n), [t, n]);
-  return /* @__PURE__ */ d(
-    H.div,
-    {
-      style: {
-        scaleX: o,
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        originX: 0,
-        zIndex: 1e4,
-        backgroundImage: `linear-gradient(to right, ${r.light}, ${r.origin}, ${r.opacity})`,
-        height: e,
-        borderRadius: "8px"
-      }
-    }
-  );
-});
-ve.displayName = "Progress.Scrollbar";
-const ct = {
-  Scrollbar: ve,
-  LoadingBar: ye
-};
-function qe({
-  defaultThemeColor: e,
-  defaultThemeMode: t
-}) {
-  const { setThemeMode: o } = E(), { setThemeColor: n } = B();
-  a.useEffect(() => {
-    t && o(t), e && n(e);
-  }, [t, e, o, n]);
-}
-function Ke() {
-  const { themeColor: e } = B(), t = a.useMemo(() => M(e), [e]);
-  a.useEffect(() => {
-    const o = "theme-palette-style";
-    let n = document.getElementById(o);
-    n || (n = document.createElement("style"), n.id = o, document.head.appendChild(n));
-    const r = `
+x.displayName = "Icon";
+const Y = i.memo(() => (ye(), null));
+Y.displayName = "Theme.InjectToHTML";
+function ye() {
+  const { themeColor: e } = g.useThemeColor(), t = i.useMemo(() => b(e), [e]);
+  i.useEffect(() => {
+    if (typeof window > "u")
+      return;
+    const r = "theme-palette-style";
+    let o = document.getElementById(r);
+    o || (o = document.createElement("style"), o.id = r, document.head.appendChild(o));
+    const n = `
       /* ==============================
          Global Theme Palette Styles
          ============================== */
 
       :root {
-        --theme-origin: ${t.origin};
-        --theme-dark: ${t.dark};
-        --theme-light: ${t.light};
-        --theme-opacity: ${t.opacity};
+        --venomous-ui--theme-origin: ${t.origin};
+        --venomous-ui--theme-dark: ${t.dark};
+        --venomous-ui--theme-light: ${t.light};
+        --venomous-ui--theme-opacity: ${t.opacity};
       }
 
       /* Selection style */
@@ -1272,43 +191,851 @@ function Ke() {
         scrollbar-width: thin;
       }
     `;
-    n.innerHTML = r;
+    o.innerHTML = n;
   }, [t]);
 }
-const Ve = a.memo(({ defaultThemeColor: e, defaultThemeMode: t }) => (Ke(), qe({ defaultThemeColor: e, defaultThemeMode: t }), null));
-Ve.displayName = "ThemePreset";
+const D = i.createContext(void 0), Me = f.Light, Ce = B.JadeAnaconda, ke = {
+  THEME_MODE: "VENOMOUS_UI__THEME_MODE",
+  THEME_COLOR: "VENOMOUS_UI__THEME_COLOR"
+};
+function Te({
+  children: e,
+  defaultTheme: t = Me,
+  defaultThemeColor: r = Ce,
+  storageKey: o = ke
+}) {
+  const [n, s] = i.useState(!1), [l, c] = i.useState(t), [d, u] = i.useState(r), C = i.useCallback(
+    (h) => {
+      h !== l && c(h);
+    },
+    [l]
+  ), k = i.useCallback(() => {
+    c((h) => h === f.Dark ? f.Light : f.Dark);
+  }, []), L = i.useCallback(() => {
+    c(t);
+  }, [t]), F = i.useCallback(
+    (h) => {
+      h !== d && u(h);
+    },
+    [d]
+  ), A = i.useCallback(() => {
+    u(r);
+  }, [r]);
+  i.useEffect(() => {
+    if (typeof window < "u") {
+      s(!0);
+      const h = localStorage.getItem(o.THEME_MODE);
+      h && Object.values(f).includes(h) && c(h);
+      const H = localStorage.getItem(o.THEME_COLOR);
+      H && Object.values(B).includes(H) && u(H);
+    }
+  }, [o]), i.useEffect(() => {
+    typeof window < "u" && n && (localStorage.setItem(o.THEME_MODE, l), localStorage.setItem(o.THEME_COLOR, d));
+  }, [n, o, l, d]);
+  const le = i.useMemo(
+    () => ({
+      themeMode: l,
+      setThemeMode: C,
+      toggleThemeMode: k,
+      resetThemeMode: L,
+      isDarkThemeMode: l === f.Dark,
+      themeColor: d,
+      setThemeColor: F,
+      resetThemeColor: A
+    }),
+    [l, C, k, L, d, F, A]
+  );
+  return /* @__PURE__ */ a(D.Provider, { value: le, children: e });
+}
+function we() {
+  const e = i.useContext(D);
+  if (e === void 0)
+    throw new Error("useThemeColor must be used within a ThemeModeProvider");
+  return {
+    themeColor: e.themeColor,
+    setThemeColor: e.setThemeColor,
+    resetThemeColor: e.resetThemeColor
+  };
+}
+function V() {
+  const e = i.useContext(D);
+  if (e === void 0)
+    throw new Error("useThemeMode must be used within a ThemeModeProvider");
+  return {
+    themeMode: e.themeMode,
+    setThemeMode: e.setThemeMode,
+    toggleThemeMode: e.toggleThemeMode,
+    resetThemeMode: e.resetThemeMode,
+    isDarkThemeMode: e.isDarkThemeMode
+  };
+}
+const g = {
+  Provider: Te,
+  InjectToHTML: Y,
+  useThemeMode: V,
+  useThemeColor: we
+};
+function q({
+  isLoading: e,
+  isDisabled: t,
+  color: r = "auto",
+  variant: o
+}) {
+  const { isDarkThemeMode: n } = g.useThemeMode(), { themeColor: s } = g.useThemeColor(), l = i.useMemo(() => o === "contained" ? r !== "auto" ? N[r] : s : o === "ghost" ? "transparent" : M[n ? "darkMode" : "lightMode"], [o, r, s, n]), c = i.useMemo(() => o === "outline" ? r !== "auto" ? N[r] : s : b(E[n ? "darkMode" : "lightMode"]).opacity, [o, r, s, n]), d = i.useMemo(() => {
+    if (o === "contained") return S.white;
+    if (o === "outline") return r !== "auto" ? N[r] : s;
+    if (o === "ghost") return S[n ? "darkMode" : "lightMode"];
+  }, [o, r, s, n]);
+  return {
+    buttonStyles: i.useMemo(
+      () => ({
+        boxSizing: "border-box",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        position: "relative",
+        overflow: "hidden",
+        width: "auto",
+        minWidth: "40px",
+        height: "40px",
+        padding: "0px 16px",
+        textTransform: "capitalize",
+        fontSize: y.text,
+        fontWeight: "bold",
+        borderRadius: "8px",
+        cursor: e ? "wait" : t ? "not-allowed" : "pointer",
+        boxShadow: I[n ? "darkMode" : "lightMode"],
+        borderColor: e || t ? b(c).opacity : c,
+        backgroundColor: e || t ? b(l).opacity : l,
+        color: e || t ? b(d).opacity : d
+      }),
+      [e, t, c, l, d, n]
+    )
+  };
+}
+const J = i.memo(
+  ({
+    type: e = "button",
+    style: t,
+    variant: r = "contained",
+    color: o = "auto",
+    isLoading: n,
+    isDisabled: s,
+    icon: l,
+    iconWidth: c = 20,
+    ...d
+  }) => {
+    const { buttonStyles: u } = q({
+      isLoading: n,
+      isDisabled: s,
+      variant: r,
+      color: o
+    });
+    return /* @__PURE__ */ a(
+      "button",
+      {
+        type: e,
+        disabled: n || s,
+        style: {
+          ...u,
+          padding: 0,
+          ...t
+        },
+        ...d,
+        children: /* @__PURE__ */ a(x, { icon: n ? "eos-icons:loading" : l, width: c })
+      }
+    );
+  }
+);
+J.displayName = "Buttons.Icon";
+const Q = i.memo(({ style: e, text: t, ...r }) => /* @__PURE__ */ a(
+  "code",
+  {
+    style: {
+      color: "#B71D18",
+      backgroundColor: "#E7E9EB",
+      border: "1px solid #CCCCCC",
+      borderRadius: "4px",
+      padding: "2px 4px",
+      fontSize: y.small,
+      fontWeight: 600,
+      ...e
+    },
+    ...r,
+    children: t
+  }
+));
+Q.displayName = "Typography.Code";
+const O = "lightMode";
+function P({ color: e = O, ellipsis: t = 0 }) {
+  const { isDarkThemeMode: r } = g.useThemeMode(), o = i.useMemo(() => r && e === "lightMode" ? S.darkMode : S[e], [e, r]), n = i.useMemo(() => t ? {
+    textOverflow: "ellipsis",
+    display: "-webkit-box",
+    WebkitLineClamp: t,
+    WebkitBoxOrient: "vertical",
+    overflow: "hidden"
+  } : {}, [t]);
+  return {
+    fontColor: o,
+    ellipsisStyles: n
+  };
+}
+const Z = i.memo(
+  ({ children: e, style: t, color: r = O, ellipsis: o = 0, ...n }) => {
+    const { fontColor: s, ellipsisStyles: l } = P({ color: r, ellipsis: o });
+    return /* @__PURE__ */ a(
+      "p",
+      {
+        style: {
+          boxSizing: "border-box",
+          margin: 0,
+          width: "100%",
+          fontSize: y.text,
+          lineHeight: 1.5,
+          color: s,
+          ...l,
+          ...t
+        },
+        ...n,
+        children: e
+      }
+    );
+  }
+);
+Z.displayName = "Typography.Paragraph";
+const K = i.memo(
+  ({ style: e, text: t, as: r = "span", color: o = O, ...n }) => {
+    const { fontColor: s } = P({ color: o });
+    return r === "strong" ? /* @__PURE__ */ a(
+      "strong",
+      {
+        style: {
+          fontSize: y.text,
+          fontWeight: "bold",
+          color: s,
+          ...e
+        },
+        ...n,
+        children: t
+      }
+    ) : r === "small" ? /* @__PURE__ */ a(
+      "small",
+      {
+        style: {
+          fontSize: y.small,
+          color: s,
+          ...e
+        },
+        ...n,
+        children: t
+      }
+    ) : /* @__PURE__ */ a(
+      "span",
+      {
+        style: {
+          fontSize: y.text,
+          fontWeight: "normal",
+          color: s,
+          ...e
+        },
+        ...n,
+        children: t
+      }
+    );
+  }
+);
+K.displayName = "Typography.Text";
+const X = {
+  h1: "h1",
+  h2: "h2",
+  h3: "h3",
+  h4: "h4",
+  h5: "h5",
+  h6: "h6"
+}, ee = i.memo(
+  ({ text: e, as: t = X.h4, color: r = O, ellipsis: o = 0, style: n, ...s }) => {
+    const l = i.useMemo(() => X[t], [t]), c = i.useMemo(() => y[t], [t]), { fontColor: d, ellipsisStyles: u } = P({ color: r, ellipsis: o });
+    return /* @__PURE__ */ a(
+      l,
+      {
+        style: {
+          boxSizing: "border-box",
+          margin: 0,
+          padding: 0,
+          width: "100%",
+          fontSize: c,
+          fontFamily: "inherit",
+          fontWeight: "bold",
+          lineHeight: "inherit",
+          textAlign: "inherit",
+          color: d,
+          ...u,
+          ...n
+        },
+        ...s,
+        children: e
+      }
+    );
+  }
+);
+ee.displayName = "Typography.Title";
+const R = {
+  Title: ee,
+  Text: K,
+  Code: Q,
+  Paragraph: Z
+}, Se = i.memo(
+  ({
+    type: e = "button",
+    style: t,
+    text: r,
+    variant: o = "contained",
+    color: n = "auto",
+    isLoading: s,
+    isDisabled: l,
+    icon: c,
+    iconPosition: d = "start",
+    iconWidth: u = 20,
+    ...C
+  }) => {
+    const { buttonStyles: k } = q({
+      isLoading: s,
+      isDisabled: l,
+      variant: o,
+      color: n
+    });
+    return /* @__PURE__ */ v(
+      "button",
+      {
+        type: e,
+        disabled: s || l,
+        style: {
+          flexDirection: d === "start" ? "row" : "row-reverse",
+          ...k,
+          ...t
+        },
+        ...C,
+        children: [
+          c && /* @__PURE__ */ a(
+            x,
+            {
+              icon: c,
+              width: u,
+              style: {
+                marginLeft: d === "start" ? "0px" : "8px",
+                marginRight: d === "end" ? "0px" : "8px"
+              }
+            }
+          ),
+          /* @__PURE__ */ a(R.Text, { text: r, style: { color: "inherit" } }),
+          /* @__PURE__ */ a(
+            "div",
+            {
+              style: {
+                display: s ? "flex" : "none",
+                borderRadius: "4px",
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                alignItems: "center",
+                justifyContent: "center",
+                backdropFilter: "blur(2px)",
+                WebkitBackdropFilter: "blur(2px)"
+              },
+              children: /* @__PURE__ */ a(x, { icon: "eos-icons:loading", width: 24 })
+            }
+          )
+        ]
+      }
+    );
+  }
+);
+Se.displayName = "Button";
+const ve = {
+  Icon: J
+}, te = i.memo(({ children: e, style: t, row: r = !0, column: o = !1, gap: n = "8px", ...s }) => /* @__PURE__ */ a(
+  "div",
+  {
+    style: {
+      boxSizing: "border-box",
+      display: "flex",
+      width: "100%",
+      flexDirection: o ? "column" : "row",
+      alignItems: r ? "flex-start" : t == null ? void 0 : t.alignItems,
+      ...Array.isArray(n) ? { rowGap: n[0], columnGap: n[1] } : { gap: n },
+      position: "relative",
+      ...t
+    },
+    ...s,
+    children: e
+  }
+));
+te.displayName = "Space.Flex";
+function Fe() {
+  const [e, t] = i.useState(!1), r = i.useCallback(() => t(!0), []), o = i.useCallback(() => t(!1), []), n = i.useCallback(() => t((s) => !s), []);
+  return {
+    isOpen: e,
+    setIsOpen: t,
+    open: r,
+    close: o,
+    toggle: n
+  };
+}
+function Ee() {
+  const [e, t] = i.useState(m.xs);
+  return i.useEffect(() => {
+    const r = () => {
+      const n = window.innerWidth;
+      return n >= T.xxl ? m.xxl : n >= T.xl ? m.xl : n >= T.lg ? m.lg : n >= T.md ? m.md : n >= T.sm ? m.sm : m.xs;
+    }, o = () => {
+      t(r());
+    };
+    return o(), window.addEventListener("resize", o), () => window.removeEventListener("resize", o);
+  }, []), {
+    screenSize: e
+  };
+}
+const oe = i.memo(({ children: e, style: t, columns: r = 1, spacing: o = 16, ...n }) => {
+  const { screenSize: s } = Ee(), l = i.useMemo(() => Ie(r, s), [r, s]), c = i.useMemo(() => ze(o, s), [o, s]);
+  return /* @__PURE__ */ a(
+    "div",
+    {
+      style: {
+        boxSizing: "border-box",
+        width: "100%",
+        display: "grid",
+        gridTemplateColumns: `repeat(${l}, 1fr)`,
+        gap: `${c}px`,
+        ...t
+      },
+      ...n,
+      children: e
+    }
+  );
+});
+oe.displayName = "Space.Grid";
+const w = Object.keys(m);
+function Ie(e = 1, t) {
+  if (typeof e == "number")
+    return e;
+  const r = w.indexOf(t);
+  for (let o = r; o < w.length; o++) {
+    const n = e[w[o]];
+    if (n !== void 0) return n;
+  }
+  return 1;
+}
+function ze(e = 16, t) {
+  if (typeof e == "number")
+    return e;
+  const r = w.indexOf(t);
+  for (let o = r; o < w.length; o++) {
+    const n = e[w[o]];
+    if (n !== void 0) return n;
+  }
+  return 16;
+}
+const _ = {
+  Flex: te,
+  Grid: oe
+}, W = i.memo(
+  ({ children: e, style: t, isTransparent: r = !1, isFrostedGlass: o = !1, isOutline: n = !1, ...s }) => {
+    const { isDarkThemeMode: l } = g.useThemeMode(), c = l ? E.darkMode : E.lightMode, d = l ? M.darkMode : M.lightMode, u = n ? "none" : l ? I.darkMode : I.lightMode;
+    return /* @__PURE__ */ a(
+      "div",
+      {
+        style: {
+          boxSizing: "border-box",
+          borderRadius: "8px",
+          padding: "16px",
+          boxShadow: u,
+          backgroundColor: r ? "transparent" : d,
+          backdropFilter: o ? "blur(8px) brightness(0.8)" : "none",
+          WebkitBackdropFilter: o ? "blur(8px) brightness(0.8)" : "none",
+          border: `1px solid ${c}`,
+          ...t
+        },
+        ...s,
+        children: e
+      }
+    );
+  }
+);
+W.displayName = "Card";
+const re = i.memo(({ children: e, height: t = 300, width: r = 200, title: o, coverImage: n }) => /* @__PURE__ */ v(
+  W,
+  {
+    style: {
+      height: t,
+      width: r,
+      padding: "16px 24px",
+      overflow: "hidden",
+      position: "relative",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "flex-end",
+      backgroundColor: "transparent",
+      backgroundImage: `url(${n})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+      color: "#ffffff"
+    },
+    children: [
+      e,
+      /* @__PURE__ */ a(
+        "div",
+        {
+          style: {
+            position: "absolute",
+            left: 0,
+            top: 0,
+            zIndex: 1,
+            width: "16px",
+            height: "100%",
+            background: "linear-gradient(-90deg, #fff0, #ffffff1a 80%, #ffffff4d 95%, #fff6 96.5%, #cbcbcb14 98%, #6a6a6a1a)",
+            borderRadius: "8px"
+          }
+        }
+      ),
+      /* @__PURE__ */ a(
+        _.Flex,
+        {
+          column: !0,
+          style: {
+            height: "max-content",
+            width: "100%",
+            position: "relative",
+            zIndex: 1,
+            left: 6,
+            top: 40
+          },
+          children: o && /* @__PURE__ */ a(
+            R.Title,
+            {
+              text: o,
+              as: "h4",
+              ellipsis: 4,
+              style: {
+                lineHeight: 1.15,
+                color: "#ffffff",
+                textShadow: "2px 2px 2px rgba(0, 0, 0, 0.5)"
+              }
+            }
+          )
+        }
+      )
+    ]
+  }
+));
+re.displayName = "Cards.Book";
+const ne = i.memo(({ children: e, title: t = "", description: r = "" }) => /* @__PURE__ */ v(W, { style: { position: "relative" }, children: [
+  (t || r) && /* @__PURE__ */ v(_.Flex, { column: !0, gap: 2, style: { paddingRight: "48px" }, children: [
+    /* @__PURE__ */ a(R.Title, { as: "h6", text: t, ellipsis: 1 }),
+    /* @__PURE__ */ a(R.Paragraph, { ellipsis: 3, color: "grey", children: r })
+  ] }),
+  /* @__PURE__ */ a(
+    ve.Icon,
+    {
+      icon: "solar:hamburger-menu-line-duotone",
+      variant: "ghost",
+      style: { position: "absolute", top: "4px", right: "4px" }
+    }
+  ),
+  e && /* @__PURE__ */ a(_.Flex, { column: !0, children: e })
+] }));
+ne.displayName = "Cards.Product";
+const Ae = {
+  Book: re,
+  Product: ne
+}, $e = i.memo(({ children: e, breakpoint: t = "lg", style: r, ...o }) => {
+  const n = i.useMemo(() => T[t], [t]);
+  return /* @__PURE__ */ a(
+    "div",
+    {
+      style: {
+        margin: "0 auto",
+        width: "100%",
+        maxWidth: n,
+        ...r
+      },
+      ...o,
+      children: e
+    }
+  );
+});
+$e.displayName = "Container";
+const Re = i.memo(
+  ({ isOpen: e, onClose: t, children: r, position: o = "left", maskClosable: n = !0, width: s = 300, height: l = 300, style: c }) => {
+    const { isDarkThemeMode: d } = g.useThemeMode(), u = d ? E.darkMode : E.lightMode, C = d ? M.darkMode : M.lightMode, k = d ? I.darkMode : I.lightMode;
+    return /* @__PURE__ */ v(G, { children: [
+      /* @__PURE__ */ a(
+        "div",
+        {
+          onClick: n ? t : void 0,
+          style: {
+            boxSizing: "border-box",
+            display: e ? "block" : "none",
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100vw",
+            height: "100svh",
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            opacity: e ? 1 : 0,
+            pointerEvents: e ? "auto" : "none",
+            transition: "opacity 0.3s ease",
+            zIndex: 999
+          }
+        }
+      ),
+      /* @__PURE__ */ a(
+        "div",
+        {
+          style: {
+            boxSizing: "border-box",
+            position: "fixed",
+            backgroundColor: C,
+            boxShadow: `2px 0 8px ${k}`,
+            transition: "transform 0.3s ease",
+            zIndex: 1e3,
+            transform: o === "left" ? e ? "translateX(0)" : "translateX(-100%)" : o === "right" ? e ? "translateX(0)" : "translateX(100%)" : o === "top" ? e ? "translateY(0)" : "translateY(-100%)" : e ? "translateY(0)" : "translateY(100%)",
+            ...o === "left" && {
+              top: 0,
+              left: 0,
+              width: s,
+              height: "100svh",
+              borderRight: `1px solid ${u}`
+            },
+            ...o === "right" && {
+              top: 0,
+              right: 0,
+              width: s,
+              height: "100svh",
+              borderLeft: `1px solid ${u}`
+            },
+            ...o === "top" && {
+              top: 0,
+              left: 0,
+              width: "100svw",
+              height: l,
+              borderBottom: `1px solid ${u}`
+            },
+            ...o === "bottom" && {
+              bottom: 0,
+              left: 0,
+              width: "100svw",
+              height: l,
+              borderTop: `1px solid ${u}`
+            },
+            ...c
+          },
+          children: r
+        }
+      )
+    ] });
+  }
+);
+Re.displayName = "Drawer";
+const Oe = i.memo(({ children: e, style: t, isOpen: r, onClose: o, maskClosable: n = !0 }) => {
+  const { isDarkThemeMode: s } = V();
+  return /* @__PURE__ */ a(ce, { children: r && /* @__PURE__ */ a(
+    $.div,
+    {
+      onClick: n ? o : void 0,
+      initial: { opacity: 0 },
+      animate: { opacity: 1 },
+      exit: { opacity: 0 },
+      transition: { duration: 0.2 },
+      style: {
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100svw",
+        height: "100svh",
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        backdropFilter: "blur(4px)",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        zIndex: 1e3
+      },
+      children: /* @__PURE__ */ a(
+        $.div,
+        {
+          initial: { opacity: 0, scale: 0.95 },
+          animate: { opacity: 1, scale: 1 },
+          exit: { opacity: 0, scale: 0.95 },
+          transition: { duration: 0.2, ease: "easeOut" },
+          onClick: (l) => l.stopPropagation(),
+          style: {
+            backgroundColor: s ? M.darkMode : M.lightMode,
+            border: `1px solid ${s ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.1)"}`,
+            borderRadius: "8px",
+            minWidth: "300px",
+            maxWidth: "90%",
+            maxHeight: "90%",
+            padding: "24px 32px",
+            boxShadow: `
+                rgba(0, 0, 0, 0.2) 0px 3px 5px -1px, 
+                rgba(0, 0, 0, 0.14) 0px 6px 10px 0px, 
+                rgba(0, 0, 0, 0.12) 0px 1px 8px 0px
+              `,
+            overflow: "auto",
+            ...t
+          },
+          children: e
+        }
+      )
+    }
+  ) });
+});
+Oe.displayName = "Modal";
+const He = i.memo(({ position: e = "top-center", offset: t = 0, collapsable: r = !1 }) => {
+  const { isDarkThemeMode: o } = g.useThemeMode();
+  return /* @__PURE__ */ a(
+    pe,
+    {
+      closeButton: !0,
+      richColors: !0,
+      invert: o,
+      visibleToasts: 4,
+      gap: 8,
+      position: e,
+      offset: t,
+      mobileOffset: t / 2,
+      expand: !r,
+      icons: {
+        success: /* @__PURE__ */ a(x, { icon: "solar:shield-check-line-duotone", color: "success" }),
+        error: /* @__PURE__ */ a(x, { icon: "solar:shield-cross-line-duotone", color: "error" }),
+        warning: /* @__PURE__ */ a(x, { icon: "solar:shield-warning-line-duotone", color: "warning" }),
+        info: /* @__PURE__ */ a(x, { icon: "solar:info-circle-line-duotone", color: "info" })
+      }
+    }
+  );
+});
+He.displayName = "Notification";
+function je(e) {
+  const t = {
+    description: e.description
+  };
+  return e.type === "success" ? z.success(e.title, t) : e.type === "error" ? z.error(e.title, t) : e.type === "warning" ? z.warning(e.title, t) : z.info(e.title, t);
+}
+const ie = i.memo(({ children: e, targetElementID: t }) => {
+  const [r, o] = i.useState(null);
+  return i.useEffect(() => {
+    const n = document.getElementById(t);
+    n && o(n);
+  }, [t]), r ? me(/* @__PURE__ */ a(G, { children: e }), r, t) : null;
+});
+ie.displayName = "PortalRender";
+const Xe = {
+  Render: ie
+}, se = i.memo(({ height: e = 8, color: t }) => {
+  const r = ue(), { themeColor: o } = g.useThemeColor(), n = i.useRef(null), [s, l] = i.useState(0);
+  return i.useEffect(() => {
+    const c = () => {
+      if (n.current) {
+        const d = n.current.offsetWidth, u = d * 0.3;
+        l(d - u);
+      }
+    };
+    return c(), window.addEventListener("resize", c), () => window.removeEventListener("resize", c);
+  }, []), i.useEffect(() => {
+    if (s === 0) return;
+    (async () => {
+      for (; ; )
+        await r.start({ x: [0, s], transition: { duration: 1.2, ease: [0.68, -0.55, 0.27, 1.55] } }), await r.start({ x: [s, 0], transition: { duration: 1.2, ease: [0.68, -0.55, 0.27, 1.55] } });
+    })();
+  }, [r, s]), /* @__PURE__ */ a(
+    "div",
+    {
+      ref: n,
+      style: {
+        position: "relative",
+        width: "100%",
+        height: e,
+        overflow: "hidden",
+        backgroundColor: b(p.disabled).opacity,
+        borderRadius: e / 2,
+        boxShadow: "rgba(0, 0, 0, 0.14) 0px 6px 10px 0px"
+      },
+      children: /* @__PURE__ */ a(
+        $.div,
+        {
+          animate: r,
+          style: {
+            position: "absolute",
+            top: 0,
+            left: 0,
+            height: "100%",
+            width: "50%",
+            backgroundColor: t || o,
+            borderRadius: e / 2
+          }
+        }
+      )
+    }
+  );
+});
+se.displayName = "Progress.LoadingBar";
+const ae = i.memo(({ height: e = 8, color: t }) => {
+  const { scrollYProgress: r } = he(), { themeColor: o } = g.useThemeColor(), n = i.useMemo(() => b(t || o), [t, o]);
+  return /* @__PURE__ */ a(
+    $.div,
+    {
+      style: {
+        scaleX: r,
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        originX: 0,
+        zIndex: 1e4,
+        backgroundImage: `linear-gradient(to right, ${n.light}, ${n.origin}, ${n.opacity})`,
+        height: e,
+        borderRadius: "8px"
+      }
+    }
+  );
+});
+ae.displayName = "Progress.Scrollbar";
+const Ge = {
+  Scrollbar: ae,
+  LoadingBar: se
+};
 export {
-  _ as BackgroundColors,
-  $ as BorderColors,
-  k as BreakPoint,
-  R as BreakPointWidth,
-  We as Button,
-  U as ButtonColors,
-  Le as Buttons,
-  q as Card,
-  st as Cards,
-  S as Colors,
-  Je as Container,
-  Xe as Drawer,
-  C as Icon,
-  _e as IconColors,
-  Ge as Modal,
-  Ye as Notification,
-  lt as Portal,
-  ct as Progress,
-  D as ShadowColors,
-  G as Space,
-  N as TextColors,
-  ne as ThemeColor,
-  T as ThemeMode,
-  Ve as ThemePreset,
-  W as Typography,
-  I as TypographySize,
-  M as getColors,
-  Ne as getSystemThemeMode,
-  at as notify,
-  it as useHandler,
-  Oe as useThemeBreakpoint,
-  B as useThemeColor,
-  E as useThemeMode
+  M as BackgroundColors,
+  E as BorderColors,
+  m as BreakPoint,
+  T as BreakPointWidth,
+  Se as Button,
+  N as ButtonColors,
+  ve as Buttons,
+  W as Card,
+  Ae as Cards,
+  p as Colors,
+  $e as Container,
+  Re as Drawer,
+  x as Icon,
+  fe as IconColors,
+  Oe as Modal,
+  He as Notification,
+  Xe as Portal,
+  Ge as Progress,
+  I as ShadowColors,
+  _ as Space,
+  S as TextColors,
+  g as Theme,
+  B as ThemeColor,
+  f as ThemeMode,
+  R as Typography,
+  y as TypographySize,
+  b as getColors,
+  Le as getSystemThemeMode,
+  je as notify,
+  Fe as useHandler,
+  Ee as useThemeBreakpoint
 };

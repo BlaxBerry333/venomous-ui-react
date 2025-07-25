@@ -2,13 +2,13 @@
 
 import React from "react";
 
-import { useThemeMode } from "@/hooks";
 import { BackgroundColors, BorderColors, ShadowColors } from "@/utils";
+import { Theme } from "../Theme";
 import type { CardProps } from "./index.types";
 
 const Card = React.memo<CardProps>(
   ({ children, style, isTransparent = false, isFrostedGlass = false, isOutline = false, ...props }) => {
-    const { isDarkThemeMode } = useThemeMode();
+    const { isDarkThemeMode } = Theme.useThemeMode();
 
     const borderColor = isDarkThemeMode ? BorderColors.darkMode : BorderColors.lightMode;
     const backgroundColor = isDarkThemeMode ? BackgroundColors.darkMode : BackgroundColors.lightMode;

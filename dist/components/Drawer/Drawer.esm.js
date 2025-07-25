@@ -1,10 +1,10 @@
 import { jsxs as c, Fragment as p, jsx as l } from "react/jsx-runtime";
 import v from "react";
-import w from "../../hooks/useThemeMode/index.esm.js";
+import { Theme as w } from "../Theme/index.esm.js";
 import { BorderColors as s, BackgroundColors as i, ShadowColors as n } from "../../utils/colors/index.esm.js";
 const k = v.memo(
   ({ isOpen: o, onClose: h, children: m, position: t = "left", maskClosable: b = !0, width: a = 300, height: d = 300, style: x }) => {
-    const { isDarkThemeMode: e } = w(), r = e ? s.darkMode : s.lightMode, f = e ? i.darkMode : i.lightMode, g = e ? n.darkMode : n.lightMode;
+    const { isDarkThemeMode: e } = w.useThemeMode(), r = e ? s.darkMode : s.lightMode, f = e ? i.darkMode : i.lightMode, g = e ? n.darkMode : n.lightMode;
     return /* @__PURE__ */ c(p, { children: [
       /* @__PURE__ */ l(
         "div",

@@ -19,7 +19,7 @@ This is a personal learning project, not intended for production or npm distribu
 % npm install git+https://github.com/BlaxBerry333/venomous-ui-react
 
 # Additionally, install the required peer dependencies:
-% npm install @iconify/react@5 react-hook-form@7 motion@12 sonner@2 zod@4 zustand@5
+% npm install @iconify/react@5 react-hook-form@7 motion@12 sonner@2
 ```
 
 ## Usage
@@ -28,16 +28,16 @@ This library supports on-demand imports, changing the import style can reduces t
 
 ```tsx
 // 1st import style
-import { Button, type ButtonProps, getColors, useThemeMode } from "venomous-ui-react";
+import { Button, type ButtonProps, getColors, useThemeBreakpoint } from "venomous-ui-react";
 
 // 2nd import style
 import { Button, type ButtonProps } from "venomous-ui-react/components";
-import { useThemeMode } from "venomous-ui-react/hooks";
+import { useThemeBreakpoint } from "venomous-ui-react/hooks";
 import { getColors } from "venomous-ui-react/utils";
 
 // 3rd import style
 import { Buttons, type ButtonProps } from "venomous-ui-react/components/Button";
-import useThemeMode from "venomous-ui-react/hooks/useThemeMode";
+import useThemeBreakpoint from "venomous-ui-react/hooks/useThemeBreakpoint";
 import getColors from "venomous-ui-react/utils/getColors";
 ```
 

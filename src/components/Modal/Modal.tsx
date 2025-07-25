@@ -3,8 +3,8 @@
 import { AnimatePresence, motion } from "motion/react";
 import React from "react";
 
-import { useThemeMode } from "@/hooks";
 import { BackgroundColors } from "@/utils";
+import useThemeMode from "../Theme/useThemeMode";
 import type { ModalProps } from "./index.types";
 
 const Modal = React.memo<ModalProps>(({ children, style, isOpen, onClose, maskClosable = true }) => {

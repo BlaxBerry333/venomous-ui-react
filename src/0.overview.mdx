@@ -1,10 +1,11 @@
 import { Meta } from "@storybook/blocks";
-import { Card, Space, Typography } from "./components";
+import { Card, Space, Typography, Theme } from "./components";
 
 <Meta title="Overview" />
 
 # Venomous UI
 
+<Theme.Provider>
 <Typography.Code text="venomous-ui-react" /> is a React component library built entirely with React Hooks and JSX
 inline-styles.
 
@@ -20,7 +21,8 @@ React. It is not meant for production use, and thus, not suitable for commercial
     },
     {
       title: "Only JSX Inline Styles",
-      description: "Styles are defined directly within inline JSX, avoiding external CSS files or CSS-in-JS solutions.",
+      description:
+        "Styles are defined directly within inline JSX, avoiding external CSS files or CSS-in-JS solutions. But still can apply custom styles via className can be used to override or extend component styles.",
     },
     {
       title: "No External UI Frameworks",
@@ -42,7 +44,7 @@ React. It is not meant for production use, and thus, not suitable for commercial
 % npm install git+https://github.com/BlaxBerry333/venomous-ui-react
 
 # Additionally, install the required peer dependencies:
-% npm install @iconify/react@5 react-hook-form@7 motion@12 sonner@2 zod@4 zustand@5
+% npm install @iconify/react@5 react-hook-form@7 motion@12 sonner@2
 ```
 
 ```json
@@ -53,9 +55,7 @@ React. It is not meant for production use, and thus, not suitable for commercial
     "react-dom": ">=18.0.0",
     "react-hook-form": "^7.55.0",
     "motion": "^12.23.6",
-    "sonner": "^2.0.6",
-    "zod": "^4.0.5",
-    "zustand": "^5.0.3"
+    "sonner": "^2.0.6"
   }
 }
 ```
@@ -64,15 +64,34 @@ React. It is not meant for production use, and thus, not suitable for commercial
 
 ```tsx
 // 1st import style
-import { Button, type ButtonProps, getColors, useThemeMode } from "venomous-ui-react";
+import { Button, type ButtonProps, getColors, useThemeBreakpoint } from "venomous-ui-react";
 
 // 2nd import style
 import { Button, type ButtonProps } from "venomous-ui-react/components";
-import { useThemeMode } from "venomous-ui-react/hooks";
+import { useThemeBreakpoint } from "venomous-ui-react/hooks";
 import { getColors } from "venomous-ui-react/utils";
 
 // 3rd import style
 import { Buttons, type ButtonProps } from "venomous-ui-react/components/Button";
-import useThemeMode from "venomous-ui-react/hooks/useThemeMode";
+import useThemeBreakpoint from "venomous-ui-react/hooks/useThemeBreakpoint";
 import getColors from "venomous-ui-react/utils/getColors";
+```
+
+</Theme.Provider>
+
+## How to use
+
+**Must wrap your application with `<Theme.Provider>`** to ensure correct rendering and theming behavior ( Because all components rely on a shared `React.Context` for styling tokens and theme awareness )
+
+```tsx
+import { Theme } from "venomous-ui-react/components";
+
+function App() {
+  return (
+    <Theme.Provider>
+      {/* App Content */}
+      {/* Other Components */}
+    </Theme.Provider>
+  );
+}
 ```

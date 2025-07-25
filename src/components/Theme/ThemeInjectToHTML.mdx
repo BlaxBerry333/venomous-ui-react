@@ -1,0 +1,29 @@
+import { Meta, Canvas, Controls } from "@storybook/blocks";
+import * as Stories from "./ThemeInjectToHTML.stories";
+
+<Meta of={Stories} />
+
+# Theme.InjectToHTML
+
+`<Theme.InjectToHTML>` is an optional utility component, but strongly recommended to use to achieve a consistent theme style.
+
+- Initialize global `ThemeColor` and `ThemeMode` during App startup.
+- Inject dynamic CSS styles into HTML ( such as scrollbars、text selection highlights )
+
+<Canvas of={Stories.Default} sourceState="none" />
+
+<Controls />
+
+```tsx
+import { Theme } from "venomous-ui-react/components";
+
+function App() {
+  return (
+    <Theme.Provider>
+      {/* App Content */}
+
+      <Theme.InjectToHTML />
+    </Theme.Provider>
+  );
+}
+```

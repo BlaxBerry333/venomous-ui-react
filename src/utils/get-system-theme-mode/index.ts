@@ -1,6 +1,15 @@
+"use client";
+
 import { ThemeMode } from "../theme-mode";
 
+function checkSystemIsDarkMode(): boolean {
+  if (typeof window !== "undefined") {
+    return window.matchMedia("(prefers-color-scheme: dark)").matches;
+  }
+  return false;
+}
+
 export default function getSystemThemeMode(): ThemeMode {
-  const isDark = window.matchMedia("(prefers-color-scheme: dark)");
-  return isDark.matches ? ThemeMode.Dark : ThemeMode.Light;
+  const isDark = checkSystemIsDarkMode();
+  return isDark ? ThemeMode.Dark : ThemeMode.Light;
 }

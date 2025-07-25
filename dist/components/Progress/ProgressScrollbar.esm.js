@@ -1,10 +1,10 @@
 import { jsx as l } from "react/jsx-runtime";
 import t from "react";
-import m from "../../hooks/useThemeColor/index.esm.js";
+import { Theme as m } from "../Theme/index.esm.js";
 import a from "../../utils/get-colors/index.esm.js";
 import { useScroll as n, motion as c } from "framer-motion";
 const g = t.memo(({ height: s = 8, color: r }) => {
-  const { scrollYProgress: i } = n(), { themeColor: e } = m(), o = t.useMemo(() => a(r || e), [r, e]);
+  const { scrollYProgress: i } = n(), { themeColor: e } = m.useThemeColor(), o = t.useMemo(() => a(r || e), [r, e]);
   return /* @__PURE__ */ l(
     c.div,
     {

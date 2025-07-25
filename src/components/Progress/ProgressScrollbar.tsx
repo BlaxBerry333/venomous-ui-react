@@ -3,13 +3,13 @@
 import { motion, useScroll } from "motion/react";
 import React from "react";
 
-import { useThemeColor } from "@/hooks";
 import { getColors } from "@/utils";
+import { Theme } from "../Theme";
 import type { ProgressScrollbarProps } from "./index.types";
 
 const ProgressScrollbar = React.memo<ProgressScrollbarProps>(({ height = 8, color }) => {
   const { scrollYProgress } = useScroll();
-  const { themeColor } = useThemeColor();
+  const { themeColor } = Theme.useThemeColor();
 
   const ScrollbarColors = React.useMemo(() => getColors(color || themeColor), [color, themeColor]);
 

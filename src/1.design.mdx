@@ -1,6 +1,6 @@
 import { Meta } from "@storybook/blocks";
 
-import { Card, Space, Typography } from "./components";
+import { Card, Space, Typography, Theme } from "./components";
 import {
   Colors,
   BackgroundColors,
@@ -20,6 +20,7 @@ import {
 
 ## ThemeColor
 
+<Theme.Provider>
 <Space.Grid columns={{ xs: 1, sm: 2, md: 3, lg: 3, xl: 3, xxl: 3 }}>
   {Object.entries(ThemeColor).map(([name, value]) => (
     <Card key={name} isOutline style={{ backgroundColor: value }}>
@@ -201,3 +202,5 @@ const ButtonColors = {
   error: Colors.error,
 } as const;
 ```
+
+</Theme.Provider>

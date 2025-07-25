@@ -39,6 +39,7 @@ const r = {
   warning: r.warning
 }, t = {
   auto: "auto",
+  // color: "inherit"
   white: "#ffffff",
   success: r.success,
   error: r.error,
@@ -46,6 +47,7 @@ const r = {
   info: r.info
 }, f = {
   auto: "auto",
+  // color: "inherit"
   error: r.error
 };
 export {
