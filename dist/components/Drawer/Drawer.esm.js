@@ -1,28 +1,31 @@
-import { jsxs as c, Fragment as p, jsx as l } from "react/jsx-runtime";
-import v from "react";
-import { Theme as w } from "../Theme/index.esm.js";
-import { BorderColors as s, BackgroundColors as i, ShadowColors as n } from "../../utils/colors/index.esm.js";
-const k = v.memo(
-  ({ isOpen: o, onClose: h, children: m, position: t = "left", maskClosable: b = !0, width: a = 300, height: d = 300, style: x }) => {
-    const { isDarkThemeMode: e } = w.useThemeMode(), r = e ? s.darkMode : s.lightMode, f = e ? i.darkMode : i.lightMode, g = e ? n.darkMode : n.lightMode;
-    return /* @__PURE__ */ c(p, { children: [
+import { jsxs as h, Fragment as f, jsx as l } from "react/jsx-runtime";
+import u from "react";
+import { Theme as b } from "../Theme/index.esm.js";
+import { getOpacityHex as c } from "../../utils/tools/get-colors.esm.js";
+import { BackgroundColors as i, BorderColors as p } from "../../utils/design/colors.esm.js";
+import { ThemeShadow as x } from "../../utils/design/ThemeShadow.esm.js";
+const g = u.memo(
+  ({ isOpen: t, onClose: d, children: n, position: o = "left", maskClosable: s = !0, width: r = 300, height: a = 300, style: m }) => {
+    const { themeMode: e } = b.useThemeMode();
+    return /* @__PURE__ */ h(f, { children: [
       /* @__PURE__ */ l(
         "div",
         {
-          onClick: b ? h : void 0,
+          onClick: s ? d : void 0,
           style: {
             boxSizing: "border-box",
-            display: o ? "block" : "none",
+            display: t ? "block" : "none",
             position: "fixed",
             top: 0,
             left: 0,
+            zIndex: 999,
             width: "100vw",
             height: "100svh",
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
-            opacity: o ? 1 : 0,
-            pointerEvents: o ? "auto" : "none",
-            transition: "opacity 0.3s ease",
-            zIndex: 999
+            backgroundColor: c(i[e].primary, 0.5),
+            backdropFilter: "blur(2px)",
+            opacity: t ? 1 : 0,
+            pointerEvents: t ? "auto" : "none",
+            transition: "opacity 0.3s ease"
           }
         }
       ),
@@ -32,48 +35,51 @@ const k = v.memo(
           style: {
             boxSizing: "border-box",
             position: "fixed",
-            backgroundColor: f,
-            boxShadow: `2px 0 8px ${g}`,
+            backgroundColor: i[e].secondary,
+            boxShadow: x[e].base,
             transition: "transform 0.3s ease",
             zIndex: 1e3,
-            transform: t === "left" ? o ? "translateX(0)" : "translateX(-100%)" : t === "right" ? o ? "translateX(0)" : "translateX(100%)" : t === "top" ? o ? "translateY(0)" : "translateY(-100%)" : o ? "translateY(0)" : "translateY(100%)",
-            ...t === "left" && {
+            transform: o === "left" ? t ? "translateX(0)" : "translateX(-100%)" : o === "right" ? t ? "translateX(0)" : "translateX(100%)" : o === "top" ? t ? "translateY(0)" : "translateY(-100%)" : t ? "translateY(0)" : "translateY(100%)",
+            outlineStyle: "solid",
+            outlineColor: p[e].primary,
+            outlineWidth: 0,
+            ...o === "left" && {
               top: 0,
               left: 0,
-              width: a,
+              width: r,
               height: "100svh",
-              borderRight: `1px solid ${r}`
+              outlineWidth: 1.5
             },
-            ...t === "right" && {
+            ...o === "right" && {
               top: 0,
               right: 0,
-              width: a,
+              width: r,
               height: "100svh",
-              borderLeft: `1px solid ${r}`
+              outlineLeftWidth: 1.5
             },
-            ...t === "top" && {
+            ...o === "top" && {
               top: 0,
               left: 0,
               width: "100svw",
-              height: d,
-              borderBottom: `1px solid ${r}`
+              height: a,
+              outlineBottomWidth: 1.5
             },
-            ...t === "bottom" && {
+            ...o === "bottom" && {
               bottom: 0,
               left: 0,
               width: "100svw",
-              height: d,
-              borderTop: `1px solid ${r}`
+              height: a,
+              outlineTopWidth: 1.5
             },
-            ...x
+            ...m
           },
-          children: m
+          children: n
         }
       )
     ] });
   }
 );
-k.displayName = "Drawer";
+g.displayName = "Drawer";
 export {
-  k as default
+  g as default
 };

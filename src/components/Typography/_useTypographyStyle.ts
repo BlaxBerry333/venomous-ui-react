@@ -6,19 +6,15 @@ import { TextColors } from "@/utils";
 import { Theme } from "../Theme";
 
 type Props = Partial<{
-  color: keyof typeof TextColors;
   ellipsis: number;
 }>;
 
-export const _defaultTypographyColor: keyof typeof TextColors = "lightMode";
-
-export function useTypographyStyle({ color = _defaultTypographyColor, ellipsis = 0 }: Props) {
-  const { isDarkThemeMode } = Theme.useThemeMode();
+export function useTypographyStyle({ ellipsis = 0 }: Props) {
+  const { themeMode } = Theme.useThemeMode();
 
   const fontColor = React.useMemo<React.CSSProperties["color"]>(() => {
-    if (isDarkThemeMode) return color === "lightMode" ? TextColors.darkMode : TextColors[color];
-    return TextColors[color];
-  }, [color, isDarkThemeMode]);
+    return TextColors[themeMode].primary;
+  }, [themeMode]);
 
   const ellipsisStyles = React.useMemo<React.CSSProperties>(() => {
     return ellipsis

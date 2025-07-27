@@ -1,6 +1,6 @@
 {
   "name": "venomous-ui-react",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "license": "UNLICENSED",
   "type": "module",
   "sideEffects": false,

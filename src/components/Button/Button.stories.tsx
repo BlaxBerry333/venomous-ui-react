@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { ButtonColors } from "@/utils";
 import { Button } from "./index";
 
 const meta = {
@@ -21,18 +20,8 @@ const meta = {
     variant: {
       description: "The variant of the button",
       control: { type: "select" },
-      options: ["contained", "outline", "ghost"],
-      table: { type: { summary: `"contained"|"outline"|"ghost"` }, defaultValue: { summary: "contained" } },
-    },
-    color: {
-      description: "The color of the button",
-      if: { arg: "variant", neq: "ghost" },
-      control: { type: "select" },
-      options: Object.keys(ButtonColors),
-      table: {
-        type: { summary: `"auto"|"disabled"|"error""` },
-        defaultValue: { summary: "primary" },
-      },
+      options: ["contained", "outlined", "ghost"],
+      table: { type: { summary: `"contained"|"outlined"|"ghost"` }, defaultValue: { summary: "contained" } },
     },
     icon: {
       description: "The icon to be rendered",

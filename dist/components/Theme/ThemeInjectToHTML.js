@@ -1,4 +1,4 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=require("react"),c=require("./index.js"),s=require("../../utils/get-colors/index.js"),i=t.memo(()=>(a(),null));i.displayName="Theme.InjectToHTML";function a(){const{themeColor:r}=c.Theme.useThemeColor(),e=t.useMemo(()=>s.default(r),[r]);t.useEffect(()=>{if(typeof window>"u")return;const l="theme-palette-style";let o=document.getElementById(l);o||(o=document.createElement("style"),o.id=l,document.head.appendChild(o));const n=`
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const i=require("react"),s=require("./index.js"),r=require("../../utils/tools/get-colors.js"),c=i.memo(()=>(a(),null));c.displayName="Theme.InjectToHTML";function a(){const{themeColor:o}=s.Theme.useThemeColor(),e=i.useMemo(()=>({light:r.getLighterHex(o,.2),dark:r.getDarkerHex(o,.8),origin:r.hexNormalize(o),opacity:r.getOpacityHex(o,.6)}),[o]);i.useEffect(()=>{if(typeof window>"u")return;const l="theme-palette-style";let t=document.getElementById(l);t||(t=document.createElement("style"),t.id=l,document.head.appendChild(t));const n=`
       /* ==============================
          Global Theme Palette Styles
          ============================== */
@@ -39,4 +39,4 @@
         scrollbar-color: ${e.origin} rgba(0, 0, 0, 0.1);
         scrollbar-width: thin;
       }
-    `;o.innerHTML=n},[e])}exports.default=i;
+    `;t.innerHTML=n},[e])}exports.default=c;

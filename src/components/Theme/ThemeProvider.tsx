@@ -6,7 +6,7 @@ import { ThemeColor, ThemeMode } from "@/utils";
 import ThemeContext, { type ThemeContextValueType } from "./ThemeContext";
 
 const DEFAULT_THEME_MODE = ThemeMode.Light;
-const DEFAULT_THEME_COLOR = ThemeColor.JadeAnaconda;
+const DEFAULT_THEME_COLOR = ThemeColor.EmeraldMamba;
 const STORAGE_KEY = {
   THEME_MODE: "VENOMOUS_UI__THEME_MODE",
   THEME_COLOR: "VENOMOUS_UI__THEME_COLOR",
@@ -14,7 +14,7 @@ const STORAGE_KEY = {
 
 interface ThemeModeProviderProps {
   children: React.ReactNode;
-  defaultTheme?: ThemeMode;
+  defaultThemeMode?: ThemeMode;
   defaultThemeColor?: ThemeColor;
   storageKey?: {
     THEME_MODE: string;
@@ -24,12 +24,12 @@ interface ThemeModeProviderProps {
 
 export default function ThemeProvider({
   children,
-  defaultTheme = DEFAULT_THEME_MODE,
+  defaultThemeMode = DEFAULT_THEME_MODE,
   defaultThemeColor = DEFAULT_THEME_COLOR,
   storageKey = STORAGE_KEY,
 }: ThemeModeProviderProps) {
   const [isInitialized, setIsInitialized] = React.useState<boolean>(false);
-  const [themeMode, setThemeModeState] = React.useState<ThemeMode>(defaultTheme);
+  const [themeMode, setThemeModeState] = React.useState<ThemeMode>(defaultThemeMode);
   const [themeColor, setThemeColorState] = React.useState<ThemeColor>(defaultThemeColor);
 
   const setThemeMode = React.useCallback(
@@ -45,8 +45,8 @@ export default function ThemeProvider({
   }, []);
 
   const resetThemeMode = React.useCallback(() => {
-    setThemeModeState(defaultTheme);
-  }, [defaultTheme]);
+    setThemeModeState(defaultThemeMode);
+  }, [defaultThemeMode]);
 
   const setThemeColor = React.useCallback(
     (newThemeColor: ThemeColor) => {

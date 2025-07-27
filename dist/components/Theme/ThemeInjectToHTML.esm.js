@@ -1,17 +1,25 @@
-import t from "react";
+import r from "react";
 import { Theme as c } from "./index.esm.js";
-import n from "../../utils/get-colors/index.esm.js";
-const s = t.memo(() => (a(), null));
-s.displayName = "Theme.InjectToHTML";
-function a() {
-  const { themeColor: r } = c.useThemeColor(), e = t.useMemo(() => n(r), [r]);
-  t.useEffect(() => {
+import { getOpacityHex as n, hexNormalize as a, getDarkerHex as s, getLighterHex as m } from "../../utils/tools/get-colors.esm.js";
+const u = r.memo(() => (h(), null));
+u.displayName = "Theme.InjectToHTML";
+function h() {
+  const { themeColor: o } = c.useThemeColor(), e = r.useMemo(
+    () => ({
+      light: m(o, 0.2),
+      dark: s(o, 0.8),
+      origin: a(o),
+      opacity: n(o, 0.6)
+    }),
+    [o]
+  );
+  r.useEffect(() => {
     if (typeof window > "u")
       return;
-    const l = "theme-palette-style";
-    let o = document.getElementById(l);
-    o || (o = document.createElement("style"), o.id = l, document.head.appendChild(o));
-    const i = `
+    const i = "theme-palette-style";
+    let t = document.getElementById(i);
+    t || (t = document.createElement("style"), t.id = i, document.head.appendChild(t));
+    const l = `
       /* ==============================
          Global Theme Palette Styles
          ============================== */
@@ -53,9 +61,9 @@ function a() {
         scrollbar-width: thin;
       }
     `;
-    o.innerHTML = i;
+    t.innerHTML = l;
   }, [e]);
 }
 export {
-  s as default
+  u as default
 };

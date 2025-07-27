@@ -3,11 +3,10 @@
 import { Icon as Iconify } from "@iconify/react";
 import React from "react";
 
-import { IconColors } from "@/utils";
 import type { IconProps } from "./Icon.types";
 
-const Icon = React.memo<IconProps>(({ style, icon, width = 20, color = "auto", ...props }) => {
-  const fontColor = React.useMemo<React.CSSProperties["color"]>(() => IconColors[color], [color]);
+const Icon = React.memo<IconProps>(({ style, icon, width = 20, ...props }) => {
+  const iconColor = React.useMemo<React.CSSProperties["color"]>(() => "inherit", []);
 
   return (
     <Iconify
@@ -20,7 +19,7 @@ const Icon = React.memo<IconProps>(({ style, icon, width = 20, color = "auto", .
         minHeight: width,
         flexShrink: 0,
         display: "inline-flex",
-        color: fontColor,
+        color: iconColor,
         ...style,
       }}
       {...props}

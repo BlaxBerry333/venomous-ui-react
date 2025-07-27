@@ -4,7 +4,7 @@ import React from "react";
 import { useDarkMode } from "storybook-dark-mode";
 
 import { Theme } from "../src/components";
-import { ThemeMode } from "../src/utils";
+import { BackgroundColors, ThemeMode } from "../src/utils";
 
 const preview: Preview = {
   parameters: {
@@ -34,7 +34,7 @@ const preview: Preview = {
               justifyContent: "center",
               alignItems: "center",
               borderRadius: "8px",
-              backgroundColor: isDark ? "#000000" : "#FFFFFF",
+              backgroundColor: BackgroundColors[isDark ? ThemeMode.Dark : ThemeMode.Light].primary,
               overflow: "scroll",
               position: "relative",
             }}

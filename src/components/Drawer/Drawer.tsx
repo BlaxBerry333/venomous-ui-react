@@ -2,17 +2,13 @@
 
 import React from "react";
 
-import { BackgroundColors, BorderColors, ShadowColors } from "@/utils";
+import { BackgroundColors, BorderColors, getOpacityHex, ThemeShadow } from "@/utils";
 import { Theme } from "../Theme";
 import type { DrawerProps } from "./index.types";
 
 const Drawer = React.memo<DrawerProps>(
   ({ isOpen, onClose, children, position = "left", maskClosable = true, width = 300, height = 300, style }) => {
-    const { isDarkThemeMode } = Theme.useThemeMode();
-
-    const borderColor = isDarkThemeMode ? BorderColors.darkMode : BorderColors.lightMode;
-    const backgroundColor = isDarkThemeMode ? BackgroundColors.darkMode : BackgroundColors.lightMode;
-    const shadowColor = isDarkThemeMode ? ShadowColors.darkMode : ShadowColors.lightMode;
+    const { themeMode } = Theme.useThemeMode();
 
     return (
       <>
@@ -25,13 +21,14 @@ const Drawer = React.memo<DrawerProps>(
             position: "fixed",
             top: 0,
             left: 0,
+            zIndex: 999,
             width: "100vw",
             height: "100svh",
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            backgroundColor: getOpacityHex(BackgroundColors[themeMode].primary, 0.5),
+            backdropFilter: "blur(2px)",
             opacity: isOpen ? 1 : 0,
             pointerEvents: isOpen ? "auto" : "none",
             transition: "opacity 0.3s ease",
-            zIndex: 999,
           }}
         />
 
@@ -40,8 +37,8 @@ const Drawer = React.memo<DrawerProps>(
           style={{
             boxSizing: "border-box",
             position: "fixed",
-            backgroundColor,
-            boxShadow: `2px 0 8px ${shadowColor}`,
+            backgroundColor: BackgroundColors[themeMode].secondary,
+            boxShadow: ThemeShadow[themeMode].base,
             transition: "transform 0.3s ease",
             zIndex: 1000,
             transform:
@@ -60,35 +57,37 @@ const Drawer = React.memo<DrawerProps>(
                     : isOpen
                       ? "translateY(0)"
                       : "translateY(100%)",
-
+            outlineStyle: "solid",
+            outlineColor: BorderColors[themeMode].primary,
+            outlineWidth: 0,
             ...{
               ...(position === "left" && {
                 top: 0,
                 left: 0,
                 width,
                 height: "100svh",
-                borderRight: `1px solid ${borderColor}`,
+                outlineWidth: 1.5,
               }),
               ...(position === "right" && {
                 top: 0,
                 right: 0,
                 width,
                 height: "100svh",
-                borderLeft: `1px solid ${borderColor}`,
+                outlineLeftWidth: 1.5,
               }),
               ...(position === "top" && {
                 top: 0,
                 left: 0,
                 width: "100svw",
                 height,
-                borderBottom: `1px solid ${borderColor}`,
+                outlineBottomWidth: 1.5,
               }),
               ...(position === "bottom" && {
                 bottom: 0,
                 left: 0,
                 width: "100svw",
                 height,
-                borderTop: `1px solid ${borderColor}`,
+                outlineTopWidth: 1.5,
               }),
             },
             ...style,

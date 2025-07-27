@@ -3,11 +3,11 @@
 import { motion, useAnimation } from "motion/react";
 import React from "react";
 
-import { Colors, getColors } from "@/utils";
+import { getOpacityHex } from "@/utils";
 import { Theme } from "../Theme";
 import type { ProgressLoadingBarProps } from "./index.types";
 
-const ProgressLoadingBar = React.memo<ProgressLoadingBarProps>(({ height = 8, color }) => {
+const ProgressLoadingBar = React.memo<ProgressLoadingBarProps>(({ height = 8 }) => {
   const controls = useAnimation();
 
   const { themeColor } = Theme.useThemeColor();
@@ -47,7 +47,7 @@ const ProgressLoadingBar = React.memo<ProgressLoadingBarProps>(({ height = 8, co
         width: "100%",
         height,
         overflow: "hidden",
-        backgroundColor: getColors(Colors.disabled).opacity,
+        backgroundColor: getOpacityHex(themeColor, 0.2),
         borderRadius: height / 2,
         boxShadow: "rgba(0, 0, 0, 0.14) 0px 6px 10px 0px",
       }}
@@ -60,7 +60,7 @@ const ProgressLoadingBar = React.memo<ProgressLoadingBarProps>(({ height = 8, co
           left: 0,
           height: "100%",
           width: "50%",
-          backgroundColor: color || themeColor,
+          backgroundColor: themeColor,
           borderRadius: height / 2,
         }}
       />

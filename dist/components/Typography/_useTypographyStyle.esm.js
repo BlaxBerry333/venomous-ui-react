@@ -1,21 +1,19 @@
-import i from "react";
-import { Theme as s } from "../Theme/index.esm.js";
-import { TextColors as o } from "../../utils/colors/index.esm.js";
-const d = "lightMode";
-function a({ color: e = d, ellipsis: t = 0 }) {
-  const { isDarkThemeMode: r } = s.useThemeMode(), n = i.useMemo(() => r ? e === "lightMode" ? o.darkMode : o[e] : o[e], [e, r]), m = i.useMemo(() => t ? {
+import t from "react";
+import { Theme as m } from "../Theme/index.esm.js";
+import { TextColors as n } from "../../utils/design/colors.esm.js";
+function u({ ellipsis: e = 0 }) {
+  const { themeMode: o } = m.useThemeMode(), r = t.useMemo(() => n[o].primary, [o]), i = t.useMemo(() => e ? {
     textOverflow: "ellipsis",
     display: "-webkit-box",
-    WebkitLineClamp: t,
+    WebkitLineClamp: e,
     WebkitBoxOrient: "vertical",
     overflow: "hidden"
-  } : {}, [t]);
+  } : {}, [e]);
   return {
-    fontColor: n,
-    ellipsisStyles: m
+    fontColor: r,
+    ellipsisStyles: i
   };
 }
 export {
-  d as _defaultTypographyColor,
-  a as useTypographyStyle
+  u as useTypographyStyle
 };

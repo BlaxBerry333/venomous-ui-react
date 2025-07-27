@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import { getColors } from "@/utils";
+import { getDarkerHex, getLighterHex, getOpacityHex, hexNormalize } from "@/utils";
 import { Theme } from ".";
 
 const ThemeInjectToHTML = React.memo(() => {
@@ -25,7 +25,15 @@ export default ThemeInjectToHTML;
 function useThemeInjectToHTML() {
   const { themeColor } = Theme.useThemeColor();
 
-  const colors = React.useMemo(() => getColors(themeColor), [themeColor]);
+  const colors = React.useMemo(
+    () => ({
+      light: getLighterHex(themeColor, 0.2),
+      dark: getDarkerHex(themeColor, 0.8),
+      origin: hexNormalize(themeColor),
+      opacity: getOpacityHex(themeColor, 0.6),
+    }),
+    [themeColor],
+  );
 
   React.useEffect(() => {
     if (typeof window === "undefined") {

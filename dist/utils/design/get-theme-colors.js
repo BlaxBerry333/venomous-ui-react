@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const r=require("./colors.js"),e=o=>({background:r.BackgroundColors[o],border:r.BorderColors[o],text:r.TextColors[o]});exports.getThemeColors=e;

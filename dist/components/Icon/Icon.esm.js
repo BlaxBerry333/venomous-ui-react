@@ -1,11 +1,10 @@
-import { jsx as i } from "react/jsx-runtime";
-import { Icon as l } from "@iconify/react";
+import { jsx as t } from "react/jsx-runtime";
+import { Icon as s } from "@iconify/react";
 import e from "react";
-import { IconColors as a } from "../../utils/colors/index.esm.js";
-const c = e.memo(({ style: m, icon: n, width: o = 20, color: r = "auto", ...t }) => {
-  const s = e.useMemo(() => a[r], [r]);
-  return /* @__PURE__ */ i(
-    l,
+const c = e.memo(({ style: r, icon: n, width: o = 20, ...i }) => {
+  const m = e.useMemo(() => "inherit", []);
+  return /* @__PURE__ */ t(
+    s,
     {
       ssr: !0,
       icon: n,
@@ -16,10 +15,10 @@ const c = e.memo(({ style: m, icon: n, width: o = 20, color: r = "auto", ...t })
         minHeight: o,
         flexShrink: 0,
         display: "inline-flex",
-        color: s,
-        ...m
+        color: m,
+        ...r
       },
-      ...t
+      ...i
     }
   );
 });

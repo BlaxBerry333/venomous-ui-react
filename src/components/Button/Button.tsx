@@ -66,8 +66,7 @@ const Button = React.memo<ButtonProps>(
             height: "100%",
             alignItems: "center",
             justifyContent: "center",
-            backdropFilter: "blur(2px)",
-            WebkitBackdropFilter: "blur(2px)",
+            backgroundColor: buttonStyles.backgroundColor,
           }}
         >
           <Icon icon="eos-icons:loading" width={24} />

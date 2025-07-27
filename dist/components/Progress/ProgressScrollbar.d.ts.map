@@ -1,1 +1,1 @@
-{"version":3,"file":"ProgressScrollbar.d.ts","sourceRoot":"","sources":["../../../src/components/Progress/ProgressScrollbar.tsx"],"names":[],"mappings":"AAGA,OAAO,KAAK,MAAM,OAAO,CAAC;AAI1B,OAAO,KAAK,EAAE,sBAAsB,EAAE,MAAM,eAAe,CAAC;AAE5D,QAAA,MAAM,iBAAiB,oDAsBrB,CAAC;AAGH,eAAe,iBAAiB,CAAC"}
+{"version":3,"file":"ProgressScrollbar.d.ts","sourceRoot":"","sources":["../../../src/components/Progress/ProgressScrollbar.tsx"],"names":[],"mappings":"AAGA,OAAO,KAAK,MAAM,OAAO,CAAC;AAI1B,OAAO,KAAK,EAAE,sBAAsB,EAAE,MAAM,eAAe,CAAC;AAE5D,QAAA,MAAM,iBAAiB,oDA8BrB,CAAC;AAGH,eAAe,iBAAiB,CAAC"}

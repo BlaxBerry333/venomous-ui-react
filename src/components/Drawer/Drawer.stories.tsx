@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { useHandler } from "@/hooks";
 import React from "react";
 import { Button } from "../Button";
+import { Typography } from "../Typography";
 import { Drawer } from "./index";
 
 const meta = {
@@ -78,7 +79,7 @@ export const Default: Story = {
     return (
       <>
         <Drawer {...args} isOpen={isOpen} onClose={close}>
-          xxx
+          <Typography.Text text="xxxx" />
         </Drawer>
 
         <Button text="Open" onClick={open} />

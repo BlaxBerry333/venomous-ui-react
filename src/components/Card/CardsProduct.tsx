@@ -14,9 +14,7 @@ const CardsProduct = React.memo<CardsProductProps>(({ children, title = "", desc
       {(title || description) && (
         <Space.Flex column gap={2} style={{ paddingRight: "48px" }}>
           <Typography.Title as="h6" text={title} ellipsis={1} />
-          <Typography.Paragraph ellipsis={3} color="grey">
-            {description}
-          </Typography.Paragraph>
+          <Typography.Paragraph ellipsis={3}>{description}</Typography.Paragraph>
         </Space.Flex>
       )}
 

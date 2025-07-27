@@ -17,12 +17,12 @@ const meta = {
     columns: {
       description: "The number of columns",
       control: { type: "number", min: 0 },
-      table: { type: { summary: "number | Record<BreakPoint, number>" }, defaultValue: { summary: "1" } },
+      table: { type: { summary: "number | Record<BreakPointName, number>" }, defaultValue: { summary: "1" } },
     },
     spacing: {
       description: "The spacing between the flex items",
       control: { type: "number", min: 0 },
-      table: { type: { summary: "number | Record<BreakPoint, number>" }, defaultValue: { summary: "16px" } },
+      table: { type: { summary: "number | Record<BreakPointName, number>" }, defaultValue: { summary: "16px" } },
     },
   },
   args: {

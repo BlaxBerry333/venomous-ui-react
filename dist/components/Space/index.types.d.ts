@@ -1,7 +1,7 @@
-import type { BreakPoint } from "@/utils";
+import type { BreakPointName } from "@/utils";
 export interface GridProps extends React.HTMLAttributes<HTMLDivElement> {
-    columns?: number | Partial<Record<BreakPoint, number>>;
-    spacing?: number | Partial<Record<BreakPoint, number>>;
+    columns?: number | Partial<Record<BreakPointName, number>>;
+    spacing?: number | Partial<Record<BreakPointName, number>>;
 }
 export interface FlexProps extends React.HTMLAttributes<HTMLDivElement> {
     row?: boolean;

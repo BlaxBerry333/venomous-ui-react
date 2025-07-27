@@ -3,12 +3,12 @@
 import { AnimatePresence, motion } from "motion/react";
 import React from "react";
 
-import { BackgroundColors } from "@/utils";
+import { BackgroundColors, BorderColors, getOpacityHex, ThemeShadow } from "@/utils";
 import useThemeMode from "../Theme/useThemeMode";
 import type { ModalProps } from "./index.types";
 
 const Modal = React.memo<ModalProps>(({ children, style, isOpen, onClose, maskClosable = true }) => {
-  const { isDarkThemeMode } = useThemeMode();
+  const { themeMode } = useThemeMode();
 
   return (
     <AnimatePresence>
@@ -20,17 +20,18 @@ const Modal = React.memo<ModalProps>(({ children, style, isOpen, onClose, maskCl
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
           style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100svw",
-            height: "100svh",
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
-            backdropFilter: "blur(4px)",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            position: "fixed",
+            top: 0,
+            left: 0,
             zIndex: 1000,
+            width: "100svw",
+            height: "100svh",
+            backgroundColor: getOpacityHex(BackgroundColors[themeMode].primary, 0.5),
+            backdropFilter: "blur(2px)",
+            opacity: isOpen ? 1 : 0,
           }}
         >
           <motion.div
@@ -40,19 +41,16 @@ const Modal = React.memo<ModalProps>(({ children, style, isOpen, onClose, maskCl
             transition={{ duration: 0.2, ease: "easeOut" }}
             onClick={(e) => e.stopPropagation()}
             style={{
-              backgroundColor: isDarkThemeMode ? BackgroundColors.darkMode : BackgroundColors.lightMode,
-              border: `1px solid ${isDarkThemeMode ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.1)"}`,
               borderRadius: "8px",
               minWidth: "300px",
               maxWidth: "90%",
               maxHeight: "90%",
               padding: "24px 32px",
-              boxShadow: `
-                rgba(0, 0, 0, 0.2) 0px 3px 5px -1px, 
-                rgba(0, 0, 0, 0.14) 0px 6px 10px 0px, 
-                rgba(0, 0, 0, 0.12) 0px 1px 8px 0px
-              `,
-              overflow: "auto",
+              backgroundColor: BackgroundColors[themeMode].secondary,
+              outlineWidth: 1.5,
+              outlineStyle: "solid",
+              outlineColor: BorderColors[themeMode].primary,
+              boxShadow: ThemeShadow[themeMode].base,
               ...style,
             }}
           >

@@ -1,30 +1,28 @@
-import { jsx as y } from "react/jsx-runtime";
-import l from "react";
-import { useTypographyStyle as m, _defaultTypographyColor as g } from "./_useTypographyStyle.esm.js";
-import { TypographySize as s } from "../../utils/sizes/index.esm.js";
-const h = l.memo(
-  ({ children: o, style: r, color: p = g, ellipsis: t = 0, ...a }) => {
-    const { fontColor: e, ellipsisStyles: i } = m({ color: p, ellipsis: t });
-    return /* @__PURE__ */ y(
-      "p",
-      {
-        style: {
-          boxSizing: "border-box",
-          margin: 0,
-          width: "100%",
-          fontSize: s.text,
-          lineHeight: 1.5,
-          color: e,
-          ...i,
-          ...r
-        },
+import { jsx as i } from "react/jsx-runtime";
+import m from "react";
+import { useTypographyStyle as y } from "./_useTypographyStyle.esm.js";
+import { TypographySize as l } from "../../utils/design/TypographySize.esm.js";
+const s = m.memo(({ children: o, style: r, ellipsis: t = 0, ...p }) => {
+  const { fontColor: e, ellipsisStyles: a } = y({ ellipsis: t });
+  return /* @__PURE__ */ i(
+    "p",
+    {
+      style: {
+        boxSizing: "border-box",
+        margin: 0,
+        width: "100%",
+        fontSize: l.text,
+        lineHeight: 1.5,
+        color: e,
         ...a,
-        children: o
-      }
-    );
-  }
-);
-h.displayName = "Typography.Paragraph";
+        ...r
+      },
+      ...p,
+      children: o
+    }
+  );
+});
+s.displayName = "Typography.Paragraph";
 export {
-  h as default
+  s as default
 };

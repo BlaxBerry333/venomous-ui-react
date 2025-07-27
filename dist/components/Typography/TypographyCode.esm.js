@@ -1,6 +1,6 @@
 import { jsx as p } from "react/jsx-runtime";
 import d from "react";
-import { TypographySize as a } from "../../utils/sizes/index.esm.js";
+import { TypographySize as a } from "../../utils/design/TypographySize.esm.js";
 const t = d.memo(({ style: o, text: r, ...e }) => /* @__PURE__ */ p(
   "code",
   {

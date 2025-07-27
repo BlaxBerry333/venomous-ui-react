@@ -1,52 +1,52 @@
-import { jsxs as c, jsx as t } from "react/jsx-runtime";
-import f from "react";
+import { jsxs as f, jsx as t } from "react/jsx-runtime";
+import x from "react";
 import { Typography as y } from "../Typography/index.esm.js";
 import { useButtonStyle as h } from "./_useButtonStyle.esm.js";
-import l from "../Icon/Icon.esm.js";
-const b = f.memo(
+import s from "../Icon/Icon.esm.js";
+const b = x.memo(
   ({
-    type: i = "button",
-    style: p,
-    text: s,
-    variant: a = "contained",
-    color: m = "auto",
+    type: a = "button",
+    style: i,
+    text: p,
+    variant: m = "contained",
+    color: d = "auto",
     isLoading: e,
-    isDisabled: o,
+    isDisabled: r,
     icon: n,
-    iconPosition: r = "start",
-    iconWidth: d = 20,
-    ...u
+    iconPosition: o = "start",
+    iconWidth: u = 20,
+    ...c
   }) => {
-    const { buttonStyles: x } = h({
+    const { buttonStyles: l } = h({
       isLoading: e,
-      isDisabled: o,
-      variant: a,
-      color: m
+      isDisabled: r,
+      variant: m,
+      color: d
     });
-    return /* @__PURE__ */ c(
+    return /* @__PURE__ */ f(
       "button",
       {
-        type: i,
-        disabled: e || o,
+        type: a,
+        disabled: e || r,
         style: {
-          flexDirection: r === "start" ? "row" : "row-reverse",
-          ...x,
-          ...p
+          flexDirection: o === "start" ? "row" : "row-reverse",
+          ...l,
+          ...i
         },
-        ...u,
+        ...c,
         children: [
           n && /* @__PURE__ */ t(
-            l,
+            s,
             {
               icon: n,
-              width: d,
+              width: u,
               style: {
-                marginLeft: r === "start" ? "0px" : "8px",
-                marginRight: r === "end" ? "0px" : "8px"
+                marginLeft: o === "start" ? "0px" : "8px",
+                marginRight: o === "end" ? "0px" : "8px"
               }
             }
           ),
-          /* @__PURE__ */ t(y.Text, { text: s, style: { color: "inherit" } }),
+          /* @__PURE__ */ t(y.Text, { text: p, style: { color: "inherit" } }),
           /* @__PURE__ */ t(
             "div",
             {
@@ -60,10 +60,9 @@ const b = f.memo(
                 height: "100%",
                 alignItems: "center",
                 justifyContent: "center",
-                backdropFilter: "blur(2px)",
-                WebkitBackdropFilter: "blur(2px)"
+                backgroundColor: l.backgroundColor
               },
-              children: /* @__PURE__ */ t(l, { icon: "eos-icons:loading", width: 24 })
+              children: /* @__PURE__ */ t(s, { icon: "eos-icons:loading", width: 24 })
             }
           )
         ]

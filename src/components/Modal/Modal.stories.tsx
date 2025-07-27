@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { useHandler } from "@/hooks";
 import React from "react";
 import { Button } from "../Button";
+import { Typography } from "../Typography";
 import { Modal } from "./index";
 
 const meta = {
@@ -59,7 +60,7 @@ export const Default: Story = {
     return (
       <>
         <Modal {...args} isOpen={isOpen} onClose={close}>
-          xxx
+          <Typography.Text text="xxxx" />
         </Modal>
 
         <Button text="Open" onClick={open} />

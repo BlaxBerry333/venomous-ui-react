@@ -1,58 +1,58 @@
 import { jsx as S } from "react/jsx-runtime";
 import t from "react";
 import D from "./ThemeContext.esm.js";
-import { ThemeMode as E } from "../../utils/theme-mode/index.esm.js";
-import { ThemeColor as _ } from "../../utils/colors/index.esm.js";
-const H = E.Light, k = _.JadeAnaconda, I = {
+import { ThemeMode as r } from "../../utils/design/ThemeMode.esm.js";
+import { ThemeColor as d } from "../../utils/design/ThemeColor.esm.js";
+const H = r.Light, k = d.EmeraldMamba, I = {
   THEME_MODE: "VENOMOUS_UI__THEME_MODE",
   THEME_COLOR: "VENOMOUS_UI__THEME_COLOR"
 };
 function g({
   children: f,
-  defaultTheme: a = H,
-  defaultThemeColor: n = k,
+  defaultThemeMode: a = H,
+  defaultThemeColor: i = k,
   storageKey: s = I
 }) {
-  const [M, C] = t.useState(!1), [o, r] = t.useState(a), [c, i] = t.useState(n), m = t.useCallback(
+  const [m, C] = t.useState(!1), [o, c] = t.useState(a), [E, l] = t.useState(i), M = t.useCallback(
     (e) => {
-      e !== o && r(e);
+      e !== o && c(e);
     },
     [o]
   ), O = t.useCallback(() => {
-    r((e) => e === E.Dark ? E.Light : E.Dark);
-  }, []), d = t.useCallback(() => {
-    r(a);
-  }, [a]), u = t.useCallback(
+    c((e) => e === r.Dark ? r.Light : r.Dark);
+  }, []), u = t.useCallback(() => {
+    c(a);
+  }, [a]), T = t.useCallback(
     (e) => {
-      e !== c && i(e);
+      e !== E && l(e);
     },
-    [c]
-  ), T = t.useCallback(() => {
-    i(n);
-  }, [n]);
+    [E]
+  ), _ = t.useCallback(() => {
+    l(i);
+  }, [i]);
   t.useEffect(() => {
     if (typeof window < "u") {
       C(!0);
       const e = localStorage.getItem(s.THEME_MODE);
-      e && Object.values(E).includes(e) && r(e);
-      const l = localStorage.getItem(s.THEME_COLOR);
-      l && Object.values(_).includes(l) && i(l);
+      e && Object.values(r).includes(e) && c(e);
+      const n = localStorage.getItem(s.THEME_COLOR);
+      n && Object.values(d).includes(n) && l(n);
     }
   }, [s]), t.useEffect(() => {
-    typeof window < "u" && M && (localStorage.setItem(s.THEME_MODE, o), localStorage.setItem(s.THEME_COLOR, c));
-  }, [M, s, o, c]);
+    typeof window < "u" && m && (localStorage.setItem(s.THEME_MODE, o), localStorage.setItem(s.THEME_COLOR, E));
+  }, [m, s, o, E]);
   const h = t.useMemo(
     () => ({
       themeMode: o,
-      setThemeMode: m,
+      setThemeMode: M,
       toggleThemeMode: O,
-      resetThemeMode: d,
-      isDarkThemeMode: o === E.Dark,
-      themeColor: c,
-      setThemeColor: u,
-      resetThemeColor: T
+      resetThemeMode: u,
+      isDarkThemeMode: o === r.Dark,
+      themeColor: E,
+      setThemeColor: T,
+      resetThemeColor: _
     }),
-    [o, m, O, d, c, u, T]
+    [o, M, O, u, E, T, _]
   );
   return /* @__PURE__ */ S(D.Provider, { value: h, children: f });
 }
