@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import React from "react";
 
 import { useHandler } from "@/hooks";
-import React from "react";
+import { BreakPointName } from "@/utils";
 import { Button } from "../Button";
 import { Typography } from "../Typography";
 import { Modal } from "./index";
@@ -15,6 +16,7 @@ const meta = {
     children: {
       description: "The content to be rendered inside the portal",
       control: false,
+      type: { name: "string", required: true },
       table: { type: { summary: "React.ReactNode" } },
     },
     isOpen: {
@@ -34,12 +36,19 @@ const meta = {
       control: { type: "boolean" },
       table: { type: { summary: "boolean" }, defaultValue: { summary: "true" } },
     },
+    maxBreakpoint: {
+      description: "The maximum breakpoint of the modal",
+      control: { type: "select" },
+      options: Object.values(BreakPointName),
+      table: { type: { summary: `"xs"|"sm"|"md"|"lg"|"xl"|"xxl"` }, defaultValue: { summary: '"xs"' } },
+    },
   },
   args: {
     children: null,
     isOpen: false,
     onClose: () => {},
     maskClosable: true,
+    maxBreakpoint: BreakPointName.xs,
   },
 } satisfies Meta<typeof Modal>;
 
