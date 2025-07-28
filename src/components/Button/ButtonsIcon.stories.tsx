@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
+import { SemanticColors } from "@/utils";
 import { Buttons } from "./index";
 
 const meta = {
@@ -29,6 +30,15 @@ const meta = {
       options: ["contained", "outlined", "ghost"],
       table: { type: { summary: `"contained"|"outlined"|"ghost"` }, defaultValue: { summary: "contained" } },
     },
+    color: {
+      table: { disable: true },
+    },
+    semanticColor: {
+      description: "The semantic color of the button",
+      control: { type: "select" },
+      options: [...Object.keys(SemanticColors), undefined],
+      table: { type: { summary: `undefined|SemanticColors"` }, defaultValue: { summary: "undefined" } },
+    },
     isLoading: {
       description: "Whether the button is loading",
       control: { type: "boolean" },
@@ -46,6 +56,7 @@ const meta = {
     icon: "solar:basketball-bold-duotone",
     iconWidth: 24,
     variant: "contained",
+    semanticColor: undefined,
     isLoading: false,
     isDisabled: false,
   },

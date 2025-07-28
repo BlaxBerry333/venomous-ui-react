@@ -1,48 +1,69 @@
-import r from "react";
-import { Theme as a } from "../Theme/index.esm.js";
-import { BackgroundColors as h, BorderColors as p, TextColors as x } from "../../utils/design/colors.esm.js";
-import { ThemeShadow as g } from "../../utils/design/ThemeShadow.esm.js";
-import { TypographySize as y } from "../../utils/design/TypographySize.esm.js";
-import { getDarkerHex as l } from "../../utils/tools/get-colors.esm.js";
-function z({
-  isLoading: s,
+import f from "react";
+import { Theme as x } from "../Theme/index.esm.js";
+import { BackgroundColors as h, SemanticColors as d, BorderColors as a, TextColors as b } from "../../utils/design/colors.esm.js";
+import { ThemeShadow as y } from "../../utils/design/ThemeShadow.esm.js";
+import { TypographySize as k } from "../../utils/design/TypographySize.esm.js";
+import { getLighterHex as w, getOpacityHex as S } from "../../utils/tools/get-colors.esm.js";
+function H({
+  isLoading: r,
   isDisabled: u,
-  color: n = "auto",
-  variant: t
+  variant: n,
+  semanticColor: t
 }) {
-  const { themeColor: e } = a.useThemeColor(), { themeMode: o, isDarkThemeMode: f } = a.useThemeMode(), d = r.useMemo(() => {
-    switch (t) {
+  const { themeColor: c } = x.useThemeColor(), { themeMode: o } = x.useThemeMode(), p = f.useMemo(() => {
+    let e = "";
+    if (r || u)
+      return e = h[o].secondary, e;
+    switch (n) {
       case "contained":
-        return e;
+        e = t ? d[t] : c;
+        break;
       case "outlined":
-        return h[o].secondary;
+        e = h[o].secondary;
+        break;
       case "ghost":
       default:
-        return h[o].primary;
+        e = h[o].primary;
+        break;
     }
-  }, [t, n, e, o]), i = r.useMemo(() => {
-    switch (t) {
+    return e;
+  }, [n, c, o, r, u, t]), m = f.useMemo(() => {
+    let e = "";
+    if (r || u)
+      return e = a[o].secondary, e;
+    switch (n) {
       case "contained":
-        return f ? l(e, 0.025) : l(e, 0.25);
+        e = t ? w(d[t], 0.25) : S(c, 0.25);
+        break;
       case "outlined":
-        return e;
+        e = t ? d[t] : c;
+        break;
       case "ghost":
       default:
-        return p[o].secondary;
+        e = a[o].secondary;
+        break;
     }
-  }, [t, n, e, o]), c = r.useMemo(() => {
-    switch (t) {
+    return e;
+  }, [n, c, o, r, u, t]), l = f.useMemo(() => {
+    let e = "";
+    if (r || u)
+      return e = b[o].disabled, e;
+    switch (n) {
       case "contained":
-        return "#ffffff";
+        e = "#ffffff";
+        break;
       case "outlined":
-        return e;
+        e = t ? d[t] : c;
+        break;
       case "ghost":
       default:
-        return x[o].primary;
+        e = b[o].primary;
+        break;
     }
-  }, [t, n, e, o]), m = r.useMemo(() => g[o].sm, [t, n, e, o]);
+    return e;
+  }, [n, c, o, r, u, t]), s = f.useMemo(() => y[o].sm, [n, c, o]);
   return {
-    buttonStyles: r.useMemo(
+    buttonStyles: f.useMemo(
       () => ({
         boxSizing: "border-box",
         display: "flex",
@@ -55,20 +76,20 @@ function z({
         height: "40px",
         padding: "0px 16px",
         textTransform: "capitalize",
-        fontSize: y.text,
+        fontSize: k.text,
         fontWeight: "bold",
-        cursor: s ? "wait" : u ? "not-allowed" : "pointer",
+        cursor: r ? "wait" : u ? "not-allowed" : "pointer",
         borderRadius: "8px",
         borderWidth: 2,
-        borderColor: i,
-        boxShadow: m,
-        backgroundColor: d,
-        color: c
+        borderColor: m,
+        boxShadow: s,
+        backgroundColor: p,
+        color: l
       }),
-      [s, u, i, d, c, m]
+      [r, u, m, p, l, s]
     )
   };
 }
 export {
-  z as useButtonStyle
+  H as useButtonStyle
 };

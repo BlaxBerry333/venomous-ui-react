@@ -5,33 +5,33 @@ import { useButtonStyle as h } from "./_useButtonStyle.esm.js";
 import s from "../Icon/Icon.esm.js";
 const b = x.memo(
   ({
-    type: a = "button",
-    style: i,
+    type: i = "button",
+    style: a,
     text: p,
     variant: m = "contained",
-    color: d = "auto",
     isLoading: e,
     isDisabled: r,
     icon: n,
     iconPosition: o = "start",
-    iconWidth: u = 20,
+    iconWidth: d = 20,
+    semanticColor: u,
     ...c
   }) => {
     const { buttonStyles: l } = h({
       isLoading: e,
       isDisabled: r,
       variant: m,
-      color: d
+      semanticColor: u
     });
     return /* @__PURE__ */ f(
       "button",
       {
-        type: a,
+        type: i,
         disabled: e || r,
         style: {
           flexDirection: o === "start" ? "row" : "row-reverse",
           ...l,
-          ...i
+          ...a
         },
         ...c,
         children: [
@@ -39,7 +39,7 @@ const b = x.memo(
             s,
             {
               icon: n,
-              width: u,
+              width: d,
               style: {
                 marginLeft: o === "start" ? "0px" : "8px",
                 marginRight: o === "end" ? "0px" : "8px"

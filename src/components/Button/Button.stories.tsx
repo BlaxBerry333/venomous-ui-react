@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
+import { SemanticColors } from "@/utils";
 import { Button } from "./index";
 
 const meta = {
@@ -22,6 +23,15 @@ const meta = {
       control: { type: "select" },
       options: ["contained", "outlined", "ghost"],
       table: { type: { summary: `"contained"|"outlined"|"ghost"` }, defaultValue: { summary: "contained" } },
+    },
+    color: {
+      table: { disable: true },
+    },
+    semanticColor: {
+      description: "The semantic color of the button",
+      control: { type: "select" },
+      options: [...Object.keys(SemanticColors), undefined],
+      table: { type: { summary: `undefined|SemanticColors"` }, defaultValue: { summary: "undefined" } },
     },
     icon: {
       description: "The icon to be rendered",
@@ -58,6 +68,7 @@ const meta = {
   args: {
     text: "Button",
     variant: "contained",
+    semanticColor: undefined,
     color: "auto",
     icon: "",
     iconWidth: 24,

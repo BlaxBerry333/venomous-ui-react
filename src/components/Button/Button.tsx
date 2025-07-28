@@ -13,19 +13,19 @@ const Button = React.memo<ButtonProps>(
     style,
     text,
     variant = "contained",
-    color = "auto",
     isLoading,
     isDisabled,
     icon,
     iconPosition = "start",
     iconWidth = 20,
+    semanticColor,
     ...props
   }) => {
     const { buttonStyles } = useButtonStyle({
       isLoading,
       isDisabled,
       variant,
-      color,
+      semanticColor,
     });
 
     return (

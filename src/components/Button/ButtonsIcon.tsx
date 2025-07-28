@@ -11,18 +11,18 @@ const ButtonsIcon = React.memo<ButtonsIconProps>(
     type = "button",
     style,
     variant = "contained",
-    color = "auto",
     isLoading,
     isDisabled,
     icon,
     iconWidth = 20,
+    semanticColor,
     ...props
   }) => {
     const { buttonStyles } = useButtonStyle({
       isLoading,
       isDisabled,
       variant,
-      color,
+      semanticColor,
     });
 
     return (
