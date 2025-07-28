@@ -5,6 +5,7 @@ export * from "./Drawer";
 export * from "./Icon";
 export * from "./Modal";
 export * from "./Notification";
+export * from "./Popover";
 export * from "./Portal";
 export * from "./Progress";
 export * from "./Space";
