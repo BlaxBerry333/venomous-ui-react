@@ -20,7 +20,7 @@ const meta = {
       description: "The breakpoint of the container",
       control: { type: "select" },
       options: Object.values(BreakPointName),
-      table: { type: { summary: `"xs"|"sm"|"md"|"lg"|"xl"|"xxl"` }, defaultValue: { summary: "lg" } },
+      table: { type: { summary: `"xs"|"sm"|"md"|"lg"|"xl"|"xxl"` }, defaultValue: { summary: '"lg"' } },
     },
   },
   args: {

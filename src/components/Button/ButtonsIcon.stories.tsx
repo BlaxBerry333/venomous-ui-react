@@ -28,7 +28,7 @@ const meta = {
       description: "The variant of the button",
       control: { type: "select" },
       options: ["contained", "outlined", "ghost"],
-      table: { type: { summary: `"contained"|"outlined"|"ghost"` }, defaultValue: { summary: "contained" } },
+      table: { type: { summary: `"contained"|"outlined"|"ghost"` }, defaultValue: { summary: '"contained"' } },
     },
     color: {
       table: { disable: true },

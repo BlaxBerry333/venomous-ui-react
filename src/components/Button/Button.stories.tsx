@@ -22,7 +22,7 @@ const meta = {
       description: "The variant of the button",
       control: { type: "select" },
       options: ["contained", "outlined", "ghost"],
-      table: { type: { summary: `"contained"|"outlined"|"ghost"` }, defaultValue: { summary: "contained" } },
+      table: { type: { summary: `"contained"|"outlined"|"ghost"` }, defaultValue: { summary: '"contained"' } },
     },
     color: {
       table: { disable: true },
@@ -50,7 +50,7 @@ const meta = {
       if: { arg: "icon" },
       control: { type: "select" },
       options: ["start", "end"],
-      table: { type: { summary: `"start"|"end"` }, defaultValue: { summary: "start" } },
+      table: { type: { summary: `"start"|"end"` }, defaultValue: { summary: '"start"' } },
     },
     isLoading: {
       description: "Whether the button is loading",

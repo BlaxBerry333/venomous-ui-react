@@ -22,7 +22,7 @@ const meta = {
     spacing: {
       description: "The spacing between the flex items",
       control: { type: "number", min: 0 },
-      table: { type: { summary: "number | Record<BreakPointName, number>" }, defaultValue: { summary: "16px" } },
+      table: { type: { summary: "number | Record<BreakPointName, number>" }, defaultValue: { summary: "16" } },
     },
   },
   args: {

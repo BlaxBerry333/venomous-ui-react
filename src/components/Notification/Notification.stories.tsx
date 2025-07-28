@@ -15,7 +15,7 @@ const meta = {
       options: ["top-left", "top-right", "bottom-left", "bottom-right", "top-center", "bottom-center"],
       table: {
         type: { summary: `"top-left"|"top-right"|"bottom-left"|"bottom-right"|"top-center"|"bottom-center"` },
-        defaultValue: { summary: "top-center" },
+        defaultValue: { summary: '"top-center"' },
       },
     },
     offset: {
