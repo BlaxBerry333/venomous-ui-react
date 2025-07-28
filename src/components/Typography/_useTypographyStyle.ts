@@ -2,19 +2,20 @@
 
 import React from "react";
 
-import { TextColors } from "@/utils";
+import { SemanticColors, TextColors } from "@/utils";
 import { Theme } from "../Theme";
 
 type Props = Partial<{
   ellipsis: number;
+  semanticColor?: keyof typeof SemanticColors;
 }>;
 
-export function useTypographyStyle({ ellipsis = 0 }: Props) {
+export function useTypographyStyle({ ellipsis = 0, semanticColor }: Props) {
   const { themeMode } = Theme.useThemeMode();
 
   const fontColor = React.useMemo<React.CSSProperties["color"]>(() => {
-    return TextColors[themeMode].primary;
-  }, [themeMode]);
+    return semanticColor ? SemanticColors[semanticColor] : TextColors[themeMode].primary;
+  }, [themeMode, semanticColor]);
 
   const ellipsisStyles = React.useMemo<React.CSSProperties>(() => {
     return ellipsis

@@ -6,8 +6,8 @@ import { TypographySize } from "@/utils";
 import { useTypographyStyle } from "./_useTypographyStyle";
 import type { TypographyTextProps } from "./index.types";
 
-const TypographyText = React.memo<TypographyTextProps>(({ style, text, as: Tag = "span", ...props }) => {
-  const { fontColor } = useTypographyStyle({ ellipsis: 0 });
+const TypographyText = React.memo<TypographyTextProps>(({ style, text, as: Tag = "span", semanticColor, ...props }) => {
+  const { fontColor } = useTypographyStyle({ ellipsis: 0, semanticColor });
 
   if (Tag === "strong") {
     return (
