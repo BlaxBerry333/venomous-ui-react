@@ -21,7 +21,7 @@ const meta = {
       description: "The position of the drawer",
       control: { type: "select" },
       options: ["left", "right", "top", "bottom"],
-      table: { type: { summary: `"left"|"right"|"top"|"bottom"` }, defaultValue: { summary: "left" } },
+      table: { type: { summary: `"left"|"right"|"top"|"bottom"` }, defaultValue: { summary: '"left"' } },
     },
     isOpen: {
       description: "Whether the drawer is open",
