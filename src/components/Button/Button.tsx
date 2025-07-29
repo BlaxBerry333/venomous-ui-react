@@ -34,6 +34,7 @@ const Button = React.memo<ButtonProps>(
         disabled={isLoading || isDisabled}
         style={{
           flexDirection: iconPosition === "start" ? "row" : "row-reverse",
+          WebkitTapHighlightColor: "transparent",
           ...buttonStyles,
           ...style,
         }}

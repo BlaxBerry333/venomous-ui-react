@@ -1,8 +1,8 @@
-import t from "react";
-import { Theme as m } from "../Theme/index.esm.js";
-import { TextColors as n } from "../../utils/design/colors.esm.js";
-function u({ ellipsis: e = 0 }) {
-  const { themeMode: o } = m.useThemeMode(), r = t.useMemo(() => n[o].primary, [o]), i = t.useMemo(() => e ? {
+import r from "react";
+import { Theme as n } from "../Theme/index.esm.js";
+import { SemanticColors as p, TextColors as s } from "../../utils/design/colors.esm.js";
+function y({ ellipsis: e = 0, semanticColor: o }) {
+  const { themeMode: t } = n.useThemeMode(), i = r.useMemo(() => o ? p[o] : s[t].primary, [t, o]), m = r.useMemo(() => e ? {
     textOverflow: "ellipsis",
     display: "-webkit-box",
     WebkitLineClamp: e,
@@ -10,10 +10,10 @@ function u({ ellipsis: e = 0 }) {
     overflow: "hidden"
   } : {}, [e]);
   return {
-    fontColor: r,
-    ellipsisStyles: i
+    fontColor: i,
+    ellipsisStyles: m
   };
 }
 export {
-  u as useTypographyStyle
+  y as useTypographyStyle
 };

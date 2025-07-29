@@ -1,85 +1,108 @@
-import { jsxs as h, Fragment as f, jsx as l } from "react/jsx-runtime";
+import { jsxs as b, Fragment as g, jsx as e } from "react/jsx-runtime";
 import u from "react";
-import { Theme as b } from "../Theme/index.esm.js";
+import { Theme as x } from "../Theme/index.esm.js";
+import p from "../Card/Card.esm.js";
+import { AnimatePresence as i, motion as a } from "framer-motion";
 import { getOpacityHex as c } from "../../utils/tools/get-colors.esm.js";
-import { BackgroundColors as i, BorderColors as p } from "../../utils/design/colors.esm.js";
-import { ThemeShadow as x } from "../../utils/design/ThemeShadow.esm.js";
-const g = u.memo(
-  ({ isOpen: t, onClose: d, children: n, position: o = "left", maskClosable: s = !0, width: r = 300, height: a = 300, style: m }) => {
-    const { themeMode: e } = b.useThemeMode();
-    return /* @__PURE__ */ h(f, { children: [
-      /* @__PURE__ */ l(
-        "div",
+import { BackgroundColors as s } from "../../utils/design/colors.esm.js";
+const y = u.memo(
+  ({ isOpen: r, onClose: m, children: h, position: t = "left", maskClosable: n = !0, width: o = 300, height: d = 300, style: l }) => {
+    const { themeMode: f } = x.useThemeMode();
+    return /* @__PURE__ */ b(g, { children: [
+      /* @__PURE__ */ e(i, { children: r && /* @__PURE__ */ e(
+        a.div,
         {
-          onClick: s ? d : void 0,
+          onClick: n ? m : void 0,
+          initial: { opacity: 0 },
+          animate: { opacity: 1 },
+          exit: { opacity: 0 },
+          transition: { duration: 0.3 },
           style: {
-            boxSizing: "border-box",
-            display: t ? "block" : "none",
             position: "fixed",
             top: 0,
             left: 0,
             zIndex: 999,
             width: "100vw",
             height: "100svh",
-            backgroundColor: c(i[e].primary, 0.5),
+            backgroundColor: c(s[f].primary, 0.5),
             backdropFilter: "blur(2px)",
-            opacity: t ? 1 : 0,
-            pointerEvents: t ? "auto" : "none",
-            transition: "opacity 0.3s ease"
+            pointerEvents: r ? "auto" : "none"
           }
         }
-      ),
-      /* @__PURE__ */ l(
-        "div",
+      ) }),
+      /* @__PURE__ */ e(i, { children: r && /* @__PURE__ */ e(
+        a.div,
         {
+          animate: { x: 0, y: 0 },
+          transition: { duration: 0.3, ease: [0.42, 0, 0.58, 1] },
+          initial: t === "left" ? { x: "-100%" } : t === "right" ? { x: "100%" } : t === "top" ? { y: "-100%" } : { y: "100%" },
+          exit: t === "left" ? { x: "-100%" } : t === "right" ? { x: "100%" } : t === "top" ? { y: "-100%" } : { y: "100%" },
           style: {
             boxSizing: "border-box",
             position: "fixed",
-            backgroundColor: i[e].secondary,
-            boxShadow: x[e].base,
-            transition: "transform 0.3s ease",
             zIndex: 1e3,
-            transform: o === "left" ? t ? "translateX(0)" : "translateX(-100%)" : o === "right" ? t ? "translateX(0)" : "translateX(100%)" : o === "top" ? t ? "translateY(0)" : "translateY(-100%)" : t ? "translateY(0)" : "translateY(100%)",
-            outlineStyle: "solid",
-            outlineColor: p[e].primary,
-            outlineWidth: 0,
-            ...o === "left" && {
+            ...t === "left" && {
               top: 0,
               left: 0,
-              width: r,
-              height: "100svh",
-              outlineWidth: 1.5
+              width: o,
+              height: "100svh"
             },
-            ...o === "right" && {
+            ...t === "right" && {
               top: 0,
               right: 0,
-              width: r,
-              height: "100svh",
-              outlineLeftWidth: 1.5
+              width: o,
+              height: "100svh"
             },
-            ...o === "top" && {
+            ...t === "top" && {
               top: 0,
               left: 0,
-              width: "100svw",
-              height: a,
-              outlineBottomWidth: 1.5
+              width: "100vw",
+              height: d
             },
-            ...o === "bottom" && {
+            ...t === "bottom" && {
               bottom: 0,
               left: 0,
-              width: "100svw",
-              height: a,
-              outlineTopWidth: 1.5
-            },
-            ...m
+              width: "100vw",
+              height: d
+            }
           },
-          children: n
+          children: /* @__PURE__ */ e(
+            p,
+            {
+              style: {
+                width: "100%",
+                height: "100%",
+                ...t === "left" && {
+                  borderRight: "none",
+                  borderTopLeftRadius: 0,
+                  borderBottomLeftRadius: 0
+                },
+                ...t === "right" && {
+                  borderLeft: "none",
+                  borderTopRightRadius: 0,
+                  borderBottomRightRadius: 0
+                },
+                ...t === "top" && {
+                  borderBottom: "none",
+                  borderTopLeftRadius: 0,
+                  borderTopRightRadius: 0
+                },
+                ...t === "bottom" && {
+                  borderTop: "none",
+                  borderBottomLeftRadius: 0,
+                  borderBottomRightRadius: 0
+                },
+                ...l
+              },
+              children: h
+            }
+          )
         }
-      )
+      ) })
     ] });
   }
 );
-g.displayName = "Drawer";
+y.displayName = "Drawer";
 export {
-  g as default
+  y as default
 };

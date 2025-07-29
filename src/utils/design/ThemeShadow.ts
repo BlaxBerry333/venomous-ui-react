@@ -1,7 +1,7 @@
 export const ThemeShadow = {
   dark: {
     // 基础阴影 - 按钮、小卡片
-    sm: `0 1px 2px 0 rgba(255, 255, 255, 0.8)`,
+    sm: `0 0 2px 0 rgba(255, 255, 255, 0.8)`,
 
     // 标准阴影 - 卡片、面板
     base: `
@@ -15,7 +15,7 @@ export const ThemeShadow = {
 
   light: {
     // 基础阴影 - 按钮、小卡片
-    sm: `0 1px 2px 0 rgba(0, 0, 0, 0.3)`,
+    sm: `0 0 2px 0 rgba(0, 0, 0, 0.3)`,
 
     // 标准阴影 - 卡片、面板
     base: `

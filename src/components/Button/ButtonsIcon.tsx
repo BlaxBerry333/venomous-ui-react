@@ -30,8 +30,9 @@ const ButtonsIcon = React.memo<ButtonsIconProps>(
         type={type}
         disabled={isLoading || isDisabled}
         style={{
-          ...buttonStyles,
           padding: 0,
+          WebkitTapHighlightColor: "transparent",
+          ...buttonStyles,
           ...style,
         }}
         {...props}

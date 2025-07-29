@@ -1,8 +1,8 @@
 import { jsx as n } from "react/jsx-runtime";
-import l from "react";
-import { useButtonStyle as p } from "./_useButtonStyle.esm.js";
-import a from "../Icon/Icon.esm.js";
-const f = l.memo(
+import p from "react";
+import { useButtonStyle as u } from "./_useButtonStyle.esm.js";
+import d from "../Icon/Icon.esm.js";
+const f = p.memo(
   ({
     type: e = "button",
     style: r,
@@ -10,15 +10,15 @@ const f = l.memo(
     isLoading: t,
     isDisabled: o,
     icon: c,
-    iconWidth: s = 20,
-    semanticColor: u,
-    ...d
+    iconWidth: i = 20,
+    semanticColor: s,
+    ...a
   }) => {
-    const { buttonStyles: i } = p({
+    const { buttonStyles: l } = u({
       isLoading: t,
       isDisabled: o,
       variant: m,
-      semanticColor: u
+      semanticColor: s
     });
     return /* @__PURE__ */ n(
       "button",
@@ -26,12 +26,13 @@ const f = l.memo(
         type: e,
         disabled: t || o,
         style: {
-          ...i,
           padding: 0,
+          WebkitTapHighlightColor: "transparent",
+          ...l,
           ...r
         },
-        ...d,
-        children: /* @__PURE__ */ n(a, { icon: t ? "eos-icons:loading" : c, width: s })
+        ...a,
+        children: /* @__PURE__ */ n(d, { icon: t ? "eos-icons:loading" : c, width: i })
       }
     );
   }

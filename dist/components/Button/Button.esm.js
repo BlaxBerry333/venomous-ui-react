@@ -1,52 +1,53 @@
-import { jsxs as f, jsx as t } from "react/jsx-runtime";
-import x from "react";
-import { Typography as y } from "../Typography/index.esm.js";
-import { useButtonStyle as h } from "./_useButtonStyle.esm.js";
-import s from "../Icon/Icon.esm.js";
-const b = x.memo(
+import { jsxs as h, jsx as t } from "react/jsx-runtime";
+import f from "react";
+import { Typography as x } from "../Typography/index.esm.js";
+import { useButtonStyle as y } from "./_useButtonStyle.esm.js";
+import i from "../Icon/Icon.esm.js";
+const g = f.memo(
   ({
-    type: i = "button",
+    type: s = "button",
     style: a,
     text: p,
     variant: m = "contained",
     isLoading: e,
-    isDisabled: r,
+    isDisabled: o,
     icon: n,
-    iconPosition: o = "start",
+    iconPosition: r = "start",
     iconWidth: d = 20,
     semanticColor: u,
     ...c
   }) => {
-    const { buttonStyles: l } = h({
+    const { buttonStyles: l } = y({
       isLoading: e,
-      isDisabled: r,
+      isDisabled: o,
       variant: m,
       semanticColor: u
     });
-    return /* @__PURE__ */ f(
+    return /* @__PURE__ */ h(
       "button",
       {
-        type: i,
-        disabled: e || r,
+        type: s,
+        disabled: e || o,
         style: {
-          flexDirection: o === "start" ? "row" : "row-reverse",
+          flexDirection: r === "start" ? "row" : "row-reverse",
+          WebkitTapHighlightColor: "transparent",
           ...l,
           ...a
         },
         ...c,
         children: [
           n && /* @__PURE__ */ t(
-            s,
+            i,
             {
               icon: n,
               width: d,
               style: {
-                marginLeft: o === "start" ? "0px" : "8px",
-                marginRight: o === "end" ? "0px" : "8px"
+                marginLeft: r === "start" ? "0px" : "8px",
+                marginRight: r === "end" ? "0px" : "8px"
               }
             }
           ),
-          /* @__PURE__ */ t(y.Text, { text: p, style: { color: "inherit" } }),
+          /* @__PURE__ */ t(x.Text, { text: p, style: { color: "inherit" } }),
           /* @__PURE__ */ t(
             "div",
             {
@@ -62,7 +63,7 @@ const b = x.memo(
                 justifyContent: "center",
                 backgroundColor: l.backgroundColor
               },
-              children: /* @__PURE__ */ t(s, { icon: "eos-icons:loading", width: 24 })
+              children: /* @__PURE__ */ t(i, { icon: "eos-icons:loading", width: 24 })
             }
           )
         ]
@@ -70,7 +71,7 @@ const b = x.memo(
     );
   }
 );
-b.displayName = "Button";
+g.displayName = "Button";
 export {
-  b as default
+  g as default
 };
