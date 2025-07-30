@@ -37,7 +37,7 @@ export function useButtonStyle({
         break;
       case "ghost":
       default:
-        color = BackgroundColors[themeMode].primary;
+        color = "transparent";
         break;
     }
     return color;
@@ -86,7 +86,7 @@ export function useButtonStyle({
   }, [variant, themeColor, themeMode, isLoading, isDisabled, semanticColor]);
 
   const boxShadow = React.useMemo<React.CSSProperties["boxShadow"]>(() => {
-    return ThemeShadow[themeMode].sm;
+    return ThemeShadow[themeMode].secondary;
   }, [variant, themeColor, themeMode]);
 
   const buttonStyles = React.useMemo<React.CSSProperties>(
@@ -106,7 +106,7 @@ export function useButtonStyle({
       fontWeight: "bold",
       cursor: isLoading ? "wait" : isDisabled ? "not-allowed" : "pointer",
       borderRadius: "8px",
-      borderWidth: 2,
+      borderWidth: 1.5,
       borderColor,
       boxShadow,
       backgroundColor,

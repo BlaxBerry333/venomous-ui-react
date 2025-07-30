@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
+import { Typography } from "../Typography";
 import { Cards } from "./index";
 
 const meta = {
@@ -51,4 +52,16 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   name: "Default",
+  render: function RenderStory(args) {
+    return (
+      <Cards.Product
+        {...args}
+        renderMenu={() => (
+          <ul>
+            <Typography.Text text="xxxx" />
+          </ul>
+        )}
+      />
+    );
+  },
 };

@@ -3,10 +3,13 @@
 import { Icon as Iconify } from "@iconify/react";
 import React from "react";
 
+import { TextColors } from "@/utils";
+import { Theme } from "../Theme";
 import type { IconProps } from "./Icon.types";
 
 const Icon = React.memo<IconProps>(({ style, icon, width = 20, ...props }) => {
-  const iconColor = React.useMemo<React.CSSProperties["color"]>(() => "inherit", []);
+  const { themeMode } = Theme.useThemeMode();
+  const iconColor = React.useMemo<React.CSSProperties["color"]>(() => TextColors[themeMode].primary, [themeMode]);
 
   return (
     <Iconify

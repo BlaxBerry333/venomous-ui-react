@@ -161,7 +161,7 @@ const Tab = React.memo<TabProps>(
                 height: "calc(100% - 8px)",
                 borderRadius: "6px",
                 background: BackgroundColors[themeMode].primary,
-                boxShadow: ThemeShadow[themeMode].sm,
+                boxShadow: ThemeShadow[themeMode].secondary,
               }),
               ...(variant === "underline" && {
                 bottom: "-2px",

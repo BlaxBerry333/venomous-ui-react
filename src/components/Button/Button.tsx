@@ -23,7 +23,7 @@ const Button = React.memo<ButtonProps>(
   }) => {
     const { buttonStyles } = useButtonStyle({
       isLoading,
-      isDisabled,
+      isDisabled: isDisabled || props.disabled,
       variant,
       semanticColor,
     });
@@ -70,7 +70,7 @@ const Button = React.memo<ButtonProps>(
             backgroundColor: buttonStyles.backgroundColor,
           }}
         >
-          <Icon icon="eos-icons:loading" width={24} />
+          <Icon icon="svg-spinners:270-ring-with-bg" width={24} />
         </div>
       </button>
     );

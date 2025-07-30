@@ -1,53 +1,53 @@
-import { jsxs as h, jsx as t } from "react/jsx-runtime";
-import f from "react";
-import { Typography as x } from "../Typography/index.esm.js";
-import { useButtonStyle as y } from "./_useButtonStyle.esm.js";
-import i from "../Icon/Icon.esm.js";
-const g = f.memo(
+import { jsxs as b, jsx as t } from "react/jsx-runtime";
+import c from "react";
+import { Typography as f } from "../Typography/index.esm.js";
+import { useButtonStyle as g } from "./_useButtonStyle.esm.js";
+import l from "../Icon/Icon.esm.js";
+const x = c.memo(
   ({
-    type: s = "button",
-    style: a,
-    text: p,
+    type: a = "button",
+    style: p,
+    text: d,
     variant: m = "contained",
     isLoading: e,
     isDisabled: o,
     icon: n,
     iconPosition: r = "start",
-    iconWidth: d = 20,
-    semanticColor: u,
-    ...c
+    iconWidth: u = 20,
+    semanticColor: h,
+    ...i
   }) => {
-    const { buttonStyles: l } = y({
+    const { buttonStyles: s } = g({
       isLoading: e,
-      isDisabled: o,
+      isDisabled: o || i.disabled,
       variant: m,
-      semanticColor: u
+      semanticColor: h
     });
-    return /* @__PURE__ */ h(
+    return /* @__PURE__ */ b(
       "button",
       {
-        type: s,
+        type: a,
         disabled: e || o,
         style: {
           flexDirection: r === "start" ? "row" : "row-reverse",
           WebkitTapHighlightColor: "transparent",
-          ...l,
-          ...a
+          ...s,
+          ...p
         },
-        ...c,
+        ...i,
         children: [
           n && /* @__PURE__ */ t(
-            i,
+            l,
             {
               icon: n,
-              width: d,
+              width: u,
               style: {
                 marginLeft: r === "start" ? "0px" : "8px",
                 marginRight: r === "end" ? "0px" : "8px"
               }
             }
           ),
-          /* @__PURE__ */ t(x.Text, { text: p, style: { color: "inherit" } }),
+          /* @__PURE__ */ t(f.Text, { text: d, style: { color: "inherit" } }),
           /* @__PURE__ */ t(
             "div",
             {
@@ -61,9 +61,9 @@ const g = f.memo(
                 height: "100%",
                 alignItems: "center",
                 justifyContent: "center",
-                backgroundColor: l.backgroundColor
+                backgroundColor: s.backgroundColor
               },
-              children: /* @__PURE__ */ t(i, { icon: "eos-icons:loading", width: 24 })
+              children: /* @__PURE__ */ t(l, { icon: "svg-spinners:270-ring-with-bg", width: 24 })
             }
           )
         ]
@@ -71,7 +71,7 @@ const g = f.memo(
     );
   }
 );
-g.displayName = "Button";
+x.displayName = "Button";
 export {
-  g as default
+  x as default
 };

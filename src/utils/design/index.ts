@@ -4,7 +4,7 @@ export { BreakPointName, ThemeBreakPoint } from "./ThemeBreakpoint";
 export { ThemeColor } from "./ThemeColor";
 export { ThemeMode } from "./ThemeMode";
 export { ThemeShadow } from "./ThemeShadow";
-export { TypographySize } from "./TypographySize";
+export { TypographySize, TypographySizeName } from "./TypographySize";
 
 export { getThemeColors } from "./get-theme-colors";
 export { getSystemThemeMode } from "./get-theme-mode";

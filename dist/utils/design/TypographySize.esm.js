@@ -1,4 +1,5 @@
-const e = {
+var h = /* @__PURE__ */ ((t) => (t.h1 = "h1", t.h2 = "h2", t.h3 = "h3", t.h4 = "h4", t.h5 = "h5", t.h6 = "h6", t.text = "text", t.strong = "strong", t.small = "small", t))(h || {});
+const r = {
   h1: "4rem",
   // 64px
   h2: "3rem",
@@ -13,9 +14,12 @@ const e = {
   // 20px
   text: "1rem",
   // 16px
+  strong: "1rem",
+  // 16px
   small: "0.875rem"
   // 14px
 };
 export {
-  e as TypographySize
+  r as TypographySize,
+  h as TypographySizeName
 };

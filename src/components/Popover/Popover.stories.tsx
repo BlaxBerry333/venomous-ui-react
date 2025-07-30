@@ -26,7 +26,7 @@ const meta = {
       description: "The content to be rendered inside the trigger",
       control: false,
       type: { name: "string", required: true },
-      table: { category: "Events", type: { summary: "(params?: { isOpen: boolean }) => React.ReactNode;" } },
+      table: { category: "Events", type: { summary: "(isOpen: boolean) => React.ReactNode;" } },
     },
   },
   args: {

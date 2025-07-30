@@ -20,7 +20,7 @@ const ButtonsIcon = React.memo<ButtonsIconProps>(
   }) => {
     const { buttonStyles } = useButtonStyle({
       isLoading,
-      isDisabled,
+      isDisabled: isDisabled || props.disabled,
       variant,
       semanticColor,
     });
@@ -30,14 +30,14 @@ const ButtonsIcon = React.memo<ButtonsIconProps>(
         type={type}
         disabled={isLoading || isDisabled}
         style={{
-          padding: 0,
           WebkitTapHighlightColor: "transparent",
           ...buttonStyles,
+          padding: 0,
           ...style,
         }}
         {...props}
       >
-        <Icon icon={isLoading ? "eos-icons:loading" : icon} width={iconWidth} />
+        <Icon icon={isLoading ? "eos-icons:loading" : icon} width={iconWidth} style={{ color: buttonStyles.color }} />
       </button>
     );
   },

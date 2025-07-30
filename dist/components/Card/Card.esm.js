@@ -1,26 +1,37 @@
-import { jsx as n } from "react/jsx-runtime";
-import l from "react";
-import { Theme as m } from "../Theme/index.esm.js";
-import { BorderColors as s, BackgroundColors as p } from "../../utils/design/colors.esm.js";
+import { jsx as m } from "react/jsx-runtime";
+import n from "react";
+import { Theme as p } from "../Theme/index.esm.js";
+import { CardTagMap as l } from "./index.types.esm.js";
 import { ThemeShadow as b } from "../../utils/design/ThemeShadow.esm.js";
-const u = l.memo(
-  ({ children: e, style: t, isTransparent: a = !1, isFrostedGlass: r = !1, isOutline: d = !1, ...i }) => {
-    const { themeMode: o } = m.useThemeMode();
-    return /* @__PURE__ */ n(
-      "div",
+import { BackgroundColors as f, BorderColors as u } from "../../utils/design/colors.esm.js";
+const c = n.memo(
+  ({
+    children: e,
+    style: a,
+    isTransparent: t = !1,
+    isFrostedGlass: d = !1,
+    isOutline: o = !1,
+    as: s = l.div,
+    ...i
+  }) => {
+    const { themeMode: r } = p.useThemeMode();
+    return /* @__PURE__ */ m(
+      s,
       {
         style: {
           boxSizing: "border-box",
           borderRadius: "8px",
           padding: "16px",
-          backgroundColor: a ? "transparent" : p[o].secondary,
-          boxShadow: d ? "none" : b[o].base,
-          backdropFilter: r ? "blur(8px) brightness(0.8)" : "none",
-          WebkitBackdropFilter: r ? "blur(8px) brightness(0.8)" : "none",
           outlineWidth: 1.5,
           outlineStyle: "solid",
-          outlineColor: s[o].primary,
-          ...t
+          outlineColor: o ? u[r].secondary : "transparent",
+          backgroundColor: t ? "transparent" : f[r].secondary,
+          boxShadow: o ? "none" : b[r].primary,
+          ...d && {
+            backdropFilter: "blur(8px) brightness(0.8)",
+            WebkitBackdropFilter: "blur(8px) brightness(0.8)"
+          },
+          ...a
         },
         ...i,
         children: e
@@ -28,7 +39,7 @@ const u = l.memo(
     );
   }
 );
-u.displayName = "Card";
+c.displayName = "Card";
 export {
-  u as default
+  c as default
 };

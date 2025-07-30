@@ -1,11 +1,11 @@
 import { jsxs as O, jsx as l } from "react/jsx-runtime";
-import { AnimatePresence as w, motion as x } from "framer-motion";
+import { AnimatePresence as w, motion as C } from "framer-motion";
 import o from "react";
-import C from "../../hooks/useHandler/index.esm.js";
-import k from "../Card/Card.esm.js";
-const E = o.memo(({ children: a, style: m, placement: s = "bottom", renderTrigger: g }) => {
-  var u;
-  const t = C(), p = o.useRef(null), i = o.useRef(null), n = o.useRef(null), [f, h] = o.useState({ top: 0, left: 0 });
+import k from "../../hooks/useHandler/index.esm.js";
+import E from "../Card/Card.esm.js";
+const P = o.memo(({ children: a, style: m, contentStyle: g, placement: s = "bottom", renderTrigger: h }) => {
+  var d;
+  const t = k(), p = o.useRef(null), i = o.useRef(null), n = o.useRef(null), [f, v] = o.useState({ top: 0, left: 0 });
   return o.useEffect(() => {
     const r = (e) => {
       var c;
@@ -16,13 +16,13 @@ const E = o.memo(({ children: a, style: m, placement: s = "bottom", renderTrigge
     };
   }, [t]), o.useEffect(() => {
     if (t.isOpen && p.current && i.current && n.current) {
-      const r = p.current.getBoundingClientRect(), e = i.current.getBoundingClientRect(), c = n.current.offsetWidth, v = n.current.offsetHeight, d = e.top - r.top, y = e.left - r.left, R = s === "bottom" ? d + e.height + 8 : d - v - 8, b = y + e.width / 2 - c / 2;
-      h({ top: R, left: b });
+      const r = p.current.getBoundingClientRect(), e = i.current.getBoundingClientRect(), c = n.current.offsetWidth, y = n.current.offsetHeight, u = e.top - r.top, R = e.left - r.left, b = s === "bottom" ? u + e.height + 8 : u - y - 8, x = R + e.width / 2 - c / 2;
+      v({ top: b, left: x });
     }
-  }, [t.isOpen, s]), /* @__PURE__ */ O("div", { ref: p, style: { display: "inline-block", position: "relative" }, children: [
-    /* @__PURE__ */ l("div", { ref: i, onClick: t.toggle, style: { display: "inline-block", cursor: "pointer" }, children: g({ isOpen: t.isOpen }) }),
+  }, [t.isOpen, s]), /* @__PURE__ */ O("div", { ref: p, style: { display: "inline-block", position: "relative", ...m }, children: [
+    /* @__PURE__ */ l("div", { ref: i, onClick: t.toggle, style: { display: "inline-block" }, children: h(t.isOpen) }),
     /* @__PURE__ */ l(w, { children: t.isOpen && /* @__PURE__ */ l(
-      x.div,
+      C.div,
       {
         ref: n,
         initial: { opacity: 0, y: s === "bottom" ? -5 : 5 },
@@ -34,14 +34,23 @@ const E = o.memo(({ children: a, style: m, placement: s = "bottom", renderTrigge
           top: f.top,
           left: f.left,
           zIndex: 1e3,
-          minWidth: (u = i.current) == null ? void 0 : u.offsetWidth
+          minWidth: (d = i.current) == null ? void 0 : d.offsetWidth
         },
-        children: /* @__PURE__ */ l(k, { style: m, children: a })
+        children: /* @__PURE__ */ l(
+          E,
+          {
+            style: {
+              padding: "8px",
+              ...g
+            },
+            children: a
+          }
+        )
       }
     ) })
   ] });
 });
-E.displayName = "Popover";
+P.displayName = "Popover";
 export {
-  E as default
+  P as default
 };

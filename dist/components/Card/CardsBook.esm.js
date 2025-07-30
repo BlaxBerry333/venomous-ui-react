@@ -3,12 +3,14 @@ import n from "react";
 import { Space as d } from "../Space/index.esm.js";
 import { Typography as l } from "../Typography/index.esm.js";
 import p from "./Card.esm.js";
-const s = n.memo(({ children: r, height: t = 300, width: f = 200, title: o, coverImage: a }) => /* @__PURE__ */ i(
+import { CardTagMap as s } from "./index.types.esm.js";
+const c = n.memo(({ children: r, height: t = 300, width: a = 200, title: o, coverImage: f }) => /* @__PURE__ */ i(
   p,
   {
+    as: s.article,
     style: {
       height: t,
-      width: f,
+      width: a,
       padding: "16px 24px",
       overflow: "hidden",
       position: "relative",
@@ -16,7 +18,7 @@ const s = n.memo(({ children: r, height: t = 300, width: f = 200, title: o, cove
       flexDirection: "column",
       alignItems: "flex-end",
       backgroundColor: "transparent",
-      backgroundImage: `url(${a})`,
+      backgroundImage: `url(${f})`,
       backgroundSize: "cover",
       backgroundPosition: "center",
       backgroundRepeat: "no-repeat",
@@ -69,7 +71,7 @@ const s = n.memo(({ children: r, height: t = 300, width: f = 200, title: o, cove
     ]
   }
 ));
-s.displayName = "Cards.Book";
+c.displayName = "Cards.Book";
 export {
-  s as default
+  c as default
 };

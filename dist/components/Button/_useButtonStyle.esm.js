@@ -1,6 +1,6 @@
 import f from "react";
-import { Theme as x } from "../Theme/index.esm.js";
-import { BackgroundColors as h, SemanticColors as d, BorderColors as a, TextColors as b } from "../../utils/design/colors.esm.js";
+import { Theme as m } from "../Theme/index.esm.js";
+import { BackgroundColors as a, SemanticColors as d, BorderColors as x, TextColors as b } from "../../utils/design/colors.esm.js";
 import { ThemeShadow as y } from "../../utils/design/ThemeShadow.esm.js";
 import { TypographySize as k } from "../../utils/design/TypographySize.esm.js";
 import { getLighterHex as w, getOpacityHex as S } from "../../utils/tools/get-colors.esm.js";
@@ -8,60 +8,60 @@ function H({
   isLoading: r,
   isDisabled: u,
   variant: n,
-  semanticColor: t
+  semanticColor: o
 }) {
-  const { themeColor: c } = x.useThemeColor(), { themeMode: o } = x.useThemeMode(), p = f.useMemo(() => {
+  const { themeColor: c } = m.useThemeColor(), { themeMode: t } = m.useThemeMode(), h = f.useMemo(() => {
     let e = "";
     if (r || u)
-      return e = h[o].secondary, e;
+      return e = a[t].secondary, e;
     switch (n) {
       case "contained":
-        e = t ? d[t] : c;
+        e = o ? d[o] : c;
         break;
       case "outlined":
-        e = h[o].secondary;
+        e = a[t].secondary;
         break;
       case "ghost":
       default:
-        e = h[o].primary;
+        e = "transparent";
         break;
     }
     return e;
-  }, [n, c, o, r, u, t]), m = f.useMemo(() => {
+  }, [n, c, t, r, u, o]), p = f.useMemo(() => {
     let e = "";
     if (r || u)
-      return e = a[o].secondary, e;
+      return e = x[t].secondary, e;
     switch (n) {
       case "contained":
-        e = t ? w(d[t], 0.25) : S(c, 0.25);
+        e = o ? w(d[o], 0.25) : S(c, 0.25);
         break;
       case "outlined":
-        e = t ? d[t] : c;
+        e = o ? d[o] : c;
         break;
       case "ghost":
       default:
-        e = a[o].secondary;
+        e = x[t].secondary;
         break;
     }
     return e;
-  }, [n, c, o, r, u, t]), l = f.useMemo(() => {
+  }, [n, c, t, r, u, o]), s = f.useMemo(() => {
     let e = "";
     if (r || u)
-      return e = b[o].disabled, e;
+      return e = b[t].disabled, e;
     switch (n) {
       case "contained":
         e = "#ffffff";
         break;
       case "outlined":
-        e = t ? d[t] : c;
+        e = o ? d[o] : c;
         break;
       case "ghost":
       default:
-        e = b[o].primary;
+        e = b[t].primary;
         break;
     }
     return e;
-  }, [n, c, o, r, u, t]), s = f.useMemo(() => y[o].sm, [n, c, o]);
+  }, [n, c, t, r, u, o]), l = f.useMemo(() => y[t].secondary, [n, c, t]);
   return {
     buttonStyles: f.useMemo(
       () => ({
@@ -80,13 +80,13 @@ function H({
         fontWeight: "bold",
         cursor: r ? "wait" : u ? "not-allowed" : "pointer",
         borderRadius: "8px",
-        borderWidth: 2,
-        borderColor: m,
-        boxShadow: s,
-        backgroundColor: p,
-        color: l
+        borderWidth: 1.5,
+        borderColor: p,
+        boxShadow: l,
+        backgroundColor: h,
+        color: s
       }),
-      [r, u, m, p, l, s]
+      [r, u, p, h, s, l]
     )
   };
 }

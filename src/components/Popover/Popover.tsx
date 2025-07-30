@@ -7,7 +7,7 @@ import { useHandler } from "@/hooks";
 import { Card } from "../Card";
 import type { PopoverPosition, PopoverProps } from "./index.types";
 
-const Popover = React.memo<PopoverProps>(({ children, style, placement = "bottom", renderTrigger }) => {
+const Popover = React.memo<PopoverProps>(({ children, style, contentStyle, placement = "bottom", renderTrigger }) => {
   const handler = useHandler();
   const wrapperRef = React.useRef<HTMLDivElement>(null);
   const triggerRef = React.useRef<HTMLDivElement>(null);
@@ -54,9 +54,9 @@ const Popover = React.memo<PopoverProps>(({ children, style, placement = "bottom
   }, [handler.isOpen, placement]);
 
   return (
-    <div ref={wrapperRef} style={{ display: "inline-block", position: "relative" }}>
-      <div ref={triggerRef} onClick={handler.toggle} style={{ display: "inline-block", cursor: "pointer" }}>
-        {renderTrigger({ isOpen: handler.isOpen })}
+    <div ref={wrapperRef} style={{ display: "inline-block", position: "relative", ...style }}>
+      <div ref={triggerRef} onClick={handler.toggle} style={{ display: "inline-block" }}>
+        {renderTrigger(handler.isOpen)}
       </div>
 
       <AnimatePresence>
@@ -75,7 +75,14 @@ const Popover = React.memo<PopoverProps>(({ children, style, placement = "bottom
               minWidth: triggerRef.current?.offsetWidth,
             }}
           >
-            <Card style={style}>{children}</Card>
+            <Card
+              style={{
+                padding: "8px",
+                ...contentStyle,
+              }}
+            >
+              {children}
+            </Card>
           </motion.div>
         )}
       </AnimatePresence>

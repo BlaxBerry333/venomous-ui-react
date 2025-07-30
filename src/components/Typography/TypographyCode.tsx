@@ -2,14 +2,14 @@
 
 import React from "react";
 
-import { TypographySize } from "@/utils";
+import { ThemeColor, TypographySize } from "@/utils";
 import type { TypographyCodeProps } from "./index.types";
 
 const TypographyCode = React.memo<TypographyCodeProps>(({ style, text, ...props }) => {
   return (
     <code
       style={{
-        color: "#B71D18",
+        color: ThemeColor.TourmalineStiletto,
         backgroundColor: "#E7E9EB",
         border: "1px solid #CCCCCC",
         borderRadius: "4px",

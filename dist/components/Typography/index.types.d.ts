@@ -1,13 +1,26 @@
 import type { SemanticColors } from "@/utils";
+export declare const TypographyTitleTagMap: {
+    readonly h1: "h1";
+    readonly h2: "h2";
+    readonly h3: "h3";
+    readonly h4: "h4";
+    readonly h5: "h5";
+    readonly h6: "h6";
+};
+export declare const TypographyTextTagMap: {
+    readonly span: "span";
+    readonly small: "small";
+    readonly strong: "strong";
+};
 export interface TypographyTitleProps extends Omit<React.HTMLAttributes<HTMLHeadingElement>, "children"> {
     text: string;
-    as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+    as?: (typeof TypographyTitleTagMap)[keyof typeof TypographyTitleTagMap];
     ellipsis?: number;
     semanticColor?: keyof typeof SemanticColors;
 }
 export interface TypographyTextProps extends Omit<React.HTMLAttributes<HTMLSpanElement>, "children"> {
     text: string;
-    as?: "span" | "small" | "strong";
+    as?: (typeof TypographyTextTagMap)[keyof typeof TypographyTextTagMap];
     semanticColor?: keyof typeof SemanticColors;
 }
 export interface TypographyCodeProps extends Omit<React.HTMLAttributes<HTMLElement>, "children"> {

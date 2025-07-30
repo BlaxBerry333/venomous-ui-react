@@ -1,43 +1,43 @@
-import { jsx as n } from "react/jsx-runtime";
-import p from "react";
+import { jsx as r } from "react/jsx-runtime";
+import d from "react";
 import { useButtonStyle as u } from "./_useButtonStyle.esm.js";
-import d from "../Icon/Icon.esm.js";
-const f = p.memo(
+import p from "../Icon/Icon.esm.js";
+const b = d.memo(
   ({
-    type: e = "button",
-    style: r,
-    variant: m = "contained",
+    type: l = "button",
+    style: i,
+    variant: s = "contained",
     isLoading: t,
     isDisabled: o,
     icon: c,
-    iconWidth: i = 20,
-    semanticColor: s,
-    ...a
+    iconWidth: a = 20,
+    semanticColor: m,
+    ...n
   }) => {
-    const { buttonStyles: l } = u({
+    const { buttonStyles: e } = u({
       isLoading: t,
-      isDisabled: o,
-      variant: m,
-      semanticColor: s
+      isDisabled: o || n.disabled,
+      variant: s,
+      semanticColor: m
     });
-    return /* @__PURE__ */ n(
+    return /* @__PURE__ */ r(
       "button",
       {
-        type: e,
+        type: l,
         disabled: t || o,
         style: {
-          padding: 0,
           WebkitTapHighlightColor: "transparent",
-          ...l,
-          ...r
+          ...e,
+          padding: 0,
+          ...i
         },
-        ...a,
-        children: /* @__PURE__ */ n(d, { icon: t ? "eos-icons:loading" : c, width: i })
+        ...n,
+        children: /* @__PURE__ */ r(p, { icon: t ? "eos-icons:loading" : c, width: a, style: { color: e.color } })
       }
     );
   }
 );
-f.displayName = "Buttons.Icon";
+b.displayName = "Buttons.Icon";
 export {
-  f as default
+  b as default
 };

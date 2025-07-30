@@ -4,20 +4,11 @@ import React from "react";
 
 import { TypographySize } from "@/utils";
 import { useTypographyStyle } from "./_useTypographyStyle";
-import type { TypographyTitleProps } from "./index.types";
-
-const TagMap = {
-  h1: "h1",
-  h2: "h2",
-  h3: "h3",
-  h4: "h4",
-  h5: "h5",
-  h6: "h6",
-} as const;
+import { TypographyTitleTagMap, type TypographyTitleProps } from "./index.types";
 
 const TypographyTitle = React.memo<TypographyTitleProps>(
-  ({ text, as = TagMap.h4, ellipsis = 0, style, semanticColor, ...props }) => {
-    const Tag = React.useMemo(() => TagMap[as], [as]);
+  ({ text, as = TypographyTitleTagMap.h4, ellipsis = 0, style, semanticColor, ...props }) => {
+    const Tag = React.useMemo(() => TypographyTitleTagMap[as], [as]);
     const fontSize = React.useMemo(() => TypographySize[as], [as]);
 
     const { fontColor, ellipsisStyles } = useTypographyStyle({ ellipsis, semanticColor });

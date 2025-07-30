@@ -5,11 +5,12 @@ import React from "react";
 import { Space } from "../Space";
 import { Typography } from "../Typography";
 import Card from "./Card";
-import type { CardsBookProps } from "./index.types";
+import { CardTagMap, type CardsBookProps } from "./index.types";
 
 const CardsBook = React.memo<CardsBookProps>(({ children, height = 300, width = 200, title, coverImage }) => {
   return (
     <Card
+      as={CardTagMap.article}
       style={{
         height,
         width,

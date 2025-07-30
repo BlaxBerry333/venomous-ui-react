@@ -2,58 +2,60 @@
 
 import React from "react";
 
-import { TypographySize } from "@/utils";
+import { TypographySize, TypographySizeName } from "@/utils";
 import { useTypographyStyle } from "./_useTypographyStyle";
-import type { TypographyTextProps } from "./index.types";
+import { TypographyTextTagMap, type TypographyTextProps } from "./index.types";
 
-const TypographyText = React.memo<TypographyTextProps>(({ style, text, as: Tag = "span", semanticColor, ...props }) => {
-  const { fontColor } = useTypographyStyle({ ellipsis: 0, semanticColor });
+const TypographyText = React.memo<TypographyTextProps>(
+  ({ style, text, as: Tag = TypographyTextTagMap.span, semanticColor, ...props }) => {
+    const { fontColor } = useTypographyStyle({ ellipsis: 0, semanticColor });
 
-  if (Tag === "strong") {
+    if (Tag === TypographyTextTagMap.strong) {
+      return (
+        <strong
+          style={{
+            fontSize: TypographySize[TypographySizeName.strong],
+            fontWeight: "bold",
+            color: fontColor,
+            ...style,
+          }}
+          {...props}
+        >
+          {text}
+        </strong>
+      );
+    }
+
+    if (Tag === TypographyTextTagMap.small) {
+      return (
+        <small
+          style={{
+            fontSize: TypographySize[TypographySizeName.small],
+            color: fontColor,
+            ...style,
+          }}
+          {...props}
+        >
+          {text}
+        </small>
+      );
+    }
+
     return (
-      <strong
+      <span
         style={{
-          fontSize: TypographySize.text,
-          fontWeight: "bold",
+          fontSize: TypographySize[TypographySizeName.text],
+          fontWeight: "normal",
           color: fontColor,
           ...style,
         }}
         {...props}
       >
         {text}
-      </strong>
+      </span>
     );
-  }
-
-  if (Tag === "small") {
-    return (
-      <small
-        style={{
-          fontSize: TypographySize.small,
-          color: fontColor,
-          ...style,
-        }}
-        {...props}
-      >
-        {text}
-      </small>
-    );
-  }
-
-  return (
-    <span
-      style={{
-        fontSize: TypographySize.text,
-        fontWeight: "normal",
-        color: fontColor,
-        ...style,
-      }}
-      {...props}
-    >
-      {text}
-    </span>
-  );
-});
+  },
+);
 
 TypographyText.displayName = "Typography.Text";
 export default TypographyText;

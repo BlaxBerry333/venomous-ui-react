@@ -1,13 +1,15 @@
-import { jsx as t } from "react/jsx-runtime";
-import { Icon as s } from "@iconify/react";
-import e from "react";
-const c = e.memo(({ style: r, icon: n, width: o = 20, ...i }) => {
-  const m = e.useMemo(() => "inherit", []);
-  return /* @__PURE__ */ t(
-    s,
+import { jsx as s } from "react/jsx-runtime";
+import { Icon as c } from "@iconify/react";
+import r from "react";
+import { Theme as l } from "../Theme/index.esm.js";
+import { TextColors as p } from "../../utils/design/colors.esm.js";
+const a = r.memo(({ style: m, icon: t, width: o = 20, ...i }) => {
+  const { themeMode: e } = l.useThemeMode(), n = r.useMemo(() => p[e].primary, [e]);
+  return /* @__PURE__ */ s(
+    c,
     {
       ssr: !0,
-      icon: n,
+      icon: t,
       style: {
         width: o,
         minWidth: o,
@@ -15,14 +17,14 @@ const c = e.memo(({ style: r, icon: n, width: o = 20, ...i }) => {
         minHeight: o,
         flexShrink: 0,
         display: "inline-flex",
-        color: m,
-        ...r
+        color: n,
+        ...m
       },
       ...i
     }
   );
 });
-c.displayName = "Icon";
+a.displayName = "Icon";
 export {
-  c as default
+  a as default
 };

@@ -35,6 +35,7 @@ const meta = {
     },
     semanticColor: {
       description: "The semantic color of the button",
+      if: { arg: "variant", neq: "ghost" },
       control: { type: "select" },
       options: [...Object.keys(SemanticColors), undefined],
       table: { type: { summary: `undefined|SemanticColors"` }, defaultValue: { summary: "undefined" } },

@@ -1,8 +1,7 @@
 export interface PopoverProps extends React.HTMLAttributes<HTMLDivElement> {
     placement?: "top" | "bottom";
-    renderTrigger: (params?: {
-        isOpen: boolean;
-    }) => React.ReactNode;
+    renderTrigger: (isOpen: boolean) => React.ReactNode;
+    contentStyle?: React.CSSProperties;
 }
 export type PopoverPosition = {
     top: number;

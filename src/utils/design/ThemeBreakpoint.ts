@@ -8,10 +8,10 @@ export enum BreakPointName {
 }
 
 export const ThemeBreakPoint = {
-  xs: 444,
-  sm: 600,
-  md: 960,
-  lg: 1280,
-  xl: 1920,
-  xxl: 2560,
+  [BreakPointName.xs]: 444,
+  [BreakPointName.sm]: 600,
+  [BreakPointName.md]: 960,
+  [BreakPointName.lg]: 1280,
+  [BreakPointName.xl]: 1920,
+  [BreakPointName.xxl]: 2560,
 } as const;

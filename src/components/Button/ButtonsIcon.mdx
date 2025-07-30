@@ -8,3 +8,11 @@ import * as Stories from "./ButtonsIcon.stories";
 <Canvas of={Stories.Default} />
 
 <Controls />
+
+## TroubleShotting
+
+<br />
+
+#### `semanticColor` doesn't work when `variant="ghost"`
+
+Yes, that's right, `ghost` is supposed to be transparent like a GHOST. Although the `semanticColor` does not work, you can still use `style={{ color: ? }}` to override the style.

@@ -1,16 +1,17 @@
 import { jsx as p } from "react/jsx-runtime";
-import d from "react";
-import { TypographySize as a } from "../../utils/design/TypographySize.esm.js";
-const t = d.memo(({ style: o, text: r, ...e }) => /* @__PURE__ */ p(
+import t from "react";
+import { TypographySize as i } from "../../utils/design/TypographySize.esm.js";
+import { ThemeColor as m } from "../../utils/design/ThemeColor.esm.js";
+const a = t.memo(({ style: o, text: r, ...e }) => /* @__PURE__ */ p(
   "code",
   {
     style: {
-      color: "#B71D18",
+      color: m.TourmalineStiletto,
       backgroundColor: "#E7E9EB",
       border: "1px solid #CCCCCC",
       borderRadius: "4px",
       padding: "2px 4px",
-      fontSize: a.small,
+      fontSize: i.small,
       fontWeight: 600,
       ...o
     },
@@ -18,7 +19,7 @@ const t = d.memo(({ style: o, text: r, ...e }) => /* @__PURE__ */ p(
     children: r
   }
 ));
-t.displayName = "Typography.Code";
+a.displayName = "Typography.Code";
 export {
-  t as default
+  a as default
 };

@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { Card } from "./index";
+import { CardTagMap } from "./index.types";
 
 const meta = {
   title: "components/Card/Card",
@@ -12,6 +13,12 @@ const meta = {
       description: "The content to be rendered inside the portal",
       control: false,
       table: { type: { summary: "React.ReactNode" } },
+    },
+    as: {
+      description: "The element to be rendered as",
+      control: { type: "select" },
+      options: Object.values(CardTagMap),
+      table: { type: { summary: '"div"|"section"|"article"' }, defaultValue: { summary: '"div"' } },
     },
     isTransparent: {
       description: "Whether the card is transparent",
@@ -31,6 +38,7 @@ const meta = {
   },
   args: {
     children: null,
+    as: "div",
     isTransparent: false,
     isFrostedGlass: false,
     isOutline: false,

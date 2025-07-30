@@ -1,4 +1,10 @@
+export declare const CardTagMap: {
+    readonly div: "div";
+    readonly section: "section";
+    readonly article: "article";
+};
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+    as?: (typeof CardTagMap)[keyof typeof CardTagMap];
     isTransparent?: boolean;
     isFrostedGlass?: boolean;
     isOutline?: boolean;
