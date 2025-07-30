@@ -7,8 +7,8 @@ import { useTypographyStyle } from "./_useTypographyStyle";
 import { TypographyTextTagMap, type TypographyTextProps } from "./index.types";
 
 const TypographyText = React.memo<TypographyTextProps>(
-  ({ style, text, as: Tag = TypographyTextTagMap.span, semanticColor, ...props }) => {
-    const { fontColor } = useTypographyStyle({ ellipsis: 0, semanticColor });
+  ({ style, text, as: Tag = TypographyTextTagMap.span, isEllipsis = false, semanticColor, ...props }) => {
+    const { fontColor, ellipsisStyles } = useTypographyStyle({ ellipsis: isEllipsis ? 1 : 0, semanticColor });
 
     if (Tag === TypographyTextTagMap.strong) {
       return (
@@ -17,6 +17,7 @@ const TypographyText = React.memo<TypographyTextProps>(
             fontSize: TypographySize[TypographySizeName.strong],
             fontWeight: "bold",
             color: fontColor,
+            ...ellipsisStyles,
             ...style,
           }}
           {...props}
@@ -32,6 +33,7 @@ const TypographyText = React.memo<TypographyTextProps>(
           style={{
             fontSize: TypographySize[TypographySizeName.small],
             color: fontColor,
+            ...ellipsisStyles,
             ...style,
           }}
           {...props}
@@ -47,6 +49,7 @@ const TypographyText = React.memo<TypographyTextProps>(
           fontSize: TypographySize[TypographySizeName.text],
           fontWeight: "normal",
           color: fontColor,
+          ...ellipsisStyles,
           ...style,
         }}
         {...props}

@@ -1,15 +1,15 @@
-import { jsx as s } from "react/jsx-runtime";
-import { Icon as c } from "@iconify/react";
-import r from "react";
-import { Theme as l } from "../Theme/index.esm.js";
-import { TextColors as p } from "../../utils/design/colors.esm.js";
-const a = r.memo(({ style: m, icon: t, width: o = 20, ...i }) => {
-  const { themeMode: e } = l.useThemeMode(), n = r.useMemo(() => p[e].primary, [e]);
-  return /* @__PURE__ */ s(
-    c,
+import { jsx as c } from "react/jsx-runtime";
+import { Icon as l } from "@iconify/react";
+import m from "react";
+import { Theme as p } from "../Theme/index.esm.js";
+import { SemanticColors as f, TextColors as a } from "../../utils/design/colors.esm.js";
+const u = m.memo(({ style: t, icon: n, width: o = 20, semanticColor: e, ...i }) => {
+  const { themeMode: r } = p.useThemeMode(), s = m.useMemo(() => e ? f[e] : a[r].primary, [r, e]);
+  return /* @__PURE__ */ c(
+    l,
     {
       ssr: !0,
-      icon: t,
+      icon: n,
       style: {
         width: o,
         minWidth: o,
@@ -17,14 +17,14 @@ const a = r.memo(({ style: m, icon: t, width: o = 20, ...i }) => {
         minHeight: o,
         flexShrink: 0,
         display: "inline-flex",
-        color: n,
-        ...m
+        color: s,
+        ...t
       },
       ...i
     }
   );
 });
-a.displayName = "Icon";
+u.displayName = "Icon";
 export {
-  a as default
+  u as default
 };

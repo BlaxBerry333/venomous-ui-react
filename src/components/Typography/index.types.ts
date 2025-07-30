@@ -26,6 +26,7 @@ export interface TypographyTitleProps extends Omit<React.HTMLAttributes<HTMLHead
 export interface TypographyTextProps extends Omit<React.HTMLAttributes<HTMLSpanElement>, "children"> {
   text: string;
   as?: (typeof TypographyTextTagMap)[keyof typeof TypographyTextTagMap];
+  isEllipsis?: boolean; // 因为是内联元素所以省略行数固定为 1 or 0
 
   semanticColor?: keyof typeof SemanticColors;
 }

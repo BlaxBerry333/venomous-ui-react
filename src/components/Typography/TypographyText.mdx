@@ -10,3 +10,11 @@ import * as Stories from "./TypographyText.stories";
 <Canvas of={Stories.Default} />
 
 <Controls />
+
+## TroubleShotting
+
+<br />
+
+#### `ellipsis` doesn't work sometimes
+
+`<Typography.Text>` is an inline-block element. When using `ellipsis` ( especially in deep nesting ) you must specify `style={{ width: ? }}`, otherwise it will dynamically integrate the width of the parent element.

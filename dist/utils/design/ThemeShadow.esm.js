@@ -1,28 +1,37 @@
-const p = {
-  dark: {
-    // 标准阴影 - 卡片、面板
+import { ThemeMode as p } from "./ThemeMode.esm.js";
+const r = {
+  [p.Dark]: {
+    // 卡片
     primary: `
       0px 0px 4px 0px rgba(255, 255, 255, 0.9),
       0px 0px 2px -1px rgba(255, 255, 255, 0.7)
     `,
-    // 基础阴影 - 按钮、小卡片
+    // 按钮
     secondary: `
-      0px 0px 4px 0px rgba(255, 255, 255, 0.10)
+      0px 0px 4px 0px rgba(255, 255, 255, 0.4)
+    `,
+    // 菜单、小组件
+    tertiary: `
+      0px 0px 4px 0px rgba(255, 255, 255, 0.2)
     `,
     // 内阴影
     inset: `
       inset 0px 2px 4px 0px rgba(255, 255, 255, 0.7)
     `
   },
-  light: {
-    // 标准阴影 - 卡片、面板
+  [p.Light]: {
+    // 卡片
     primary: `
       0px 0px 4px 0px rgba(0, 0, 0, 0.4),
       0px 0px 2px -1px rgba(0, 0, 0, 0.25)
     `,
-    // 基础阴影 - 按钮、小卡片
+    // 按钮
     secondary: `
-      0px 0px 4px 0px rgba(0, 0, 0, 0.3)
+      0px 0px 4px 0px rgba(0, 0, 0, 0.4)
+    `,
+    // 菜单、小组件
+    tertiary: `
+      0px 0px 4px 0px rgba(0, 0, 0, 0.2)
     `,
     // 内阴影
     inset: `
@@ -31,5 +40,5 @@ const p = {
   }
 };
 export {
-  p as ThemeShadow
+  r as ThemeShadow
 };

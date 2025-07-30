@@ -8,7 +8,7 @@ export declare const getThemeColors: (theme: ThemeMode) => {
         readonly secondary: "#f8f9fa";
     };
     border: {
-        readonly primary: "rgba(255, 255, 255, 0.24)";
+        readonly primary: "rgba(255, 255, 255, 0.65)";
         readonly secondary: "rgba(255, 255, 255, 0.10)";
     } | {
         readonly primary: "rgba(38, 85, 115, 0.15)";

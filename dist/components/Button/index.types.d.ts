@@ -1,8 +1,13 @@
 import type { SemanticColors } from "@/utils";
 import type { IconProps } from "../Icon";
+export declare const ButtonVariantMap: {
+    readonly contained: "contained";
+    readonly outlined: "outlined";
+    readonly ghost: "ghost";
+};
 export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "children"> {
     text: string;
-    variant?: "contained" | "outlined" | "ghost";
+    variant?: keyof typeof ButtonVariantMap;
     isLoading?: boolean;
     isDisabled?: boolean;
     icon?: IconProps["icon"];
@@ -11,7 +16,7 @@ export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonE
     semanticColor?: keyof typeof SemanticColors;
 }
 export interface ButtonsIconProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "children"> {
-    variant?: "contained" | "outlined" | "ghost";
+    variant?: keyof typeof ButtonVariantMap;
     isLoading?: boolean;
     isDisabled?: boolean;
     icon: IconProps["icon"];

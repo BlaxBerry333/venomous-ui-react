@@ -1,10 +1,11 @@
-const r = {
+import { ThemeMode as r } from "./ThemeMode.esm.js";
+const o = {
   success: "#4caf50",
   error: "#f44336",
   warning: "#ff9800",
   info: "#2196f3"
-}, a = {
-  dark: {
+}, e = {
+  [r.Dark]: {
     primary: "#ffffff",
     // 主要文本
     secondary: "#cccccc",
@@ -16,7 +17,7 @@ const r = {
     disabled: "#4a4a4a"
     // 禁用文本
   },
-  light: {
+  [r.Light]: {
     primary: "#212121",
     // 主要文本
     secondary: "#424242",
@@ -28,32 +29,32 @@ const r = {
     disabled: "#bdbdbd"
     // 禁用文本
   }
-}, o = {
-  dark: {
+}, f = {
+  [r.Dark]: {
     primary: "#181818",
     // 主背景
     secondary: "#242424"
     // 卡片/面板背景
   },
-  light: {
+  [r.Light]: {
     primary: "#ffffff",
     // 主背景
     secondary: "#f8f9fa"
     // 卡片/面板背景
   }
 }, c = {
-  dark: {
-    primary: "rgba(255, 255, 255, 0.24)",
+  [r.Dark]: {
+    primary: "rgba(255, 255, 255, 0.65)",
     secondary: "rgba(255, 255, 255, 0.10)"
   },
-  light: {
+  [r.Light]: {
     primary: "rgba(38, 85, 115, 0.15)",
     secondary: "rgba(0, 0, 0, 0.15)"
   }
 };
 export {
-  o as BackgroundColors,
+  f as BackgroundColors,
   c as BorderColors,
-  r as SemanticColors,
-  a as TextColors
+  o as SemanticColors,
+  e as TextColors
 };

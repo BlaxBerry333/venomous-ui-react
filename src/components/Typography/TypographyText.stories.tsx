@@ -17,12 +17,17 @@ const meta = {
     },
     text: {
       description: "The text to be rendered",
-      control: false,
+      control: { type: "text" },
       type: { name: "string", required: true },
       table: { type: { summary: "string" } },
     },
+    isEllipsis: {
+      description: "Whether the text is to be eclipsed",
+      control: { type: "boolean" },
+      table: { type: { summary: "boolean" }, defaultValue: { summary: "false" } },
+    },
     semanticColor: {
-      description: "The semantic color of the text",
+      description: "The built-in semantic color of the text",
       control: { type: "select" },
       options: [...Object.keys(SemanticColors), undefined],
       table: { type: { summary: `undefined|SemanticColors"` }, defaultValue: { summary: "undefined" } },
@@ -32,6 +37,7 @@ const meta = {
     as: "span",
     text: "xxxx",
     semanticColor: undefined,
+    isEllipsis: false,
   },
 } satisfies Meta<typeof Typography.Text>;
 
@@ -41,4 +47,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   name: "Default",
+  render: function RenderStory(args) {
+    return <Typography.Text {...args} style={{ ...(args.isEllipsis && { width: "200px" }) }} />;
+  },
 };

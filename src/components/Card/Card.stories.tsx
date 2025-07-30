@@ -10,7 +10,7 @@ const meta = {
   tags: ["!autodocs", "!dev"],
   argTypes: {
     children: {
-      description: "The content to be rendered inside the portal",
+      description: "The content to be rendered inside the card",
       control: false,
       table: { type: { summary: "React.ReactNode" } },
     },

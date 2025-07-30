@@ -18,6 +18,6 @@ export declare const TypographySize: {
     readonly h6: "1.25rem";
     readonly text: "1rem";
     readonly strong: "1rem";
-    readonly small: "0.875rem";
+    readonly small: "0.75rem";
 };
 //# sourceMappingURL=TypographySize.d.ts.map

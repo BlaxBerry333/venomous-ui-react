@@ -19,5 +19,5 @@ export const TypographySize = {
   [TypographySizeName.h6]: "1.25rem", // 20px
   [TypographySizeName.text]: "1rem", // 16px
   [TypographySizeName.strong]: "1rem", // 16px
-  [TypographySizeName.small]: "0.875rem", // 14px
+  [TypographySizeName.small]: "0.75rem", // 14px
 } as const;

@@ -37,7 +37,13 @@ const ButtonsIcon = React.memo<ButtonsIconProps>(
         }}
         {...props}
       >
-        <Icon icon={isLoading ? "eos-icons:loading" : icon} width={iconWidth} style={{ color: buttonStyles.color }} />
+        <Icon
+          icon={isLoading ? "eos-icons:loading" : icon}
+          width={iconWidth}
+          style={{
+            color: buttonStyles.color,
+          }}
+        />
       </button>
     );
   },

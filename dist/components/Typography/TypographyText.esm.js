@@ -1,50 +1,53 @@
-import { jsx as l } from "react/jsx-runtime";
-import s from "react";
-import { useTypographyStyle as y } from "./_useTypographyStyle.esm.js";
+import { jsx as i } from "react/jsx-runtime";
+import f from "react";
+import { useTypographyStyle as g } from "./_useTypographyStyle.esm.js";
 import { TypographyTextTagMap as a } from "./index.types.esm.js";
-import { TypographySize as i, TypographySizeName as n } from "../../utils/design/TypographySize.esm.js";
-const f = s.memo(
-  ({ style: o, text: r, as: p = a.span, semanticColor: m, ...t }) => {
-    const { fontColor: e } = y({ ellipsis: 0, semanticColor: m });
-    return p === a.strong ? /* @__PURE__ */ l(
+import { TypographySize as n, TypographySizeName as p } from "../../utils/design/TypographySize.esm.js";
+const h = f.memo(
+  ({ style: o, text: r, as: s = a.span, isEllipsis: m = !1, semanticColor: y, ...e }) => {
+    const { fontColor: t, ellipsisStyles: l } = g({ ellipsis: m ? 1 : 0, semanticColor: y });
+    return s === a.strong ? /* @__PURE__ */ i(
       "strong",
       {
         style: {
-          fontSize: i[n.strong],
+          fontSize: n[p.strong],
           fontWeight: "bold",
-          color: e,
+          color: t,
+          ...l,
           ...o
         },
-        ...t,
+        ...e,
         children: r
       }
-    ) : p === a.small ? /* @__PURE__ */ l(
+    ) : s === a.small ? /* @__PURE__ */ i(
       "small",
       {
         style: {
-          fontSize: i[n.small],
-          color: e,
+          fontSize: n[p.small],
+          color: t,
+          ...l,
           ...o
         },
-        ...t,
+        ...e,
         children: r
       }
-    ) : /* @__PURE__ */ l(
+    ) : /* @__PURE__ */ i(
       "span",
       {
         style: {
-          fontSize: i[n.text],
+          fontSize: n[p.text],
           fontWeight: "normal",
-          color: e,
+          color: t,
+          ...l,
           ...o
         },
-        ...t,
+        ...e,
         children: r
       }
     );
   }
 );
-f.displayName = "Typography.Text";
+h.displayName = "Typography.Text";
 export {
-  f as default
+  h as default
 };

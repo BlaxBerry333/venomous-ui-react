@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Typography } from "../Typography";
+import { Menu } from "../Menu";
 import { Cards } from "./index";
 
 const meta = {
@@ -10,7 +10,7 @@ const meta = {
   tags: ["!autodocs", "!dev"],
   argTypes: {
     children: {
-      description: "The content to be rendered inside the portal",
+      description: "The content to be rendered inside the product card",
       control: false,
       table: { type: { summary: "React.ReactNode" } },
     },
@@ -57,9 +57,10 @@ export const Default: Story = {
       <Cards.Product
         {...args}
         renderMenu={() => (
-          <ul>
-            <Typography.Text text="xxxx" />
-          </ul>
+          <Menu.List>
+            <Menu.Item text="Edit" icon="solar:pen-line-duotone" onClick={() => {}} />
+            <Menu.Item text="Delete" icon="solar:trash-bin-trash-line-duotone" onClick={() => {}} />
+          </Menu.List>
         )}
       />
     );

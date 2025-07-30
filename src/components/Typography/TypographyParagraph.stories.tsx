@@ -12,7 +12,7 @@ const meta = {
   tags: ["!autodocs", "!dev"],
   argTypes: {
     children: {
-      description: "The content to be rendered inside the portal",
+      description: "The content to be rendered inside the paragraph",
       control: false,
       table: { type: { summary: "React.ReactNode" } },
     },
@@ -22,7 +22,7 @@ const meta = {
       table: { type: { summary: "number" }, defaultValue: { summary: "0" } },
     },
     semanticColor: {
-      description: "The semantic color of the text",
+      description: "The built-in built-in semantic color of the text",
       control: { type: "select" },
       options: [...Object.keys(SemanticColors), undefined],
       table: { type: { summary: `undefined|SemanticColors"` }, defaultValue: { summary: "undefined" } },

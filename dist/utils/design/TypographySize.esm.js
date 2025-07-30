@@ -16,7 +16,7 @@ const r = {
   // 16px
   strong: "1rem",
   // 16px
-  small: "0.875rem"
+  small: "0.75rem"
   // 14px
 };
 export {

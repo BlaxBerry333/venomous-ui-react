@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { SemanticColors } from "@/utils";
 import { Button } from "./index";
+import { ButtonVariantMap } from "./index.types";
 
 const meta = {
   title: "components/Button/Button",
@@ -21,14 +22,14 @@ const meta = {
     variant: {
       description: "The variant of the button",
       control: { type: "select" },
-      options: ["contained", "outlined", "ghost"],
-      table: { type: { summary: `"contained"|"outlined"|"ghost"` }, defaultValue: { summary: '"contained"' } },
+      options: Object.values(ButtonVariantMap),
+      table: { type: { summary: `"contained"|"outlined"|"ghost"|"flat"` }, defaultValue: { summary: '"contained"' } },
     },
     color: {
       table: { disable: true },
     },
     semanticColor: {
-      description: "The semantic color of the button",
+      description: "The built-in semantic color of the button",
       if: { arg: "variant", neq: "ghost" },
       control: { type: "select" },
       options: [...Object.keys(SemanticColors), undefined],

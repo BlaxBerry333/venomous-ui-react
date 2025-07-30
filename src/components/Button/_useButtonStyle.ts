@@ -11,7 +11,7 @@ import {
   TypographySize,
 } from "@/utils";
 import { Theme } from "../Theme";
-import type { ButtonProps } from "./index.types";
+import { ButtonVariantMap, type ButtonProps } from "./index.types";
 
 export function useButtonStyle({
   isLoading,
@@ -29,13 +29,13 @@ export function useButtonStyle({
       return color;
     }
     switch (variant) {
-      case "contained":
+      case ButtonVariantMap.contained:
         color = semanticColor ? SemanticColors[semanticColor] : themeColor;
         break;
-      case "outlined":
+      case ButtonVariantMap.outlined:
         color = BackgroundColors[themeMode].secondary;
         break;
-      case "ghost":
+      case ButtonVariantMap.ghost:
       default:
         color = "transparent";
         break;
@@ -50,15 +50,17 @@ export function useButtonStyle({
       return color;
     }
     switch (variant) {
-      case "contained":
-        color = semanticColor ? getLighterHex(SemanticColors[semanticColor], 0.25) : getOpacityHex(themeColor, 0.25);
+      case ButtonVariantMap.contained:
+        color = semanticColor ? getLighterHex(SemanticColors[semanticColor], 0.25) : getOpacityHex(themeColor, 0.5);
         break;
-      case "outlined":
+      case ButtonVariantMap.outlined:
         color = semanticColor ? SemanticColors[semanticColor] : themeColor;
         break;
-      case "ghost":
-      default:
+      case ButtonVariantMap.ghost:
         color = BorderColors[themeMode].secondary;
+        break;
+      default:
+        color = "transparent";
         break;
     }
     return color;
@@ -71,13 +73,13 @@ export function useButtonStyle({
       return color;
     }
     switch (variant) {
-      case "contained":
+      case ButtonVariantMap.contained:
         color = "#ffffff";
         break;
-      case "outlined":
+      case ButtonVariantMap.outlined:
         color = semanticColor ? SemanticColors[semanticColor] : themeColor;
         break;
-      case "ghost":
+      case ButtonVariantMap.ghost:
       default:
         color = TextColors[themeMode].primary;
         break;
@@ -106,7 +108,7 @@ export function useButtonStyle({
       fontWeight: "bold",
       cursor: isLoading ? "wait" : isDisabled ? "not-allowed" : "pointer",
       borderRadius: "8px",
-      borderWidth: 1.5,
+      borderWidth: 2,
       borderColor,
       boxShadow,
       backgroundColor,

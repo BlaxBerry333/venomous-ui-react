@@ -1,1 +1,1 @@
-{"version":3,"file":"TypographyText.d.ts","sourceRoot":"","sources":["../../../src/components/Typography/TypographyText.tsx"],"names":[],"mappings":"AAEA,OAAO,KAAK,MAAM,OAAO,CAAC;AAI1B,OAAO,EAAwB,KAAK,mBAAmB,EAAE,MAAM,eAAe,CAAC;AAE/E,QAAA,MAAM,cAAc,iDAiDnB,CAAC;AAGF,eAAe,cAAc,CAAC"}
+{"version":3,"file":"TypographyText.d.ts","sourceRoot":"","sources":["../../../src/components/Typography/TypographyText.tsx"],"names":[],"mappings":"AAEA,OAAO,KAAK,MAAM,OAAO,CAAC;AAI1B,OAAO,EAAwB,KAAK,mBAAmB,EAAE,MAAM,eAAe,CAAC;AAE/E,QAAA,MAAM,cAAc,iDAoDnB,CAAC;AAGF,eAAe,cAAc,CAAC"}

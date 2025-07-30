@@ -1,1 +1,1 @@
-{"version":3,"file":"colors.d.ts","sourceRoot":"","sources":["../../../src/utils/design/colors.ts"],"names":[],"mappings":"AAAA,eAAO,MAAM,cAAc;;;;;CAKjB,CAAC;AAEX,eAAO,MAAM,UAAU;;;;;;;;;;;;;;;CAeb,CAAC;AAEX,eAAO,MAAM,gBAAgB;;;;;;;;;CASnB,CAAC;AAEX,eAAO,MAAM,YAAY;;;;;;;;;CASf,CAAC"}
+{"version":3,"file":"colors.d.ts","sourceRoot":"","sources":["../../../src/utils/design/colors.ts"],"names":[],"mappings":"AAEA,eAAO,MAAM,cAAc;;;;;CAKjB,CAAC;AAEX,eAAO,MAAM,UAAU;;;;;;;;;;;;;;;CAeb,CAAC;AAEX,eAAO,MAAM,gBAAgB;;;;;;;;;CASnB,CAAC;AAEX,eAAO,MAAM,YAAY;;;;;;;;;CASf,CAAC"}

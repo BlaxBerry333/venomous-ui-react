@@ -3,11 +3,12 @@
 import React from "react";
 
 import { Buttons } from "../Button";
-import { Popover } from "../Popover";
 import { Space } from "../Space";
 import { Typography } from "../Typography";
 import Card from "./Card";
 import { CardTagMap, type CardsProductProps } from "./index.types";
+
+const Popover = React.lazy(() => import("../Popover").then((module) => ({ default: module.Popover })));
 
 const CardsProduct = React.memo<CardsProductProps>(({ children, title = "", description = "", renderMenu }) => {
   return (
@@ -19,16 +20,23 @@ const CardsProduct = React.memo<CardsProductProps>(({ children, title = "", desc
         </Space.Flex>
       )}
 
-      <Popover
-        placement="bottom"
-        renderTrigger={(isOpen) => (
-          <Buttons.Icon icon="solar:hamburger-menu-line-duotone" variant="ghost" isDisabled={isOpen} />
-        )}
-        style={{ position: "absolute", top: "4px", right: "4px", zIndex: 1 }}
-        contentStyle={{ transform: "translateY(-40px)" }}
-      >
-        {renderMenu()}
-      </Popover>
+      <React.Suspense fallback={null}>
+        <Popover
+          placement="bottom"
+          renderTrigger={(isOpen) => (
+            <Buttons.Icon
+              icon="solar:hamburger-menu-line-duotone"
+              variant="ghost"
+              isDisabled={isOpen}
+              style={{ boxShadow: "none" }}
+            />
+          )}
+          style={{ position: "absolute", top: "4px", right: "4px", zIndex: 1 }}
+          contentStyle={{ transform: "translateY(-40px)" }}
+        >
+          {renderMenu()}
+        </Popover>
+      </React.Suspense>
 
       {children && <Space.Flex column>{children}</Space.Flex>}
     </Card>

@@ -7,88 +7,108 @@ import { useHandler } from "@/hooks";
 import { Card } from "../Card";
 import type { PopoverPosition, PopoverProps } from "./index.types";
 
-const Popover = React.memo<PopoverProps>(({ children, style, contentStyle, placement = "bottom", renderTrigger }) => {
-  const handler = useHandler();
-  const wrapperRef = React.useRef<HTMLDivElement>(null);
-  const triggerRef = React.useRef<HTMLDivElement>(null);
-  const popoverRef = React.useRef<HTMLDivElement>(null);
-  const [position, setPosition] = React.useState<PopoverPosition>({ top: 0, left: 0 });
+const Popover = React.memo<PopoverProps>(
+  ({ children, style, contentStyle, placement = "bottom", renderTrigger, trigger = "click" }) => {
+    const handler = useHandler();
+    const wrapperRef = React.useRef<HTMLDivElement>(null);
+    const triggerRef = React.useRef<HTMLDivElement>(null);
+    const popoverRef = React.useRef<HTMLDivElement>(null);
+    const [position, setPosition] = React.useState<PopoverPosition>({ top: 0, left: 0 });
 
-  // 外部点击关闭
-  React.useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        popoverRef.current &&
-        !popoverRef.current.contains(event.target as Node) &&
-        !triggerRef.current?.contains(event.target as Node)
-      ) {
-        handler.close();
+    // 外部点击关闭（仅在click模式下生效）
+    React.useEffect(() => {
+      if (trigger !== "click") return;
+      const handleClickOutside = (event: MouseEvent) => {
+        if (
+          popoverRef.current &&
+          !popoverRef.current.contains(event.target as Node) &&
+          !triggerRef.current?.contains(event.target as Node)
+        ) {
+          handler.close();
+        }
+      };
+      if (handler.isOpen) {
+        document.addEventListener("mousedown", handleClickOutside);
       }
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [handler, trigger]);
+
+    // Popover 定位计算（相对 wrapper）
+    React.useEffect(() => {
+      if (handler.isOpen && wrapperRef.current && triggerRef.current && popoverRef.current) {
+        const wrapperRect = wrapperRef.current.getBoundingClientRect();
+        const triggerRect = triggerRef.current.getBoundingClientRect();
+        const popoverWidth = popoverRef.current.offsetWidth;
+        const popoverHeight = popoverRef.current.offsetHeight;
+        const relativeTop = triggerRect.top - wrapperRect.top;
+        const relativeLeft = triggerRect.left - wrapperRect.left;
+        const top = placement === "bottom" ? relativeTop + triggerRect.height : relativeTop - popoverHeight;
+        const left = relativeLeft + triggerRect.width / 2 - popoverWidth / 2;
+        setPosition({ top, left });
+      }
+    }, [handler.isOpen, placement]);
+
+    // hover模式的事件处理函数
+    const handleWrapperMouseEnter = () => {
+      if (trigger !== "hover") return;
+      handler.open();
     };
 
-    if (handler.isOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+    const handleWrapperMouseLeave = () => {
+      if (trigger !== "hover") return;
+      handler.close();
     };
-  }, [handler]);
 
-  // Popover 定位计算（相对 wrapper）
-  React.useEffect(() => {
-    if (handler.isOpen && wrapperRef.current && triggerRef.current && popoverRef.current) {
-      const wrapperRect = wrapperRef.current.getBoundingClientRect();
-      const triggerRect = triggerRef.current.getBoundingClientRect();
-      const popoverWidth = popoverRef.current.offsetWidth;
-      const popoverHeight = popoverRef.current.offsetHeight;
+    // 根据触发方式设置事件处理器
+    const wrapperProps =
+      trigger === "hover"
+        ? {
+            onMouseEnter: handleWrapperMouseEnter,
+            onMouseLeave: handleWrapperMouseLeave,
+          }
+        : {};
 
-      const relativeTop = triggerRect.top - wrapperRect.top;
-      const relativeLeft = triggerRect.left - wrapperRect.left;
+    const triggerProps = trigger === "click" ? { onClick: handler.toggle } : {};
 
-      const top = placement === "bottom" ? relativeTop + triggerRect.height + 8 : relativeTop - popoverHeight - 8;
+    return (
+      <div ref={wrapperRef} style={{ display: "inline-block", position: "relative", ...style }} {...wrapperProps}>
+        <div ref={triggerRef} {...triggerProps} style={{ display: "inline-block" }}>
+          {renderTrigger(handler.isOpen)}
+        </div>
 
-      const left = relativeLeft + triggerRect.width / 2 - popoverWidth / 2;
-
-      setPosition({ top, left });
-    }
-  }, [handler.isOpen, placement]);
-
-  return (
-    <div ref={wrapperRef} style={{ display: "inline-block", position: "relative", ...style }}>
-      <div ref={triggerRef} onClick={handler.toggle} style={{ display: "inline-block" }}>
-        {renderTrigger(handler.isOpen)}
-      </div>
-
-      <AnimatePresence>
-        {handler.isOpen && (
-          <motion.div
-            ref={popoverRef}
-            initial={{ opacity: 0, y: placement === "bottom" ? -5 : 5 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: placement === "bottom" ? -5 : 5 }}
-            transition={{ duration: 0.2 }}
-            style={{
-              position: "absolute",
-              top: position.top,
-              left: position.left,
-              zIndex: 1000,
-              minWidth: triggerRef.current?.offsetWidth,
-            }}
-          >
-            <Card
+        <AnimatePresence>
+          {handler.isOpen && (
+            <motion.div
+              ref={popoverRef}
+              initial={{ opacity: 0, y: placement === "bottom" ? -5 : 5 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: placement === "bottom" ? -5 : 5 }}
+              transition={{ duration: 0.2 }}
               style={{
-                padding: "8px",
-                ...contentStyle,
+                position: "absolute",
+                top: position.top,
+                left: position.left,
+                zIndex: 1000,
+                minWidth: triggerRef.current?.offsetWidth,
               }}
             >
-              {children}
-            </Card>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-});
+              <Card
+                style={{
+                  padding: "8px",
+                  ...contentStyle,
+                }}
+              >
+                {children}
+              </Card>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    );
+  },
+);
 
 Popover.displayName = "Popover";
 export default Popover;

@@ -14,19 +14,19 @@ const meta = {
   tags: ["!autodocs", "!dev"],
   argTypes: {
     children: {
-      description: "The content to be rendered inside the portal",
+      description: "The content to be rendered inside the modal",
       control: false,
       type: { name: "string", required: true },
       table: { type: { summary: "React.ReactNode" } },
     },
     isOpen: {
-      description: "Whether the drawer is open",
+      description: "Whether the modal is open",
       control: { type: "boolean" },
       type: { name: "string", required: true },
       table: { defaultValue: { summary: "false" } },
     },
     onClose: {
-      description: "The callback function to be called when the drawer is closed",
+      description: "The callback function to be called when the modal is closed",
       control: false,
       type: { name: "string", required: true },
       table: { category: "Events", type: { summary: "() => void" } },

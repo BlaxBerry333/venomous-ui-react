@@ -32,7 +32,16 @@ const b = d.memo(
           ...i
         },
         ...n,
-        children: /* @__PURE__ */ r(p, { icon: t ? "eos-icons:loading" : c, width: a, style: { color: e.color } })
+        children: /* @__PURE__ */ r(
+          p,
+          {
+            icon: t ? "eos-icons:loading" : c,
+            width: a,
+            style: {
+              color: e.color
+            }
+          }
+        )
       }
     );
   }

@@ -1,69 +1,72 @@
-import f from "react";
-import { Theme as m } from "../Theme/index.esm.js";
-import { BackgroundColors as a, SemanticColors as d, BorderColors as x, TextColors as b } from "../../utils/design/colors.esm.js";
-import { ThemeShadow as y } from "../../utils/design/ThemeShadow.esm.js";
-import { TypographySize as k } from "../../utils/design/TypographySize.esm.js";
-import { getLighterHex as w, getOpacityHex as S } from "../../utils/tools/get-colors.esm.js";
-function H({
-  isLoading: r,
+import p from "react";
+import { Theme as l } from "../Theme/index.esm.js";
+import { ButtonVariantMap as r } from "./index.types.esm.js";
+import { BackgroundColors as x, SemanticColors as d, BorderColors as b, TextColors as y } from "../../utils/design/colors.esm.js";
+import { ThemeShadow as k } from "../../utils/design/ThemeShadow.esm.js";
+import { TypographySize as w } from "../../utils/design/TypographySize.esm.js";
+import { getLighterHex as S, getOpacityHex as M } from "../../utils/tools/get-colors.esm.js";
+function j({
+  isLoading: n,
   isDisabled: u,
-  variant: n,
-  semanticColor: o
+  variant: f,
+  semanticColor: t
 }) {
-  const { themeColor: c } = m.useThemeColor(), { themeMode: t } = m.useThemeMode(), h = f.useMemo(() => {
+  const { themeColor: c } = l.useThemeColor(), { themeMode: o } = l.useThemeMode(), h = p.useMemo(() => {
     let e = "";
-    if (r || u)
-      return e = a[t].secondary, e;
-    switch (n) {
-      case "contained":
-        e = o ? d[o] : c;
+    if (n || u)
+      return e = x[o].secondary, e;
+    switch (f) {
+      case r.contained:
+        e = t ? d[t] : c;
         break;
-      case "outlined":
-        e = a[t].secondary;
+      case r.outlined:
+        e = x[o].secondary;
         break;
-      case "ghost":
+      case r.ghost:
       default:
         e = "transparent";
         break;
     }
     return e;
-  }, [n, c, t, r, u, o]), p = f.useMemo(() => {
+  }, [f, c, o, n, u, t]), a = p.useMemo(() => {
     let e = "";
-    if (r || u)
-      return e = x[t].secondary, e;
-    switch (n) {
-      case "contained":
-        e = o ? w(d[o], 0.25) : S(c, 0.25);
+    if (n || u)
+      return e = b[o].secondary, e;
+    switch (f) {
+      case r.contained:
+        e = t ? S(d[t], 0.25) : M(c, 0.5);
         break;
-      case "outlined":
-        e = o ? d[o] : c;
+      case r.outlined:
+        e = t ? d[t] : c;
         break;
-      case "ghost":
+      case r.ghost:
+        e = b[o].secondary;
+        break;
       default:
-        e = x[t].secondary;
+        e = "transparent";
         break;
     }
     return e;
-  }, [n, c, t, r, u, o]), s = f.useMemo(() => {
+  }, [f, c, o, n, u, t]), m = p.useMemo(() => {
     let e = "";
-    if (r || u)
-      return e = b[t].disabled, e;
-    switch (n) {
-      case "contained":
+    if (n || u)
+      return e = y[o].disabled, e;
+    switch (f) {
+      case r.contained:
         e = "#ffffff";
         break;
-      case "outlined":
-        e = o ? d[o] : c;
+      case r.outlined:
+        e = t ? d[t] : c;
         break;
-      case "ghost":
+      case r.ghost:
       default:
-        e = b[t].primary;
+        e = y[o].primary;
         break;
     }
     return e;
-  }, [n, c, t, r, u, o]), l = f.useMemo(() => y[t].secondary, [n, c, t]);
+  }, [f, c, o, n, u, t]), s = p.useMemo(() => k[o].secondary, [f, c, o]);
   return {
-    buttonStyles: f.useMemo(
+    buttonStyles: p.useMemo(
       () => ({
         boxSizing: "border-box",
         display: "flex",
@@ -76,20 +79,20 @@ function H({
         height: "40px",
         padding: "0px 16px",
         textTransform: "capitalize",
-        fontSize: k.text,
+        fontSize: w.text,
         fontWeight: "bold",
-        cursor: r ? "wait" : u ? "not-allowed" : "pointer",
+        cursor: n ? "wait" : u ? "not-allowed" : "pointer",
         borderRadius: "8px",
-        borderWidth: 1.5,
-        borderColor: p,
-        boxShadow: l,
+        borderWidth: 2,
+        borderColor: a,
+        boxShadow: s,
         backgroundColor: h,
-        color: s
+        color: m
       }),
-      [r, u, p, h, s, l]
+      [n, u, a, h, m, s]
     )
   };
 }
 export {
-  H as useButtonStyle
+  j as useButtonStyle
 };

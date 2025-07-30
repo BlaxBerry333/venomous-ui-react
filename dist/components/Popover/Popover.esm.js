@@ -1,56 +1,68 @@
-import { jsxs as O, jsx as l } from "react/jsx-runtime";
-import { AnimatePresence as w, motion as C } from "framer-motion";
+import { jsxs as x, jsx as l } from "react/jsx-runtime";
+import { AnimatePresence as L, motion as M } from "framer-motion";
 import o from "react";
-import k from "../../hooks/useHandler/index.esm.js";
-import E from "../Card/Card.esm.js";
-const P = o.memo(({ children: a, style: m, contentStyle: g, placement: s = "bottom", renderTrigger: h }) => {
-  var d;
-  const t = k(), p = o.useRef(null), i = o.useRef(null), n = o.useRef(null), [f, v] = o.useState({ top: 0, left: 0 });
-  return o.useEffect(() => {
-    const r = (e) => {
-      var c;
-      n.current && !n.current.contains(e.target) && !((c = i.current) != null && c.contains(e.target)) && t.close();
-    };
-    return t.isOpen && document.addEventListener("mousedown", r), () => {
-      document.removeEventListener("mousedown", r);
-    };
-  }, [t]), o.useEffect(() => {
-    if (t.isOpen && p.current && i.current && n.current) {
-      const r = p.current.getBoundingClientRect(), e = i.current.getBoundingClientRect(), c = n.current.offsetWidth, y = n.current.offsetHeight, u = e.top - r.top, R = e.left - r.left, b = s === "bottom" ? u + e.height + 8 : u - y - 8, x = R + e.width / 2 - c / 2;
-      v({ top: b, left: x });
-    }
-  }, [t.isOpen, s]), /* @__PURE__ */ O("div", { ref: p, style: { display: "inline-block", position: "relative", ...m }, children: [
-    /* @__PURE__ */ l("div", { ref: i, onClick: t.toggle, style: { display: "inline-block" }, children: h(t.isOpen) }),
-    /* @__PURE__ */ l(w, { children: t.isOpen && /* @__PURE__ */ l(
-      C.div,
-      {
-        ref: n,
-        initial: { opacity: 0, y: s === "bottom" ? -5 : 5 },
-        animate: { opacity: 1, y: 0 },
-        exit: { opacity: 0, y: s === "bottom" ? -5 : 5 },
-        transition: { duration: 0.2 },
-        style: {
-          position: "absolute",
-          top: f.top,
-          left: f.left,
-          zIndex: 1e3,
-          minWidth: (d = i.current) == null ? void 0 : d.offsetWidth
-        },
-        children: /* @__PURE__ */ l(
-          E,
-          {
-            style: {
-              padding: "8px",
-              ...g
-            },
-            children: a
-          }
-        )
+import O from "../../hooks/useHandler/index.esm.js";
+import P from "../Card/Card.esm.js";
+const C = o.memo(
+  ({ children: m, style: h, contentStyle: v, placement: c = "bottom", renderTrigger: y, trigger: n = "click" }) => {
+    var f;
+    const e = O(), a = o.useRef(null), i = o.useRef(null), r = o.useRef(null), [u, R] = o.useState({ top: 0, left: 0 });
+    o.useEffect(() => {
+      if (n !== "click") return;
+      const s = (t) => {
+        var p;
+        r.current && !r.current.contains(t.target) && !((p = i.current) != null && p.contains(t.target)) && e.close();
+      };
+      return e.isOpen && document.addEventListener("mousedown", s), () => {
+        document.removeEventListener("mousedown", s);
+      };
+    }, [e, n]), o.useEffect(() => {
+      if (e.isOpen && a.current && i.current && r.current) {
+        const s = a.current.getBoundingClientRect(), t = i.current.getBoundingClientRect(), p = r.current.offsetWidth, b = r.current.offsetHeight, d = t.top - s.top, k = t.left - s.left, E = c === "bottom" ? d + t.height : d - b, w = k + t.width / 2 - p / 2;
+        R({ top: E, left: w });
       }
-    ) })
-  ] });
-});
-P.displayName = "Popover";
+    }, [e.isOpen, c]);
+    const g = n === "hover" ? {
+      onMouseEnter: () => {
+        n === "hover" && e.open();
+      },
+      onMouseLeave: () => {
+        n === "hover" && e.close();
+      }
+    } : {}, W = n === "click" ? { onClick: e.toggle } : {};
+    return /* @__PURE__ */ x("div", { ref: a, style: { display: "inline-block", position: "relative", ...h }, ...g, children: [
+      /* @__PURE__ */ l("div", { ref: i, ...W, style: { display: "inline-block" }, children: y(e.isOpen) }),
+      /* @__PURE__ */ l(L, { children: e.isOpen && /* @__PURE__ */ l(
+        M.div,
+        {
+          ref: r,
+          initial: { opacity: 0, y: c === "bottom" ? -5 : 5 },
+          animate: { opacity: 1, y: 0 },
+          exit: { opacity: 0, y: c === "bottom" ? -5 : 5 },
+          transition: { duration: 0.2 },
+          style: {
+            position: "absolute",
+            top: u.top,
+            left: u.left,
+            zIndex: 1e3,
+            minWidth: (f = i.current) == null ? void 0 : f.offsetWidth
+          },
+          children: /* @__PURE__ */ l(
+            P,
+            {
+              style: {
+                padding: "8px",
+                ...v
+              },
+              children: m
+            }
+          )
+        }
+      ) })
+    ] });
+  }
+);
+C.displayName = "Popover";
 export {
-  P as default
+  C as default
 };

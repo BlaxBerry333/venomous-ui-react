@@ -27,7 +27,7 @@ const meta = {
       table: { type: { summary: "number" }, defaultValue: { summary: "0" } },
     },
     semanticColor: {
-      description: "The semantic color of the text",
+      description: "The built-in semantic color of the text",
       control: { type: "select" },
       options: [...Object.keys(SemanticColors), undefined],
       table: { type: { summary: `undefined|SemanticColors"` }, defaultValue: { summary: "undefined" } },

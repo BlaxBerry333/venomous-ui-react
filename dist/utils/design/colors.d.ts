@@ -32,7 +32,7 @@ export declare const BackgroundColors: {
 };
 export declare const BorderColors: {
     readonly dark: {
-        readonly primary: "rgba(255, 255, 255, 0.24)";
+        readonly primary: "rgba(255, 255, 255, 0.65)";
         readonly secondary: "rgba(255, 255, 255, 0.10)";
     };
     readonly light: {
