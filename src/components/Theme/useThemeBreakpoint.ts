@@ -70,10 +70,8 @@ export default function useThemeBreakpoint() {
     () => ({
       screenSize,
       isLargerThanOrEqual,
-
-      // 渲染策略辅助
-      shouldUseGridLayout: isRealSize, // 是否应该使用复杂的网格布局
-      shouldUseFallbackLayout: !isRealSize, // 是否应该使用降级布局
+      isMounted: mounted,
+      isSSRHydrated: mounted && isRealSize, // 是否已完成水合且获取真实尺寸
     }),
     [screenSize, mounted, isRealSize, isLargerThanOrEqual],
   );

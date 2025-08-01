@@ -1,0 +1,26 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="components/NoSSR/NoSSR" />
+
+# NoSSR
+
+`<NoSSR>` is a utility wrapper component used in SSR frameworks like Next.js to prevent from **hydration mismatch** errors.
+
+It ensures that wrapped content only renders on the client side, avoiding discrepancies between server-rendered HTML and client-rendered React output.
+
+```tsx
+"use client";
+
+import { Theme, NoSSR } from "venomous-ui-react/components";
+
+function App() {
+  return (
+    <NoSSR>
+      <Theme.Provider>
+        {/* App Content */}
+        {/* Other Components */}
+      </Theme.Provider>
+    </NoSSR>
+  );
+}
+```

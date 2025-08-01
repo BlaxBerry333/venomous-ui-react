@@ -3,50 +3,48 @@ import { ThemeBreakPoint as a, BreakPointName as e } from "../../utils/design/Th
 const p = new Map(
   Object.values(e).map((t, o) => [t, o])
 );
-function z() {
-  const [t, o] = i.useState(!1), [n, f] = i.useState(() => g()), [d, x] = i.useState(!1), s = i.useRef(null);
+function k() {
+  const [t, o] = i.useState(!1), [r, d] = i.useState(() => g()), [f, x] = i.useState(!1), s = i.useRef(null);
   i.useEffect(() => {
-    const l = () => {
-      const r = window.innerWidth;
-      return r >= a.xxl ? e.xxl : r >= a.xl ? e.xl : r >= a.lg ? e.lg : r >= a.md ? e.md : r >= a.sm ? e.sm : e.xs;
+    const c = () => {
+      const n = window.innerWidth;
+      return n >= a.xxl ? e.xxl : n >= a.xl ? e.xl : n >= a.lg ? e.lg : n >= a.md ? e.md : n >= a.sm ? e.sm : e.xs;
     }, u = () => {
       s.current && clearTimeout(s.current), s.current = setTimeout(() => {
-        const r = l();
-        f((S) => S !== r ? r : S);
+        const n = c();
+        d((S) => S !== n ? n : S);
       }, 100);
-    }, c = l();
-    return f(c), x(!0), o(!0), window.addEventListener("resize", u, { passive: !0 }), () => {
+    }, l = c();
+    return d(l), x(!0), o(!0), window.addEventListener("resize", u, { passive: !0 }), () => {
       s.current && (clearTimeout(s.current), s.current = null), window.removeEventListener("resize", u);
     };
   }, []);
   const m = i.useCallback(
-    (l) => {
+    (c) => {
       if (!t) return !1;
-      const u = p.get(n), c = p.get(l);
-      return u === void 0 || c === void 0 ? !1 : u >= c;
+      const u = p.get(r), l = p.get(c);
+      return u === void 0 || l === void 0 ? !1 : u >= l;
     },
-    [n, t]
+    [r, t]
   );
   return i.useMemo(
     () => ({
-      screenSize: n,
+      screenSize: r,
       isLargerThanOrEqual: m,
-      // 渲染策略辅助
-      shouldUseGridLayout: d,
-      // 是否应该使用复杂的网格布局
-      shouldUseFallbackLayout: !d
-      // 是否应该使用降级布局
+      isMounted: t,
+      isSSRHydrated: t && f
+      // 是否已完成水合且获取真实尺寸
     }),
-    [n, t, d, m]
+    [r, t, f, m]
   );
 }
 function g() {
   if (typeof window > "u")
     return e.xs;
-  const t = navigator.userAgent, o = /iPhone|iPad|iPod|Android|BlackBerry|Opera Mini|IEMobile|WPDesktop/i.test(t), n = /iPad|Android(?!.*Mobile)|Kindle|Silk/i.test(t);
-  return o && !n ? e.xs : n ? e.md : e.lg;
+  const t = navigator.userAgent, o = /iPhone|iPad|iPod|Android|BlackBerry|Opera Mini|IEMobile|WPDesktop/i.test(t), r = /iPad|Android(?!.*Mobile)|Kindle|Silk/i.test(t);
+  return o && !r ? e.xs : r ? e.md : e.lg;
 }
 export {
   g as _getSmartDefaultBreakpoint,
-  z as default
+  k as default
 };

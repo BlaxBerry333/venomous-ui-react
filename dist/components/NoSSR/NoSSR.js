@@ -1,0 +1,1 @@
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=require("react/jsx-runtime"),e=require("react"),s=e.memo(({children:u})=>{const[r,n]=e.useState(!1);return e.useEffect(()=>{n(!0)},[]),r?t.jsx(t.Fragment,{children:u}):null});s.displayName="NoSSR";exports.default=s;
