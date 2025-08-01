@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { Card } from "./index";
-import { CardTagMap } from "./index.types";
+import { CardTagMap, CardVariantMap } from "./index.types";
 
 const meta = {
   title: "components/Card/Card",
@@ -20,28 +20,20 @@ const meta = {
       options: Object.values(CardTagMap),
       table: { type: { summary: '"div"|"section"|"article"' }, defaultValue: { summary: '"div"' } },
     },
-    isTransparent: {
-      description: "Whether the card is transparent",
-      control: { type: "boolean" },
-      table: { type: { summary: "boolean" }, defaultValue: { summary: "false" } },
-    },
-    isFrostedGlass: {
-      description: "Whether the card is frosted glass",
-      control: { type: "boolean" },
-      table: { type: { summary: "boolean" }, defaultValue: { summary: "false" } },
-    },
-    isOutline: {
-      description: "Whether the card is outline",
-      control: { type: "boolean" },
-      table: { type: { summary: "boolean" }, defaultValue: { summary: "false" } },
+    variant: {
+      description: "The variant of the card",
+      control: { type: "select" },
+      options: Object.values(CardVariantMap),
+      table: {
+        type: { summary: '"elevated"|"outlined"|"transparent"|"frostedGlass"' },
+        defaultValue: { summary: '"elevated"' },
+      },
     },
   },
   args: {
     children: null,
     as: "div",
-    isTransparent: false,
-    isFrostedGlass: false,
-    isOutline: false,
+    variant: "elevated",
   },
 } satisfies Meta<typeof Card>;
 

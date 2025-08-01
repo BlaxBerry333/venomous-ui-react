@@ -8,9 +8,16 @@ import type { GridProps } from "./index.types";
 
 const SpaceGrid = React.memo<GridProps>(({ children, style, columns = 1, spacing = 16, ...props }) => {
   const { screenSize } = Theme.useThemeBreakpoint();
+  const safeScreenSize = screenSize ?? BreakPointName.xs;
 
-  const columnCount = React.useMemo<number>(() => __getCurrentColumns(columns, screenSize), [columns, screenSize]);
-  const spacingValue = React.useMemo<number>(() => __getCurrentSpacing(spacing, screenSize), [spacing, screenSize]);
+  const columnCount = React.useMemo<number>(
+    () => __getCurrentColumns(columns, safeScreenSize),
+    [columns, safeScreenSize],
+  );
+  const spacingValue = React.useMemo<number>(
+    () => __getCurrentSpacing(spacing, safeScreenSize),
+    [spacing, safeScreenSize],
+  );
 
   return (
     <div

@@ -51,16 +51,16 @@ const c = n.memo(({ children: r, height: t = 300, width: a = 200, title: o, cove
             position: "relative",
             zIndex: 1,
             left: 6,
-            top: 40
+            top: 24
           },
           children: o && /* @__PURE__ */ e(
             l.Title,
             {
               text: o,
-              as: "h4",
+              as: "h5",
               ellipsis: 4,
               style: {
-                lineHeight: 1.15,
+                lineHeight: 1,
                 color: "#ffffff",
                 textShadow: "2px 2px 2px rgba(0, 0, 0, 0.5)"
               }

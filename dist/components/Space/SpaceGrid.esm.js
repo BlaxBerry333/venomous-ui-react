@@ -1,18 +1,24 @@
-import { jsx as s } from "react/jsx-runtime";
-import m from "react";
-import { Theme as d } from "../Theme/index.esm.js";
-import { BreakPointName as p } from "../../utils/design/ThemeBreakpoint.esm.js";
-const c = m.memo(({ children: r, style: i, columns: n = 1, spacing: e = 16, ...t }) => {
-  const { screenSize: u } = d.useThemeBreakpoint(), f = m.useMemo(() => l(n, u), [n, u]), a = m.useMemo(() => x(e, u), [e, u]);
-  return /* @__PURE__ */ s(
+import { jsx as d } from "react/jsx-runtime";
+import s from "react";
+import { Theme as p } from "../Theme/index.esm.js";
+import { BreakPointName as f } from "../../utils/design/ThemeBreakpoint.esm.js";
+const l = s.memo(({ children: r, style: i, columns: n = 1, spacing: e = 16, ...t }) => {
+  const { screenSize: m } = p.useThemeBreakpoint(), u = m ?? f.xs, a = s.useMemo(
+    () => x(n, u),
+    [n, u]
+  ), c = s.useMemo(
+    () => b(e, u),
+    [e, u]
+  );
+  return /* @__PURE__ */ d(
     "div",
     {
       style: {
         boxSizing: "border-box",
         width: "100%",
         display: "grid",
-        gridTemplateColumns: `repeat(${f}, 1fr)`,
-        gap: `${a}px`,
+        gridTemplateColumns: `repeat(${a}, 1fr)`,
+        gap: `${c}px`,
         ...i
       },
       ...t,
@@ -20,9 +26,9 @@ const c = m.memo(({ children: r, style: i, columns: n = 1, spacing: e = 16, ...t
     }
   );
 });
-c.displayName = "Space.Grid";
-const o = Object.keys(p);
-function l(r = 1, i) {
+l.displayName = "Space.Grid";
+const o = Object.keys(f);
+function x(r = 1, i) {
   if (typeof r == "number")
     return r;
   const n = o.indexOf(i);
@@ -32,7 +38,7 @@ function l(r = 1, i) {
   }
   return 1;
 }
-function x(r = 16, i) {
+function b(r = 16, i) {
   if (typeof r == "number")
     return r;
   const n = o.indexOf(i);
@@ -43,5 +49,5 @@ function x(r = 16, i) {
   return 16;
 }
 export {
-  c as default
+  l as default
 };

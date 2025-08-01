@@ -4,11 +4,16 @@ export const CardTagMap = {
   article: "article",
 } as const;
 
+export const CardVariantMap = {
+  elevated: "elevated",
+  outlined: "outlined",
+  transparent: "transparent",
+  frostedGlass: "frostedGlass",
+} as const;
+
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   as?: (typeof CardTagMap)[keyof typeof CardTagMap];
-  isTransparent?: boolean;
-  isFrostedGlass?: boolean;
-  isOutline?: boolean;
+  variant?: keyof typeof CardVariantMap;
 }
 
 export interface CardsBookProps extends React.PropsWithChildren {

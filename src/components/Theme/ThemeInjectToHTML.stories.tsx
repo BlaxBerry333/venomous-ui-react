@@ -28,7 +28,7 @@ export const Default: Story = {
       <>
         <Theme.InjectToHTML />
 
-        <Card isOutline style={{ height: "100%", width: "100%" }}>
+        <Card variant="outlined" style={{ height: "100%", width: "100%" }}>
           <Space.Flex column gap={16}>
             <Space.Flex>
               <Buttons.Icon

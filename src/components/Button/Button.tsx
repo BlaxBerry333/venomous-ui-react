@@ -48,6 +48,7 @@ const Button = React.memo<ButtonProps>(
             style={{
               marginLeft: iconPosition === "start" ? "0px" : "8px",
               marginRight: iconPosition === "end" ? "0px" : "8px",
+              color: "inherit",
             }}
           />
         )}
@@ -70,7 +71,7 @@ const Button = React.memo<ButtonProps>(
             backgroundColor: buttonStyles.backgroundColor,
           }}
         >
-          <Icon icon="svg-spinners:270-ring-with-bg" width={24} />
+          <Icon icon="svg-spinners:270-ring-with-bg" width={24} style={{ color: "inherit" }} />
         </div>
       </button>
     );

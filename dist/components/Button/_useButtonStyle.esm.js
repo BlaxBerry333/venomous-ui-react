@@ -1,72 +1,81 @@
-import p from "react";
-import { Theme as l } from "../Theme/index.esm.js";
-import { ButtonVariantMap as r } from "./index.types.esm.js";
-import { BackgroundColors as x, SemanticColors as d, BorderColors as b, TextColors as y } from "../../utils/design/colors.esm.js";
+import f from "react";
+import { Theme as m } from "../Theme/index.esm.js";
+import { ButtonVariantMap as t } from "./index.types.esm.js";
+import { BackgroundColors as x, SemanticColors as a, BorderColors as b, TextColors as y } from "../../utils/design/colors.esm.js";
 import { ThemeShadow as k } from "../../utils/design/ThemeShadow.esm.js";
 import { TypographySize as w } from "../../utils/design/TypographySize.esm.js";
-import { getLighterHex as S, getOpacityHex as M } from "../../utils/tools/get-colors.esm.js";
+import { getLighterHex as S, getOpacityHex as g } from "../../utils/tools/get-colors.esm.js";
 function j({
   isLoading: n,
-  isDisabled: u,
-  variant: f,
-  semanticColor: t
+  isDisabled: c,
+  variant: u,
+  semanticColor: o
 }) {
-  const { themeColor: c } = l.useThemeColor(), { themeMode: o } = l.useThemeMode(), h = p.useMemo(() => {
+  const { themeColor: d } = m.useThemeColor(), { themeMode: r } = m.useThemeMode(), h = f.useMemo(() => {
     let e = "";
-    if (n || u)
-      return e = x[o].secondary, e;
-    switch (f) {
-      case r.contained:
-        e = t ? d[t] : c;
+    if (n || c)
+      return e = x[r].secondary, e;
+    switch (u) {
+      case t.contained:
+        e = o ? a[o] : d;
         break;
-      case r.outlined:
-        e = x[o].secondary;
+      case t.outlined:
+        e = x[r].secondary;
         break;
-      case r.ghost:
+      case t.ghost:
       default:
         e = "transparent";
         break;
     }
     return e;
-  }, [f, c, o, n, u, t]), a = p.useMemo(() => {
+  }, [u, d, r, n, c, o]), p = f.useMemo(() => {
     let e = "";
-    if (n || u)
-      return e = b[o].secondary, e;
-    switch (f) {
-      case r.contained:
-        e = t ? S(d[t], 0.25) : M(c, 0.5);
+    if (n || c)
+      return e = b[r].secondary, e;
+    switch (u) {
+      case t.contained:
+        e = o ? S(a[o], 0.25) : g(d, 0.5);
         break;
-      case r.outlined:
-        e = t ? d[t] : c;
+      case t.outlined:
+        e = o ? a[o] : d;
         break;
-      case r.ghost:
-        e = b[o].secondary;
+      case t.ghost:
+        e = b[r].secondary;
         break;
       default:
         e = "transparent";
         break;
     }
     return e;
-  }, [f, c, o, n, u, t]), m = p.useMemo(() => {
+  }, [u, d, r, n, c, o]), s = f.useMemo(() => {
     let e = "";
-    if (n || u)
-      return e = y[o].disabled, e;
-    switch (f) {
-      case r.contained:
+    if (n || c)
+      return e = y[r].disabled, e;
+    switch (u) {
+      case t.contained:
         e = "#ffffff";
         break;
-      case r.outlined:
-        e = t ? d[t] : c;
+      case t.outlined:
+        e = o ? a[o] : d;
         break;
-      case r.ghost:
+      case t.ghost:
       default:
-        e = y[o].primary;
+        e = y[r].primary;
         break;
     }
     return e;
-  }, [f, c, o, n, u, t]), s = p.useMemo(() => k[o].secondary, [f, c, o]);
+  }, [u, d, r, n, c, o]), l = f.useMemo(() => {
+    switch (u) {
+      case t.ghost:
+        return "none";
+      case t.contained:
+      case t.outlined:
+      default:
+        return k[r].secondary;
+    }
+  }, [u, d, r]);
   return {
-    buttonStyles: p.useMemo(
+    buttonStyles: f.useMemo(
       () => ({
         boxSizing: "border-box",
         display: "flex",
@@ -81,15 +90,15 @@ function j({
         textTransform: "capitalize",
         fontSize: w.text,
         fontWeight: "bold",
-        cursor: n ? "wait" : u ? "not-allowed" : "pointer",
+        cursor: n ? "wait" : c ? "not-allowed" : "pointer",
         borderRadius: "8px",
         borderWidth: 2,
-        borderColor: a,
-        boxShadow: s,
+        borderColor: p,
+        boxShadow: l,
         backgroundColor: h,
-        color: m
+        color: s
       }),
-      [n, u, a, h, m, s]
+      [n, c, p, h, s, l]
     )
   };
 }

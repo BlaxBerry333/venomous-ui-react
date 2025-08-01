@@ -19,7 +19,7 @@ The component library provides a set of built-in default colors that can be used
 
 <Space.Grid columns={{ xs: 2, sm: 4, md: 4, lg: 4, xl: 5, xxl: 6 }} spacing={4}>
   {Object.entries(SemanticColors).map(([name, value]) => (
-    <Card key={name} isOutline style={{ backgroundColor: value }}>
+    <Card key={name} variant="outlined" style={{ backgroundColor: value }}>
       <Space.Flex row style={{ alignItems: "center", justifyContent: "space-between" }}>
         <Typography.Text text={name} as="strong" style={{ fontSize: 10, color: "#ffffff" }} />
         <Typography.Code text={value} style={{ fontSize: 10 }} />
@@ -38,7 +38,7 @@ The component library provides a set of built-in default colors that can be used
 
 <Space.Grid columns={{ xs: 1, sm: 2, md: 3, lg: 4, xl: 5, xxl: 6 }} spacing={4}>
   {Object.entries(ThemeColor).map(([name, value]) => (
-    <Card key={name} isOutline style={{ backgroundColor: value }}>
+    <Card key={name} variant="outlined" style={{ backgroundColor: value }}>
       <Space.Flex row style={{ alignItems: "center", justifyContent: "space-between" }}>
         <Typography.Text text={name} as="strong" style={{ fontSize: 10, color: "#ffffff" }} />
         <Typography.Code text={value} style={{ fontSize: 10 }} />

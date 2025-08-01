@@ -1,9 +1,9 @@
-import { jsxs as b, jsx as t } from "react/jsx-runtime";
-import c from "react";
-import { Typography as f } from "../Typography/index.esm.js";
-import { useButtonStyle as g } from "./_useButtonStyle.esm.js";
-import l from "../Icon/Icon.esm.js";
-const x = c.memo(
+import { jsxs as c, jsx as t } from "react/jsx-runtime";
+import y from "react";
+import { Typography as b } from "../Typography/index.esm.js";
+import { useButtonStyle as f } from "./_useButtonStyle.esm.js";
+import s from "../Icon/Icon.esm.js";
+const g = y.memo(
   ({
     type: a = "button",
     style: p,
@@ -13,17 +13,17 @@ const x = c.memo(
     isDisabled: o,
     icon: n,
     iconPosition: r = "start",
-    iconWidth: u = 20,
-    semanticColor: h,
+    iconWidth: h = 20,
+    semanticColor: u,
     ...i
   }) => {
-    const { buttonStyles: s } = g({
+    const { buttonStyles: l } = f({
       isLoading: e,
       isDisabled: o || i.disabled,
       variant: m,
-      semanticColor: h
+      semanticColor: u
     });
-    return /* @__PURE__ */ b(
+    return /* @__PURE__ */ c(
       "button",
       {
         type: a,
@@ -31,23 +31,24 @@ const x = c.memo(
         style: {
           flexDirection: r === "start" ? "row" : "row-reverse",
           WebkitTapHighlightColor: "transparent",
-          ...s,
+          ...l,
           ...p
         },
         ...i,
         children: [
           n && /* @__PURE__ */ t(
-            l,
+            s,
             {
               icon: n,
-              width: u,
+              width: h,
               style: {
                 marginLeft: r === "start" ? "0px" : "8px",
-                marginRight: r === "end" ? "0px" : "8px"
+                marginRight: r === "end" ? "0px" : "8px",
+                color: "inherit"
               }
             }
           ),
-          /* @__PURE__ */ t(f.Text, { text: d, style: { color: "inherit" } }),
+          /* @__PURE__ */ t(b.Text, { text: d, style: { color: "inherit" } }),
           /* @__PURE__ */ t(
             "div",
             {
@@ -61,9 +62,9 @@ const x = c.memo(
                 height: "100%",
                 alignItems: "center",
                 justifyContent: "center",
-                backgroundColor: s.backgroundColor
+                backgroundColor: l.backgroundColor
               },
-              children: /* @__PURE__ */ t(l, { icon: "svg-spinners:270-ring-with-bg", width: 24 })
+              children: /* @__PURE__ */ t(s, { icon: "svg-spinners:270-ring-with-bg", width: 24, style: { color: "inherit" } })
             }
           )
         ]
@@ -71,7 +72,7 @@ const x = c.memo(
     );
   }
 );
-x.displayName = "Button";
+g.displayName = "Button";
 export {
-  x as default
+  g as default
 };

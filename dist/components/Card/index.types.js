@@ -1,1 +1,1 @@
-"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const a={div:"div",article:"article"};exports.CardTagMap=a;
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const a={div:"div",article:"article"},t={elevated:"elevated",outlined:"outlined",transparent:"transparent",frostedGlass:"frostedGlass"};exports.CardTagMap=a;exports.CardVariantMap=t;

@@ -88,7 +88,14 @@ export function useButtonStyle({
   }, [variant, themeColor, themeMode, isLoading, isDisabled, semanticColor]);
 
   const boxShadow = React.useMemo<React.CSSProperties["boxShadow"]>(() => {
-    return ThemeShadow[themeMode].secondary;
+    switch (variant) {
+      case ButtonVariantMap.ghost:
+        return "none";
+      case ButtonVariantMap.contained:
+      case ButtonVariantMap.outlined:
+      default:
+        return ThemeShadow[themeMode].secondary;
+    }
   }, [variant, themeColor, themeMode]);
 
   const buttonStyles = React.useMemo<React.CSSProperties>(

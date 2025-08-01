@@ -3,11 +3,15 @@ export declare const CardTagMap: {
     readonly section: "section";
     readonly article: "article";
 };
+export declare const CardVariantMap: {
+    readonly elevated: "elevated";
+    readonly outlined: "outlined";
+    readonly transparent: "transparent";
+    readonly frostedGlass: "frostedGlass";
+};
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
     as?: (typeof CardTagMap)[keyof typeof CardTagMap];
-    isTransparent?: boolean;
-    isFrostedGlass?: boolean;
-    isOutline?: boolean;
+    variant?: keyof typeof CardVariantMap;
 }
 export interface CardsBookProps extends React.PropsWithChildren {
     height: number;

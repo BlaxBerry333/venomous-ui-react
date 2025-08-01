@@ -55,16 +55,16 @@ const CardsBook = React.memo<CardsBookProps>(({ children, height = 300, width = 
           position: "relative",
           zIndex: 1,
           left: 6,
-          top: 40,
+          top: 24,
         }}
       >
         {title && (
           <Typography.Title
             text={title}
-            as="h4"
+            as="h5"
             ellipsis={4}
             style={{
-              lineHeight: 1.15,
+              lineHeight: 1,
               color: "#ffffff",
               textShadow: "2px 2px 2px rgba(0, 0, 0, 0.5)",
             }}

@@ -28,17 +28,17 @@ export default function ThemeProvider({
   defaultThemeColor = DEFAULT_THEME_COLOR,
   storageKey = STORAGE_KEY,
 }: ThemeModeProviderProps) {
-  const [isInitialized, setIsInitialized] = React.useState<boolean>(false);
+  const [mounted, setMounted] = React.useState<boolean>(false);
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const [themeMode, setThemeModeState] = React.useState<ThemeMode>(defaultThemeMode);
   const [themeColor, setThemeColorState] = React.useState<ThemeColor>(defaultThemeColor);
 
-  const setThemeMode = React.useCallback(
-    (newTheme: ThemeMode) => {
-      if (newTheme === themeMode) return;
-      setThemeModeState(newTheme);
-    },
-    [themeMode],
-  );
+  const setThemeMode = React.useCallback((newTheme: ThemeMode) => {
+    setThemeModeState(newTheme);
+  }, []);
 
   const toggleThemeMode = React.useCallback(() => {
     setThemeModeState((current) => (current === ThemeMode.Dark ? ThemeMode.Light : ThemeMode.Dark));
@@ -48,22 +48,16 @@ export default function ThemeProvider({
     setThemeModeState(defaultThemeMode);
   }, [defaultThemeMode]);
 
-  const setThemeColor = React.useCallback(
-    (newThemeColor: ThemeColor) => {
-      if (newThemeColor === themeColor) return;
-      setThemeColorState(newThemeColor);
-    },
-    [themeColor],
-  );
+  const setThemeColor = React.useCallback((newThemeColor: ThemeColor) => {
+    setThemeColorState(newThemeColor);
+  }, []);
 
   const resetThemeColor = React.useCallback(() => {
     setThemeColorState(defaultThemeColor);
   }, [defaultThemeColor]);
 
-  // 初始化时读取 localStorage
   React.useEffect(() => {
-    if (typeof window !== "undefined") {
-      setIsInitialized(true);
+    if (mounted) {
       const storedThemeMode = localStorage.getItem(storageKey.THEME_MODE);
       if (storedThemeMode && Object.values(ThemeMode).includes(storedThemeMode as ThemeMode)) {
         setThemeModeState(storedThemeMode as ThemeMode);
@@ -73,15 +67,14 @@ export default function ThemeProvider({
         setThemeColorState(storedThemeColor as ThemeColor);
       }
     }
-  }, [storageKey]);
+  }, [mounted, storageKey.THEME_COLOR, storageKey.THEME_MODE]);
 
-  // 初始化后实时更新保存到 localStorage
   React.useEffect(() => {
-    if (typeof window !== "undefined" && isInitialized) {
+    if (mounted) {
       localStorage.setItem(storageKey.THEME_MODE, themeMode);
       localStorage.setItem(storageKey.THEME_COLOR, themeColor);
     }
-  }, [isInitialized, storageKey, themeMode, themeColor]);
+  }, [mounted, storageKey.THEME_MODE, storageKey.THEME_COLOR, themeMode, themeColor]);
 
   const contextValue = React.useMemo<ThemeContextValueType>(
     () => ({

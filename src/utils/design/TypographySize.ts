@@ -10,7 +10,7 @@ export enum TypographySizeName {
   small = "small",
 }
 
-export const TypographySize = {
+export const TypographySize: Record<TypographySizeName, string> = {
   [TypographySizeName.h1]: "4rem", // 64px
   [TypographySizeName.h2]: "3rem", // 48px
   [TypographySizeName.h3]: "2.25rem", // 36px
@@ -20,4 +20,4 @@ export const TypographySize = {
   [TypographySizeName.text]: "1rem", // 16px
   [TypographySizeName.strong]: "1rem", // 16px
   [TypographySizeName.small]: "0.75rem", // 14px
-} as const;
+};

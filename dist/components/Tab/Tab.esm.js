@@ -139,7 +139,7 @@ const O = t.memo(
                     height: "calc(100% - 8px)",
                     borderRadius: "6px",
                     background: b[s].primary,
-                    boxShadow: M[s].secondary
+                    boxShadow: M[s].tertiary
                   },
                   ...i === "underline" && {
                     bottom: "-2px",

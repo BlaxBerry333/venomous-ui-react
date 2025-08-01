@@ -1,15 +1,16 @@
 import { jsx as d } from "react/jsx-runtime";
 import e from "react";
-import { Theme as m } from "../Theme/index.esm.js";
-import { useAnimation as f, motion as l } from "framer-motion";
-import { getOpacityHex as p } from "../../utils/tools/get-colors.esm.js";
+import { Theme as c } from "../Theme/index.esm.js";
+import { useAnimation as h, motion as p } from "framer-motion";
+import { ThemeShadow as w } from "../../utils/design/ThemeShadow.esm.js";
+import { getOpacityHex as m, getLighterHex as g } from "../../utils/tools/get-colors.esm.js";
 const x = e.memo(({ height: i = 8 }) => {
-  const t = f(), { themeColor: s } = m.useThemeColor(), n = e.useRef(null), [o, c] = e.useState(0);
+  const t = h(), { themeMode: u } = c.useThemeMode(), { themeColor: n } = c.useThemeColor(), a = e.useRef(null), [o, f] = e.useState(0);
   return e.useEffect(() => {
     const r = () => {
-      if (n.current) {
-        const a = n.current.offsetWidth, u = a * 0.3;
-        c(a - u);
+      if (a.current) {
+        const s = a.current.offsetWidth, l = s * 0.3;
+        f(s - l);
       }
     };
     return r(), window.addEventListener("resize", r), () => window.removeEventListener("resize", r);
@@ -22,18 +23,18 @@ const x = e.memo(({ height: i = 8 }) => {
   }, [t, o]), /* @__PURE__ */ d(
     "div",
     {
-      ref: n,
+      ref: a,
       style: {
         position: "relative",
         width: "100%",
         height: i,
         overflow: "hidden",
-        backgroundColor: p(s, 0.2),
+        backgroundColor: m(n, 0.2),
         borderRadius: i / 2,
-        boxShadow: "rgba(0, 0, 0, 0.14) 0px 6px 10px 0px"
+        boxShadow: w[u].tertiary
       },
       children: /* @__PURE__ */ d(
-        l.div,
+        p.div,
         {
           animate: t,
           style: {
@@ -42,7 +43,7 @@ const x = e.memo(({ height: i = 8 }) => {
             left: 0,
             height: "100%",
             width: "50%",
-            backgroundColor: s,
+            backgroundImage: `linear-gradient(45deg, ${m(n, 0.15)} 0%, ${g(n, 0.1)} 90%)`,
             borderRadius: i / 2
           }
         }

@@ -6,12 +6,5 @@ export declare enum BreakPointName {
     xl = "xl",
     xxl = "xxl"
 }
-export declare const ThemeBreakPoint: {
-    readonly xs: 444;
-    readonly sm: 600;
-    readonly md: 960;
-    readonly lg: 1280;
-    readonly xl: 1920;
-    readonly xxl: 2560;
-};
+export declare const ThemeBreakPoint: Record<BreakPointName, number>;
 //# sourceMappingURL=ThemeBreakpoint.d.ts.map
