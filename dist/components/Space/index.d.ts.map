@@ -1,1 +1,1 @@
-{"version":3,"file":"index.d.ts","sourceRoot":"","sources":["../../../src/components/Space/index.ts"],"names":[],"mappings":"AAGA,YAAY,EAAE,SAAS,EAAE,SAAS,EAAE,MAAM,eAAe,CAAC;AAE1D,eAAO,MAAM,KAAK;;;CAGjB,CAAC"}
+{"version":3,"file":"index.d.ts","sourceRoot":"","sources":["../../../src/components/Space/index.ts"],"names":[],"mappings":"AAGA,YAAY,EAAE,cAAc,EAAE,cAAc,EAAE,MAAM,eAAe,CAAC;AAEpE,eAAO,MAAM,KAAK;;;CAGjB,CAAC"}

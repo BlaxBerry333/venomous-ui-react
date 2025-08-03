@@ -1,0 +1,33 @@
+import { Meta, Canvas, Controls } from "@storybook/blocks";
+import * as Stories from "./FormFieldNumber.stories";
+
+<Meta of={Stories} />
+
+# FormField.Number
+
+`<FormField.Number>` will be rendered as a combination of HTML tag `<input type="number"/>` + `<label/>`.
+
+<Canvas of={Stories.Default} />
+
+<Controls />
+
+## TroubleShotting
+
+<br />
+
+#### `e.currentTarget.value` obtained by `onChange` a string?
+
+Yes, that's right, according to the HTML DOM, it is a String, but you can manually convert it to a Number.
+
+```tsx
+const [value, setValue] = React.useSate<number | undefined>();
+
+const OnChange: React.ChangeEventHandler<HTMLInputElement> = React.useCallback((e) => {
+  if (e.currentTarget.value === "") {
+    // Allowed to be set as a undefined if the user cleared the field
+    setValue(undefined);
+  } else if (!isNaN(e.currentTarget.valueAsNumber)) {
+    setValue(e.currentTarget.valueAsNumber);
+  }
+}, []);
+```

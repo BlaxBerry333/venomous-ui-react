@@ -4,9 +4,9 @@ import React from "react";
 
 import { Theme } from "@/components";
 import { BreakPointName } from "@/utils";
-import type { GridProps } from "./index.types";
+import type { SpaceGridProps } from "./index.types";
 
-const SpaceGrid = React.memo<GridProps>(({ children, style, columns = 1, spacing = 16, ...props }) => {
+const SpaceGrid = React.memo<SpaceGridProps>(({ children, style, columns = 1, spacing = 16, ...props }) => {
   const { screenSize } = Theme.useThemeBreakpoint();
   const safeScreenSize = screenSize ?? BreakPointName.xs;
 
@@ -42,7 +42,7 @@ export default SpaceGrid;
 const breakpoints = Object.keys(BreakPointName) as BreakPointName[];
 
 // 获取当前屏幕尺寸对应的列数
-function __getCurrentColumns(columns: GridProps["columns"] = 1, screenSize: BreakPointName): number {
+function __getCurrentColumns(columns: SpaceGridProps["columns"] = 1, screenSize: BreakPointName): number {
   if (typeof columns === "number") {
     return columns;
   }
@@ -56,7 +56,7 @@ function __getCurrentColumns(columns: GridProps["columns"] = 1, screenSize: Brea
 }
 
 // 获取当前屏幕尺寸对应的间距
-function __getCurrentSpacing(spacing: GridProps["spacing"] = 16, screenSize: BreakPointName): number {
+function __getCurrentSpacing(spacing: SpaceGridProps["spacing"] = 16, screenSize: BreakPointName): number {
   if (typeof spacing === "number") {
     return spacing;
   }

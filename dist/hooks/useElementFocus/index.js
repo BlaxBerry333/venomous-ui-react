@@ -1,0 +1,1 @@
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const s=require("react");function a(){const[t,e]=s.useState(!1),u=s.useCallback(()=>{e(!0)},[]),l=s.useCallback(()=>{e(!1)},[]);return{isFocused:t,setIsFocused:e,handleFocus:u,handleBlur:l}}exports.default=a;

@@ -1,5 +1,5 @@
 import React from "react";
-import type { FlexProps } from "./index.types";
-declare const SpaceFlex: React.NamedExoticComponent<FlexProps>;
+import type { SpaceFlexProps } from "./index.types";
+declare const SpaceFlex: React.NamedExoticComponent<SpaceFlexProps>;
 export default SpaceFlex;
 //# sourceMappingURL=SpaceFlex.d.ts.map

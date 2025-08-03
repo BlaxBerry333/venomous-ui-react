@@ -6,18 +6,18 @@ type Props = {
   isDisabled: boolean;
 };
 
-export default function useElementHover({ isDisabled }: Props) {
+export default function useElementHover<T>({ isDisabled }: Props) {
   const [isHovering, setIsHovering] = React.useState<boolean>(false);
 
-  const handleMouseDown: React.MouseEventHandler<HTMLLIElement> = React.useCallback(() => {
+  const handleMouseDown: React.MouseEventHandler<T> = React.useCallback(() => {
     setIsHovering(true);
   }, []);
 
-  const handleMouseUp: React.MouseEventHandler<HTMLLIElement> = React.useCallback(() => {
+  const handleMouseUp: React.MouseEventHandler<T> = React.useCallback(() => {
     setIsHovering(false);
   }, []);
 
-  const handleMouseLeave: React.MouseEventHandler<HTMLLIElement> = React.useCallback(() => {
+  const handleMouseLeave: React.MouseEventHandler<T> = React.useCallback(() => {
     setIsHovering(false);
   }, []);
 

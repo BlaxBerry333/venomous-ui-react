@@ -26,7 +26,9 @@ const MenuItem = React.memo<MenuItemProps>(
     const { themeMode } = Theme.useThemeMode();
     const { themeColor } = Theme.useThemeColor();
 
-    const { isHovering, handleMouseDown, handleMouseUp, handleMouseLeave } = useElementHover({ isDisabled });
+    const { isHovering, handleMouseDown, handleMouseUp, handleMouseLeave } = useElementHover<HTMLLIElement>({
+      isDisabled,
+    });
     const handleMouseOverStyles: React.MouseEventHandler<HTMLLIElement> = React.useCallback(
       (e) => {
         if (isDisabled) return;
@@ -54,7 +56,6 @@ const MenuItem = React.memo<MenuItemProps>(
           listStyle: "none",
           margin: 0,
           padding: "8px",
-          paddingLeft: icon ? "8px" : "16px",
           paddingRight: actionButton ? "8px" : "16px",
           borderRadius: "8px",
           cursor: isDisabled ? "not-allowed" : props?.onClick ? "pointer" : "default",

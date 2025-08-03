@@ -3,6 +3,7 @@ export interface PopoverProps extends React.HTMLAttributes<HTMLDivElement> {
     trigger?: "click" | "hover";
     renderTrigger: (isOpen: boolean) => React.ReactNode;
     contentStyle?: React.CSSProperties;
+    onClickOutside?: () => void;
 }
 export type PopoverPosition = {
     top: number;

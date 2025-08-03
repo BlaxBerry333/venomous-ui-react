@@ -1,39 +1,41 @@
-import { jsx as m, jsxs as h } from "react/jsx-runtime";
-import p from "react";
+import { jsx as m, jsxs as p } from "react/jsx-runtime";
+import u from "react";
 import { Buttons as k } from "../Button/index.esm.js";
 import { Space as x } from "../Space/index.esm.js";
 import { Theme as i } from "../Theme/index.esm.js";
-import { Typography as f } from "../Typography/index.esm.js";
+import { Typography as c } from "../Typography/index.esm.js";
 import { MenuItemTagMap as O } from "./index.types.esm.js";
 import E from "../../hooks/useElementHover/index.esm.js";
-import L from "../Icon/Icon.esm.js";
-import { ThemeShadow as y } from "../../utils/design/ThemeShadow.esm.js";
-import { TextColors as t } from "../../utils/design/colors.esm.js";
-const R = p.memo(
+import R from "../Icon/Icon.esm.js";
+import { ThemeShadow as f } from "../../utils/design/ThemeShadow.esm.js";
+import { TextColors as l } from "../../utils/design/colors.esm.js";
+const b = u.memo(
   ({
-    as: c = O.li,
+    as: y = O.li,
     style: M,
-    icon: l,
+    icon: t,
     text: g,
-    subText: u,
+    subText: h,
     isDisabled: e = !1,
     isActive: s = !1,
     actionButton: r = void 0,
     ...a
   }) => {
-    const { themeMode: o } = i.useThemeMode(), { themeColor: n } = i.useThemeColor(), { isHovering: w, handleMouseDown: T, handleMouseUp: C, handleMouseLeave: S } = E({ isDisabled: e }), v = p.useCallback(
+    const { themeMode: o } = i.useThemeMode(), { themeColor: n } = i.useThemeColor(), { isHovering: w, handleMouseDown: T, handleMouseUp: C, handleMouseLeave: S } = E({
+      isDisabled: e
+    }), v = u.useCallback(
       (d) => {
-        e || (d.currentTarget.style.boxShadow = y[o].tertiary);
+        e || (d.currentTarget.style.boxShadow = f[o].tertiary);
       },
       [e]
-    ), I = p.useCallback(
+    ), I = u.useCallback(
       (d) => {
-        e || (d.currentTarget.style.boxShadow = w ? y[o].tertiary : "none");
+        e || (d.currentTarget.style.boxShadow = w ? f[o].tertiary : "none");
       },
       [e]
     );
     return /* @__PURE__ */ m(
-      c,
+      y,
       {
         onMouseDown: T,
         onMouseUp: C,
@@ -45,7 +47,6 @@ const R = p.memo(
           listStyle: "none",
           margin: 0,
           padding: "8px",
-          paddingLeft: l ? "8px" : "16px",
           paddingRight: r ? "8px" : "16px",
           borderRadius: "8px",
           cursor: e ? "not-allowed" : a != null && a.onClick ? "pointer" : "default",
@@ -53,18 +54,18 @@ const R = p.memo(
           ...M
         },
         ...a,
-        children: /* @__PURE__ */ h(x.Flex, { row: !0, style: { alignItems: "center" }, children: [
-          l && /* @__PURE__ */ m(
-            L,
+        children: /* @__PURE__ */ p(x.Flex, { row: !0, style: { alignItems: "center" }, children: [
+          t && /* @__PURE__ */ m(
+            R,
             {
-              icon: l,
+              icon: t,
               width: 24,
               style: {
-                color: e ? t[o].disabled : s ? n : t[o].primary
+                color: e ? l[o].disabled : s ? n : l[o].primary
               }
             }
           ),
-          /* @__PURE__ */ h(
+          /* @__PURE__ */ p(
             x.Flex,
             {
               column: !0,
@@ -72,29 +73,29 @@ const R = p.memo(
               style: {
                 flex: 1,
                 flexGrow: 1,
-                maxWidth: l && !r ? "calc(100% - 32px)" : !l && r ? "calc(100% - 48px)" : l && r ? "calc(100% - 80px)" : "100%"
+                maxWidth: t && !r ? "calc(100% - 32px)" : !t && r ? "calc(100% - 48px)" : t && r ? "calc(100% - 80px)" : "100%"
               },
               children: [
                 /* @__PURE__ */ m(
-                  f.Text,
+                  c.Text,
                   {
                     text: g,
                     isEllipsis: !0,
                     style: {
                       width: "100%",
-                      color: e ? t[o].disabled : s ? n : t[o].primary
+                      color: e ? l[o].disabled : s ? n : l[o].primary
                     }
                   }
                 ),
-                u && /* @__PURE__ */ m(
-                  f.Text,
+                h && /* @__PURE__ */ m(
+                  c.Text,
                   {
                     as: "small",
-                    text: u,
+                    text: h,
                     isEllipsis: !0,
                     style: {
                       width: "100%",
-                      color: e ? t[o].disabled : s ? n : t[o].quaternary
+                      color: e ? l[o].disabled : s ? n : l[o].quaternary
                     }
                   }
                 )
@@ -115,7 +116,7 @@ const R = p.memo(
     );
   }
 );
-R.displayName = "Menu.Item";
+b.displayName = "Menu.Item";
 export {
-  R as default
+  b as default
 };

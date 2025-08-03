@@ -8,7 +8,7 @@ import { Card } from "../Card";
 import type { PopoverPosition, PopoverProps } from "./index.types";
 
 const Popover = React.memo<PopoverProps>(
-  ({ children, style, contentStyle, placement = "bottom", renderTrigger, trigger = "click" }) => {
+  ({ children, style, contentStyle, placement = "bottom", renderTrigger, trigger = "click", onClickOutside }) => {
     const handler = useHandler();
     const wrapperRef = React.useRef<HTMLDivElement>(null);
     const triggerRef = React.useRef<HTMLDivElement>(null);
@@ -25,6 +25,9 @@ const Popover = React.memo<PopoverProps>(
           !triggerRef.current?.contains(event.target as Node)
         ) {
           handler.close();
+          if (onClickOutside) {
+            onClickOutside();
+          }
         }
       };
       if (handler.isOpen) {
@@ -33,7 +36,7 @@ const Popover = React.memo<PopoverProps>(
       return () => {
         document.removeEventListener("mousedown", handleClickOutside);
       };
-    }, [handler, trigger]);
+    }, [handler, trigger, onClickOutside]);
 
     // Popover 定位计算（相对 wrapper）
     React.useEffect(() => {
@@ -74,7 +77,7 @@ const Popover = React.memo<PopoverProps>(
 
     return (
       <div ref={wrapperRef} style={{ display: "inline-block", position: "relative", ...style }} {...wrapperProps}>
-        <div ref={triggerRef} {...triggerProps} style={{ display: "inline-block" }}>
+        <div ref={triggerRef} {...triggerProps} style={{ display: "inline-block", width: "100%" }}>
           {renderTrigger(handler.isOpen)}
         </div>
 
@@ -82,9 +85,9 @@ const Popover = React.memo<PopoverProps>(
           {handler.isOpen && (
             <motion.div
               ref={popoverRef}
-              initial={{ opacity: 0, y: placement === "bottom" ? -5 : 5 }}
+              initial={{ opacity: 0, y: 0 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: placement === "bottom" ? -5 : 5 }}
+              exit={{ opacity: 0, y: 0 }}
               transition={{ duration: 0.2 }}
               style={{
                 position: "absolute",

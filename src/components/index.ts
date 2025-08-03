@@ -3,6 +3,7 @@ export * from "./Card";
 export * from "./Chip";
 export * from "./Container";
 export * from "./Drawer";
+export * from "./Form";
 export * from "./Icon";
 export * from "./Menu";
 export * from "./Modal";

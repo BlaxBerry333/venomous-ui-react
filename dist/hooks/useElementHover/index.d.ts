@@ -2,11 +2,11 @@ import React from "react";
 type Props = {
     isDisabled: boolean;
 };
-export default function useElementHover({ isDisabled }: Props): {
+export default function useElementHover<T>({ isDisabled }: Props): {
     isHovering: boolean;
-    handleMouseDown: React.MouseEventHandler<HTMLLIElement>;
-    handleMouseUp: React.MouseEventHandler<HTMLLIElement>;
-    handleMouseLeave: React.MouseEventHandler<HTMLLIElement>;
+    handleMouseDown: React.MouseEventHandler<T>;
+    handleMouseUp: React.MouseEventHandler<T>;
+    handleMouseLeave: React.MouseEventHandler<T>;
 };
 export {};
 //# sourceMappingURL=index.d.ts.map
