@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import { BackgroundColors, BorderColors, TextColors, ThemeMode, ThemeShadow } from "@/utils";
+import { BackgroundColors, BorderColors, Shadows, TextColors, ThemeMode } from "@/utils";
 import { Icon } from "../Icon";
 import { Space } from "../Space";
 import { Theme } from "../Theme";
@@ -26,7 +26,7 @@ const Chip = React.memo<ChipProps>(({ text, isDisabled, style, closeIcon, closeI
         borderWidth: 1.5,
         borderStyle: "solid",
         borderColor: BorderColors[themeMode].primary,
-        boxShadow: ThemeShadow[themeMode].tertiary,
+        boxShadow: Shadows[themeMode].tertiary,
         backgroundColor: BackgroundColors[themeMode === ThemeMode.Dark ? ThemeMode.Light : ThemeMode.Dark].secondary,
         color: TextColors[themeMode === ThemeMode.Dark ? ThemeMode.Light : ThemeMode.Dark].primary,
         ...style,

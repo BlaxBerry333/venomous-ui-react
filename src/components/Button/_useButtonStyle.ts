@@ -6,8 +6,8 @@ import {
   getLighterHex,
   getOpacityHex,
   SemanticColors,
+  Shadows,
   TextColors,
-  ThemeShadow,
   TypographySize,
 } from "@/utils";
 import { Theme } from "../Theme";
@@ -94,7 +94,7 @@ export function useButtonStyle({
       case ButtonVariantMap.contained:
       case ButtonVariantMap.outlined:
       default:
-        return ThemeShadow[themeMode].secondary;
+        return Shadows[themeMode].secondary;
     }
   }, [variant, themeColor, themeMode]);
 

@@ -1,34 +1,34 @@
 import { jsx as a, jsxs as P } from "react/jsx-runtime";
-import e from "react";
+import r from "react";
 import h from "./FormField.esm.js";
 import { useFormFieldStyle as v } from "./useFormFieldStyle.esm.js";
 import x from "../../hooks/useElementFocus/index.esm.js";
 import V from "../Icon/Icon.esm.js";
-const S = e.memo(
+const k = r.memo(
   ({
     style: t,
     fullWidth: i,
-    autoComplete: r = "off",
-    required: n = !1,
+    autoComplete: n = "off",
+    required: l = !1,
     isError: s = !1,
     disabled: o = !1,
-    name: p,
-    value: c,
+    name: c,
+    value: p,
     label: m,
     helpText: u,
-    ...f
+    ...g
   }) => {
-    const { isFocused: g, handleFocus: w, handleBlur: y } = x(), { outlineColor: F, commonStyles: l } = v({
+    const { isFocused: f, handleFocus: b, handleBlur: w } = x(), { outlineColor: y, commonStyles: e } = v({
       fullWidth: i,
       isDisabled: o,
       isError: s,
-      isFocused: g
-    }), { isPasswordVisible: d, togglePasswordVisibility: b } = k(!1);
+      isFocused: f
+    }), { isPasswordVisible: d, togglePasswordVisibility: F } = C(!1);
     return /* @__PURE__ */ a(
       h,
       {
         label: m,
-        required: n,
+        required: l,
         disabled: o,
         isError: s,
         fullWidth: i,
@@ -37,7 +37,7 @@ const S = e.memo(
           "div",
           {
             style: {
-              ...l,
+              ...e,
               position: "relative",
               overflow: "hidden",
               padding: 0
@@ -47,23 +47,24 @@ const S = e.memo(
                 "input",
                 {
                   type: d ? "text" : "password",
-                  name: p,
-                  value: c,
-                  autoComplete: r,
+                  name: c,
+                  value: p,
+                  autoComplete: n,
                   disabled: o,
-                  onFocus: o ? void 0 : w,
-                  onBlur: o ? void 0 : y,
+                  onFocus: o ? void 0 : b,
+                  onBlur: o ? void 0 : w,
                   style: {
                     boxSizing: "border-box",
                     border: "none",
                     outline: "none",
                     position: "relative",
                     width: "calc(100% - 34px)",
-                    padding: l.padding,
+                    backgroundColor: e.backgroundColor,
+                    padding: e.padding,
                     paddingRight: 0,
                     ...t
                   },
-                  ...f
+                  ...g
                 }
               ),
               /* @__PURE__ */ a(
@@ -71,15 +72,15 @@ const S = e.memo(
                 {
                   icon: d ? "solar:eye-closed-broken" : "solar:eye-linear",
                   width: 20,
-                  onClick: b,
+                  onClick: F,
                   style: {
                     position: "absolute",
                     top: "50%",
                     right: 0,
                     transform: "translateY(-50%)",
                     cursor: "pointer",
-                    color: F,
-                    padding: l.padding
+                    color: y,
+                    padding: e.padding
                   }
                 }
               )
@@ -90,18 +91,18 @@ const S = e.memo(
     );
   }
 );
-S.displayName = "FormField.Password";
-function k(t = !1) {
-  const [i, r] = e.useState(t), n = e.useCallback((s) => {
-    e.startTransition(() => {
-      s.preventDefault(), s.stopPropagation(), r((o) => !o);
+k.displayName = "FormField.Password";
+function C(t = !1) {
+  const [i, n] = r.useState(t), l = r.useCallback((s) => {
+    r.startTransition(() => {
+      s.preventDefault(), s.stopPropagation(), n((o) => !o);
     });
   }, []);
   return {
     isPasswordVisible: i,
-    togglePasswordVisibility: n
+    togglePasswordVisibility: l
   };
 }
 export {
-  S as default
+  k as default
 };

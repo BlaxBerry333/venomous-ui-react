@@ -6,7 +6,7 @@ import { Typography as v } from "../Typography/index.esm.js";
 import E from "../Icon/Icon.esm.js";
 import { BorderColors as j, BackgroundColors as b, TextColors as z } from "../../utils/design/colors.esm.js";
 import { motion as f, AnimatePresence as L } from "framer-motion";
-import { ThemeShadow as M } from "../../utils/design/ThemeShadow.esm.js";
+import { Shadows as M } from "../../utils/design/Shadow.esm.js";
 const O = t.memo(
   ({
     tabs: n,

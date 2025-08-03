@@ -3,7 +3,7 @@
 import React from "react";
 
 import { useElementHover } from "@/hooks";
-import { TextColors, ThemeShadow } from "@/utils";
+import { Shadows, TextColors } from "@/utils";
 import { Buttons } from "../Button";
 import { Icon } from "../Icon";
 import { Space } from "../Space";
@@ -32,14 +32,14 @@ const MenuItem = React.memo<MenuItemProps>(
     const handleMouseOverStyles: React.MouseEventHandler<HTMLLIElement> = React.useCallback(
       (e) => {
         if (isDisabled) return;
-        e.currentTarget.style.boxShadow = ThemeShadow[themeMode].tertiary;
+        e.currentTarget.style.boxShadow = Shadows[themeMode].tertiary;
       },
       [isDisabled],
     );
     const handleMouseOutStyles: React.MouseEventHandler<HTMLLIElement> = React.useCallback(
       (e) => {
         if (isDisabled) return;
-        e.currentTarget.style.boxShadow = isHovering ? ThemeShadow[themeMode].tertiary : "none";
+        e.currentTarget.style.boxShadow = isHovering ? Shadows[themeMode].tertiary : "none";
       },
       [isDisabled],
     );

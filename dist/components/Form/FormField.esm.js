@@ -4,11 +4,11 @@ import { Space as y } from "../Space/index.esm.js";
 import { Theme as g } from "../Theme/index.esm.js";
 import { Typography as t } from "../Typography/index.esm.js";
 import { useFormFieldStyle as b } from "./useFormFieldStyle.esm.js";
-import { ThemeColor as d } from "../../utils/design/ThemeColor.esm.js";
-import { TextColors as F } from "../../utils/design/colors.esm.js";
-const T = h.memo(
+import { ThemeColor as p } from "../../utils/design/ThemeColor.esm.js";
+import { TextColors as T } from "../../utils/design/colors.esm.js";
+const F = h.memo(
   ({
-    children: p,
+    children: d,
     style: n,
     fullWidth: r = !1,
     required: l = !1,
@@ -18,7 +18,7 @@ const T = h.memo(
     helpText: a,
     ...x
   }) => {
-    const { themeMode: f } = g.useThemeMode(), { textColor: c } = b({
+    const { themeMode: f } = g.useThemeMode(), { helperTextColor: c } = b({
       fullWidth: r,
       isDisabled: m,
       isError: i
@@ -33,7 +33,7 @@ const T = h.memo(
           padding: 0,
           margin: 0,
           width: r ? "100%" : "max-content",
-          color: i ? d.RubyCopperhead : F[f].primary,
+          color: i ? p.RubyCopperhead : T[f].primary,
           ...n
         },
         ...x,
@@ -45,7 +45,7 @@ const T = h.memo(
                 as: "small",
                 text: "*",
                 style: {
-                  color: d.RubyCopperhead,
+                  color: p.RubyCopperhead,
                   fontWeight: "bold",
                   verticalAlign: "text-bottom"
                 }
@@ -65,7 +65,7 @@ const T = h.memo(
             )
           ] }),
           /* @__PURE__ */ e(y.Flex, { column: !0, gap: 0, style: { width: "100%" }, children: [
-            p,
+            d,
             a && /* @__PURE__ */ o(
               t.Text,
               {
@@ -83,7 +83,7 @@ const T = h.memo(
     );
   }
 );
-T.displayName = "FormField";
+F.displayName = "FormField";
 export {
-  T as default
+  F as default
 };

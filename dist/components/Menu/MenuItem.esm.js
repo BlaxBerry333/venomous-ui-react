@@ -7,7 +7,7 @@ import { Typography as c } from "../Typography/index.esm.js";
 import { MenuItemTagMap as O } from "./index.types.esm.js";
 import E from "../../hooks/useElementHover/index.esm.js";
 import R from "../Icon/Icon.esm.js";
-import { ThemeShadow as f } from "../../utils/design/ThemeShadow.esm.js";
+import { Shadows as f } from "../../utils/design/Shadow.esm.js";
 import { TextColors as l } from "../../utils/design/colors.esm.js";
 const b = u.memo(
   ({

@@ -64,6 +64,7 @@ const FormFieldPassword = React.memo<FormFieldTextProps>(
               outline: "none",
               position: "relative",
               width: "calc(100% - 34px)",
+              backgroundColor: commonStyles.backgroundColor,
               padding: commonStyles.padding,
               paddingRight: 0,
               ...style,

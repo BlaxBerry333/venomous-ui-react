@@ -30,8 +30,15 @@ export function useFormFieldStyle({
     else return TextColors[themeMode].primary;
   }, [isError, isDisabled, themeMode]);
 
+  const helperTextColor = React.useMemo<React.CSSProperties["color"]>(() => {
+    if (isError) return ThemeColor.RubyCopperhead;
+    if (isDisabled) return TextColors[themeMode].disabled;
+    else return TextColors[themeMode].quaternary;
+  }, [isError, isDisabled, themeMode]);
+
   const borderColor = React.useMemo<React.CSSProperties["borderColor"]>(() => {
     if (isError) return ThemeColor.RubyCopperhead;
+    if (isDisabled) return BorderColors[themeMode].secondary;
     else return BorderColors[themeMode].primary;
   }, [isError, themeMode]);
 
@@ -70,6 +77,7 @@ export function useFormFieldStyle({
   return {
     backgroundColor,
     textColor,
+    helperTextColor,
     borderColor,
     outlineColor,
     commonStyles,

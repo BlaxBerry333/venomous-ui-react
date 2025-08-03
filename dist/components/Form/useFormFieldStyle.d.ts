@@ -6,6 +6,7 @@ export declare function useFormFieldStyle({ fullWidth, isDisabled, isError, isFo
 }): {
     backgroundColor: import("csstype").Property.BackgroundColor | undefined;
     textColor: import("csstype").Property.Color | undefined;
+    helperTextColor: import("csstype").Property.Color | undefined;
     borderColor: import("csstype").Property.BorderColor | undefined;
     outlineColor: import("csstype").Property.Color | undefined;
     commonStyles: {

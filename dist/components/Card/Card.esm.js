@@ -1,12 +1,12 @@
 import { jsx as i } from "react/jsx-runtime";
-import s from "react";
-import { Theme as m } from "../Theme/index.esm.js";
-import { CardVariantMap as e, CardTagMap as p } from "./index.types.esm.js";
+import t from "react";
+import { Theme as p } from "../Theme/index.esm.js";
+import { CardVariantMap as e, CardTagMap as m } from "./index.types.esm.js";
 import { BackgroundColors as f, BorderColors as b } from "../../utils/design/colors.esm.js";
-import { ThemeShadow as h } from "../../utils/design/ThemeShadow.esm.js";
-const x = s.memo(
-  ({ children: t, style: a, as: d = p.div, variant: r = e.elevated, ...n }) => {
-    const { themeMode: o } = m.useThemeMode(), l = s.useMemo(() => {
+import { Shadows as h } from "../../utils/design/Shadow.esm.js";
+const x = t.memo(
+  ({ children: s, style: a, as: d = m.div, variant: r = e.elevated, ...n }) => {
+    const { themeMode: o } = p.useThemeMode(), l = t.useMemo(() => {
       switch (r) {
         case e.transparent:
           return "transparent";
@@ -16,17 +16,17 @@ const x = s.memo(
         default:
           return f[o].secondary;
       }
-    }, [o, r]), c = s.useMemo(() => {
+    }, [o, r]), c = t.useMemo(() => {
       switch (r) {
         case e.outlined:
         case e.transparent:
-          return b[o].secondary;
+          return b[o].tertiary;
         case e.elevated:
         case e.frostedGlass:
         default:
           return "transparent";
       }
-    }, [o, r]), u = s.useMemo(() => {
+    }, [o, r]), u = t.useMemo(() => {
       switch (r) {
         case e.outlined:
         case e.transparent:
@@ -56,7 +56,7 @@ const x = s.memo(
           ...a
         },
         ...n,
-        children: t
+        children: s
       }
     );
   }

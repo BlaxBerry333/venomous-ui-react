@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from "motion/react";
 import React from "react";
 
-import { BackgroundColors, BorderColors, TextColors, ThemeShadow } from "@/utils";
+import { BackgroundColors, BorderColors, Shadows, TextColors } from "@/utils";
 import { Icon } from "../Icon";
 import { Space } from "../Space";
 import { Theme } from "../Theme";
@@ -161,7 +161,7 @@ const Tab = React.memo<TabProps>(
                 height: "calc(100% - 8px)",
                 borderRadius: "6px",
                 background: BackgroundColors[themeMode].primary,
-                boxShadow: ThemeShadow[themeMode].tertiary,
+                boxShadow: Shadows[themeMode].tertiary,
               }),
               ...(variant === "underline" && {
                 bottom: "-2px",

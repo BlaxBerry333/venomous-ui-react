@@ -30,7 +30,7 @@ export const TextColors: Record<
 export const BackgroundColors: Record<ThemeMode, Record<"primary" | "secondary", string>> = {
   [ThemeMode.Dark]: {
     primary: "#181818", // 主背景
-    secondary: "#242424", // 卡片/面板背景
+    secondary: "#363636ff", // 卡片/面板背景
   },
   [ThemeMode.Light]: {
     primary: "#ffffff", // 主背景
@@ -38,13 +38,17 @@ export const BackgroundColors: Record<ThemeMode, Record<"primary" | "secondary",
   },
 };
 
-export const BorderColors: Record<ThemeMode, Record<"primary" | "secondary", string>> = {
+export const BorderColors: Record<ThemeMode, Record<"primary" | "secondary" | "tertiary" | "quaternary", string>> = {
   [ThemeMode.Dark]: {
-    primary: "rgba(255, 255, 255, 0.65)",
-    secondary: "rgba(255, 255, 255, 0.10)",
+    primary: "rgba(255, 255, 255, 0.55)",
+    secondary: "rgba(255, 255, 255, 0.25)",
+    tertiary: "rgba(255, 255, 255, 0.15)",
+    quaternary: "rgba(255, 255, 255, 0.05)",
   },
   [ThemeMode.Light]: {
-    primary: "rgba(38, 85, 115, 0.15)",
-    secondary: "rgba(0, 0, 0, 0.15)",
+    primary: "rgba(0, 0, 0, 0.55)",
+    secondary: "rgba(0, 0, 0, 0.25)",
+    tertiary: "rgba(0, 0, 0, 0.15)",
+    quaternary: "rgba(0, 0, 0, 0.05)",
   },
 };

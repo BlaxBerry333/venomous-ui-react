@@ -1,10 +1,10 @@
 import { ThemeMode } from "./ThemeMode";
 
-export const ThemeShadow: Record<ThemeMode, Record<"primary" | "secondary" | "tertiary" | "inset", string>> = {
+export const Shadows: Record<ThemeMode, Record<"primary" | "secondary" | "tertiary" | "inset", string>> = {
   [ThemeMode.Dark]: {
     // 卡片
     primary: `
-      0px 0px 4px 0px rgba(255, 255, 255, 0.9),
+      0px 0px 4px 0px rgba(255, 255, 255, 0.7),
       0px 0px 2px -1px rgba(255, 255, 255, 0.7)
     `,
     // 按钮

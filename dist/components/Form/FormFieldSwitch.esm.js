@@ -1,12 +1,12 @@
 import { jsxs as R, jsx as i } from "react/jsx-runtime";
 import I from "react";
-import T from "./Label.esm.js";
-import { useFormFieldStyle as W } from "./useFormFieldStyle.esm.js";
-import { useToggleFormFieldChecked as j } from "./useToggleFormFieldChecked.esm.js";
-import { AnimatePresence as P, motion as s } from "framer-motion";
+import W from "./Label.esm.js";
+import { useFormFieldStyle as j } from "./useFormFieldStyle.esm.js";
+import { useToggleFormFieldChecked as P } from "./useToggleFormFieldChecked.esm.js";
+import { AnimatePresence as T, motion as s } from "framer-motion";
 import { ThemeColor as z } from "../../utils/design/ThemeColor.esm.js";
 import { BackgroundColors as A } from "../../utils/design/colors.esm.js";
-import { ThemeShadow as B } from "../../utils/design/ThemeShadow.esm.js";
+import { Shadows as B } from "../../utils/design/Shadow.esm.js";
 const l = 48, c = 24, r = 18, a = 4, D = I.memo(
   ({
     style: d,
@@ -22,15 +22,15 @@ const l = 48, c = 24, r = 18, a = 4, D = I.memo(
     labelPosition: y = "right",
     ...b
   }) => {
-    const { inputRef: C, isChecked: o, toggleOriginalIsChecked: w, toggleCustomIsChecked: x } = j({
+    const { inputRef: C, isChecked: o, toggleOriginalIsChecked: w, toggleCustomIsChecked: x } = P({
       checked: g,
       disabled: e,
       onChange: u
-    }), { backgroundColor: S, outlineColor: F, borderColor: v, commonStyles: n } = W({
+    }), { backgroundColor: S, outlineColor: F, borderColor: v, commonStyles: n } = j({
       isDisabled: e,
       isError: t
     });
-    return /* @__PURE__ */ R(T, { label: k, required: m, isError: t, position: y, children: [
+    return /* @__PURE__ */ R(W, { label: k, required: m, isError: t, position: y, children: [
       /* @__PURE__ */ i(
         "input",
         {
@@ -56,7 +56,7 @@ const l = 48, c = 24, r = 18, a = 4, D = I.memo(
             cursor: e ? "not-allowed" : "pointer",
             opacity: e ? 0.6 : 1
           },
-          children: /* @__PURE__ */ i(P, { children: /* @__PURE__ */ i(
+          children: /* @__PURE__ */ i(T, { children: /* @__PURE__ */ i(
             s.div,
             {
               initial: !1,

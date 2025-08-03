@@ -4,8 +4,8 @@ import { default as m } from "./components/Container/Container.esm.js";
 import { default as x } from "./components/Drawer/Drawer.esm.js";
 import { default as l } from "./components/Form/Form.esm.js";
 import { default as u } from "./components/Icon/Icon.esm.js";
-import { default as T } from "./components/Modal/Modal.esm.js";
-import { default as i } from "./components/NoSSR/NoSSR.esm.js";
+import { default as i } from "./components/Modal/Modal.esm.js";
+import { default as h } from "./components/NoSSR/NoSSR.esm.js";
 import { default as y } from "./components/Notification/Notification.esm.js";
 import { default as H } from "./components/Popover/Popover.esm.js";
 import { default as c } from "./components/Tab/Tab.esm.js";
@@ -25,18 +25,18 @@ import { Theme as W } from "./components/Theme/index.esm.js";
 import { Transitions as Y } from "./components/Transition/index.esm.js";
 import { Typography as _ } from "./components/Typography/index.esm.js";
 import { BackgroundColors as oo, BorderColors as eo, SemanticColors as ro, TextColors as to } from "./utils/design/colors.esm.js";
-import { BreakPointName as fo, ThemeBreakPoint as mo } from "./utils/design/ThemeBreakpoint.esm.js";
-import { ThemeColor as xo } from "./utils/design/ThemeColor.esm.js";
-import { ThemeMode as lo } from "./utils/design/ThemeMode.esm.js";
-import { ThemeShadow as no } from "./utils/design/ThemeShadow.esm.js";
-import { TypographySize as ho, TypographySizeName as io } from "./utils/design/TypographySize.esm.js";
+import { Shadows as fo } from "./utils/design/Shadow.esm.js";
+import { BreakPointName as po, ThemeBreakPoint as xo } from "./utils/design/ThemeBreakpoint.esm.js";
+import { ThemeColor as lo } from "./utils/design/ThemeColor.esm.js";
+import { ThemeMode as no } from "./utils/design/ThemeMode.esm.js";
+import { TypographySize as To, TypographySizeName as ho } from "./utils/design/TypographySize.esm.js";
 import { getThemeColors as yo } from "./utils/design/get-theme-colors.esm.js";
 import { getSystemThemeMode as Ho } from "./utils/design/get-theme-mode.esm.js";
 import { getDarkerHex as co, getLighterHex as Bo, getOpacityHex as Mo, hexNormalize as No, hexToHsl as Po, hexToRgb as ko, hslToHex as Fo, rgbToHex as bo } from "./utils/tools/get-colors.esm.js";
 export {
   oo as BackgroundColors,
   eo as BorderColors,
-  fo as BreakPointName,
+  po as BreakPointName,
   r as Button,
   z as Buttons,
   a as Card,
@@ -47,26 +47,26 @@ export {
   E as FormField,
   u as Icon,
   I as Menu,
-  T as Modal,
+  i as Modal,
   O as Modals,
-  i as NoSSR,
+  h as NoSSR,
   y as Notification,
   H as Popover,
   G as Portal,
   K as Progress,
   ro as SemanticColors,
+  fo as Shadows,
   U as Space,
   c as Tab,
   to as TextColors,
   W as Theme,
-  mo as ThemeBreakPoint,
-  xo as ThemeColor,
-  lo as ThemeMode,
-  no as ThemeShadow,
+  xo as ThemeBreakPoint,
+  lo as ThemeColor,
+  no as ThemeMode,
   Y as Transitions,
   _ as Typography,
-  ho as TypographySize,
-  io as TypographySizeName,
+  To as TypographySize,
+  ho as TypographySizeName,
   co as getDarkerHex,
   Bo as getLighterHex,
   Mo as getOpacityHex,

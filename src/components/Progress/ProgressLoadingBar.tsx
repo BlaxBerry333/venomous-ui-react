@@ -3,7 +3,7 @@
 import { motion, useAnimation } from "motion/react";
 import React from "react";
 
-import { getLighterHex, getOpacityHex, ThemeShadow } from "@/utils";
+import { getLighterHex, getOpacityHex, Shadows } from "@/utils";
 import { Theme } from "../Theme";
 import type { ProgressLoadingBarProps } from "./index.types";
 
@@ -50,7 +50,7 @@ const ProgressLoadingBar = React.memo<ProgressLoadingBarProps>(({ height = 8 }) 
         overflow: "hidden",
         backgroundColor: getOpacityHex(themeColor, 0.2),
         borderRadius: height / 2,
-        boxShadow: ThemeShadow[themeMode].tertiary,
+        boxShadow: Shadows[themeMode].tertiary,
       }}
     >
       <motion.div

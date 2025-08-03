@@ -1,47 +1,48 @@
 import t from "react";
-import { Theme as a } from "../Theme/index.esm.js";
-import { BackgroundColors as C, TextColors as c, BorderColors as h } from "../../utils/design/colors.esm.js";
-import { ThemeColor as d } from "../../utils/design/ThemeColor.esm.js";
-function R({
+import { Theme as f } from "../Theme/index.esm.js";
+import { BackgroundColors as i, TextColors as u, BorderColors as s } from "../../utils/design/colors.esm.js";
+import { ThemeColor as l } from "../../utils/design/ThemeColor.esm.js";
+function b({
   fullWidth: n = !1,
   isDisabled: o = !1,
   isError: r = !1,
-  isFocused: p = !1
+  isFocused: c = !1
 }) {
-  const { themeMode: e } = a.useThemeMode(), { themeColor: i } = a.useThemeColor(), u = t.useMemo(() => o ? C[e].secondary : "transparent", [o, e]), l = t.useMemo(() => r ? d.RubyCopperhead : o ? c[e].disabled : c[e].primary, [r, o, e]), m = t.useMemo(() => r ? d.RubyCopperhead : h[e].primary, [r, e]), s = t.useMemo(() => r ? d.RubyCopperhead : i, [r, e]), f = t.useMemo(
+  const { themeMode: e } = f.useThemeMode(), { themeColor: C } = f.useThemeColor(), m = t.useMemo(() => o ? i[e].secondary : "transparent", [o, e]), p = t.useMemo(() => r ? l.RubyCopperhead : o ? u[e].disabled : u[e].primary, [r, o, e]), y = t.useMemo(() => r ? l.RubyCopperhead : o ? u[e].disabled : u[e].quaternary, [r, o, e]), d = t.useMemo(() => r ? l.RubyCopperhead : o ? s[e].secondary : s[e].primary, [r, e]), a = t.useMemo(() => r ? l.RubyCopperhead : C, [r, e]), h = t.useMemo(
     () => ({
       display: n ? "block" : "inline-block",
       width: n ? "100%" : "auto",
       minWidth: n ? "100%" : 200,
       minHeight: 40,
       padding: "8px",
-      backgroundColor: u,
-      color: l,
+      backgroundColor: m,
+      color: p,
       borderRadius: "8px",
       borderWidth: 1.5,
       borderStyle: "solid",
-      borderColor: m,
-      ...p && {
+      borderColor: d,
+      ...c && {
         outlineOffset: -1.5,
         outlineWidth: 1.5,
         outlineStyle: "solid",
-        outlineColor: s
+        outlineColor: a
       },
       ...o && {
         cursor: "not-allowed",
         outline: "none"
       }
     }),
-    [n, p, o, u, l, m, s]
+    [n, c, o, m, p, d, a]
   );
   return {
-    backgroundColor: u,
-    textColor: l,
-    borderColor: m,
-    outlineColor: s,
-    commonStyles: f
+    backgroundColor: m,
+    textColor: p,
+    helperTextColor: y,
+    borderColor: d,
+    outlineColor: a,
+    commonStyles: h
   };
 }
 export {
-  R as useFormFieldStyle
+  b as useFormFieldStyle
 };

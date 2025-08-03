@@ -1,10 +1,10 @@
 import { ThemeMode as r } from "./ThemeMode.esm.js";
-const o = {
+const e = {
   success: "#4caf50",
   error: "#f44336",
   warning: "#ff9800",
   info: "#2196f3"
-}, e = {
+}, o = {
   [r.Dark]: {
     primary: "#ffffff",
     // 主要文本
@@ -33,7 +33,7 @@ const o = {
   [r.Dark]: {
     primary: "#181818",
     // 主背景
-    secondary: "#242424"
+    secondary: "#363636ff"
     // 卡片/面板背景
   },
   [r.Light]: {
@@ -42,19 +42,23 @@ const o = {
     secondary: "#f8f9fa"
     // 卡片/面板背景
   }
-}, c = {
+}, t = {
   [r.Dark]: {
-    primary: "rgba(255, 255, 255, 0.65)",
-    secondary: "rgba(255, 255, 255, 0.10)"
+    primary: "rgba(255, 255, 255, 0.55)",
+    secondary: "rgba(255, 255, 255, 0.25)",
+    tertiary: "rgba(255, 255, 255, 0.15)",
+    quaternary: "rgba(255, 255, 255, 0.05)"
   },
   [r.Light]: {
-    primary: "rgba(38, 85, 115, 0.15)",
-    secondary: "rgba(0, 0, 0, 0.15)"
+    primary: "rgba(0, 0, 0, 0.55)",
+    secondary: "rgba(0, 0, 0, 0.25)",
+    tertiary: "rgba(0, 0, 0, 0.15)",
+    quaternary: "rgba(0, 0, 0, 0.05)"
   }
 };
 export {
   f as BackgroundColors,
-  c as BorderColors,
-  o as SemanticColors,
-  e as TextColors
+  t as BorderColors,
+  e as SemanticColors,
+  o as TextColors
 };

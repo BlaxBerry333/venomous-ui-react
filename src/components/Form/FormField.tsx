@@ -23,7 +23,7 @@ const FormField = React.memo<FormFieldProps>(
   }) => {
     const { themeMode } = Theme.useThemeMode();
 
-    const { textColor } = useFormFieldStyle({
+    const { helperTextColor } = useFormFieldStyle({
       fullWidth,
       isDisabled: disabled,
       isError,
@@ -80,7 +80,7 @@ const FormField = React.memo<FormFieldProps>(
               as="small"
               text={helpText}
               style={{
-                color: textColor,
+                color: helperTextColor,
                 paddingLeft: "4px",
               }}
             />

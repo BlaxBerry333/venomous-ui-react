@@ -3,7 +3,7 @@ const r = {
   [p.Dark]: {
     // 卡片
     primary: `
-      0px 0px 4px 0px rgba(255, 255, 255, 0.9),
+      0px 0px 4px 0px rgba(255, 255, 255, 0.7),
       0px 0px 2px -1px rgba(255, 255, 255, 0.7)
     `,
     // 按钮
@@ -40,5 +40,5 @@ const r = {
   }
 };
 export {
-  r as ThemeShadow
+  r as Shadows
 };

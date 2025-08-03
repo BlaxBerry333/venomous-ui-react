@@ -7,5 +7,5 @@ export declare const SemanticColors: {
 };
 export declare const TextColors: Record<ThemeMode, Record<"primary" | "secondary" | "tertiary" | "quaternary" | "disabled", string>>;
 export declare const BackgroundColors: Record<ThemeMode, Record<"primary" | "secondary", string>>;
-export declare const BorderColors: Record<ThemeMode, Record<"primary" | "secondary", string>>;
+export declare const BorderColors: Record<ThemeMode, Record<"primary" | "secondary" | "tertiary" | "quaternary", string>>;
 //# sourceMappingURL=colors.d.ts.map

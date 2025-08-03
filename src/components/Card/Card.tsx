@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import { BackgroundColors, BorderColors, ThemeShadow } from "@/utils";
+import { BackgroundColors, BorderColors, Shadows } from "@/utils";
 import { Theme } from "../Theme";
 import { CardTagMap, CardVariantMap, type CardProps } from "./index.types";
 
@@ -26,7 +26,7 @@ const Card = React.memo<CardProps>(
       switch (variant) {
         case CardVariantMap.outlined:
         case CardVariantMap.transparent:
-          return BorderColors[themeMode].secondary;
+          return BorderColors[themeMode].tertiary;
         case CardVariantMap.elevated:
         case CardVariantMap.frostedGlass:
         default:
@@ -42,7 +42,7 @@ const Card = React.memo<CardProps>(
         case CardVariantMap.elevated:
         case CardVariantMap.frostedGlass:
         default:
-          return ThemeShadow[themeMode].primary;
+          return Shadows[themeMode].primary;
       }
     }, [themeMode, variant]);
 
