@@ -1,0 +1,1 @@
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const u=require("react/jsx-runtime"),s=require("react"),e=s.memo(({children:t,style:o,...r})=>u.jsx("main",{style:{width:"100%",flexGrow:1,...o},...r,children:t}));e.displayName="Layout.Footer";exports.default=e;

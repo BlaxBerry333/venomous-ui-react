@@ -1,0 +1,112 @@
+import { Meta, Canvas, Controls } from "@storybook/blocks";
+import * as Stories from "./Layout.stories";
+
+<Meta of={Stories} />
+
+# Layout
+
+The layout of a page can be achieved quickly by combining these components, but they must be wrapped with `<Layout.Provider>`
+
+- `<Layout.Header>` will be rendered as HTML tag `<header>`.
+- `<Layout.Content>` will be rendered as HTML tag `<main>`.
+- `<Layout.Side>` will be rendered as HTML tag `<aside>`.
+- `<Layout.footer>` will be rendered as HTML tag `<footer>`.
+
+<br />
+
+## Layout Sample 1
+
+This example can be used to implement the layout of the **toB Admin Dashboard**.
+
+<Canvas
+  of={Stories.LayoutSample1}
+  sourceState="hidden"
+  source={{
+    code: [
+      'import { Layout, Space } from "venomous-ui-react/components";',
+      "",
+      "function App() {",
+      "  return (",
+      "    <Layout.Provider",
+      '      maxBreakpoint="xl"',
+      "      headerHeight={60}",
+      "      footerHeight={80}",
+      "      sideWidth={300}",
+      "    >",
+      "      <Layout.Header>",
+      '        <div style={{ height: "100%", backgroundColor: "skyblue" }} />',
+      "      </Layout.Header>",
+      "",
+      "      <Space.Flex row gap={0}>",
+      "        <Layout.Side>",
+      '          <div style={{ height: "200vh", backgroundColor: "crimson" }} />',
+      "        </Layout.Side>",
+      "",
+      "        <Space.Flex column gap={0}>",
+      "          <Layout.Content>",
+      '            <div style={{ height: "200vh", backgroundColor: "pink" }} />',
+      "          </Layout.Content>",
+      "          <Layout.Footer>",
+      '            <div style={{ height: "100%", backgroundColor: "orange" }} />',
+      "          </Layout.Footer>",
+      "        </Space.Flex>",
+      "      </Space.Flex>",
+      "    </Layout.Provider>",
+      "  );",
+      "}",
+    ].join("\n"),
+  }}
+/>
+
+## Layout Sample 2
+
+This example can be used to implement the layout of the **Mobile Web App**.
+
+<Canvas
+  of={Stories.LayoutSample2}
+  sourceState="hidden"
+  source={{
+    code: [
+      'import { Layout } from "venomous-ui-react/components";',
+      "",
+      "function App() {",
+      "  return (",
+      "    <Layout.Provider",
+      '      maxBreakpoint="sm"',
+      "      headerHeight={60}",
+      "      footerHeight={80}",
+      "    >",
+      "      <Layout.Header>",
+      '        <div style={{ height: "100%", backgroundColor: "skyblue" }} />',
+      "      </Layout.Header>",
+      "",
+      "      <Layout.Content>",
+      '        <div style={{ height: "200vh", backgroundColor: "pink" }} />',
+      "      </Layout.Content>",
+      "",
+      "      <Layout.Footer>",
+      '        <div style={{ height: "100%", backgroundColor: "orange" }} />',
+      "      </Layout.Footer>",
+      "    </Layout.Provider>",
+      "  );",
+      "}",
+    ].join("\n"),
+  }}
+/>
+
+## TroubleShotting
+
+<br />
+
+#### The【Layout Sample 1】doesn't fixed, when pulling down the page, the entire layout scrolled together
+
+Pulling down the page will triggers the **pull-to-refresh** feature. It's normal browser behavior, not an issue with layout components. But you can disable this behavior by using the following CSS:
+
+```css
+html,
+body {
+  /* disable overscroll and pull-to-refresh */
+  overscroll-behavior: none;
+  scroll-behavior: smooth;
+}
+```

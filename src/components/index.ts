@@ -5,6 +5,7 @@ export * from "./Container";
 export * from "./Drawer";
 export * from "./Form";
 export * from "./Icon";
+export * from "./Layout";
 export * from "./Menu";
 export * from "./Modal";
 export * from "./NoSSR";

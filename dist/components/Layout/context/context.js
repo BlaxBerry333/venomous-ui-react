@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const e=require("react"),t={headerHeight:60,footerHeight:80,sideWidth:300},o=e.createContext(t);exports.LAYOUT_CONTEXT_DEFAULT_VALUE=t;exports.LayoutContext=o;

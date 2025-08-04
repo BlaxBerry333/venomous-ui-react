@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const e=require("react"),o=require("./context.js");function u(){const t=e.useContext(o.LayoutContext);if(t===void 0)throw new Error("useLayoutContext must be used within a LayoutProvider");return t}exports.useLayoutContext=u;

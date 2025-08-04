@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const e=require("./LayoutContent.js"),t=require("./LayoutFooter.js"),o=require("./LayoutHeader.js"),r=require("./LayoutProvider.js"),u=require("./LayoutSide.js"),a={Provider:r.default,Header:o.default,Side:u.default,Content:e.default,Footer:t.default};exports.Layout=a;
