@@ -24,7 +24,7 @@ const FormFieldPassword = React.memo<FormFieldTextProps>(
   }) => {
     const { isFocused, handleFocus, handleBlur } = useElementFocus();
 
-    const { outlineColor, commonStyles } = useFormFieldStyle({
+    const { outlineColor, commonStyles, textColor } = useFormFieldStyle({
       fullWidth,
       isDisabled: disabled,
       isError,
@@ -41,6 +41,7 @@ const FormFieldPassword = React.memo<FormFieldTextProps>(
         isError={isError}
         fullWidth={fullWidth}
         helpText={helpText}
+        spellCheck={false}
       >
         <div
           style={{
@@ -64,6 +65,8 @@ const FormFieldPassword = React.memo<FormFieldTextProps>(
               outline: "none",
               position: "relative",
               width: "calc(100% - 34px)",
+              minHeight: commonStyles.minHeight,
+              color: textColor,
               backgroundColor: commonStyles.backgroundColor,
               padding: commonStyles.padding,
               paddingRight: 0,
@@ -72,7 +75,7 @@ const FormFieldPassword = React.memo<FormFieldTextProps>(
             {...props}
           />
           <Icon
-            icon={isPasswordVisible ? "solar:eye-closed-broken" : "solar:eye-linear"}
+            icon={isPasswordVisible ? "solar:eye-linear" : "solar:eye-closed-broken"}
             width={20}
             onClick={togglePasswordVisibility}
             style={{
