@@ -1,0 +1,55 @@
+import { Meta, Canvas, Controls } from "@storybook/blocks";
+import * as Stories from "./MediaFileUploader.stories";
+
+<Meta of={Stories} />
+
+# MediaFile.Uploader
+
+<Canvas of={Stories.Default} />
+
+<Controls />
+
+## handleFileUpload
+
+The component library also provides a function type `MediaFileUploadHandler` that can be used to handle uploaded files.
+
+```tsx
+import React from "react";
+import axios from "axios";
+
+import type { MediaFileUploadHandler } from "venomous-ui-react/components";
+
+function App() {
+  // type MediaFileUploadHandler = (files: File[]) => void;
+  const onFileChange: MediaFileUploadHandler = (files) => {
+    if (files.length === 0) {
+      console.warn("No files selected.");
+      return;
+    }
+
+    const formData = new FormData();
+
+    // single file
+    if (files.length === 1) {
+      formData.append("file", files[0]);
+    }
+
+    // multiple files
+    for (let i = 0; i < files.length; i++) {
+      formData.append(`files-${i}`, files[i]);
+    }
+
+    // upload request
+    axios
+      .post("/?", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      })
+      .then((res) => console.log("Succeed", res.data))
+      .catch((err) => console.error("Failed", err));
+  }
+
+  return (
+    <MediaFile.Uploader handleFileUpload={handleFileUpload}>
+  )
+}
+```
