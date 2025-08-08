@@ -1,0 +1,55 @@
+import { Meta, Canvas, Controls } from "@storybook/blocks";
+import * as Stories from "./Table.stories";
+
+<Meta of={Stories} />
+
+# Table
+
+`<Table>` will be rendered as a combination of HTML tag `<table>`.
+
+<Canvas
+  of={Stories.Default}
+  sourceState="hidden"
+  source={{
+    code: [
+      'import { Chip, Table, type TableColumnData } from "venomous-ui-react/components";',
+      "",
+      "type TableRowData = {",
+      "  id: number;",
+      "  name: string;",
+      "  country: string;",
+      "};",
+      "",
+      "const mockRows: TableRowData[] = Array.from({ length: 30 }, (_, i) => ({",
+      "  id: i + 1,",
+      '  name: "User",',
+      '  country: ["Japan", "USA", "Korea"][i % 3],',
+      "}));",
+      "",
+      "const columns: TableColumnData<TableRowData>[] = [",
+      '  { key: "id", label: "ID" },',
+      '  { key: "name", label: "Name", renderCell: (row, index) => <strong>{row.name}-{index + 1}</strong> },',
+      '  { key: "country", label: "Country", renderCell: (row) => <Chip text={row.country} /> },',
+      "];",
+      "",
+      "function App() {",
+      "  return (",
+      "    <Table",
+      "      columns={columns}",
+      "      rows={mockRows}",
+      "      rowUnionKey={(row) => row.id}",
+      '      style={{ height: "500px", width: "max-content" }}',
+      "      renderRowActions={(row, index) => (",
+      "        <Space.Flex>",
+      '          <Buttons.Icon variant="outlined" icon="solar:pen-linear" />',
+      '          <Buttons.Icon variant="outlined" icon="solar:trash-bin-trash-linear" semanticColor="error" />',
+      "        </Space.Flex>",
+      "      )}",
+      "    />",
+      "  );",
+      "}",
+    ].join("\n"),
+  }}
+/>
+
+<Controls />

@@ -16,6 +16,7 @@ export * from "./Portal";
 export * from "./Progress";
 export * from "./Space";
 export * from "./Tab";
+export * from "./Table";
 export * from "./Theme";
 export * from "./Transition";
 export * from "./Typography";
