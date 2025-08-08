@@ -1,44 +1,45 @@
-import { jsx as r } from "react/jsx-runtime";
+import { jsx as s } from "react/jsx-runtime";
 import y from "react";
-import x from "./FormField.esm.js";
-import { useFormFieldStyle as b } from "./useFormFieldStyle.esm.js";
+import b from "./FormField.esm.js";
+import { useFormFieldStyle as x } from "./_useFormFieldStyle.esm.js";
 import N from "../../hooks/useElementFocus/index.esm.js";
 const S = y.memo(
   ({
     style: t,
     fullWidth: e,
-    autoComplete: s = "off",
-    required: n = !1,
+    autoComplete: i = "off",
+    required: l = !1,
     isError: m = !1,
     disabled: o = !1,
-    name: i,
-    value: l,
-    label: u,
-    helpText: F,
-    ...c
+    name: n,
+    value: u,
+    label: F,
+    helpText: c,
+    ...f
   }) => {
-    const { isFocused: f, handleFocus: p, handleBlur: a } = N(), { commonStyles: d } = b({
+    const { isFocused: r, handleFocus: p, handleBlur: a } = N(), { commonStyles: d } = x({
       fullWidth: e,
       isDisabled: o,
       isError: m,
-      isFocused: f
+      isFocused: r
     });
-    return /* @__PURE__ */ r(
-      x,
+    return /* @__PURE__ */ s(
+      b,
       {
-        label: u,
-        required: n,
-        disabled: o,
+        label: F,
+        required: l,
+        isDisabled: o,
         isError: m,
+        isFocused: r,
         fullWidth: e,
-        helpText: F,
-        children: /* @__PURE__ */ r(
+        helpText: c,
+        children: /* @__PURE__ */ s(
           "input",
           {
             type: "number",
-            name: i,
-            value: l,
-            autoComplete: s,
+            name: n,
+            value: u,
+            autoComplete: i,
             disabled: o,
             onFocus: o ? void 0 : p,
             onBlur: o ? void 0 : a,
@@ -47,7 +48,7 @@ const S = y.memo(
               ...d,
               ...t
             },
-            ...c
+            ...f
           }
         )
       }

@@ -3,9 +3,9 @@
 import React from "react";
 
 import { Icon } from "../Icon";
+import { useFormFieldStyle } from "./_useFormFieldStyle";
 import type { FormFieldCheckboxProps } from "./index.types";
 import Label from "./Label";
-import { useFormFieldStyle } from "./useFormFieldStyle";
 import { useToggleFormFieldChecked } from "./useToggleFormFieldChecked";
 
 const FormFieldCheckbox = React.memo<FormFieldCheckboxProps>(

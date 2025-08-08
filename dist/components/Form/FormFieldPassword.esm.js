@@ -1,38 +1,39 @@
 import { jsx as a, jsxs as P } from "react/jsx-runtime";
-import r from "react";
-import h from "./FormField.esm.js";
-import { useFormFieldStyle as v } from "./useFormFieldStyle.esm.js";
-import x from "../../hooks/useElementFocus/index.esm.js";
-import V from "../Icon/Icon.esm.js";
-const k = r.memo(
+import t from "react";
+import x from "./FormField.esm.js";
+import { useFormFieldStyle as v } from "./_useFormFieldStyle.esm.js";
+import C from "../../hooks/useElementFocus/index.esm.js";
+import k from "../Icon/Icon.esm.js";
+const V = t.memo(
   ({
-    style: t,
+    style: r,
     fullWidth: i,
-    autoComplete: n = "off",
-    required: l = !1,
+    autoComplete: l = "off",
+    required: n = !1,
     isError: s = !1,
     disabled: o = !1,
-    name: c,
-    value: p,
-    label: m,
-    helpText: u,
-    ...g
+    name: p,
+    value: m,
+    label: u,
+    helpText: g,
+    ...f
   }) => {
-    const { isFocused: f, handleFocus: b, handleBlur: w } = x(), { outlineColor: y, commonStyles: e } = v({
+    const { isFocused: d, handleFocus: b, handleBlur: w } = C(), { outlineColor: y, commonStyles: e, textColor: F } = v({
       fullWidth: i,
       isDisabled: o,
       isError: s,
-      isFocused: f
-    }), { isPasswordVisible: d, togglePasswordVisibility: F } = C(!1);
+      isFocused: d
+    }), { isPasswordVisible: c, togglePasswordVisibility: h } = S(!1);
     return /* @__PURE__ */ a(
-      h,
+      x,
       {
-        label: m,
-        required: l,
-        disabled: o,
+        label: u,
+        required: n,
+        isDisabled: o,
+        isFocused: d,
         isError: s,
         fullWidth: i,
-        helpText: u,
+        helpText: g,
         children: /* @__PURE__ */ P(
           "div",
           {
@@ -46,10 +47,11 @@ const k = r.memo(
               /* @__PURE__ */ a(
                 "input",
                 {
-                  type: d ? "text" : "password",
-                  name: c,
-                  value: p,
-                  autoComplete: n,
+                  type: c ? "text" : "password",
+                  name: p,
+                  value: m,
+                  autoComplete: l,
+                  spellCheck: !1,
                   disabled: o,
                   onFocus: o ? void 0 : b,
                   onBlur: o ? void 0 : w,
@@ -59,20 +61,22 @@ const k = r.memo(
                     outline: "none",
                     position: "relative",
                     width: "calc(100% - 34px)",
+                    minHeight: e.minHeight,
+                    color: F,
                     backgroundColor: e.backgroundColor,
                     padding: e.padding,
                     paddingRight: 0,
-                    ...t
+                    ...r
                   },
-                  ...g
+                  ...f
                 }
               ),
               /* @__PURE__ */ a(
-                V,
+                k,
                 {
-                  icon: d ? "solar:eye-closed-broken" : "solar:eye-linear",
+                  icon: c ? "solar:eye-linear" : "solar:eye-closed-broken",
                   width: 20,
-                  onClick: F,
+                  onClick: h,
                   style: {
                     position: "absolute",
                     top: "50%",
@@ -91,18 +95,18 @@ const k = r.memo(
     );
   }
 );
-k.displayName = "FormField.Password";
-function C(t = !1) {
-  const [i, n] = r.useState(t), l = r.useCallback((s) => {
-    r.startTransition(() => {
-      s.preventDefault(), s.stopPropagation(), n((o) => !o);
+V.displayName = "FormField.Password";
+function S(r = !1) {
+  const [i, l] = t.useState(r), n = t.useCallback((s) => {
+    t.startTransition(() => {
+      s.preventDefault(), s.stopPropagation(), l((o) => !o);
     });
   }, []);
   return {
     isPasswordVisible: i,
-    togglePasswordVisibility: l
+    togglePasswordVisibility: n
   };
 }
 export {
-  k as default
+  V as default
 };

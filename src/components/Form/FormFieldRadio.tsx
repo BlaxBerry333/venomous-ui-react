@@ -4,10 +4,10 @@ import React from "react";
 
 import { Icon } from "../Icon";
 import { Space } from "../Space";
+import { useFormFieldStyle } from "./_useFormFieldStyle";
 import FormField from "./FormField";
 import type { FormFieldOption, FormFieldRadioProps } from "./index.types";
 import Label from "./Label";
-import { useFormFieldStyle } from "./useFormFieldStyle";
 
 const FormFieldRadio = React.memo<FormFieldRadioProps>(
   ({

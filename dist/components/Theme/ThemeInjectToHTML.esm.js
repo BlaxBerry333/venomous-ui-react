@@ -1,19 +1,19 @@
 import r from "react";
-import { Theme as c } from "./index.esm.js";
-import { getOpacityHex as n, hexNormalize as a, getDarkerHex as s, getLighterHex as m } from "../../utils/tools/get-colors.esm.js";
+import { Theme as n } from "./index.esm.js";
+import { getOpacityHex as c, hexNormalize as a, getDarkerHex as s, getLighterHex as m } from "../../utils/tools/get-colors.esm.js";
 const u = r.memo(() => (h(), null));
 u.displayName = "Theme.InjectToHTML";
 function h() {
-  const { themeColor: o } = c.useThemeColor(), e = r.useMemo(
+  const { themeColor: o } = n.useThemeColor(), e = r.useMemo(
     () => ({
       light: m(o, 0.2),
       dark: s(o, 0.8),
       origin: a(o),
-      opacity: n(o, 0.6)
+      opacity: c(o, 0.6)
     }),
     [o]
   );
-  r.useEffect(() => {
+  r.useInsertionEffect(() => {
     if (typeof window > "u")
       return;
     const i = "theme-palette-style";

@@ -4,9 +4,9 @@ import { AnimatePresence, motion } from "motion/react";
 import React from "react";
 
 import { BackgroundColors, Shadows, ThemeColor } from "@/utils";
+import { useFormFieldStyle } from "./_useFormFieldStyle";
 import type { FormFieldCheckboxProps } from "./index.types";
 import Label from "./Label";
-import { useFormFieldStyle } from "./useFormFieldStyle";
 import { useToggleFormFieldChecked } from "./useToggleFormFieldChecked";
 
 const switchWidth = 48;

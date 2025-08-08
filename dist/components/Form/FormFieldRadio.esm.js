@@ -1,64 +1,88 @@
-import { jsx as a } from "react/jsx-runtime";
-import o from "react";
-import { Space as y } from "../Space/index.esm.js";
-import h from "./FormField.esm.js";
-import v from "./Label.esm.js";
-const R = o.memo(
+import { jsx as i, jsxs as h } from "react/jsx-runtime";
+import s from "react";
+import { Space as k } from "../Space/index.esm.js";
+import x from "./FormField.esm.js";
+import R from "./Label.esm.js";
+import { useFormFieldStyle as S } from "./_useFormFieldStyle.esm.js";
+import D from "../Icon/Icon.esm.js";
+const g = s.memo(
   ({
-    fullWidth: c = !1,
     required: m = !1,
-    disabled: i = !1,
-    name: d,
-    label: f,
-    labelPosition: p = "right",
-    value: s,
-    options: n,
-    onChange: l
+    disabled: l = !1,
+    name: a,
+    label: n,
+    labelPosition: f = "right",
+    fullWidth: p,
+    value: c,
+    options: y,
+    onChange: o
   }) => {
-    const [F, u] = o.useState(s || null);
-    o.useEffect(() => {
-      u(s || null);
-    }, [s]);
-    const b = o.useCallback(
+    const [F, u] = s.useState(c || null);
+    s.useEffect(() => {
+      u(c || null);
+    }, [c]);
+    const { outlineColor: b, borderColor: v } = S({
+      isDisabled: l
+    }), d = s.useCallback(
       (e) => {
-        const t = e.target.value;
-        u(t), l == null || l(e);
+        if (l) return;
+        u(e);
+        const r = {
+          target: {
+            name: a,
+            value: e
+          }
+        };
+        o == null || o(r);
       },
-      [l]
+      [l, a, o]
     );
-    return /* @__PURE__ */ a(h, { label: f, required: m, disabled: i, isError: !1, fullWidth: c, children: /* @__PURE__ */ a(y.Flex, { column: !0, gap: 8, children: n.map((e) => {
-      const t = `${d}-${e.value}`, r = i || e.disabled;
-      return /* @__PURE__ */ a(
-        v,
+    return /* @__PURE__ */ i(x, { label: n, required: m, isDisabled: l, fullWidth: p, children: /* @__PURE__ */ i(k.Flex, { column: !0, gap: 8, style: { marginTop: 4 }, children: y.map((e) => {
+      const r = e.value === F, t = l || e.disabled;
+      return /* @__PURE__ */ h(
+        R,
         {
           label: e.label,
-          position: p,
-          htmlFor: t,
+          position: f,
           style: {
-            cursor: r ? "not-allowed" : "pointer",
-            opacity: r ? 0.6 : 1
+            cursor: t ? "not-allowed" : "pointer",
+            opacity: t ? 0.6 : 1
           },
-          children: /* @__PURE__ */ a(
-            "input",
-            {
-              id: t,
-              type: "radio",
-              autoComplete: "off",
-              name: d,
-              checked: e.value === F,
-              value: e.value,
-              disabled: r,
-              onChange: b,
-              style: { cursor: r ? "not-allowed" : "pointer" }
-            }
-          )
+          children: [
+            /* @__PURE__ */ i(
+              "input",
+              {
+                type: "radio",
+                name: a,
+                value: e.value,
+                checked: r,
+                disabled: t,
+                onChange: () => d(e.value),
+                style: { display: "none" }
+              }
+            ),
+            /* @__PURE__ */ i(
+              D,
+              {
+                icon: r ? "fluent:radio-button-24-filled" : "fluent:radio-button-24-regular",
+                width: 24,
+                onClick: () => {
+                  t || d(e.value);
+                },
+                style: {
+                  color: r ? b : v,
+                  cursor: t ? "not-allowed" : "pointer"
+                }
+              }
+            )
+          ]
         },
         e.value
       );
     }) }) });
   }
 );
-R.displayName = "FormField.Radio";
+g.displayName = "FormField.Radio";
 export {
-  R as default
+  g as default
 };

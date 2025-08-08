@@ -9,9 +9,9 @@ import { Menu } from "../Menu";
 import { Popover } from "../Popover";
 import { Space } from "../Space";
 import { Typography } from "../Typography";
+import { useFormFieldStyle } from "./_useFormFieldStyle";
 import FormField from "./FormField";
 import type { FormFieldOption, FormFieldSelectProps } from "./index.types";
-import { useFormFieldStyle } from "./useFormFieldStyle";
 
 const FormFieldSelect = React.memo<FormFieldSelectProps>(
   ({

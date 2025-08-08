@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const i=require("./MediaFileTypeImage.js"),o=require("./MediaFileUploader.js"),e=require("./tools.js"),t={TypeImage:i.default,Uploader:o.default,mimeTypeToExtension:e.mimeTypeToExtension,extensionToMimeType:e.extensionToMimeType};exports.MediaFile=t;

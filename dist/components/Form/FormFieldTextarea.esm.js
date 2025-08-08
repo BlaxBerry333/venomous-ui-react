@@ -1,54 +1,55 @@
-import { jsx as m } from "react/jsx-runtime";
+import { jsx as s } from "react/jsx-runtime";
 import d from "react";
 import y from "./FormField.esm.js";
-import { useFormFieldStyle as h } from "./useFormFieldStyle.esm.js";
+import { useFormFieldStyle as h } from "./_useFormFieldStyle.esm.js";
 import S from "../../hooks/useElementFocus/index.esm.js";
 const v = d.memo(
   ({
     style: t,
     fullWidth: o,
-    required: s = !1,
+    required: l = !1,
     isError: r = !1,
     disabled: e = !1,
-    rows: l = 3,
-    name: a,
+    rows: a = 3,
+    name: i,
     value: n,
-    label: i,
-    helpText: F,
-    ...c
+    label: F,
+    helpText: c,
+    ...f
   }) => {
-    const { isFocused: f, handleFocus: u, handleBlur: p } = S(), { commonStyles: x } = h({
+    const { isFocused: m, handleFocus: u, handleBlur: p } = S(), { commonStyles: x } = h({
       fullWidth: o,
       isDisabled: e,
       isError: r,
-      isFocused: f
+      isFocused: m
     });
-    return /* @__PURE__ */ m(
+    return /* @__PURE__ */ s(
       y,
       {
-        label: i,
-        required: s,
-        disabled: e,
+        label: F,
+        required: l,
+        isDisabled: e,
         isError: r,
+        isFocused: m,
         fullWidth: o,
-        helpText: F,
-        children: /* @__PURE__ */ m(
+        helpText: c,
+        children: /* @__PURE__ */ s(
           "textarea",
           {
-            name: a,
+            name: i,
             value: n,
             disabled: e,
             onFocus: e ? void 0 : u,
             onBlur: e ? void 0 : p,
             spellCheck: !1,
-            rows: l,
+            rows: a,
             style: {
               boxSizing: "border-box",
               resize: "none",
               ...x,
               ...t
             },
-            ...c
+            ...f
           }
         )
       }
