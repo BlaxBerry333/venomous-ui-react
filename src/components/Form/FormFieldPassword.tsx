@@ -37,11 +37,11 @@ const FormFieldPassword = React.memo<FormFieldTextProps>(
       <FormField
         label={label}
         required={required}
-        disabled={disabled}
+        isDisabled={disabled}
+        isFocused={isFocused}
         isError={isError}
         fullWidth={fullWidth}
         helpText={helpText}
-        spellCheck={false}
       >
         <div
           style={{
@@ -56,6 +56,7 @@ const FormFieldPassword = React.memo<FormFieldTextProps>(
             name={name}
             value={value}
             autoComplete={autoComplete}
+            spellCheck={false}
             disabled={disabled}
             onFocus={disabled ? undefined : handleFocus}
             onBlur={disabled ? undefined : handleBlur}

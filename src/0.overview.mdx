@@ -44,7 +44,7 @@ React. It is not meant for production use, and thus, not suitable for commercial
 % npm install git+https://github.com/BlaxBerry333/venomous-ui-react
 
 # Additionally, install the required peer dependencies:
-% npm install @iconify/react@5 react-hook-form@7 motion@12 sonner@2
+% npm install @iconify/react@5 motion@12 sonner@2
 ```
 
 ```json
@@ -53,7 +53,6 @@ React. It is not meant for production use, and thus, not suitable for commercial
     "@iconify/react": "^5.2.1",
     "react": ">=18.0.0",
     "react-dom": ">=18.0.0",
-    "react-hook-form": "^7.55.0",
     "motion": "^12.23.6",
     "sonner": "^2.0.6"
   }
@@ -64,16 +63,16 @@ React. It is not meant for production use, and thus, not suitable for commercial
 
 ```tsx
 // 1st import style
-import { Button, type ButtonProps, useHandler, TypographySize } from "venomous-ui-react";
+import { Button, type ButtonProps, useHandler, TypographySize, type Handler } from "venomous-ui-react";
 
 // 2nd import style
 import { Button, type ButtonProps } from "venomous-ui-react/components";
-import { useHandler } from "venomous-ui-react/hooks";
+import { useHandler, type Handler } from "venomous-ui-react/hooks";
 import { TypographySize } from "venomous-ui-react/utils";
 
 // 3rd import style
-import { Buttons, type ButtonProps } from "venomous-ui-react/components/Button";
-import useHandler from "venomous-ui-react/hooks/useHandler";
+import { Button, type ButtonProps } from "venomous-ui-react/components/Button";
+import useHandler, { type Handler } from "venomous-ui-react/hooks/useHandler";
 import TypographySize from "venomous-ui-react/utils/TypographySize";
 ```
 
@@ -92,6 +91,25 @@ function App() {
       {/* App Content */}
       {/* Other Components */}
     </Theme.Provider>
+  );
+}
+```
+
+It's necessary to wrap all components of this library with `<NoSSR>` to prevent from hydration mismatch errors, if It's used in SSR frameworks like Next.js
+
+```tsx
+"use client";
+
+import { Theme, NoSSR } from "venomous-ui-react/components";
+
+function App() {
+  return (
+    <NoSSR>
+      <Theme.Provider>
+        {/* App Content */}
+        {/* Other Components */}
+      </Theme.Provider>
+    </NoSSR>
   );
 }
 ```

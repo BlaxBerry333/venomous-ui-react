@@ -15,30 +15,38 @@ const FormField = React.memo<FormFieldProps>(
     style,
     fullWidth = false,
     required = false,
-    disabled = false,
+    isDisabled = false,
     isError = false,
+    isFocused = false,
     label,
     helpText,
     ...props
   }) => {
+    const { themeColor } = Theme.useThemeColor();
     const { themeMode } = Theme.useThemeMode();
 
     const { helperTextColor } = useFormFieldStyle({
       fullWidth,
-      isDisabled: disabled,
+      isDisabled,
       isError,
     });
 
     return (
       <fieldset
-        disabled={disabled}
+        disabled={isDisabled}
         style={{
           boxSizing: "border-box",
           border: "none",
           padding: 0,
           margin: 0,
           width: fullWidth ? "100%" : "max-content",
-          color: isError ? ThemeColor.RubyCopperhead : TextColors[themeMode].primary,
+          color: isError
+            ? ThemeColor.RubyCopperhead
+            : isDisabled
+              ? TextColors[themeMode].disabled
+              : isFocused
+                ? themeColor
+                : TextColors[themeMode].primary,
           ...style,
         }}
         {...props}

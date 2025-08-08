@@ -2,7 +2,15 @@
 
 import React from "react";
 
-export default function useHandler() {
+export type Handler = {
+  isOpen: boolean;
+  setIsOpen: (s: boolean) => void;
+  open: () => void;
+  close: () => void;
+  toggle: () => void;
+};
+
+export default function useHandler(): Handler {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
 
   const open = React.useCallback(() => setIsOpen(true), []);

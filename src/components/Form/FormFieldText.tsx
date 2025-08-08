@@ -34,8 +34,9 @@ const FormFieldText = React.memo<FormFieldTextProps>(
       <FormField
         label={label}
         required={required}
-        disabled={disabled}
+        isDisabled={disabled}
         isError={isError}
+        isFocused={isFocused}
         fullWidth={fullWidth}
         helpText={helpText}
       >

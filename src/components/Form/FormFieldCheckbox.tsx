@@ -35,7 +35,16 @@ const FormFieldCheckbox = React.memo<FormFieldCheckboxProps>(
     });
 
     return (
-      <Label label={label} required={required} isError={isError} position={labelPosition}>
+      <Label
+        label={label}
+        required={required}
+        isError={isError}
+        position={labelPosition}
+        style={{
+          cursor: disabled ? "not-allowed" : "pointer",
+          opacity: disabled ? 0.6 : 1,
+        }}
+      >
         <input
           type="checkbox"
           name={name}

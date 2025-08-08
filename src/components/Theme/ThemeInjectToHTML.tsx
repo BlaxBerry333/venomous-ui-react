@@ -35,7 +35,7 @@ function useThemeInjectToHTML() {
     [themeColor],
   );
 
-  React.useEffect(() => {
+  React.useInsertionEffect(() => {
     if (typeof window === "undefined") {
       return;
     }

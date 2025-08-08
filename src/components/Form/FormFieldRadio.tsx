@@ -2,19 +2,21 @@
 
 import React from "react";
 
+import { Icon } from "../Icon";
 import { Space } from "../Space";
 import FormField from "./FormField";
 import type { FormFieldOption, FormFieldRadioProps } from "./index.types";
 import Label from "./Label";
+import { useFormFieldStyle } from "./useFormFieldStyle";
 
 const FormFieldRadio = React.memo<FormFieldRadioProps>(
   ({
-    fullWidth = false,
     required = false,
     disabled = false,
     name,
     label,
     labelPosition = "right",
+    fullWidth,
     value,
     options,
     onChange,
@@ -23,42 +25,62 @@ const FormFieldRadio = React.memo<FormFieldRadioProps>(
     React.useEffect(() => {
       setSelectedValue(value || null);
     }, [value]);
-    const handleRadioChange: React.ChangeEventHandler<HTMLInputElement> = React.useCallback(
-      (e) => {
-        const newValue = e.target.value;
+
+    const { outlineColor, borderColor } = useFormFieldStyle({
+      isDisabled: disabled,
+    });
+
+    const handleRadioChange = React.useCallback(
+      (newValue: FormFieldOption["value"]) => {
+        if (disabled) return;
         setSelectedValue(newValue);
-        onChange?.(e);
+        // Simulate the event object for onChange
+        const event = {
+          target: {
+            name,
+            value: newValue,
+          },
+        } as React.ChangeEvent<HTMLInputElement>;
+        onChange?.(event);
       },
-      [onChange],
+      [disabled, name, onChange],
     );
 
     return (
-      <FormField label={label} required={required} disabled={disabled} isError={false} fullWidth={fullWidth}>
-        <Space.Flex column gap={8}>
+      <FormField label={label} required={required} isDisabled={disabled} fullWidth={fullWidth}>
+        <Space.Flex column gap={8} style={{ marginTop: 4 }}>
           {options.map((option) => {
-            const inputId = `${name}-${option.value}`;
+            const isChecked = option.value === selectedValue;
             const isOptionDisabled = disabled || option.disabled;
             return (
               <Label
                 key={option.value}
                 label={option.label}
                 position={labelPosition}
-                htmlFor={inputId}
                 style={{
                   cursor: isOptionDisabled ? "not-allowed" : "pointer",
                   opacity: isOptionDisabled ? 0.6 : 1,
                 }}
               >
                 <input
-                  id={inputId}
                   type="radio"
-                  autoComplete="off"
                   name={name}
-                  checked={option.value === selectedValue}
                   value={option.value}
+                  checked={isChecked}
                   disabled={isOptionDisabled}
-                  onChange={handleRadioChange}
-                  style={{ cursor: isOptionDisabled ? "not-allowed" : "pointer" }}
+                  onChange={() => handleRadioChange(option.value)}
+                  style={{ display: "none" }}
+                />
+                <Icon
+                  icon={isChecked ? "fluent:radio-button-24-filled" : "fluent:radio-button-24-regular"}
+                  width={24}
+                  onClick={() => {
+                    if (!isOptionDisabled) handleRadioChange(option.value);
+                  }}
+                  style={{
+                    color: isChecked ? outlineColor : borderColor,
+                    cursor: isOptionDisabled ? "not-allowed" : "pointer",
+                  }}
                 />
               </Label>
             );

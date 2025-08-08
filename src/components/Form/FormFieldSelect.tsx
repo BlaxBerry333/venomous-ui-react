@@ -36,8 +36,9 @@ const FormFieldSelect = React.memo<FormFieldSelectProps>(
       <FormField
         label={label}
         required={required}
-        disabled={disabled}
+        isDisabled={disabled}
         isError={isError}
+        isFocused={isFocused}
         fullWidth={fullWidth}
         helpText={helpText}
       >

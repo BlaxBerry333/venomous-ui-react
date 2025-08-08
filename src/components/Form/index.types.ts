@@ -23,8 +23,12 @@ export type FormFieldOption = {
   disabled?: boolean;
 };
 
-export interface FormFieldProps extends React.FieldsetHTMLAttributes<HTMLFieldSetElement> {
+export interface FormFieldProps {
+  children: React.ReactNode;
+  style?: React.CSSProperties;
+  isDisabled?: boolean;
   isError?: LabelProps["isError"];
+  isFocused?: boolean;
   required?: LabelProps["required"];
   fullWidth?: boolean;
   label: LabelProps["label"];
