@@ -31,9 +31,6 @@ const meta = {
       options: Object.values(ButtonVariantMap),
       table: { type: { summary: `"contained"|"outlined"|"ghost"|"flat"` }, defaultValue: { summary: '"contained"' } },
     },
-    color: {
-      table: { disable: true },
-    },
     semanticColor: {
       description: "The built-in semantic color of the button",
       if: { arg: "variant", neq: "ghost" },

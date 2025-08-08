@@ -27,12 +27,14 @@ const meta = {
     },
     closeIconPosition: {
       description: "The position of the close icon",
+      if: { arg: "closeIcon" },
       control: { type: "select" },
       options: ["start", "end"],
       table: { type: { summary: `"start"|"end"` }, defaultValue: { summary: '"end"' } },
     },
     onClose: {
       description: "The callback function to be called when the tag is closed",
+      if: { arg: "closeIcon" },
       control: false,
       type: { name: "string", required: true },
       table: { category: "Events", type: { summary: "() => void" } },

@@ -7,7 +7,7 @@ export const ButtonVariantMap = {
   ghost: "ghost",
 } as const;
 
-export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "children"> {
+export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "children" | "color"> {
   text: string;
   variant?: keyof typeof ButtonVariantMap;
 
@@ -21,7 +21,7 @@ export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonE
   semanticColor?: keyof typeof SemanticColors;
 }
 
-export interface ButtonsIconProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "children"> {
+export interface ButtonsIconProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "children" | "color"> {
   variant?: keyof typeof ButtonVariantMap;
 
   isLoading?: boolean;

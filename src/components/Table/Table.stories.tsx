@@ -125,7 +125,7 @@ export const Default: Story = {
     ];
 
     return (
-      <Table
+      <Table<TableRowData>
         {...args}
         columns={columns}
         rows={rows}
