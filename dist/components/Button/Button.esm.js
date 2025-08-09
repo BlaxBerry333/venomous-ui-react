@@ -1,46 +1,49 @@
-import { jsxs as c, jsx as t } from "react/jsx-runtime";
+import { jsxs as f, jsx as t } from "react/jsx-runtime";
+import x from "clsx";
 import y from "react";
 import { Typography as b } from "../Typography/index.esm.js";
-import { useButtonStyle as f } from "./_useButtonStyle.esm.js";
-import s from "../Icon/Icon.esm.js";
-const g = y.memo(
+import { useButtonStyle as g } from "./_useButtonStyle.esm.js";
+import l from "../Icon/Icon.esm.js";
+const w = y.memo(
   ({
-    type: a = "button",
+    className: a,
+    type: m = "button",
     style: p,
     text: d,
-    variant: m = "contained",
+    variant: c = "contained",
     isLoading: e,
     isDisabled: o,
     icon: n,
     iconPosition: r = "start",
-    iconWidth: h = 20,
-    semanticColor: u,
+    iconWidth: u = 20,
+    semanticColor: h,
     ...i
   }) => {
-    const { buttonStyles: l } = f({
+    const { buttonStyles: s } = g({
       isLoading: e,
       isDisabled: o || i.disabled,
-      variant: m,
-      semanticColor: u
+      variant: c,
+      semanticColor: h
     });
-    return /* @__PURE__ */ c(
+    return /* @__PURE__ */ f(
       "button",
       {
-        type: a,
+        className: x("Venomous-UI-React--Button", a),
+        type: m,
         disabled: e || o,
         style: {
           flexDirection: r === "start" ? "row" : "row-reverse",
           WebkitTapHighlightColor: "transparent",
-          ...l,
+          ...s,
           ...p
         },
         ...i,
         children: [
           n && /* @__PURE__ */ t(
-            s,
+            l,
             {
               icon: n,
-              width: h,
+              width: u,
               style: {
                 marginLeft: r === "start" ? "0px" : "8px",
                 marginRight: r === "end" ? "0px" : "8px",
@@ -62,9 +65,9 @@ const g = y.memo(
                 height: "100%",
                 alignItems: "center",
                 justifyContent: "center",
-                backgroundColor: l.backgroundColor
+                backgroundColor: s.backgroundColor
               },
-              children: /* @__PURE__ */ t(s, { icon: "svg-spinners:270-ring-with-bg", width: 24, style: { color: "inherit" } })
+              children: /* @__PURE__ */ t(l, { icon: "svg-spinners:270-ring-with-bg", width: 24, style: { color: "inherit" } })
             }
           )
         ]
@@ -72,7 +75,7 @@ const g = y.memo(
     );
   }
 );
-g.displayName = "Button";
+w.displayName = "Button";
 export {
-  g as default
+  w as default
 };

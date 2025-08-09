@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import { motion, useAnimation } from "motion/react";
 import React from "react";
 
@@ -43,6 +44,7 @@ const ProgressLoadingBar = React.memo<ProgressLoadingBarProps>(({ height = 8 }) 
   return (
     <div
       ref={containerRef}
+      className={clsx("Venomous-UI-React--Progress.LoadingBar")}
       style={{
         position: "relative",
         width: "100%",

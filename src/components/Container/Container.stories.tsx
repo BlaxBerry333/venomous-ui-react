@@ -16,8 +16,8 @@ const meta = {
       control: false,
       table: { type: { summary: "React.ReactNode" } },
     },
-    breakpoint: {
-      description: "The breakpoint of the container",
+    maxBreakpoint: {
+      description: "The max breakpoint of the container",
       control: { type: "select" },
       options: Object.values(BreakPointName),
       table: { type: { summary: `"xs"|"sm"|"md"|"lg"|"xl"|"xxl"` }, defaultValue: { summary: '"lg"' } },
@@ -25,7 +25,7 @@ const meta = {
   },
   args: {
     children: null,
-    breakpoint: BreakPointName.lg,
+    maxBreakpoint: BreakPointName.lg,
   },
 } satisfies Meta<typeof Container>;
 
@@ -37,10 +37,10 @@ export const Default: Story = {
   name: "Default",
   render: function RenderStory(args) {
     return (
-      <Container breakpoint={args.breakpoint} style={{ border: "0.1px solid grey" }}>
+      <Container maxBreakpoint={args.maxBreakpoint} style={{ border: "0.1px solid grey" }}>
         <Space.Flex column gap={16} style={{ backgroundColor: ThemeColor.EmeraldMamba }}>
-          <Typography.Text as="strong" text={`BreakPointName: ${args.breakpoint}`} />
-          {args.breakpoint && <Typography.Text text={`max-width: ${ThemeBreakPoint[args.breakpoint]}px`} />}
+          <Typography.Text as="strong" text={`BreakPointName: ${args.maxBreakpoint}`} />
+          {args.maxBreakpoint && <Typography.Text text={`max-width: ${ThemeBreakPoint[args.maxBreakpoint]}px`} />}
         </Space.Flex>
       </Container>
     );

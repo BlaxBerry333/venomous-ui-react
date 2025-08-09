@@ -1,15 +1,17 @@
 "use client";
 
+import clsx from "clsx";
 import React from "react";
 
 import { useElementFocus } from "@/hooks";
 import { Icon } from "../Icon";
-import { useFormFieldStyle } from "./_useFormFieldStyle";
 import FormField from "./FormField";
 import type { FormFieldTextProps } from "./index.types";
+import { useFormFieldStyle } from "./useFormFieldStyle";
 
 const FormFieldPassword = React.memo<FormFieldTextProps>(
   ({
+    className,
     style,
     fullWidth,
     autoComplete = "off",
@@ -60,6 +62,7 @@ const FormFieldPassword = React.memo<FormFieldTextProps>(
             disabled={disabled}
             onFocus={disabled ? undefined : handleFocus}
             onBlur={disabled ? undefined : handleBlur}
+            className={clsx("Venomous-UI-React--FormField.Password", className)}
             style={{
               boxSizing: "border-box",
               border: "none",

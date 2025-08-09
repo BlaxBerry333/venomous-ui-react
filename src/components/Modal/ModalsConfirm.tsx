@@ -3,6 +3,7 @@
 import React from "react";
 
 import { BreakPointName } from "@/utils";
+import clsx from "clsx";
 import { Button } from "../Button";
 import { Space } from "../Space";
 import { Typography } from "../Typography";
@@ -11,6 +12,7 @@ import Modal from "./Modal";
 
 const ModalsConfirm = React.memo<ModalsConfirmProps>(
   ({
+    className,
     style,
     isOpen,
     onClose,
@@ -35,7 +37,14 @@ const ModalsConfirm = React.memo<ModalsConfirmProps>(
     }, [onConfirm, onClose]);
 
     return (
-      <Modal isOpen={isOpen} onClose={onClose} style={style} maskClosable={maskClosable} maxBreakpoint={maxBreakpoint}>
+      <Modal
+        isOpen={isOpen}
+        onClose={onClose}
+        className={clsx("Venomous-UI-React--Modals.Confirm", className)}
+        style={style}
+        maskClosable={maskClosable}
+        maxBreakpoint={maxBreakpoint}
+      >
         <Typography.Title as="h5" text={title} />
 
         <Typography.Paragraph style={{ padding: "8px 0 24px" }}>{description}</Typography.Paragraph>

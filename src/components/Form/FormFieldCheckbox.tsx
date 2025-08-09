@@ -1,15 +1,17 @@
 "use client";
 
+import clsx from "clsx";
 import React from "react";
 
 import { Icon } from "../Icon";
-import { useFormFieldStyle } from "./_useFormFieldStyle";
 import type { FormFieldCheckboxProps } from "./index.types";
 import Label from "./Label";
+import { useFormFieldStyle } from "./useFormFieldStyle";
 import { useToggleFormFieldChecked } from "./useToggleFormFieldChecked";
 
 const FormFieldCheckbox = React.memo<FormFieldCheckboxProps>(
   ({
+    className,
     style,
     autoComplete = "off",
     required = false,
@@ -54,7 +56,7 @@ const FormFieldCheckbox = React.memo<FormFieldCheckboxProps>(
           onChange={toggleOriginalIsChecked}
           autoComplete={autoComplete}
           disabled={disabled}
-          style={{ display: "none", ...style }}
+          style={{ display: "none" }}
           {...props}
         />
 
@@ -62,9 +64,11 @@ const FormFieldCheckbox = React.memo<FormFieldCheckboxProps>(
           icon={isChecked ? "fluent:checkbox-checked-24-filled" : "fluent:checkbox-unchecked-24-regular"}
           width={24}
           onClick={toggleCustomIsChecked}
+          className={clsx("Venomous-UI-React--FormField.Checkbox", className)}
           style={{
             color: isChecked ? outlineColor : borderColor,
             cursor: disabled ? "not-allowed" : "pointer",
+            ...style,
           }}
         />
       </Label>

@@ -1,53 +1,40 @@
-import { jsx as i } from "react/jsx-runtime";
-import f from "react";
-import { useTypographyStyle as g } from "./_useTypographyStyle.esm.js";
-import { TypographyTextTagMap as a } from "./index.types.esm.js";
-import { TypographySize as n, TypographySizeName as p } from "../../utils/design/TypographySize.esm.js";
-const h = f.memo(
-  ({ style: o, text: r, as: s = a.span, isEllipsis: m = !1, semanticColor: y, ...e }) => {
-    const { fontColor: t, ellipsisStyles: l } = g({ ellipsis: m ? 1 : 0, semanticColor: y });
-    return s === a.strong ? /* @__PURE__ */ i(
-      "strong",
-      {
-        style: {
-          fontSize: n[p.strong],
-          fontWeight: "bold",
-          color: t,
-          ...l,
-          ...o
-        },
-        ...e,
-        children: r
+import { jsx as h } from "react/jsx-runtime";
+import g from "clsx";
+import r from "react";
+import { useTypographyStyle as x } from "./_useTypographyStyle.esm.js";
+import { TypographyTextTagMap as e } from "./index.types.esm.js";
+import { TypographySize as t, TypographySizeName as s } from "../../utils/design/TypographySize.esm.js";
+const T = r.memo(
+  ({ className: p, style: a, text: m, as: o = e.span, isEllipsis: l = !1, semanticColor: n, ...y }) => {
+    const { fontColor: i, ellipsisStyles: c } = x({ ellipsis: l ? 1 : 0, semanticColor: n }), f = r.useMemo(() => o === e.strong ? "bold" : "normal", [o]), u = r.useMemo(() => {
+      switch (o) {
+        case e.strong:
+          return t[s.strong];
+        case e.small:
+          return t[s.small];
+        case e.span:
+        default:
+          return t[s.text];
       }
-    ) : s === a.small ? /* @__PURE__ */ i(
-      "small",
+    }, [o]);
+    return /* @__PURE__ */ h(
+      o,
       {
+        className: g("Venomous-UI-React--Typography.Text", p),
         style: {
-          fontSize: n[p.small],
-          color: t,
-          ...l,
-          ...o
+          fontSize: u,
+          fontWeight: f,
+          color: i,
+          ...c,
+          ...a
         },
-        ...e,
-        children: r
-      }
-    ) : /* @__PURE__ */ i(
-      "span",
-      {
-        style: {
-          fontSize: n[p.text],
-          fontWeight: "normal",
-          color: t,
-          ...l,
-          ...o
-        },
-        ...e,
-        children: r
+        ...y,
+        children: m
       }
     );
   }
 );
-h.displayName = "Typography.Text";
+T.displayName = "Typography.Text";
 export {
-  h as default
+  T as default
 };

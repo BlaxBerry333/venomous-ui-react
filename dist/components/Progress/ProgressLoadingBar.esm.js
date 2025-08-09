@@ -1,16 +1,17 @@
 import { jsx as d } from "react/jsx-runtime";
+import h from "clsx";
 import e from "react";
 import { Theme as c } from "../Theme/index.esm.js";
-import { useAnimation as h, motion as p } from "framer-motion";
+import { useAnimation as g, motion as p } from "framer-motion";
 import { Shadows as w } from "../../utils/design/Shadow.esm.js";
-import { getOpacityHex as m, getLighterHex as g } from "../../utils/tools/get-colors.esm.js";
-const x = e.memo(({ height: i = 8 }) => {
-  const t = h(), { themeMode: u } = c.useThemeMode(), { themeColor: n } = c.useThemeColor(), a = e.useRef(null), [o, f] = e.useState(0);
+import { getOpacityHex as m, getLighterHex as x } from "../../utils/tools/get-colors.esm.js";
+const v = e.memo(({ height: i = 8 }) => {
+  const t = g(), { themeMode: u } = c.useThemeMode(), { themeColor: s } = c.useThemeColor(), a = e.useRef(null), [o, f] = e.useState(0);
   return e.useEffect(() => {
     const r = () => {
       if (a.current) {
-        const s = a.current.offsetWidth, l = s * 0.3;
-        f(s - l);
+        const n = a.current.offsetWidth, l = n * 0.3;
+        f(n - l);
       }
     };
     return r(), window.addEventListener("resize", r), () => window.removeEventListener("resize", r);
@@ -24,12 +25,13 @@ const x = e.memo(({ height: i = 8 }) => {
     "div",
     {
       ref: a,
+      className: h("Venomous-UI-React--Progress.LoadingBar"),
       style: {
         position: "relative",
         width: "100%",
         height: i,
         overflow: "hidden",
-        backgroundColor: m(n, 0.2),
+        backgroundColor: m(s, 0.2),
         borderRadius: i / 2,
         boxShadow: w[u].tertiary
       },
@@ -43,7 +45,7 @@ const x = e.memo(({ height: i = 8 }) => {
             left: 0,
             height: "100%",
             width: "50%",
-            backgroundImage: `linear-gradient(45deg, ${m(n, 0.15)} 0%, ${g(n, 0.1)} 90%)`,
+            backgroundImage: `linear-gradient(45deg, ${m(s, 0.15)} 0%, ${x(s, 0.1)} 90%)`,
             borderRadius: i / 2
           }
         }
@@ -51,7 +53,7 @@ const x = e.memo(({ height: i = 8 }) => {
     }
   );
 });
-x.displayName = "Progress.LoadingBar";
+v.displayName = "Progress.LoadingBar";
 export {
-  x as default
+  v as default
 };

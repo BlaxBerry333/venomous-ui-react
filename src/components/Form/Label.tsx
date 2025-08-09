@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import React from "react";
 
 import { TextColors, ThemeColor } from "@/utils";
@@ -11,6 +12,7 @@ import { LabelPositionMap, type LabelProps } from "./index.types";
 const Label = React.memo<LabelProps>(
   ({
     children,
+    className,
     style,
     htmlFor,
     label = "",
@@ -24,6 +26,7 @@ const Label = React.memo<LabelProps>(
     return (
       <label
         htmlFor={htmlFor}
+        className={clsx("Venomous-UI-React--Form.Label", className)}
         style={{
           width: "max-content",
           display: "flex",

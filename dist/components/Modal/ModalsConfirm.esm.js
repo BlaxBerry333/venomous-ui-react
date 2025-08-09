@@ -1,57 +1,70 @@
 import { jsxs as l, jsx as t } from "react/jsx-runtime";
-import i from "react";
-import { Space as g } from "../Space/index.esm.js";
-import { Typography as n } from "../Typography/index.esm.js";
-import v from "./Modal.esm.js";
-import m from "../Button/Button.esm.js";
-import { BreakPointName as C } from "../../utils/design/ThemeBreakpoint.esm.js";
-const b = i.memo(
+import r from "react";
+import g from "clsx";
+import { Space as v } from "../Space/index.esm.js";
+import { Typography as m } from "../Typography/index.esm.js";
+import M from "./Modal.esm.js";
+import s from "../Button/Button.esm.js";
+import { BreakPointName as b } from "../../utils/design/ThemeBreakpoint.esm.js";
+const j = r.memo(
   ({
-    style: s,
+    className: n,
+    style: c,
     isOpen: d,
     onClose: a,
     maskClosable: p = !1,
-    maxBreakpoint: c = C.xs,
-    title: f,
-    description: x,
-    isConformLoading: r = !1,
+    maxBreakpoint: f = b.xs,
+    title: x,
+    description: u,
+    isConformLoading: e = !1,
     cancelText: h = "Cancel",
-    confirmText: u = "Confirm",
-    onCancel: e,
+    confirmText: y = "Confirm",
+    onCancel: i,
     onConfirm: o
   }) => {
-    const y = i.useCallback(async () => {
-      await e(), a();
-    }, [e, a]), k = i.useCallback(async () => {
+    const k = r.useCallback(async () => {
+      await i(), a();
+    }, [i, a]), C = r.useCallback(async () => {
       await o(), a();
     }, [o, a]);
-    return /* @__PURE__ */ l(v, { isOpen: d, onClose: a, style: s, maskClosable: p, maxBreakpoint: c, children: [
-      /* @__PURE__ */ t(n.Title, { as: "h5", text: f }),
-      /* @__PURE__ */ t(n.Paragraph, { style: { padding: "8px 0 24px" }, children: x }),
-      /* @__PURE__ */ l(g.Flex, { row: !0, gap: 8, style: { justifyContent: "flex-end" }, children: [
-        /* @__PURE__ */ t(
-          m,
-          {
-            variant: "outlined",
-            text: h,
-            onClick: () => void y(),
-            isDisabled: r
-          }
-        ),
-        /* @__PURE__ */ t(
-          m,
-          {
-            variant: "contained",
-            text: u,
-            onClick: () => void k(),
-            isLoading: r
-          }
-        )
-      ] })
-    ] });
+    return /* @__PURE__ */ l(
+      M,
+      {
+        isOpen: d,
+        onClose: a,
+        className: g("Venomous-UI-React--Modals.Confirm", n),
+        style: c,
+        maskClosable: p,
+        maxBreakpoint: f,
+        children: [
+          /* @__PURE__ */ t(m.Title, { as: "h5", text: x }),
+          /* @__PURE__ */ t(m.Paragraph, { style: { padding: "8px 0 24px" }, children: u }),
+          /* @__PURE__ */ l(v.Flex, { row: !0, gap: 8, style: { justifyContent: "flex-end" }, children: [
+            /* @__PURE__ */ t(
+              s,
+              {
+                variant: "outlined",
+                text: h,
+                onClick: () => void k(),
+                isDisabled: e
+              }
+            ),
+            /* @__PURE__ */ t(
+              s,
+              {
+                variant: "contained",
+                text: y,
+                onClick: () => void C(),
+                isLoading: e
+              }
+            )
+          ] })
+        ]
+      }
+    );
   }
 );
-b.displayName = "Modals.Confirm";
+j.displayName = "Modals.Confirm";
 export {
-  b as default
+  j as default
 };

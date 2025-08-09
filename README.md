@@ -19,7 +19,7 @@ This is a personal learning project, not intended for production or npm distribu
 % npm install git+https://github.com/BlaxBerry333/venomous-ui-react
 
 # Additionally, install the required peer dependencies:
-% npm install @iconify/react@5 motion@12 sonner@2
+% npm install @iconify/react@5 motion@12 clsx@2 sonner@2
 ```
 
 ## Usage

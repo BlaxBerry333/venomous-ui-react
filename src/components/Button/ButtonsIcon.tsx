@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import React from "react";
 
 import { Icon } from "../Icon";
@@ -8,6 +9,7 @@ import type { ButtonsIconProps } from "./index.types";
 
 const ButtonsIcon = React.memo<ButtonsIconProps>(
   ({
+    className,
     type = "button",
     style,
     variant = "contained",
@@ -27,6 +29,7 @@ const ButtonsIcon = React.memo<ButtonsIconProps>(
 
     return (
       <button
+        className={clsx("Venomous-UI-React--Buttons.Icon", className)}
         type={type}
         disabled={isLoading || isDisabled}
         style={{

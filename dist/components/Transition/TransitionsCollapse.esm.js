@@ -1,18 +1,20 @@
 import { jsx as i } from "react/jsx-runtime";
-import e from "react";
-import { AnimatePresence as a, motion as n } from "framer-motion";
-const r = e.memo(({ children: t, isOpen: o }) => /* @__PURE__ */ i(a, { initial: !1, children: o && /* @__PURE__ */ i(
-  n.div,
+import s from "clsx";
+import n from "react";
+import { AnimatePresence as r, motion as l } from "framer-motion";
+const m = n.memo(({ className: t, style: o, children: a, isOpen: e }) => /* @__PURE__ */ i(r, { initial: !1, children: e && /* @__PURE__ */ i(
+  l.div,
   {
+    className: s("Venomous-UI-React--Transitions.Collapse", t),
     initial: { opacity: 0, height: 0 },
     animate: { opacity: 1, height: "auto" },
     exit: { opacity: 0, height: 0 },
     transition: { duration: 0.2 },
-    style: { overflow: "hidden" },
-    children: t
+    style: { overflow: "hidden", ...o },
+    children: a
   }
 ) }));
-r.displayName = "Transitions.Collapse";
+m.displayName = "Transitions.Collapse";
 export {
-  r as default
+  m as default
 };

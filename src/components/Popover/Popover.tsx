@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
 import React from "react";
 
@@ -73,11 +74,14 @@ const Popover = React.memo<PopoverProps>(
           }
         : {};
 
-    const triggerProps = trigger === "click" ? { onClick: handler.toggle } : {};
-
     return (
       <div ref={wrapperRef} style={{ display: "inline-block", position: "relative", ...style }} {...wrapperProps}>
-        <div ref={triggerRef} {...triggerProps} style={{ display: "inline-block", width: "100%" }}>
+        <div
+          ref={triggerRef}
+          {...(trigger === "click" ? { onClick: handler.toggle } : {})}
+          className={clsx("Venomous-UI-React--Popover.Trigger")}
+          style={{ display: "inline-block", width: "100%" }}
+        >
           {renderTrigger(handler.isOpen)}
         </div>
 
@@ -89,6 +93,7 @@ const Popover = React.memo<PopoverProps>(
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 0 }}
               transition={{ duration: 0.2 }}
+              className={clsx("Venomous-UI-React--Popover")}
               style={{
                 position: "absolute",
                 top: position.top,

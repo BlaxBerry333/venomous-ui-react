@@ -14,12 +14,14 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
     variant?: keyof typeof CardVariantMap;
 }
 export interface CardsBookProps extends React.PropsWithChildren {
+    className?: string;
     height: number;
     width: number;
     coverImage: null | string;
     title: string;
 }
 export interface CardsProductProps extends React.PropsWithChildren {
+    className?: string;
     title?: string;
     description?: string;
     onCloseMenu: () => void;

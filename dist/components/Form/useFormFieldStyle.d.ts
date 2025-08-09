@@ -29,4 +29,4 @@ export declare function useFormFieldStyle({ fullWidth, isDisabled, isError, isFo
         borderColor: import("csstype").Property.BorderColor | undefined;
     };
 };
-//# sourceMappingURL=_useFormFieldStyle.d.ts.map
+//# sourceMappingURL=useFormFieldStyle.d.ts.map

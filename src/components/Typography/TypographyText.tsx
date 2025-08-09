@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import React from "react";
 
 import { TypographySize, TypographySizeName } from "@/utils";
@@ -7,47 +8,31 @@ import { useTypographyStyle } from "./_useTypographyStyle";
 import { TypographyTextTagMap, type TypographyTextProps } from "./index.types";
 
 const TypographyText = React.memo<TypographyTextProps>(
-  ({ style, text, as: Tag = TypographyTextTagMap.span, isEllipsis = false, semanticColor, ...props }) => {
+  ({ className, style, text, as: Tag = TypographyTextTagMap.span, isEllipsis = false, semanticColor, ...props }) => {
     const { fontColor, ellipsisStyles } = useTypographyStyle({ ellipsis: isEllipsis ? 1 : 0, semanticColor });
 
-    if (Tag === TypographyTextTagMap.strong) {
-      return (
-        <strong
-          style={{
-            fontSize: TypographySize[TypographySizeName.strong],
-            fontWeight: "bold",
-            color: fontColor,
-            ...ellipsisStyles,
-            ...style,
-          }}
-          {...props}
-        >
-          {text}
-        </strong>
-      );
-    }
+    const fontWeight = React.useMemo<React.CSSProperties["fontWeight"]>(() => {
+      return Tag === TypographyTextTagMap.strong ? "bold" : "normal";
+    }, [Tag]);
 
-    if (Tag === TypographyTextTagMap.small) {
-      return (
-        <small
-          style={{
-            fontSize: TypographySize[TypographySizeName.small],
-            color: fontColor,
-            ...ellipsisStyles,
-            ...style,
-          }}
-          {...props}
-        >
-          {text}
-        </small>
-      );
-    }
+    const fontSize = React.useMemo<React.CSSProperties["fontSize"]>(() => {
+      switch (Tag) {
+        case TypographyTextTagMap.strong:
+          return TypographySize[TypographySizeName.strong];
+        case TypographyTextTagMap.small:
+          return TypographySize[TypographySizeName.small];
+        case TypographyTextTagMap.span:
+        default:
+          return TypographySize[TypographySizeName.text];
+      }
+    }, [Tag]);
 
     return (
-      <span
+      <Tag
+        className={clsx("Venomous-UI-React--Typography.Text", className)}
         style={{
-          fontSize: TypographySize[TypographySizeName.text],
-          fontWeight: "normal",
+          fontSize,
+          fontWeight,
           color: fontColor,
           ...ellipsisStyles,
           ...style,
@@ -55,7 +40,7 @@ const TypographyText = React.memo<TypographyTextProps>(
         {...props}
       >
         {text}
-      </span>
+      </Tag>
     );
   },
 );

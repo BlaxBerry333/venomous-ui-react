@@ -1,53 +1,55 @@
 import { jsx as d } from "react/jsx-runtime";
-import s from "react";
-import { Theme as p } from "../Theme/index.esm.js";
-import { BreakPointName as f } from "../../utils/design/ThemeBreakpoint.esm.js";
-const l = s.memo(({ children: r, style: i, columns: n = 1, spacing: e = 16, ...t }) => {
-  const { screenSize: m } = p.useThemeBreakpoint(), u = m ?? f.xs, a = s.useMemo(
-    () => x(n, u),
-    [n, u]
-  ), c = s.useMemo(
-    () => b(e, u),
-    [e, u]
+import l from "clsx";
+import m from "react";
+import { Theme as x } from "../Theme/index.esm.js";
+import { BreakPointName as a } from "../../utils/design/ThemeBreakpoint.esm.js";
+const S = m.memo(({ children: r, className: n, style: i, columns: e = 1, spacing: t = 16, ...u }) => {
+  const { screenSize: c } = x.useThemeBreakpoint(), s = c ?? a.xs, f = m.useMemo(
+    () => b(e, s),
+    [e, s]
+  ), p = m.useMemo(
+    () => g(t, s),
+    [t, s]
   );
   return /* @__PURE__ */ d(
     "div",
     {
+      className: l("Venomous-UI-React--Space.Grid", n),
       style: {
         boxSizing: "border-box",
         width: "100%",
         display: "grid",
-        gridTemplateColumns: `repeat(${a}, 1fr)`,
-        gap: `${c}px`,
+        gridTemplateColumns: `repeat(${f}, 1fr)`,
+        gap: `${p}px`,
         ...i
       },
-      ...t,
+      ...u,
       children: r
     }
   );
 });
-l.displayName = "Space.Grid";
-const o = Object.keys(f);
-function x(r = 1, i) {
+S.displayName = "Space.Grid";
+const o = Object.keys(a);
+function b(r = 1, n) {
   if (typeof r == "number")
     return r;
-  const n = o.indexOf(i);
-  for (let e = n; e < o.length; e++) {
+  const i = o.indexOf(n);
+  for (let e = i; e < o.length; e++) {
     const t = r[o[e]];
     if (t !== void 0) return t;
   }
   return 1;
 }
-function b(r = 16, i) {
+function g(r = 16, n) {
   if (typeof r == "number")
     return r;
-  const n = o.indexOf(i);
-  for (let e = n; e < o.length; e++) {
+  const i = o.indexOf(n);
+  for (let e = i; e < o.length; e++) {
     const t = r[o[e]];
     if (t !== void 0) return t;
   }
   return 16;
 }
 export {
-  l as default
+  S as default
 };

@@ -1,42 +1,45 @@
 import { jsx as r } from "react/jsx-runtime";
-import d from "react";
-import { useButtonStyle as u } from "./_useButtonStyle.esm.js";
-import p from "../Icon/Icon.esm.js";
-const b = d.memo(
+import d from "clsx";
+import p from "react";
+import { useButtonStyle as b } from "./_useButtonStyle.esm.js";
+import f from "../Icon/Icon.esm.js";
+const y = p.memo(
   ({
-    type: l = "button",
-    style: i,
-    variant: s = "contained",
+    className: s,
+    type: c = "button",
+    style: l,
+    variant: m = "contained",
     isLoading: t,
     isDisabled: o,
-    icon: c,
-    iconWidth: a = 20,
-    semanticColor: m,
+    icon: a,
+    iconWidth: i = 20,
+    semanticColor: u,
     ...n
   }) => {
-    const { buttonStyles: e } = u({
+    const { buttonStyles: e } = b({
       isLoading: t,
       isDisabled: o || n.disabled,
-      variant: s,
-      semanticColor: m
+      variant: m,
+      semanticColor: u
     });
     return /* @__PURE__ */ r(
       "button",
       {
-        type: l,
+        className: d("Venomous-UI-React--Buttons.Icon", s),
+        type: c,
         disabled: t || o,
         style: {
           WebkitTapHighlightColor: "transparent",
           ...e,
           padding: 0,
-          ...i
+          ...l
         },
         ...n,
         children: /* @__PURE__ */ r(
-          p,
+          f,
           {
-            icon: t ? "eos-icons:loading" : c,
-            width: a,
+            icon: t ? "eos-icons:loading" : a,
+            width: i,
             style: {
               color: e.color
             }
@@ -46,7 +49,7 @@ const b = d.memo(
     );
   }
 );
-b.displayName = "Buttons.Icon";
+y.displayName = "Buttons.Icon";
 export {
-  b as default
+  y as default
 };

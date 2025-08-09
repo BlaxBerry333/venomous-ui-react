@@ -1,20 +1,22 @@
-import { jsx as i } from "react/jsx-runtime";
-import a from "react";
-import { MenuListTagMap as m } from "./index.types.esm.js";
-const s = a.memo(({ children: o, style: r, as: t = m.ul, ...e }) => /* @__PURE__ */ i(
-  t,
+import { jsx as s } from "react/jsx-runtime";
+import a from "clsx";
+import i from "react";
+import { MenuListTagMap as n } from "./index.types.esm.js";
+const p = i.memo(({ children: o, className: e, style: t, as: m = n.ul, ...r }) => /* @__PURE__ */ s(
+  m,
   {
+    className: a("Venomous-UI-React--Menu.List", e),
     style: {
       boxSizing: "border-box",
       margin: 0,
       padding: 0,
-      ...r
+      ...t
     },
-    ...e,
+    ...r,
     children: o
   }
 ));
-s.displayName = "Menu.List";
+p.displayName = "Menu.List";
 export {
-  s as default
+  p as default
 };

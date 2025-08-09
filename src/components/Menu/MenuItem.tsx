@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import React from "react";
 
 import { useElementHover } from "@/hooks";
@@ -14,6 +15,7 @@ import { MenuItemTagMap, type MenuItemProps } from "./index.types";
 const MenuItem = React.memo<MenuItemProps>(
   ({
     as: Tag = MenuItemTagMap.li,
+    className,
     style,
     icon,
     text,
@@ -51,6 +53,7 @@ const MenuItem = React.memo<MenuItemProps>(
         onMouseLeave={handleMouseLeave}
         onMouseOver={handleMouseOverStyles}
         onMouseOut={handleMouseOutStyles}
+        className={clsx("Venomous-UI-React--Menu.Item", className)}
         style={{
           boxSizing: "border-box",
           listStyle: "none",

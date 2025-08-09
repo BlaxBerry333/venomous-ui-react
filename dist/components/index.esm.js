@@ -1,11 +1,12 @@
-import { jsx as a, jsxs as y, Fragment as te } from "react/jsx-runtime";
-import i from "react";
+import { jsx as l, jsxs as M, Fragment as ne } from "react/jsx-runtime";
+import f from "clsx";
+import s from "react";
 import { Icon as ht } from "@iconify/react";
-import { AnimatePresence as j, motion as R, useAnimation as mt, useScroll as ft } from "framer-motion";
-import { Toaster as gt, toast as Q } from "sonner";
+import { AnimatePresence as A, motion as L, useAnimation as pt, useScroll as ft } from "framer-motion";
+import { Toaster as gt, toast as K } from "sonner";
 import { createPortal as xt } from "react-dom";
 var w = /* @__PURE__ */ ((e) => (e.Light = "light", e.Dark = "dark", e))(w || {});
-const U = {
+const X = {
   success: "#4caf50",
   error: "#f44336",
   warning: "#ff9800",
@@ -35,7 +36,7 @@ const U = {
     disabled: "#bdbdbd"
     // 禁用文本
   }
-}, N = {
+}, B = {
   [w.Dark]: {
     primary: "#181818",
     // 主背景
@@ -48,7 +49,7 @@ const U = {
     secondary: "#f8f9fa"
     // 卡片/面板背景
   }
-}, A = {
+}, W = {
   [w.Dark]: {
     primary: "rgba(255, 255, 255, 0.55)",
     secondary: "rgba(255, 255, 255, 0.25)",
@@ -61,7 +62,7 @@ const U = {
     tertiary: "rgba(0, 0, 0, 0.15)",
     quaternary: "rgba(0, 0, 0, 0.05)"
   }
-}, G = {
+}, $ = {
   [w.Dark]: {
     // 卡片
     primary: `
@@ -101,7 +102,7 @@ const U = {
     `
   }
 };
-var T = /* @__PURE__ */ ((e) => (e.xs = "xs", e.sm = "sm", e.md = "md", e.lg = "lg", e.xl = "xl", e.xxl = "xxl", e))(T || {});
+var F = /* @__PURE__ */ ((e) => (e.xs = "xs", e.sm = "sm", e.md = "md", e.lg = "lg", e.xl = "xl", e.xxl = "xxl", e))(F || {});
 const D = {
   xs: 444,
   sm: 600,
@@ -110,8 +111,8 @@ const D = {
   xl: 1920,
   xxl: 2560
 };
-var v = /* @__PURE__ */ ((e) => (e.RubyCopperhead = "#DC2626", e.GarnetViper = "#B91C1C", e.BloodstoneAdder = "#7F1D1D", e.TopazCoral = "#EA580C", e.AmberRattlesnake = "#F59E0B", e.GoldenLanceHead = "#FBBF24", e.TopazMamushi = "#FACC15", e.EmeraldMamba = "#059669", e.MalachitePython = "#10B981", e.JadeBoomslang = "#22C55E", e.PeridotGaboonViper = "#84CC16", e.TurquoiseFerDeLance = "#06B6D4", e.SapphireCobra = "#2563EB", e.LapisLazuliSeaSnake = "#1D4ED8", e.AmethystAsp = "#7C3AED", e.AlexandriteAnaconda = "#7E22CE", e.FluoriteElapid = "#A855F7", e.TourmalineStiletto = "#DB2777", e.RoseQuartzDeathAdder = "#EC4899", e.MorganiteCoralSnake = "#F472B6", e.GraphitePuffAdder = "#1F2937", e.ObsidianBlackMamba = "#374151", e.HematiteHognose = "#6B7280", e.SmokyQuartzSandViper = "#9CA3AF", e))(v || {}), K = /* @__PURE__ */ ((e) => (e.h1 = "h1", e.h2 = "h2", e.h3 = "h3", e.h4 = "h4", e.h5 = "h5", e.h6 = "h6", e.text = "text", e.strong = "strong", e.small = "small", e))(K || {});
-const W = {
+var S = /* @__PURE__ */ ((e) => (e.RubyCopperhead = "#DC2626", e.GarnetViper = "#B91C1C", e.BloodstoneAdder = "#7F1D1D", e.TopazCoral = "#EA580C", e.AmberRattlesnake = "#F59E0B", e.GoldenLanceHead = "#FBBF24", e.TopazMamushi = "#FACC15", e.EmeraldMamba = "#059669", e.MalachitePython = "#10B981", e.JadeBoomslang = "#22C55E", e.PeridotGaboonViper = "#84CC16", e.TurquoiseFerDeLance = "#06B6D4", e.SapphireCobra = "#2563EB", e.LapisLazuliSeaSnake = "#1D4ED8", e.AmethystAsp = "#7C3AED", e.AlexandriteAnaconda = "#7E22CE", e.FluoriteElapid = "#A855F7", e.TourmalineStiletto = "#DB2777", e.RoseQuartzDeathAdder = "#EC4899", e.MorganiteCoralSnake = "#F472B6", e.GraphitePuffAdder = "#1F2937", e.ObsidianBlackMamba = "#374151", e.HematiteHognose = "#6B7280", e.SmokyQuartzSandViper = "#9CA3AF", e))(S || {}), te = /* @__PURE__ */ ((e) => (e.h1 = "h1", e.h2 = "h2", e.h3 = "h3", e.h4 = "h4", e.h5 = "h5", e.h6 = "h6", e.text = "text", e.strong = "strong", e.small = "small", e))(te || {});
+const _ = {
   h1: "4rem",
   // 64px
   h2: "3rem",
@@ -130,91 +131,91 @@ const W = {
   // 16px
   small: "0.75rem"
   // 14px
-}, to = (e) => ({
-  background: N[e],
-  border: A[e],
+}, oo = (e) => ({
+  background: B[e],
+  border: W[e],
   text: C[e]
 });
 function yt() {
   return typeof window < "u" ? window.matchMedia("(prefers-color-scheme: dark)").matches : !1;
 }
-function oo() {
+function no() {
   return yt() ? w.Dark : w.Light;
 }
-function le(e) {
-  return e = e.replace("#", ""), e.length === 3 && (e = e.split("").map((t) => t + t).join("")), `#${e}`;
-}
-function Me(e) {
-  e = e.replace("#", "");
-  const t = parseInt(e, 16), r = t >> 16 & 255, o = t >> 8 & 255, n = t & 255;
-  return { r, g: o, b: n };
-}
-function bt(e, t, r) {
-  const o = (n) => {
-    const s = n.toString(16);
-    return s.length === 1 ? "0" + s : s;
-  };
-  return `#${o(e)}${o(t)}${o(r)}`;
+function ce(e) {
+  return e = e.replace("#", ""), e.length === 3 && (e = e.split("").map((o) => o + o).join("")), `#${e}`;
 }
 function ve(e) {
-  const { r: t, g: r, b: o } = Me(le(e)), n = t / 255, s = r / 255, l = o / 255, c = Math.max(n, s, l), d = Math.min(n, s, l), u = c - d;
-  let h = 0;
-  u !== 0 && (c === n ? h = (s - l) / u % 6 : c === s ? h = (l - n) / u + 2 : h = (n - s) / u + 4, h *= 60, h < 0 && (h += 360));
-  const p = (c + d) / 2, m = u === 0 ? 0 : u / (1 - Math.abs(2 * p - 1));
-  return { h, s: m, l: p };
+  e = e.replace("#", "");
+  const o = parseInt(e, 16), n = o >> 16 & 255, t = o >> 8 & 255, r = o & 255;
+  return { r: n, g: t, b: r };
 }
-function Ce(e, t, r) {
-  const o = (1 - Math.abs(2 * r - 1)) * t, n = o * (1 - Math.abs(e / 60 % 2 - 1)), s = r - o / 2;
-  let l = 0, c = 0, d = 0;
-  return e >= 0 && e < 60 ? [l, c, d] = [o, n, 0] : e < 120 ? [l, c, d] = [n, o, 0] : e < 180 ? [l, c, d] = [0, o, n] : e < 240 ? [l, c, d] = [0, n, o] : e < 300 ? [l, c, d] = [n, 0, o] : [l, c, d] = [o, 0, n], bt(Math.round((l + s) * 255), Math.round((c + s) * 255), Math.round((d + s) * 255));
+function bt(e, o, n) {
+  const t = (r) => {
+    const a = r.toString(16);
+    return a.length === 1 ? "0" + a : a;
+  };
+  return `#${t(e)}${t(o)}${t(n)}`;
 }
-function kt(e, t) {
-  const { h: r, s: o, l: n } = ve(e);
-  return Ce(r, o, Math.max(0, n - t));
+function Te(e) {
+  const { r: o, g: n, b: t } = ve(ce(e)), r = o / 255, a = n / 255, i = t / 255, c = Math.max(r, a, i), d = Math.min(r, a, i), u = c - d;
+  let m = 0;
+  u !== 0 && (c === r ? m = (a - i) / u % 6 : c === a ? m = (i - r) / u + 2 : m = (r - a) / u + 4, m *= 60, m < 0 && (m += 360));
+  const h = (c + d) / 2, p = u === 0 ? 0 : u / (1 - Math.abs(2 * h - 1));
+  return { h: m, s: p, l: h };
 }
-function oe(e, t) {
-  const { h: r, s: o, l: n } = ve(e);
-  return Ce(r, o, Math.min(1, n + t));
+function Se(e, o, n) {
+  const t = (1 - Math.abs(2 * n - 1)) * o, r = t * (1 - Math.abs(e / 60 % 2 - 1)), a = n - t / 2;
+  let i = 0, c = 0, d = 0;
+  return e >= 0 && e < 60 ? [i, c, d] = [t, r, 0] : e < 120 ? [i, c, d] = [r, t, 0] : e < 180 ? [i, c, d] = [0, t, r] : e < 240 ? [i, c, d] = [0, r, t] : e < 300 ? [i, c, d] = [r, 0, t] : [i, c, d] = [t, 0, r], bt(Math.round((i + a) * 255), Math.round((c + a) * 255), Math.round((d + a) * 255));
 }
-function V(e, t) {
-  const { r, g: o, b: n } = Me(le(e));
-  t > 1 && (t = 1), t < 0 && (t = 0);
-  const s = Math.min(1, Math.max(0, t));
-  return `rgba(${r}, ${o}, ${n}, ${s})`;
+function kt(e, o) {
+  const { h: n, s: t, l: r } = Te(e);
+  return Se(n, t, Math.max(0, r - o));
 }
-const Se = i.memo(() => (Mt(), null));
-Se.displayName = "Theme.InjectToHTML";
+function re(e, o) {
+  const { h: n, s: t, l: r } = Te(e);
+  return Se(n, t, Math.min(1, r + o));
+}
+function j(e, o) {
+  const { r: n, g: t, b: r } = ve(ce(e));
+  o > 1 && (o = 1), o < 0 && (o = 0);
+  const a = Math.min(1, Math.max(0, o));
+  return `rgba(${n}, ${t}, ${r}, ${a})`;
+}
+const Ce = s.memo(() => (Mt(), null));
+Ce.displayName = "Theme.InjectToHTML";
 function Mt() {
-  const { themeColor: e } = M.useThemeColor(), t = i.useMemo(
+  const { themeColor: e } = T.useThemeColor(), o = s.useMemo(
     () => ({
-      light: oe(e, 0.2),
+      light: re(e, 0.2),
       dark: kt(e, 0.8),
-      origin: le(e),
-      opacity: V(e, 0.6)
+      origin: ce(e),
+      opacity: j(e, 0.6)
     }),
     [e]
   );
-  i.useInsertionEffect(() => {
+  s.useInsertionEffect(() => {
     if (typeof window > "u")
       return;
-    const r = "theme-palette-style";
-    let o = document.getElementById(r);
-    o || (o = document.createElement("style"), o.id = r, document.head.appendChild(o));
-    const n = `
+    const n = "theme-palette-style";
+    let t = document.getElementById(n);
+    t || (t = document.createElement("style"), t.id = n, document.head.appendChild(t));
+    const r = `
       /* ==============================
          Global Theme Palette Styles
          ============================== */
 
       :root {
-        --venomous-ui--theme-origin: ${t.origin};
-        --venomous-ui--theme-dark: ${t.dark};
-        --venomous-ui--theme-light: ${t.light};
-        --venomous-ui--theme-opacity: ${t.opacity};
+        --venomous-ui--theme-origin: ${o.origin};
+        --venomous-ui--theme-dark: ${o.dark};
+        --venomous-ui--theme-light: ${o.light};
+        --venomous-ui--theme-opacity: ${o.opacity};
       }
 
       /* Selection style */
       ::selection {
-        background-color: ${t.opacity};
+        background-color: ${o.opacity};
         color: white;
       }
 
@@ -224,11 +225,11 @@ function Mt() {
         height: 8px;
       }
       ::-webkit-scrollbar-thumb {
-        background-color: ${t.origin};
+        background-color: ${o.origin};
         border-radius: 4px;
       }
       ::-webkit-scrollbar-thumb:hover {
-        background-color: ${t.dark};
+        background-color: ${o.dark};
       }
       ::-webkit-scrollbar-track {
         background-color: rgba(0, 0, 0, 0.1);
@@ -238,109 +239,109 @@ function Mt() {
 
       /* Scrollbar style (Firefox) */
       html {
-        scrollbar-color: ${t.origin} rgba(0, 0, 0, 0.1);
+        scrollbar-color: ${o.origin} rgba(0, 0, 0, 0.1);
         scrollbar-width: thin;
       }
     `;
-    o.innerHTML = n;
-  }, [t]);
+    t.innerHTML = r;
+  }, [o]);
 }
-const ce = i.createContext(void 0), vt = w.Light, Ct = v.EmeraldMamba, St = {
+const de = s.createContext(void 0), vt = w.Light, Tt = S.EmeraldMamba, St = {
   THEME_MODE: "VENOMOUS_UI__THEME_MODE",
   THEME_COLOR: "VENOMOUS_UI__THEME_COLOR"
 };
-function Tt({
+function Ct({
   children: e,
-  defaultThemeMode: t = vt,
-  defaultThemeColor: r = Ct,
-  storageKey: o = St
+  defaultThemeMode: o = vt,
+  defaultThemeColor: n = Tt,
+  storageKey: t = St
 }) {
-  const [n, s] = i.useState(!1);
-  i.useEffect(() => {
-    s(!0);
+  const [r, a] = s.useState(!1);
+  s.useEffect(() => {
+    a(!0);
   }, []);
-  const [l, c] = i.useState(t), [d, u] = i.useState(r), h = i.useCallback((g) => {
-    c(g);
-  }, []), p = i.useCallback(() => {
-    c((g) => g === w.Dark ? w.Light : w.Dark);
-  }, []), m = i.useCallback(() => {
-    c(t);
-  }, [t]), f = i.useCallback((g) => {
-    u(g);
-  }, []), x = i.useCallback(() => {
-    u(r);
-  }, [r]);
-  i.useEffect(() => {
-    if (n) {
-      const g = localStorage.getItem(o.THEME_MODE);
-      g && Object.values(w).includes(g) && c(g);
-      const k = localStorage.getItem(o.THEME_COLOR);
-      k && Object.values(v).includes(k) && u(k);
+  const [i, c] = s.useState(o), [d, u] = s.useState(n), m = s.useCallback((y) => {
+    c(y);
+  }, []), h = s.useCallback(() => {
+    c((y) => y === w.Dark ? w.Light : w.Dark);
+  }, []), p = s.useCallback(() => {
+    c(o);
+  }, [o]), x = s.useCallback((y) => {
+    u(y);
+  }, []), b = s.useCallback(() => {
+    u(n);
+  }, [n]);
+  s.useEffect(() => {
+    if (r) {
+      const y = localStorage.getItem(t.THEME_MODE);
+      y && Object.values(w).includes(y) && c(y);
+      const g = localStorage.getItem(t.THEME_COLOR);
+      g && Object.values(S).includes(g) && u(g);
     }
-  }, [n, o.THEME_COLOR, o.THEME_MODE]), i.useEffect(() => {
-    n && (localStorage.setItem(o.THEME_MODE, l), localStorage.setItem(o.THEME_COLOR, d));
-  }, [n, o.THEME_MODE, o.THEME_COLOR, l, d]);
-  const b = i.useMemo(
+  }, [r, t.THEME_COLOR, t.THEME_MODE]), s.useEffect(() => {
+    r && (localStorage.setItem(t.THEME_MODE, i), localStorage.setItem(t.THEME_COLOR, d));
+  }, [r, t.THEME_MODE, t.THEME_COLOR, i, d]);
+  const v = s.useMemo(
     () => ({
-      themeMode: l,
-      setThemeMode: h,
-      toggleThemeMode: p,
-      resetThemeMode: m,
-      isDarkThemeMode: l === w.Dark,
+      themeMode: i,
+      setThemeMode: m,
+      toggleThemeMode: h,
+      resetThemeMode: p,
+      isDarkThemeMode: i === w.Dark,
       themeColor: d,
-      setThemeColor: f,
-      resetThemeColor: x
+      setThemeColor: x,
+      resetThemeColor: b
     }),
-    [l, h, p, m, d, f, x]
+    [i, m, h, p, d, x, b]
   );
-  return /* @__PURE__ */ a(ce.Provider, { value: b, children: e });
+  return /* @__PURE__ */ l(de.Provider, { value: v, children: e });
 }
-const me = new Map(
-  Object.values(T).map((e, t) => [e, t])
+const fe = new Map(
+  Object.values(F).map((e, o) => [e, o])
 );
-function wt() {
-  const [e, t] = i.useState(!1), [r, o] = i.useState(() => Ft()), [n, s] = i.useState(!1), l = i.useRef(null);
-  i.useEffect(() => {
+function It() {
+  const [e, o] = s.useState(!1), [n, t] = s.useState(() => Ft()), [r, a] = s.useState(!1), i = s.useRef(null);
+  s.useEffect(() => {
     const d = () => {
-      const p = window.innerWidth;
-      return p >= D.xxl ? T.xxl : p >= D.xl ? T.xl : p >= D.lg ? T.lg : p >= D.md ? T.md : p >= D.sm ? T.sm : T.xs;
+      const h = window.innerWidth;
+      return h >= D.xxl ? F.xxl : h >= D.xl ? F.xl : h >= D.lg ? F.lg : h >= D.md ? F.md : h >= D.sm ? F.sm : F.xs;
     }, u = () => {
-      l.current && clearTimeout(l.current), l.current = setTimeout(() => {
-        const p = d();
-        o((m) => m !== p ? p : m);
+      i.current && clearTimeout(i.current), i.current = setTimeout(() => {
+        const h = d();
+        t((p) => p !== h ? h : p);
       }, 100);
-    }, h = d();
-    return o(h), s(!0), t(!0), window.addEventListener("resize", u, { passive: !0 }), () => {
-      l.current && (clearTimeout(l.current), l.current = null), window.removeEventListener("resize", u);
+    }, m = d();
+    return t(m), a(!0), o(!0), window.addEventListener("resize", u, { passive: !0 }), () => {
+      i.current && (clearTimeout(i.current), i.current = null), window.removeEventListener("resize", u);
     };
   }, []);
-  const c = i.useCallback(
+  const c = s.useCallback(
     (d) => {
       if (!e) return !1;
-      const u = me.get(r), h = me.get(d);
-      return u === void 0 || h === void 0 ? !1 : u >= h;
+      const u = fe.get(n), m = fe.get(d);
+      return u === void 0 || m === void 0 ? !1 : u >= m;
     },
-    [r, e]
+    [n, e]
   );
-  return i.useMemo(
+  return s.useMemo(
     () => ({
-      screenSize: r,
+      screenSize: n,
       isLargerThanOrEqual: c,
       isMounted: e,
-      isSSRHydrated: e && n
+      isSSRHydrated: e && r
       // 是否已完成水合且获取真实尺寸
     }),
-    [r, e, n, c]
+    [n, e, r, c]
   );
 }
 function Ft() {
   if (typeof window > "u")
-    return T.xs;
-  const e = navigator.userAgent, t = /iPhone|iPad|iPod|Android|BlackBerry|Opera Mini|IEMobile|WPDesktop/i.test(e), r = /iPad|Android(?!.*Mobile)|Kindle|Silk/i.test(e);
-  return t && !r ? T.xs : r ? T.md : T.lg;
+    return F.xs;
+  const e = navigator.userAgent, o = /iPhone|iPad|iPod|Android|BlackBerry|Opera Mini|IEMobile|WPDesktop/i.test(e), n = /iPad|Android(?!.*Mobile)|Kindle|Silk/i.test(e);
+  return o && !n ? F.xs : n ? F.md : F.lg;
 }
-function It() {
-  const e = i.useContext(ce);
+function wt() {
+  const e = s.useContext(de);
   if (e === void 0)
     throw new Error("useThemeColor must be used within a ThemeModeProvider");
   return {
@@ -349,8 +350,8 @@ function It() {
     resetThemeColor: e.resetThemeColor
   };
 }
-function Et() {
-  const e = i.useContext(ce);
+function Nt() {
+  const e = s.useContext(de);
   if (e === void 0)
     throw new Error("useThemeMode must be used within a ThemeModeProvider");
   return {
@@ -361,110 +362,111 @@ function Et() {
     isDarkThemeMode: e.isDarkThemeMode
   };
 }
-const M = {
-  Provider: Tt,
-  InjectToHTML: Se,
-  useThemeMode: Et,
-  useThemeColor: It,
-  useThemeBreakpoint: wt
-}, F = i.memo(({ style: e, icon: t, width: r = 20, semanticColor: o, ...n }) => {
-  const { themeMode: s } = M.useThemeMode(), l = i.useMemo(() => o ? U[o] : C[s].primary, [s, o]);
-  return /* @__PURE__ */ a(
+const T = {
+  Provider: Ct,
+  InjectToHTML: Ce,
+  useThemeMode: Nt,
+  useThemeColor: wt,
+  useThemeBreakpoint: It
+}, N = s.memo(({ className: e, style: o, icon: n, width: t = 20, semanticColor: r, ...a }) => {
+  const { themeMode: i } = T.useThemeMode(), c = s.useMemo(() => r ? X[r] : C[i].primary, [i, r]);
+  return /* @__PURE__ */ l(
     ht,
     {
       ssr: !0,
-      icon: t,
+      icon: n,
+      className: f("Venomous-UI-React--Layout.Icon", e),
       style: {
-        width: r,
-        minWidth: r,
-        height: r,
-        minHeight: r,
+        width: t,
+        minWidth: t,
+        height: t,
+        minHeight: t,
         flexShrink: 0,
         display: "inline-flex",
-        color: l,
-        ...e
+        color: c,
+        ...o
       },
-      ...n
+      ...a
     }
   );
 });
-F.displayName = "Icon";
-const z = {
+N.displayName = "Icon";
+const O = {
   contained: "contained",
   outlined: "outlined",
   ghost: "ghost"
 };
-function Te({
+function Ie({
   isLoading: e,
-  isDisabled: t,
-  variant: r,
-  semanticColor: o
+  isDisabled: o,
+  variant: n,
+  semanticColor: t
 }) {
-  const { themeColor: n } = M.useThemeColor(), { themeMode: s } = M.useThemeMode(), l = i.useMemo(() => {
-    let p = "";
-    if (e || t)
-      return p = N[s].secondary, p;
-    switch (r) {
-      case z.contained:
-        p = o ? U[o] : n;
+  const { themeColor: r } = T.useThemeColor(), { themeMode: a } = T.useThemeMode(), i = s.useMemo(() => {
+    let h = "";
+    if (e || o)
+      return h = B[a].secondary, h;
+    switch (n) {
+      case O.contained:
+        h = t ? X[t] : r;
         break;
-      case z.outlined:
-        p = N[s].secondary;
+      case O.outlined:
+        h = B[a].secondary;
         break;
-      case z.ghost:
+      case O.ghost:
       default:
-        p = "transparent";
+        h = "transparent";
         break;
     }
-    return p;
-  }, [r, n, s, e, t, o]), c = i.useMemo(() => {
-    let p = "";
-    if (e || t)
-      return p = A[s].secondary, p;
-    switch (r) {
-      case z.contained:
-        p = o ? oe(U[o], 0.25) : V(n, 0.5);
+    return h;
+  }, [n, r, a, e, o, t]), c = s.useMemo(() => {
+    let h = "";
+    if (e || o)
+      return h = W[a].secondary, h;
+    switch (n) {
+      case O.contained:
+        h = t ? re(X[t], 0.25) : j(r, 0.5);
         break;
-      case z.outlined:
-        p = o ? U[o] : n;
+      case O.outlined:
+        h = t ? X[t] : r;
         break;
-      case z.ghost:
-        p = A[s].secondary;
+      case O.ghost:
+        h = W[a].secondary;
         break;
       default:
-        p = "transparent";
+        h = "transparent";
         break;
     }
-    return p;
-  }, [r, n, s, e, t, o]), d = i.useMemo(() => {
-    let p = "";
-    if (e || t)
-      return p = C[s].disabled, p;
-    switch (r) {
-      case z.contained:
-        p = "#ffffff";
+    return h;
+  }, [n, r, a, e, o, t]), d = s.useMemo(() => {
+    let h = "";
+    if (e || o)
+      return h = C[a].disabled, h;
+    switch (n) {
+      case O.contained:
+        h = "#ffffff";
         break;
-      case z.outlined:
-        p = o ? U[o] : n;
+      case O.outlined:
+        h = t ? X[t] : r;
         break;
-      case z.ghost:
+      case O.ghost:
       default:
-        p = C[s].primary;
+        h = C[a].primary;
         break;
     }
-    return p;
-  }, [r, n, s, e, t, o]), u = i.useMemo(() => {
-    switch (r) {
-      case z.ghost:
+    return h;
+  }, [n, r, a, e, o, t]), u = s.useMemo(() => {
+    switch (n) {
+      case O.ghost:
         return "none";
-      case z.contained:
-      case z.outlined:
+      case O.contained:
+      case O.outlined:
       default:
-        return G[s].secondary;
+        return $[a].secondary;
     }
-  }, [r, n, s]);
+  }, [n, r, a]);
   return {
-    buttonStyles: i.useMemo(
+    buttonStyles: s.useMemo(
       () => ({
         boxSizing: "border-box",
         display: "flex",
@@ -477,57 +479,59 @@ function Te({
         height: "40px",
         padding: "0px 16px",
         textTransform: "capitalize",
-        fontSize: W.text,
+        fontSize: _.text,
         fontWeight: "bold",
-        cursor: e ? "wait" : t ? "not-allowed" : "pointer",
+        cursor: e ? "wait" : o ? "not-allowed" : "pointer",
         borderRadius: "8px",
         borderWidth: 2,
         borderColor: c,
         boxShadow: u,
-        backgroundColor: l,
+        backgroundColor: i,
         color: d
       }),
-      [e, t, c, l, d, u]
+      [e, o, c, i, d, u]
     )
   };
 }
-const we = i.memo(
+const Fe = s.memo(
   ({
-    type: e = "button",
-    style: t,
-    variant: r = "contained",
-    isLoading: o,
-    isDisabled: n,
-    icon: s,
-    iconWidth: l = 20,
-    semanticColor: c,
-    ...d
+    className: e,
+    type: o = "button",
+    style: n,
+    variant: t = "contained",
+    isLoading: r,
+    isDisabled: a,
+    icon: i,
+    iconWidth: c = 20,
+    semanticColor: d,
+    ...u
   }) => {
-    const { buttonStyles: u } = Te({
-      isLoading: o,
-      isDisabled: n || d.disabled,
-      variant: r,
-      semanticColor: c
+    const { buttonStyles: m } = Ie({
+      isLoading: r,
+      isDisabled: a || u.disabled,
+      variant: t,
+      semanticColor: d
     });
-    return /* @__PURE__ */ a(
+    return /* @__PURE__ */ l(
       "button",
       {
-        type: e,
-        disabled: o || n,
+        className: f("Venomous-UI-React--Buttons.Icon", e),
+        type: o,
+        disabled: r || a,
         style: {
           WebkitTapHighlightColor: "transparent",
-          ...u,
+          ...m,
           padding: 0,
-          ...t
+          ...n
         },
-        ...d,
-        children: /* @__PURE__ */ a(
-          F,
+        ...u,
+        children: /* @__PURE__ */ l(
+          N,
           {
-            icon: o ? "eos-icons:loading" : s,
-            width: l,
+            icon: r ? "eos-icons:loading" : i,
+            width: c,
             style: {
-              color: u.color
+              color: m.color
             }
           }
         )
@@ -535,27 +539,28 @@ const we = i.memo(
     );
   }
 );
-we.displayName = "Buttons.Icon";
-const Fe = i.memo(({ style: e, text: t, ...r }) => /* @__PURE__ */ a(
+Fe.displayName = "Buttons.Icon";
+const we = s.memo(({ className: e, style: o, text: n, ...t }) => /* @__PURE__ */ l(
   "code",
   {
+    className: f("Venomous-UI-React--Typography.Code", e),
     style: {
-      color: v.TourmalineStiletto,
+      color: S.TourmalineStiletto,
       backgroundColor: "#E7E9EB",
       border: "1px solid #CCCCCC",
       borderRadius: "4px",
       padding: "2px 4px",
-      fontSize: W.small,
+      fontSize: _.small,
       fontWeight: 600,
-      ...e
+      ...o
     },
-    ...r,
-    children: t
+    ...t,
+    children: n
   }
 ));
-Fe.displayName = "Typography.Code";
-function de({ ellipsis: e = 0, semanticColor: t }) {
-  const { themeMode: r } = M.useThemeMode(), o = i.useMemo(() => t ? U[t] : C[r].primary, [r, t]), n = i.useMemo(() => e ? {
+we.displayName = "Typography.Code";
+function ue({ ellipsis: e = 0, semanticColor: o }) {
+  const { themeMode: n } = T.useThemeMode(), t = s.useMemo(() => o ? X[o] : C[n].primary, [n, o]), r = s.useMemo(() => e ? {
     textOverflow: "ellipsis",
     display: "-webkit-box",
     WebkitLineClamp: e,
@@ -563,172 +568,162 @@ function de({ ellipsis: e = 0, semanticColor: t }) {
     overflow: "hidden"
   } : {}, [e]);
   return {
-    fontColor: o,
-    ellipsisStyles: n
+    fontColor: t,
+    ellipsisStyles: r
   };
 }
-const Ie = i.memo(
-  ({ children: e, style: t, ellipsis: r = 0, semanticColor: o, ...n }) => {
-    const { fontColor: s, ellipsisStyles: l } = de({ ellipsis: r, semanticColor: o });
-    return /* @__PURE__ */ a(
+const Ne = s.memo(
+  ({ children: e, className: o, style: n, ellipsis: t = 0, semanticColor: r, ...a }) => {
+    const { fontColor: i, ellipsisStyles: c } = ue({ ellipsis: t, semanticColor: r });
+    return /* @__PURE__ */ l(
       "p",
       {
+        className: f("Venomous-UI-React--Typography.Paragraph", o),
         style: {
           boxSizing: "border-box",
           margin: 0,
           width: "100%",
-          fontSize: W.text,
+          fontSize: _.text,
           lineHeight: 1.5,
-          color: s,
-          ...l,
-          ...t
+          color: i,
+          ...c,
+          ...n
         },
-        ...n,
+        ...a,
         children: e
       }
     );
   }
 );
-Ie.displayName = "Typography.Paragraph";
-const fe = {
+Ne.displayName = "Typography.Paragraph";
+const ge = {
   h1: "h1",
   h2: "h2",
   h3: "h3",
   h4: "h4",
   h5: "h5",
   h6: "h6"
-}, ie = {
+}, Z = {
   span: "span",
   small: "small",
   strong: "strong"
-}, Ee = i.memo(
-  ({ style: e, text: t, as: r = ie.span, isEllipsis: o = !1, semanticColor: n, ...s }) => {
-    const { fontColor: l, ellipsisStyles: c } = de({ ellipsis: o ? 1 : 0, semanticColor: n });
-    return r === ie.strong ? /* @__PURE__ */ a(
-      "strong",
-      {
-        style: {
-          fontSize: W[K.strong],
-          fontWeight: "bold",
-          color: l,
-          ...c,
-          ...e
-        },
-        ...s,
-        children: t
+}, Re = s.memo(
+  ({ className: e, style: o, text: n, as: t = Z.span, isEllipsis: r = !1, semanticColor: a, ...i }) => {
+    const { fontColor: c, ellipsisStyles: d } = ue({ ellipsis: r ? 1 : 0, semanticColor: a }), u = s.useMemo(() => t === Z.strong ? "bold" : "normal", [t]), m = s.useMemo(() => {
+      switch (t) {
+        case Z.strong:
+          return _[te.strong];
+        case Z.small:
+          return _[te.small];
+        case Z.span:
+        default:
+          return _[te.text];
       }
-    ) : r === ie.small ? /* @__PURE__ */ a(
-      "small",
+    }, [t]);
+    return /* @__PURE__ */ l(
+      t,
       {
+        className: f("Venomous-UI-React--Typography.Text", e),
         style: {
-          fontSize: W[K.small],
-          color: l,
-          ...c,
-          ...e
+          fontSize: m,
+          fontWeight: u,
+          color: c,
+          ...d,
+          ...o
         },
-        ...s,
-        children: t
-      }
-    ) : /* @__PURE__ */ a(
-      "span",
-      {
-        style: {
-          fontSize: W[K.text],
-          fontWeight: "normal",
-          color: l,
-          ...c,
-          ...e
-        },
-        ...s,
-        children: t
+        ...i,
+        children: n
       }
     );
   }
 );
-Ee.displayName = "Typography.Text";
-const Le = i.memo(
-  ({ text: e, as: t = fe.h4, ellipsis: r = 0, style: o, semanticColor: n, ...s }) => {
-    const l = i.useMemo(() => fe[t], [t]), c = i.useMemo(() => W[t], [t]), { fontColor: d, ellipsisStyles: u } = de({ ellipsis: r, semanticColor: n });
-    return /* @__PURE__ */ a(
-      l,
+Re.displayName = "Typography.Text";
+const Ee = s.memo(
+  ({ text: e, as: o = ge.h4, ellipsis: n = 0, className: t, style: r, semanticColor: a, ...i }) => {
+    const c = s.useMemo(() => ge[o], [o]), d = s.useMemo(() => _[o], [o]), { fontColor: u, ellipsisStyles: m } = ue({ ellipsis: n, semanticColor: a });
+    return /* @__PURE__ */ l(
+      c,
       {
+        className: f("Venomous-UI-React--Typography.Title", t),
         style: {
           boxSizing: "border-box",
           margin: 0,
           padding: 0,
           width: "100%",
-          fontSize: c,
+          fontSize: d,
           fontFamily: "inherit",
           fontWeight: "bold",
           lineHeight: "inherit",
           textAlign: "inherit",
-          color: d,
-          ...u,
-          ...o
+          color: u,
+          ...m,
+          ...r
         },
-        ...s,
+        ...i,
         children: e
       }
     );
   }
 );
-Le.displayName = "Typography.Title";
-const I = {
-  Title: Le,
-  Text: Ee,
-  Code: Fe,
-  Paragraph: Ie
-}, ae = i.memo(
+Ee.displayName = "Typography.Title";
+const R = {
+  Title: Ee,
+  Text: Re,
+  Code: we,
+  Paragraph: Ne
+}, le = s.memo(
   ({
-    type: e = "button",
-    style: t,
-    text: r,
-    variant: o = "contained",
-    isLoading: n,
-    isDisabled: s,
-    icon: l,
-    iconPosition: c = "start",
-    iconWidth: d = 20,
-    semanticColor: u,
+    className: e,
+    type: o = "button",
+    style: n,
+    text: t,
+    variant: r = "contained",
+    isLoading: a,
+    isDisabled: i,
+    icon: c,
+    iconPosition: d = "start",
+    iconWidth: u = 20,
+    semanticColor: m,
     ...h
   }) => {
-    const { buttonStyles: p } = Te({
-      isLoading: n,
-      isDisabled: s || h.disabled,
-      variant: o,
-      semanticColor: u
+    const { buttonStyles: p } = Ie({
+      isLoading: a,
+      isDisabled: i || h.disabled,
+      variant: r,
+      semanticColor: m
     });
-    return /* @__PURE__ */ y(
+    return /* @__PURE__ */ M(
       "button",
       {
-        type: e,
-        disabled: n || s,
+        className: f("Venomous-UI-React--Button", e),
+        type: o,
+        disabled: a || i,
         style: {
-          flexDirection: c === "start" ? "row" : "row-reverse",
+          flexDirection: d === "start" ? "row" : "row-reverse",
           WebkitTapHighlightColor: "transparent",
           ...p,
-          ...t
+          ...n
         },
         ...h,
         children: [
-          l && /* @__PURE__ */ a(
-            F,
+          c && /* @__PURE__ */ l(
+            N,
             {
-              icon: l,
-              width: d,
+              icon: c,
+              width: u,
               style: {
-                marginLeft: c === "start" ? "0px" : "8px",
-                marginRight: c === "end" ? "0px" : "8px",
+                marginLeft: d === "start" ? "0px" : "8px",
+                marginRight: d === "end" ? "0px" : "8px",
                 color: "inherit"
               }
             }
           ),
-          /* @__PURE__ */ a(I.Text, { text: r, style: { color: "inherit" } }),
-          /* @__PURE__ */ a(
+          /* @__PURE__ */ l(R.Text, { text: t, style: { color: "inherit" } }),
+          /* @__PURE__ */ l(
             "div",
             {
               style: {
-                display: n ? "flex" : "none",
+                display: a ? "flex" : "none",
                 borderRadius: "4px",
                 position: "absolute",
                 top: 0,
@@ -739,7 +734,7 @@ const I = {
                 justifyContent: "center",
                 backgroundColor: p.backgroundColor
               },
-              children: /* @__PURE__ */ a(F, { icon: "svg-spinners:270-ring-with-bg", width: 24, style: { color: "inherit" } })
+              children: /* @__PURE__ */ l(N, { icon: "svg-spinners:270-ring-with-bg", width: 24, style: { color: "inherit" } })
             }
           )
         ]
@@ -747,267 +742,287 @@ const I = {
     );
   }
 );
-ae.displayName = "Button";
-const ue = {
-  Icon: we
-}, Re = i.memo(
-  ({ children: e, style: t, row: r = !0, column: o = !1, gap: n = "8px", ...s }) => /* @__PURE__ */ a(
+le.displayName = "Button";
+const me = {
+  Icon: Fe
+}, Le = s.memo(
+  ({ children: e, className: o, style: n, row: t = !0, column: r = !1, gap: a = "8px", ...i }) => /* @__PURE__ */ l(
     "div",
     {
+      className: f("Venomous-UI-React--Space.Flex", o),
       style: {
         boxSizing: "border-box",
         display: "flex",
         width: "100%",
-        flexDirection: o ? "column" : "row",
-        alignItems: r ? "flex-start" : t == null ? void 0 : t.alignItems,
-        ...Array.isArray(n) ? { rowGap: n[0], columnGap: n[1] } : { gap: n },
+        flexDirection: r ? "column" : "row",
+        alignItems: t ? "flex-start" : n == null ? void 0 : n.alignItems,
+        ...Array.isArray(a) ? { rowGap: a[0], columnGap: a[1] } : { gap: a },
         position: "relative",
-        ...t
+        ...n
       },
-      ...s,
+      ...i,
       children: e
     }
   )
 );
-Re.displayName = "Space.Flex";
-const Oe = i.memo(({ children: e, style: t, columns: r = 1, spacing: o = 16, ...n }) => {
-  const { screenSize: s } = M.useThemeBreakpoint(), l = s ?? T.xs, c = i.useMemo(
-    () => Lt(r, l),
-    [r, l]
-  ), d = i.useMemo(
-    () => Rt(o, l),
-    [o, l]
+Le.displayName = "Space.Flex";
+const Ve = s.memo(({ children: e, className: o, style: n, columns: t = 1, spacing: r = 16, ...a }) => {
+  const { screenSize: i } = T.useThemeBreakpoint(), c = i ?? F.xs, d = s.useMemo(
+    () => Rt(t, c),
+    [t, c]
+  ), u = s.useMemo(
+    () => Et(r, c),
+    [r, c]
   );
-  return /* @__PURE__ */ a(
+  return /* @__PURE__ */ l(
     "div",
     {
+      className: f("Venomous-UI-React--Space.Grid", o),
       style: {
         boxSizing: "border-box",
         width: "100%",
         display: "grid",
-        gridTemplateColumns: `repeat(${c}, 1fr)`,
-        gap: `${d}px`,
-        ...t
+        gridTemplateColumns: `repeat(${d}, 1fr)`,
+        gap: `${u}px`,
+        ...n
       },
-      ...n,
+      ...a,
       children: e
     }
   );
 });
-Oe.displayName = "Space.Grid";
-const q = Object.keys(T);
-function Lt(e = 1, t) {
+Ve.displayName = "Space.Grid";
+const Y = Object.keys(F);
+function Rt(e = 1, o) {
   if (typeof e == "number")
     return e;
-  const r = q.indexOf(t);
-  for (let o = r; o < q.length; o++) {
-    const n = e[q[o]];
-    if (n !== void 0) return n;
+  const n = Y.indexOf(o);
+  for (let t = n; t < Y.length; t++) {
+    const r = e[Y[t]];
+    if (r !== void 0) return r;
   }
   return 1;
 }
-function Rt(e = 16, t) {
+function Et(e = 16, o) {
   if (typeof e == "number")
     return e;
-  const r = q.indexOf(t);
-  for (let o = r; o < q.length; o++) {
-    const n = e[q[o]];
-    if (n !== void 0) return n;
+  const n = Y.indexOf(o);
+  for (let t = n; t < Y.length; t++) {
+    const r = e[Y[t]];
+    if (r !== void 0) return r;
   }
   return 16;
 }
-const O = {
-  Flex: Re,
-  Grid: Oe
-}, pe = {
+const V = {
+  Flex: Le,
+  Grid: Ve
+}, he = {
   div: "div",
   article: "article"
-}, L = {
+}, E = {
   elevated: "elevated",
   outlined: "outlined",
   transparent: "transparent",
   frostedGlass: "frostedGlass"
-}, X = i.memo(
-  ({ children: e, style: t, as: r = pe.div, variant: o = L.elevated, ...n }) => {
-    const { themeMode: s } = M.useThemeMode(), l = i.useMemo(() => {
-      switch (o) {
-        case L.transparent:
+}, Q = s.memo(
+  ({ children: e, className: o, style: n, as: t = he.div, variant: r = E.elevated, ...a }) => {
+    const { themeMode: i } = T.useThemeMode(), c = s.useMemo(() => {
+      switch (r) {
+        case E.transparent:
           return "transparent";
-        case L.elevated:
-        case L.outlined:
-        case L.frostedGlass:
+        case E.elevated:
+        case E.outlined:
+        case E.frostedGlass:
         default:
-          return N[s].secondary;
+          return B[i].secondary;
       }
-    }, [s, o]), c = i.useMemo(() => {
-      switch (o) {
-        case L.outlined:
-        case L.transparent:
-          return A[s].tertiary;
-        case L.elevated:
-        case L.frostedGlass:
+    }, [i, r]), d = s.useMemo(() => {
+      switch (r) {
+        case E.outlined:
+        case E.transparent:
+          return W[i].tertiary;
+        case E.elevated:
+        case E.frostedGlass:
         default:
           return "transparent";
       }
-    }, [s, o]), d = i.useMemo(() => {
-      switch (o) {
-        case L.outlined:
-        case L.transparent:
+    }, [i, r]), u = s.useMemo(() => {
+      switch (r) {
+        case E.outlined:
+        case E.transparent:
           return "none";
-        case L.elevated:
-        case L.frostedGlass:
+        case E.elevated:
+        case E.frostedGlass:
         default:
-          return G[s].primary;
+          return $[i].primary;
       }
-    }, [s, o]);
-    return /* @__PURE__ */ a(
-      r,
+    }, [i, r]);
+    return /* @__PURE__ */ l(
+      t,
       {
+        className: f("Venomous-UI-React--Card", o),
         style: {
           boxSizing: "border-box",
           borderRadius: "8px",
           padding: "16px",
           outlineWidth: 1.5,
           outlineStyle: "solid",
-          outlineColor: c,
-          backgroundColor: l,
-          boxShadow: d,
-          ...o === L.frostedGlass && {
+          outlineColor: d,
+          backgroundColor: c,
+          boxShadow: u,
+          ...r === E.frostedGlass && {
             backdropFilter: "blur(8px) brightness(0.8)",
             WebkitBackdropFilter: "blur(8px) brightness(0.8)"
           },
-          ...t
+          ...n
         },
-        ...n,
+        ...a,
         children: e
       }
     );
   }
 );
-X.displayName = "Card";
-const He = i.memo(({ children: e, height: t = 300, width: r = 200, title: o, coverImage: n }) => /* @__PURE__ */ y(
-  X,
-  {
-    as: pe.article,
-    style: {
-      height: t,
-      width: r,
-      padding: "16px 24px",
-      overflow: "hidden",
-      position: "relative",
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "flex-end",
-      backgroundColor: "transparent",
-      backgroundImage: `url(${n})`,
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      backgroundRepeat: "no-repeat",
-      color: "#ffffff"
-    },
-    children: [
-      e,
-      /* @__PURE__ */ a(
-        "div",
-        {
-          style: {
-            position: "absolute",
-            left: 0,
-            top: 0,
-            zIndex: 1,
-            width: "16px",
-            height: "100%",
-            background: "linear-gradient(-90deg, #fff0, #ffffff1a 80%, #ffffff4d 95%, #fff6 96.5%, #cbcbcb14 98%, #6a6a6a1a)",
-            borderRadius: "8px"
-          }
-        }
-      ),
-      /* @__PURE__ */ a(
-        O.Flex,
-        {
-          column: !0,
-          style: {
-            height: "max-content",
-            width: "100%",
-            position: "relative",
-            zIndex: 1,
-            left: 6,
-            top: 24
-          },
-          children: o && /* @__PURE__ */ a(
-            I.Title,
-            {
-              text: o,
-              as: "h5",
-              ellipsis: 4,
-              style: {
-                lineHeight: 1,
-                color: "#ffffff",
-                textShadow: "2px 2px 2px rgba(0, 0, 0, 0.5)"
-              }
-            }
-          )
-        }
-      )
-    ]
-  }
-));
-He.displayName = "Cards.Book";
-const Ot = i.lazy(() => import("./index.chunk.js").then((e) => ({ default: e.Popover }))), ze = i.memo(({ children: e, title: t = "", description: r = "", renderMenu: o }) => /* @__PURE__ */ y(X, { as: pe.article, style: { position: "relative" }, children: [
-  (t || r) && /* @__PURE__ */ y(O.Flex, { column: !0, gap: 2, style: { paddingRight: "48px" }, children: [
-    /* @__PURE__ */ a(I.Title, { as: "h6", text: t, ellipsis: 1 }),
-    /* @__PURE__ */ a(I.Paragraph, { ellipsis: 3, children: r })
-  ] }),
-  /* @__PURE__ */ a(i.Suspense, { fallback: null, children: /* @__PURE__ */ a(
-    Ot,
+Q.displayName = "Card";
+const Ue = s.memo(
+  ({ children: e, className: o, height: n = 300, width: t = 200, title: r, coverImage: a }) => /* @__PURE__ */ M(
+    Q,
     {
-      placement: "bottom",
-      renderTrigger: (n) => /* @__PURE__ */ a(
-        ue.Icon,
-        {
-          icon: "solar:hamburger-menu-line-duotone",
-          variant: "ghost",
-          isDisabled: n,
-          style: { boxShadow: "none" }
-        }
-      ),
-      style: { position: "absolute", top: "4px", right: "4px", zIndex: 1 },
-      contentStyle: { transform: "translateY(-40px)" },
-      children: o()
+      as: he.article,
+      className: f("Venomous-UI-React--Cards.Book", o),
+      style: {
+        height: n,
+        width: t,
+        padding: "16px 24px",
+        overflow: "hidden",
+        position: "relative",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "flex-end",
+        backgroundColor: "transparent",
+        backgroundImage: `url(${a})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        color: "#ffffff"
+      },
+      children: [
+        e,
+        /* @__PURE__ */ l(
+          "div",
+          {
+            style: {
+              position: "absolute",
+              left: 0,
+              top: 0,
+              zIndex: 1,
+              width: "16px",
+              height: "100%",
+              background: "linear-gradient(-90deg, #fff0, #ffffff1a 80%, #ffffff4d 95%, #fff6 96.5%, #cbcbcb14 98%, #6a6a6a1a)",
+              borderRadius: "8px"
+            }
+          }
+        ),
+        /* @__PURE__ */ l(
+          V.Flex,
+          {
+            column: !0,
+            style: {
+              height: "max-content",
+              width: "100%",
+              position: "relative",
+              zIndex: 1,
+              left: 6,
+              top: 24
+            },
+            children: r && /* @__PURE__ */ l(
+              R.Title,
+              {
+                text: r,
+                as: "h5",
+                ellipsis: 4,
+                style: {
+                  lineHeight: 1,
+                  color: "#ffffff",
+                  textShadow: "2px 2px 2px rgba(0, 0, 0, 0.5)"
+                }
+              }
+            )
+          }
+        )
+      ]
     }
-  ) }),
-  e && /* @__PURE__ */ a(O.Flex, { column: !0, children: e })
-] }));
-ze.displayName = "Cards.Product";
+  )
+);
+Ue.displayName = "Cards.Book";
+const Lt = s.lazy(() => import("./index.chunk.js").then((e) => ({ default: e.Popover }))), Oe = s.memo(
+  ({ children: e, className: o, title: n = "", description: t = "", renderMenu: r }) => /* @__PURE__ */ M(
+    Q,
+    {
+      as: he.article,
+      className: f("Venomous-UI-React--Cards.Book", o),
+      style: { position: "relative" },
+      children: [
+        (n || t) && /* @__PURE__ */ M(V.Flex, { column: !0, gap: 2, style: { paddingRight: "48px" }, children: [
+          /* @__PURE__ */ l(R.Title, { as: "h6", text: n, ellipsis: 1 }),
+          /* @__PURE__ */ l(R.Paragraph, { ellipsis: 3, children: t })
+        ] }),
+        /* @__PURE__ */ l(s.Suspense, { fallback: null, children: /* @__PURE__ */ l(
+          Lt,
+          {
+            placement: "bottom",
+            renderTrigger: (a) => /* @__PURE__ */ l(
+              me.Icon,
+              {
+                icon: "solar:hamburger-menu-line-duotone",
+                variant: "ghost",
+                isDisabled: a,
+                style: { boxShadow: "none" }
+              }
+            ),
+            style: { position: "absolute", top: "4px", right: "4px", zIndex: 1 },
+            contentStyle: { transform: "translateY(-40px)" },
+            children: r()
+          }
+        ) }),
+        e && /* @__PURE__ */ l(V.Flex, { column: !0, children: e })
+      ]
+    }
+  )
+);
+Oe.displayName = "Cards.Product";
 const ro = {
-  Book: He,
-  Product: ze
-}, Be = i.memo(({ children: e, breakpoint: t = T.lg, style: r, ...o }) => /* @__PURE__ */ a(
-  "div",
-  {
-    style: {
-      margin: "0 auto",
-      width: "100%",
-      maxWidth: D[t],
-      ...r
-    },
-    ...o,
-    children: e
-  }
-));
+  Book: Ue,
+  Product: Oe
+}, Be = s.memo(
+  ({ children: e, maxBreakpoint: o = F.lg, className: n, style: t, ...r }) => /* @__PURE__ */ l(
+    "div",
+    {
+      className: f("Venomous-UI-React--Container", n),
+      style: {
+        margin: "0 auto",
+        width: "100%",
+        maxWidth: D[o],
+        ...t
+      },
+      ...r,
+      children: e
+    }
+  )
+);
 Be.displayName = "Container";
-const Ht = i.memo(
-  ({ isOpen: e, onClose: t, children: r, position: o = "left", maskClosable: n = !0, width: s = 300, height: l = 300, style: c }) => {
-    const { themeMode: d } = M.useThemeMode();
-    return /* @__PURE__ */ y(te, { children: [
-      /* @__PURE__ */ a(j, { children: e && /* @__PURE__ */ a(
-        R.div,
+const Vt = s.memo(
+  ({ isOpen: e, onClose: o, children: n, position: t = "left", maskClosable: r = !0, width: a = 300, height: i = 300, style: c }) => {
+    const { themeMode: d } = T.useThemeMode();
+    return /* @__PURE__ */ M(ne, { children: [
+      /* @__PURE__ */ l(A, { children: e && /* @__PURE__ */ l(
+        L.div,
         {
-          onClick: n ? t : void 0,
+          onClick: r ? o : void 0,
           initial: { opacity: 0 },
           animate: { opacity: 1 },
           exit: { opacity: 0 },
           transition: { duration: 0.3 },
+          className: f("Venomous-UI-React--Drawer.Mask"),
           style: {
             position: "fixed",
             top: 0,
@@ -1015,77 +1030,79 @@ const Ht = i.memo(
             zIndex: 999,
             width: "100vw",
             height: "100svh",
-            backgroundColor: V(N[d].primary, 0.5),
+            backgroundColor: j(B[d].primary, 0.5),
             backdropFilter: "blur(2px)",
             pointerEvents: e ? "auto" : "none"
           }
         }
       ) }),
-      /* @__PURE__ */ a(j, { children: e && /* @__PURE__ */ a(
-        R.div,
+      /* @__PURE__ */ l(A, { children: e && /* @__PURE__ */ l(
+        L.div,
         {
           animate: { x: 0, y: 0 },
           transition: { duration: 0.3, ease: [0.42, 0, 0.58, 1] },
-          initial: o === "left" ? { x: "-100%" } : o === "right" ? { x: "100%" } : o === "top" ? { y: "-100%" } : { y: "100%" },
-          exit: o === "left" ? { x: "-100%" } : o === "right" ? { x: "100%" } : o === "top" ? { y: "-100%" } : { y: "100%" },
+          initial: t === "left" ? { x: "-100%" } : t === "right" ? { x: "100%" } : t === "top" ? { y: "-100%" } : { y: "100%" },
+          exit: t === "left" ? { x: "-100%" } : t === "right" ? { x: "100%" } : t === "top" ? { y: "-100%" } : { y: "100%" },
+          className: f("Venomous-UI-React--Drawer.Panel"),
           style: {
             boxSizing: "border-box",
             position: "fixed",
             zIndex: 1e3,
-            ...o === "left" && {
+            ...t === "left" && {
               top: 0,
               left: 0,
-              width: s,
+              width: a,
               height: "100svh"
             },
-            ...o === "right" && {
+            ...t === "right" && {
               top: 0,
               right: 0,
-              width: s,
+              width: a,
               height: "100svh"
             },
-            ...o === "top" && {
+            ...t === "top" && {
               top: 0,
               left: 0,
               width: "100vw",
-              height: l
+              height: i
             },
-            ...o === "bottom" && {
+            ...t === "bottom" && {
               bottom: 0,
               left: 0,
               width: "100vw",
-              height: l
+              height: i
             }
           },
-          children: /* @__PURE__ */ a(
-            X,
+          children: /* @__PURE__ */ l(
+            Q,
             {
+              className: f("Venomous-UI-React--Drawer.Card"),
               style: {
                 width: "100%",
                 height: "100%",
-                ...o === "left" && {
+                ...t === "left" && {
                   borderRight: "none",
                   borderTopLeftRadius: 0,
                   borderBottomLeftRadius: 0
                 },
-                ...o === "right" && {
+                ...t === "right" && {
                   borderLeft: "none",
                   borderTopRightRadius: 0,
                   borderBottomRightRadius: 0
                 },
-                ...o === "top" && {
+                ...t === "top" && {
                   borderBottom: "none",
                   borderTopLeftRadius: 0,
                   borderTopRightRadius: 0
                 },
-                ...o === "bottom" && {
+                ...t === "bottom" && {
                   borderTop: "none",
                   borderBottomLeftRadius: 0,
                   borderBottomRightRadius: 0
                 },
                 ...c
               },
-              children: r
+              children: n
             }
           )
         }
@@ -1093,47 +1110,49 @@ const Ht = i.memo(
     ] });
   }
 );
-Ht.displayName = "Drawer";
-const Z = {
+Vt.displayName = "Drawer";
+const P = {
   top: "top",
   left: "left",
   right: "right"
-}, re = i.memo(
+}, se = s.memo(
   ({
     children: e,
-    style: t,
-    htmlFor: r,
-    label: o = "",
-    isError: n = !1,
-    required: s = !1,
-    position: l = Z.top,
-    ...c
+    className: o,
+    style: n,
+    htmlFor: t,
+    label: r = "",
+    isError: a = !1,
+    required: i = !1,
+    position: c = P.top,
+    ...d
   }) => {
-    const { themeMode: d } = M.useThemeMode();
-    return /* @__PURE__ */ y(
+    const { themeMode: u } = T.useThemeMode();
+    return /* @__PURE__ */ M(
       "label",
       {
-        htmlFor: r,
+        htmlFor: t,
+        className: f("Venomous-UI-React--Form.Label", o),
         style: {
           width: "max-content",
           display: "flex",
           gap: "8px",
-          ...l === Z.top && { flexDirection: "column", alignItems: "flex-start" },
-          ...l === Z.left && { flexDirection: "row", alignItems: "center" },
-          ...l === Z.right && { flexDirection: "row-reverse", alignItems: "center" },
-          color: n ? v.RubyCopperhead : C[d].primary,
-          ...t
+          ...c === P.top && { flexDirection: "column", alignItems: "flex-start" },
+          ...c === P.left && { flexDirection: "row", alignItems: "center" },
+          ...c === P.right && { flexDirection: "row-reverse", alignItems: "center" },
+          color: a ? S.RubyCopperhead : C[u].primary,
+          ...n
         },
-        ...c,
+        ...d,
         children: [
-          /* @__PURE__ */ y(O.Flex, { row: !0, gap: 0, style: { width: "100%", alignItems: "center" }, children: [
-            s && /* @__PURE__ */ a(I.Text, { as: "small", text: "*", style: { color: v.RubyCopperhead, marginRight: "2px" } }),
-            /* @__PURE__ */ a(
-              I.Text,
+          /* @__PURE__ */ M(V.Flex, { row: !0, gap: 0, style: { width: "100%", alignItems: "center" }, children: [
+            i && /* @__PURE__ */ l(R.Text, { as: "small", text: "*", style: { color: S.RubyCopperhead, marginRight: "2px" } }),
+            /* @__PURE__ */ l(
+              R.Text,
               {
                 as: "small",
-                text: o,
-                style: { color: "inherit", fontWeight: "bold", paddingLeft: s ? 0 : "4px" }
+                text: r,
+                style: { color: "inherit", fontWeight: "bold", paddingLeft: i ? 0 : "4px" }
               }
             )
           ] }),
@@ -1143,142 +1162,145 @@ const Z = {
     );
   }
 );
-re.displayName = "Form.Label";
-function _({
+se.displayName = "Form.Label";
+function z({
   fullWidth: e = !1,
-  isDisabled: t = !1,
-  isError: r = !1,
-  isFocused: o = !1
+  isDisabled: o = !1,
+  isError: n = !1,
+  isFocused: t = !1
 }) {
-  const { themeMode: n } = M.useThemeMode(), { themeColor: s } = M.useThemeColor(), l = i.useMemo(() => t ? N[n].secondary : "transparent", [t, n]), c = i.useMemo(() => r ? v.RubyCopperhead : t ? C[n].disabled : C[n].primary, [r, t, n]), d = i.useMemo(() => r ? v.RubyCopperhead : t ? C[n].disabled : C[n].quaternary, [r, t, n]), u = i.useMemo(() => r ? v.RubyCopperhead : t ? A[n].secondary : A[n].primary, [r, n]), h = i.useMemo(() => r ? v.RubyCopperhead : s, [r, n]), p = i.useMemo(
+  const { themeMode: r } = T.useThemeMode(), { themeColor: a } = T.useThemeColor(), i = s.useMemo(() => o ? B[r].secondary : "transparent", [o, r]), c = s.useMemo(() => n ? S.RubyCopperhead : o ? C[r].disabled : C[r].primary, [n, o, r]), d = s.useMemo(() => n ? S.RubyCopperhead : o ? C[r].disabled : C[r].quaternary, [n, o, r]), u = s.useMemo(() => n ? S.RubyCopperhead : o ? W[r].secondary : W[r].primary, [n, r]), m = s.useMemo(() => n ? S.RubyCopperhead : a, [n, r]), h = s.useMemo(
     () => ({
       display: e ? "block" : "inline-block",
       width: e ? "100%" : "auto",
       minWidth: e ? "100%" : 200,
       minHeight: 40,
       padding: "8px",
-      backgroundColor: l,
+      backgroundColor: i,
       color: c,
       borderRadius: "8px",
       borderWidth: 1.5,
       borderStyle: "solid",
       borderColor: u,
-      ...o && {
+      ...t && {
         outlineOffset: -1.5,
         outlineWidth: 1.5,
         outlineStyle: "solid",
-        outlineColor: h
+        outlineColor: m
       },
-      ...t && {
+      ...o && {
         cursor: "not-allowed",
         outline: "none"
       }
     }),
-    [e, o, t, l, c, u, h]
+    [e, t, o, i, c, u, m]
   );
   return {
-    backgroundColor: l,
+    backgroundColor: i,
     textColor: c,
     helperTextColor: d,
     borderColor: u,
-    outlineColor: h,
-    commonStyles: p
+    outlineColor: m,
+    commonStyles: h
   };
 }
-function Ne({
+function He({
   checked: e = !1,
-  disabled: t = !1,
-  onChange: r
+  disabled: o = !1,
+  onChange: n
 }) {
-  const o = i.useRef(null), [n, s] = i.useState(e);
-  i.useEffect(() => {
-    s(!!e);
+  const t = s.useRef(null), [r, a] = s.useState(e);
+  s.useEffect(() => {
+    a(!!e);
   }, [e]);
-  const l = i.useCallback(
+  const i = s.useCallback(
     (d) => {
-      s(d.target.checked), r == null || r(d);
+      a(d.target.checked), n == null || n(d);
     },
-    [r]
-  ), c = i.useCallback(
+    [n]
+  ), c = s.useCallback(
     (d) => {
-      if (d.preventDefault(), d.stopPropagation(), !t && o.current) {
-        const u = !n;
-        s(u);
-        const h = new Event("change", { bubbles: !0 });
-        Object.defineProperty(h, "target", {
+      if (d.preventDefault(), d.stopPropagation(), !o && t.current) {
+        const u = !r;
+        a(u);
+        const m = new Event("change", { bubbles: !0 });
+        Object.defineProperty(m, "target", {
           writable: !1,
-          value: { ...o.current, checked: u }
-        }), r == null || r(h);
+          value: { ...t.current, checked: u }
+        }), n == null || n(m);
       }
     },
-    [t, n, r]
+    [o, r, n]
   );
   return {
-    inputRef: o,
-    isChecked: n,
-    toggleOriginalIsChecked: l,
+    inputRef: t,
+    isChecked: r,
+    toggleOriginalIsChecked: i,
     toggleCustomIsChecked: c
   };
 }
-const _e = i.memo(
+const ze = s.memo(
   ({
-    style: e,
-    autoComplete: t = "off",
-    required: r = !1,
-    isError: o = !1,
-    disabled: n = !1,
-    name: s,
-    value: l,
-    checked: c = !1,
-    onChange: d,
-    label: u,
+    className: e,
+    style: o,
+    autoComplete: n = "off",
+    required: t = !1,
+    isError: r = !1,
+    disabled: a = !1,
+    name: i,
+    value: c,
+    checked: d = !1,
+    onChange: u,
+    label: m,
     labelPosition: h = "right",
     ...p
   }) => {
-    const { inputRef: m, isChecked: f, toggleOriginalIsChecked: x, toggleCustomIsChecked: b } = Ne({
-      checked: c,
-      disabled: n,
-      onChange: d
-    }), { outlineColor: g, borderColor: k } = _({
-      isDisabled: n,
-      isError: o
+    const { inputRef: x, isChecked: b, toggleOriginalIsChecked: v, toggleCustomIsChecked: y } = He({
+      checked: d,
+      disabled: a,
+      onChange: u
+    }), { outlineColor: g, borderColor: k } = z({
+      isDisabled: a,
+      isError: r
     });
-    return /* @__PURE__ */ y(
-      re,
+    return /* @__PURE__ */ M(
+      se,
       {
-        label: u,
-        required: r,
-        isError: o,
+        label: m,
+        required: t,
+        isError: r,
         position: h,
         style: {
-          cursor: n ? "not-allowed" : "pointer",
-          opacity: n ? 0.6 : 1
+          cursor: a ? "not-allowed" : "pointer",
+          opacity: a ? 0.6 : 1
         },
         children: [
-          /* @__PURE__ */ a(
+          /* @__PURE__ */ l(
             "input",
             {
               type: "checkbox",
-              name: s,
-              value: l,
-              checked: f,
-              ref: m,
-              onChange: x,
-              autoComplete: t,
-              disabled: n,
-              style: { display: "none", ...e },
+              name: i,
+              value: c,
+              checked: b,
+              ref: x,
+              onChange: v,
+              autoComplete: n,
+              disabled: a,
+              style: { display: "none" },
               ...p
             }
           ),
-          /* @__PURE__ */ a(
-            F,
+          /* @__PURE__ */ l(
+            N,
             {
-              icon: f ? "fluent:checkbox-checked-24-filled" : "fluent:checkbox-unchecked-24-regular",
+              icon: b ? "fluent:checkbox-checked-24-filled" : "fluent:checkbox-unchecked-24-regular",
               width: 24,
-              onClick: b,
+              onClick: y,
+              className: f("Venomous-UI-React--FormField.Checkbox", e),
               style: {
-                color: f ? g : k,
-                cursor: n ? "not-allowed" : "pointer"
+                color: b ? g : k,
+                cursor: a ? "not-allowed" : "pointer",
+                ...o
               }
             }
           )
@@ -1287,115 +1309,117 @@ const _e = i.memo(
     );
   }
 );
-_e.displayName = "FormField.Checkbox";
-function Y() {
-  const [e, t] = i.useState(!1), r = i.useCallback(() => {
-    t(!0);
-  }, []), o = i.useCallback(() => {
-    t(!1);
+ze.displayName = "FormField.Checkbox";
+function J() {
+  const [e, o] = s.useState(!1), n = s.useCallback(() => {
+    o(!0);
+  }, []), t = s.useCallback(() => {
+    o(!1);
   }, []);
   return {
     isFocused: e,
-    setIsFocused: t,
-    handleFocus: r,
-    handleBlur: o
+    setIsFocused: o,
+    handleFocus: n,
+    handleBlur: t
   };
 }
-function zt({ isDisabled: e }) {
-  const [t, r] = i.useState(!1), o = i.useCallback(() => {
-    r(!0);
-  }, []), n = i.useCallback(() => {
-    r(!1);
-  }, []), s = i.useCallback(() => {
-    r(!1);
+function Ut({ isDisabled: e }) {
+  const [o, n] = s.useState(!1), t = s.useCallback(() => {
+    n(!0);
+  }, []), r = s.useCallback(() => {
+    n(!1);
+  }, []), a = s.useCallback(() => {
+    n(!1);
   }, []);
-  return i.useEffect(() => {
-    e && r(!1);
+  return s.useEffect(() => {
+    e && n(!1);
   }, [e]), {
-    isHovering: t,
-    handleMouseDown: o,
-    handleMouseUp: n,
-    handleMouseLeave: s
+    isHovering: o,
+    handleMouseDown: t,
+    handleMouseUp: r,
+    handleMouseLeave: a
   };
 }
-function Bt() {
-  const [e, t] = i.useState(!1), r = i.useCallback(() => t(!0), []), o = i.useCallback(() => t(!1), []), n = i.useCallback(() => t((s) => !s), []);
+function Ot() {
+  const [e, o] = s.useState(!1), n = s.useCallback(() => o(!0), []), t = s.useCallback(() => o(!1), []), r = s.useCallback(() => o((a) => !a), []);
   return {
     isOpen: e,
-    setIsOpen: t,
-    open: r,
-    close: o,
-    toggle: n
+    setIsOpen: o,
+    open: n,
+    close: t,
+    toggle: r
   };
 }
-const P = i.memo(
+const G = s.memo(
   ({
     children: e,
-    style: t,
-    fullWidth: r = !1,
-    required: o = !1,
-    isDisabled: n = !1,
-    isError: s = !1,
-    isFocused: l = !1,
-    label: c,
-    helpText: d,
-    ...u
+    className: o,
+    style: n,
+    fullWidth: t = !1,
+    required: r = !1,
+    isDisabled: a = !1,
+    isError: i = !1,
+    isFocused: c = !1,
+    label: d,
+    helpText: u,
+    ...m
   }) => {
-    const { themeColor: h } = M.useThemeColor(), { themeMode: p } = M.useThemeMode(), { helperTextColor: m } = _({
-      fullWidth: r,
-      isDisabled: n,
-      isError: s
+    const { themeColor: h } = T.useThemeColor(), { themeMode: p } = T.useThemeMode(), { helperTextColor: x } = z({
+      fullWidth: t,
+      isDisabled: a,
+      isError: i
     });
-    return /* @__PURE__ */ y(
+    return /* @__PURE__ */ M(
       "fieldset",
       {
-        disabled: n,
+        disabled: a,
+        className: f("Venomous-UI-React--FormField", o),
         style: {
           boxSizing: "border-box",
           border: "none",
           padding: 0,
           margin: 0,
-          width: r ? "100%" : "max-content",
-          color: s ? v.RubyCopperhead : n ? C[p].disabled : l ? h : C[p].primary,
-          ...t
+          width: t ? "100%" : "max-content",
+          color: i ? S.RubyCopperhead : a ? C[p].disabled : c ? h : C[p].primary,
+          ...n
         },
-        ...u,
+        ...m,
         children: [
-          c && /* @__PURE__ */ y("legend", { style: { padding: 0, color: "inherit" }, children: [
-            o && /* @__PURE__ */ a(
-              I.Text,
+          d && /* @__PURE__ */ M("legend", { style: { padding: 0, color: "inherit" }, children: [
+            r && /* @__PURE__ */ l(
+              R.Text,
               {
                 as: "small",
                 text: "*",
                 style: {
-                  color: v.RubyCopperhead,
+                  color: S.RubyCopperhead,
                   fontWeight: "bold",
                   verticalAlign: "text-bottom"
                 }
               }
             ),
-            /* @__PURE__ */ a(
-              I.Text,
-              {
-                as: "small",
-                text: c,
-                style: {
-                  color: "inherit",
-                  fontWeight: "bold",
-                  paddingLeft: o ? "2px" : "4px"
-                }
-              }
-            )
-          ] }),
-          /* @__PURE__ */ y(O.Flex, { column: !0, gap: 0, style: { width: "100%" }, children: [
-            e,
-            d && /* @__PURE__ */ a(
-              I.Text,
+            /* @__PURE__ */ l(
+              R.Text,
               {
                 as: "small",
                 text: d,
                 style: {
-                  color: m,
+                  color: "inherit",
+                  fontWeight: "bold",
+                  paddingLeft: r ? "2px" : "4px"
+                }
+              }
+            )
+          ] }),
+          /* @__PURE__ */ M(V.Flex, { column: !0, gap: 0, style: { width: "100%" }, children: [
+            e,
+            u && /* @__PURE__ */ l(
+              R.Text,
+              {
+                as: "small",
+                text: u,
+                style: {
+                  color: x,
                   paddingLeft: "4px"
                 }
               }
@@ -1406,51 +1430,53 @@ const P = i.memo(
     );
   }
 );
-P.displayName = "FormField";
-const De = i.memo(
+G.displayName = "FormField";
+const De = s.memo(
   ({
-    style: e,
-    fullWidth: t,
-    autoComplete: r = "off",
-    required: o = !1,
-    isError: n = !1,
-    disabled: s = !1,
-    name: l,
-    value: c,
-    label: d,
-    helpText: u,
+    className: e,
+    style: o,
+    fullWidth: n,
+    autoComplete: t = "off",
+    required: r = !1,
+    isError: a = !1,
+    disabled: i = !1,
+    name: c,
+    value: d,
+    label: u,
+    helpText: m,
     ...h
   }) => {
-    const { isFocused: p, handleFocus: m, handleBlur: f } = Y(), { commonStyles: x } = _({
-      fullWidth: t,
-      isDisabled: s,
-      isError: n,
+    const { isFocused: p, handleFocus: x, handleBlur: b } = J(), { commonStyles: v } = z({
+      fullWidth: n,
+      isDisabled: i,
+      isError: a,
       isFocused: p
     });
-    return /* @__PURE__ */ a(
-      P,
+    return /* @__PURE__ */ l(
+      G,
       {
-        label: d,
-        required: o,
-        isDisabled: s,
-        isError: n,
+        label: u,
+        required: r,
+        isDisabled: i,
+        isError: a,
         isFocused: p,
-        fullWidth: t,
-        helpText: u,
-        children: /* @__PURE__ */ a(
+        fullWidth: n,
+        helpText: m,
+        children: /* @__PURE__ */ l(
           "input",
           {
             type: "number",
-            name: l,
-            value: c,
-            autoComplete: r,
-            disabled: s,
-            onFocus: s ? void 0 : m,
-            onBlur: s ? void 0 : f,
+            name: c,
+            value: d,
+            autoComplete: t,
+            disabled: i,
+            onFocus: i ? void 0 : x,
+            onBlur: i ? void 0 : b,
+            className: f("Venomous-UI-React--FormField.Number", e),
             style: {
               boxSizing: "border-box",
-              ...x,
-              ...e
+              ...v,
+              ...o
             },
             ...h
           }
@@ -1460,87 +1486,89 @@ const De = i.memo(
   }
 );
 De.displayName = "FormField.Number";
-const We = i.memo(
+const _e = s.memo(
   ({
-    style: e,
-    fullWidth: t,
-    autoComplete: r = "off",
-    required: o = !1,
-    isError: n = !1,
-    disabled: s = !1,
-    name: l,
-    value: c,
-    label: d,
-    helpText: u,
+    className: e,
+    style: o,
+    fullWidth: n,
+    autoComplete: t = "off",
+    required: r = !1,
+    isError: a = !1,
+    disabled: i = !1,
+    name: c,
+    value: d,
+    label: u,
+    helpText: m,
     ...h
   }) => {
-    const { isFocused: p, handleFocus: m, handleBlur: f } = Y(), { outlineColor: x, commonStyles: b, textColor: g } = _({
-      fullWidth: t,
-      isDisabled: s,
-      isError: n,
+    const { isFocused: p, handleFocus: x, handleBlur: b } = J(), { outlineColor: v, commonStyles: y, textColor: g } = z({
+      fullWidth: n,
+      isDisabled: i,
+      isError: a,
       isFocused: p
-    }), { isPasswordVisible: k, togglePasswordVisibility: E } = Nt(!1);
-    return /* @__PURE__ */ a(
-      P,
+    }), { isPasswordVisible: k, togglePasswordVisibility: H } = Bt(!1);
+    return /* @__PURE__ */ l(
+      G,
       {
-        label: d,
-        required: o,
-        isDisabled: s,
+        label: u,
+        required: r,
+        isDisabled: i,
         isFocused: p,
-        isError: n,
-        fullWidth: t,
-        helpText: u,
-        children: /* @__PURE__ */ y(
+        isError: a,
+        fullWidth: n,
+        helpText: m,
+        children: /* @__PURE__ */ M(
           "div",
           {
             style: {
-              ...b,
+              ...y,
               position: "relative",
               overflow: "hidden",
               padding: 0
             },
             children: [
-              /* @__PURE__ */ a(
+              /* @__PURE__ */ l(
                 "input",
                 {
                   type: k ? "text" : "password",
-                  name: l,
-                  value: c,
-                  autoComplete: r,
+                  name: c,
+                  value: d,
+                  autoComplete: t,
                   spellCheck: !1,
-                  disabled: s,
-                  onFocus: s ? void 0 : m,
-                  onBlur: s ? void 0 : f,
+                  disabled: i,
+                  onFocus: i ? void 0 : x,
+                  onBlur: i ? void 0 : b,
+                  className: f("Venomous-UI-React--FormField.Password", e),
                   style: {
                     boxSizing: "border-box",
                     border: "none",
                     outline: "none",
                     position: "relative",
                     width: "calc(100% - 34px)",
-                    minHeight: b.minHeight,
+                    minHeight: y.minHeight,
                     color: g,
-                    backgroundColor: b.backgroundColor,
-                    padding: b.padding,
+                    backgroundColor: y.backgroundColor,
+                    padding: y.padding,
                     paddingRight: 0,
-                    ...e
+                    ...o
                   },
                   ...h
                 }
               ),
-              /* @__PURE__ */ a(
-                F,
+              /* @__PURE__ */ l(
+                N,
                 {
                   icon: k ? "solar:eye-linear" : "solar:eye-closed-broken",
                   width: 20,
-                  onClick: E,
+                  onClick: H,
                   style: {
                     position: "absolute",
                     top: "50%",
                     right: 0,
                     transform: "translateY(-50%)",
                     cursor: "pointer",
-                    color: x,
-                    padding: b.padding
+                    color: v,
+                    padding: y.padding
                   }
                 }
               )
@@ -1551,200 +1579,206 @@ const We = i.memo(
     );
   }
 );
-We.displayName = "FormField.Password";
-function Nt(e = !1) {
-  const [t, r] = i.useState(e), o = i.useCallback((n) => {
-    i.startTransition(() => {
-      n.preventDefault(), n.stopPropagation(), r((s) => !s);
+_e.displayName = "FormField.Password";
+function Bt(e = !1) {
+  const [o, n] = s.useState(e), t = s.useCallback((r) => {
+    s.startTransition(() => {
+      r.preventDefault(), r.stopPropagation(), n((a) => !a);
     });
   }, []);
   return {
-    isPasswordVisible: t,
-    togglePasswordVisibility: o
+    isPasswordVisible: o,
+    togglePasswordVisibility: t
   };
 }
-const Ae = i.memo(
+const We = s.memo(
   ({
     required: e = !1,
-    disabled: t = !1,
-    name: r,
-    label: o,
-    labelPosition: n = "right",
-    fullWidth: s,
-    value: l,
+    disabled: o = !1,
+    name: n,
+    label: t,
+    labelPosition: r = "right",
+    fullWidth: a,
+    value: i,
     options: c,
-    onChange: d
+    onChange: d,
+    className: u,
+    style: m
   }) => {
-    const [u, h] = i.useState(l || null);
-    i.useEffect(() => {
-      h(l || null);
-    }, [l]);
-    const { outlineColor: p, borderColor: m } = _({
-      isDisabled: t
-    }), f = i.useCallback(
-      (x) => {
-        if (t) return;
-        h(x);
-        const b = {
+    const [h, p] = s.useState(i || null);
+    s.useEffect(() => {
+      p(i || null);
+    }, [i]);
+    const { outlineColor: x, borderColor: b } = z({
+      isDisabled: o
+    }), v = s.useCallback(
+      (y) => {
+        if (o) return;
+        p(y);
+        const g = {
           target: {
-            name: r,
-            value: x
+            name: n,
+            value: y
           }
         };
-        d == null || d(b);
+        d == null || d(g);
       },
-      [t, r, d]
+      [o, n, d]
     );
-    return /* @__PURE__ */ a(P, { label: o, required: e, isDisabled: t, fullWidth: s, children: /* @__PURE__ */ a(O.Flex, { column: !0, gap: 8, style: { marginTop: 4 }, children: c.map((x) => {
-      const b = x.value === u, g = t || x.disabled;
-      return /* @__PURE__ */ y(
-        re,
+    return /* @__PURE__ */ l(G, { label: t, required: e, isDisabled: o, fullWidth: a, children: /* @__PURE__ */ l(V.Flex, { column: !0, gap: 8, style: { marginTop: 4 }, children: c.map((y) => {
+      const g = y.value === h, k = o || y.disabled;
+      return /* @__PURE__ */ M(
+        se,
         {
-          label: x.label,
-          position: n,
+          label: y.label,
+          position: r,
           style: {
-            cursor: g ? "not-allowed" : "pointer",
-            opacity: g ? 0.6 : 1
+            cursor: k ? "not-allowed" : "pointer",
+            opacity: k ? 0.6 : 1
           },
           children: [
-            /* @__PURE__ */ a(
+            /* @__PURE__ */ l(
               "input",
               {
                 type: "radio",
-                name: r,
-                value: x.value,
-                checked: b,
-                disabled: g,
-                onChange: () => f(x.value),
+                name: n,
+                value: y.value,
+                checked: g,
+                disabled: k,
+                onChange: () => v(y.value),
                 style: { display: "none" }
               }
             ),
-            /* @__PURE__ */ a(
-              F,
+            /* @__PURE__ */ l(
+              N,
               {
-                icon: b ? "fluent:radio-button-24-filled" : "fluent:radio-button-24-regular",
+                icon: g ? "fluent:radio-button-24-filled" : "fluent:radio-button-24-regular",
                 width: 24,
                 onClick: () => {
-                  g || f(x.value);
+                  k || v(y.value);
                 },
+                className: (f("Venomous-UI-React--FormField.Radio"), u),
                 style: {
-                  color: b ? p : m,
-                  cursor: g ? "not-allowed" : "pointer"
+                  color: g ? x : b,
+                  cursor: k ? "not-allowed" : "pointer",
+                  ...m
                 }
               }
             )
           ]
         },
-        x.value
+        y.value
       );
     }) }) });
   }
 );
-Ae.displayName = "FormField.Radio";
-const _t = {
+We.displayName = "FormField.Radio";
+const Ht = {
   ul: "ul"
-}, Dt = {
+}, zt = {
   li: "li"
-}, $e = i.memo(
+}, Ae = s.memo(
   ({
-    as: e = Dt.li,
-    style: t,
-    icon: r,
-    text: o,
-    subText: n,
-    isDisabled: s = !1,
-    isActive: l = !1,
-    actionButton: c = void 0,
-    ...d
+    as: e = zt.li,
+    className: o,
+    style: n,
+    icon: t,
+    text: r,
+    subText: a,
+    isDisabled: i = !1,
+    isActive: c = !1,
+    actionButton: d = void 0,
+    ...u
   }) => {
-    const { themeMode: u } = M.useThemeMode(), { themeColor: h } = M.useThemeColor(), { isHovering: p, handleMouseDown: m, handleMouseUp: f, handleMouseLeave: x } = zt({
-      isDisabled: s
-    }), b = i.useCallback(
+    const { themeMode: m } = T.useThemeMode(), { themeColor: h } = T.useThemeColor(), { isHovering: p, handleMouseDown: x, handleMouseUp: b, handleMouseLeave: v } = Ut({
+      isDisabled: i
+    }), y = s.useCallback(
       (k) => {
-        s || (k.currentTarget.style.boxShadow = G[u].tertiary);
+        i || (k.currentTarget.style.boxShadow = $[m].tertiary);
       },
-      [s]
-    ), g = i.useCallback(
+      [i]
+    ), g = s.useCallback(
       (k) => {
-        s || (k.currentTarget.style.boxShadow = p ? G[u].tertiary : "none");
+        i || (k.currentTarget.style.boxShadow = p ? $[m].tertiary : "none");
       },
-      [s]
+      [i]
     );
-    return /* @__PURE__ */ a(
+    return /* @__PURE__ */ l(
       e,
       {
-        onMouseDown: m,
-        onMouseUp: f,
-        onMouseLeave: x,
-        onMouseOver: b,
+        onMouseDown: x,
+        onMouseUp: b,
+        onMouseLeave: v,
+        onMouseOver: y,
         onMouseOut: g,
+        className: f("Venomous-UI-React--Menu.Item", o),
         style: {
           boxSizing: "border-box",
           listStyle: "none",
           margin: 0,
           padding: "8px",
-          paddingRight: c ? "8px" : "16px",
+          paddingRight: d ? "8px" : "16px",
           borderRadius: "8px",
-          cursor: s ? "not-allowed" : d != null && d.onClick ? "pointer" : "default",
+          cursor: i ? "not-allowed" : u != null && u.onClick ? "pointer" : "default",
           transition: "box-shadow 0.2s ease-in-out",
-          ...t
+          ...n
         },
-        ...d,
-        children: /* @__PURE__ */ y(O.Flex, { row: !0, style: { alignItems: "center" }, children: [
-          r && /* @__PURE__ */ a(
-            F,
+        ...u,
+        children: /* @__PURE__ */ M(V.Flex, { row: !0, style: { alignItems: "center" }, children: [
+          t && /* @__PURE__ */ l(
+            N,
             {
-              icon: r,
+              icon: t,
               width: 24,
               style: {
-                color: s ? C[u].disabled : l ? h : C[u].primary
+                color: i ? C[m].disabled : c ? h : C[m].primary
               }
             }
           ),
-          /* @__PURE__ */ y(
-            O.Flex,
+          /* @__PURE__ */ M(
+            V.Flex,
             {
               column: !0,
               gap: 0,
               style: {
                 flex: 1,
                 flexGrow: 1,
-                maxWidth: r && !c ? "calc(100% - 32px)" : !r && c ? "calc(100% - 48px)" : r && c ? "calc(100% - 80px)" : "100%"
+                maxWidth: t && !d ? "calc(100% - 32px)" : !t && d ? "calc(100% - 48px)" : t && d ? "calc(100% - 80px)" : "100%"
               },
               children: [
-                /* @__PURE__ */ a(
-                  I.Text,
+                /* @__PURE__ */ l(
+                  R.Text,
                   {
-                    text: o,
+                    text: r,
                     isEllipsis: !0,
                     style: {
                       width: "100%",
-                      color: s ? C[u].disabled : l ? h : C[u].primary
+                      color: i ? C[m].disabled : c ? h : C[m].primary
                     }
                   }
                 ),
-                n && /* @__PURE__ */ a(
-                  I.Text,
+                a && /* @__PURE__ */ l(
+                  R.Text,
                   {
                     as: "small",
-                    text: n,
+                    text: a,
                     isEllipsis: !0,
                     style: {
                       width: "100%",
-                      color: s ? C[u].disabled : l ? h : C[u].quaternary
+                      color: i ? C[m].disabled : c ? h : C[m].quaternary
                     }
                   }
                 )
               ]
             }
           ),
-          !!(c != null && c.icon) && /* @__PURE__ */ a(
-            ue.Icon,
+          !!(d != null && d.icon) && /* @__PURE__ */ l(
+            me.Icon,
             {
-              icon: c.icon,
+              icon: d.icon,
               variant: "ghost",
-              isDisabled: s,
-              onClick: c.onClick
+              isDisabled: i,
+              onClick: d.onClick
             }
           )
         ] })
@@ -1752,74 +1786,85 @@ const _t = {
     );
   }
 );
-$e.displayName = "Menu.Item";
-const je = i.memo(({ children: e, style: t, as: r = _t.ul, ...o }) => /* @__PURE__ */ a(
-  r,
+Ae.displayName = "Menu.Item";
+const $e = s.memo(({ children: e, className: o, style: n, as: t = Ht.ul, ...r }) => /* @__PURE__ */ l(
+  t,
   {
+    className: f("Venomous-UI-React--Menu.List", o),
     style: {
       boxSizing: "border-box",
       margin: 0,
       padding: 0,
-      ...t
+      ...n
     },
-    ...o,
+    ...r,
     children: e
   }
 ));
-je.displayName = "Menu.List";
-const ge = {
-  List: je,
-  Item: $e
-}, Ge = i.memo(
-  ({ children: e, style: t, contentStyle: r, placement: o = "bottom", renderTrigger: n, trigger: s = "click", onClickOutside: l }) => {
-    var k;
-    const c = Bt(), d = i.useRef(null), u = i.useRef(null), h = i.useRef(null), [p, m] = i.useState({ top: 0, left: 0 });
-    i.useEffect(() => {
-      if (s !== "click") return;
-      const E = (H) => {
-        var S;
-        h.current && !h.current.contains(H.target) && !((S = u.current) != null && S.contains(H.target)) && (c.close(), l && l());
+$e.displayName = "Menu.List";
+const xe = {
+  List: $e,
+  Item: Ae
+}, je = s.memo(
+  ({ children: e, style: o, contentStyle: n, placement: t = "bottom", renderTrigger: r, trigger: a = "click", onClickOutside: i }) => {
+    var y;
+    const c = Ot(), d = s.useRef(null), u = s.useRef(null), m = s.useRef(null), [h, p] = s.useState({ top: 0, left: 0 });
+    s.useEffect(() => {
+      if (a !== "click") return;
+      const g = (k) => {
+        var H;
+        m.current && !m.current.contains(k.target) && !((H = u.current) != null && H.contains(k.target)) && (c.close(), i && i());
       };
-      return c.isOpen && document.addEventListener("mousedown", E), () => {
-        document.removeEventListener("mousedown", E);
+      return c.isOpen && document.addEventListener("mousedown", g), () => {
+        document.removeEventListener("mousedown", g);
       };
-    }, [c, s, l]), i.useEffect(() => {
-      if (c.isOpen && d.current && u.current && h.current) {
-        const E = d.current.getBoundingClientRect(), H = u.current.getBoundingClientRect(), S = h.current.offsetWidth, B = h.current.offsetHeight, $ = H.top - E.top, ne = H.left - E.left, ut = o === "bottom" ? $ + H.height : $ - B, pt = ne + H.width / 2 - S / 2;
-        m({ top: ut, left: pt });
+    }, [c, a, i]), s.useEffect(() => {
+      if (c.isOpen && d.current && u.current && m.current) {
+        const g = d.current.getBoundingClientRect(), k = u.current.getBoundingClientRect(), H = m.current.offsetWidth, I = m.current.offsetHeight, U = k.top - g.top, q = k.left - g.left, ae = t === "bottom" ? U + k.height : U - I, mt = q + k.width / 2 - H / 2;
+        p({ top: ae, left: mt });
       }
-    }, [c.isOpen, o]);
-    const b = s === "hover" ? {
+    }, [c.isOpen, t]);
+    const v = a === "hover" ? {
       onMouseEnter: () => {
-        s === "hover" && c.open();
+        a === "hover" && c.open();
       },
       onMouseLeave: () => {
-        s === "hover" && c.close();
+        a === "hover" && c.close();
       }
-    } : {}, g = s === "click" ? { onClick: c.toggle } : {};
-    return /* @__PURE__ */ y("div", { ref: d, style: { display: "inline-block", position: "relative", ...t }, ...b, children: [
-      /* @__PURE__ */ a("div", { ref: u, ...g, style: { display: "inline-block", width: "100%" }, children: n(c.isOpen) }),
-      /* @__PURE__ */ a(j, { children: c.isOpen && /* @__PURE__ */ a(
-        R.div,
+    } : {};
+    return /* @__PURE__ */ M("div", { ref: d, style: { display: "inline-block", position: "relative", ...o }, ...v, children: [
+      /* @__PURE__ */ l(
+        "div",
         {
-          ref: h,
+          ref: u,
+          ...a === "click" ? { onClick: c.toggle } : {},
+          className: f("Venomous-UI-React--Popover.Trigger"),
+          style: { display: "inline-block", width: "100%" },
+          children: r(c.isOpen)
+        }
+      ),
+      /* @__PURE__ */ l(A, { children: c.isOpen && /* @__PURE__ */ l(
+        L.div,
+        {
+          ref: m,
           initial: { opacity: 0, y: 0 },
           animate: { opacity: 1, y: 0 },
           exit: { opacity: 0, y: 0 },
           transition: { duration: 0.2 },
+          className: f("Venomous-UI-React--Popover"),
           style: {
             position: "absolute",
-            top: p.top,
-            left: p.left,
+            top: h.top,
+            left: h.left,
             zIndex: 1e3,
-            minWidth: (k = u.current) == null ? void 0 : k.offsetWidth
+            minWidth: (y = u.current) == null ? void 0 : y.offsetWidth
           },
-          children: /* @__PURE__ */ a(
-            X,
+          children: /* @__PURE__ */ l(
+            Q,
             {
               style: {
                 padding: "8px",
-                ...r
+                ...n
               },
               children: e
             }
@@ -1829,151 +1874,153 @@ const ge = {
     ] });
   }
 );
-Ge.displayName = "Popover";
-const Ve = i.memo(
+je.displayName = "Popover";
+const Ge = s.memo(
   ({
     isOriginalSelect: e = !1,
-    fullWidth: t,
-    required: r = !1,
-    isError: o = !1,
-    disabled: n = !1,
-    label: s,
-    helpText: l,
+    fullWidth: o,
+    required: n = !1,
+    isError: t = !1,
+    disabled: r = !1,
+    label: a,
+    helpText: i,
     ...c
   }) => {
-    const { isFocused: d, setIsFocused: u, handleFocus: h, handleBlur: p } = Y(), { commonStyles: m } = _({
-      fullWidth: t,
-      isDisabled: n,
-      isError: o,
+    const { isFocused: d, setIsFocused: u, handleFocus: m, handleBlur: h } = J(), { commonStyles: p } = z({
+      fullWidth: o,
+      isDisabled: r,
+      isError: t,
       isFocused: d
     });
-    return /* @__PURE__ */ y(
-      P,
+    return /* @__PURE__ */ M(
+      G,
       {
-        label: s,
-        required: r,
-        isDisabled: n,
-        isError: o,
+        label: a,
+        required: n,
+        isDisabled: r,
+        isError: t,
         isFocused: d,
-        fullWidth: t,
-        helpText: l,
+        fullWidth: o,
+        helpText: i,
         children: [
-          e && /* @__PURE__ */ a(
-            Pe,
+          e && /* @__PURE__ */ l(
+            qe,
             {
-              commonStyles: m,
-              handleFocus: h,
-              handleBlur: p,
-              disabled: n,
+              commonStyles: p,
+              handleFocus: m,
+              handleBlur: h,
+              disabled: r,
               ...c
             }
           ),
-          !e && /* @__PURE__ */ a(Ue, { commonStyles: m, setIsFocused: u, disabled: n, ...c })
+          !e && /* @__PURE__ */ l(Xe, { commonStyles: p, setIsFocused: u, disabled: r, ...c })
         ]
       }
     );
   }
 );
-Ve.displayName = "FormField.Select";
-const Pe = i.memo(
+Ge.displayName = "FormField.Select";
+const qe = s.memo(
   ({
     commonStyles: e,
-    handleFocus: t,
-    handleBlur: r,
-    name: o,
-    autoComplete: n = "off",
-    options: s,
-    onChange: l,
+    handleFocus: o,
+    handleBlur: n,
+    name: t,
+    autoComplete: r = "off",
+    options: a,
+    onChange: i,
     value: c,
     disabled: d,
-    style: u,
+    className: u,
+    style: m,
     ...h
-  }) => /* @__PURE__ */ a(
+  }) => /* @__PURE__ */ l(
     "select",
     {
-      name: o,
-      autoComplete: n,
+      name: t,
+      autoComplete: r,
       disabled: d,
-      onFocus: t,
-      onBlur: r,
-      onChange: l,
+      onFocus: o,
+      onBlur: n,
+      onChange: i,
       value: c,
+      className: f("Venomous-UI-React--FormField.Select", u),
       style: {
         boxSizing: "border-box",
         ...e,
-        ...u
+        ...m
       },
       ...h,
-      children: s.map((p) => /* @__PURE__ */ a("option", { value: p.value, disabled: p.disabled, children: p.label }, p.value))
+      children: a.map((p) => /* @__PURE__ */ l("option", { value: p.value, disabled: p.disabled, children: p.label }, p.value))
     }
   )
-), Ue = i.memo(({ commonStyles: e, setIsFocused: t, disabled: r, name: o, value: n, options: s, onChange: l, style: c }) => {
-  const [d, u] = i.useState(n || null), [h, p] = i.useState(!1);
-  i.useEffect(() => {
-    u(n || null);
-  }, [n]);
-  const m = i.useCallback(
+), Xe = s.memo(({ commonStyles: e, setIsFocused: o, disabled: n, name: t, value: r, options: a, onChange: i, className: c, style: d }) => {
+  const [u, m] = s.useState(r || null), [h, p] = s.useState(!1);
+  s.useEffect(() => {
+    m(r || null);
+  }, [r]);
+  const x = s.useCallback(
     (g) => {
-      u(g), p(!1), t(!1);
+      m(g), p(!1), o(!1);
       const k = {
-        target: { name: o, value: g },
-        currentTarget: { name: o, value: g }
+        target: { name: t, value: g },
+        currentTarget: { name: t, value: g }
       };
-      l == null || l(k);
+      i == null || i(k);
     },
-    [o, l, t]
-  ), f = i.useCallback(
+    [t, i, o]
+  ), b = s.useCallback(
     (g) => {
-      g.stopPropagation(), u(null), t(!1);
+      g.stopPropagation(), m(null), o(!1);
       const k = {
-        target: { name: o, value: "" },
-        currentTarget: { name: o, value: "" }
+        target: { name: t, value: "" },
+        currentTarget: { name: t, value: "" }
       };
-      l == null || l(k);
+      i == null || i(k);
     },
-    [o, l, t]
-  ), x = i.useMemo(
+    [t, i, o]
+  ), v = s.useMemo(
     () => {
       var g;
-      return ((g = s.find((k) => k.value === d)) == null ? void 0 : g.label) || "";
+      return ((g = a.find((k) => k.value === u)) == null ? void 0 : g.label) || "";
     },
-    [d]
-  ), b = (c == null ? void 0 : c.width) ?? e.minWidth;
-  return /* @__PURE__ */ a(
-    Ge,
+    [u]
+  ), y = (d == null ? void 0 : d.width) ?? e.minWidth;
+  return /* @__PURE__ */ l(
+    je,
     {
       placement: "bottom",
       trigger: "click",
       style: { width: "100%" },
-      onClickOutside: () => t(!1),
-      renderTrigger: () => /* @__PURE__ */ y(
-        O.Flex,
+      onClickOutside: () => o(!1),
+      renderTrigger: () => /* @__PURE__ */ M(
+        V.Flex,
         {
           row: !0,
-          onClick: () => t(!0),
+          onClick: () => o(!0),
           style: {
             ...e,
             height: e.minHeight,
-            width: b,
+            width: y,
             display: "flex",
             alignItems: "center"
           },
           children: [
-            /* @__PURE__ */ a(I.Paragraph, { ellipsis: 1, style: { flex: 1 }, children: x }),
-            d && !r && /* @__PURE__ */ a(
-              F,
+            /* @__PURE__ */ l(R.Paragraph, { ellipsis: 1, style: { flex: 1 }, children: v }),
+            u && !n && /* @__PURE__ */ l(
+              N,
               {
                 icon: "solar:close-circle-line-duotone",
                 width: 16,
-                onClick: f,
+                onClick: b,
                 style: {
                   cursor: "pointer",
                   transition: "color 0.2s ease"
                 }
               }
             ),
-            /* @__PURE__ */ a(
-              F,
+            /* @__PURE__ */ l(
+              N,
               {
                 icon: "solar:alt-arrow-down-line-duotone",
                 width: 16,
@@ -1986,109 +2033,120 @@ const Pe = i.memo(
           ]
         }
       ),
-      children: /* @__PURE__ */ a(ge.List, { as: "ul", style: { width: b }, children: s.map((g) => /* @__PURE__ */ a(
-        ge.Item,
+      children: /* @__PURE__ */ l(
+        xe.List,
         {
-          text: g.label,
-          isDisabled: g.disabled,
-          isActive: g.value === d,
-          onClick: () => {
-            g.disabled || m(g.value);
-          },
-          style: { cursor: g.disabled ? "not-allowed" : "pointer", fontSize: W.small }
-        },
-        g.value
-      )) })
+          as: "ul",
+          className: f("Venomous-UI-React--FormField.Select", c),
+          style: { width: y },
+          children: a.map((g) => /* @__PURE__ */ l(
+            xe.Item,
+            {
+              text: g.label,
+              isDisabled: g.disabled,
+              isActive: g.value === u,
+              onClick: () => {
+                g.disabled || x(g.value);
+              },
+              style: { cursor: g.disabled ? "not-allowed" : "pointer", fontSize: _.small }
+            },
+            g.value
+          ))
+        }
+      )
     }
   );
 });
-Pe.displayName = "FormField.Select.Original";
-Ue.displayName = "FormField.Select.Custom";
-const xe = 48, ye = 24, se = 18, be = 4, qe = i.memo(
+qe.displayName = "FormField.Select.Original";
+Xe.displayName = "FormField.Select.Custom";
+const ye = 48, be = 24, ie = 18, ke = 4, Ye = s.memo(
   ({
-    style: e,
-    autoComplete: t = "off",
-    required: r = !1,
-    isError: o = !1,
-    disabled: n = !1,
-    name: s,
-    value: l,
-    checked: c = !1,
-    onChange: d,
-    label: u,
+    className: e,
+    style: o,
+    autoComplete: n = "off",
+    required: t = !1,
+    isError: r = !1,
+    disabled: a = !1,
+    name: i,
+    value: c,
+    checked: d = !1,
+    onChange: u,
+    label: m,
     labelPosition: h = "right",
     ...p
   }) => {
-    const { inputRef: m, isChecked: f, toggleOriginalIsChecked: x, toggleCustomIsChecked: b } = Ne({
-      checked: c,
-      disabled: n,
-      onChange: d
-    }), { backgroundColor: g, outlineColor: k, borderColor: E, commonStyles: H } = _({
-      isDisabled: n,
-      isError: o
+    const { inputRef: x, isChecked: b, toggleOriginalIsChecked: v, toggleCustomIsChecked: y } = He({
+      checked: d,
+      disabled: a,
+      onChange: u
+    }), { backgroundColor: g, outlineColor: k, borderColor: H, commonStyles: I } = z({
+      isDisabled: a,
+      isError: r
     });
-    return /* @__PURE__ */ y(re, { label: u, required: r, isError: o, position: h, children: [
-      /* @__PURE__ */ a(
+    return /* @__PURE__ */ M(se, { label: m, required: t, isError: r, position: h, children: [
+      /* @__PURE__ */ l(
         "input",
         {
           type: "checkbox",
-          name: s,
-          value: l,
-          checked: f,
-          ref: m,
-          onChange: x,
-          autoComplete: t,
-          disabled: n,
-          style: { display: "none", ...e },
+          name: i,
+          value: c,
+          checked: b,
+          ref: x,
+          onChange: v,
+          autoComplete: n,
+          disabled: a,
+          style: { display: "none" },
           ...p
         }
       ),
-      /* @__PURE__ */ a(
+      /* @__PURE__ */ l(
         "div",
         {
-          onClick: b,
+          onClick: y,
           style: {
             display: "inline-flex",
             alignItems: "center",
-            cursor: n ? "not-allowed" : "pointer",
-            opacity: n ? 0.6 : 1
+            cursor: a ? "not-allowed" : "pointer",
+            opacity: a ? 0.6 : 1
           },
-          children: /* @__PURE__ */ a(j, { children: /* @__PURE__ */ a(
-            R.div,
+          children: /* @__PURE__ */ l(A, { children: /* @__PURE__ */ l(
+            L.div,
             {
               initial: !1,
-              animate: f ? "checked" : "unchecked",
+              animate: b ? "checked" : "unchecked",
               transition: { type: "spring", stiffness: 700, damping: 30 },
+              className: f("Venomous-UI-React--FormField.Switch", e),
               style: {
-                width: xe,
-                height: ye,
+                width: ye,
+                height: be,
                 position: "relative",
                 display: "flex",
                 alignItems: "center",
-                borderRadius: ye / 2,
-                borderWidth: H.borderWidth,
-                borderStyle: H.borderStyle,
-                borderColor: E,
-                backgroundColor: f ? k : g,
-                transition: "background-color 0.2s ease-in-out"
+                borderRadius: be / 2,
+                borderWidth: I.borderWidth,
+                borderStyle: I.borderStyle,
+                borderColor: H,
+                backgroundColor: b ? k : g,
+                transition: "background-color 0.2s ease-in-out",
+                ...o
               },
-              children: /* @__PURE__ */ a(
-                R.div,
+              children: /* @__PURE__ */ l(
+                L.div,
                 {
                   initial: !1,
-                  animate: f ? "checked" : "unchecked",
+                  animate: b ? "checked" : "unchecked",
                   transition: { type: "spring", stiffness: 700, damping: 30 },
                   variants: {
-                    checked: { x: xe - se - be },
-                    unchecked: { x: be }
+                    checked: { x: ye - ie - ke },
+                    unchecked: { x: ke }
                   },
                   style: {
-                    width: se,
-                    height: se,
+                    width: ie,
+                    height: ie,
                     borderRadius: "50%",
                     position: "absolute",
-                    boxShadow: G.light.primary,
-                    backgroundColor: o && !f ? v.RubyCopperhead : N.light.secondary
+                    boxShadow: $.light.primary,
+                    backgroundColor: r && !b ? S.RubyCopperhead : B.light.secondary
                   }
                 }
               )
@@ -2099,51 +2157,53 @@ const xe = 48, ye = 24, se = 18, be = 4, qe = i.memo(
     ] });
   }
 );
-qe.displayName = "FormField.Switch";
-const Xe = i.memo(
+Ye.displayName = "FormField.Switch";
+const Qe = s.memo(
   ({
-    style: e,
-    fullWidth: t,
-    autoComplete: r = "off",
-    required: o = !1,
-    isError: n = !1,
-    disabled: s = !1,
-    name: l,
-    value: c,
-    label: d,
-    helpText: u,
+    className: e,
+    style: o,
+    fullWidth: n,
+    autoComplete: t = "off",
+    required: r = !1,
+    isError: a = !1,
+    disabled: i = !1,
+    name: c,
+    value: d,
+    label: u,
+    helpText: m,
     ...h
   }) => {
-    const { isFocused: p, handleFocus: m, handleBlur: f } = Y(), { commonStyles: x } = _({
-      fullWidth: t,
-      isDisabled: s,
-      isError: n,
+    const { isFocused: p, handleFocus: x, handleBlur: b } = J(), { commonStyles: v } = z({
+      fullWidth: n,
+      isDisabled: i,
+      isError: a,
       isFocused: p
     });
-    return /* @__PURE__ */ a(
-      P,
+    return /* @__PURE__ */ l(
+      G,
       {
-        label: d,
-        required: o,
-        isDisabled: s,
-        isError: n,
+        label: u,
+        required: r,
+        isDisabled: i,
+        isError: a,
         isFocused: p,
-        fullWidth: t,
-        helpText: u,
-        children: /* @__PURE__ */ a(
+        fullWidth: n,
+        helpText: m,
+        children: /* @__PURE__ */ l(
           "input",
           {
             type: "text",
-            name: l,
-            value: c,
-            autoComplete: r,
-            disabled: s,
-            onFocus: s ? void 0 : m,
-            onBlur: s ? void 0 : f,
+            name: c,
+            value: d,
+            autoComplete: t,
+            disabled: i,
+            onFocus: i ? void 0 : x,
+            onBlur: i ? void 0 : b,
+            className: f("Venomous-UI-React--FormField.Text", e),
             style: {
               boxSizing: "border-box",
-              ...x,
-              ...e
+              ...v,
+              ...o
             },
             ...h
           }
@@ -2152,52 +2212,54 @@ const Xe = i.memo(
     );
   }
 );
-Xe.displayName = "FormField.Text";
-const Ye = i.memo(
+Qe.displayName = "FormField.Text";
+const Ze = s.memo(
   ({
-    style: e,
-    fullWidth: t,
-    required: r = !1,
-    isError: o = !1,
-    disabled: n = !1,
-    rows: s = 3,
-    name: l,
-    value: c,
-    label: d,
-    helpText: u,
+    className: e,
+    style: o,
+    fullWidth: n,
+    required: t = !1,
+    isError: r = !1,
+    disabled: a = !1,
+    rows: i = 3,
+    name: c,
+    value: d,
+    label: u,
+    helpText: m,
     ...h
   }) => {
-    const { isFocused: p, handleFocus: m, handleBlur: f } = Y(), { commonStyles: x } = _({
-      fullWidth: t,
-      isDisabled: n,
-      isError: o,
+    const { isFocused: p, handleFocus: x, handleBlur: b } = J(), { commonStyles: v } = z({
+      fullWidth: n,
+      isDisabled: a,
+      isError: r,
       isFocused: p
     });
-    return /* @__PURE__ */ a(
-      P,
+    return /* @__PURE__ */ l(
+      G,
       {
-        label: d,
-        required: r,
-        isDisabled: n,
-        isError: o,
+        label: u,
+        required: t,
+        isDisabled: a,
+        isError: r,
         isFocused: p,
-        fullWidth: t,
-        helpText: u,
-        children: /* @__PURE__ */ a(
+        fullWidth: n,
+        helpText: m,
+        children: /* @__PURE__ */ l(
           "textarea",
           {
-            name: l,
-            value: c,
-            disabled: n,
-            onFocus: n ? void 0 : m,
-            onBlur: n ? void 0 : f,
+            name: c,
+            value: d,
+            disabled: a,
+            onFocus: a ? void 0 : x,
+            onBlur: a ? void 0 : b,
             spellCheck: !1,
-            rows: s,
+            rows: i,
+            className: f("Venomous-UI-React--FormField.Textarea", e),
             style: {
               boxSizing: "border-box",
               resize: "none",
-              ...x,
-              ...e
+              ...v,
+              ...o
             },
             ...h
           }
@@ -2206,126 +2268,141 @@ const Ye = i.memo(
     );
   }
 );
-Ye.displayName = "FormField.Textarea";
-const Wt = i.memo(({ children: e, gap: t = 8, style: r, ...o }) => /* @__PURE__ */ a("form", { style: { width: "100%", ...r }, ...o, children: /* @__PURE__ */ a(O.Flex, { column: !0, gap: t, children: e }) }));
-Wt.displayName = "Form";
-const no = {
-  Text: Xe,
-  Textarea: Ye,
-  Number: De,
-  Password: We,
-  Checkbox: _e,
-  Switch: qe,
-  Radio: Ae,
-  Select: Ve
-}, Qe = i.memo(({ children: e, style: t, ...r }) => /* @__PURE__ */ a(
-  "main",
+Ze.displayName = "FormField.Textarea";
+const Dt = s.memo(({ children: e, gap: o = 8, className: n, style: t, ...r }) => /* @__PURE__ */ l(
+  "form",
   {
+    className: f("Venomous-UI-React--Form", n),
     style: {
       width: "100%",
-      flexGrow: 1,
       ...t
     },
     ...r,
+    children: /* @__PURE__ */ l(V.Flex, { column: !0, gap: o, children: e })
+  }
+));
+Dt.displayName = "Form";
+const so = {
+  Text: Qe,
+  Textarea: Ze,
+  Number: De,
+  Password: _e,
+  Checkbox: ze,
+  Switch: Ye,
+  Radio: We,
+  Select: Ge
+}, Je = s.memo(({ children: e, className: o, style: n, ...t }) => /* @__PURE__ */ l(
+  "main",
+  {
+    className: f("Venomous-UI-React--Layout.Content", o),
+    style: {
+      width: "100%",
+      flexGrow: 1,
+      ...n
+    },
+    ...t,
     children: e
   }
 ));
-Qe.displayName = "Layout.Footer";
-const ee = {
+Je.displayName = "Layout.Content";
+const oe = {
   headerHeight: 60,
   footerHeight: 80,
   sideWidth: 300
-}, Ze = i.createContext(ee);
-function he() {
-  const e = i.useContext(Ze);
+}, Ke = s.createContext(oe);
+function pe() {
+  const e = s.useContext(Ke);
   if (e === void 0)
     throw new Error("useLayoutContext must be used within a LayoutProvider");
   return e;
 }
-const Je = i.memo(({ children: e, style: t, ...r }) => {
-  const { footerHeight: o } = he();
-  return /* @__PURE__ */ a(
+const Pe = s.memo(({ children: e, className: o, style: n, ...t }) => {
+  const { footerHeight: r } = pe();
+  return /* @__PURE__ */ l(
     "footer",
     {
+      className: f("Venomous-UI-React--Layout.Footer", o),
       style: {
-        height: `${o}px`,
+        height: `${r}px`,
         width: "100%",
-        ...t
+        ...n
       },
-      ...r,
+      ...t,
       children: e
     }
   );
 });
-Je.displayName = "Layout.Footer";
-const Ke = i.memo(({ children: e, style: t, ...r }) => {
-  const { headerHeight: o } = he();
-  return /* @__PURE__ */ a(
+Pe.displayName = "Layout.Footer";
+const et = s.memo(({ children: e, className: o, style: n, ...t }) => {
+  const { headerHeight: r } = pe();
+  return /* @__PURE__ */ l(
     "header",
     {
+      className: f("Venomous-UI-React--Layout.Header", o),
       style: {
-        height: `${o}px`,
+        height: `${r}px`,
         width: "100%",
         position: "sticky",
         top: 0,
         zIndex: 1,
-        ...t
+        ...n
       },
-      ...r,
+      ...t,
       children: e
     }
   );
 });
-Ke.displayName = "Layout.Header";
-const et = i.memo(
+et.displayName = "Layout.Header";
+const tt = s.memo(
   ({
     children: e,
-    maxBreakpoint: t = T.xl,
-    headerHeight: r = ee.headerHeight,
-    footerHeight: o = ee.footerHeight,
-    sideWidth: n = ee.sideWidth
+    maxBreakpoint: o = F.xl,
+    headerHeight: n = oe.headerHeight,
+    footerHeight: t = oe.footerHeight,
+    sideWidth: r = oe.sideWidth
   }) => {
-    const s = i.useMemo(
-      () => ({ headerHeight: r, footerHeight: o, sideWidth: n }),
-      [r, o, n]
+    const a = s.useMemo(
+      () => ({ headerHeight: n, footerHeight: t, sideWidth: r }),
+      [n, t, r]
     );
     return (
       // eslint-disable-next-line react-x/no-context-provider
-      /* @__PURE__ */ a(Ze.Provider, { value: s, children: /* @__PURE__ */ a(Be, { breakpoint: t, children: e }) })
+      /* @__PURE__ */ l(Ke.Provider, { value: a, children: /* @__PURE__ */ l(Be, { maxBreakpoint: o, children: e }) })
     );
   }
 );
-et.displayName = "Layout.Provider";
-const tt = i.memo(({ children: e, style: t, ...r }) => {
-  const { headerHeight: o, sideWidth: n } = he();
-  return /* @__PURE__ */ a(
+tt.displayName = "Layout.Provider";
+const ot = s.memo(({ children: e, className: o, style: n, ...t }) => {
+  const { headerHeight: r, sideWidth: a } = pe();
+  return /* @__PURE__ */ l(
     "aside",
     {
+      className: f("Venomous-UI-React--Layout.Side", o),
       style: {
-        height: `calc(100svh - ${o}px)`,
-        width: n,
-        minWidth: n,
+        height: `calc(100svh - ${r}px)`,
+        width: a,
+        minWidth: a,
         position: "sticky",
-        top: `${o}px`,
+        top: `${r}px`,
         left: 0,
         zIndex: 1,
         overflowX: "hidden",
         overflowY: "scroll",
-        ...t
+        ...n
       },
-      ...r,
+      ...t,
       children: e
     }
   );
 });
-tt.displayName = "Layout.Side";
-const io = {
-  Provider: et,
-  Header: Ke,
-  Side: tt,
-  Content: Qe,
-  Footer: Je
-}, ot = {
+ot.displayName = "Layout.Side";
+const ao = {
+  Provider: tt,
+  Header: et,
+  Side: ot,
+  Content: Je,
+  Footer: Pe
+}, nt = {
   ".txt": "text/plain",
   ".html": "text/html",
   ".css": "text/css",
@@ -2347,178 +2424,191 @@ const io = {
   ".mp4": "video/mp4",
   ".avi": "video/x-msvideo"
 };
-function At(e) {
-  const t = Object.entries(ot).find(([, r]) => r === e);
-  if (!t)
+function _t(e) {
+  const o = Object.entries(nt).find(([, n]) => n === e);
+  if (!o)
     throw new Error(`Unsupported mime type: ${e}`);
-  return t[0];
+  return o[0];
 }
-function $t(e) {
-  return ot[e];
+function Wt(e) {
+  return nt[e];
 }
-function jt(e) {
+function At(e) {
   switch (e) {
     case ".jpg":
     case ".jpeg":
     case ".png":
     case ".webp":
     case ".gif":
-      return v.TurquoiseFerDeLance;
+      return S.TurquoiseFerDeLance;
     // 蓝色
     case ".svg":
     case ".js":
     case ".json":
-      return v.GoldenLanceHead;
+      return S.GoldenLanceHead;
     // 金色
     case ".pdf":
-      return v.GarnetViper;
+      return S.GarnetViper;
     // 红色
     case ".html":
     case ".mp4":
     case ".avi":
-      return v.TopazCoral;
+      return S.TopazCoral;
     // 橙色
     case ".css":
-      return v.AlexandriteAnaconda;
+      return S.AlexandriteAnaconda;
     // 紫色
     case ".xls":
     case ".xlsx":
     case ".csv":
-      return v.EmeraldMamba;
+      return S.EmeraldMamba;
     // 绿色
     case ".doc":
     case ".docx":
-      return v.SapphireCobra;
+      return S.SapphireCobra;
     // 蓝色
     case ".mp3":
-      return v.MalachitePython;
+      return S.MalachitePython;
     // 绿色
     case ".txt":
     default:
-      return v.ObsidianBlackMamba;
+      return S.ObsidianBlackMamba;
   }
 }
-const rt = i.memo(({ fileExtension: e, width: t = 40, ...r }) => {
-  var s;
-  const o = i.useMemo(
-    () => jt(e),
+const rt = s.memo(({ fileExtension: e, width: o = 40, className: n, ...t }) => {
+  var i;
+  const r = s.useMemo(
+    () => At(e),
     [e]
-  ), n = C.dark.primary;
-  return /* @__PURE__ */ y("svg", { width: t, height: t * 2, viewBox: "0 0 40 40", fill: "none", xmlns: "http://www.w3.org/2000/svg", ...r, children: [
-    /* @__PURE__ */ a(
-      "path",
-      {
-        d: "M23.172 0C23.7022 0 24.2107 0.210507 24.5857 0.585255L36.4137 12.4044C36.7891 12.7795 37 13.2884 37 13.8191V35.3333C37 37.9107 34.8689 40 32.24 40H7.76C5.13112 40 3 37.9107 3 35.3333V4.66667C3 2.08934 5.13112 0 7.76 0H23.172Z",
-        fill: o
-      }
-    ),
-    /* @__PURE__ */ a("g", { filter: "url(#filter0_d_1255_158068)", children: /* @__PURE__ */ a(
-      "path",
-      {
-        d: "M35.1548 12.1381C35.4678 12.4537 35.2443 12.9902 34.7998 12.9902H29C26.4227 12.9902 24.0976 10.7233 24.0976 8.21031V2.20435C24.0976 1.75791 24.6382 1.53528 24.9526 1.85224L35.1548 12.1381Z",
-        fill: "white",
-        fillOpacity: "0.24",
-        shapeRendering: "crispEdges"
-      }
-    ) }),
-    /* @__PURE__ */ a(
-      "text",
-      {
-        x: "45%",
-        y: "55%",
-        fontSize: "8",
-        fontWeight: "bold",
-        fill: n,
-        fontFamily: "Arial",
-        textAnchor: "middle",
-        dominantBaseline: "middle",
-        children: (s = String(e)) == null ? void 0 : s.toLocaleLowerCase()
-      }
-    ),
-    /* @__PURE__ */ a("defs", { children: /* @__PURE__ */ y(
-      "filter",
-      {
-        id: "filter0_d_1255_158068",
-        x: "22.0977",
-        y: "1.70337",
-        width: "15.2031",
-        height: "15.2869",
-        filterUnits: "userSpaceOnUse",
-        colorInterpolationFilters: "sRGB",
-        children: [
-          /* @__PURE__ */ a("feFlood", { floodOpacity: "0", result: "BackgroundImageFix" }),
-          /* @__PURE__ */ a("feColorMatrix", { in: "SourceAlpha", values: "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0", result: "hardAlpha" }),
-          /* @__PURE__ */ a("feOffset", { dy: "2" }),
-          /* @__PURE__ */ a("feGaussianBlur", { stdDeviation: "1" }),
-          /* @__PURE__ */ a("feComposite", { in2: "hardAlpha", operator: "out" }),
-          /* @__PURE__ */ a("feColorMatrix", { values: "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0" }),
-          /* @__PURE__ */ a("feBlend", { mode: "normal", in2: "BackgroundImageFix", result: "effect1_dropShadow_1255_158068" }),
-          /* @__PURE__ */ a("feBlend", { mode: "normal", in: "SourceGraphic", in2: "effect1_dropShadow_1255_158068", result: "shape" })
-        ]
-      }
-    ) })
-  ] });
+  ), a = C.dark.primary;
+  return /* @__PURE__ */ M(
+    "svg",
+    {
+      width: o,
+      height: o * 2,
+      viewBox: "0 0 40 40",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg",
+      className: f("Venomous-UI-React--MediaFile.TypeImage", n),
+      ...t,
+      children: [
+        /* @__PURE__ */ l(
+          "path",
+          {
+            d: "M23.172 0C23.7022 0 24.2107 0.210507 24.5857 0.585255L36.4137 12.4044C36.7891 12.7795 37 13.2884 37 13.8191V35.3333C37 37.9107 34.8689 40 32.24 40H7.76C5.13112 40 3 37.9107 3 35.3333V4.66667C3 2.08934 5.13112 0 7.76 0H23.172Z",
+            fill: r
+          }
+        ),
+        /* @__PURE__ */ l("g", { filter: "url(#filter0_d_1255_158068)", children: /* @__PURE__ */ l(
+          "path",
+          {
+            d: "M35.1548 12.1381C35.4678 12.4537 35.2443 12.9902 34.7998 12.9902H29C26.4227 12.9902 24.0976 10.7233 24.0976 8.21031V2.20435C24.0976 1.75791 24.6382 1.53528 24.9526 1.85224L35.1548 12.1381Z",
+            fill: "white",
+            fillOpacity: "0.24",
+            shapeRendering: "crispEdges"
+          }
+        ) }),
+        /* @__PURE__ */ l(
+          "text",
+          {
+            x: "45%",
+            y: "55%",
+            fontSize: "8",
+            fontWeight: "bold",
+            fill: a,
+            fontFamily: "Arial",
+            textAnchor: "middle",
+            dominantBaseline: "middle",
+            children: (i = String(e)) == null ? void 0 : i.toLocaleLowerCase()
+          }
+        ),
+        /* @__PURE__ */ l("defs", { children: /* @__PURE__ */ M(
+          "filter",
+          {
+            id: "filter0_d_1255_158068",
+            x: "22.0977",
+            y: "1.70337",
+            width: "15.2031",
+            height: "15.2869",
+            filterUnits: "userSpaceOnUse",
+            colorInterpolationFilters: "sRGB",
+            children: [
+              /* @__PURE__ */ l("feFlood", { floodOpacity: "0", result: "BackgroundImageFix" }),
+              /* @__PURE__ */ l("feColorMatrix", { in: "SourceAlpha", values: "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0", result: "hardAlpha" }),
+              /* @__PURE__ */ l("feOffset", { dy: "2" }),
+              /* @__PURE__ */ l("feGaussianBlur", { stdDeviation: "1" }),
+              /* @__PURE__ */ l("feComposite", { in2: "hardAlpha", operator: "out" }),
+              /* @__PURE__ */ l("feColorMatrix", { values: "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0" }),
+              /* @__PURE__ */ l("feBlend", { mode: "normal", in2: "BackgroundImageFix", result: "effect1_dropShadow_1255_158068" }),
+              /* @__PURE__ */ l("feBlend", { mode: "normal", in: "SourceGraphic", in2: "effect1_dropShadow_1255_158068", result: "shape" })
+            ]
+          }
+        ) })
+      ]
+    }
+  );
 });
 rt.displayName = "MediaFile.TypeImage";
-const nt = i.memo(
-  ({ handleFileUpload: e, multiple: t = !1, accept: r, style: o, isLoading: n, isDisabled: s }) => {
-    const l = i.useRef(null), c = i.useCallback(() => {
+const st = s.memo(
+  ({ handleFileUpload: e, multiple: o = !1, accept: n, style: t, isLoading: r, isDisabled: a }) => {
+    const i = s.useRef(null), c = s.useCallback(() => {
       var u;
-      (u = l.current) == null || u.click();
-    }, []), d = i.useCallback(
+      (u = i.current) == null || u.click();
+    }, []), d = s.useCallback(
       (u) => {
-        const h = u.target.files;
-        if (!(h != null && h.length))
+        const m = u.target.files;
+        if (!(m != null && m.length))
           return;
-        const p = Array.from(h);
-        e(p), u.currentTarget.value = "";
+        const h = Array.from(m);
+        e(h), u.currentTarget.value = "";
       },
       [e]
     );
-    return /* @__PURE__ */ y(te, { children: [
-      /* @__PURE__ */ a(
+    return /* @__PURE__ */ M(ne, { children: [
+      /* @__PURE__ */ l(
         "input",
         {
           type: "file",
-          ref: l,
+          ref: i,
           onChange: d,
-          multiple: t,
-          accept: r,
+          multiple: o,
+          accept: n,
           style: { display: "none" }
         }
       ),
-      /* @__PURE__ */ a(
-        ue.Icon,
+      /* @__PURE__ */ l(
+        me.Icon,
         {
           icon: "solar:cloud-upload-outline",
           iconWidth: 32,
           variant: "ghost",
-          isLoading: n,
-          isDisabled: s,
+          isLoading: r,
+          isDisabled: a,
           onClick: c,
-          style: { padding: "32px 16px", ...o }
+          style: { padding: "32px 16px", ...t }
         }
       )
     ] });
   }
 );
-nt.displayName = "MediaFile.Uploader";
-const so = {
+st.displayName = "MediaFile.Uploader";
+const io = {
   TypeImage: rt,
-  Uploader: nt,
-  mimeTypeToExtension: At,
-  extensionToMimeType: $t
-}, it = i.memo(
-  ({ children: e, style: t, isOpen: r, onClose: o, maskClosable: n = !0, maxBreakpoint: s = T.xs }) => {
-    const { themeMode: l } = M.useThemeMode();
-    return /* @__PURE__ */ a(j, { children: r && /* @__PURE__ */ a(
-      R.div,
+  Uploader: st,
+  mimeTypeToExtension: _t,
+  extensionToMimeType: Wt
+}, at = s.memo(
+  ({ children: e, className: o, style: n, isOpen: t, onClose: r, maskClosable: a = !0, maxBreakpoint: i = F.xs }) => {
+    const { themeMode: c } = T.useThemeMode();
+    return /* @__PURE__ */ l(A, { children: t && /* @__PURE__ */ l(
+      L.div,
       {
-        onClick: n ? o : void 0,
+        onClick: a ? r : void 0,
         initial: { opacity: 0 },
         animate: { opacity: 1 },
         exit: { opacity: 0 },
         transition: { duration: 0.2 },
+        className: f("Venomous-UI-React--Modal", o),
         style: {
           display: "flex",
           justifyContent: "center",
@@ -2529,18 +2619,18 @@ const so = {
           zIndex: 1e3,
           width: "100svw",
           height: "100svh",
-          backgroundColor: V(N[l].primary, 0.5),
+          backgroundColor: j(B[c].primary, 0.5),
           backdropFilter: "blur(2px)",
-          opacity: r ? 1 : 0
+          opacity: t ? 1 : 0
         },
-        children: /* @__PURE__ */ a(
-          R.div,
+        children: /* @__PURE__ */ l(
+          L.div,
           {
             initial: { opacity: 0, scale: 0.95 },
             animate: { opacity: 1, scale: 1 },
             exit: { opacity: 0, scale: 0.95 },
             transition: { duration: 0.2, ease: "easeOut" },
-            onClick: (c) => c.stopPropagation(),
+            onClick: (d) => d.stopPropagation(),
             style: {
               position: "relative",
               display: "flex",
@@ -2548,153 +2638,167 @@ const so = {
               alignItems: "center",
               height: "max-content",
               maxHeight: "90%",
-              width: D[s],
-              maxWidth: D[s]
+              width: D[i],
+              maxWidth: D[i]
             },
-            children: /* @__PURE__ */ a(X, { style: { width: "100%", ...t }, children: e })
+            children: /* @__PURE__ */ l(Q, { style: { width: "100%", ...n }, children: e })
           }
         )
       }
     ) });
   }
 );
-it.displayName = "Modal";
-const st = i.memo(
+at.displayName = "Modal";
+const it = s.memo(
   ({
-    style: e,
-    isOpen: t,
-    onClose: r,
-    maskClosable: o = !1,
-    maxBreakpoint: n = T.xs,
-    title: s,
-    description: l,
-    isConformLoading: c = !1,
-    cancelText: d = "Cancel",
-    confirmText: u = "Confirm",
+    className: e,
+    style: o,
+    isOpen: n,
+    onClose: t,
+    maskClosable: r = !1,
+    maxBreakpoint: a = F.xs,
+    title: i,
+    description: c,
+    isConformLoading: d = !1,
+    cancelText: u = "Cancel",
+    confirmText: m = "Confirm",
     onCancel: h,
     onConfirm: p
   }) => {
-    const m = i.useCallback(async () => {
-      await h(), r();
-    }, [h, r]), f = i.useCallback(async () => {
-      await p(), r();
-    }, [p, r]);
-    return /* @__PURE__ */ y(it, { isOpen: t, onClose: r, style: e, maskClosable: o, maxBreakpoint: n, children: [
-      /* @__PURE__ */ a(I.Title, { as: "h5", text: s }),
-      /* @__PURE__ */ a(I.Paragraph, { style: { padding: "8px 0 24px" }, children: l }),
-      /* @__PURE__ */ y(O.Flex, { row: !0, gap: 8, style: { justifyContent: "flex-end" }, children: [
-        /* @__PURE__ */ a(
-          ae,
-          {
-            variant: "outlined",
-            text: d,
-            onClick: () => void m(),
-            isDisabled: c
-          }
-        ),
-        /* @__PURE__ */ a(
-          ae,
-          {
-            variant: "contained",
-            text: u,
-            onClick: () => void f(),
-            isLoading: c
-          }
-        )
-      ] })
-    ] });
+    const x = s.useCallback(async () => {
+      await h(), t();
+    }, [h, t]), b = s.useCallback(async () => {
+      await p(), t();
+    }, [p, t]);
+    return /* @__PURE__ */ M(
+      at,
+      {
+        isOpen: n,
+        onClose: t,
+        className: f("Venomous-UI-React--Modals.Confirm", e),
+        style: o,
+        maskClosable: r,
+        maxBreakpoint: a,
+        children: [
+          /* @__PURE__ */ l(R.Title, { as: "h5", text: i }),
+          /* @__PURE__ */ l(R.Paragraph, { style: { padding: "8px 0 24px" }, children: c }),
+          /* @__PURE__ */ M(V.Flex, { row: !0, gap: 8, style: { justifyContent: "flex-end" }, children: [
+            /* @__PURE__ */ l(
+              le,
+              {
+                variant: "outlined",
+                text: u,
+                onClick: () => void x(),
+                isDisabled: d
+              }
+            ),
+            /* @__PURE__ */ l(
+              le,
+              {
+                variant: "contained",
+                text: m,
+                onClick: () => void b(),
+                isLoading: d
+              }
+            )
+          ] })
+        ]
+      }
+    );
   }
 );
-st.displayName = "Modals.Confirm";
-const ao = {
-  Confirm: st
-}, Gt = i.memo(({ children: e }) => {
-  const [t, r] = i.useState(!1);
-  return i.useEffect(() => {
-    r(!0);
-  }, []), t ? /* @__PURE__ */ a(te, { children: e }) : null;
+it.displayName = "Modals.Confirm";
+const lo = {
+  Confirm: it
+}, $t = s.memo(({ children: e }) => {
+  const [o, n] = s.useState(!1);
+  return s.useEffect(() => {
+    n(!0);
+  }, []), o ? /* @__PURE__ */ l(ne, { children: e }) : null;
 });
-Gt.displayName = "NoSSR";
-const Vt = i.memo(({ position: e = "top-center", offset: t = 0, collapsable: r = !1 }) => {
-  const { isDarkThemeMode: o } = M.useThemeMode();
-  return /* @__PURE__ */ a(
+$t.displayName = "NoSSR";
+const jt = s.memo(({ position: e = "top-center", offset: o = 0, collapsable: n = !1 }) => {
+  const { isDarkThemeMode: t } = T.useThemeMode();
+  return /* @__PURE__ */ l(
     gt,
     {
       closeButton: !0,
       richColors: !0,
-      invert: o,
+      invert: t,
       visibleToasts: 4,
       gap: 8,
       position: e,
-      offset: t,
-      mobileOffset: t / 2,
-      expand: !r,
+      offset: o,
+      mobileOffset: o / 2,
+      expand: !n,
+      className: f("Venomous-UI-React--Notification"),
       icons: {
-        success: /* @__PURE__ */ a(F, { icon: "solar:shield-check-line-duotone", color: "success" }),
-        error: /* @__PURE__ */ a(F, { icon: "solar:shield-cross-line-duotone", color: "error" }),
-        warning: /* @__PURE__ */ a(F, { icon: "solar:shield-warning-line-duotone", color: "warning" }),
-        info: /* @__PURE__ */ a(F, { icon: "solar:info-circle-line-duotone", color: "info" })
+        success: /* @__PURE__ */ l(N, { icon: "solar:shield-check-line-duotone", color: "success" }),
+        error: /* @__PURE__ */ l(N, { icon: "solar:shield-cross-line-duotone", color: "error" }),
+        warning: /* @__PURE__ */ l(N, { icon: "solar:shield-warning-line-duotone", color: "warning" }),
+        info: /* @__PURE__ */ l(N, { icon: "solar:info-circle-line-duotone", color: "info" })
       }
     }
   );
 });
-Vt.displayName = "Notification";
-function lo(e) {
-  const t = {
+jt.displayName = "Notification";
+function co(e) {
+  const o = {
     description: e.description
   };
-  return e.type === "success" ? Q.success(e.title, t) : e.type === "error" ? Q.error(e.title, t) : e.type === "warning" ? Q.warning(e.title, t) : Q.info(e.title, t);
+  return e.type === "success" ? K.success(e.title, o) : e.type === "error" ? K.error(e.title, o) : e.type === "warning" ? K.warning(e.title, o) : K.info(e.title, o);
 }
-const at = i.memo(({ children: e, targetElementID: t }) => {
-  const [r, o] = i.useState(null);
-  return i.useEffect(() => {
-    const n = document.getElementById(t);
-    n && o(n);
-  }, [t]), r ? xt(/* @__PURE__ */ a(te, { children: e }), r, t) : null;
+const lt = s.memo(({ children: e, targetElementID: o }) => {
+  const [n, t] = s.useState(null);
+  return s.useEffect(() => {
+    const r = document.getElementById(o);
+    r && t(r);
+  }, [o]), n ? xt(/* @__PURE__ */ l(ne, { children: e }), n, o) : null;
 });
-at.displayName = "PortalRender";
-const co = {
-  Render: at
-}, lt = i.memo(({ height: e = 8 }) => {
-  const t = mt(), { themeMode: r } = M.useThemeMode(), { themeColor: o } = M.useThemeColor(), n = i.useRef(null), [s, l] = i.useState(0);
-  return i.useEffect(() => {
+lt.displayName = "PortalRender";
+const uo = {
+  Render: lt
+}, ct = s.memo(({ height: e = 8 }) => {
+  const o = pt(), { themeMode: n } = T.useThemeMode(), { themeColor: t } = T.useThemeColor(), r = s.useRef(null), [a, i] = s.useState(0);
+  return s.useEffect(() => {
     const c = () => {
-      if (n.current) {
-        const d = n.current.offsetWidth, u = d * 0.3;
-        l(d - u);
+      if (r.current) {
+        const d = r.current.offsetWidth, u = d * 0.3;
+        i(d - u);
       }
     };
     return c(), window.addEventListener("resize", c), () => window.removeEventListener("resize", c);
-  }, []), i.useEffect(() => {
-    if (s === 0) return;
+  }, []), s.useEffect(() => {
+    if (a === 0) return;
     (async () => {
       for (; ; )
-        await t.start({ x: [0, s], transition: { duration: 1.2, ease: [0.68, -0.55, 0.27, 1.55] } }), await t.start({ x: [s, 0], transition: { duration: 1.2, ease: [0.68, -0.55, 0.27, 1.55] } });
+        await o.start({ x: [0, a], transition: { duration: 1.2, ease: [0.68, -0.55, 0.27, 1.55] } }), await o.start({ x: [a, 0], transition: { duration: 1.2, ease: [0.68, -0.55, 0.27, 1.55] } });
     })();
-  }, [t, s]), /* @__PURE__ */ a(
+  }, [o, a]), /* @__PURE__ */ l(
     "div",
     {
-      ref: n,
+      ref: r,
+      className: f("Venomous-UI-React--Progress.LoadingBar"),
       style: {
         position: "relative",
         width: "100%",
         height: e,
         overflow: "hidden",
-        backgroundColor: V(o, 0.2),
+        backgroundColor: j(t, 0.2),
         borderRadius: e / 2,
-        boxShadow: G[r].tertiary
+        boxShadow: $[n].tertiary
       },
-      children: /* @__PURE__ */ a(
-        R.div,
+      children: /* @__PURE__ */ l(
+        L.div,
         {
-          animate: t,
+          animate: o,
           style: {
             position: "absolute",
             top: 0,
             left: 0,
             height: "100%",
             width: "50%",
-            backgroundImage: `linear-gradient(45deg, ${V(o, 0.15)} 0%, ${oe(o, 0.1)} 90%)`,
+            backgroundImage: `linear-gradient(45deg, ${j(t, 0.15)} 0%, ${re(t, 0.1)} 90%)`,
             borderRadius: e / 2
           }
         }
@@ -2702,21 +2806,22 @@ const co = {
     }
   );
 });
-lt.displayName = "Progress.LoadingBar";
-const ct = i.memo(({ height: e = 8 }) => {
-  const { scrollYProgress: t } = ft(), { themeColor: r } = M.useThemeColor();
-  return /* @__PURE__ */ a(
-    R.div,
+ct.displayName = "Progress.LoadingBar";
+const dt = s.memo(({ height: e = 8 }) => {
+  const { scrollYProgress: o } = ft(), { themeColor: n } = T.useThemeColor();
+  return /* @__PURE__ */ l(
+    L.div,
     {
+      className: f("Venomous-UI-React--Progress.Scrollbar"),
       style: {
-        scaleX: t,
+        scaleX: o,
         position: "fixed",
         top: 0,
         left: 0,
         right: 0,
         originX: 0,
         zIndex: 1e4,
-        backgroundImage: `linear-gradient(45deg, ${oe(r, 0.2)} 0%, ${V(r, 0.15)} 90%)`,
+        backgroundImage: `linear-gradient(45deg, ${re(n, 0.2)} 0%, ${j(n, 0.15)} 90%)`,
         height: e,
         borderTopRightRadius: "16px",
         borderBottomRightRadius: "16px"
@@ -2724,333 +2829,416 @@ const ct = i.memo(({ height: e = 8 }) => {
     }
   );
 });
-ct.displayName = "Progress.Scrollbar";
-const uo = {
-  Scrollbar: ct,
-  LoadingBar: lt
-}, Pt = i.memo(
+dt.displayName = "Progress.Scrollbar";
+const mo = {
+  Scrollbar: dt,
+  LoadingBar: ct
+}, Gt = s.memo(
   ({
     tabs: e,
-    defaultActiveIndex: t = 0,
-    onChange: r,
-    variant: o = "pills",
-    tabContainerStyle: n,
-    tabItemContainerStyle: s,
-    tabItemStyle: l,
+    defaultActiveIndex: o = 0,
+    onChange: n,
+    variant: t = "pills",
+    tabContainerStyle: r,
+    tabItemContainerStyle: a,
+    tabItemStyle: i,
     tabIndicatorStyle: c,
     tabContentStyle: d
   }) => {
-    const { themeMode: u } = M.useThemeMode(), { themeColor: h } = M.useThemeColor(), [p, m] = i.useState(!1), [f, x] = i.useState(t), [b, g] = i.useState({}), k = i.useRef([]), E = i.useCallback(() => {
-      if (k.current[f]) {
-        const S = k.current[f];
-        if (S) {
-          const B = !!e[f].icon, { offsetLeft: $, offsetWidth: ne } = S;
-          g({
-            left: $,
-            width: ne + (p && B ? 24 : 0)
+    const { themeMode: u } = T.useThemeMode(), { themeColor: m } = T.useThemeColor(), [h, p] = s.useState(!1), [x, b] = s.useState(o), [v, y] = s.useState({}), g = s.useRef([]), k = s.useCallback(() => {
+      if (g.current[x]) {
+        const I = g.current[x];
+        if (I) {
+          const U = !!e[x].icon, { offsetLeft: q, offsetWidth: ae } = I;
+          y({
+            left: q,
+            width: ae + (h && U ? 24 : 0)
           });
         }
       }
-    }, [f, o, e, p]);
-    i.useLayoutEffect(() => (m(!0), () => {
-      m(!1);
-    }), []), i.useEffect(() => {
-      E();
-    }, [E]), i.useEffect(() => {
-      const S = requestAnimationFrame(() => {
-        E();
+    }, [x, t, e, h]);
+    s.useLayoutEffect(() => (p(!0), () => {
+      p(!1);
+    }), []), s.useEffect(() => {
+      k();
+    }, [k]), s.useEffect(() => {
+      const I = requestAnimationFrame(() => {
+        k();
       });
-      return () => cancelAnimationFrame(S);
-    }, [f, e.length, E]);
-    const H = i.useCallback(
-      (S, B) => {
-        m(!1), i.startTransition(() => {
-          x(S);
-        }), r(S, B);
+      return () => cancelAnimationFrame(I);
+    }, [x, e.length, k]);
+    const H = s.useCallback(
+      (I, U) => {
+        p(!1), s.startTransition(() => {
+          b(I);
+        }), n(I, U);
       },
-      [r]
+      [n]
     );
-    return /* @__PURE__ */ y(O.Flex, { column: !0, gap: 0, style: { width: "100%", ...n }, children: [
-      /* @__PURE__ */ y(
-        O.Flex,
-        {
-          row: !0,
-          style: {
-            position: "relative",
-            ...o === "pills" && {
-              background: N[u].secondary,
-              padding: "4px",
-              borderRadius: "8px"
-            },
-            ...o === "underline" && {
-              borderBottomWidth: 1.5,
-              borderBottomStyle: "solid",
-              borderBottomColor: A[u].secondary
-            },
-            ...s
-          },
-          children: [
-            e.map((S, B) => /* @__PURE__ */ y(
-              R.button,
-              {
-                ref: ($) => {
-                  $ && (k.current[B] = $);
+    return /* @__PURE__ */ M(
+      V.Flex,
+      {
+        column: !0,
+        gap: 0,
+        className: f("Venomous-UI-React--Tabs.Container"),
+        style: { width: "100%", ...r },
+        children: [
+          /* @__PURE__ */ M(
+            V.Flex,
+            {
+              row: !0,
+              className: f("Venomous-UI-React--Tabs.ItemContainer"),
+              style: {
+                position: "relative",
+                ...t === "pills" && {
+                  background: B[u].secondary,
+                  padding: "4px",
+                  borderRadius: "8px"
                 },
-                onClick: () => H(B, S),
-                style: {
-                  WebkitTapHighlightColor: "transparent",
-                  padding: "12px 20px",
-                  display: "flex",
-                  alignItems: "center",
-                  cursor: "pointer",
-                  fontWeight: "500",
-                  outline: "none",
-                  border: "none",
-                  color: C[u].primary,
-                  background: "transparent",
-                  transition: "color 0.2s ease",
-                  ...o === "pills" && {
-                    position: "relative",
-                    zIndex: 2,
-                    borderRadius: "8px"
-                  },
-                  ...o === "underline" && {
-                    borderRadius: 0
-                  },
-                  ...l
+                ...t === "underline" && {
+                  borderBottomWidth: 1.5,
+                  borderBottomStyle: "solid",
+                  borderBottomColor: W[u].secondary
                 },
-                children: [
-                  S.icon && /* @__PURE__ */ a(
-                    F,
-                    {
-                      icon: S.icon,
-                      width: 20,
-                      style: {
-                        marginRight: "8px",
-                        color: B === f ? h : "inherit"
-                      }
-                    }
-                  ),
-                  /* @__PURE__ */ a(
-                    I.Text,
-                    {
-                      text: S.label,
-                      style: {
-                        color: B === f ? h : "inherit"
-                      }
-                    }
-                  )
-                ]
+                ...a
               },
-              S.key || B
-            )),
-            /* @__PURE__ */ a(
-              R.div,
-              {
-                initial: { opacity: 0, scale: 0.8 },
-                animate: { opacity: 1, scale: 1 },
-                transition: { duration: 0.2, ease: "easeOut" },
-                layout: !0,
-                style: {
-                  position: "absolute",
-                  ...b,
-                  ...o === "pills" && {
-                    top: "4px",
-                    zIndex: 1,
-                    height: "calc(100% - 8px)",
-                    borderRadius: "6px",
-                    background: N[u].primary,
-                    boxShadow: G[u].tertiary
+              children: [
+                e.map((I, U) => /* @__PURE__ */ M(
+                  L.button,
+                  {
+                    ref: (q) => {
+                      q && (g.current[U] = q);
+                    },
+                    onClick: () => H(U, I),
+                    className: f("Venomous-UI-React--Tabs.Item"),
+                    style: {
+                      WebkitTapHighlightColor: "transparent",
+                      padding: "12px 20px",
+                      display: "flex",
+                      alignItems: "center",
+                      cursor: "pointer",
+                      fontWeight: "500",
+                      outline: "none",
+                      border: "none",
+                      color: C[u].primary,
+                      background: "transparent",
+                      transition: "color 0.2s ease",
+                      ...t === "pills" && {
+                        position: "relative",
+                        zIndex: 2,
+                        borderRadius: "8px"
+                      },
+                      ...t === "underline" && {
+                        borderRadius: 0
+                      },
+                      ...i
+                    },
+                    children: [
+                      I.icon && /* @__PURE__ */ l(
+                        N,
+                        {
+                          icon: I.icon,
+                          width: 20,
+                          style: {
+                            marginRight: "8px",
+                            color: U === x ? m : "inherit"
+                          }
+                        }
+                      ),
+                      /* @__PURE__ */ l(
+                        R.Text,
+                        {
+                          text: I.label,
+                          style: {
+                            color: U === x ? m : "inherit"
+                          }
+                        }
+                      )
+                    ]
                   },
-                  ...o === "underline" && {
-                    bottom: "-2px",
-                    height: "3px",
-                    background: h,
-                    borderRadius: "4px"
-                  },
-                  ...c
-                }
-              }
-            )
-          ]
-        }
-      ),
-      /* @__PURE__ */ a(j, { mode: "wait", children: e[f] && /* @__PURE__ */ a(
-        R.div,
-        {
-          variants: {
-            enter: { opacity: 1, x: 0, transition: { duration: 0.2, ease: "easeOut" } },
-            exit: { opacity: 0, x: 10, transition: { duration: 0.2, ease: "easeIn" } }
-          },
-          initial: "exit",
-          animate: "enter",
-          exit: "exit",
-          style: {
-            width: "100%",
-            padding: "16px",
-            position: "relative",
-            ...d
-          },
-          children: e[f].content
-        },
-        f
-      ) })
-    ] });
+                  I.key || U
+                )),
+                /* @__PURE__ */ l(
+                  L.div,
+                  {
+                    initial: { opacity: 0, scale: 0.8 },
+                    animate: { opacity: 1, scale: 1 },
+                    transition: { duration: 0.2, ease: "easeOut" },
+                    layout: !0,
+                    className: f("Venomous-UI-React--Tabs.Indicator"),
+                    style: {
+                      position: "absolute",
+                      ...v,
+                      ...t === "pills" && {
+                        top: "4px",
+                        zIndex: 1,
+                        height: "calc(100% - 8px)",
+                        borderRadius: "6px",
+                        background: B[u].primary,
+                        boxShadow: $[u].tertiary
+                      },
+                      ...t === "underline" && {
+                        bottom: "-2px",
+                        height: "3px",
+                        background: m,
+                        borderRadius: "4px"
+                      },
+                      ...c
+                    }
+                  }
+                )
+              ]
+            }
+          ),
+          /* @__PURE__ */ l(A, { mode: "wait", children: e[x] && /* @__PURE__ */ l(
+            L.div,
+            {
+              variants: {
+                enter: { opacity: 1, x: 0, transition: { duration: 0.2, ease: "easeOut" } },
+                exit: { opacity: 0, x: 10, transition: { duration: 0.2, ease: "easeIn" } }
+              },
+              initial: "exit",
+              animate: "enter",
+              exit: "exit",
+              className: f("Venomous-UI-React--Tabs.Content"),
+              style: {
+                width: "100%",
+                padding: "16px",
+                position: "relative",
+                ...d
+              },
+              children: e[x].content
+            },
+            x
+          ) })
+        ]
+      }
+    );
   }
 );
-Pt.displayName = "Tab";
-const Ut = (e, t) => String(t);
-function qt({
+Gt.displayName = "Tab";
+const qt = (e, o) => String(o);
+function Xt({
   columns: e,
-  rows: t,
-  rowUnionKey: r = Ut,
-  style: o,
-  renderRowActions: n,
-  headProps: s,
-  bodyProps: l,
+  rows: o,
+  rowUnionKey: n = qt,
+  style: t,
+  renderRowActions: r,
+  headProps: a,
+  bodyProps: i,
   headRowProps: c,
   bodyRowProps: d,
   headRowCellProps: u,
-  bodyRowCellProps: h,
-  ...p
+  bodyRowCellProps: m,
+  ...h
 }) {
-  return /* @__PURE__ */ y(
+  return /* @__PURE__ */ M(
     "table",
     {
+      className: f("Venomous-UI-React--Table", h.className),
       style: {
         boxSizing: "border-box",
         display: "block",
         borderSpacing: 0,
         overflow: "scroll",
         position: "relative",
-        ...o
+        ...t
       },
-      ...p,
+      ...h,
       children: [
-        /* @__PURE__ */ a("thead", { style: { position: "sticky", top: 0, zIndex: 1, ...s == null ? void 0 : s.style }, ...s, children: /* @__PURE__ */ y(ke, { style: { ...c == null ? void 0 : c.style }, ...c, children: [
-          e.map((m) => /* @__PURE__ */ a(
-            J,
-            {
-              as: "th",
-              style: { ...u == null ? void 0 : u.style },
-              ...u,
-              ...m.headerCellProps,
-              children: m.label
-            },
-            String(m.key)
-          )),
-          n && /* @__PURE__ */ a(J, { as: "th", style: { ...h == null ? void 0 : h.style }, ...h })
-        ] }) }),
-        /* @__PURE__ */ a("tbody", { style: { ...l == null ? void 0 : l.style }, ...l, children: t.map((m, f) => /* @__PURE__ */ y(ke, { style: { ...d == null ? void 0 : d.style }, ...d, children: [
-          e.map((x) => {
-            var b;
-            return /* @__PURE__ */ a(J, { as: "td", style: { ...h == null ? void 0 : h.style }, ...h, children: ((b = x.renderCell) == null ? void 0 : b.call(x, m, f)) ?? String(m[x.key] ?? "") }, String(x.key));
-          }),
-          n && /* @__PURE__ */ a(J, { as: "td", style: { ...h == null ? void 0 : h.style }, ...h, children: n(m, f) })
-        ] }, String(r(m, f)))) })
+        /* @__PURE__ */ l(
+          "thead",
+          {
+            className: f("Venomous-UI-React--Tables.Head", a == null ? void 0 : a.className),
+            style: { position: "sticky", top: 0, zIndex: 1, ...a == null ? void 0 : a.style },
+            ...a,
+            children: /* @__PURE__ */ M(
+              Me,
+              {
+                className: f("Venomous-UI-React--Tables.Row", c == null ? void 0 : c.className),
+                style: { ...c == null ? void 0 : c.style },
+                ...c,
+                children: [
+                  e.map((p) => {
+                    var x;
+                    return /* @__PURE__ */ l(
+                      ee,
+                      {
+                        as: "th",
+                        className: f(
+                          "Venomous-UI-React--Tables.Cell",
+                          u == null ? void 0 : u.className,
+                          (x = p.headerCellProps) == null ? void 0 : x.className
+                        ),
+                        style: { ...u == null ? void 0 : u.style },
+                        ...u,
+                        ...p.headerCellProps,
+                        children: p.label
+                      },
+                      String(p.key)
+                    );
+                  }),
+                  r && /* @__PURE__ */ l(
+                    ee,
+                    {
+                      as: "th",
+                      className: f("Venomous-UI-React--Tables.Cell", u == null ? void 0 : u.className),
+                      style: { ...m == null ? void 0 : m.style },
+                      ...m
+                    }
+                  )
+                ]
+              }
+            )
+          }
+        ),
+        /* @__PURE__ */ l(
+          "tbody",
+          {
+            className: f("Venomous-UI-React--Tables.Body", i == null ? void 0 : i.className),
+            style: { ...i == null ? void 0 : i.style },
+            ...i,
+            children: o.map((p, x) => /* @__PURE__ */ M(
+              Me,
+              {
+                className: f("Venomous-UI-React--Tables.Row", d == null ? void 0 : d.className),
+                style: { ...d == null ? void 0 : d.style },
+                ...d,
+                children: [
+                  e.map((b) => {
+                    var v;
+                    return /* @__PURE__ */ l(
+                      ee,
+                      {
+                        as: "td",
+                        className: f("Venomous-UI-React--Tables.Cell", m == null ? void 0 : m.className),
+                        style: { ...m == null ? void 0 : m.style },
+                        ...m,
+                        children: ((v = b.renderCell) == null ? void 0 : v.call(b, p, x)) ?? String(p[b.key] ?? "")
+                      },
+                      String(b.key)
+                    );
+                  }),
+                  r && /* @__PURE__ */ l(
+                    ee,
+                    {
+                      as: "td",
+                      className: f("Venomous-UI-React--Tables.Cell", m == null ? void 0 : m.className),
+                      style: { ...m == null ? void 0 : m.style },
+                      ...m,
+                      children: r(p, x)
+                    }
+                  )
+                ]
+              },
+              String(n(p, x))
+            ))
+          }
+        )
       ]
     }
   );
 }
-const Xt = i.memo(qt);
-Xt.displayName = "Table";
-const ke = i.memo(({ style: e, ...t }) => {
-  const { themeMode: r } = M.useThemeMode();
-  return /* @__PURE__ */ a(
+const Yt = s.memo(Xt);
+Yt.displayName = "Table";
+const Me = s.memo(({ style: e, ...o }) => {
+  const { themeMode: n } = T.useThemeMode();
+  return /* @__PURE__ */ l(
     "tr",
     {
       style: {
         boxSizing: "border-box",
-        color: C[r].primary,
+        color: C[n].primary,
         ...e
       },
-      ...t
+      ...o
     }
   );
-}), J = i.memo(({ as: e = "td", style: t, ...r }) => {
-  const { themeMode: o } = M.useThemeMode();
-  return /* @__PURE__ */ a(
+}), ee = s.memo(({ as: e = "td", style: o, ...n }) => {
+  const { themeMode: t } = T.useThemeMode();
+  return /* @__PURE__ */ l(
     e,
     {
       style: {
         boxSizing: "border-box",
         padding: "16px 24px",
         textAlign: "left",
-        color: C[o].primary,
-        backgroundColor: e === "td" ? "transparent" : N[o].secondary,
+        color: C[t].primary,
+        backgroundColor: e === "td" ? "transparent" : B[t].secondary,
         borderBottomWidth: 1,
         borderBottomStyle: "solid",
-        borderBottomColor: A[o].quaternary,
-        ...t
+        borderBottomColor: W[t].quaternary,
+        ...o
       },
-      ...r
+      ...n
     }
   );
-}), dt = i.memo(({ children: e, isOpen: t }) => /* @__PURE__ */ a(j, { initial: !1, children: t && /* @__PURE__ */ a(
-  R.div,
+}), ut = s.memo(({ className: e, style: o, children: n, isOpen: t }) => /* @__PURE__ */ l(A, { initial: !1, children: t && /* @__PURE__ */ l(
+  L.div,
   {
+    className: f("Venomous-UI-React--Transitions.Collapse", e),
     initial: { opacity: 0, height: 0 },
     animate: { opacity: 1, height: "auto" },
     exit: { opacity: 0, height: 0 },
     transition: { duration: 0.2 },
-    style: { overflow: "hidden" },
-    children: e
+    style: { overflow: "hidden", ...o },
+    children: n
   }
 ) }));
-dt.displayName = "Transitions.Collapse";
-const po = {
-  Collapse: dt
+ut.displayName = "Transitions.Collapse";
+const ho = {
+  Collapse: ut
 };
 export {
-  N as BackgroundColors,
-  A as BorderColors,
-  T as BreakPointName,
-  ae as Button,
-  ue as Buttons,
-  X as Card,
+  B as BackgroundColors,
+  W as BorderColors,
+  F as BreakPointName,
+  le as Button,
+  me as Buttons,
+  Q as Card,
   ro as Cards,
   Be as Container,
-  Ht as Drawer,
-  Wt as Form,
-  no as FormField,
-  F as Icon,
-  io as Layout,
-  so as MediaFile,
-  ot as MediaFileTypeMap,
-  ge as Menu,
-  it as Modal,
-  ao as Modals,
-  Gt as NoSSR,
-  Vt as Notification,
-  Ge as Popover,
-  co as Portal,
-  uo as Progress,
-  U as SemanticColors,
-  G as Shadows,
-  O as Space,
-  Pt as Tab,
-  Xt as Table,
+  Vt as Drawer,
+  Dt as Form,
+  so as FormField,
+  N as Icon,
+  ao as Layout,
+  io as MediaFile,
+  nt as MediaFileTypeMap,
+  xe as Menu,
+  at as Modal,
+  lo as Modals,
+  $t as NoSSR,
+  jt as Notification,
+  je as Popover,
+  uo as Portal,
+  mo as Progress,
+  X as SemanticColors,
+  $ as Shadows,
+  V as Space,
+  Gt as Tab,
+  Yt as Table,
   C as TextColors,
-  M as Theme,
+  T as Theme,
   D as ThemeBreakPoint,
-  v as ThemeColor,
+  S as ThemeColor,
   w as ThemeMode,
-  po as Transitions,
-  I as Typography,
-  W as TypographySize,
-  K as TypographySizeName,
+  ho as Transitions,
+  R as Typography,
+  _ as TypographySize,
+  te as TypographySizeName,
   kt as getDarkerHex,
-  oe as getLighterHex,
-  V as getOpacityHex,
-  oo as getSystemThemeMode,
-  to as getThemeColors,
-  le as hexNormalize,
-  ve as hexToHsl,
-  Me as hexToRgb,
-  Ce as hslToHex,
-  lo as notify,
+  re as getLighterHex,
+  j as getOpacityHex,
+  no as getSystemThemeMode,
+  oo as getThemeColors,
+  ce as hexNormalize,
+  Te as hexToHsl,
+  ve as hexToRgb,
+  Se as hslToHex,
+  co as notify,
   bt as rgbToHex,
-  Y as useElementFocus,
-  zt as useElementHover,
-  Bt as useHandler
+  J as useElementFocus,
+  Ut as useElementHover,
+  Ot as useHandler
 };

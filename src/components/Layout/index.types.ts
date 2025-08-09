@@ -3,7 +3,7 @@ import type { LayoutContextValue } from "./context/index.";
 
 export interface LayoutProviderProps extends React.PropsWithChildren {
   children: React.ReactNode;
-  maxBreakpoint?: ContainerProps["breakpoint"];
+  maxBreakpoint?: ContainerProps["maxBreakpoint"];
   headerHeight?: LayoutContextValue["headerHeight"];
   footerHeight?: LayoutContextValue["footerHeight"];
   sideWidth?: LayoutContextValue["sideWidth"];

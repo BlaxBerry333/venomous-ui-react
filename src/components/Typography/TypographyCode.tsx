@@ -1,13 +1,15 @@
 "use client";
 
+import clsx from "clsx";
 import React from "react";
 
 import { ThemeColor, TypographySize } from "@/utils";
 import type { TypographyCodeProps } from "./index.types";
 
-const TypographyCode = React.memo<TypographyCodeProps>(({ style, text, ...props }) => {
+const TypographyCode = React.memo<TypographyCodeProps>(({ className, style, text, ...props }) => {
   return (
     <code
+      className={clsx("Venomous-UI-React--Typography.Code", className)}
       style={{
         color: ThemeColor.TourmalineStiletto,
         backgroundColor: "#E7E9EB",

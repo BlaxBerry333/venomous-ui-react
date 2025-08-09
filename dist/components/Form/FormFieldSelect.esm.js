@@ -1,99 +1,102 @@
-import { jsxs as S, jsx as s } from "react/jsx-runtime";
+import { jsxs as y, jsx as s } from "react/jsx-runtime";
+import g from "clsx";
 import o from "react";
-import { Menu as y } from "../Menu/index.esm.js";
-import { Space as T } from "../Space/index.esm.js";
-import { Typography as O } from "../Typography/index.esm.js";
-import z from "./FormField.esm.js";
-import { useFormFieldStyle as D } from "./_useFormFieldStyle.esm.js";
-import E from "../../hooks/useElementFocus/index.esm.js";
-import N from "../Popover/Popover.esm.js";
-import F from "../Icon/Icon.esm.js";
-import { TypographySize as P } from "../../utils/design/TypographySize.esm.js";
-const j = o.memo(
+import { Menu as b } from "../Menu/index.esm.js";
+import { Space as O } from "../Space/index.esm.js";
+import { Typography as z } from "../Typography/index.esm.js";
+import D from "./FormField.esm.js";
+import { useFormFieldStyle as E } from "./useFormFieldStyle.esm.js";
+import P from "../../hooks/useElementFocus/index.esm.js";
+import R from "../Popover/Popover.esm.js";
+import v from "../Icon/Icon.esm.js";
+import { TypographySize as j } from "../../utils/design/TypographySize.esm.js";
+const B = o.memo(
   ({
     isOriginalSelect: c = !1,
     fullWidth: t,
-    required: f = !1,
+    required: p = !1,
     isError: r = !1,
     disabled: i = !1,
     label: u,
     helpText: l,
-    ...d
+    ...f
   }) => {
-    const { isFocused: a, setIsFocused: n, handleFocus: p, handleBlur: m } = E(), { commonStyles: b } = D({
+    const { isFocused: m, setIsFocused: d, handleFocus: n, handleBlur: F } = P(), { commonStyles: a } = E({
       fullWidth: t,
       isDisabled: i,
       isError: r,
-      isFocused: a
+      isFocused: m
     });
-    return /* @__PURE__ */ S(
-      z,
+    return /* @__PURE__ */ y(
+      D,
       {
         label: u,
-        required: f,
+        required: p,
         isDisabled: i,
         isError: r,
-        isFocused: a,
+        isFocused: m,
         fullWidth: t,
         helpText: l,
         children: [
           c && /* @__PURE__ */ s(
-            g,
+            x,
             {
-              commonStyles: b,
-              handleFocus: p,
-              handleBlur: m,
+              commonStyles: a,
+              handleFocus: n,
+              handleBlur: F,
               disabled: i,
-              ...d
+              ...f
             }
           ),
-          !c && /* @__PURE__ */ s(x, { commonStyles: b, setIsFocused: n, disabled: i, ...d })
+          !c && /* @__PURE__ */ s(w, { commonStyles: a, setIsFocused: d, disabled: i, ...f })
         ]
       }
     );
   }
 );
-j.displayName = "FormField.Select";
-const g = o.memo(
+B.displayName = "FormField.Select";
+const x = o.memo(
   ({
     commonStyles: c,
     handleFocus: t,
-    handleBlur: f,
+    handleBlur: p,
     name: r,
     autoComplete: i = "off",
     options: u,
     onChange: l,
-    value: d,
-    disabled: a,
+    value: f,
+    disabled: m,
+    className: d,
     style: n,
-    ...p
+    ...F
   }) => /* @__PURE__ */ s(
     "select",
     {
       name: r,
       autoComplete: i,
-      disabled: a,
+      disabled: m,
       onFocus: t,
-      onBlur: f,
+      onBlur: p,
       onChange: l,
-      value: d,
+      value: f,
+      className: g("Venomous-UI-React--FormField.Select", d),
       style: {
         boxSizing: "border-box",
         ...c,
         ...n
       },
-      ...p,
-      children: u.map((m) => /* @__PURE__ */ s("option", { value: m.value, disabled: m.disabled, children: m.label }, m.value))
+      ...F,
+      children: u.map((a) => /* @__PURE__ */ s("option", { value: a.value, disabled: a.disabled, children: a.label }, a.value))
     }
   )
-), x = o.memo(({ commonStyles: c, setIsFocused: t, disabled: f, name: r, value: i, options: u, onChange: l, style: d }) => {
-  const [a, n] = o.useState(i || null), [p, m] = o.useState(!1);
+), w = o.memo(({ commonStyles: c, setIsFocused: t, disabled: p, name: r, value: i, options: u, onChange: l, className: f, style: m }) => {
+  const [d, n] = o.useState(i || null), [F, a] = o.useState(!1);
   o.useEffect(() => {
     n(i || null);
   }, [i]);
-  const b = o.useCallback(
+  const k = o.useCallback(
     (e) => {
-      n(e), m(!1), t(!1);
+      n(e), a(!1), t(!1);
       const h = {
         target: { name: r, value: e },
         currentTarget: { name: r, value: e }
@@ -101,7 +104,7 @@ const g = o.memo(
       l == null || l(h);
     },
     [r, l, t]
-  ), w = o.useCallback(
+  ), T = o.useCallback(
     (e) => {
       e.stopPropagation(), n(null), t(!1);
       const h = {
@@ -111,40 +114,40 @@ const g = o.memo(
       l == null || l(h);
     },
     [r, l, t]
-  ), k = o.useMemo(
+  ), N = o.useMemo(
     () => {
       var e;
-      return ((e = u.find((h) => h.value === a)) == null ? void 0 : e.label) || "";
+      return ((e = u.find((h) => h.value === d)) == null ? void 0 : e.label) || "";
     },
-    [a]
-  ), v = (d == null ? void 0 : d.width) ?? c.minWidth;
+    [d]
+  ), S = (m == null ? void 0 : m.width) ?? c.minWidth;
   return /* @__PURE__ */ s(
-    N,
+    R,
     {
       placement: "bottom",
       trigger: "click",
       style: { width: "100%" },
       onClickOutside: () => t(!1),
-      renderTrigger: () => /* @__PURE__ */ S(
-        T.Flex,
+      renderTrigger: () => /* @__PURE__ */ y(
+        O.Flex,
         {
           row: !0,
           onClick: () => t(!0),
           style: {
             ...c,
             height: c.minHeight,
-            width: v,
+            width: S,
             display: "flex",
             alignItems: "center"
           },
           children: [
-            /* @__PURE__ */ s(O.Paragraph, { ellipsis: 1, style: { flex: 1 }, children: k }),
-            a && !f && /* @__PURE__ */ s(
-              F,
+            /* @__PURE__ */ s(z.Paragraph, { ellipsis: 1, style: { flex: 1 }, children: N }),
+            d && !p && /* @__PURE__ */ s(
+              v,
               {
                 icon: "solar:close-circle-line-duotone",
                 width: 16,
-                onClick: w,
+                onClick: T,
                 style: {
                   cursor: "pointer",
                   transition: "color 0.2s ease"
@@ -152,37 +155,45 @@ const g = o.memo(
               }
             ),
             /* @__PURE__ */ s(
-              F,
+              v,
               {
                 icon: "solar:alt-arrow-down-line-duotone",
                 width: 16,
                 style: {
                   transition: "transform 0.2s ease",
-                  transform: p ? "rotate(180deg)" : "rotate(0deg)"
+                  transform: F ? "rotate(180deg)" : "rotate(0deg)"
                 }
               }
             )
           ]
         }
       ),
-      children: /* @__PURE__ */ s(y.List, { as: "ul", style: { width: v }, children: u.map((e) => /* @__PURE__ */ s(
-        y.Item,
+      children: /* @__PURE__ */ s(
+        b.List,
         {
-          text: e.label,
-          isDisabled: e.disabled,
-          isActive: e.value === a,
-          onClick: () => {
-            e.disabled || b(e.value);
-          },
-          style: { cursor: e.disabled ? "not-allowed" : "pointer", fontSize: P.small }
-        },
-        e.value
-      )) })
+          as: "ul",
+          className: g("Venomous-UI-React--FormField.Select", f),
+          style: { width: S },
+          children: u.map((e) => /* @__PURE__ */ s(
+            b.Item,
+            {
+              text: e.label,
+              isDisabled: e.disabled,
+              isActive: e.value === d,
+              onClick: () => {
+                e.disabled || k(e.value);
+              },
+              style: { cursor: e.disabled ? "not-allowed" : "pointer", fontSize: j.small }
+            },
+            e.value
+          ))
+        }
+      )
     }
   );
 });
-g.displayName = "FormField.Select.Original";
-x.displayName = "FormField.Select.Custom";
+x.displayName = "FormField.Select.Original";
+w.displayName = "FormField.Select.Custom";
 export {
-  j as default
+  B as default
 };

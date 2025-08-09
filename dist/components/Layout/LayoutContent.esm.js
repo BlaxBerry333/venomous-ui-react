@@ -1,18 +1,20 @@
-import { jsx as r } from "react/jsx-runtime";
-import a from "react";
-const m = a.memo(({ children: t, style: o, ...e }) => /* @__PURE__ */ r(
+import { jsx as m } from "react/jsx-runtime";
+import n from "clsx";
+import r from "react";
+const s = r.memo(({ children: t, className: o, style: e, ...a }) => /* @__PURE__ */ m(
   "main",
   {
+    className: n("Venomous-UI-React--Layout.Content", o),
     style: {
       width: "100%",
       flexGrow: 1,
-      ...o
+      ...e
     },
-    ...e,
+    ...a,
     children: t
   }
 ));
-m.displayName = "Layout.Footer";
+s.displayName = "Layout.Content";
 export {
-  m as default
+  s as default
 };

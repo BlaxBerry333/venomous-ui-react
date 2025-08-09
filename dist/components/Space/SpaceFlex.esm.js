@@ -1,25 +1,27 @@
-import { jsx as m } from "react/jsx-runtime";
-import l from "react";
-const x = l.memo(
-  ({ children: i, style: r, row: o = !0, column: a = !1, gap: e = "8px", ...t }) => /* @__PURE__ */ m(
+import { jsx as l } from "react/jsx-runtime";
+import x from "react";
+import c from "clsx";
+const s = x.memo(
+  ({ children: a, className: i, style: e, row: r = !0, column: m = !1, gap: o = "8px", ...t }) => /* @__PURE__ */ l(
     "div",
     {
+      className: c("Venomous-UI-React--Space.Flex", i),
       style: {
         boxSizing: "border-box",
         display: "flex",
         width: "100%",
-        flexDirection: a ? "column" : "row",
-        alignItems: o ? "flex-start" : r == null ? void 0 : r.alignItems,
-        ...Array.isArray(e) ? { rowGap: e[0], columnGap: e[1] } : { gap: e },
+        flexDirection: m ? "column" : "row",
+        alignItems: r ? "flex-start" : e == null ? void 0 : e.alignItems,
+        ...Array.isArray(o) ? { rowGap: o[0], columnGap: o[1] } : { gap: o },
         position: "relative",
-        ...r
+        ...e
       },
       ...t,
-      children: i
+      children: a
     }
   )
 );
-x.displayName = "Space.Flex";
+s.displayName = "Space.Flex";
 export {
-  x as default
+  s as default
 };

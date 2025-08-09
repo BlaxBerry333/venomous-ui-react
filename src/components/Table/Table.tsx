@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import React from "react";
 
 import { BackgroundColors, BorderColors, TextColors } from "@/utils";
@@ -24,6 +25,7 @@ function Table<T>({
 }: TableProps<T>) {
   return (
     <table
+      className={clsx("Venomous-UI-React--Table", props.className)}
       style={{
         boxSizing: "border-box",
         display: "block",
@@ -35,12 +37,25 @@ function Table<T>({
       {...props}
     >
       {/* table head */}
-      <thead style={{ position: "sticky", top: 0, zIndex: 1, ...headProps?.style }} {...headProps}>
-        <TableRow style={{ ...headRowProps?.style }} {...headRowProps}>
+      <thead
+        className={clsx("Venomous-UI-React--Tables.Head", headProps?.className)}
+        style={{ position: "sticky", top: 0, zIndex: 1, ...headProps?.style }}
+        {...headProps}
+      >
+        <TableRow
+          className={clsx("Venomous-UI-React--Tables.Row", headRowProps?.className)}
+          style={{ ...headRowProps?.style }}
+          {...headRowProps}
+        >
           {columns.map((column) => (
             <TableCell
               key={String(column.key)}
               as="th"
+              className={clsx(
+                "Venomous-UI-React--Tables.Cell",
+                headRowCellProps?.className,
+                column.headerCellProps?.className,
+              )}
               style={{ ...headRowCellProps?.style }}
               {...headRowCellProps}
               {...column.headerCellProps}
@@ -48,21 +63,48 @@ function Table<T>({
               {column.label}
             </TableCell>
           ))}
-          {renderRowActions && <TableCell as="th" style={{ ...bodyRowCellProps?.style }} {...bodyRowCellProps} />}
+          {renderRowActions && (
+            <TableCell
+              as="th"
+              className={clsx("Venomous-UI-React--Tables.Cell", headRowCellProps?.className)}
+              style={{ ...bodyRowCellProps?.style }}
+              {...bodyRowCellProps}
+            />
+          )}
         </TableRow>
       </thead>
 
       {/* table body */}
-      <tbody style={{ ...bodyProps?.style }} {...bodyProps}>
+      <tbody
+        className={clsx("Venomous-UI-React--Tables.Body", bodyProps?.className)}
+        style={{ ...bodyProps?.style }}
+        {...bodyProps}
+      >
         {rows.map((row, index) => (
-          <TableRow key={String(rowUnionKey(row, index))} style={{ ...bodyRowProps?.style }} {...bodyRowProps}>
+          <TableRow
+            className={clsx("Venomous-UI-React--Tables.Row", bodyRowProps?.className)}
+            key={String(rowUnionKey(row, index))}
+            style={{ ...bodyRowProps?.style }}
+            {...bodyRowProps}
+          >
             {columns.map((column) => (
-              <TableCell key={String(column.key)} as="td" style={{ ...bodyRowCellProps?.style }} {...bodyRowCellProps}>
+              <TableCell
+                key={String(column.key)}
+                as="td"
+                className={clsx("Venomous-UI-React--Tables.Cell", bodyRowCellProps?.className)}
+                style={{ ...bodyRowCellProps?.style }}
+                {...bodyRowCellProps}
+              >
                 {column.renderCell?.(row, index) ?? String(row[column.key] ?? "")}
               </TableCell>
             ))}
             {renderRowActions && (
-              <TableCell as="td" style={{ ...bodyRowCellProps?.style }} {...bodyRowCellProps}>
+              <TableCell
+                as="td"
+                className={clsx("Venomous-UI-React--Tables.Cell", bodyRowCellProps?.className)}
+                style={{ ...bodyRowCellProps?.style }}
+                {...bodyRowCellProps}
+              >
                 {renderRowActions(row, index)}
               </TableCell>
             )}
@@ -71,7 +113,7 @@ function Table<T>({
       </tbody>
 
       {/* table footer */}
-      {/* <tfoot style={{ color: "inherit" }}></tfoot> */}
+      {/* <tfoot className={clsx("Venomous-UI-React--Tables.Foot")} style={{ color: "inherit" }}></tfoot> */}
     </table>
   );
 }

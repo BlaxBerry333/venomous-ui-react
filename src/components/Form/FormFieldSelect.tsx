@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import React from "react";
 
 import { useElementFocus } from "@/hooks";
@@ -9,9 +10,9 @@ import { Menu } from "../Menu";
 import { Popover } from "../Popover";
 import { Space } from "../Space";
 import { Typography } from "../Typography";
-import { useFormFieldStyle } from "./_useFormFieldStyle";
 import FormField from "./FormField";
 import type { FormFieldOption, FormFieldSelectProps } from "./index.types";
+import { useFormFieldStyle } from "./useFormFieldStyle";
 
 const FormFieldSelect = React.memo<FormFieldSelectProps>(
   ({
@@ -79,6 +80,7 @@ const OriginalSelect = React.memo<
     onChange,
     value,
     disabled,
+    className,
     style,
     ...props
   }) => {
@@ -91,6 +93,7 @@ const OriginalSelect = React.memo<
         onBlur={handleBlur}
         onChange={onChange}
         value={value}
+        className={clsx("Venomous-UI-React--FormField.Select", className)}
         style={{
           boxSizing: "border-box",
           ...commonStyles,
@@ -113,7 +116,7 @@ const CustomSelect = React.memo<
     commonStyles: React.CSSProperties;
     setIsFocused: React.Dispatch<React.SetStateAction<boolean>>;
   }
->(({ commonStyles, setIsFocused, disabled, name, value, options, onChange, style }) => {
+>(({ commonStyles, setIsFocused, disabled, name, value, options, onChange, className, style }) => {
   const [selectedValue, setSelectedValue] = React.useState<FormFieldOption["value"] | null>(value || null);
   const [isOpen, setIsOpen] = React.useState(false);
 
@@ -199,7 +202,11 @@ const CustomSelect = React.memo<
         </Space.Flex>
       )}
     >
-      <Menu.List as="ul" style={{ width: selectWidth }}>
+      <Menu.List
+        as="ul"
+        className={clsx("Venomous-UI-React--FormField.Select", className)}
+        style={{ width: selectWidth }}
+      >
         {options.map((option) => (
           <Menu.Item
             key={option.value}

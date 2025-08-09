@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import React from "react";
 
 import { BackgroundColors, BorderColors, Shadows } from "@/utils";
@@ -7,7 +8,7 @@ import { Theme } from "../Theme";
 import { CardTagMap, CardVariantMap, type CardProps } from "./index.types";
 
 const Card = React.memo<CardProps>(
-  ({ children, style, as: Tag = CardTagMap.div, variant = CardVariantMap.elevated, ...props }) => {
+  ({ children, className, style, as: Tag = CardTagMap.div, variant = CardVariantMap.elevated, ...props }) => {
     const { themeMode } = Theme.useThemeMode();
 
     const backgroundColor = React.useMemo<React.CSSProperties["backgroundColor"]>(() => {
@@ -48,6 +49,7 @@ const Card = React.memo<CardProps>(
 
     return (
       <Tag
+        className={clsx("Venomous-UI-React--Card", className)}
         style={{
           boxSizing: "border-box",
           borderRadius: "8px",

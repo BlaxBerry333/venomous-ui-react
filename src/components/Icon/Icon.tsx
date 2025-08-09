@@ -1,13 +1,14 @@
 "use client";
 
 import { Icon as Iconify } from "@iconify/react";
+import clsx from "clsx";
 import React from "react";
 
 import { SemanticColors, TextColors } from "@/utils";
 import { Theme } from "../Theme";
 import type { IconProps } from "./Icon.types";
 
-const Icon = React.memo<IconProps>(({ style, icon, width = 20, semanticColor, ...props }) => {
+const Icon = React.memo<IconProps>(({ className, style, icon, width = 20, semanticColor, ...props }) => {
   const { themeMode } = Theme.useThemeMode();
   const iconColor = React.useMemo<React.CSSProperties["color"]>(() => {
     return semanticColor ? SemanticColors[semanticColor] : TextColors[themeMode].primary;
@@ -17,6 +18,7 @@ const Icon = React.memo<IconProps>(({ style, icon, width = 20, semanticColor, ..
     <Iconify
       ssr
       icon={icon}
+      className={clsx("Venomous-UI-React--Layout.Icon", className)}
       style={{
         width,
         minWidth: width,

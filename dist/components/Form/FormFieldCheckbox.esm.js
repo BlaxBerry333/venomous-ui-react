@@ -1,68 +1,72 @@
-import { jsxs as x, jsx as r } from "react/jsx-runtime";
-import y from "react";
-import F from "./Label.esm.js";
-import { useFormFieldStyle as b } from "./_useFormFieldStyle.esm.js";
-import { useToggleFormFieldChecked as w } from "./useToggleFormFieldChecked.esm.js";
-import I from "../Icon/Icon.esm.js";
-const j = y.memo(
+import { jsxs as F, jsx as t } from "react/jsx-runtime";
+import y from "clsx";
+import b from "react";
+import I from "./Label.esm.js";
+import { useFormFieldStyle as w } from "./useFormFieldStyle.esm.js";
+import { useToggleFormFieldChecked as R } from "./useToggleFormFieldChecked.esm.js";
+import j from "../Icon/Icon.esm.js";
+const N = b.memo(
   ({
+    className: c,
     style: l,
-    autoComplete: c = "off",
-    required: i = !1,
-    isError: t = !1,
+    autoComplete: i = "off",
+    required: m = !1,
+    isError: r = !1,
     disabled: e = !1,
     name: n,
     value: s,
-    checked: m = !1,
-    onChange: f,
-    label: h,
-    labelPosition: p = "right",
+    checked: f = !1,
+    onChange: h,
+    label: p,
+    labelPosition: a = "right",
     ...u
   }) => {
-    const { inputRef: a, isChecked: o, toggleOriginalIsChecked: k, toggleCustomIsChecked: d } = w({
-      checked: m,
+    const { inputRef: k, isChecked: o, toggleOriginalIsChecked: d, toggleCustomIsChecked: C } = R({
+      checked: f,
       disabled: e,
-      onChange: f
-    }), { outlineColor: C, borderColor: g } = b({
+      onChange: h
+    }), { outlineColor: g, borderColor: x } = w({
       isDisabled: e,
-      isError: t
+      isError: r
     });
-    return /* @__PURE__ */ x(
-      F,
+    return /* @__PURE__ */ F(
+      I,
       {
-        label: h,
-        required: i,
-        isError: t,
-        position: p,
+        label: p,
+        required: m,
+        isError: r,
+        position: a,
         style: {
           cursor: e ? "not-allowed" : "pointer",
           opacity: e ? 0.6 : 1
         },
         children: [
-          /* @__PURE__ */ r(
+          /* @__PURE__ */ t(
             "input",
             {
               type: "checkbox",
               name: n,
               value: s,
               checked: o,
-              ref: a,
-              onChange: k,
-              autoComplete: c,
+              ref: k,
+              onChange: d,
+              autoComplete: i,
               disabled: e,
-              style: { display: "none", ...l },
+              style: { display: "none" },
               ...u
             }
           ),
-          /* @__PURE__ */ r(
-            I,
+          /* @__PURE__ */ t(
+            j,
             {
               icon: o ? "fluent:checkbox-checked-24-filled" : "fluent:checkbox-unchecked-24-regular",
               width: 24,
-              onClick: d,
+              onClick: C,
+              className: y("Venomous-UI-React--FormField.Checkbox", c),
               style: {
-                color: o ? C : g,
-                cursor: e ? "not-allowed" : "pointer"
+                color: o ? g : x,
+                cursor: e ? "not-allowed" : "pointer",
+                ...l
               }
             }
           )
@@ -71,7 +75,7 @@ const j = y.memo(
     );
   }
 );
-j.displayName = "FormField.Checkbox";
+N.displayName = "FormField.Checkbox";
 export {
-  j as default
+  N as default
 };

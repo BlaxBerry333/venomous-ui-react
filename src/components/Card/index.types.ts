@@ -17,6 +17,7 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export interface CardsBookProps extends React.PropsWithChildren {
+  className?: string;
   height: number;
   width: number;
   coverImage: null | string;
@@ -24,6 +25,7 @@ export interface CardsBookProps extends React.PropsWithChildren {
 }
 
 export interface CardsProductProps extends React.PropsWithChildren {
+  className?: string;
   title?: string;
   description?: string;
   onCloseMenu: () => void;

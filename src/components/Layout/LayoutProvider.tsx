@@ -23,7 +23,7 @@ const LayoutProvider = React.memo<LayoutProviderProps>(
     return (
       // eslint-disable-next-line react-x/no-context-provider
       <LayoutContext.Provider value={memorizedContextValue}>
-        <Container breakpoint={maxBreakpoint}>{children}</Container>
+        <Container maxBreakpoint={maxBreakpoint}>{children}</Container>
       </LayoutContext.Provider>
     );
   },

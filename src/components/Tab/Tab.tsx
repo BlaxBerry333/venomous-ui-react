@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import { AnimatePresence, motion } from "motion/react";
 import React from "react";
 
@@ -77,10 +78,16 @@ const Tab = React.memo<TabProps>(
     );
 
     return (
-      <Space.Flex column gap={0} style={{ width: "100%", ...tabContainerStyle }}>
+      <Space.Flex
+        column
+        gap={0}
+        className={clsx("Venomous-UI-React--Tabs.Container")}
+        style={{ width: "100%", ...tabContainerStyle }}
+      >
         {/* Tab导航栏 */}
         <Space.Flex
           row
+          className={clsx("Venomous-UI-React--Tabs.ItemContainer")}
           style={{
             position: "relative",
             ...(variant === "pills" && {
@@ -104,6 +111,7 @@ const Tab = React.memo<TabProps>(
                 if (el) tabRefs.current[index] = el;
               }}
               onClick={() => handleTabClick(index, tab)}
+              className={clsx("Venomous-UI-React--Tabs.Item")}
               style={{
                 WebkitTapHighlightColor: "transparent",
                 padding: "12px 20px",
@@ -152,6 +160,7 @@ const Tab = React.memo<TabProps>(
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
             layout
+            className={clsx("Venomous-UI-React--Tabs.Indicator")}
             style={{
               position: "absolute",
               ...indicatorStyle,
@@ -186,6 +195,7 @@ const Tab = React.memo<TabProps>(
               initial="exit"
               animate="enter"
               exit="exit"
+              className={clsx("Venomous-UI-React--Tabs.Content")}
               style={{
                 width: "100%",
                 padding: "16px",

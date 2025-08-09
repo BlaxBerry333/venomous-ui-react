@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import React from "react";
 import { Toaster } from "sonner";
 
@@ -20,6 +21,7 @@ const Notification = React.memo<NotificationProps>(({ position = "top-center", o
       offset={offset}
       mobileOffset={offset / 2}
       expand={!collapsable}
+      className={clsx("Venomous-UI-React--Notification")}
       icons={{
         success: <Icon icon="solar:shield-check-line-duotone" color="success" />,
         error: <Icon icon="solar:shield-cross-line-duotone" color="error" />,

@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import { AnimatePresence, motion } from "motion/react";
 import React from "react";
 
@@ -9,7 +10,7 @@ import { Theme } from "../Theme";
 import type { ModalProps } from "./index.types";
 
 const Modal = React.memo<ModalProps>(
-  ({ children, style, isOpen, onClose, maskClosable = true, maxBreakpoint = BreakPointName.xs }) => {
+  ({ children, className, style, isOpen, onClose, maskClosable = true, maxBreakpoint = BreakPointName.xs }) => {
     const { themeMode } = Theme.useThemeMode();
 
     return (
@@ -21,6 +22,7 @@ const Modal = React.memo<ModalProps>(
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
+            className={clsx("Venomous-UI-React--Modal", className)}
             style={{
               display: "flex",
               justifyContent: "center",

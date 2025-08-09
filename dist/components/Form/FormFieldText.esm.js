@@ -1,52 +1,55 @@
 import { jsx as r } from "react/jsx-runtime";
-import d from "react";
-import y from "./FormField.esm.js";
-import { useFormFieldStyle as S } from "./_useFormFieldStyle.esm.js";
-import h from "../../hooks/useElementFocus/index.esm.js";
-const v = d.memo(
+import y from "clsx";
+import S from "react";
+import T from "./FormField.esm.js";
+import { useFormFieldStyle as h } from "./useFormFieldStyle.esm.js";
+import v from "../../hooks/useElementFocus/index.esm.js";
+const B = S.memo(
   ({
-    style: s,
+    className: s,
+    style: i,
     fullWidth: e,
-    autoComplete: i = "off",
-    required: l = !1,
-    isError: t = !1,
+    autoComplete: l = "off",
+    required: n = !1,
+    isError: m = !1,
     disabled: o = !1,
-    name: n,
-    value: F,
-    label: c,
+    name: F,
+    value: c,
+    label: a,
     helpText: f,
     ...u
   }) => {
-    const { isFocused: m, handleFocus: p, handleBlur: a } = h(), { commonStyles: x } = S({
+    const { isFocused: t, handleFocus: p, handleBlur: x } = v(), { commonStyles: d } = h({
       fullWidth: e,
       isDisabled: o,
-      isError: t,
-      isFocused: m
+      isError: m,
+      isFocused: t
     });
     return /* @__PURE__ */ r(
-      y,
+      T,
       {
-        label: c,
-        required: l,
+        label: a,
+        required: n,
         isDisabled: o,
-        isError: t,
-        isFocused: m,
+        isError: m,
+        isFocused: t,
         fullWidth: e,
         helpText: f,
         children: /* @__PURE__ */ r(
           "input",
           {
             type: "text",
-            name: n,
-            value: F,
-            autoComplete: i,
+            name: F,
+            value: c,
+            autoComplete: l,
             disabled: o,
             onFocus: o ? void 0 : p,
-            onBlur: o ? void 0 : a,
+            onBlur: o ? void 0 : x,
+            className: y("Venomous-UI-React--FormField.Text", s),
             style: {
               boxSizing: "border-box",
-              ...x,
-              ...s
+              ...d,
+              ...i
             },
             ...u
           }
@@ -55,7 +58,7 @@ const v = d.memo(
     );
   }
 );
-v.displayName = "FormField.Text";
+B.displayName = "FormField.Text";
 export {
-  v as default
+  B as default
 };

@@ -1,52 +1,55 @@
 import { jsx as s } from "react/jsx-runtime";
+import x from "clsx";
 import y from "react";
-import b from "./FormField.esm.js";
-import { useFormFieldStyle as x } from "./_useFormFieldStyle.esm.js";
-import N from "../../hooks/useElementFocus/index.esm.js";
-const S = y.memo(
+import N from "./FormField.esm.js";
+import { useFormFieldStyle as S } from "./useFormFieldStyle.esm.js";
+import h from "../../hooks/useElementFocus/index.esm.js";
+const v = y.memo(
   ({
-    style: t,
+    className: t,
+    style: i,
     fullWidth: e,
-    autoComplete: i = "off",
-    required: l = !1,
+    autoComplete: l = "off",
+    required: n = !1,
     isError: m = !1,
     disabled: o = !1,
-    name: n,
-    value: u,
-    label: F,
-    helpText: c,
+    name: u,
+    value: F,
+    label: c,
+    helpText: a,
     ...f
   }) => {
-    const { isFocused: r, handleFocus: p, handleBlur: a } = N(), { commonStyles: d } = x({
+    const { isFocused: r, handleFocus: p, handleBlur: d } = h(), { commonStyles: b } = S({
       fullWidth: e,
       isDisabled: o,
       isError: m,
       isFocused: r
     });
     return /* @__PURE__ */ s(
-      b,
+      N,
       {
-        label: F,
-        required: l,
+        label: c,
+        required: n,
         isDisabled: o,
         isError: m,
         isFocused: r,
         fullWidth: e,
-        helpText: c,
+        helpText: a,
         children: /* @__PURE__ */ s(
           "input",
           {
             type: "number",
-            name: n,
-            value: u,
-            autoComplete: i,
+            name: u,
+            value: F,
+            autoComplete: l,
             disabled: o,
             onFocus: o ? void 0 : p,
-            onBlur: o ? void 0 : a,
+            onBlur: o ? void 0 : d,
+            className: x("Venomous-UI-React--FormField.Number", t),
             style: {
               boxSizing: "border-box",
-              ...d,
-              ...t
+              ...b,
+              ...i
             },
             ...f
           }
@@ -55,7 +58,7 @@ const S = y.memo(
     );
   }
 );
-S.displayName = "FormField.Number";
+v.displayName = "FormField.Number";
 export {
-  S as default
+  v as default
 };

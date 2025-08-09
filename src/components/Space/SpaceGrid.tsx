@@ -1,12 +1,13 @@
 "use client";
 
+import clsx from "clsx";
 import React from "react";
 
 import { Theme } from "@/components";
 import { BreakPointName } from "@/utils";
 import type { SpaceGridProps } from "./index.types";
 
-const SpaceGrid = React.memo<SpaceGridProps>(({ children, style, columns = 1, spacing = 16, ...props }) => {
+const SpaceGrid = React.memo<SpaceGridProps>(({ children, className, style, columns = 1, spacing = 16, ...props }) => {
   const { screenSize } = Theme.useThemeBreakpoint();
   const safeScreenSize = screenSize ?? BreakPointName.xs;
 
@@ -21,6 +22,7 @@ const SpaceGrid = React.memo<SpaceGridProps>(({ children, style, columns = 1, sp
 
   return (
     <div
+      className={clsx("Venomous-UI-React--Space.Grid", className)}
       style={{
         boxSizing: "border-box",
         width: "100%",

@@ -1,22 +1,24 @@
-import { jsx as m } from "react/jsx-runtime";
-import y from "react";
-import { useTypographyStyle as l } from "./_useTypographyStyle.esm.js";
-import { TypographySize as s } from "../../utils/design/TypographySize.esm.js";
-const g = y.memo(
-  ({ children: o, style: r, ellipsis: t = 0, semanticColor: p, ...e }) => {
-    const { fontColor: a, ellipsisStyles: i } = l({ ellipsis: t, semanticColor: p });
-    return /* @__PURE__ */ m(
+import { jsx as s } from "react/jsx-runtime";
+import y from "clsx";
+import l from "react";
+import { useTypographyStyle as g } from "./_useTypographyStyle.esm.js";
+import { TypographySize as h } from "../../utils/design/TypographySize.esm.js";
+const n = l.memo(
+  ({ children: o, className: r, style: a, ellipsis: p = 0, semanticColor: t, ...e }) => {
+    const { fontColor: i, ellipsisStyles: m } = g({ ellipsis: p, semanticColor: t });
+    return /* @__PURE__ */ s(
       "p",
       {
+        className: y("Venomous-UI-React--Typography.Paragraph", r),
         style: {
           boxSizing: "border-box",
           margin: 0,
           width: "100%",
-          fontSize: s.text,
+          fontSize: h.text,
           lineHeight: 1.5,
-          color: a,
-          ...i,
-          ...r
+          color: i,
+          ...m,
+          ...a
         },
         ...e,
         children: o
@@ -24,7 +26,7 @@ const g = y.memo(
     );
   }
 );
-g.displayName = "Typography.Paragraph";
+n.displayName = "Typography.Paragraph";
 export {
-  g as default
+  n as default
 };

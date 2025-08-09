@@ -1,17 +1,19 @@
 "use client";
 
+import clsx from "clsx";
 import React from "react";
 
 import { TextColors, ThemeColor } from "@/utils";
 import { Space } from "../Space";
 import { Theme } from "../Theme";
 import { Typography } from "../Typography";
-import { useFormFieldStyle } from "./_useFormFieldStyle";
 import type { FormFieldProps } from "./index.types";
+import { useFormFieldStyle } from "./useFormFieldStyle";
 
 const FormField = React.memo<FormFieldProps>(
   ({
     children,
+    className,
     style,
     fullWidth = false,
     required = false,
@@ -34,6 +36,7 @@ const FormField = React.memo<FormFieldProps>(
     return (
       <fieldset
         disabled={isDisabled}
+        className={clsx("Venomous-UI-React--FormField", className)}
         style={{
           boxSizing: "border-box",
           border: "none",

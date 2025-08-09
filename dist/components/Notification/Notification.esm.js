@@ -1,12 +1,13 @@
 import { jsx as o } from "react/jsx-runtime";
-import t from "react";
-import { Toaster as c } from "sonner";
+import t from "clsx";
+import c from "react";
+import { Toaster as l } from "sonner";
 import e from "../Icon/Icon.esm.js";
-import { Theme as l } from "../Theme/index.esm.js";
-const a = t.memo(({ position: i = "top-center", offset: r = 0, collapsable: n = !1 }) => {
-  const { isDarkThemeMode: s } = l.useThemeMode();
+import { Theme as a } from "../Theme/index.esm.js";
+const m = c.memo(({ position: i = "top-center", offset: r = 0, collapsable: n = !1 }) => {
+  const { isDarkThemeMode: s } = a.useThemeMode();
   return /* @__PURE__ */ o(
-    c,
+    l,
     {
       closeButton: !0,
       richColors: !0,
@@ -17,6 +18,7 @@ const a = t.memo(({ position: i = "top-center", offset: r = 0, collapsable: n = 
       offset: r,
       mobileOffset: r / 2,
       expand: !n,
+      className: t("Venomous-UI-React--Notification"),
       icons: {
         success: /* @__PURE__ */ o(e, { icon: "solar:shield-check-line-duotone", color: "success" }),
         error: /* @__PURE__ */ o(e, { icon: "solar:shield-cross-line-duotone", color: "error" }),
@@ -26,7 +28,7 @@ const a = t.memo(({ position: i = "top-center", offset: r = 0, collapsable: n = 
     }
   );
 });
-a.displayName = "Notification";
+m.displayName = "Notification";
 export {
-  a as default
+  m as default
 };

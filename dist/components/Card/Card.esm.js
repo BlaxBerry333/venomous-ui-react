@@ -1,12 +1,13 @@
-import { jsx as i } from "react/jsx-runtime";
-import t from "react";
-import { Theme as p } from "../Theme/index.esm.js";
-import { CardVariantMap as e, CardTagMap as m } from "./index.types.esm.js";
-import { BackgroundColors as f, BorderColors as b } from "../../utils/design/colors.esm.js";
-import { Shadows as h } from "../../utils/design/Shadow.esm.js";
-const x = t.memo(
-  ({ children: s, style: a, as: d = m.div, variant: r = e.elevated, ...n }) => {
-    const { themeMode: o } = p.useThemeMode(), l = t.useMemo(() => {
+import { jsx as m } from "react/jsx-runtime";
+import p from "clsx";
+import s from "react";
+import { Theme as f } from "../Theme/index.esm.js";
+import { CardVariantMap as e, CardTagMap as b } from "./index.types.esm.js";
+import { BackgroundColors as h, BorderColors as x } from "../../utils/design/colors.esm.js";
+import { Shadows as C } from "../../utils/design/Shadow.esm.js";
+const g = s.memo(
+  ({ children: t, className: a, style: d, as: l = b.div, variant: r = e.elevated, ...n }) => {
+    const { themeMode: o } = f.useThemeMode(), c = s.useMemo(() => {
       switch (r) {
         case e.transparent:
           return "transparent";
@@ -14,19 +15,19 @@ const x = t.memo(
         case e.outlined:
         case e.frostedGlass:
         default:
-          return f[o].secondary;
+          return h[o].secondary;
       }
-    }, [o, r]), c = t.useMemo(() => {
+    }, [o, r]), u = s.useMemo(() => {
       switch (r) {
         case e.outlined:
         case e.transparent:
-          return b[o].tertiary;
+          return x[o].tertiary;
         case e.elevated:
         case e.frostedGlass:
         default:
           return "transparent";
       }
-    }, [o, r]), u = t.useMemo(() => {
+    }, [o, r]), i = s.useMemo(() => {
       switch (r) {
         case e.outlined:
         case e.transparent:
@@ -34,34 +35,35 @@ const x = t.memo(
         case e.elevated:
         case e.frostedGlass:
         default:
-          return h[o].primary;
+          return C[o].primary;
       }
     }, [o, r]);
-    return /* @__PURE__ */ i(
-      d,
+    return /* @__PURE__ */ m(
+      l,
       {
+        className: p("Venomous-UI-React--Card", a),
         style: {
           boxSizing: "border-box",
           borderRadius: "8px",
           padding: "16px",
           outlineWidth: 1.5,
           outlineStyle: "solid",
-          outlineColor: c,
-          backgroundColor: l,
-          boxShadow: u,
+          outlineColor: u,
+          backgroundColor: c,
+          boxShadow: i,
           ...r === e.frostedGlass && {
             backdropFilter: "blur(8px) brightness(0.8)",
             WebkitBackdropFilter: "blur(8px) brightness(0.8)"
           },
-          ...a
+          ...d
         },
         ...n,
-        children: s
+        children: t
       }
     );
   }
 );
-x.displayName = "Card";
+g.displayName = "Card";
 export {
-  x as default
+  g as default
 };

@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import React from "react";
 
 import { TypographySize } from "@/utils";
@@ -7,7 +8,7 @@ import { useTypographyStyle } from "./_useTypographyStyle";
 import { TypographyTitleTagMap, type TypographyTitleProps } from "./index.types";
 
 const TypographyTitle = React.memo<TypographyTitleProps>(
-  ({ text, as = TypographyTitleTagMap.h4, ellipsis = 0, style, semanticColor, ...props }) => {
+  ({ text, as = TypographyTitleTagMap.h4, ellipsis = 0, className, style, semanticColor, ...props }) => {
     const Tag = React.useMemo(() => TypographyTitleTagMap[as], [as]);
     const fontSize = React.useMemo(() => TypographySize[as], [as]);
 
@@ -15,6 +16,7 @@ const TypographyTitle = React.memo<TypographyTitleProps>(
 
     return (
       <Tag
+        className={clsx("Venomous-UI-React--Typography.Title", className)}
         style={{
           boxSizing: "border-box",
           margin: 0,

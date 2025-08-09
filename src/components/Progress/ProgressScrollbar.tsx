@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import { motion, useScroll } from "motion/react";
 import React from "react";
 
@@ -13,6 +14,7 @@ const ProgressScrollbar = React.memo<ProgressScrollbarProps>(({ height = 8 }) =>
 
   return (
     <motion.div
+      className={clsx("Venomous-UI-React--Progress.Scrollbar")}
       style={{
         scaleX: scrollYProgress,
         position: "fixed",

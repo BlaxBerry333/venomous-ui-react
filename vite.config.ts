@@ -38,6 +38,7 @@ export default defineConfig({
         "motion-utils",
         "sonner",
         "@iconify/react",
+        "clsx",
       ],
       output: [
         // dist/[name]/[name].esm.js

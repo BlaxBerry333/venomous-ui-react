@@ -1,14 +1,16 @@
 "use client";
 
+import clsx from "clsx";
 import React from "react";
 
 import { useElementFocus } from "@/hooks";
-import { useFormFieldStyle } from "./_useFormFieldStyle";
 import FormField from "./FormField";
 import type { FormFieldTextProps } from "./index.types";
+import { useFormFieldStyle } from "./useFormFieldStyle";
 
 const FormFieldText = React.memo<FormFieldTextProps>(
   ({
+    className,
     style,
     fullWidth,
     autoComplete = "off",
@@ -48,6 +50,7 @@ const FormFieldText = React.memo<FormFieldTextProps>(
           disabled={disabled}
           onFocus={disabled ? undefined : handleFocus}
           onBlur={disabled ? undefined : handleBlur}
+          className={clsx("Venomous-UI-React--FormField.Text", className)}
           style={{
             boxSizing: "border-box",
             ...commonStyles,

@@ -1,14 +1,16 @@
 import { jsx as h } from "react/jsx-runtime";
+import T from "clsx";
 import t from "react";
-import { useTypographyStyle as s } from "./_useTypographyStyle.esm.js";
-import { TypographyTitleTagMap as i } from "./index.types.esm.js";
-import { TypographySize as f } from "../../utils/design/TypographySize.esm.js";
-const T = t.memo(
-  ({ text: e, as: o = i.h4, ellipsis: r = 0, style: p, semanticColor: n, ...l }) => {
-    const m = t.useMemo(() => i[o], [o]), y = t.useMemo(() => f[o], [o]), { fontColor: a, ellipsisStyles: g } = s({ ellipsis: r, semanticColor: n });
+import { useTypographyStyle as f } from "./_useTypographyStyle.esm.js";
+import { TypographyTitleTagMap as e } from "./index.types.esm.js";
+import { TypographySize as c } from "../../utils/design/TypographySize.esm.js";
+const d = t.memo(
+  ({ text: i, as: o = e.h4, ellipsis: r = 0, className: p, style: m, semanticColor: l, ...n }) => {
+    const a = t.useMemo(() => e[o], [o]), y = t.useMemo(() => c[o], [o]), { fontColor: s, ellipsisStyles: g } = f({ ellipsis: r, semanticColor: l });
     return /* @__PURE__ */ h(
-      m,
+      a,
       {
+        className: T("Venomous-UI-React--Typography.Title", p),
         style: {
           boxSizing: "border-box",
           margin: 0,
@@ -19,17 +21,17 @@ const T = t.memo(
           fontWeight: "bold",
           lineHeight: "inherit",
           textAlign: "inherit",
-          color: a,
+          color: s,
           ...g,
-          ...p
+          ...m
         },
-        ...l,
-        children: e
+        ...n,
+        children: i
       }
     );
   }
 );
-T.displayName = "Typography.Title";
+d.displayName = "Typography.Title";
 export {
-  T as default
+  d as default
 };

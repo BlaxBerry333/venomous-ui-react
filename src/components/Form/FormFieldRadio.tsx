@@ -1,13 +1,14 @@
 "use client";
 
+import clsx from "clsx";
 import React from "react";
 
 import { Icon } from "../Icon";
 import { Space } from "../Space";
-import { useFormFieldStyle } from "./_useFormFieldStyle";
 import FormField from "./FormField";
 import type { FormFieldOption, FormFieldRadioProps } from "./index.types";
 import Label from "./Label";
+import { useFormFieldStyle } from "./useFormFieldStyle";
 
 const FormFieldRadio = React.memo<FormFieldRadioProps>(
   ({
@@ -20,6 +21,8 @@ const FormFieldRadio = React.memo<FormFieldRadioProps>(
     value,
     options,
     onChange,
+    className,
+    style,
   }) => {
     const [selectedValue, setSelectedValue] = React.useState<FormFieldOption["value"] | null>(value || null);
     React.useEffect(() => {
@@ -77,9 +80,11 @@ const FormFieldRadio = React.memo<FormFieldRadioProps>(
                   onClick={() => {
                     if (!isOptionDisabled) handleRadioChange(option.value);
                   }}
+                  className={(clsx("Venomous-UI-React--FormField.Radio"), className)}
                   style={{
                     color: isChecked ? outlineColor : borderColor,
                     cursor: isOptionDisabled ? "not-allowed" : "pointer",
+                    ...style,
                   }}
                 />
               </Label>

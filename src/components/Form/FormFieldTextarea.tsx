@@ -1,14 +1,16 @@
 "use client";
 
+import clsx from "clsx";
 import React from "react";
 
 import { useElementFocus } from "@/hooks";
-import { useFormFieldStyle } from "./_useFormFieldStyle";
 import FormField from "./FormField";
 import type { FormFieldTextareaProps } from "./index.types";
+import { useFormFieldStyle } from "./useFormFieldStyle";
 
 const FormFieldTextarea = React.memo<FormFieldTextareaProps>(
   ({
+    className,
     style,
     fullWidth,
     required = false,
@@ -48,6 +50,7 @@ const FormFieldTextarea = React.memo<FormFieldTextareaProps>(
           onBlur={disabled ? undefined : handleBlur}
           spellCheck={false}
           rows={rows}
+          className={clsx("Venomous-UI-React--FormField.Textarea", className)}
           style={{
             boxSizing: "border-box",
             resize: "none",

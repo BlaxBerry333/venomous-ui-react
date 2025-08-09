@@ -1,12 +1,13 @@
 "use client";
 
+import clsx from "clsx";
 import React from "react";
 
 import { TextColors } from "@/utils";
 import type { MediaFileTypeImageProps } from "./index.types";
 import { getMediaFileTypeColor } from "./tools";
 
-const MediaFileTypeImage = React.memo<MediaFileTypeImageProps>(({ fileExtension, width = 40, ...props }) => {
+const MediaFileTypeImage = React.memo<MediaFileTypeImageProps>(({ fileExtension, width = 40, className, ...props }) => {
   const fileTypeColor = React.useMemo<React.CSSProperties["color"]>(
     () => getMediaFileTypeColor(fileExtension),
     [fileExtension],
@@ -14,7 +15,15 @@ const MediaFileTypeImage = React.memo<MediaFileTypeImageProps>(({ fileExtension,
   const textColor: React.CSSProperties["color"] = TextColors.dark.primary;
 
   return (
-    <svg width={width} height={width * 2} viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg
+      width={width}
+      height={width * 2}
+      viewBox="0 0 40 40"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={clsx("Venomous-UI-React--MediaFile.TypeImage", className)}
+      {...props}
+    >
       {/* 红色文件主体 */}
       <path
         d="M23.172 0C23.7022 0 24.2107 0.210507 24.5857 0.585255L36.4137 12.4044C36.7891 12.7795 37 13.2884 37 13.8191V35.3333C37 37.9107 34.8689 40 32.24 40H7.76C5.13112 40 3 37.9107 3 35.3333V4.66667C3 2.08934 5.13112 0 7.76 0H23.172Z"

@@ -1,1 +1,1 @@
-{"version":3,"file":"CardsBook.d.ts","sourceRoot":"","sources":["../../../src/components/Card/CardsBook.tsx"],"names":[],"mappings":"AAEA,OAAO,KAAK,MAAM,OAAO,CAAC;AAK1B,OAAO,EAAc,KAAK,cAAc,EAAE,MAAM,eAAe,CAAC;AAEhE,QAAA,MAAM,SAAS,4CAkEb,CAAC;AAGH,eAAe,SAAS,CAAC"}
+{"version":3,"file":"CardsBook.d.ts","sourceRoot":"","sources":["../../../src/components/Card/CardsBook.tsx"],"names":[],"mappings":"AAGA,OAAO,KAAK,MAAM,OAAO,CAAC;AAK1B,OAAO,EAAc,KAAK,cAAc,EAAE,MAAM,eAAe,CAAC;AAEhE,QAAA,MAAM,SAAS,4CAqEd,CAAC;AAGF,eAAe,SAAS,CAAC"}

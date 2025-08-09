@@ -1,30 +1,32 @@
 import { jsx as s } from "react/jsx-runtime";
-import d from "react";
-import y from "./FormField.esm.js";
-import { useFormFieldStyle as h } from "./_useFormFieldStyle.esm.js";
-import S from "../../hooks/useElementFocus/index.esm.js";
-const v = d.memo(
+import y from "clsx";
+import h from "react";
+import S from "./FormField.esm.js";
+import { useFormFieldStyle as T } from "./useFormFieldStyle.esm.js";
+import v from "../../hooks/useElementFocus/index.esm.js";
+const z = h.memo(
   ({
-    style: t,
+    className: t,
+    style: a,
     fullWidth: o,
     required: l = !1,
     isError: r = !1,
     disabled: e = !1,
-    rows: a = 3,
-    name: i,
-    value: n,
+    rows: i = 3,
+    name: n,
+    value: c,
     label: F,
-    helpText: c,
-    ...f
+    helpText: f,
+    ...u
   }) => {
-    const { isFocused: m, handleFocus: u, handleBlur: p } = S(), { commonStyles: x } = h({
+    const { isFocused: m, handleFocus: p, handleBlur: x } = v(), { commonStyles: d } = T({
       fullWidth: o,
       isDisabled: e,
       isError: r,
       isFocused: m
     });
     return /* @__PURE__ */ s(
-      y,
+      S,
       {
         label: F,
         required: l,
@@ -32,31 +34,32 @@ const v = d.memo(
         isError: r,
         isFocused: m,
         fullWidth: o,
-        helpText: c,
+        helpText: f,
         children: /* @__PURE__ */ s(
           "textarea",
           {
-            name: i,
-            value: n,
+            name: n,
+            value: c,
             disabled: e,
-            onFocus: e ? void 0 : u,
-            onBlur: e ? void 0 : p,
+            onFocus: e ? void 0 : p,
+            onBlur: e ? void 0 : x,
             spellCheck: !1,
-            rows: a,
+            rows: i,
+            className: y("Venomous-UI-React--FormField.Textarea", t),
             style: {
               boxSizing: "border-box",
               resize: "none",
-              ...x,
-              ...t
+              ...d,
+              ...a
             },
-            ...f
+            ...u
           }
         )
       }
     );
   }
 );
-v.displayName = "FormField.Textarea";
+z.displayName = "FormField.Textarea";
 export {
-  v as default
+  z as default
 };

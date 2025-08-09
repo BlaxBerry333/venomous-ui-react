@@ -1,11 +1,12 @@
-import { jsx as i, jsxs as h } from "react/jsx-runtime";
+import { jsx as i, jsxs as x } from "react/jsx-runtime";
+import k from "clsx";
 import s from "react";
-import { Space as k } from "../Space/index.esm.js";
-import x from "./FormField.esm.js";
-import R from "./Label.esm.js";
-import { useFormFieldStyle as S } from "./_useFormFieldStyle.esm.js";
-import D from "../Icon/Icon.esm.js";
-const g = s.memo(
+import { Space as S } from "../Space/index.esm.js";
+import D from "./FormField.esm.js";
+import g from "./Label.esm.js";
+import { useFormFieldStyle as j } from "./useFormFieldStyle.esm.js";
+import w from "../Icon/Icon.esm.js";
+const C = s.memo(
   ({
     required: m = !1,
     disabled: l = !1,
@@ -14,39 +15,41 @@ const g = s.memo(
     labelPosition: f = "right",
     fullWidth: p,
     value: c,
-    options: y,
-    onChange: o
+    options: F,
+    onChange: t,
+    className: y,
+    style: b
   }) => {
-    const [F, u] = s.useState(c || null);
+    const [v, u] = s.useState(c || null);
     s.useEffect(() => {
       u(c || null);
     }, [c]);
-    const { outlineColor: b, borderColor: v } = S({
+    const { outlineColor: R, borderColor: h } = j({
       isDisabled: l
     }), d = s.useCallback(
       (e) => {
         if (l) return;
         u(e);
-        const r = {
+        const o = {
           target: {
             name: a,
             value: e
           }
         };
-        o == null || o(r);
+        t == null || t(o);
       },
-      [l, a, o]
+      [l, a, t]
     );
-    return /* @__PURE__ */ i(x, { label: n, required: m, isDisabled: l, fullWidth: p, children: /* @__PURE__ */ i(k.Flex, { column: !0, gap: 8, style: { marginTop: 4 }, children: y.map((e) => {
-      const r = e.value === F, t = l || e.disabled;
-      return /* @__PURE__ */ h(
-        R,
+    return /* @__PURE__ */ i(D, { label: n, required: m, isDisabled: l, fullWidth: p, children: /* @__PURE__ */ i(S.Flex, { column: !0, gap: 8, style: { marginTop: 4 }, children: F.map((e) => {
+      const o = e.value === v, r = l || e.disabled;
+      return /* @__PURE__ */ x(
+        g,
         {
           label: e.label,
           position: f,
           style: {
-            cursor: t ? "not-allowed" : "pointer",
-            opacity: t ? 0.6 : 1
+            cursor: r ? "not-allowed" : "pointer",
+            opacity: r ? 0.6 : 1
           },
           children: [
             /* @__PURE__ */ i(
@@ -55,23 +58,25 @@ const g = s.memo(
                 type: "radio",
                 name: a,
                 value: e.value,
-                checked: r,
-                disabled: t,
+                checked: o,
+                disabled: r,
                 onChange: () => d(e.value),
                 style: { display: "none" }
               }
             ),
             /* @__PURE__ */ i(
-              D,
+              w,
               {
-                icon: r ? "fluent:radio-button-24-filled" : "fluent:radio-button-24-regular",
+                icon: o ? "fluent:radio-button-24-filled" : "fluent:radio-button-24-regular",
                 width: 24,
                 onClick: () => {
-                  t || d(e.value);
+                  r || d(e.value);
                 },
+                className: (k("Venomous-UI-React--FormField.Radio"), y),
                 style: {
-                  color: r ? b : v,
-                  cursor: t ? "not-allowed" : "pointer"
+                  color: o ? R : h,
+                  cursor: r ? "not-allowed" : "pointer",
+                  ...b
                 }
               }
             )
@@ -82,7 +87,7 @@ const g = s.memo(
     }) }) });
   }
 );
-g.displayName = "FormField.Radio";
+C.displayName = "FormField.Radio";
 export {
-  g as default
+  C as default
 };

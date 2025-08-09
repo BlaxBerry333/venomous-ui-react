@@ -23,9 +23,9 @@ export type FormFieldOption = {
   disabled?: boolean;
 };
 
-export interface FormFieldProps {
+export interface FormFieldProps
+  extends Omit<React.FieldsetHTMLAttributes<HTMLFieldSetElement>, "children" | "disabled"> {
   children: React.ReactNode;
-  style?: React.CSSProperties;
   isDisabled?: boolean;
   isError?: LabelProps["isError"];
   isFocused?: boolean;
@@ -71,6 +71,8 @@ export interface FormFieldRadioProps {
   labelPosition?: LabelProps["position"];
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   options: FormFieldOption[];
+  style?: React.CSSProperties;
+  className?: string;
 }
 
 // select

@@ -1,15 +1,17 @@
-import { jsx as c } from "react/jsx-runtime";
+import { jsx as a } from "react/jsx-runtime";
 import { Icon as l } from "@iconify/react";
+import p from "clsx";
 import m from "react";
-import { Theme as p } from "../Theme/index.esm.js";
-import { SemanticColors as f, TextColors as a } from "../../utils/design/colors.esm.js";
-const u = m.memo(({ style: t, icon: n, width: o = 20, semanticColor: e, ...i }) => {
-  const { themeMode: r } = p.useThemeMode(), s = m.useMemo(() => e ? f[e] : a[r].primary, [r, e]);
-  return /* @__PURE__ */ c(
+import { Theme as f } from "../Theme/index.esm.js";
+import { SemanticColors as u, TextColors as x } from "../../utils/design/colors.esm.js";
+const I = m.memo(({ className: t, style: s, icon: n, width: o = 20, semanticColor: e, ...i }) => {
+  const { themeMode: r } = f.useThemeMode(), c = m.useMemo(() => e ? u[e] : x[r].primary, [r, e]);
+  return /* @__PURE__ */ a(
     l,
     {
       ssr: !0,
       icon: n,
+      className: p("Venomous-UI-React--Layout.Icon", t),
       style: {
         width: o,
         minWidth: o,
@@ -17,14 +19,14 @@ const u = m.memo(({ style: t, icon: n, width: o = 20, semanticColor: e, ...i }) 
         minHeight: o,
         flexShrink: 0,
         display: "inline-flex",
-        color: s,
-        ...t
+        color: c,
+        ...s
       },
       ...i
     }
   );
 });
-u.displayName = "Icon";
+I.displayName = "Icon";
 export {
-  u as default
+  I as default
 };

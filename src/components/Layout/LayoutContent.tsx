@@ -1,12 +1,14 @@
 "use client";
 
+import clsx from "clsx";
 import React from "react";
 
 import type { LayoutContentProps } from "./index.types";
 
-const LayoutContent = React.memo<LayoutContentProps>(({ children, style, ...props }) => {
+const LayoutContent = React.memo<LayoutContentProps>(({ children, className, style, ...props }) => {
   return (
     <main
+      className={clsx("Venomous-UI-React--Layout.Content", className)}
       style={{
         width: "100%",
         flexGrow: 1,
@@ -19,5 +21,5 @@ const LayoutContent = React.memo<LayoutContentProps>(({ children, style, ...prop
   );
 });
 
-LayoutContent.displayName = "Layout.Footer";
+LayoutContent.displayName = "Layout.Content";
 export default LayoutContent;

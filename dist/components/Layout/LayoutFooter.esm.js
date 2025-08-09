@@ -1,22 +1,24 @@
-import { jsx as m } from "react/jsx-runtime";
-import a from "react";
-import { useLayoutContext as i } from "./context/hooks.esm.js";
-const s = a.memo(({ children: o, style: t, ...e }) => {
-  const { footerHeight: r } = i();
-  return /* @__PURE__ */ m(
+import { jsx as a } from "react/jsx-runtime";
+import s from "clsx";
+import i from "react";
+import { useLayoutContext as u } from "./context/hooks.esm.js";
+const f = i.memo(({ children: o, className: t, style: e, ...r }) => {
+  const { footerHeight: m } = u();
+  return /* @__PURE__ */ a(
     "footer",
     {
+      className: s("Venomous-UI-React--Layout.Footer", t),
       style: {
-        height: `${r}px`,
+        height: `${m}px`,
         width: "100%",
-        ...t
+        ...e
       },
-      ...e,
+      ...r,
       children: o
     }
   );
 });
-s.displayName = "Layout.Footer";
+f.displayName = "Layout.Footer";
 export {
-  s as default
+  f as default
 };

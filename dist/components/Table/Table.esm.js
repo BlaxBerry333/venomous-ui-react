@@ -1,95 +1,165 @@
-import { jsxs as z, jsx as n } from "react/jsx-runtime";
-import B from "react";
-import { Theme as h } from "../Theme/index.esm.js";
+import { jsxs as V, jsx as i } from "react/jsx-runtime";
+import m from "clsx";
+import k from "react";
+import { Theme as M } from "../Theme/index.esm.js";
 import { TextColors as j, BorderColors as v, BackgroundColors as q } from "../../utils/design/colors.esm.js";
-const I = (e, r) => String(r);
+const H = (c, n) => String(n);
 function K({
-  columns: e,
-  rows: r,
-  rowUnionKey: a = I,
-  style: m,
-  renderRowActions: k,
-  headProps: g,
-  bodyProps: x,
-  headRowProps: S,
-  bodyRowProps: f,
-  headRowCellProps: l,
+  columns: c,
+  rows: n,
+  rowUnionKey: f = H,
+  style: u,
+  renderRowActions: U,
+  headProps: s,
+  bodyProps: N,
+  headRowProps: T,
+  bodyRowProps: x,
+  headRowCellProps: e,
   bodyRowCellProps: t,
-  ...u
+  ...l
 }) {
-  return /* @__PURE__ */ z(
+  return /* @__PURE__ */ V(
     "table",
     {
+      className: m("Venomous-UI-React--Table", l.className),
       style: {
         boxSizing: "border-box",
         display: "block",
         borderSpacing: 0,
         overflow: "scroll",
         position: "relative",
-        ...m
+        ...u
       },
-      ...u,
+      ...l,
       children: [
-        /* @__PURE__ */ n("thead", { style: { position: "sticky", top: 0, zIndex: 1, ...g == null ? void 0 : g.style }, ...g, children: /* @__PURE__ */ z(s, { style: { ...S == null ? void 0 : S.style }, ...S, children: [
-          e.map((i) => /* @__PURE__ */ n(
-            T,
-            {
-              as: "th",
-              style: { ...l == null ? void 0 : l.style },
-              ...l,
-              ...i.headerCellProps,
-              children: i.label
-            },
-            String(i.key)
-          )),
-          k && /* @__PURE__ */ n(T, { as: "th", style: { ...t == null ? void 0 : t.style }, ...t })
-        ] }) }),
-        /* @__PURE__ */ n("tbody", { style: { ...x == null ? void 0 : x.style }, ...x, children: r.map((i, y) => /* @__PURE__ */ z(s, { style: { ...f == null ? void 0 : f.style }, ...f, children: [
-          e.map((c) => {
-            var M;
-            return /* @__PURE__ */ n(T, { as: "td", style: { ...t == null ? void 0 : t.style }, ...t, children: ((M = c.renderCell) == null ? void 0 : M.call(c, i, y)) ?? String(i[c.key] ?? "") }, String(c.key));
-          }),
-          k && /* @__PURE__ */ n(T, { as: "td", style: { ...t == null ? void 0 : t.style }, ...t, children: k(i, y) })
-        ] }, String(a(i, y)))) })
+        /* @__PURE__ */ i(
+          "thead",
+          {
+            className: m("Venomous-UI-React--Tables.Head", s == null ? void 0 : s.className),
+            style: { position: "sticky", top: 0, zIndex: 1, ...s == null ? void 0 : s.style },
+            ...s,
+            children: /* @__PURE__ */ V(
+              z,
+              {
+                className: m("Venomous-UI-React--Tables.Row", T == null ? void 0 : T.className),
+                style: { ...T == null ? void 0 : T.style },
+                ...T,
+                children: [
+                  c.map((a) => {
+                    var g;
+                    return /* @__PURE__ */ i(
+                      S,
+                      {
+                        as: "th",
+                        className: m(
+                          "Venomous-UI-React--Tables.Cell",
+                          e == null ? void 0 : e.className,
+                          (g = a.headerCellProps) == null ? void 0 : g.className
+                        ),
+                        style: { ...e == null ? void 0 : e.style },
+                        ...e,
+                        ...a.headerCellProps,
+                        children: a.label
+                      },
+                      String(a.key)
+                    );
+                  }),
+                  U && /* @__PURE__ */ i(
+                    S,
+                    {
+                      as: "th",
+                      className: m("Venomous-UI-React--Tables.Cell", e == null ? void 0 : e.className),
+                      style: { ...t == null ? void 0 : t.style },
+                      ...t
+                    }
+                  )
+                ]
+              }
+            )
+          }
+        ),
+        /* @__PURE__ */ i(
+          "tbody",
+          {
+            className: m("Venomous-UI-React--Tables.Body", N == null ? void 0 : N.className),
+            style: { ...N == null ? void 0 : N.style },
+            ...N,
+            children: n.map((a, g) => /* @__PURE__ */ V(
+              z,
+              {
+                className: m("Venomous-UI-React--Tables.Row", x == null ? void 0 : x.className),
+                style: { ...x == null ? void 0 : x.style },
+                ...x,
+                children: [
+                  c.map((I) => {
+                    var B;
+                    return /* @__PURE__ */ i(
+                      S,
+                      {
+                        as: "td",
+                        className: m("Venomous-UI-React--Tables.Cell", t == null ? void 0 : t.className),
+                        style: { ...t == null ? void 0 : t.style },
+                        ...t,
+                        children: ((B = I.renderCell) == null ? void 0 : B.call(I, a, g)) ?? String(a[I.key] ?? "")
+                      },
+                      String(I.key)
+                    );
+                  }),
+                  U && /* @__PURE__ */ i(
+                    S,
+                    {
+                      as: "td",
+                      className: m("Venomous-UI-React--Tables.Cell", t == null ? void 0 : t.className),
+                      style: { ...t == null ? void 0 : t.style },
+                      ...t,
+                      children: U(a, g)
+                    }
+                  )
+                ]
+              },
+              String(f(a, g))
+            ))
+          }
+        )
       ]
     }
   );
 }
-const N = B.memo(K);
-N.displayName = "Table";
-const s = B.memo(({ style: e, ...r }) => {
-  const { themeMode: a } = h.useThemeMode();
-  return /* @__PURE__ */ n(
+const W = k.memo(K);
+W.displayName = "Table";
+const z = k.memo(({ style: c, ...n }) => {
+  const { themeMode: f } = M.useThemeMode();
+  return /* @__PURE__ */ i(
     "tr",
     {
       style: {
         boxSizing: "border-box",
-        color: j[a].primary,
-        ...e
+        color: j[f].primary,
+        ...c
       },
-      ...r
+      ...n
     }
   );
-}), T = B.memo(({ as: e = "td", style: r, ...a }) => {
-  const { themeMode: m } = h.useThemeMode();
-  return /* @__PURE__ */ n(
-    e,
+}), S = k.memo(({ as: c = "td", style: n, ...f }) => {
+  const { themeMode: u } = M.useThemeMode();
+  return /* @__PURE__ */ i(
+    c,
     {
       style: {
         boxSizing: "border-box",
         padding: "16px 24px",
         textAlign: "left",
-        color: j[m].primary,
-        backgroundColor: e === "td" ? "transparent" : q[m].secondary,
+        color: j[u].primary,
+        backgroundColor: c === "td" ? "transparent" : q[u].secondary,
         borderBottomWidth: 1,
         borderBottomStyle: "solid",
-        borderBottomColor: v[m].quaternary,
-        ...r
+        borderBottomColor: v[u].quaternary,
+        ...n
       },
-      ...a
+      ...f
     }
   );
 });
 export {
-  N as default
+  W as default
 };

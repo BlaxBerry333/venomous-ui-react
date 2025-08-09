@@ -1,67 +1,70 @@
-import { jsxs as R, jsx as i } from "react/jsx-runtime";
-import I from "react";
-import W from "./Label.esm.js";
-import { useFormFieldStyle as j } from "./_useFormFieldStyle.esm.js";
-import { useToggleFormFieldChecked as P } from "./useToggleFormFieldChecked.esm.js";
-import { AnimatePresence as T, motion as s } from "framer-motion";
-import { ThemeColor as z } from "../../utils/design/ThemeColor.esm.js";
-import { BackgroundColors as A } from "../../utils/design/colors.esm.js";
-import { Shadows as B } from "../../utils/design/Shadow.esm.js";
-const l = 48, c = 24, r = 18, a = 4, D = I.memo(
+import { jsxs as I, jsx as i } from "react/jsx-runtime";
+import W from "react";
+import j from "clsx";
+import N from "./Label.esm.js";
+import { useFormFieldStyle as P } from "./useFormFieldStyle.esm.js";
+import { useToggleFormFieldChecked as T } from "./useToggleFormFieldChecked.esm.js";
+import { AnimatePresence as z, motion as s } from "framer-motion";
+import { ThemeColor as A } from "../../utils/design/ThemeColor.esm.js";
+import { BackgroundColors as B } from "../../utils/design/colors.esm.js";
+import { Shadows as D } from "../../utils/design/Shadow.esm.js";
+const l = 48, c = 24, r = 18, a = 4, H = W.memo(
   ({
-    style: d,
+    className: d,
+    style: m,
     autoComplete: h = "off",
-    required: m = !1,
+    required: p = !1,
     isError: t = !1,
     disabled: e = !1,
-    name: p,
-    value: f,
-    checked: g = !1,
-    onChange: u,
-    label: k,
-    labelPosition: y = "right",
-    ...b
+    name: f,
+    value: g,
+    checked: u = !1,
+    onChange: k,
+    label: y,
+    labelPosition: b = "right",
+    ...C
   }) => {
-    const { inputRef: C, isChecked: o, toggleOriginalIsChecked: w, toggleCustomIsChecked: x } = P({
-      checked: g,
+    const { inputRef: w, isChecked: o, toggleOriginalIsChecked: x, toggleCustomIsChecked: F } = T({
+      checked: u,
       disabled: e,
-      onChange: u
-    }), { backgroundColor: S, outlineColor: F, borderColor: v, commonStyles: n } = j({
+      onChange: k
+    }), { backgroundColor: S, outlineColor: R, borderColor: v, commonStyles: n } = P({
       isDisabled: e,
       isError: t
     });
-    return /* @__PURE__ */ R(W, { label: k, required: m, isError: t, position: y, children: [
+    return /* @__PURE__ */ I(N, { label: y, required: p, isError: t, position: b, children: [
       /* @__PURE__ */ i(
         "input",
         {
           type: "checkbox",
-          name: p,
-          value: f,
+          name: f,
+          value: g,
           checked: o,
-          ref: C,
-          onChange: w,
+          ref: w,
+          onChange: x,
           autoComplete: h,
           disabled: e,
-          style: { display: "none", ...d },
-          ...b
+          style: { display: "none" },
+          ...C
         }
       ),
       /* @__PURE__ */ i(
         "div",
         {
-          onClick: x,
+          onClick: F,
           style: {
             display: "inline-flex",
             alignItems: "center",
             cursor: e ? "not-allowed" : "pointer",
             opacity: e ? 0.6 : 1
           },
-          children: /* @__PURE__ */ i(T, { children: /* @__PURE__ */ i(
+          children: /* @__PURE__ */ i(z, { children: /* @__PURE__ */ i(
             s.div,
             {
               initial: !1,
               animate: o ? "checked" : "unchecked",
               transition: { type: "spring", stiffness: 700, damping: 30 },
+              className: j("Venomous-UI-React--FormField.Switch", d),
               style: {
                 width: l,
                 height: c,
@@ -72,8 +75,9 @@ const l = 48, c = 24, r = 18, a = 4, D = I.memo(
                 borderWidth: n.borderWidth,
                 borderStyle: n.borderStyle,
                 borderColor: v,
-                backgroundColor: o ? F : S,
-                transition: "background-color 0.2s ease-in-out"
+                backgroundColor: o ? R : S,
+                transition: "background-color 0.2s ease-in-out",
+                ...m
               },
               children: /* @__PURE__ */ i(
                 s.div,
@@ -90,8 +94,8 @@ const l = 48, c = 24, r = 18, a = 4, D = I.memo(
                     height: r,
                     borderRadius: "50%",
                     position: "absolute",
-                    boxShadow: B.light.primary,
-                    backgroundColor: t && !o ? z.RubyCopperhead : A.light.secondary
+                    boxShadow: D.light.primary,
+                    backgroundColor: t && !o ? A.RubyCopperhead : B.light.secondary
                   }
                 }
               )
@@ -102,7 +106,7 @@ const l = 48, c = 24, r = 18, a = 4, D = I.memo(
     ] });
   }
 );
-D.displayName = "FormField.Switch";
+H.displayName = "FormField.Switch";
 export {
-  D as default
+  H as default
 };

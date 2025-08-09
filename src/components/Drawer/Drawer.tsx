@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import { AnimatePresence, motion } from "motion/react";
 import React from "react";
 
@@ -23,6 +24,7 @@ const Drawer = React.memo<DrawerProps>(
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
+              className={clsx("Venomous-UI-React--Drawer.Mask")}
               style={{
                 position: "fixed",
                 top: 0,
@@ -62,6 +64,7 @@ const Drawer = React.memo<DrawerProps>(
                       ? { y: "-100%" }
                       : { y: "100%" }
               }
+              className={clsx("Venomous-UI-React--Drawer.Panel")}
               style={{
                 boxSizing: "border-box",
                 position: "fixed",
@@ -93,6 +96,7 @@ const Drawer = React.memo<DrawerProps>(
               }}
             >
               <Card
+                className={clsx("Venomous-UI-React--Drawer.Card")}
                 style={{
                   width: "100%",
                   height: "100%",

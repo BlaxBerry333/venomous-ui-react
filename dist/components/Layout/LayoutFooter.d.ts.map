@@ -1,1 +1,1 @@
-{"version":3,"file":"LayoutFooter.d.ts","sourceRoot":"","sources":["../../../src/components/Layout/LayoutFooter.tsx"],"names":[],"mappings":"AAEA,OAAO,KAAK,MAAM,OAAO,CAAC;AAG1B,OAAO,KAAK,EAAE,iBAAiB,EAAE,MAAM,eAAe,CAAC;AAEvD,QAAA,MAAM,YAAY,+CAehB,CAAC;AAGH,eAAe,YAAY,CAAC"}
+{"version":3,"file":"LayoutFooter.d.ts","sourceRoot":"","sources":["../../../src/components/Layout/LayoutFooter.tsx"],"names":[],"mappings":"AAGA,OAAO,KAAK,MAAM,OAAO,CAAC;AAG1B,OAAO,KAAK,EAAE,iBAAiB,EAAE,MAAM,eAAe,CAAC;AAEvD,QAAA,MAAM,YAAY,+CAgBhB,CAAC;AAGH,eAAe,YAAY,CAAC"}

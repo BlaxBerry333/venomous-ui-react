@@ -4,9 +4,10 @@ import { AnimatePresence, motion } from "motion/react";
 import React from "react";
 
 import { BackgroundColors, Shadows, ThemeColor } from "@/utils";
-import { useFormFieldStyle } from "./_useFormFieldStyle";
+import clsx from "clsx";
 import type { FormFieldCheckboxProps } from "./index.types";
 import Label from "./Label";
+import { useFormFieldStyle } from "./useFormFieldStyle";
 import { useToggleFormFieldChecked } from "./useToggleFormFieldChecked";
 
 const switchWidth = 48;
@@ -16,6 +17,7 @@ const knobPadding = 4;
 
 const FormFieldSwitch = React.memo<FormFieldCheckboxProps>(
   ({
+    className,
     style,
     autoComplete = "off",
     required = false,
@@ -51,7 +53,7 @@ const FormFieldSwitch = React.memo<FormFieldCheckboxProps>(
           onChange={toggleOriginalIsChecked}
           autoComplete={autoComplete}
           disabled={disabled}
-          style={{ display: "none", ...style }}
+          style={{ display: "none" }}
           {...props}
         />
 
@@ -69,6 +71,7 @@ const FormFieldSwitch = React.memo<FormFieldCheckboxProps>(
               initial={false}
               animate={isChecked ? "checked" : "unchecked"}
               transition={{ type: "spring", stiffness: 700, damping: 30 }}
+              className={clsx("Venomous-UI-React--FormField.Switch", className)}
               style={{
                 width: switchWidth,
                 height: switchHeight,
@@ -81,6 +84,7 @@ const FormFieldSwitch = React.memo<FormFieldCheckboxProps>(
                 borderColor,
                 backgroundColor: isChecked ? outlineColor : backgroundColor,
                 transition: "background-color 0.2s ease-in-out",
+                ...style,
               }}
             >
               <motion.div
