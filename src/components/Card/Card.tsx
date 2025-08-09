@@ -52,6 +52,7 @@ const Card = React.memo<CardProps>(
         className={clsx("Venomous-UI-React--Card", className)}
         style={{
           boxSizing: "border-box",
+          WebkitTapHighlightColor: "transparent",
           borderRadius: "8px",
           padding: "16px",
           outlineWidth: 1.5,

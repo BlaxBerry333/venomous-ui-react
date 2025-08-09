@@ -8,7 +8,7 @@ import { getLighterHex, getOpacityHex } from "@/utils";
 import { Theme } from "../Theme";
 import type { ProgressScrollbarProps } from "./index.types";
 
-const ProgressScrollbar = React.memo<ProgressScrollbarProps>(({ height = 8 }) => {
+const ProgressScrollbar = React.memo<ProgressScrollbarProps>(({ height = 4 }) => {
   const { scrollYProgress } = useScroll();
   const { themeColor } = Theme.useThemeColor();
 
@@ -23,7 +23,7 @@ const ProgressScrollbar = React.memo<ProgressScrollbarProps>(({ height = 8 }) =>
         right: 0,
         originX: 0,
         zIndex: 10000,
-        backgroundImage: `linear-gradient(45deg, ${getLighterHex(themeColor, 0.2)} 0%, ${getOpacityHex(themeColor, 0.15)} 90%)`,
+        backgroundImage: `linear-gradient(45deg, ${getOpacityHex(themeColor, 0.15)} 0%, ${getLighterHex(themeColor, 0.2)} 90%)`,
         height: height,
         borderTopRightRadius: "16px",
         borderBottomRightRadius: "16px",

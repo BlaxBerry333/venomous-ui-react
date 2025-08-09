@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import { getDarkerHex, getLighterHex, getOpacityHex, hexNormalize } from "@/utils";
+import { BackgroundColors, getDarkerHex, getLighterHex, getOpacityHex, hexNormalize } from "@/utils";
 import { Theme } from ".";
 
 const ThemeInjectToHTML = React.memo(() => {
@@ -23,6 +23,7 @@ export default ThemeInjectToHTML;
  *
  */
 function useThemeInjectToHTML() {
+  const { themeMode } = Theme.useThemeMode();
   const { themeColor } = Theme.useThemeColor();
 
   const colors = React.useMemo(
@@ -34,6 +35,11 @@ function useThemeInjectToHTML() {
     }),
     [themeColor],
   );
+
+  React.useInsertionEffect(() => {
+    document.documentElement.style.backgroundColor = BackgroundColors[themeMode].primary;
+    document.body.style.backgroundColor = BackgroundColors[themeMode].primary;
+  }, [themeMode]);
 
   React.useInsertionEffect(() => {
     if (typeof window === "undefined") {
@@ -55,10 +61,10 @@ function useThemeInjectToHTML() {
          ============================== */
 
       :root {
-        --venomous-ui--theme-origin: ${colors.origin};
-        --venomous-ui--theme-dark: ${colors.dark};
-        --venomous-ui--theme-light: ${colors.light};
-        --venomous-ui--theme-opacity: ${colors.opacity};
+        --venomous-ui-react--theme-origin: ${colors.origin};
+        --venomous-ui-react--theme-dark: ${colors.dark};
+        --venomous-ui-react--theme-light: ${colors.light};
+        --venomous-ui-react--theme-opacity: ${colors.opacity};
       }
 
       /* Selection style */

@@ -12,11 +12,11 @@ const meta = {
     height: {
       description: "The height of the progress bar",
       control: { type: "number" },
-      table: { type: { summary: "number" }, defaultValue: { summary: "8" } },
+      table: { type: { summary: "number" }, defaultValue: { summary: "4" } },
     },
   },
   args: {
-    height: 8,
+    height: 4,
   },
 } satisfies Meta<typeof Progress.Scrollbar>;
 

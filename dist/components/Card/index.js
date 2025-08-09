@@ -1,1 +1,1 @@
-"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const r=require("./CardsBook.js"),e=require("./CardsProduct.js"),o={Book:r.default,Product:e.default};exports.Cards=o;
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const e=require("./CardsBook.js"),r=require("./CardsProduct.js"),t=require("./CardsTitleBlock.js"),o={Book:e.default,Product:r.default,TitleBlock:t.default};exports.Cards=o;

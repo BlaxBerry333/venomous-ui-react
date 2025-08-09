@@ -1,13 +1,13 @@
 import { jsx as m } from "react/jsx-runtime";
 import p from "clsx";
-import s from "react";
+import t from "react";
 import { Theme as f } from "../Theme/index.esm.js";
 import { CardVariantMap as e, CardTagMap as b } from "./index.types.esm.js";
-import { BackgroundColors as h, BorderColors as x } from "../../utils/design/colors.esm.js";
-import { Shadows as C } from "../../utils/design/Shadow.esm.js";
-const g = s.memo(
-  ({ children: t, className: a, style: d, as: l = b.div, variant: r = e.elevated, ...n }) => {
-    const { themeMode: o } = f.useThemeMode(), c = s.useMemo(() => {
+import { BackgroundColors as h, BorderColors as C } from "../../utils/design/colors.esm.js";
+import { Shadows as x } from "../../utils/design/Shadow.esm.js";
+const g = t.memo(
+  ({ children: s, className: a, style: d, as: l = b.div, variant: r = e.elevated, ...n }) => {
+    const { themeMode: o } = f.useThemeMode(), c = t.useMemo(() => {
       switch (r) {
         case e.transparent:
           return "transparent";
@@ -17,17 +17,17 @@ const g = s.memo(
         default:
           return h[o].secondary;
       }
-    }, [o, r]), u = s.useMemo(() => {
+    }, [o, r]), i = t.useMemo(() => {
       switch (r) {
         case e.outlined:
         case e.transparent:
-          return x[o].tertiary;
+          return C[o].tertiary;
         case e.elevated:
         case e.frostedGlass:
         default:
           return "transparent";
       }
-    }, [o, r]), i = s.useMemo(() => {
+    }, [o, r]), u = t.useMemo(() => {
       switch (r) {
         case e.outlined:
         case e.transparent:
@@ -35,7 +35,7 @@ const g = s.memo(
         case e.elevated:
         case e.frostedGlass:
         default:
-          return C[o].primary;
+          return x[o].primary;
       }
     }, [o, r]);
     return /* @__PURE__ */ m(
@@ -44,13 +44,14 @@ const g = s.memo(
         className: p("Venomous-UI-React--Card", a),
         style: {
           boxSizing: "border-box",
+          WebkitTapHighlightColor: "transparent",
           borderRadius: "8px",
           padding: "16px",
           outlineWidth: 1.5,
           outlineStyle: "solid",
-          outlineColor: u,
+          outlineColor: i,
           backgroundColor: c,
-          boxShadow: i,
+          boxShadow: u,
           ...r === e.frostedGlass && {
             backdropFilter: "blur(8px) brightness(0.8)",
             WebkitBackdropFilter: "blur(8px) brightness(0.8)"
@@ -58,7 +59,7 @@ const g = s.memo(
           ...d
         },
         ...n,
-        children: t
+        children: s
       }
     );
   }

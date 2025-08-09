@@ -34,7 +34,7 @@ export function getMediaFileTypeColor(fileExtension: MediaFileExtension) {
     case ".svg":
     case ".js":
     case ".json":
-      return ThemeColor.GoldenLanceHead; // 金色
+      return ThemeColor.TopazMamushi; // 金色
     case ".pdf":
       return ThemeColor.GarnetViper; // 红色
     case ".html":
@@ -54,6 +54,6 @@ export function getMediaFileTypeColor(fileExtension: MediaFileExtension) {
       return ThemeColor.MalachitePython; // 绿色
     case ".txt":
     default:
-      return ThemeColor.ObsidianBlackMamba; // 黑色
+      return "#5c5c5c"; // 灰色
   }
 }

@@ -27,4 +27,10 @@ export interface CardsProductProps extends React.PropsWithChildren {
     onCloseMenu: () => void;
     renderMenu: () => React.ReactNode;
 }
+export interface CardsTitleBlockProps extends React.PropsWithChildren {
+    className?: string;
+    style?: React.CSSProperties;
+    title: string;
+    titleStyle?: React.CSSProperties;
+}
 //# sourceMappingURL=index.types.d.ts.map

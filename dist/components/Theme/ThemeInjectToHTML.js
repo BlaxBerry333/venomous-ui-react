@@ -1,13 +1,13 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const i=require("react"),s=require("./index.js"),r=require("../../utils/tools/get-colors.js"),n=i.memo(()=>(a(),null));n.displayName="Theme.InjectToHTML";function a(){const{themeColor:o}=s.Theme.useThemeColor(),e=i.useMemo(()=>({light:r.getLighterHex(o,.2),dark:r.getDarkerHex(o,.8),origin:r.hexNormalize(o),opacity:r.getOpacityHex(o,.6)}),[o]);i.useInsertionEffect(()=>{if(typeof window>"u")return;const l="theme-palette-style";let t=document.getElementById(l);t||(t=document.createElement("style"),t.id=l,document.head.appendChild(t));const c=`
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const l=require("react"),n=require("./index.js"),r=require("../../utils/tools/get-colors.js"),s=require("../../utils/design/colors.js"),a=l.memo(()=>(d(),null));a.displayName="Theme.InjectToHTML";function d(){const{themeMode:i}=n.Theme.useThemeMode(),{themeColor:o}=n.Theme.useThemeColor(),e=l.useMemo(()=>({light:r.getLighterHex(o,.2),dark:r.getDarkerHex(o,.8),origin:r.hexNormalize(o),opacity:r.getOpacityHex(o,.6)}),[o]);l.useInsertionEffect(()=>{document.documentElement.style.backgroundColor=s.BackgroundColors[i].primary,document.body.style.backgroundColor=s.BackgroundColors[i].primary},[i]),l.useInsertionEffect(()=>{if(typeof window>"u")return;const c="theme-palette-style";let t=document.getElementById(c);t||(t=document.createElement("style"),t.id=c,document.head.appendChild(t));const u=`
       /* ==============================
          Global Theme Palette Styles
          ============================== */
 
       :root {
-        --venomous-ui--theme-origin: ${e.origin};
-        --venomous-ui--theme-dark: ${e.dark};
-        --venomous-ui--theme-light: ${e.light};
-        --venomous-ui--theme-opacity: ${e.opacity};
+        --venomous-ui-react--theme-origin: ${e.origin};
+        --venomous-ui-react--theme-dark: ${e.dark};
+        --venomous-ui-react--theme-light: ${e.light};
+        --venomous-ui-react--theme-opacity: ${e.opacity};
       }
 
       /* Selection style */
@@ -39,4 +39,4 @@
         scrollbar-color: ${e.origin} rgba(0, 0, 0, 0.1);
         scrollbar-width: thin;
       }
-    `;t.innerHTML=c},[e])}exports.default=n;
+    `;t.innerHTML=u},[e])}exports.default=a;

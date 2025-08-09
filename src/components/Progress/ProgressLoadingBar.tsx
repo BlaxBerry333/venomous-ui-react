@@ -8,7 +8,7 @@ import { getLighterHex, getOpacityHex, Shadows } from "@/utils";
 import { Theme } from "../Theme";
 import type { ProgressLoadingBarProps } from "./index.types";
 
-const ProgressLoadingBar = React.memo<ProgressLoadingBarProps>(({ height = 8 }) => {
+const ProgressLoadingBar = React.memo<ProgressLoadingBarProps>(({ height = 8, className, style }) => {
   const controls = useAnimation();
 
   const { themeMode } = Theme.useThemeMode();
@@ -44,7 +44,7 @@ const ProgressLoadingBar = React.memo<ProgressLoadingBarProps>(({ height = 8 }) 
   return (
     <div
       ref={containerRef}
-      className={clsx("Venomous-UI-React--Progress.LoadingBar")}
+      className={clsx("Venomous-UI-React--Progress.LoadingBar", className)}
       style={{
         position: "relative",
         width: "100%",
@@ -53,6 +53,7 @@ const ProgressLoadingBar = React.memo<ProgressLoadingBarProps>(({ height = 8 }) 
         backgroundColor: getOpacityHex(themeColor, 0.2),
         borderRadius: height / 2,
         boxShadow: Shadows[themeMode].tertiary,
+        ...style,
       }}
     >
       <motion.div

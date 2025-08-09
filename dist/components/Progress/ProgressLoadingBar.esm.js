@@ -1,17 +1,17 @@
 import { jsx as d } from "react/jsx-runtime";
-import h from "clsx";
+import p from "clsx";
 import e from "react";
 import { Theme as c } from "../Theme/index.esm.js";
-import { useAnimation as g, motion as p } from "framer-motion";
-import { Shadows as w } from "../../utils/design/Shadow.esm.js";
-import { getOpacityHex as m, getLighterHex as x } from "../../utils/tools/get-colors.esm.js";
-const v = e.memo(({ height: i = 8 }) => {
-  const t = g(), { themeMode: u } = c.useThemeMode(), { themeColor: s } = c.useThemeColor(), a = e.useRef(null), [o, f] = e.useState(0);
+import { useAnimation as w, motion as x } from "framer-motion";
+import { Shadows as v } from "../../utils/design/Shadow.esm.js";
+import { getOpacityHex as m, getLighterHex as b } from "../../utils/tools/get-colors.esm.js";
+const y = e.memo(({ height: i = 8, className: u, style: f }) => {
+  const t = w(), { themeMode: l } = c.useThemeMode(), { themeColor: s } = c.useThemeColor(), a = e.useRef(null), [o, h] = e.useState(0);
   return e.useEffect(() => {
     const r = () => {
       if (a.current) {
-        const n = a.current.offsetWidth, l = n * 0.3;
-        f(n - l);
+        const n = a.current.offsetWidth, g = n * 0.3;
+        h(n - g);
       }
     };
     return r(), window.addEventListener("resize", r), () => window.removeEventListener("resize", r);
@@ -25,7 +25,7 @@ const v = e.memo(({ height: i = 8 }) => {
     "div",
     {
       ref: a,
-      className: h("Venomous-UI-React--Progress.LoadingBar"),
+      className: p("Venomous-UI-React--Progress.LoadingBar", u),
       style: {
         position: "relative",
         width: "100%",
@@ -33,10 +33,11 @@ const v = e.memo(({ height: i = 8 }) => {
         overflow: "hidden",
         backgroundColor: m(s, 0.2),
         borderRadius: i / 2,
-        boxShadow: w[u].tertiary
+        boxShadow: v[l].tertiary,
+        ...f
       },
       children: /* @__PURE__ */ d(
-        p.div,
+        x.div,
         {
           animate: t,
           style: {
@@ -45,7 +46,7 @@ const v = e.memo(({ height: i = 8 }) => {
             left: 0,
             height: "100%",
             width: "50%",
-            backgroundImage: `linear-gradient(45deg, ${m(s, 0.15)} 0%, ${x(s, 0.1)} 90%)`,
+            backgroundImage: `linear-gradient(45deg, ${m(s, 0.15)} 0%, ${b(s, 0.1)} 90%)`,
             borderRadius: i / 2
           }
         }
@@ -53,7 +54,7 @@ const v = e.memo(({ height: i = 8 }) => {
     }
   );
 });
-v.displayName = "Progress.LoadingBar";
+y.displayName = "Progress.LoadingBar";
 export {
-  v as default
+  y as default
 };

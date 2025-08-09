@@ -36,7 +36,7 @@ const Chip = React.memo<ChipProps>(
         }}
       >
         {closeIcon && <Icon icon={closeIcon} onClick={onClose} style={{ color: "inherit", cursor: "pointer" }} />}
-        <Typography.Text as="small" text={text} style={{ color: "inherit" }} />
+        <Typography.Text as="small" text={text} isEllipsis style={{ color: "inherit" }} />
       </Space.Flex>
     );
   },

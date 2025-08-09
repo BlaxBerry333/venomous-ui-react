@@ -1,16 +1,16 @@
-import { MediaFileTypeMap as n } from "./index.types.esm.js";
+import { MediaFileTypeMap as c } from "./index.types.esm.js";
 import { ThemeColor as e } from "../../utils/design/ThemeColor.esm.js";
-function o(a) {
-  const r = Object.entries(n).find(([, s]) => s === a);
-  if (!r)
-    throw new Error(`Unsupported mime type: ${a}`);
-  return r[0];
+function o(r) {
+  const a = Object.entries(c).find(([, s]) => s === r);
+  if (!a)
+    throw new Error(`Unsupported mime type: ${r}`);
+  return a[0];
 }
-function i(a) {
-  return n[a];
+function i(r) {
+  return c[r];
 }
-function p(a) {
-  switch (a) {
+function p(r) {
+  switch (r) {
     case ".jpg":
     case ".jpeg":
     case ".png":
@@ -21,7 +21,7 @@ function p(a) {
     case ".svg":
     case ".js":
     case ".json":
-      return e.GoldenLanceHead;
+      return e.TopazMamushi;
     // 金色
     case ".pdf":
       return e.GarnetViper;
@@ -48,7 +48,7 @@ function p(a) {
     // 绿色
     case ".txt":
     default:
-      return e.ObsidianBlackMamba;
+      return "#5c5c5c";
   }
 }
 export {

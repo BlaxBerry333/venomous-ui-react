@@ -1,9 +1,11 @@
 import o from "./CardsBook.esm.js";
 import r from "./CardsProduct.esm.js";
-const m = {
+import t from "./CardsTitleBlock.esm.js";
+const i = {
   Book: o,
-  Product: r
+  Product: r,
+  TitleBlock: t
 };
 export {
-  m as Cards
+  i as Cards
 };
