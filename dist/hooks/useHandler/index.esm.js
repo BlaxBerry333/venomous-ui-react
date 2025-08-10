@@ -1,14 +1,14 @@
 import s from "react";
-function u() {
-  const [t, e] = s.useState(!1), a = s.useCallback(() => e(!0), []), l = s.useCallback(() => e(!1), []), n = s.useCallback(() => e((o) => !o), []);
+function r(t = !1) {
+  const [a, e] = s.useState(t), l = s.useCallback(() => e(!0), []), n = s.useCallback(() => e(!1), []), o = s.useCallback(() => e((c) => !c), []);
   return {
-    isOpen: t,
+    isOpen: a,
     setIsOpen: e,
-    open: a,
-    close: l,
-    toggle: n
+    open: l,
+    close: n,
+    toggle: o
   };
 }
 export {
-  u as default
+  r as default
 };

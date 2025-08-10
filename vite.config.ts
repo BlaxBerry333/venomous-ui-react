@@ -41,82 +41,19 @@ export default defineConfig({
         "clsx",
       ],
       output: [
-        // dist/[name]/[name].esm.js
         {
           format: "es",
           preserveModules: true,
           preserveModulesRoot: "src",
           dir: "dist",
           entryFileNames: "[name].esm.js",
-          chunkFileNames: (chunkInfo) => {
-            const name = chunkInfo.name || "chunk";
-            if (name.includes("__")) return "internal/[name].esm.js";
-            return "[name].esm.js";
-          },
         },
-        // dist/[name]/[name].js
         {
           format: "cjs",
           preserveModules: true,
           preserveModulesRoot: "src",
           dir: "dist",
           entryFileNames: "[name].js",
-          chunkFileNames: (chunkInfo) => {
-            const name = chunkInfo.name || "chunk";
-            if (name.includes("__")) return "internal/[name].js";
-            return "[name].js";
-          },
-          exports: "named",
-        },
-        // dist/components/index.esm.js
-        {
-          format: "es",
-          preserveModules: false,
-          dir: "dist/components",
-          entryFileNames: "index.esm.js",
-          chunkFileNames: "index.chunk.js",
-        },
-        // dist/components/index.js
-        {
-          format: "cjs",
-          preserveModules: false,
-          dir: "dist/components",
-          entryFileNames: "index.js",
-          chunkFileNames: "index.chunk.js",
-          exports: "named",
-        },
-        // dist/hooks/index.esm.js
-        {
-          format: "es",
-          preserveModules: false,
-          dir: "dist/hooks",
-          entryFileNames: "index.esm.js",
-          chunkFileNames: "index.chunk.js",
-        },
-        // dist/hooks/index.js
-        {
-          format: "cjs",
-          preserveModules: false,
-          dir: "dist/hooks",
-          entryFileNames: "index.js",
-          chunkFileNames: "index.chunk.js",
-          exports: "named",
-        },
-        // dist/utils/index.esm.js
-        {
-          format: "es",
-          preserveModules: false,
-          dir: "dist/utils",
-          entryFileNames: "index.esm.js",
-          chunkFileNames: "index.chunk.js",
-        },
-        // dist/utils/index.js
-        {
-          format: "cjs",
-          preserveModules: false,
-          dir: "dist/utils",
-          entryFileNames: "index.js",
-          chunkFileNames: "index.chunk.js",
           exports: "named",
         },
       ],

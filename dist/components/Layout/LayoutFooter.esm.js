@@ -9,6 +9,7 @@ const f = i.memo(({ children: o, className: t, style: e, ...r }) => {
     {
       className: s("Venomous-UI-React--Layout.Footer", t),
       style: {
+        boxSizing: "border-box",
         height: `${m}px`,
         width: "100%",
         ...e

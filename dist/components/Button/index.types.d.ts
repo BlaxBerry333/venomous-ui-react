@@ -4,6 +4,7 @@ export declare const ButtonVariantMap: {
     readonly contained: "contained";
     readonly outlined: "outlined";
     readonly ghost: "ghost";
+    readonly transparent: "transparent";
 };
 export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "children" | "color"> {
     text: string;

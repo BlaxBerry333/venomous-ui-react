@@ -1,9 +1,11 @@
+import e from "./MenuCollapseItem.esm.js";
 import t from "./MenuItem.esm.js";
-import e from "./MenuList.esm.js";
-const r = {
-  List: e,
-  Item: t
+import m from "./MenuList.esm.js";
+const i = {
+  List: m,
+  Item: t,
+  CollapseItem: e
 };
 export {
-  r as Menu
+  i as Menu
 };

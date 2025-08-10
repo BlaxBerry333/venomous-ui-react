@@ -13,6 +13,14 @@ export interface LayoutHeaderProps extends React.HTMLAttributes<HTMLElement> {
 export interface LayoutSideProps extends React.HTMLAttributes<HTMLElement> {
     children: React.ReactNode;
 }
+export interface LayoutCollapseSideProps extends Omit<LayoutSideProps, "children"> {
+    collapsedSideWidth: number;
+    renderContent: (params: {
+        isCollapsed: boolean;
+        className: string;
+        baseStyles: React.CSSProperties;
+    }) => React.ReactNode;
+}
 export interface LayoutContentProps extends React.HTMLAttributes<HTMLElement> {
     children: React.ReactNode;
 }

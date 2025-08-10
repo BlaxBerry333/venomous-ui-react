@@ -26,8 +26,8 @@ function M(t, n, e) {
   return t >= 0 && t < 60 ? [i, a, c] = [o, s, 0] : t < 120 ? [i, a, c] = [s, o, 0] : t < 180 ? [i, a, c] = [0, o, s] : t < 240 ? [i, a, c] = [0, s, o] : t < 300 ? [i, a, c] = [s, 0, o] : [i, a, c] = [o, 0, s], x(Math.round((i + r) * 255), Math.round((a + r) * 255), Math.round((c + r) * 255));
 }
 function $(t, n) {
-  const { h: e, s: o, l: s } = b(t);
-  return M(e, o, Math.max(0, s - n));
+  const { h: e, s: o, l: s } = b(t), r = Math.max(0, s - n);
+  return M(e, o, r);
 }
 function H(t, n) {
   const { h: e, s: o, l: s } = b(t);

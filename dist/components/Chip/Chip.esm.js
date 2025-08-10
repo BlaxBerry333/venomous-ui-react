@@ -5,30 +5,31 @@ import { Space as h } from "../Space/index.esm.js";
 import { Theme as f } from "../Theme/index.esm.js";
 import { Typography as x } from "../Typography/index.esm.js";
 import u from "../Icon/Icon.esm.js";
-import { TextColors as y, BackgroundColors as C, BorderColors as g } from "../../utils/design/colors.esm.js";
+import { TextColors as y, BackgroundColors as g, BorderColors as C } from "../../utils/design/colors.esm.js";
 import { Shadows as k } from "../../utils/design/Shadow.esm.js";
 import { ThemeMode as r } from "../../utils/design/ThemeMode.esm.js";
-const w = c.memo(
-  ({ text: i, isDisabled: m, className: a, style: s, closeIcon: e, closeIconPosition: l = "end", onClose: p }) => {
+const b = c.memo(
+  ({ text: i, isDisabled: a, className: m, style: s, closeIcon: e, closeIconPosition: l = "end", onClose: p }) => {
     const { themeMode: o } = f.useThemeMode();
     return /* @__PURE__ */ d(
       h.Flex,
       {
         row: !0,
         gap: 4,
-        className: n("Venomous-UI-React--Chip", a),
+        className: n("Venomous-UI-React--Chip", m),
         style: {
+          WebkitTapHighlightColor: "transparent",
           width: "max-content",
           alignItems: "center",
           flexDirection: l === "start" ? "row" : "row-reverse",
-          cursor: m ? "not-allowed" : "default",
+          cursor: a ? "not-allowed" : "default",
           borderRadius: "12px",
           padding: "2px 8px",
           borderWidth: 1.5,
           borderStyle: "solid",
-          borderColor: g[o].primary,
+          borderColor: C[o].primary,
           boxShadow: k[o].tertiary,
-          backgroundColor: C[o === r.Dark ? r.Light : r.Dark].secondary,
+          backgroundColor: g[o === r.Dark ? r.Light : r.Dark].secondary,
           color: y[o === r.Dark ? r.Light : r.Dark].primary,
           ...s
         },
@@ -40,7 +41,7 @@ const w = c.memo(
     );
   }
 );
-w.displayName = "Chip";
+b.displayName = "Chip";
 export {
-  w as default
+  b as default
 };

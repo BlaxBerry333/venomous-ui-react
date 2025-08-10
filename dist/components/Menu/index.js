@@ -1,1 +1,1 @@
-"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const e=require("./MenuItem.js"),t=require("./MenuList.js"),u={List:t.default,Item:e.default};exports.Menu=u;
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const e=require("./MenuCollapseItem.js"),t=require("./MenuItem.js"),u=require("./MenuList.js"),n={List:u.default,Item:t.default,CollapseItem:e.default};exports.Menu=n;

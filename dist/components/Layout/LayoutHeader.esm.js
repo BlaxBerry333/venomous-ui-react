@@ -1,22 +1,23 @@
-import { jsx as m } from "react/jsx-runtime";
-import s from "clsx";
-import i from "react";
+import { jsx as i } from "react/jsx-runtime";
+import m from "clsx";
+import s from "react";
 import { useLayoutContext as d } from "./context/hooks.esm.js";
-const p = i.memo(({ children: e, className: t, style: o, ...a }) => {
-  const { headerHeight: r } = d();
-  return /* @__PURE__ */ m(
+const p = s.memo(({ children: e, className: o, style: t, ...r }) => {
+  const { headerHeight: a } = d();
+  return /* @__PURE__ */ i(
     "header",
     {
-      className: s("Venomous-UI-React--Layout.Header", t),
+      className: m("Venomous-UI-React--Layout.Header", o),
       style: {
-        height: `${r}px`,
+        boxSizing: "border-box",
+        height: `${a}px`,
         width: "100%",
         position: "sticky",
         top: 0,
         zIndex: 1,
-        ...o
+        ...t
       },
-      ...a,
+      ...r,
       children: e
     }
   );

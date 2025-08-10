@@ -18,7 +18,7 @@ const p = i.memo(({ height: r = 4 }) => {
         right: 0,
         originX: 0,
         zIndex: 1e4,
-        backgroundImage: `linear-gradient(45deg, ${c(o, 0.15)} 0%, ${g(o, 0.2)} 90%)`,
+        backgroundImage: `linear-gradient(45deg, ${c(o, 0.15)} 0%, ${g(o, 0.1)} 90%)`,
         height: r,
         borderTopRightRadius: "16px",
         borderBottomRightRadius: "16px"

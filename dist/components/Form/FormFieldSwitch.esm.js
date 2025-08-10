@@ -21,8 +21,8 @@ const l = 48, c = 24, r = 18, a = 4, H = W.memo(
     checked: u = !1,
     onChange: k,
     label: y,
-    labelPosition: b = "right",
-    ...C
+    labelPosition: C = "right",
+    ...b
   }) => {
     const { inputRef: w, isChecked: o, toggleOriginalIsChecked: x, toggleCustomIsChecked: F } = T({
       checked: u,
@@ -32,7 +32,7 @@ const l = 48, c = 24, r = 18, a = 4, H = W.memo(
       isDisabled: e,
       isError: t
     });
-    return /* @__PURE__ */ I(N, { label: y, required: p, isError: t, position: b, children: [
+    return /* @__PURE__ */ I(N, { label: y, required: p, isError: t, position: C, children: [
       /* @__PURE__ */ i(
         "input",
         {
@@ -45,7 +45,7 @@ const l = 48, c = 24, r = 18, a = 4, H = W.memo(
           autoComplete: h,
           disabled: e,
           style: { display: "none" },
-          ...C
+          ...b
         }
       ),
       /* @__PURE__ */ i(
@@ -76,7 +76,6 @@ const l = 48, c = 24, r = 18, a = 4, H = W.memo(
                 borderStyle: n.borderStyle,
                 borderColor: v,
                 backgroundColor: o ? R : S,
-                transition: "background-color 0.2s ease-in-out",
                 ...m
               },
               children: /* @__PURE__ */ i(

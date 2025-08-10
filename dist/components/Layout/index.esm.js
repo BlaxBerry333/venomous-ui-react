@@ -1,15 +1,17 @@
-import o from "./LayoutContent.esm.js";
-import r from "./LayoutFooter.esm.js";
-import t from "./LayoutHeader.esm.js";
-import e from "./LayoutProvider.esm.js";
+import o from "./LayoutCollapseSide.esm.js";
+import r from "./LayoutContent.esm.js";
+import t from "./LayoutFooter.esm.js";
+import e from "./LayoutHeader.esm.js";
+import i from "./LayoutProvider.esm.js";
 import m from "./LayoutSide.esm.js";
-const y = {
-  Provider: e,
-  Header: t,
+const f = {
+  Provider: i,
+  Header: e,
   Side: m,
-  Content: o,
-  Footer: r
+  CollapseSide: o,
+  Content: r,
+  Footer: t
 };
 export {
-  y as Layout
+  f as Layout
 };

@@ -3,6 +3,7 @@ export declare const Layout: {
     readonly Provider: import("react").NamedExoticComponent<import("./index.types").LayoutProviderProps>;
     readonly Header: import("react").NamedExoticComponent<import("./index.types").LayoutHeaderProps>;
     readonly Side: import("react").NamedExoticComponent<import("./index.types").LayoutSideProps>;
+    readonly CollapseSide: import("react").NamedExoticComponent<import("./index.types").LayoutCollapseSideProps>;
     readonly Content: import("react").NamedExoticComponent<import("./index.types").LayoutContentProps>;
     readonly Footer: import("react").NamedExoticComponent<import("./index.types").LayoutFooterProps>;
 };

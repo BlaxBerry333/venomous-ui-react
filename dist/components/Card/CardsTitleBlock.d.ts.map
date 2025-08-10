@@ -1,1 +1,1 @@
-{"version":3,"file":"CardsTitleBlock.d.ts","sourceRoot":"","sources":["../../../src/components/Card/CardsTitleBlock.tsx"],"names":[],"mappings":"AAEA,OAAO,KAAK,MAAM,OAAO,CAAC;AAK1B,OAAO,EAAc,KAAK,oBAAoB,EAAE,MAAM,eAAe,CAAC;AAEtE,QAAA,MAAM,eAAe,kDAiCnB,CAAC;AAGH,eAAe,eAAe,CAAC"}
+{"version":3,"file":"CardsTitleBlock.d.ts","sourceRoot":"","sources":["../../../src/components/Card/CardsTitleBlock.tsx"],"names":[],"mappings":"AAEA,OAAO,KAAK,MAAM,OAAO,CAAC;AAK1B,OAAO,EAAc,KAAK,oBAAoB,EAAE,MAAM,eAAe,CAAC;AAEtE,QAAA,MAAM,eAAe,kDAoCpB,CAAC;AAGF,eAAe,eAAe,CAAC"}

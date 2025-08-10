@@ -1,1 +1,1 @@
-"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const r=require("./ProgressLoadingBar.js"),e=require("./ProgressScrollbar.js"),o={Scrollbar:e.default,LoadingBar:r.default};exports.Progress=o;
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const r=require("./ProgressLoadingBar.js"),e=require("./ProgressPageLoading.js"),o=require("./ProgressScrollbar.js"),s={Scrollbar:o.default,LoadingBar:r.default,PageLoading:e.default};exports.Progress=s;

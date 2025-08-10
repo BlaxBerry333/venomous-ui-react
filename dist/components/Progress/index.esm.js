@@ -1,9 +1,11 @@
 import r from "./ProgressLoadingBar.esm.js";
-import o from "./ProgressScrollbar.esm.js";
-const g = {
-  Scrollbar: o,
-  LoadingBar: r
+import o from "./ProgressPageLoading.esm.js";
+import a from "./ProgressScrollbar.esm.js";
+const i = {
+  Scrollbar: a,
+  LoadingBar: r,
+  PageLoading: o
 };
 export {
-  g as Progress
+  i as Progress
 };

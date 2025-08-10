@@ -5,5 +5,5 @@ export type Handler = {
     close: () => void;
     toggle: () => void;
 };
-export default function useHandler(): Handler;
+export default function useHandler(defaultValue?: Handler["isOpen"]): Handler;
 //# sourceMappingURL=index.d.ts.map
