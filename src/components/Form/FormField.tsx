@@ -94,14 +94,15 @@ const FormField = React.memo<FormFieldProps>(
                 alignItems: "center",
                 fontSize: TypographySize.small,
                 color: helperTextColor,
+                paddingLeft: "4px",
               }}
             >
               {isError && (
                 <Icon
                   icon="solar:danger-triangle-outline"
-                  width={16}
+                  width={14}
                   semanticColor="error"
-                  style={{ margin: "0px 4px" }}
+                  style={{ marginRight: "4px" }}
                 />
               )}
               {helpText}

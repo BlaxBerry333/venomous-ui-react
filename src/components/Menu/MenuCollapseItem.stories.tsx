@@ -37,6 +37,11 @@ const meta = {
       control: { type: "boolean" },
       table: { type: { summary: "boolean" }, defaultValue: { summary: "false" } },
     },
+    isCollapsed: {
+      description: "Whether the menu item is collapsed",
+      control: { type: "boolean" },
+      table: { type: { summary: "boolean" }, defaultValue: { summary: "false" } },
+    },
     subItems: {
       description: "The sub items of the menu item",
       control: false,
@@ -50,6 +55,7 @@ const meta = {
     subText: "yyyyyyy",
     icon: undefined,
     isDisabled: false,
+    isCollapsed: false,
     subItems: [],
   },
 } satisfies Meta<typeof Menu.CollapseItem>;

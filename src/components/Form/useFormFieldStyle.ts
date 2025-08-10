@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import { BackgroundColors, BorderColors, TextColors, ThemeColor } from "@/utils";
+import { BackgroundColors, BorderColors, TextColors, ThemeColor, TypographySize } from "@/utils";
 import { Theme } from "../Theme";
 
 export function useFormFieldStyle({
@@ -54,6 +54,7 @@ export function useFormFieldStyle({
       minWidth: fullWidth ? "100%" : 200,
       minHeight: 40,
       padding: "8px",
+      fontSize: TypographySize.text,
       backgroundColor,
       color: textColor,
       borderRadius: "8px",

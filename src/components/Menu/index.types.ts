@@ -32,5 +32,6 @@ export interface MenuItemProps extends Omit<React.HTMLAttributes<HTMLLIElement>,
 }
 
 export interface MenuCollapseItemProps extends Omit<MenuItemProps, "isActive" | "actionButton"> {
+  isCollapsed?: boolean;
   subItems: MenuItemProps[];
 }

@@ -8,19 +8,26 @@ import { BorderColors } from "@/utils";
 import { Space } from "../Space";
 import { Theme } from "../Theme";
 import { Transitions } from "../Transition";
-import { MenuItemTagMap, type MenuCollapseItemProps, type MenuItemProps } from "./index.types";
+import { MenuItemTagMap, type MenuCollapseItemProps } from "./index.types";
 import MenuItem from "./MenuItem";
 import MenuList from "./MenuList";
 
 const MenuCollapseItem = React.memo<MenuCollapseItemProps>(
-  ({ as: Tag = MenuItemTagMap.li, className, style, icon, text, subText, isDisabled = false, subItems, ...props }) => {
-    const subItemsWithID = React.useMemo<Array<MenuItemProps & { id: string }>>(() => {
-      return subItems.map((item) => ({ ...item, id: crypto.randomUUID() }));
-    }, [subItems]);
-
+  ({
+    as: Tag = MenuItemTagMap.li,
+    className,
+    style,
+    icon,
+    text,
+    subText,
+    isDisabled = false,
+    isCollapsed = false,
+    subItems,
+    ...props
+  }) => {
     const [selectedSubItemID, setSelectedSubItemID] = React.useState<string | null>(null);
 
-    const handler = useHandler();
+    const handler = useHandler(isCollapsed);
     const toggle = React.useCallback(() => {
       if (isDisabled) {
         return;
@@ -38,6 +45,10 @@ const MenuCollapseItem = React.memo<MenuCollapseItemProps>(
         handler.open();
       }
     }, []);
+
+    React.useEffect(() => {
+      handler.setIsOpen(isCollapsed);
+    }, [isCollapsed]);
 
     return (
       <>
@@ -59,13 +70,13 @@ const MenuCollapseItem = React.memo<MenuCollapseItemProps>(
         />
         <Transitions.Collapse isOpen={handler.isOpen}>
           <MenuList style={{ width: style?.width, paddingLeft: 24 }}>
-            {subItemsWithID.map(({ id, style: subItemStyle, onClick: subItemOnClick, ...item }) => (
-              <Space.Flex key={id} row gap={0} style={{ width: "100%" }}>
+            {subItems.map(({ style: subItemStyle, onClick: subItemOnClick, ...item }) => (
+              <Space.Flex key={item.text} row gap={0} style={{ width: "100%" }}>
                 <MenuCollapseItemTreeLine />
                 <MenuItem
-                  isActive={selectedSubItemID === id}
+                  isActive={selectedSubItemID === item.text}
                   onClick={(e) => {
-                    setSelectedSubItemID(id);
+                    setSelectedSubItemID(item.text);
                     subItemOnClick?.(e);
                   }}
                   style={{
@@ -76,7 +87,6 @@ const MenuCollapseItem = React.memo<MenuCollapseItemProps>(
                     ...subItemStyle,
                   }}
                   {...item}
-                  subText={id}
                 />
               </Space.Flex>
             ))}
