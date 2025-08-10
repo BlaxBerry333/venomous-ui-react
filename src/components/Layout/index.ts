@@ -1,8 +1,9 @@
-import LayoutContent from "./LayoutContent";
-import LayoutFooter from "./LayoutFooter";
-import LayoutHeader from "./LayoutHeader";
-import LayoutProvider from "./LayoutProvider";
-import LayoutSide from "./LayoutSide";
+import CollapseSide from "./LayoutCollapseSide";
+import Content from "./LayoutContent";
+import Footer from "./LayoutFooter";
+import Header from "./LayoutHeader";
+import Provider from "./LayoutProvider";
+import Side from "./LayoutSide";
 
 export type {
   LayoutContentProps,
@@ -13,9 +14,10 @@ export type {
 } from "./index.types";
 
 export const Layout = {
-  Provider: LayoutProvider,
-  Header: LayoutHeader,
-  Side: LayoutSide,
-  Content: LayoutContent,
-  Footer: LayoutFooter,
+  Provider,
+  Header,
+  Side,
+  CollapseSide,
+  Content,
+  Footer,
 } as const;

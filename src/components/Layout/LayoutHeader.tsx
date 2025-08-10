@@ -13,6 +13,7 @@ const LayoutHeader = React.memo<LayoutHeaderProps>(({ children, className, style
     <header
       className={clsx("Venomous-UI-React--Layout.Header", className)}
       style={{
+        boxSizing: "border-box",
         height: `${headerHeight}px`,
         width: "100%",
         position: "sticky",

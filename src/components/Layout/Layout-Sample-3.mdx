@@ -1,0 +1,40 @@
+import { Meta, Canvas, Controls } from "@storybook/blocks";
+import * as Stories from "./Layout-Sample-3.stories";
+
+<Meta of={Stories} />
+
+# Layout Sample 3
+
+This example can be used to implement the layout of the **Mobile Web App**.
+
+<Canvas
+  of={Stories.Sample}
+  sourceState="hidden"
+  source={{
+    code: [
+      'import { Layout } from "venomous-ui-react/components";',
+      "",
+      "function App() {",
+      "  return (",
+      "    <Layout.Provider",
+      '      maxBreakpoint="sm"',
+      "      headerHeight={60}",
+      "      footerHeight={80}",
+      "    >",
+      "      <Layout.Header>",
+      '        <div style={{ height: "100%", backgroundColor: "skyblue" }} />',
+      "      </Layout.Header>",
+      "",
+      "      <Layout.Content>",
+      '        <div style={{ height: "200vh", backgroundColor: "pink" }} />',
+      "      </Layout.Content>",
+      "",
+      "      <Layout.Footer>",
+      '        <div style={{ height: "100%", backgroundColor: "orange" }} />',
+      "      </Layout.Footer>",
+      "    </Layout.Provider>",
+      "  );",
+      "}",
+    ].join("\n"),
+  }}
+/>

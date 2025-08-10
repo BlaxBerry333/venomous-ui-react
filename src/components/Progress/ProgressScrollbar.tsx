@@ -23,7 +23,7 @@ const ProgressScrollbar = React.memo<ProgressScrollbarProps>(({ height = 4 }) =>
         right: 0,
         originX: 0,
         zIndex: 10000,
-        backgroundImage: `linear-gradient(45deg, ${getOpacityHex(themeColor, 0.15)} 0%, ${getLighterHex(themeColor, 0.2)} 90%)`,
+        backgroundImage: `linear-gradient(45deg, ${getOpacityHex(themeColor, 0.15)} 0%, ${getLighterHex(themeColor, 0.1)} 90%)`,
         height: height,
         borderTopRightRadius: "16px",
         borderBottomRightRadius: "16px",

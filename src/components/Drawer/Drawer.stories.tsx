@@ -17,8 +17,8 @@ const meta = {
       control: false,
       table: { type: { summary: "React.ReactNode" } },
     },
-    position: {
-      description: "The position of the drawer",
+    direction: {
+      description: "The direction of the drawer",
       control: { type: "select" },
       options: ["left", "right", "top", "bottom"],
       table: { type: { summary: `"left"|"right"|"top"|"bottom"` }, defaultValue: { summary: '"left"' } },
@@ -53,7 +53,7 @@ const meta = {
   },
   args: {
     children: null,
-    position: "left",
+    direction: "left",
     isOpen: false,
     onClose: () => {},
     maskClosable: true,

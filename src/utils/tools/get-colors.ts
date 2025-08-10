@@ -101,7 +101,8 @@ export function hslToHex(h: number, s: number, l: number): string {
  */
 export function getDarkerHex(hex: string, percent: number): string {
   const { h, s, l } = hexToHsl(hex);
-  return hslToHex(h, s, Math.max(0, l - percent));
+  const darkerL = Math.max(0, l - percent); // 不会低于 0
+  return hslToHex(h, s, darkerL);
 }
 
 /**

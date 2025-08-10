@@ -32,7 +32,7 @@ export interface CardsProductProps extends React.PropsWithChildren {
   renderMenu: () => React.ReactNode;
 }
 
-export interface CardsTitleBlockProps extends React.PropsWithChildren {
+export interface CardsTitleBlockProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
   style?: React.CSSProperties;
   title: string;

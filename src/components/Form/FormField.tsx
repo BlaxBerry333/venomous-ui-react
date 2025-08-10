@@ -3,7 +3,8 @@
 import clsx from "clsx";
 import React from "react";
 
-import { TextColors, ThemeColor } from "@/utils";
+import { TextColors, ThemeColor, TypographySize } from "@/utils";
+import { Icon } from "../Icon";
 import { Space } from "../Space";
 import { Theme } from "../Theme";
 import { Typography } from "../Typography";
@@ -87,14 +88,24 @@ const FormField = React.memo<FormFieldProps>(
 
           {/* help text */}
           {helpText && (
-            <Typography.Text
-              as="small"
-              text={helpText}
+            <Typography.Paragraph
               style={{
+                display: "flex",
+                alignItems: "center",
+                fontSize: TypographySize.small,
                 color: helperTextColor,
-                paddingLeft: "4px",
               }}
-            />
+            >
+              {isError && (
+                <Icon
+                  icon="solar:danger-triangle-outline"
+                  width={16}
+                  semanticColor="error"
+                  style={{ margin: "0px 4px" }}
+                />
+              )}
+              {helpText}
+            </Typography.Paragraph>
           )}
         </Space.Flex>
       </fieldset>

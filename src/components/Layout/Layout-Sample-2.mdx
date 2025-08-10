@@ -1,0 +1,57 @@
+import { Meta, Canvas, Controls } from "@storybook/blocks";
+import * as Stories from "./Layout-Sample-2.stories";
+
+<Meta of={Stories} />
+
+# Layout Sample 2
+
+This example can be used to implement the layout of the **toB Admin Dashboard** with collapse side bar.
+
+<Canvas
+  of={Stories.Sample}
+  sourceState="hidden"
+  source={{
+    code: [
+      'import { Buttons, Layout, Space } from "venomous-ui-react/components";',
+      "",
+      "function App() {",
+      "  return (",
+      "    <Layout.Provider",
+      '      maxBreakpoint="xl"',
+      "      headerHeight={60}",
+      "      footerHeight={80}",
+      "      sideWidth={300}",
+      "    >",
+      "      <Layout.Header>",
+      '        <div style={{ height: "100%", backgroundColor: "skyblue" }} />',
+      "      </Layout.Header>",
+      "",
+      "      <Space.Flex row gap={0}>", 
+      '        <Layout.CollapseSide',
+      '          collapsedSideWidth={56}',
+      '          renderContent={(params) => (',
+      '            <Menu.List',
+      '              className={params.className}',
+      '              style={{ ...params.baseStyles, width: "100%", height: "100%", padding: "8px" }}',
+      '            >',
+      '              <Menu.Item icon="solar:basketball-bold-duotone" text="Item 1" />',
+      '              <Menu.Item icon="solar:basketball-bold-duotone" text="Item 2" subText="Item 2 sub text" />',
+      '              <Menu.Item icon="solar:basketball-bold-duotone" text="Item 3" />',
+      '              <div style={{ height: "100vh", backgroundColor: "crimson" }} />',
+      '            </Menu.List>',
+      '          )}',
+      '        />',
+      "",
+      "        <Space.Flex column gap={0}>",
+      '          <Layout.Content style={{ position: "relative" }}>',
+      '            <div style={{ height: "200vh", backgroundColor: "pink" }} />',
+      "          </Layout.Content>",
+      "        </Space.Flex>",
+      "      </Space.Flex>",
+      "    </Layout.Provider>",
+      "  );",
+      "}",
+    ].join("\n"),
+
+}}
+/>

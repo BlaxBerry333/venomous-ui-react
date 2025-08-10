@@ -83,7 +83,6 @@ const FormFieldSwitch = React.memo<FormFieldCheckboxProps>(
                 borderStyle: commonStyles.borderStyle,
                 borderColor,
                 backgroundColor: isChecked ? outlineColor : backgroundColor,
-                transition: "background-color 0.2s ease-in-out",
                 ...style,
               }}
             >

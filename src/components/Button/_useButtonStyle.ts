@@ -23,73 +23,65 @@ export function useButtonStyle({
   const { themeMode } = Theme.useThemeMode();
 
   const backgroundColor = React.useMemo<React.CSSProperties["backgroundColor"]>(() => {
-    let color = "";
     if (isLoading || isDisabled) {
-      color = BackgroundColors[themeMode].secondary;
-      return color;
+      if (variant === ButtonVariantMap.ghost || variant === ButtonVariantMap.transparent) {
+        return "transparent";
+      }
+      return BackgroundColors[themeMode].secondary;
     }
     switch (variant) {
       case ButtonVariantMap.contained:
-        color = semanticColor ? SemanticColors[semanticColor] : themeColor;
-        break;
+        return semanticColor ? SemanticColors[semanticColor] : themeColor;
+
       case ButtonVariantMap.outlined:
-        color = BackgroundColors[themeMode].secondary;
-        break;
+        return BackgroundColors[themeMode].secondary;
+
       case ButtonVariantMap.ghost:
+      case ButtonVariantMap.transparent:
       default:
-        color = "transparent";
-        break;
+        return "transparent";
     }
-    return color;
   }, [variant, themeColor, themeMode, isLoading, isDisabled, semanticColor]);
 
   const borderColor = React.useMemo<React.CSSProperties["borderColor"]>(() => {
-    let color = "";
     if (isLoading || isDisabled) {
-      color = BorderColors[themeMode].secondary;
-      return color;
+      if (variant === ButtonVariantMap.transparent) {
+        return "transparent";
+      }
+      return BorderColors[themeMode].tertiary;
     }
     switch (variant) {
       case ButtonVariantMap.contained:
-        color = semanticColor ? getLighterHex(SemanticColors[semanticColor], 0.25) : getOpacityHex(themeColor, 0.5);
-        break;
+        return semanticColor ? getLighterHex(SemanticColors[semanticColor], 0.25) : getOpacityHex(themeColor, 0.5);
       case ButtonVariantMap.outlined:
-        color = semanticColor ? SemanticColors[semanticColor] : themeColor;
-        break;
+        return semanticColor ? SemanticColors[semanticColor] : themeColor;
       case ButtonVariantMap.ghost:
-        color = BorderColors[themeMode].secondary;
-        break;
+        return BorderColors[themeMode].secondary;
+      case ButtonVariantMap.transparent:
       default:
-        color = "transparent";
-        break;
+        return "transparent";
     }
-    return color;
   }, [variant, themeColor, themeMode, isLoading, isDisabled, semanticColor]);
 
   const textColor = React.useMemo<React.CSSProperties["color"]>(() => {
-    let color = "";
     if (isLoading || isDisabled) {
-      color = TextColors[themeMode].disabled;
-      return color;
+      return TextColors[themeMode].disabled;
     }
     switch (variant) {
       case ButtonVariantMap.contained:
-        color = "#ffffff";
-        break;
+        return "#ffffff";
       case ButtonVariantMap.outlined:
-        color = semanticColor ? SemanticColors[semanticColor] : themeColor;
-        break;
+        return semanticColor ? SemanticColors[semanticColor] : themeColor;
       case ButtonVariantMap.ghost:
       default:
-        color = TextColors[themeMode].primary;
-        break;
+        return TextColors[themeMode].primary;
     }
-    return color;
   }, [variant, themeColor, themeMode, isLoading, isDisabled, semanticColor]);
 
   const boxShadow = React.useMemo<React.CSSProperties["boxShadow"]>(() => {
     switch (variant) {
       case ButtonVariantMap.ghost:
+      case ButtonVariantMap.transparent:
         return "none";
       case ButtonVariantMap.contained:
       case ButtonVariantMap.outlined:

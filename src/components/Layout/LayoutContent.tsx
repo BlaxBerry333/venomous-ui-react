@@ -10,6 +10,7 @@ const LayoutContent = React.memo<LayoutContentProps>(({ children, className, sty
     <main
       className={clsx("Venomous-UI-React--Layout.Content", className)}
       style={{
+        boxSizing: "border-box",
         width: "100%",
         flexGrow: 1,
         ...style,

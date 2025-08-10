@@ -23,10 +23,17 @@ const meta = {
       type: { name: "string", required: true },
       table: { defaultValue: { summary: "false" } },
     },
+    direction: {
+      description: "The direction of the drawer",
+      control: { type: "select" },
+      options: ["left", "right", "up", "down"],
+      table: { type: { summary: `"left"|"right"|"up"|"down"` }, defaultValue: { summary: '"down"' } },
+    },
   },
   args: {
     children: null,
     isOpen: false,
+    direction: "down",
   },
 } satisfies Meta<typeof Transitions.Collapse>;
 

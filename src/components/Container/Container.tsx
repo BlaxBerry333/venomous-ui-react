@@ -12,6 +12,7 @@ const Container = React.memo<ContainerProps>(
       <div
         className={clsx("Venomous-UI-React--Container", className)}
         style={{
+          boxSizing: "border-box",
           margin: "0 auto",
           width: "100%",
           maxWidth: ThemeBreakPoint[maxBreakpoint],

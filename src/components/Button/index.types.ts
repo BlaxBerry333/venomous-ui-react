@@ -5,6 +5,7 @@ export const ButtonVariantMap = {
   contained: "contained",
   outlined: "outlined",
   ghost: "ghost",
+  transparent: "transparent",
 } as const;
 
 export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "children" | "color"> {

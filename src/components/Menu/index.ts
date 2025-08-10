@@ -1,9 +1,11 @@
-import MenuItem from "./MenuItem";
-import MenuList from "./MenuList";
+import CollapseItem from "./MenuCollapseItem";
+import Item from "./MenuItem";
+import List from "./MenuList";
 
-export type { MenuItemProps, MenuListProps } from "./index.types";
+export type { MenuCollapseItemProps, MenuItemProps, MenuListProps } from "./index.types";
 
 export const Menu = {
-  List: MenuList,
-  Item: MenuItem,
+  List,
+  Item,
+  CollapseItem,
 };

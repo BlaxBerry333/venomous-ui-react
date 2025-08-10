@@ -10,8 +10,8 @@ export type Handler = {
   toggle: () => void;
 };
 
-export default function useHandler(): Handler {
-  const [isOpen, setIsOpen] = React.useState<boolean>(false);
+export default function useHandler(defaultValue: Handler["isOpen"] = false): Handler {
+  const [isOpen, setIsOpen] = React.useState<boolean>(defaultValue);
 
   const open = React.useCallback(() => setIsOpen(true), []);
 

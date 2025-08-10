@@ -20,6 +20,7 @@ const Chip = React.memo<ChipProps>(
         gap={4}
         className={clsx("Venomous-UI-React--Chip", className)}
         style={{
+          WebkitTapHighlightColor: "transparent",
           width: "max-content",
           alignItems: "center",
           flexDirection: closeIconPosition === "start" ? "row" : "row-reverse",

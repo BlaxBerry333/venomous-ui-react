@@ -29,7 +29,10 @@ const meta = {
       description: "The variant of the button",
       control: { type: "select" },
       options: Object.values(ButtonVariantMap),
-      table: { type: { summary: `"contained"|"outlined"|"ghost"|"flat"` }, defaultValue: { summary: '"contained"' } },
+      table: {
+        type: { summary: `"contained"|"outlined"|"ghost"|"transparent"` },
+        defaultValue: { summary: '"contained"' },
+      },
     },
     semanticColor: {
       description: "The built-in semantic color of the button",

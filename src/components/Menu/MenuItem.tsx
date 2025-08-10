@@ -3,8 +3,7 @@
 import clsx from "clsx";
 import React from "react";
 
-import { useElementHover } from "@/hooks";
-import { Shadows, TextColors } from "@/utils";
+import { getOpacityHex, TextColors } from "@/utils";
 import { Buttons } from "../Button";
 import { Icon } from "../Icon";
 import { Space } from "../Space";
@@ -28,60 +27,65 @@ const MenuItem = React.memo<MenuItemProps>(
     const { themeMode } = Theme.useThemeMode();
     const { themeColor } = Theme.useThemeColor();
 
-    const { isHovering, handleMouseDown, handleMouseUp, handleMouseLeave } = useElementHover<HTMLLIElement>({
-      isDisabled,
-    });
-    const handleMouseOverStyles: React.MouseEventHandler<HTMLLIElement> = React.useCallback(
-      (e) => {
-        if (isDisabled) return;
-        e.currentTarget.style.boxShadow = Shadows[themeMode].tertiary;
-      },
-      [isDisabled],
-    );
-    const handleMouseOutStyles: React.MouseEventHandler<HTMLLIElement> = React.useCallback(
-      (e) => {
-        if (isDisabled) return;
-        e.currentTarget.style.boxShadow = isHovering ? Shadows[themeMode].tertiary : "none";
-      },
-      [isDisabled],
-    );
+    const backgroundColor = React.useMemo<Exclude<React.CSSProperties["backgroundColor"], undefined>>(() => {
+      if (isActive) return getOpacityHex(themeColor, 0.1);
+      return "transparent";
+    }, [isDisabled, isActive, themeColor, themeMode]);
+
+    const textColor = React.useMemo<Exclude<React.CSSProperties["color"], undefined>>(() => {
+      if (isDisabled) return TextColors[themeMode].disabled;
+      if (isActive) return themeColor;
+      return TextColors[themeMode].primary;
+    }, [isDisabled, isActive, themeColor, themeMode]);
+
+    // const { handleMouseDown, handleMouseUp, handleMouseLeave } = useElementHover<HTMLLIElement>({
+    //   isDisabled,
+    // });
+    // const handleMouseOverStyles: React.MouseEventHandler<HTMLLIElement> = React.useCallback(
+    //   (e) => {
+    //     if (isDisabled) return;
+    //     e.currentTarget.style.backgroundColor = isActive
+    //       ? isDarkThemeMode
+    //         ? getDarkerHex(themeColor, 0.4)
+    //         : getLighterHex(themeColor, 0.4)
+    //       : BackgroundColors[themeMode].secondary;
+    //   },
+    //   [isDisabled, isActive, isDarkThemeMode, themeColor, themeMode],
+    // );
+    // const handleMouseOutStyles: React.MouseEventHandler<HTMLLIElement> = React.useCallback(
+    //   (e) => {
+    //     if (isDisabled) return;
+    //     e.currentTarget.style.backgroundColor = backgroundColor;
+    //   },
+    //   [isDisabled, backgroundColor],
+    // );
 
     return (
       <Tag
-        onMouseDown={handleMouseDown}
-        onMouseUp={handleMouseUp}
-        onMouseLeave={handleMouseLeave}
-        onMouseOver={handleMouseOverStyles}
-        onMouseOut={handleMouseOutStyles}
+        // onMouseDown={handleMouseDown}
+        // onMouseUp={handleMouseUp}
+        // onMouseLeave={handleMouseLeave}
+        // onMouseOver={handleMouseOverStyles}
+        // onMouseOut={handleMouseOutStyles}
         className={clsx("Venomous-UI-React--Menu.Item", className)}
         style={{
           boxSizing: "border-box",
           listStyle: "none",
+          WebkitTapHighlightColor: "transparent",
           margin: 0,
           padding: "8px",
           paddingRight: actionButton ? "8px" : "16px",
           borderRadius: "8px",
           cursor: isDisabled ? "not-allowed" : props?.onClick ? "pointer" : "default",
-          transition: "box-shadow 0.2s ease-in-out",
+          backgroundColor,
+          // transition: "box-shadow 0.2s ease-in-out",
           ...style,
         }}
         {...props}
       >
         <Space.Flex row style={{ alignItems: "center" }}>
           {/* start icon */}
-          {icon && (
-            <Icon
-              icon={icon}
-              width={24}
-              style={{
-                color: isDisabled
-                  ? TextColors[themeMode].disabled
-                  : isActive
-                    ? themeColor
-                    : TextColors[themeMode].primary,
-              }}
-            />
-          )}
+          {icon && <Icon icon={icon} width={24} style={{ color: textColor }} />}
 
           {/* text */}
           <Space.Flex
@@ -101,15 +105,13 @@ const MenuItem = React.memo<MenuItemProps>(
             }}
           >
             <Typography.Text
+              as="strong"
               text={text}
               isEllipsis
               style={{
                 width: "100%",
-                color: isDisabled
-                  ? TextColors[themeMode].disabled
-                  : isActive
-                    ? themeColor
-                    : TextColors[themeMode].primary,
+                color: textColor,
+                lineHeight: "1rem",
               }}
             />
             {subText && (
@@ -119,11 +121,7 @@ const MenuItem = React.memo<MenuItemProps>(
                 isEllipsis
                 style={{
                   width: "100%",
-                  color: isDisabled
-                    ? TextColors[themeMode].disabled
-                    : isActive
-                      ? themeColor
-                      : TextColors[themeMode].quaternary,
+                  color: textColor,
                 }}
               />
             )}
@@ -133,9 +131,12 @@ const MenuItem = React.memo<MenuItemProps>(
           {!!actionButton?.icon && (
             <Buttons.Icon
               icon={actionButton.icon}
-              variant="ghost"
+              variant="transparent"
               isDisabled={isDisabled}
               onClick={actionButton.onClick}
+              style={{
+                ...actionButton.style,
+              }}
             />
           )}
         </Space.Flex>

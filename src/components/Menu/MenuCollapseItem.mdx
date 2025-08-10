@@ -1,0 +1,14 @@
+import { Meta, Canvas, Controls } from "@storybook/blocks";
+import * as Stories from "./MenuCollapseItem.stories";
+
+<Meta of={Stories} />
+
+# Menu.CollapseItem
+
+`<Menu.CollapseItem>` will be rendered as a `<Menu.Item>` containing a nested`<Menu.List>`.
+
+Inherits some properties from `MenuItemProps` excluding `isActive` and `actionButton`.
+
+<Canvas of={Stories.Default} />
+
+<Controls />

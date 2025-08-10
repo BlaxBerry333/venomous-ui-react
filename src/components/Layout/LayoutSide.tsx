@@ -13,6 +13,7 @@ const LayoutSide = React.memo<LayoutSideProps>(({ children, className, style, ..
     <aside
       className={clsx("Venomous-UI-React--Layout.Side", className)}
       style={{
+        boxSizing: "border-box",
         height: `calc(100svh - ${headerHeight}px)`,
         width: sideWidth,
         minWidth: sideWidth,

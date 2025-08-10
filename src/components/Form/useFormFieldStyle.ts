@@ -45,7 +45,7 @@ export function useFormFieldStyle({
   const outlineColor = React.useMemo<React.CSSProperties["color"]>(() => {
     if (isError) return ThemeColor.RubyCopperhead;
     else return themeColor;
-  }, [isError, themeMode]);
+  }, [isError, themeColor]);
 
   const commonStyles = React.useMemo(
     () => ({

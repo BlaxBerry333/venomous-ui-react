@@ -13,6 +13,7 @@ const LayoutFooter = React.memo<LayoutFooterProps>(({ children, className, style
     <footer
       className={clsx("Venomous-UI-React--Layout.Footer", className)}
       style={{
+        boxSizing: "border-box",
         height: `${footerHeight}px`,
         width: "100%",
         ...style,
