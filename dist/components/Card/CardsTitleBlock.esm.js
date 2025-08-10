@@ -1,14 +1,14 @@
 import { jsxs as s, jsx as p } from "react/jsx-runtime";
 import l from "react";
 import m from "clsx";
-import d from "./Card.esm.js";
-import { CardTagMap as n } from "./index.types.esm.js";
-import x from "../Chip/Chip.esm.js";
+import d from "../Chip/Chip.esm.js";
+import n from "./Card.esm.js";
+import { CardTagMap as x } from "./index.types.esm.js";
 const c = l.memo(
   ({ children: t, className: e, style: o, title: a, titleStyle: r, ...i }) => /* @__PURE__ */ s(
-    d,
+    n,
     {
-      as: n.article,
+      as: x.article,
       variant: "outlined",
       className: m("Venomous-UI-React--Cards.TitleBlock", e),
       style: {
@@ -22,7 +22,7 @@ const c = l.memo(
       ...i,
       children: [
         /* @__PURE__ */ p(
-          x,
+          d,
           {
             text: a,
             style: {

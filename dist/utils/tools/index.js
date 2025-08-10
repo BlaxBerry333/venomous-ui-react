@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const e=require("./get-colors.js");exports.getDarkerHex=e.getDarkerHex;exports.getLighterHex=e.getLighterHex;exports.getOpacityHex=e.getOpacityHex;exports.hexNormalize=e.hexNormalize;exports.hexToHsl=e.hexToHsl;exports.hexToRgb=e.hexToRgb;exports.hslToHex=e.hslToHex;exports.rgbToHex=e.rgbToHex;

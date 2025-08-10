@@ -1,14 +1,15 @@
 import { jsxs as l, jsx as e } from "react/jsx-runtime";
 import f from "clsx";
 import t from "react";
-import { getMediaFileTypeColor as m } from "./tools.esm.js";
-import { TextColors as p } from "../../utils/design/colors.esm.js";
+import { TextColors as m } from "../../utils/design/colors.esm.js";
+import "../../utils/design/Shadow.esm.js";
+import { getMediaFileTypeColor as p } from "./tools.esm.js";
 const c = t.memo(({ fileExtension: o, width: r = 40, className: a, ...d }) => {
   var i;
   const s = t.useMemo(
-    () => m(o),
+    () => p(o),
     [o]
-  ), n = p.dark.primary;
+  ), n = m.dark.primary;
   return /* @__PURE__ */ l(
     "svg",
     {

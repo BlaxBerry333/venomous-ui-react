@@ -1,25 +1,27 @@
-import { jsx as m } from "react/jsx-runtime";
-import i from "clsx";
+import { jsx as i } from "react/jsx-runtime";
+import a from "clsx";
 import n from "react";
-import { ThemeBreakPoint as s, BreakPointName as d } from "../../utils/design/ThemeBreakpoint.esm.js";
-const l = n.memo(
-  ({ children: o, maxBreakpoint: e = d.lg, className: r, style: t, ...a }) => /* @__PURE__ */ m(
+import "../../utils/design/colors.esm.js";
+import "../../utils/design/Shadow.esm.js";
+import { ThemeBreakPoint as s, BreakPointName as p } from "../../utils/design/ThemeBreakpoint.esm.js";
+const d = n.memo(
+  ({ children: o, maxBreakpoint: r = p.lg, className: t, style: e, ...m }) => /* @__PURE__ */ i(
     "div",
     {
-      className: i("Venomous-UI-React--Container", r),
+      className: a("Venomous-UI-React--Container", t),
       style: {
         boxSizing: "border-box",
         margin: "0 auto",
         width: "100%",
-        maxWidth: s[e],
-        ...t
+        maxWidth: s[r],
+        ...e
       },
-      ...a,
+      ...m,
       children: o
     }
   )
 );
-l.displayName = "Container";
+d.displayName = "Container";
 export {
-  l as default
+  d as default
 };

@@ -1,12 +1,14 @@
 import { jsx as h } from "react/jsx-runtime";
 import T from "clsx";
 import t from "react";
-import { useTypographyStyle as f } from "./_useTypographyStyle.esm.js";
-import { TypographyTitleTagMap as e } from "./index.types.esm.js";
-import { TypographySize as c } from "../../utils/design/TypographySize.esm.js";
+import "../../utils/design/colors.esm.js";
+import "../../utils/design/Shadow.esm.js";
+import { TypographySize as f } from "../../utils/design/TypographySize.esm.js";
+import { useTypographyStyle as c } from "./_useTypographyStyle.esm.js";
+import { TypographyTitleTagMap as i } from "./index.types.esm.js";
 const d = t.memo(
-  ({ text: i, as: o = e.h4, ellipsis: r = 0, className: p, style: m, semanticColor: l, ...n }) => {
-    const a = t.useMemo(() => e[o], [o]), y = t.useMemo(() => c[o], [o]), { fontColor: s, ellipsisStyles: g } = f({ ellipsis: r, semanticColor: l });
+  ({ text: e, as: o = i.h4, ellipsis: r = 0, className: p, style: m, semanticColor: l, ...n }) => {
+    const a = t.useMemo(() => i[o], [o]), y = t.useMemo(() => f[o], [o]), { fontColor: s, ellipsisStyles: g } = c({ ellipsis: r, semanticColor: l });
     return /* @__PURE__ */ h(
       a,
       {
@@ -26,7 +28,7 @@ const d = t.memo(
           ...m
         },
         ...n,
-        children: i
+        children: e
       }
     );
   }

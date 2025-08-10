@@ -1,12 +1,14 @@
 import { jsx as h } from "react/jsx-runtime";
 import g from "clsx";
 import r from "react";
+import "../../utils/design/colors.esm.js";
+import "../../utils/design/Shadow.esm.js";
+import { TypographySize as t, TypographySizeName as s } from "../../utils/design/TypographySize.esm.js";
 import { useTypographyStyle as x } from "./_useTypographyStyle.esm.js";
 import { TypographyTextTagMap as e } from "./index.types.esm.js";
-import { TypographySize as t, TypographySizeName as s } from "../../utils/design/TypographySize.esm.js";
 const T = r.memo(
-  ({ className: p, style: a, text: m, as: o = e.span, isEllipsis: l = !1, semanticColor: n, ...y }) => {
-    const { fontColor: i, ellipsisStyles: c } = x({ ellipsis: l ? 1 : 0, semanticColor: n }), f = r.useMemo(() => o === e.strong ? "bold" : "normal", [o]), u = r.useMemo(() => {
+  ({ className: p, style: a, text: m, as: o = e.span, isEllipsis: l = !1, semanticColor: n, ...i }) => {
+    const { fontColor: y, ellipsisStyles: c } = x({ ellipsis: l ? 1 : 0, semanticColor: n }), f = r.useMemo(() => o === e.strong ? "bold" : "normal", [o]), u = r.useMemo(() => {
       switch (o) {
         case e.strong:
           return t[s.strong];
@@ -24,11 +26,11 @@ const T = r.memo(
         style: {
           fontSize: u,
           fontWeight: f,
-          color: i,
+          color: y,
           ...c,
           ...a
         },
-        ...y,
+        ...i,
         children: m
       }
     );

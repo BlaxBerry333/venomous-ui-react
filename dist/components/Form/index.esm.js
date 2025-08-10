@@ -6,6 +6,7 @@ import i from "./FormFieldSelect.esm.js";
 import t from "./FormFieldSwitch.esm.js";
 import F from "./FormFieldText.esm.js";
 import d from "./FormFieldTextarea.esm.js";
+import { default as T } from "./Form.esm.js";
 const h = {
   Text: F,
   Textarea: d,
@@ -17,5 +18,6 @@ const h = {
   Select: i
 };
 export {
+  T as Form,
   h as FormField
 };

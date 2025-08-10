@@ -1,9 +1,9 @@
 import { jsx as s } from "react/jsx-runtime";
 import y from "clsx";
 import h from "react";
-import S from "./FormField.esm.js";
-import { useFormFieldStyle as T } from "./useFormFieldStyle.esm.js";
-import v from "../../hooks/useElementFocus/index.esm.js";
+import S from "../../hooks/useElementFocus/index.esm.js";
+import T from "./FormField.esm.js";
+import { useFormFieldStyle as v } from "./useFormFieldStyle.esm.js";
 const z = h.memo(
   ({
     className: t,
@@ -19,14 +19,14 @@ const z = h.memo(
     helpText: f,
     ...u
   }) => {
-    const { isFocused: m, handleFocus: p, handleBlur: x } = v(), { commonStyles: d } = T({
+    const { isFocused: m, handleFocus: p, handleBlur: x } = S(), { commonStyles: d } = v({
       fullWidth: o,
       isDisabled: e,
       isError: r,
       isFocused: m
     });
     return /* @__PURE__ */ s(
-      S,
+      T,
       {
         label: F,
         required: l,

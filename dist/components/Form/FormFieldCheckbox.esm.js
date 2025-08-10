@@ -1,10 +1,10 @@
 import { jsxs as F, jsx as t } from "react/jsx-runtime";
 import y from "clsx";
 import b from "react";
-import I from "./Label.esm.js";
-import { useFormFieldStyle as w } from "./useFormFieldStyle.esm.js";
-import { useToggleFormFieldChecked as R } from "./useToggleFormFieldChecked.esm.js";
-import j from "../Icon/Icon.esm.js";
+import I from "../Icon/Icon.esm.js";
+import w from "./Label.esm.js";
+import { useFormFieldStyle as R } from "./useFormFieldStyle.esm.js";
+import { useToggleFormFieldChecked as j } from "./useToggleFormFieldChecked.esm.js";
 const N = b.memo(
   ({
     className: c,
@@ -21,16 +21,16 @@ const N = b.memo(
     labelPosition: a = "right",
     ...u
   }) => {
-    const { inputRef: k, isChecked: o, toggleOriginalIsChecked: d, toggleCustomIsChecked: C } = R({
+    const { inputRef: k, isChecked: o, toggleOriginalIsChecked: d, toggleCustomIsChecked: C } = j({
       checked: f,
       disabled: e,
       onChange: h
-    }), { outlineColor: g, borderColor: x } = w({
+    }), { outlineColor: g, borderColor: x } = R({
       isDisabled: e,
       isError: r
     });
     return /* @__PURE__ */ F(
-      I,
+      w,
       {
         label: p,
         required: m,
@@ -57,7 +57,7 @@ const N = b.memo(
             }
           ),
           /* @__PURE__ */ t(
-            j,
+            I,
             {
               icon: o ? "fluent:checkbox-checked-24-filled" : "fluent:checkbox-unchecked-24-regular",
               width: 24,

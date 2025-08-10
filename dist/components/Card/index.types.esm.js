@@ -1,13 +1,14 @@
-const a = {
+const t = {
   div: "div",
+  section: "section",
   article: "article"
-}, t = {
+}, a = {
   elevated: "elevated",
   outlined: "outlined",
   transparent: "transparent",
   frostedGlass: "frostedGlass"
 };
 export {
-  a as CardTagMap,
-  t as CardVariantMap
+  t as CardTagMap,
+  a as CardVariantMap
 };

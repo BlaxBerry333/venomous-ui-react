@@ -1,17 +1,18 @@
 import { jsx as d } from "react/jsx-runtime";
-import p from "clsx";
+import g from "clsx";
 import e from "react";
+import "../../utils/design/colors.esm.js";
+import { Shadows as w } from "../../utils/design/Shadow.esm.js";
+import { getOpacityHex as m, getLighterHex as x } from "../../utils/tools/get-colors.esm.js";
 import { Theme as c } from "../Theme/index.esm.js";
-import { useAnimation as w, motion as x } from "framer-motion";
-import { Shadows as v } from "../../utils/design/Shadow.esm.js";
-import { getOpacityHex as m, getLighterHex as b } from "../../utils/tools/get-colors.esm.js";
+import { useAnimation as v, motion as b } from "framer-motion";
 const y = e.memo(({ height: i = 8, className: u, style: f }) => {
-  const t = w(), { themeMode: l } = c.useThemeMode(), { themeColor: s } = c.useThemeColor(), a = e.useRef(null), [o, h] = e.useState(0);
+  const t = v(), { themeMode: l } = c.useThemeMode(), { themeColor: s } = c.useThemeColor(), a = e.useRef(null), [o, h] = e.useState(0);
   return e.useEffect(() => {
     const r = () => {
       if (a.current) {
-        const n = a.current.offsetWidth, g = n * 0.3;
-        h(n - g);
+        const n = a.current.offsetWidth, p = n * 0.3;
+        h(n - p);
       }
     };
     return r(), window.addEventListener("resize", r), () => window.removeEventListener("resize", r);
@@ -25,7 +26,7 @@ const y = e.memo(({ height: i = 8, className: u, style: f }) => {
     "div",
     {
       ref: a,
-      className: p("Venomous-UI-React--Progress.LoadingBar", u),
+      className: g("Venomous-UI-React--Progress.LoadingBar", u),
       style: {
         position: "relative",
         width: "100%",
@@ -33,11 +34,11 @@ const y = e.memo(({ height: i = 8, className: u, style: f }) => {
         overflow: "hidden",
         backgroundColor: m(s, 0.2),
         borderRadius: i / 2,
-        boxShadow: v[l].tertiary,
+        boxShadow: w[l].tertiary,
         ...f
       },
       children: /* @__PURE__ */ d(
-        x.div,
+        b.div,
         {
           animate: t,
           style: {
@@ -46,7 +47,7 @@ const y = e.memo(({ height: i = 8, className: u, style: f }) => {
             left: 0,
             height: "100%",
             width: "50%",
-            backgroundImage: `linear-gradient(45deg, ${m(s, 0.15)} 0%, ${b(s, 0.1)} 90%)`,
+            backgroundImage: `linear-gradient(45deg, ${m(s, 0.15)} 0%, ${x(s, 0.1)} 90%)`,
             borderRadius: i / 2
           }
         }

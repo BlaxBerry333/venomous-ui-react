@@ -1,8 +1,8 @@
 import { jsx as r } from "react/jsx-runtime";
 import d from "clsx";
 import p from "react";
-import { useButtonStyle as b } from "./_useButtonStyle.esm.js";
-import f from "../Icon/Icon.esm.js";
+import b from "../Icon/Icon.esm.js";
+import { useButtonStyle as f } from "./_useButtonStyle.esm.js";
 const y = p.memo(
   ({
     className: s,
@@ -16,7 +16,7 @@ const y = p.memo(
     semanticColor: u,
     ...n
   }) => {
-    const { buttonStyles: e } = b({
+    const { buttonStyles: e } = f({
       isLoading: t,
       isDisabled: o || n.disabled,
       variant: m,
@@ -36,7 +36,7 @@ const y = p.memo(
         },
         ...n,
         children: /* @__PURE__ */ r(
-          f,
+          b,
           {
             icon: t ? "eos-icons:loading" : a,
             width: i,

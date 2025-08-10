@@ -1,13 +1,13 @@
 import { jsxs as f, jsx as a } from "react/jsx-runtime";
 import c from "clsx";
 import t from "react";
-import { Space as b } from "../Space/index.esm.js";
-import { Theme as I } from "../Theme/index.esm.js";
-import { Typography as F } from "../Typography/index.esm.js";
-import W from "../Icon/Icon.esm.js";
-import { BorderColors as v, BackgroundColors as g, TextColors as E } from "../../utils/design/colors.esm.js";
-import { motion as h, AnimatePresence as j } from "framer-motion";
-import { Shadows as z } from "../../utils/design/Shadow.esm.js";
+import { BorderColors as F, BackgroundColors as b, TextColors as W } from "../../utils/design/colors.esm.js";
+import { Shadows as v } from "../../utils/design/Shadow.esm.js";
+import E from "../Icon/Icon.esm.js";
+import { Space as I } from "../Space/index.esm.js";
+import { Theme as g } from "../Theme/index.esm.js";
+import { Typography as j } from "../Typography/index.esm.js";
+import { motion as h, AnimatePresence as z } from "framer-motion";
 const L = t.memo(
   ({
     tabs: n,
@@ -20,7 +20,7 @@ const L = t.memo(
     tabIndicatorStyle: S,
     tabContentStyle: w
   }) => {
-    const { themeMode: s } = I.useThemeMode(), { themeColor: m } = I.useThemeColor(), [y, p] = t.useState(!1), [o, N] = t.useState(T), [B, U] = t.useState({}), u = t.useRef([]), l = t.useCallback(() => {
+    const { themeMode: s } = g.useThemeMode(), { themeColor: m } = g.useThemeColor(), [y, p] = t.useState(!1), [o, N] = t.useState(T), [B, U] = t.useState({}), u = t.useRef([]), l = t.useCallback(() => {
       if (u.current[o]) {
         const e = u.current[o];
         if (e) {
@@ -51,7 +51,7 @@ const L = t.memo(
       [x]
     );
     return /* @__PURE__ */ f(
-      b.Flex,
+      I.Flex,
       {
         column: !0,
         gap: 0,
@@ -59,21 +59,21 @@ const L = t.memo(
         style: { width: "100%", ...R },
         children: [
           /* @__PURE__ */ f(
-            b.Flex,
+            I.Flex,
             {
               row: !0,
               className: c("Venomous-UI-React--Tabs.ItemContainer"),
               style: {
                 position: "relative",
                 ...i === "pills" && {
-                  background: g[s].secondary,
+                  background: b[s].secondary,
                   padding: "4px",
                   borderRadius: "8px"
                 },
                 ...i === "underline" && {
                   borderBottomWidth: 1.5,
                   borderBottomStyle: "solid",
-                  borderBottomColor: v[s].secondary
+                  borderBottomColor: F[s].secondary
                 },
                 ...C
               },
@@ -95,7 +95,7 @@ const L = t.memo(
                       fontWeight: "500",
                       outline: "none",
                       border: "none",
-                      color: E[s].primary,
+                      color: W[s].primary,
                       background: "transparent",
                       transition: "color 0.2s ease",
                       ...i === "pills" && {
@@ -110,7 +110,7 @@ const L = t.memo(
                     },
                     children: [
                       e.icon && /* @__PURE__ */ a(
-                        W,
+                        E,
                         {
                           icon: e.icon,
                           width: 20,
@@ -121,7 +121,7 @@ const L = t.memo(
                         }
                       ),
                       /* @__PURE__ */ a(
-                        F.Text,
+                        j.Text,
                         {
                           text: e.label,
                           style: {
@@ -149,8 +149,8 @@ const L = t.memo(
                         zIndex: 1,
                         height: "calc(100% - 8px)",
                         borderRadius: "6px",
-                        background: g[s].primary,
-                        boxShadow: z[s].tertiary
+                        background: b[s].primary,
+                        boxShadow: v[s].tertiary
                       },
                       ...i === "underline" && {
                         bottom: "-2px",
@@ -165,7 +165,7 @@ const L = t.memo(
               ]
             }
           ),
-          /* @__PURE__ */ a(j, { mode: "wait", children: n[o] && /* @__PURE__ */ a(
+          /* @__PURE__ */ a(z, { mode: "wait", children: n[o] && /* @__PURE__ */ a(
             h.div,
             {
               variants: {

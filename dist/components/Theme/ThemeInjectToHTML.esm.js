@@ -1,21 +1,22 @@
 import r from "react";
-import { Theme as c } from "./index.esm.js";
-import { getOpacityHex as s, hexNormalize as m, getDarkerHex as u, getLighterHex as d } from "../../utils/tools/get-colors.esm.js";
-import { BackgroundColors as n } from "../../utils/design/colors.esm.js";
+import { BackgroundColors as c } from "../../utils/design/colors.esm.js";
+import "../../utils/design/Shadow.esm.js";
+import { getOpacityHex as m, hexNormalize as s, getDarkerHex as u, getLighterHex as d } from "../../utils/tools/get-colors.esm.js";
+import { Theme as n } from "./index.esm.js";
 const h = r.memo(() => (b(), null));
 h.displayName = "Theme.InjectToHTML";
 function b() {
-  const { themeMode: i } = c.useThemeMode(), { themeColor: o } = c.useThemeColor(), e = r.useMemo(
+  const { themeMode: i } = n.useThemeMode(), { themeColor: o } = n.useThemeColor(), e = r.useMemo(
     () => ({
       light: d(o, 0.2),
       dark: u(o, 0.8),
-      origin: m(o),
-      opacity: s(o, 0.6)
+      origin: s(o),
+      opacity: m(o, 0.6)
     }),
     [o]
   );
   r.useInsertionEffect(() => {
-    document.documentElement.style.backgroundColor = n[i].primary, document.body.style.backgroundColor = n[i].primary;
+    document.documentElement.style.backgroundColor = c[i].primary, document.body.style.backgroundColor = c[i].primary;
   }, [i]), r.useInsertionEffect(() => {
     if (typeof window > "u")
       return;

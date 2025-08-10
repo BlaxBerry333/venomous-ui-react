@@ -3,6 +3,9 @@ import h from "clsx";
 import { AnimatePresence as b, motion as k } from "framer-motion";
 import o from "react";
 import O from "../../hooks/useHandler/index.esm.js";
+import "../Card/CardsBook.esm.js";
+import "../Card/CardsProduct.esm.js";
+import "../Card/CardsTitleBlock.esm.js";
 import C from "../Card/Card.esm.js";
 const H = o.memo(
   ({ children: v, style: y, contentStyle: R, placement: u = "bottom", renderTrigger: g, trigger: n = "click", onClickOutside: a }) => {

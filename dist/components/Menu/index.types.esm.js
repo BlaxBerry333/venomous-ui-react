@@ -1,9 +1,13 @@
-const t = {
-  ul: "ul"
-}, a = {
-  li: "li"
+const d = {
+  ul: "ul",
+  ol: "ol",
+  dl: "dl"
+}, l = {
+  li: "li",
+  dt: "dt",
+  dd: "dd"
 };
 export {
-  a as MenuItemTagMap,
-  t as MenuListTagMap
+  l as MenuItemTagMap,
+  d as MenuListTagMap
 };

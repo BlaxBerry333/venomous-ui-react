@@ -1,4 +1,5 @@
 import react from "@vitejs/plugin-react-swc";
+import { globSync } from "glob";
 import path from "path";
 import { visualizer } from "rollup-plugin-visualizer";
 import { defineConfig } from "vite";
@@ -23,10 +24,13 @@ export default defineConfig({
     cssCodeSplit: true,
     lib: {
       name: "venomous-ui-react",
-      entry: path.resolve(__dirname, "src/index.ts"),
+      entry: "", // entry is ignored when rollupOptions.input is used
       formats: ["es", "cjs"],
     },
     rollupOptions: {
+      input: globSync("src/**/*.{ts,tsx}", {
+        ignore: ["src/**/*.stories.tsx", "src/**/*.mdx"],
+      }),
       // 不打包的依赖
       external: [
         "react",

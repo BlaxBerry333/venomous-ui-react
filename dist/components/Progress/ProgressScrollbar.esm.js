@@ -1,13 +1,15 @@
 import { jsx as t } from "react/jsx-runtime";
 import s from "clsx";
 import i from "react";
-import { Theme as m } from "../Theme/index.esm.js";
-import { useScroll as l, motion as a } from "framer-motion";
-import { getOpacityHex as c, getLighterHex as g } from "../../utils/tools/get-colors.esm.js";
-const p = i.memo(({ height: r = 4 }) => {
-  const { scrollYProgress: e } = l(), { themeColor: o } = m.useThemeColor();
+import "../../utils/design/colors.esm.js";
+import "../../utils/design/Shadow.esm.js";
+import { getOpacityHex as m, getLighterHex as l } from "../../utils/tools/get-colors.esm.js";
+import { Theme as a } from "../Theme/index.esm.js";
+import { useScroll as p, motion as c } from "framer-motion";
+const g = i.memo(({ height: r = 4 }) => {
+  const { scrollYProgress: e } = p(), { themeColor: o } = a.useThemeColor();
   return /* @__PURE__ */ t(
-    a.div,
+    c.div,
     {
       className: s("Venomous-UI-React--Progress.Scrollbar"),
       style: {
@@ -18,7 +20,7 @@ const p = i.memo(({ height: r = 4 }) => {
         right: 0,
         originX: 0,
         zIndex: 1e4,
-        backgroundImage: `linear-gradient(45deg, ${c(o, 0.15)} 0%, ${g(o, 0.1)} 90%)`,
+        backgroundImage: `linear-gradient(45deg, ${m(o, 0.15)} 0%, ${l(o, 0.1)} 90%)`,
         height: r,
         borderTopRightRadius: "16px",
         borderBottomRightRadius: "16px"
@@ -26,7 +28,7 @@ const p = i.memo(({ height: r = 4 }) => {
     }
   );
 });
-p.displayName = "Progress.Scrollbar";
+g.displayName = "Progress.Scrollbar";
 export {
-  p as default
+  g as default
 };

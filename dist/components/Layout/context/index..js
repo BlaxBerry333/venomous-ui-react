@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const t=require("./context.js"),e=require("./hooks.js");exports.LAYOUT_CONTEXT_DEFAULT_VALUE=t.LAYOUT_CONTEXT_DEFAULT_VALUE;exports.LayoutContext=t.LayoutContext;exports.useLayoutContext=e.useLayoutContext;

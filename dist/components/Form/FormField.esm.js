@@ -1,14 +1,15 @@
 import { jsxs as e, jsx as t } from "react/jsx-runtime";
 import T from "clsx";
 import b from "react";
-import { Space as C } from "../Space/index.esm.js";
-import { Theme as p } from "../Theme/index.esm.js";
-import { Typography as l } from "../Typography/index.esm.js";
-import { useFormFieldStyle as S } from "./useFormFieldStyle.esm.js";
-import R from "../Icon/Icon.esm.js";
+import { TextColors as p } from "../../utils/design/colors.esm.js";
+import "../../utils/design/Shadow.esm.js";
 import { ThemeColor as d } from "../../utils/design/ThemeColor.esm.js";
-import { TextColors as c } from "../../utils/design/colors.esm.js";
-import { TypographySize as w } from "../../utils/design/TypographySize.esm.js";
+import { TypographySize as C } from "../../utils/design/TypographySize.esm.js";
+import S from "../Icon/Icon.esm.js";
+import { Space as R } from "../Space/index.esm.js";
+import { Theme as c } from "../Theme/index.esm.js";
+import { Typography as l } from "../Typography/index.esm.js";
+import { useFormFieldStyle as w } from "./useFormFieldStyle.esm.js";
 const z = b.memo(
   ({
     children: f,
@@ -23,7 +24,7 @@ const z = b.memo(
     helpText: n,
     ...y
   }) => {
-    const { themeColor: u } = p.useThemeColor(), { themeMode: s } = p.useThemeMode(), { helperTextColor: F } = S({
+    const { themeColor: u } = c.useThemeColor(), { themeMode: s } = c.useThemeMode(), { helperTextColor: F } = w({
       fullWidth: m,
       isDisabled: o,
       isError: r
@@ -39,7 +40,7 @@ const z = b.memo(
           padding: 0,
           margin: 0,
           width: m ? "100%" : "max-content",
-          color: r ? d.RubyCopperhead : o ? c[s].disabled : g ? u : c[s].primary,
+          color: r ? d.RubyCopperhead : o ? p[s].disabled : g ? u : p[s].primary,
           ...x
         },
         ...y,
@@ -70,7 +71,7 @@ const z = b.memo(
               }
             )
           ] }),
-          /* @__PURE__ */ e(C.Flex, { column: !0, gap: 0, style: { width: "100%" }, children: [
+          /* @__PURE__ */ e(R.Flex, { column: !0, gap: 0, style: { width: "100%" }, children: [
             f,
             n && /* @__PURE__ */ e(
               l.Paragraph,
@@ -78,12 +79,12 @@ const z = b.memo(
                 style: {
                   display: "flex",
                   alignItems: "center",
-                  fontSize: w.small,
+                  fontSize: C.small,
                   color: F
                 },
                 children: [
                   r && /* @__PURE__ */ t(
-                    R,
+                    S,
                     {
                       icon: "solar:danger-triangle-outline",
                       width: 16,

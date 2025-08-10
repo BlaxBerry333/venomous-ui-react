@@ -1,1 +1,1 @@
-"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const o=require("./ModalsConfirm.js"),e={Confirm:o.default};exports.Modals=e;
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const o=require("./ModalsConfirm.js"),e=require("./Modal.js"),t={Confirm:o.default};exports.Modal=e.default;exports.Modals=t;

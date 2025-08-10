@@ -1,23 +1,25 @@
 import { jsx as m } from "react/jsx-runtime";
-import a from "react";
-import { LAYOUT_CONTEXT_DEFAULT_VALUE as o, LayoutContext as d } from "./context/context.esm.js";
-import p from "../Container/Container.esm.js";
-import { BreakPointName as f } from "../../utils/design/ThemeBreakpoint.esm.js";
-const l = a.memo(
+import i from "react";
+import "../../utils/design/colors.esm.js";
+import "../../utils/design/Shadow.esm.js";
+import { BreakPointName as u } from "../../utils/design/ThemeBreakpoint.esm.js";
+import d from "../Container/Container.esm.js";
+import { LAYOUT_CONTEXT_DEFAULT_VALUE as o, LayoutContext as f } from "./context/context.esm.js";
+const l = i.memo(
   ({
-    children: i,
-    maxBreakpoint: n = f.xl,
+    children: a,
+    maxBreakpoint: n = u.xl,
     headerHeight: r = o.headerHeight,
-    footerHeight: e = o.footerHeight,
-    sideWidth: t = o.sideWidth
+    footerHeight: t = o.footerHeight,
+    sideWidth: e = o.sideWidth
   }) => {
-    const u = a.useMemo(
-      () => ({ headerHeight: r, footerHeight: e, sideWidth: t }),
-      [r, e, t]
+    const p = i.useMemo(
+      () => ({ headerHeight: r, footerHeight: t, sideWidth: e }),
+      [r, t, e]
     );
     return (
       // eslint-disable-next-line react-x/no-context-provider
-      /* @__PURE__ */ m(d.Provider, { value: u, children: /* @__PURE__ */ m(p, { maxBreakpoint: n, children: i }) })
+      /* @__PURE__ */ m(f.Provider, { value: p, children: /* @__PURE__ */ m(d, { maxBreakpoint: n, children: a }) })
     );
   }
 );

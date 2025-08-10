@@ -1,24 +1,28 @@
 import { jsx as t } from "react/jsx-runtime";
-import p from "clsx";
+import d from "clsx";
 import h from "react";
-import { Theme as y } from "../Theme/index.esm.js";
-import f from "../Card/Card.esm.js";
-import { AnimatePresence as x, motion as o } from "framer-motion";
-import { getOpacityHex as u } from "../../utils/tools/get-colors.esm.js";
-import { ThemeBreakPoint as a, BreakPointName as g } from "../../utils/design/ThemeBreakpoint.esm.js";
-import { BackgroundColors as C } from "../../utils/design/colors.esm.js";
+import { BackgroundColors as y } from "../../utils/design/colors.esm.js";
+import "../../utils/design/Shadow.esm.js";
+import { ThemeBreakPoint as o, BreakPointName as f } from "../../utils/design/ThemeBreakpoint.esm.js";
+import { getOpacityHex as x } from "../../utils/tools/get-colors.esm.js";
+import "../Card/CardsBook.esm.js";
+import "../Card/CardsProduct.esm.js";
+import "../Card/CardsTitleBlock.esm.js";
+import u from "../Card/Card.esm.js";
+import { Theme as g } from "../Theme/index.esm.js";
+import { AnimatePresence as C, motion as a } from "framer-motion";
 const k = h.memo(
-  ({ children: r, className: n, style: m, isOpen: e, onClose: s, maskClosable: l = !0, maxBreakpoint: i = g.xs }) => {
-    const { themeMode: c } = y.useThemeMode();
-    return /* @__PURE__ */ t(x, { children: e && /* @__PURE__ */ t(
-      o.div,
+  ({ children: r, className: m, style: n, isOpen: e, onClose: s, maskClosable: l = !0, maxBreakpoint: i = f.xs }) => {
+    const { themeMode: c } = g.useThemeMode();
+    return /* @__PURE__ */ t(C, { children: e && /* @__PURE__ */ t(
+      a.div,
       {
         onClick: l ? s : void 0,
         initial: { opacity: 0 },
         animate: { opacity: 1 },
         exit: { opacity: 0 },
         transition: { duration: 0.2 },
-        className: p("Venomous-UI-React--Modal", n),
+        className: d("Venomous-UI-React--Modal", m),
         style: {
           display: "flex",
           justifyContent: "center",
@@ -29,18 +33,18 @@ const k = h.memo(
           zIndex: 1e3,
           width: "100svw",
           height: "100svh",
-          backgroundColor: u(C[c].primary, 0.5),
+          backgroundColor: x(y[c].primary, 0.5),
           backdropFilter: "blur(2px)",
           opacity: e ? 1 : 0
         },
         children: /* @__PURE__ */ t(
-          o.div,
+          a.div,
           {
             initial: { opacity: 0, scale: 0.95 },
             animate: { opacity: 1, scale: 1 },
             exit: { opacity: 0, scale: 0.95 },
             transition: { duration: 0.2, ease: "easeOut" },
-            onClick: (d) => d.stopPropagation(),
+            onClick: (p) => p.stopPropagation(),
             style: {
               position: "relative",
               display: "flex",
@@ -48,10 +52,10 @@ const k = h.memo(
               alignItems: "center",
               height: "max-content",
               maxHeight: "90%",
-              width: a[i],
-              maxWidth: a[i]
+              width: o[i],
+              maxWidth: o[i]
             },
-            children: /* @__PURE__ */ t(f, { style: { width: "100%", ...m }, children: r })
+            children: /* @__PURE__ */ t(u, { style: { width: "100%", ...n }, children: r })
           }
         )
       }

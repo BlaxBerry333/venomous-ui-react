@@ -1,1 +1,1 @@
-"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const t=require("./ButtonsIcon.js"),o={Icon:t.default};exports.Buttons=o;
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const t=require("./ButtonsIcon.js"),o=require("./Button.js"),e={Icon:t.default};exports.Button=o.default;exports.Buttons=e;

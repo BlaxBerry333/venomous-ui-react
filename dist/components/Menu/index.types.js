@@ -1,1 +1,1 @@
-"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const e={ul:"ul"},t={li:"li"};exports.MenuItemTagMap=t;exports.MenuListTagMap=e;
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const t={ul:"ul",ol:"ol",dl:"dl"},e={li:"li",dt:"dt",dd:"dd"};exports.MenuItemTagMap=e;exports.MenuListTagMap=t;

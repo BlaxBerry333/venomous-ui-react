@@ -1,8 +1,9 @@
-import { jsxs as V, jsx as i } from "react/jsx-runtime";
+import { jsx as i, jsxs as V } from "react/jsx-runtime";
 import m from "clsx";
 import k from "react";
-import { Theme as M } from "../Theme/index.esm.js";
-import { TextColors as j, BorderColors as v, BackgroundColors as q } from "../../utils/design/colors.esm.js";
+import { TextColors as M, BorderColors as v, BackgroundColors as q } from "../../utils/design/colors.esm.js";
+import "../../utils/design/Shadow.esm.js";
+import { Theme as j } from "../Theme/index.esm.js";
 const H = (c, n) => String(n);
 function K({
   columns: c,
@@ -128,20 +129,20 @@ function K({
 const W = k.memo(K);
 W.displayName = "Table";
 const z = k.memo(({ style: c, ...n }) => {
-  const { themeMode: f } = M.useThemeMode();
+  const { themeMode: f } = j.useThemeMode();
   return /* @__PURE__ */ i(
     "tr",
     {
       style: {
         boxSizing: "border-box",
-        color: j[f].primary,
+        color: M[f].primary,
         ...c
       },
       ...n
     }
   );
 }), S = k.memo(({ as: c = "td", style: n, ...f }) => {
-  const { themeMode: u } = M.useThemeMode();
+  const { themeMode: u } = j.useThemeMode();
   return /* @__PURE__ */ i(
     c,
     {
@@ -149,7 +150,7 @@ const z = k.memo(({ style: c, ...n }) => {
         boxSizing: "border-box",
         padding: "16px 24px",
         textAlign: "left",
-        color: j[u].primary,
+        color: M[u].primary,
         backgroundColor: c === "td" ? "transparent" : q[u].secondary,
         borderBottomWidth: 1,
         borderBottomStyle: "solid",

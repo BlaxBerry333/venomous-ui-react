@@ -1,7 +1,9 @@
 import o from "./ModalsConfirm.esm.js";
-const m = {
+import { default as t } from "./Modal.esm.js";
+const a = {
   Confirm: o
 };
 export {
-  m as Modals
+  t as Modal,
+  a as Modals
 };

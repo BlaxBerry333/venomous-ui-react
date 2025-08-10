@@ -1,12 +1,13 @@
 import { jsxs as r, jsx as l } from "react/jsx-runtime";
 import d from "clsx";
 import g from "react";
-import { Space as y } from "../Space/index.esm.js";
-import { Theme as b } from "../Theme/index.esm.js";
-import { Typography as m } from "../Typography/index.esm.js";
+import { TextColors as y } from "../../utils/design/colors.esm.js";
+import "../../utils/design/Shadow.esm.js";
+import { ThemeColor as m } from "../../utils/design/ThemeColor.esm.js";
+import { Space as b } from "../Space/index.esm.js";
+import { Theme as u } from "../Theme/index.esm.js";
+import { Typography as a } from "../Typography/index.esm.js";
 import { LabelPositionMap as e } from "./index.types.esm.js";
-import { ThemeColor as a } from "../../utils/design/ThemeColor.esm.js";
-import { TextColors as u } from "../../utils/design/colors.esm.js";
 const T = g.memo(
   ({
     children: i,
@@ -19,7 +20,7 @@ const T = g.memo(
     position: t = e.top,
     ...x
   }) => {
-    const { themeMode: h } = b.useThemeMode();
+    const { themeMode: h } = u.useThemeMode();
     return /* @__PURE__ */ r(
       "label",
       {
@@ -32,15 +33,15 @@ const T = g.memo(
           ...t === e.top && { flexDirection: "column", alignItems: "flex-start" },
           ...t === e.left && { flexDirection: "row", alignItems: "center" },
           ...t === e.right && { flexDirection: "row-reverse", alignItems: "center" },
-          color: f ? a.RubyCopperhead : u[h].primary,
+          color: f ? m.RubyCopperhead : y[h].primary,
           ...p
         },
         ...x,
         children: [
-          /* @__PURE__ */ r(y.Flex, { row: !0, gap: 0, style: { width: "100%", alignItems: "center" }, children: [
-            o && /* @__PURE__ */ l(m.Text, { as: "small", text: "*", style: { color: a.RubyCopperhead, marginRight: "2px" } }),
+          /* @__PURE__ */ r(b.Flex, { row: !0, gap: 0, style: { width: "100%", alignItems: "center" }, children: [
+            o && /* @__PURE__ */ l(a.Text, { as: "small", text: "*", style: { color: m.RubyCopperhead, marginRight: "2px" } }),
             /* @__PURE__ */ l(
-              m.Text,
+              a.Text,
               {
                 as: "small",
                 text: c,

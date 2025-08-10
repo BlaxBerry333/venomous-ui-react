@@ -1,17 +1,18 @@
 import { jsxs as m, Fragment as f, jsx as t } from "react/jsx-runtime";
 import k from "clsx";
 import r from "react";
-import { Space as S } from "../Space/index.esm.js";
-import { Theme as L } from "../Theme/index.esm.js";
-import { Transitions as N } from "../Transition/index.esm.js";
-import { MenuItemTagMap as O } from "./index.types.esm.js";
+import S from "../../hooks/useHandler/index.esm.js";
+import { BorderColors as L } from "../../utils/design/colors.esm.js";
+import "../../utils/design/Shadow.esm.js";
+import { Space as N } from "../Space/index.esm.js";
+import { Theme as O } from "../Theme/index.esm.js";
+import { Transitions as U } from "../Transition/index.esm.js";
+import { MenuItemTagMap as j } from "./index.types.esm.js";
 import d from "./MenuItem.esm.js";
-import U from "./MenuList.esm.js";
-import j from "../../hooks/useHandler/index.esm.js";
-import { BorderColors as v } from "../../utils/design/colors.esm.js";
+import v from "./MenuList.esm.js";
 const A = r.memo(
-  ({ as: s = O.li, className: n, style: l, icon: g, text: M, subText: I, isDisabled: i = !1, subItems: p, ...w }) => {
-    const C = r.useMemo(() => p.map((e) => ({ ...e, id: crypto.randomUUID() })), [p]), [c, u] = r.useState(null), o = j(), b = r.useCallback(() => {
+  ({ as: s = j.li, className: n, style: l, icon: g, text: M, subText: I, isDisabled: i = !1, subItems: p, ...w }) => {
+    const C = r.useMemo(() => p.map((e) => ({ ...e, id: crypto.randomUUID() })), [p]), [c, u] = r.useState(null), o = S(), b = r.useCallback(() => {
       if (i)
         return;
       const e = o.isOpen;
@@ -39,7 +40,7 @@ const A = r.memo(
           ...w
         }
       ),
-      /* @__PURE__ */ t(N.Collapse, { isOpen: o.isOpen, children: /* @__PURE__ */ t(U, { style: { width: l == null ? void 0 : l.width, paddingLeft: 24 }, children: C.map(({ id: e, style: y, onClick: a, ...x }) => /* @__PURE__ */ m(S.Flex, { row: !0, gap: 0, style: { width: "100%" }, children: [
+      /* @__PURE__ */ t(U.Collapse, { isOpen: o.isOpen, children: /* @__PURE__ */ t(v, { style: { width: l == null ? void 0 : l.width, paddingLeft: 24 }, children: C.map(({ id: e, style: y, onClick: a, ...x }) => /* @__PURE__ */ m(N.Flex, { row: !0, gap: 0, style: { width: "100%" }, children: [
         /* @__PURE__ */ t(h, {}),
         /* @__PURE__ */ t(
           d,
@@ -65,7 +66,7 @@ const A = r.memo(
 );
 A.displayName = "Menu.CollapseItem";
 const h = r.memo(() => {
-  const { themeMode: s } = L.useThemeMode(), n = v[s].quaternary;
+  const { themeMode: s } = O.useThemeMode(), n = L[s].quaternary;
   return /* @__PURE__ */ m(f, { children: [
     /* @__PURE__ */ t(
       "i",
