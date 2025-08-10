@@ -21,6 +21,7 @@ export declare function useFormFieldStyle({ fullWidth, isDisabled, isError, isFo
         minWidth: string | number;
         minHeight: number;
         padding: string;
+        fontSize: string;
         backgroundColor: import("csstype").Property.BackgroundColor | undefined;
         color: import("csstype").Property.Color | undefined;
         borderRadius: string;

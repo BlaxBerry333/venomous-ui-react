@@ -1,12 +1,12 @@
-import { jsxs as e, jsx as t } from "react/jsx-runtime";
+import { jsxs as e, jsx as r } from "react/jsx-runtime";
 import T from "clsx";
 import b from "react";
-import { TextColors as p } from "../../utils/design/colors.esm.js";
+import { TextColors as s } from "../../utils/design/colors.esm.js";
 import "../../utils/design/Shadow.esm.js";
 import { ThemeColor as d } from "../../utils/design/ThemeColor.esm.js";
 import { TypographySize as C } from "../../utils/design/TypographySize.esm.js";
-import S from "../Icon/Icon.esm.js";
-import { Space as R } from "../Space/index.esm.js";
+import R from "../Icon/Icon.esm.js";
+import { Space as S } from "../Space/index.esm.js";
 import { Theme as c } from "../Theme/index.esm.js";
 import { Typography as l } from "../Typography/index.esm.js";
 import { useFormFieldStyle as w } from "./useFormFieldStyle.esm.js";
@@ -14,20 +14,20 @@ const z = b.memo(
   ({
     children: f,
     className: h,
-    style: x,
+    style: g,
     fullWidth: m = !1,
     required: i = !1,
     isDisabled: o = !1,
-    isError: r = !1,
-    isFocused: g = !1,
+    isError: t = !1,
+    isFocused: x = !1,
     label: a,
     helpText: n,
     ...y
   }) => {
-    const { themeColor: u } = c.useThemeColor(), { themeMode: s } = c.useThemeMode(), { helperTextColor: F } = w({
+    const { themeColor: u } = c.useThemeColor(), { themeMode: p } = c.useThemeMode(), { helperTextColor: F } = w({
       fullWidth: m,
       isDisabled: o,
-      isError: r
+      isError: t
     });
     return /* @__PURE__ */ e(
       "fieldset",
@@ -40,13 +40,13 @@ const z = b.memo(
           padding: 0,
           margin: 0,
           width: m ? "100%" : "max-content",
-          color: r ? d.RubyCopperhead : o ? p[s].disabled : g ? u : p[s].primary,
-          ...x
+          color: t ? d.RubyCopperhead : o ? s[p].disabled : x ? u : s[p].primary,
+          ...g
         },
         ...y,
         children: [
           a && /* @__PURE__ */ e("legend", { style: { padding: 0, color: "inherit" }, children: [
-            i && /* @__PURE__ */ t(
+            i && /* @__PURE__ */ r(
               l.Text,
               {
                 as: "small",
@@ -58,7 +58,7 @@ const z = b.memo(
                 }
               }
             ),
-            /* @__PURE__ */ t(
+            /* @__PURE__ */ r(
               l.Text,
               {
                 as: "small",
@@ -71,7 +71,7 @@ const z = b.memo(
               }
             )
           ] }),
-          /* @__PURE__ */ e(R.Flex, { column: !0, gap: 0, style: { width: "100%" }, children: [
+          /* @__PURE__ */ e(S.Flex, { column: !0, gap: 0, style: { width: "100%" }, children: [
             f,
             n && /* @__PURE__ */ e(
               l.Paragraph,
@@ -80,16 +80,17 @@ const z = b.memo(
                   display: "flex",
                   alignItems: "center",
                   fontSize: C.small,
-                  color: F
+                  color: F,
+                  paddingLeft: "4px"
                 },
                 children: [
-                  r && /* @__PURE__ */ t(
-                    S,
+                  t && /* @__PURE__ */ r(
+                    R,
                     {
                       icon: "solar:danger-triangle-outline",
-                      width: 16,
+                      width: 14,
                       semanticColor: "error",
-                      style: { margin: "0px 4px" }
+                      style: { marginRight: "4px" }
                     }
                   ),
                   n

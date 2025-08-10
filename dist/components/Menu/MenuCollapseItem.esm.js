@@ -1,79 +1,91 @@
-import { jsxs as m, Fragment as f, jsx as t } from "react/jsx-runtime";
-import k from "clsx";
-import r from "react";
-import S from "../../hooks/useHandler/index.esm.js";
-import { BorderColors as L } from "../../utils/design/colors.esm.js";
+import { jsxs as c, Fragment as h, jsx as o } from "react/jsx-runtime";
+import T from "clsx";
+import t from "react";
+import k from "../../hooks/useHandler/index.esm.js";
+import { BorderColors as S } from "../../utils/design/colors.esm.js";
 import "../../utils/design/Shadow.esm.js";
-import { Space as N } from "../Space/index.esm.js";
+import { Space as L } from "../Space/index.esm.js";
 import { Theme as O } from "../Theme/index.esm.js";
-import { Transitions as U } from "../Transition/index.esm.js";
+import { Transitions as N } from "../Transition/index.esm.js";
 import { MenuItemTagMap as j } from "./index.types.esm.js";
-import d from "./MenuItem.esm.js";
+import f from "./MenuItem.esm.js";
 import v from "./MenuList.esm.js";
-const A = r.memo(
-  ({ as: s = j.li, className: n, style: l, icon: g, text: M, subText: I, isDisabled: i = !1, subItems: p, ...w }) => {
-    const C = r.useMemo(() => p.map((e) => ({ ...e, id: crypto.randomUUID() })), [p]), [c, u] = r.useState(null), o = S(), b = r.useCallback(() => {
-      if (i)
+const A = t.memo(
+  ({
+    as: i = j.li,
+    className: r,
+    style: n,
+    icon: M,
+    text: w,
+    subText: I,
+    isDisabled: a = !1,
+    isCollapsed: p = !1,
+    subItems: x,
+    ...C
+  }) => {
+    const [u, d] = t.useState(null), e = k(p), b = t.useCallback(() => {
+      if (a)
         return;
-      const e = o.isOpen;
-      o.setIsOpen(!e), e && u(null);
-    }, [o.isOpen, i]);
-    return r.useEffect(() => {
-      c !== null && o.open();
-    }, []), /* @__PURE__ */ m(f, { children: [
-      /* @__PURE__ */ t(
-        d,
+      const l = e.isOpen;
+      e.setIsOpen(!l), l && d(null);
+    }, [e.isOpen, a]);
+    return t.useEffect(() => {
+      u !== null && e.open();
+    }, []), t.useEffect(() => {
+      e.setIsOpen(p);
+    }, [p]), /* @__PURE__ */ c(h, { children: [
+      /* @__PURE__ */ o(
+        f,
         {
-          as: s,
-          className: k("Venomous-UI-React--Menu.CollapseItem", n),
-          style: l,
-          icon: g,
-          text: M,
+          as: i,
+          className: T("Venomous-UI-React--Menu.CollapseItem", r),
+          style: n,
+          icon: M,
+          text: w,
           subText: I,
-          isDisabled: i,
-          isActive: o.isOpen,
+          isDisabled: a,
+          isActive: e.isOpen,
           actionButton: {
-            icon: o.isOpen ? "solar:alt-arrow-up-bold-duotone" : "solar:alt-arrow-down-bold-duotone",
+            icon: e.isOpen ? "solar:alt-arrow-up-bold-duotone" : "solar:alt-arrow-down-bold-duotone",
             style: { border: 0 }
           },
           onClick: b,
-          ...w
+          ...C
         }
       ),
-      /* @__PURE__ */ t(U.Collapse, { isOpen: o.isOpen, children: /* @__PURE__ */ t(v, { style: { width: l == null ? void 0 : l.width, paddingLeft: 24 }, children: C.map(({ id: e, style: y, onClick: a, ...x }) => /* @__PURE__ */ m(N.Flex, { row: !0, gap: 0, style: { width: "100%" }, children: [
-        /* @__PURE__ */ t(h, {}),
-        /* @__PURE__ */ t(
-          d,
+      /* @__PURE__ */ o(N.Collapse, { isOpen: e.isOpen, children: /* @__PURE__ */ o(v, { style: { width: n == null ? void 0 : n.width, paddingLeft: 24 }, children: x.map(({ style: l, onClick: m, ...s }) => /* @__PURE__ */ c(L.Flex, { row: !0, gap: 0, style: { width: "100%" }, children: [
+        /* @__PURE__ */ o(g, {}),
+        /* @__PURE__ */ o(
+          f,
           {
-            isActive: c === e,
-            onClick: (T) => {
-              u(e), a == null || a(T);
+            isActive: u === s.text,
+            onClick: (y) => {
+              d(s.text), m == null || m(y);
             },
             style: {
               width: "100%",
               backgroundColor: "transparent",
               margin: "4px 0",
               cursor: "pointer",
-              ...y
+              ...l
             },
-            ...x,
-            subText: e
+            ...s
           }
         )
-      ] }, e)) }) })
+      ] }, s.text)) }) })
     ] });
   }
 );
 A.displayName = "Menu.CollapseItem";
-const h = r.memo(() => {
-  const { themeMode: s } = O.useThemeMode(), n = L[s].quaternary;
-  return /* @__PURE__ */ m(f, { children: [
-    /* @__PURE__ */ t(
+const g = t.memo(() => {
+  const { themeMode: i } = O.useThemeMode(), r = S[i].quaternary;
+  return /* @__PURE__ */ c(h, { children: [
+    /* @__PURE__ */ o(
       "i",
       {
         style: {
           display: "inline-block",
-          backgroundColor: n,
+          backgroundColor: r,
           height: "100%",
           width: 1.5,
           position: "absolute",
@@ -82,12 +94,12 @@ const h = r.memo(() => {
         }
       }
     ),
-    /* @__PURE__ */ t(
+    /* @__PURE__ */ o(
       "i",
       {
         style: {
           display: "inline-block",
-          backgroundColor: n,
+          backgroundColor: r,
           height: 1.5,
           width: 8,
           position: "absolute",
@@ -99,7 +111,7 @@ const h = r.memo(() => {
     )
   ] });
 });
-h.displayName = "Menu.CollapseItemTreeLine";
+g.displayName = "Menu.CollapseItemTreeLine";
 export {
   A as default
 };
