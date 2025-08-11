@@ -3,8 +3,8 @@ import v from "clsx";
 import t from "react";
 import C from "../../hooks/useElementFocus/index.esm.js";
 import V from "../Icon/Icon.esm.js";
-import k from "./FormField.esm.js";
-import { useFormFieldStyle as S } from "./useFormFieldStyle.esm.js";
+import { useFormFieldStyle as k } from "./_useFormFieldStyle.esm.js";
+import S from "./FormField.esm.js";
 const D = t.memo(
   ({
     className: l,
@@ -20,14 +20,14 @@ const D = t.memo(
     helpText: f,
     ...F
   }) => {
-    const { isFocused: c, handleFocus: b, handleBlur: w } = C(), { outlineColor: y, commonStyles: s, textColor: h } = S({
+    const { isFocused: c, handleFocus: b, handleBlur: w } = C(), { outlineColor: y, commonStyles: s, textColor: h } = k({
       fullWidth: e,
       isDisabled: o,
       isError: r,
       isFocused: c
     }), { isPasswordVisible: m, togglePasswordVisibility: P } = I(!1);
     return /* @__PURE__ */ d(
-      k,
+      S,
       {
         label: g,
         required: i,

@@ -19,6 +19,7 @@ const Button = React.memo<ButtonProps>(
     isDisabled,
     icon,
     iconPosition = "start",
+    iconStyle,
     iconWidth = 20,
     semanticColor,
     ...props
@@ -52,6 +53,7 @@ const Button = React.memo<ButtonProps>(
               marginLeft: iconPosition === "start" ? "0px" : "8px",
               marginRight: iconPosition === "end" ? "0px" : "8px",
               color: "inherit",
+              ...iconStyle,
             }}
           />
         )}

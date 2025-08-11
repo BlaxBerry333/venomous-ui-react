@@ -21,6 +21,7 @@ const MenuCollapseItem = React.memo<MenuCollapseItemProps>(
     text,
     subText,
     isDisabled = false,
+    isActive = false,
     isCollapsed = false,
     subItems,
     ...props
@@ -55,17 +56,21 @@ const MenuCollapseItem = React.memo<MenuCollapseItemProps>(
         <MenuItem
           as={Tag}
           className={clsx("Venomous-UI-React--Menu.CollapseItem", className)}
-          style={style}
+          style={{
+            padding: "8px",
+            // backgroundColor: handler.isOpen ? "?" : "transparent",
+            ...style,
+          }}
           icon={icon}
           text={text}
           subText={subText}
           isDisabled={isDisabled}
-          isActive={handler.isOpen}
-          actionButton={{
+          isActive={isActive || selectedSubItemID !== null}
+          onClick={toggle}
+          actionButtonProps={{
             icon: handler.isOpen ? "solar:alt-arrow-up-bold-duotone" : "solar:alt-arrow-down-bold-duotone",
             style: { border: 0 },
           }}
-          onClick={toggle}
           {...props}
         />
         <Transitions.Collapse isOpen={handler.isOpen}>
@@ -81,9 +86,8 @@ const MenuCollapseItem = React.memo<MenuCollapseItemProps>(
                   }}
                   style={{
                     width: "100%",
-                    backgroundColor: "transparent",
-                    margin: "4px 0",
                     cursor: "pointer",
+                    backgroundColor: "transparent",
                     ...subItemStyle,
                   }}
                   {...item}
@@ -113,7 +117,7 @@ const MenuCollapseItemTreeLine = React.memo(() => {
           width: 1.5,
           position: "absolute",
           top: "-50%",
-          left: -8,
+          left: -6,
         }}
       />
       <i
@@ -124,7 +128,7 @@ const MenuCollapseItemTreeLine = React.memo(() => {
           width: 8,
           position: "absolute",
           top: "50%",
-          left: -6.5,
+          left: -4.5,
           transform: "translateY(-50%)",
         }}
       />

@@ -1,9 +1,9 @@
 import { jsx as r } from "react/jsx-runtime";
-import d from "clsx";
-import p from "react";
-import b from "../Icon/Icon.esm.js";
-import { useButtonStyle as f } from "./_useButtonStyle.esm.js";
-const y = p.memo(
+import p from "clsx";
+import b from "react";
+import f from "../Icon/Icon.esm.js";
+import { useButtonStyle as y } from "./_useButtonStyle.esm.js";
+const I = b.memo(
   ({
     className: s,
     type: c = "button",
@@ -13,19 +13,20 @@ const y = p.memo(
     isDisabled: o,
     icon: a,
     iconWidth: i = 20,
-    semanticColor: u,
+    iconStyle: u,
+    semanticColor: d,
     ...n
   }) => {
-    const { buttonStyles: e } = f({
+    const { buttonStyles: e } = y({
       isLoading: t,
       isDisabled: o || n.disabled,
       variant: m,
-      semanticColor: u
+      semanticColor: d
     });
     return /* @__PURE__ */ r(
       "button",
       {
-        className: d("Venomous-UI-React--Buttons.Icon", s),
+        className: p("Venomous-UI-React--Buttons.Icon", s),
         type: c,
         disabled: t || o,
         style: {
@@ -36,12 +37,13 @@ const y = p.memo(
         },
         ...n,
         children: /* @__PURE__ */ r(
-          b,
+          f,
           {
             icon: t ? "eos-icons:loading" : a,
             width: i,
             style: {
-              color: e.color
+              color: e.color,
+              ...u
             }
           }
         )
@@ -49,7 +51,7 @@ const y = p.memo(
     );
   }
 );
-y.displayName = "Buttons.Icon";
+I.displayName = "Buttons.Icon";
 export {
-  y as default
+  I as default
 };

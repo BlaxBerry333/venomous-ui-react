@@ -4,10 +4,10 @@ import clsx from "clsx";
 import React from "react";
 
 import { Icon } from "../Icon";
+import { useFormFieldStyle } from "./_useFormFieldStyle";
+import { useToggleFormFieldChecked } from "./_useToggleFormFieldChecked";
 import type { FormFieldCheckboxProps } from "./index.types";
 import Label from "./Label";
-import { useFormFieldStyle } from "./useFormFieldStyle";
-import { useToggleFormFieldChecked } from "./useToggleFormFieldChecked";
 
 const FormFieldCheckbox = React.memo<FormFieldCheckboxProps>(
   ({

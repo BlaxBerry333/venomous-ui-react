@@ -42,8 +42,8 @@ const meta = {
       control: { type: "boolean" },
       table: { type: { summary: "boolean" }, defaultValue: { summary: "false" } },
     },
-    actionButton: {
-      description: "The action icon button to be rendered at the end of the menu item",
+    actionButtonProps: {
+      description: "The props of the action icon button which to be rendered at the end of the menu item",
       control: { type: "select" },
       options: [undefined, { icon: "solar:hamburger-menu-line-duotone", onClick: () => {} }],
       table: { type: { summary: "{icon:string; onClick:VoidFunction;}" }, defaultValue: { summary: "undefined" } },
@@ -56,7 +56,7 @@ const meta = {
     icon: undefined,
     isDisabled: false,
     isActive: false,
-    actionButton: undefined,
+    actionButtonProps: undefined,
   },
 } satisfies Meta<typeof Menu.Item>;
 

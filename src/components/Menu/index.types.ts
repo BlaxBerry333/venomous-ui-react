@@ -24,14 +24,10 @@ export interface MenuItemProps extends Omit<React.HTMLAttributes<HTMLLIElement>,
   subText?: string;
   isDisabled?: boolean;
   isActive?: boolean;
-  actionButton?: {
-    icon?: ButtonsIconProps["icon"];
-    onClick?: ButtonsIconProps["onClick"];
-    style?: ButtonsIconProps["style"];
-  };
+  actionButtonProps?: ButtonsIconProps;
 }
 
-export interface MenuCollapseItemProps extends Omit<MenuItemProps, "isActive" | "actionButton"> {
+export interface MenuCollapseItemProps extends Omit<MenuItemProps, "actionButton"> {
   isCollapsed?: boolean;
   subItems: MenuItemProps[];
 }

@@ -55,6 +55,7 @@ const meta = {
     subText: "yyyyyyy",
     icon: undefined,
     isDisabled: false,
+    isActive: false,
     isCollapsed: false,
     subItems: [],
   },

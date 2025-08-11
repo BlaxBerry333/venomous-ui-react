@@ -21,7 +21,7 @@ const MenuItem = React.memo<MenuItemProps>(
     subText,
     isDisabled = false,
     isActive = false,
-    actionButton = undefined,
+    actionButtonProps = undefined,
     ...props
   }) => {
     const { themeMode } = Theme.useThemeMode();
@@ -72,9 +72,10 @@ const MenuItem = React.memo<MenuItemProps>(
           boxSizing: "border-box",
           listStyle: "none",
           WebkitTapHighlightColor: "transparent",
+          minHeight: "40px",
           margin: 0,
           padding: "8px",
-          paddingRight: actionButton ? "8px" : "16px",
+          paddingRight: actionButtonProps?.icon ? "0px" : "8px",
           borderRadius: "8px",
           cursor: isDisabled ? "not-allowed" : props?.onClick ? "pointer" : "default",
           backgroundColor,
@@ -83,9 +84,9 @@ const MenuItem = React.memo<MenuItemProps>(
         }}
         {...props}
       >
-        <Space.Flex row style={{ alignItems: "center" }}>
+        <Space.Flex row style={{ minHeight: "40px", height: "100%", alignItems: "center", color: textColor }}>
           {/* start icon */}
-          {icon && <Icon icon={icon} width={24} style={{ color: textColor }} />}
+          {icon && <Icon icon={icon} width={24} style={{ color: "inherit" }} />}
 
           {/* text */}
           <Space.Flex
@@ -95,11 +96,11 @@ const MenuItem = React.memo<MenuItemProps>(
               flex: 1,
               flexGrow: 1,
               maxWidth:
-                icon && !actionButton
+                icon && !actionButtonProps?.icon
                   ? "calc(100% - 32px)"
-                  : !icon && actionButton
+                  : !icon && actionButtonProps?.icon
                     ? "calc(100% - 48px)"
-                    : icon && !!actionButton
+                    : icon && !!actionButtonProps?.icon
                       ? "calc(100% - 80px)"
                       : "100%",
             }}
@@ -110,8 +111,8 @@ const MenuItem = React.memo<MenuItemProps>(
               isEllipsis
               style={{
                 width: "100%",
-                color: textColor,
                 lineHeight: "1rem",
+                color: "inherit",
               }}
             />
             {subText && (
@@ -121,22 +122,30 @@ const MenuItem = React.memo<MenuItemProps>(
                 isEllipsis
                 style={{
                   width: "100%",
-                  color: textColor,
+                  color: "inherit",
                 }}
               />
             )}
           </Space.Flex>
 
           {/* end action */}
-          {!!actionButton?.icon && (
+          {!!actionButtonProps?.icon && (
             <Buttons.Icon
-              icon={actionButton.icon}
               variant="transparent"
               isDisabled={isDisabled}
-              onClick={actionButton.onClick}
+              // icon={actionButtonProps.icon}
+              // onClick={actionButtonProps.onClick}
               style={{
-                ...actionButton.style,
+                height: "auto",
+                width: "auto",
+                color: "inherit",
+                ...actionButtonProps.style,
               }}
+              iconStyle={{
+                color: textColor,
+                ...actionButtonProps.iconStyle,
+              }}
+              {...actionButtonProps}
             />
           )}
         </Space.Flex>

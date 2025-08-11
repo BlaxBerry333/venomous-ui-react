@@ -10,7 +10,7 @@ import { Theme } from "../Theme";
 import type { DrawerProps } from "./index.types";
 
 const Drawer = React.memo<DrawerProps>(
-  ({ isOpen, onClose, children, position = "left", maskClosable = true, width = 300, height = 300, style }) => {
+  ({ isOpen, onClose, children, direction = "left", maskClosable = true, width = 300, height = 300, style }) => {
     const { themeMode } = Theme.useThemeMode();
 
     return (
@@ -47,20 +47,20 @@ const Drawer = React.memo<DrawerProps>(
               animate={{ x: 0, y: 0 }}
               transition={{ duration: 0.3, ease: [0.42, 0, 0.58, 1] }}
               initial={
-                position === "left"
+                direction === "left"
                   ? { x: "-100%" }
-                  : position === "right"
+                  : direction === "right"
                     ? { x: "100%" }
-                    : position === "top"
+                    : direction === "top"
                       ? { y: "-100%" }
                       : { y: "100%" }
               }
               exit={
-                position === "left"
+                direction === "left"
                   ? { x: "-100%" }
-                  : position === "right"
+                  : direction === "right"
                     ? { x: "100%" }
-                    : position === "top"
+                    : direction === "top"
                       ? { y: "-100%" }
                       : { y: "100%" }
               }
@@ -69,25 +69,25 @@ const Drawer = React.memo<DrawerProps>(
                 boxSizing: "border-box",
                 position: "fixed",
                 zIndex: 1000,
-                ...(position === "left" && {
+                ...(direction === "left" && {
                   top: 0,
                   left: 0,
                   width,
                   height: "100svh",
                 }),
-                ...(position === "right" && {
+                ...(direction === "right" && {
                   top: 0,
                   right: 0,
                   width,
                   height: "100svh",
                 }),
-                ...(position === "top" && {
+                ...(direction === "top" && {
                   top: 0,
                   left: 0,
                   width: "100vw",
                   height,
                 }),
-                ...(position === "bottom" && {
+                ...(direction === "bottom" && {
                   bottom: 0,
                   left: 0,
                   width: "100vw",
@@ -100,22 +100,22 @@ const Drawer = React.memo<DrawerProps>(
                 style={{
                   width: "100%",
                   height: "100%",
-                  ...(position === "left" && {
+                  ...(direction === "left" && {
                     borderRight: "none",
                     borderTopLeftRadius: 0,
                     borderBottomLeftRadius: 0,
                   }),
-                  ...(position === "right" && {
+                  ...(direction === "right" && {
                     borderLeft: "none",
                     borderTopRightRadius: 0,
                     borderBottomRightRadius: 0,
                   }),
-                  ...(position === "top" && {
+                  ...(direction === "top" && {
                     borderBottom: "none",
                     borderTopLeftRadius: 0,
                     borderTopRightRadius: 0,
                   }),
-                  ...(position === "bottom" && {
+                  ...(direction === "bottom" && {
                     borderTop: "none",
                     borderBottomLeftRadius: 0,
                     borderBottomRightRadius: 0,

@@ -25,6 +25,12 @@ const meta = {
       control: { type: "number" },
       table: { type: { summary: "number" }, defaultValue: { summary: "24" } },
     },
+    iconStyle: {
+      description: "The style of the icon",
+      if: { arg: "icon" },
+      control: { type: "object" },
+      table: { type: { summary: "CSSProperties" } },
+    },
     variant: {
       description: "The variant of the button",
       control: { type: "select" },

@@ -28,7 +28,7 @@ const CardsProduct = React.memo<CardsProductProps>(
 
         <React.Suspense fallback={null}>
           <Popover
-            placement="bottom"
+            direction="bottom"
             renderTrigger={(isOpen) => (
               <Buttons.Icon
                 icon="solar:hamburger-menu-line-duotone"

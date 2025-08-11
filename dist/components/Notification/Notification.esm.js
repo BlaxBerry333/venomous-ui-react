@@ -20,7 +20,7 @@ import "../Form/FormFieldSwitch.esm.js";
 import "../Form/FormFieldText.esm.js";
 import "../Form/FormFieldTextarea.esm.js";
 import "../Form/Form.esm.js";
-import r from "../Icon/Icon.esm.js";
+import i from "../Icon/Icon.esm.js";
 import "../Layout/LayoutCollapseSide.esm.js";
 import "../Layout/LayoutContent.esm.js";
 import "../Layout/LayoutFooter.esm.js";
@@ -52,7 +52,7 @@ import "../Typography/TypographyCode.esm.js";
 import "../Typography/TypographyParagraph.esm.js";
 import "../Typography/TypographyText.esm.js";
 import "../Typography/TypographyTitle.esm.js";
-const l = n.memo(({ position: t = "top-center", offset: i = 0, collapsable: m = !1 }) => {
+const a = n.memo(({ position: t = "top-center", offset: r = 0, collapsable: m = !1 }) => {
   const { isDarkThemeMode: p } = c.useThemeMode();
   return /* @__PURE__ */ o(
     s,
@@ -63,20 +63,20 @@ const l = n.memo(({ position: t = "top-center", offset: i = 0, collapsable: m = 
       visibleToasts: 4,
       gap: 8,
       position: t,
-      offset: i,
-      mobileOffset: i / 2,
+      offset: r,
+      mobileOffset: r / 2,
       expand: !m,
       className: e("Venomous-UI-React--Notification"),
       icons: {
-        success: /* @__PURE__ */ o(r, { icon: "solar:shield-check-line-duotone", color: "success" }),
-        error: /* @__PURE__ */ o(r, { icon: "solar:shield-cross-line-duotone", color: "error" }),
-        warning: /* @__PURE__ */ o(r, { icon: "solar:shield-warning-line-duotone", color: "warning" }),
-        info: /* @__PURE__ */ o(r, { icon: "solar:info-circle-line-duotone", color: "info" })
+        success: /* @__PURE__ */ o(i, { icon: "solar:shield-check-line-duotone", semanticColor: "success" }),
+        error: /* @__PURE__ */ o(i, { icon: "solar:shield-cross-line-duotone", semanticColor: "error" }),
+        warning: /* @__PURE__ */ o(i, { icon: "solar:shield-warning-line-duotone", semanticColor: "warning" }),
+        info: /* @__PURE__ */ o(i, { icon: "solar:info-circle-line-duotone", semanticColor: "info" })
       }
     }
   );
 });
-l.displayName = "Notification";
+a.displayName = "Notification";
 export {
-  l as default
+  a as default
 };

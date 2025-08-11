@@ -8,8 +8,8 @@ import { Icon } from "../Icon";
 import { Space } from "../Space";
 import { Theme } from "../Theme";
 import { Typography } from "../Typography";
+import { useFormFieldStyle } from "./_useFormFieldStyle";
 import type { FormFieldProps } from "./index.types";
-import { useFormFieldStyle } from "./useFormFieldStyle";
 
 const FormField = React.memo<FormFieldProps>(
   ({

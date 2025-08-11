@@ -17,6 +17,7 @@ const ButtonsIcon = React.memo<ButtonsIconProps>(
     isDisabled,
     icon,
     iconWidth = 20,
+    iconStyle,
     semanticColor,
     ...props
   }) => {
@@ -45,6 +46,7 @@ const ButtonsIcon = React.memo<ButtonsIconProps>(
           width={iconWidth}
           style={{
             color: buttonStyles.color,
+            ...iconStyle,
           }}
         />
       </button>

@@ -4,9 +4,9 @@ import clsx from "clsx";
 import React from "react";
 
 import { useElementFocus } from "@/hooks";
+import { useFormFieldStyle } from "./_useFormFieldStyle";
 import FormField from "./FormField";
 import type { FormFieldTextProps } from "./index.types";
-import { useFormFieldStyle } from "./useFormFieldStyle";
 
 const FormFieldNumber = React.memo<FormFieldTextProps>(
   ({

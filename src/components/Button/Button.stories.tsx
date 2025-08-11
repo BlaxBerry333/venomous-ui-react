@@ -54,6 +54,12 @@ const meta = {
       options: ["start", "end"],
       table: { type: { summary: `"start"|"end"` }, defaultValue: { summary: '"start"' } },
     },
+    iconStyle: {
+      description: "The style of the icon",
+      if: { arg: "icon" },
+      control: { type: "object" },
+      table: { type: { summary: "CSSProperties" } },
+    },
     isLoading: {
       description: "Whether the button is loading",
       control: { type: "boolean" },

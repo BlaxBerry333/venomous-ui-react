@@ -2,9 +2,9 @@ import { jsxs as F, jsx as t } from "react/jsx-runtime";
 import y from "clsx";
 import b from "react";
 import I from "../Icon/Icon.esm.js";
-import w from "./Label.esm.js";
-import { useFormFieldStyle as R } from "./useFormFieldStyle.esm.js";
-import { useToggleFormFieldChecked as j } from "./useToggleFormFieldChecked.esm.js";
+import { useFormFieldStyle as w } from "./_useFormFieldStyle.esm.js";
+import { useToggleFormFieldChecked as R } from "./_useToggleFormFieldChecked.esm.js";
+import j from "./Label.esm.js";
 const N = b.memo(
   ({
     className: c,
@@ -21,16 +21,16 @@ const N = b.memo(
     labelPosition: a = "right",
     ...u
   }) => {
-    const { inputRef: k, isChecked: o, toggleOriginalIsChecked: d, toggleCustomIsChecked: C } = j({
+    const { inputRef: k, isChecked: o, toggleOriginalIsChecked: d, toggleCustomIsChecked: C } = R({
       checked: f,
       disabled: e,
       onChange: h
-    }), { outlineColor: g, borderColor: x } = R({
+    }), { outlineColor: g, borderColor: x } = w({
       isDisabled: e,
       isError: r
     });
     return /* @__PURE__ */ F(
-      w,
+      j,
       {
         label: p,
         required: m,

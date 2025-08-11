@@ -15,11 +15,11 @@ const meta = {
       type: { name: "string", required: true },
       table: { type: { summary: "React.ReactNode" } },
     },
-    placement: {
+    direction: {
       description: "The placement of the popover",
       control: { type: "select" },
-      options: ["top", "bottom"],
-      table: { type: { summary: `"top"|"bottom"` }, defaultValue: { summary: '"bottom"' } },
+      options: ["top", "bottom", "right", "left"],
+      table: { type: { summary: `"top"|"bottom|"right"|"left"` }, defaultValue: { summary: '"bottom"' } },
     },
     trigger: {
       description: "How to trigger the popover",
@@ -46,7 +46,7 @@ const meta = {
   },
   args: {
     children: null,
-    placement: "bottom",
+    direction: "bottom",
     trigger: "click",
     renderTrigger: () => null,
   },

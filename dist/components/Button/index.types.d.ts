@@ -14,6 +14,7 @@ export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonE
     icon?: IconProps["icon"];
     iconPosition?: "start" | "end";
     iconWidth?: IconProps["width"];
+    iconStyle?: IconProps["style"];
     semanticColor?: keyof typeof SemanticColors;
 }
 export interface ButtonsIconProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "children" | "color"> {
@@ -22,6 +23,7 @@ export interface ButtonsIconProps extends Omit<React.ButtonHTMLAttributes<HTMLBu
     isDisabled?: boolean;
     icon: IconProps["icon"];
     iconWidth?: IconProps["width"];
+    iconStyle?: IconProps["style"];
     semanticColor?: keyof typeof SemanticColors;
 }
 //# sourceMappingURL=index.types.d.ts.map

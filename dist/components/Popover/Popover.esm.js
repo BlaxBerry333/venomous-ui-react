@@ -1,82 +1,110 @@
-import { jsxs as M, jsx as p } from "react/jsx-runtime";
-import h from "clsx";
-import { AnimatePresence as b, motion as k } from "framer-motion";
-import o from "react";
-import O from "../../hooks/useHandler/index.esm.js";
+import { jsxs as L, jsx as d } from "react/jsx-runtime";
+import m from "clsx";
+import { AnimatePresence as N, motion as C } from "framer-motion";
+import r from "react";
+import M from "../../hooks/useHandler/index.esm.js";
 import "../Card/CardsBook.esm.js";
 import "../Card/CardsProduct.esm.js";
 import "../Card/CardsTitleBlock.esm.js";
-import C from "../Card/Card.esm.js";
-const H = o.memo(
-  ({ children: v, style: y, contentStyle: R, placement: u = "bottom", renderTrigger: g, trigger: n = "click", onClickOutside: a }) => {
-    var d;
-    const e = O(), l = o.useRef(null), i = o.useRef(null), r = o.useRef(null), [f, W] = o.useState({ top: 0, left: 0 });
-    o.useEffect(() => {
-      if (n !== "click") return;
-      const s = (t) => {
-        var c;
-        r.current && !r.current.contains(t.target) && !((c = i.current) != null && c.contains(t.target)) && (e.close(), a && a());
+import O from "../Card/Card.esm.js";
+const U = r.memo(
+  ({ children: w, style: x, contentStyle: k, direction: n = "bottom", renderTrigger: W, trigger: i = "click", onClickOutside: h }) => {
+    var y, b;
+    const t = M(), v = r.useRef(null), s = r.useRef(null), c = r.useRef(null), [R, P] = r.useState({ top: 0, left: 0 });
+    r.useEffect(() => {
+      if (i !== "click") return;
+      const p = (e) => {
+        var o;
+        c.current && !c.current.contains(e.target) && !((o = s.current) != null && o.contains(e.target)) && (t.close(), h && h());
       };
-      return e.isOpen && document.addEventListener("mousedown", s), () => {
-        document.removeEventListener("mousedown", s);
+      return t.isOpen && document.addEventListener("mousedown", p), () => {
+        document.removeEventListener("mousedown", p);
       };
-    }, [e, n, a]), o.useEffect(() => {
-      if (e.isOpen && l.current && i.current && r.current) {
-        const s = l.current.getBoundingClientRect(), t = i.current.getBoundingClientRect(), c = r.current.offsetWidth, x = r.current.offsetHeight, m = t.top - s.top, E = t.left - s.left, P = u === "bottom" ? m + t.height : m - x, L = E + t.width / 2 - c / 2;
-        W({ top: P, left: L });
-      }
-    }, [e.isOpen, u]);
-    const w = n === "hover" ? {
-      onMouseEnter: () => {
-        n === "hover" && e.open();
-      },
-      onMouseLeave: () => {
-        n === "hover" && e.close();
-      }
-    } : {};
-    return /* @__PURE__ */ M("div", { ref: l, style: { display: "inline-block", position: "relative", ...y }, ...w, children: [
-      /* @__PURE__ */ p(
-        "div",
-        {
-          ref: i,
-          ...n === "click" ? { onClick: e.toggle } : {},
-          className: h("Venomous-UI-React--Popover.Trigger"),
-          style: { display: "inline-block", width: "100%" },
-          children: g(e.isOpen)
+    }, [t, i, h]), r.useEffect(() => {
+      if (t.isOpen && v.current && s.current && c.current) {
+        const p = v.current.getBoundingClientRect(), e = s.current.getBoundingClientRect(), o = c.current.offsetWidth, g = c.current.offsetHeight, f = e.top - p.top, u = e.left - p.left;
+        let a, l;
+        switch (n) {
+          case "top":
+            a = f - g, l = u + e.width / 2 - o / 2;
+            break;
+          case "bottom":
+            a = f + e.height, l = u + e.width / 2 - o / 2;
+            break;
+          case "left":
+            a = f + e.height / 2 - g / 2, l = u - o;
+            break;
+          case "right":
+            a = f + e.height / 2 - g / 2, l = u + e.width;
+            break;
+          default:
+            a = f + e.height, l = u + e.width / 2 - o / 2;
         }
-      ),
-      /* @__PURE__ */ p(b, { children: e.isOpen && /* @__PURE__ */ p(
-        k.div,
-        {
-          ref: r,
-          initial: { opacity: 0, y: 0 },
-          animate: { opacity: 1, y: 0 },
-          exit: { opacity: 0, y: 0 },
-          transition: { duration: 0.2 },
-          className: h("Venomous-UI-React--Popover"),
-          style: {
-            position: "absolute",
-            top: f.top,
-            left: f.left,
-            zIndex: 1e3,
-            minWidth: (d = i.current) == null ? void 0 : d.offsetWidth
-          },
-          children: /* @__PURE__ */ p(
-            C,
+        P({ top: a, left: l });
+      }
+    }, [t.isOpen, n]);
+    const E = () => {
+      i === "hover" && t.open();
+    }, I = () => {
+      i === "hover" && t.close();
+    };
+    return /* @__PURE__ */ L(
+      "div",
+      {
+        ref: v,
+        className: m("Venomous-UI-React--Popover.TriggerWrapper"),
+        style: { display: "inline-block", position: "relative", ...x },
+        ...i === "hover" ? {
+          onMouseEnter: E,
+          onMouseLeave: I
+        } : {},
+        children: [
+          /* @__PURE__ */ d(
+            "div",
             {
-              style: {
-                padding: "8px",
-                ...R
-              },
-              children: v
+              ref: s,
+              style: { display: "inline-block", width: "100%" },
+              className: m("Venomous-UI-React--Popover.Trigger"),
+              ...i === "click" ? {
+                onClick: t.toggle
+              } : {},
+              children: W(t.isOpen)
             }
-          )
-        }
-      ) })
-    ] });
+          ),
+          /* @__PURE__ */ d(N, { children: t.isOpen && /* @__PURE__ */ d(
+            C.div,
+            {
+              ref: c,
+              initial: { opacity: 0, y: 0 },
+              animate: { opacity: 1, y: 0 },
+              exit: { opacity: 0, y: 0 },
+              transition: { duration: 0.2 },
+              className: m("Venomous-UI-React--Popover"),
+              style: {
+                boxSizing: "border-box",
+                position: "absolute",
+                top: R.top,
+                left: R.left,
+                zIndex: 1e3,
+                minWidth: n === "left" || n === "right" || (y = s.current) == null ? void 0 : y.offsetWidth,
+                maxWidth: n === "left" || n === "right" || (b = s.current) == null ? void 0 : b.offsetWidth
+              },
+              children: /* @__PURE__ */ d(
+                O,
+                {
+                  className: m("Venomous-UI-React--Popover.Content"),
+                  style: { width: "100%", padding: "8px", ...k },
+                  children: w
+                }
+              )
+            }
+          ) })
+        ]
+      }
+    );
   }
 );
-H.displayName = "Popover";
+U.displayName = "Popover";
 export {
-  H as default
+  U as default
 };

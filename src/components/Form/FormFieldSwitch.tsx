@@ -5,10 +5,10 @@ import React from "react";
 
 import { BackgroundColors, Shadows, ThemeColor } from "@/utils";
 import clsx from "clsx";
+import { useFormFieldStyle } from "./_useFormFieldStyle";
+import { useToggleFormFieldChecked } from "./_useToggleFormFieldChecked";
 import type { FormFieldCheckboxProps } from "./index.types";
 import Label from "./Label";
-import { useFormFieldStyle } from "./useFormFieldStyle";
-import { useToggleFormFieldChecked } from "./useToggleFormFieldChecked";
 
 const switchWidth = 48;
 const switchHeight = 24;

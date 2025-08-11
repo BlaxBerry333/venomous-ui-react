@@ -3,7 +3,7 @@
 import clsx from "clsx";
 import React from "react";
 
-import { BackgroundColors, BorderColors, Shadows, TextColors, ThemeMode } from "@/utils";
+import { BackgroundColors, BorderColors, Shadows, TextColors, ThemeMode } from "@/utils/design";
 import { Icon } from "../Icon";
 import { Space } from "../Space";
 import { Theme } from "../Theme";

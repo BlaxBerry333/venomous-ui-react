@@ -6,10 +6,15 @@ import React from "react";
 
 import { useHandler } from "@/hooks";
 import { Card } from "../Card";
-import type { PopoverPosition, PopoverProps } from "./index.types";
+import type { PopoverProps } from "./index.types";
+
+type PopoverPosition = {
+  top: number;
+  left: number;
+};
 
 const Popover = React.memo<PopoverProps>(
-  ({ children, style, contentStyle, placement = "bottom", renderTrigger, trigger = "click", onClickOutside }) => {
+  ({ children, style, contentStyle, direction = "bottom", renderTrigger, trigger = "click", onClickOutside }) => {
     const handler = useHandler();
     const wrapperRef = React.useRef<HTMLDivElement>(null);
     const triggerRef = React.useRef<HTMLDivElement>(null);
@@ -48,11 +53,35 @@ const Popover = React.memo<PopoverProps>(
         const popoverHeight = popoverRef.current.offsetHeight;
         const relativeTop = triggerRect.top - wrapperRect.top;
         const relativeLeft = triggerRect.left - wrapperRect.left;
-        const top = placement === "bottom" ? relativeTop + triggerRect.height : relativeTop - popoverHeight;
-        const left = relativeLeft + triggerRect.width / 2 - popoverWidth / 2;
+
+        let top: number;
+        let left: number;
+
+        switch (direction) {
+          case "top":
+            top = relativeTop - popoverHeight;
+            left = relativeLeft + triggerRect.width / 2 - popoverWidth / 2;
+            break;
+          case "bottom":
+            top = relativeTop + triggerRect.height;
+            left = relativeLeft + triggerRect.width / 2 - popoverWidth / 2;
+            break;
+          case "left":
+            top = relativeTop + triggerRect.height / 2 - popoverHeight / 2;
+            left = relativeLeft - popoverWidth;
+            break;
+          case "right":
+            top = relativeTop + triggerRect.height / 2 - popoverHeight / 2;
+            left = relativeLeft + triggerRect.width;
+            break;
+          default:
+            top = relativeTop + triggerRect.height;
+            left = relativeLeft + triggerRect.width / 2 - popoverWidth / 2;
+        }
+
         setPosition({ top, left });
       }
-    }, [handler.isOpen, placement]);
+    }, [handler.isOpen, direction]);
 
     // hover模式的事件处理函数
     const handleWrapperMouseEnter = () => {
@@ -65,22 +94,27 @@ const Popover = React.memo<PopoverProps>(
       handler.close();
     };
 
-    // 根据触发方式设置事件处理器
-    const wrapperProps =
-      trigger === "hover"
-        ? {
-            onMouseEnter: handleWrapperMouseEnter,
-            onMouseLeave: handleWrapperMouseLeave,
-          }
-        : {};
-
     return (
-      <div ref={wrapperRef} style={{ display: "inline-block", position: "relative", ...style }} {...wrapperProps}>
+      <div
+        ref={wrapperRef}
+        className={clsx("Venomous-UI-React--Popover.TriggerWrapper")}
+        style={{ display: "inline-block", position: "relative", ...style }}
+        {...(trigger === "hover"
+          ? {
+              onMouseEnter: handleWrapperMouseEnter,
+              onMouseLeave: handleWrapperMouseLeave,
+            }
+          : {})}
+      >
         <div
           ref={triggerRef}
-          {...(trigger === "click" ? { onClick: handler.toggle } : {})}
-          className={clsx("Venomous-UI-React--Popover.Trigger")}
           style={{ display: "inline-block", width: "100%" }}
+          className={clsx("Venomous-UI-React--Popover.Trigger")}
+          {...(trigger === "click"
+            ? {
+                onClick: handler.toggle,
+              }
+            : {})}
         >
           {renderTrigger(handler.isOpen)}
         </div>
@@ -95,18 +129,18 @@ const Popover = React.memo<PopoverProps>(
               transition={{ duration: 0.2 }}
               className={clsx("Venomous-UI-React--Popover")}
               style={{
+                boxSizing: "border-box",
                 position: "absolute",
                 top: position.top,
                 left: position.left,
                 zIndex: 1000,
-                minWidth: triggerRef.current?.offsetWidth,
+                minWidth: direction === "left" || direction === "right" ? undefined : triggerRef.current?.offsetWidth,
+                maxWidth: direction === "left" || direction === "right" ? undefined : triggerRef.current?.offsetWidth,
               }}
             >
               <Card
-                style={{
-                  padding: "8px",
-                  ...contentStyle,
-                }}
+                className={clsx("Venomous-UI-React--Popover.Content")}
+                style={{ width: "100%", padding: "8px", ...contentStyle }}
               >
                 {children}
               </Card>

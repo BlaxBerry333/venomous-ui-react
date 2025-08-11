@@ -1,10 +1,10 @@
-import { jsxs as f, jsx as t } from "react/jsx-runtime";
-import x from "clsx";
-import y from "react";
+import { jsxs as x, jsx as t } from "react/jsx-runtime";
+import y from "clsx";
+import b from "react";
 import l from "../Icon/Icon.esm.js";
-import { Typography as b } from "../Typography/index.esm.js";
-import { useButtonStyle as g } from "./_useButtonStyle.esm.js";
-const w = y.memo(
+import { Typography as g } from "../Typography/index.esm.js";
+import { useButtonStyle as w } from "./_useButtonStyle.esm.js";
+const B = b.memo(
   ({
     className: a,
     type: m = "button",
@@ -15,20 +15,21 @@ const w = y.memo(
     isDisabled: o,
     icon: n,
     iconPosition: r = "start",
-    iconWidth: u = 20,
-    semanticColor: h,
+    iconStyle: u,
+    iconWidth: h = 20,
+    semanticColor: f,
     ...i
   }) => {
-    const { buttonStyles: s } = g({
+    const { buttonStyles: s } = w({
       isLoading: e,
       isDisabled: o || i.disabled,
       variant: c,
-      semanticColor: h
+      semanticColor: f
     });
-    return /* @__PURE__ */ f(
+    return /* @__PURE__ */ x(
       "button",
       {
-        className: x("Venomous-UI-React--Button", a),
+        className: y("Venomous-UI-React--Button", a),
         type: m,
         disabled: e || o,
         style: {
@@ -43,15 +44,16 @@ const w = y.memo(
             l,
             {
               icon: n,
-              width: u,
+              width: h,
               style: {
                 marginLeft: r === "start" ? "0px" : "8px",
                 marginRight: r === "end" ? "0px" : "8px",
-                color: "inherit"
+                color: "inherit",
+                ...u
               }
             }
           ),
-          /* @__PURE__ */ t(b.Text, { text: d, style: { color: "inherit" } }),
+          /* @__PURE__ */ t(g.Text, { text: d, style: { color: "inherit" } }),
           /* @__PURE__ */ t(
             "div",
             {
@@ -75,7 +77,7 @@ const w = y.memo(
     );
   }
 );
-w.displayName = "Button";
+B.displayName = "Button";
 export {
-  w as default
+  B as default
 };

@@ -10,9 +10,9 @@ import { Menu } from "../Menu";
 import { Popover } from "../Popover";
 import { Space } from "../Space";
 import { Typography } from "../Typography";
+import { useFormFieldStyle } from "./_useFormFieldStyle";
 import FormField from "./FormField";
 import type { FormFieldOption, FormFieldSelectProps } from "./index.types";
-import { useFormFieldStyle } from "./useFormFieldStyle";
 
 const FormFieldSelect = React.memo<FormFieldSelectProps>(
   ({
@@ -161,7 +161,7 @@ const CustomSelect = React.memo<
 
   return (
     <Popover
-      placement="bottom"
+      direction="bottom"
       trigger="click"
       style={{ width: "100%" }}
       onClickOutside={() => setIsFocused(false)}
@@ -202,11 +202,7 @@ const CustomSelect = React.memo<
         </Space.Flex>
       )}
     >
-      <Menu.List
-        as="ul"
-        className={clsx("Venomous-UI-React--FormField.Select", className)}
-        style={{ width: selectWidth }}
-      >
+      <Menu.List as="ul" className={clsx("Venomous-UI-React--FormField.Select", className)} style={{ width: "100%" }}>
         {options.map((option) => (
           <Menu.Item
             key={option.value}

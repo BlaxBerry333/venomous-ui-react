@@ -31,8 +31,17 @@ export const Default: Story = {
     return (
       <Menu.List {...args} style={{ width: "200px" }}>
         <Menu.Item icon="solar:basketball-bold-duotone" text="Item 1" />
-        <Menu.Item icon="solar:basketball-bold-duotone" text="Item 2" subText="Item 2 sub text" />
-        <Menu.Item icon="solar:basketball-bold-duotone" text="Item 3" subText="Item 3 sub text" />
+        <Menu.Item icon="solar:basketball-bold-duotone" text="Item 2" isActive />
+        <Menu.Item icon="solar:basketball-bold-duotone" text="Item 3" isDisabled />
+        <Menu.CollapseItem
+          icon="solar:basketball-bold-duotone"
+          text="Item 4"
+          subItems={[
+            { icon: "solar:basketball-bold-duotone", text: "SubItem 1" },
+            { icon: "solar:basketball-bold-duotone", text: "SubItem 2" },
+          ]}
+        />
+        <Menu.Item icon="solar:basketball-bold-duotone" text="Item 5" subText="Item 4 sub text" />
       </Menu.List>
     );
   },

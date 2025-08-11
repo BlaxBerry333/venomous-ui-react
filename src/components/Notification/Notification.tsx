@@ -23,10 +23,10 @@ const Notification = React.memo<NotificationProps>(({ position = "top-center", o
       expand={!collapsable}
       className={clsx("Venomous-UI-React--Notification")}
       icons={{
-        success: <Icon icon="solar:shield-check-line-duotone" color="success" />,
-        error: <Icon icon="solar:shield-cross-line-duotone" color="error" />,
-        warning: <Icon icon="solar:shield-warning-line-duotone" color="warning" />,
-        info: <Icon icon="solar:info-circle-line-duotone" color="info" />,
+        success: <Icon icon="solar:shield-check-line-duotone" semanticColor="success" />,
+        error: <Icon icon="solar:shield-cross-line-duotone" semanticColor="error" />,
+        warning: <Icon icon="solar:shield-warning-line-duotone" semanticColor="warning" />,
+        info: <Icon icon="solar:info-circle-line-duotone" semanticColor="info" />,
       }}
     />
   );
