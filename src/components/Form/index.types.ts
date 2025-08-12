@@ -18,6 +18,7 @@ export interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> 
 }
 
 export type FormFieldOption = {
+  id: string;
   label: string;
   value: string | number;
   disabled?: boolean;

@@ -43,12 +43,18 @@ const meta = {
       control: false,
       table: { type: { summary: "React.CSSProperties" } },
     },
+    onClickOutside: {
+      description: "The callback function to be called when the popover is closed",
+      control: false,
+      table: { category: "Events", type: { summary: "() => void" } },
+    },
   },
   args: {
     children: null,
     direction: "bottom",
     trigger: "click",
     renderTrigger: () => null,
+    onClickOutside: () => {},
   },
 } satisfies Meta<typeof Popover>;
 

@@ -19,6 +19,7 @@ export interface MenuListProps extends React.HTMLAttributes<HTMLUListElement | H
 
 export interface MenuItemProps extends Omit<React.HTMLAttributes<HTMLLIElement>, "children"> {
   as?: keyof typeof MenuItemTagMap;
+  id: string;
   icon?: IconProps["icon"];
   text: string;
   subText?: string;

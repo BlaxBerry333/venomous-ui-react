@@ -26,10 +26,18 @@ const MenuCollapseItem = React.memo<MenuCollapseItemProps>(
     subItems,
     ...props
   }) => {
-    const [selectedSubItemID, setSelectedSubItemID] = React.useState<string | null>(null);
+    const { themeMode } = Theme.useThemeMode();
+
+    const color = React.useMemo<React.CSSProperties["color"]>(() => {
+      return BorderColors[themeMode].quaternary;
+    }, [themeMode]);
 
     const handler = useHandler(isCollapsed);
-    const toggle = React.useCallback(() => {
+    const isOpen: boolean = handler.isOpen;
+
+    const [selectedSubItemID, setSelectedSubItemID] = React.useState<MenuCollapseItemProps["id"] | null>(null);
+
+    const toggleCollapseTrigger = React.useCallback(() => {
       if (isDisabled) {
         return;
       }
@@ -58,7 +66,13 @@ const MenuCollapseItem = React.memo<MenuCollapseItemProps>(
           className={clsx("Venomous-UI-React--Menu.CollapseItem", className)}
           style={{
             padding: "8px",
-            // backgroundColor: handler.isOpen ? "?" : "transparent",
+            ...(isOpen
+              ? {
+                  outlineWidth: 1.5,
+                  outlineStyle: "solid",
+                  outlineColor: color,
+                }
+              : { outline: "none" }),
             ...style,
           }}
           icon={icon}
@@ -66,7 +80,7 @@ const MenuCollapseItem = React.memo<MenuCollapseItemProps>(
           subText={subText}
           isDisabled={isDisabled}
           isActive={isActive || selectedSubItemID !== null}
-          onClick={toggle}
+          onClick={toggleCollapseTrigger}
           actionButtonProps={{
             icon: handler.isOpen ? "solar:alt-arrow-up-bold-duotone" : "solar:alt-arrow-down-bold-duotone",
             style: { border: 0 },
@@ -74,14 +88,14 @@ const MenuCollapseItem = React.memo<MenuCollapseItemProps>(
           {...props}
         />
         <Transitions.Collapse isOpen={handler.isOpen}>
-          <MenuList style={{ width: style?.width, paddingLeft: 24 }}>
+          <MenuList style={{ width: style?.width, padding: "4px 2px 4px 24px" }}>
             {subItems.map(({ style: subItemStyle, onClick: subItemOnClick, ...item }) => (
-              <Space.Flex key={item.text} row gap={0} style={{ width: "100%" }}>
-                <MenuCollapseItemTreeLine />
+              <Space.Flex key={item.id} row gap={0} style={{ width: "100%" }}>
+                <MenuCollapseItemTreeLine color={color} />
                 <MenuItem
-                  isActive={selectedSubItemID === item.text}
+                  isActive={selectedSubItemID === item.id}
                   onClick={(e) => {
-                    setSelectedSubItemID(item.text);
+                    setSelectedSubItemID(item.id);
                     subItemOnClick?.(e);
                   }}
                   style={{
@@ -104,9 +118,7 @@ const MenuCollapseItem = React.memo<MenuCollapseItemProps>(
 MenuCollapseItem.displayName = "Menu.CollapseItem";
 export default MenuCollapseItem;
 
-const MenuCollapseItemTreeLine = React.memo(() => {
-  const { themeMode } = Theme.useThemeMode();
-  const color = BorderColors[themeMode].quaternary;
+const MenuCollapseItemTreeLine = React.memo<{ color: React.CSSProperties["color"] }>(({ color }) => {
   return (
     <>
       <i
@@ -117,7 +129,7 @@ const MenuCollapseItemTreeLine = React.memo(() => {
           width: 1.5,
           position: "absolute",
           top: "-50%",
-          left: -6,
+          left: -10,
         }}
       />
       <i
@@ -128,7 +140,7 @@ const MenuCollapseItemTreeLine = React.memo(() => {
           width: 8,
           position: "absolute",
           top: "50%",
-          left: -4.5,
+          left: -8.5,
           transform: "translateY(-50%)",
         }}
       />

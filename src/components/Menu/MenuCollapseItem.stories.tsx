@@ -15,6 +15,9 @@ const meta = {
       options: Object.values(MenuItemTagMap),
       table: { type: { summary: '"li"|"dt"|"dd"' }, defaultValue: { summary: '"li"' } },
     },
+    id: {
+      table: { disable: true },
+    },
     text: {
       description: "The main text of the menu item",
       control: { type: "text" },
@@ -51,6 +54,7 @@ const meta = {
   },
   args: {
     as: "li",
+    id: "xxxxxxx",
     text: "xxxxxxx",
     subText: "yyyyyyy",
     icon: undefined,
@@ -69,8 +73,8 @@ export const Default: Story = {
   name: "Default",
   render: function RenderStory(args) {
     const MockSubItems: MenuItemProps[] = [
-      { icon: "solar:basketball-bold-duotone", text: "Item 1" },
-      { icon: "solar:basketball-bold-duotone", text: "Item 2" },
+      { id: "1", icon: "solar:basketball-bold-duotone", text: "Item 1" },
+      { id: "2", icon: "solar:basketball-bold-duotone", text: "Item 2" },
     ].map((item) => ({
       ...item,
       onClick: () => console.log(item.text),

@@ -165,6 +165,9 @@ const CustomSelect = React.memo<
       trigger="click"
       style={{ width: "100%" }}
       onClickOutside={() => setIsFocused(false)}
+      contentStyle={{
+        width: selectWidth,
+      }}
       renderTrigger={() => (
         <Space.Flex
           row
@@ -205,7 +208,8 @@ const CustomSelect = React.memo<
       <Menu.List as="ul" className={clsx("Venomous-UI-React--FormField.Select", className)} style={{ width: "100%" }}>
         {options.map((option) => (
           <Menu.Item
-            key={option.value}
+            key={option.id}
+            id={option.id}
             text={option.label}
             isDisabled={option.disabled}
             isActive={option.value === selectedValue}

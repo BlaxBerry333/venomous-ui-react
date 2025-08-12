@@ -1,33 +1,46 @@
-import { jsx as m, jsxs as a } from "react/jsx-runtime";
-import S from "clsx";
-import f from "react";
-import { TextColors as M } from "../../utils/design/colors.esm.js";
-import "../../utils/design/Shadow.esm.js";
-import { getOpacityHex as R } from "../../utils/tools/get-colors.esm.js";
-import { Buttons as k } from "../Button/index.esm.js";
-import b from "../Icon/Icon.esm.js";
-import { Space as I } from "../Space/index.esm.js";
-import { Theme as T } from "../Theme/index.esm.js";
-import { Typography as t } from "../Typography/index.esm.js";
-import { MenuItemTagMap as j } from "./index.types.esm.js";
-const p = f.memo(
+import { jsx as h, jsxs as g } from "react/jsx-runtime";
+import O from "clsx";
+import o from "react";
+import v from "../../hooks/useElementHover/index.esm.js";
+import { TextColors as n } from "../../utils/design/colors.esm.js";
+import { Shadows as R } from "../../utils/design/Shadow.esm.js";
+import { getOpacityHex as E } from "../../utils/tools/get-colors.esm.js";
+import { Buttons as U } from "../Button/index.esm.js";
+import j from "../Icon/Icon.esm.js";
+import { Space as y } from "../Space/index.esm.js";
+import { Theme as u } from "../Theme/index.esm.js";
+import { Typography as M } from "../Typography/index.esm.js";
+import { MenuItemTagMap as F } from "./index.types.esm.js";
+const L = o.memo(
   ({
-    as: w = j.li,
-    className: C,
-    style: c,
+    as: s = F.li,
+    className: c,
+    style: w,
     icon: l,
-    text: s,
-    subText: g,
+    text: S,
+    subText: f,
     isDisabled: r = !1,
-    isActive: h = !1,
+    isActive: x = !1,
     actionButtonProps: e = void 0,
-    ...i
+    ...a
   }) => {
-    const { themeMode: x } = T.useThemeMode(), { themeColor: d } = T.useThemeColor(), H = f.useMemo(() => h ? R(d, 0.1) : "transparent", [r, h, d, x]), y = f.useMemo(() => r ? M[x].disabled : h ? d : M[x].primary, [r, h, d, x]);
-    return /* @__PURE__ */ m(
-      w,
+    const { themeMode: m } = u.useThemeMode(), { themeColor: t } = u.useThemeColor(), T = o.useMemo(() => x ? E(t, 0.1) : "transparent", [r, x, t, m]), i = o.useMemo(() => r ? n[m].disabled : x ? t : n[m].primary, [r, x, t, m]), { handleMouseDown: C, handleMouseUp: I, handleMouseLeave: H } = v({
+      isDisabled: r
+    }), k = o.useCallback(
+      (d) => {
+        r || (d.currentTarget.style.boxShadow = R[m].tertiary);
+      },
+      [r]
+    ), p = o.useCallback(
+      (d) => {
+        r || (d.currentTarget.style.boxShadow = "none");
+      },
+      [r]
+    );
+    return /* @__PURE__ */ h(
+      s,
       {
-        className: S("Venomous-UI-React--Menu.Item", C),
+        className: O("Venomous-UI-React--Menu.Item", c),
         style: {
           boxSizing: "border-box",
           listStyle: "none",
@@ -37,16 +50,21 @@ const p = f.memo(
           padding: "8px",
           paddingRight: e != null && e.icon ? "0px" : "8px",
           borderRadius: "8px",
-          cursor: r ? "not-allowed" : i != null && i.onClick ? "pointer" : "default",
-          backgroundColor: H,
+          cursor: r ? "not-allowed" : a != null && a.onClick ? "pointer" : "default",
+          backgroundColor: T,
           // transition: "box-shadow 0.2s ease-in-out",
-          ...c
+          ...w
         },
-        ...i,
-        children: /* @__PURE__ */ a(I.Flex, { row: !0, style: { minHeight: "40px", height: "100%", alignItems: "center", color: y }, children: [
-          l && /* @__PURE__ */ m(b, { icon: l, width: 24, style: { color: "inherit" } }),
-          /* @__PURE__ */ a(
-            I.Flex,
+        onMouseDown: C,
+        onMouseUp: I,
+        onMouseLeave: H,
+        onMouseOver: k,
+        onMouseOut: p,
+        ...a,
+        children: /* @__PURE__ */ g(y.Flex, { row: !0, style: { minHeight: "40px", height: "100%", alignItems: "center", color: i }, children: [
+          l && /* @__PURE__ */ h(j, { icon: l, width: 24, style: { color: "inherit" } }),
+          /* @__PURE__ */ g(
+            y.Flex,
             {
               column: !0,
               gap: 0,
@@ -56,11 +74,11 @@ const p = f.memo(
                 maxWidth: l && !(e != null && e.icon) ? "calc(100% - 32px)" : !l && (e != null && e.icon) ? "calc(100% - 48px)" : l && (e != null && e.icon) ? "calc(100% - 80px)" : "100%"
               },
               children: [
-                /* @__PURE__ */ m(
-                  t.Text,
+                /* @__PURE__ */ h(
+                  M.Text,
                   {
                     as: "strong",
-                    text: s,
+                    text: S,
                     isEllipsis: !0,
                     style: {
                       width: "100%",
@@ -69,11 +87,11 @@ const p = f.memo(
                     }
                   }
                 ),
-                g && /* @__PURE__ */ m(
-                  t.Text,
+                f && /* @__PURE__ */ h(
+                  M.Text,
                   {
                     as: "small",
-                    text: g,
+                    text: f,
                     isEllipsis: !0,
                     style: {
                       width: "100%",
@@ -84,8 +102,8 @@ const p = f.memo(
               ]
             }
           ),
-          !!(e != null && e.icon) && /* @__PURE__ */ m(
-            k.Icon,
+          !!(e != null && e.icon) && /* @__PURE__ */ h(
+            U.Icon,
             {
               variant: "transparent",
               isDisabled: r,
@@ -96,7 +114,7 @@ const p = f.memo(
                 ...e.style
               },
               iconStyle: {
-                color: y,
+                color: i,
                 ...e.iconStyle
               },
               ...e
@@ -107,7 +125,7 @@ const p = f.memo(
     );
   }
 );
-p.displayName = "Menu.Item";
+L.displayName = "Menu.Item";
 export {
-  p as default
+  L as default
 };

@@ -134,8 +134,6 @@ const Popover = React.memo<PopoverProps>(
                 top: position.top,
                 left: position.left,
                 zIndex: 1000,
-                minWidth: direction === "left" || direction === "right" ? undefined : triggerRef.current?.offsetWidth,
-                maxWidth: direction === "left" || direction === "right" ? undefined : triggerRef.current?.offsetWidth,
               }}
             >
               <Card

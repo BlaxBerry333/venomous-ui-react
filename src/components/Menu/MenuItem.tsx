@@ -3,7 +3,8 @@
 import clsx from "clsx";
 import React from "react";
 
-import { getOpacityHex, TextColors } from "@/utils";
+import { useElementHover } from "@/hooks";
+import { getOpacityHex, Shadows, TextColors } from "@/utils";
 import { Buttons } from "../Button";
 import { Icon } from "../Icon";
 import { Space } from "../Space";
@@ -38,35 +39,26 @@ const MenuItem = React.memo<MenuItemProps>(
       return TextColors[themeMode].primary;
     }, [isDisabled, isActive, themeColor, themeMode]);
 
-    // const { handleMouseDown, handleMouseUp, handleMouseLeave } = useElementHover<HTMLLIElement>({
-    //   isDisabled,
-    // });
-    // const handleMouseOverStyles: React.MouseEventHandler<HTMLLIElement> = React.useCallback(
-    //   (e) => {
-    //     if (isDisabled) return;
-    //     e.currentTarget.style.backgroundColor = isActive
-    //       ? isDarkThemeMode
-    //         ? getDarkerHex(themeColor, 0.4)
-    //         : getLighterHex(themeColor, 0.4)
-    //       : BackgroundColors[themeMode].secondary;
-    //   },
-    //   [isDisabled, isActive, isDarkThemeMode, themeColor, themeMode],
-    // );
-    // const handleMouseOutStyles: React.MouseEventHandler<HTMLLIElement> = React.useCallback(
-    //   (e) => {
-    //     if (isDisabled) return;
-    //     e.currentTarget.style.backgroundColor = backgroundColor;
-    //   },
-    //   [isDisabled, backgroundColor],
-    // );
+    const { handleMouseDown, handleMouseUp, handleMouseLeave } = useElementHover<HTMLLIElement>({
+      isDisabled,
+    });
+    const handleMouseOverStyles: React.MouseEventHandler<HTMLLIElement> = React.useCallback(
+      (e) => {
+        if (isDisabled) return;
+        e.currentTarget.style.boxShadow = Shadows[themeMode].tertiary;
+      },
+      [isDisabled],
+    );
+    const handleMouseOutStyles: React.MouseEventHandler<HTMLLIElement> = React.useCallback(
+      (e) => {
+        if (isDisabled) return;
+        e.currentTarget.style.boxShadow = "none";
+      },
+      [isDisabled],
+    );
 
     return (
       <Tag
-        // onMouseDown={handleMouseDown}
-        // onMouseUp={handleMouseUp}
-        // onMouseLeave={handleMouseLeave}
-        // onMouseOver={handleMouseOverStyles}
-        // onMouseOut={handleMouseOutStyles}
         className={clsx("Venomous-UI-React--Menu.Item", className)}
         style={{
           boxSizing: "border-box",
@@ -82,6 +74,11 @@ const MenuItem = React.memo<MenuItemProps>(
           // transition: "box-shadow 0.2s ease-in-out",
           ...style,
         }}
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseLeave}
+        onMouseOver={handleMouseOverStyles}
+        onMouseOut={handleMouseOutStyles}
         {...props}
       >
         <Space.Flex row style={{ minHeight: "40px", height: "100%", alignItems: "center", color: textColor }}>

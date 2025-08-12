@@ -15,6 +15,9 @@ const meta = {
       options: Object.values(MenuItemTagMap),
       table: { type: { summary: '"li"|"dt"|"dd"' }, defaultValue: { summary: '"li"' } },
     },
+    id: {
+      table: { disable: true },
+    },
     text: {
       description: "The main text of the menu item",
       control: { type: "text" },
@@ -51,6 +54,7 @@ const meta = {
   },
   args: {
     as: "li",
+    id: "xxxxxxx",
     text: "xxxxxxx",
     subText: "yyyyyyy",
     icon: undefined,

@@ -14,6 +14,7 @@ export interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> 
     position?: keyof typeof LabelPositionMap;
 }
 export type FormFieldOption = {
+    id: string;
     label: string;
     value: string | number;
     disabled?: boolean;

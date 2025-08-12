@@ -30,18 +30,28 @@ export const Default: Story = {
   render: function RenderStory(args) {
     return (
       <Menu.List {...args} style={{ width: "200px" }}>
-        <Menu.Item icon="solar:basketball-bold-duotone" text="Item 1" />
-        <Menu.Item icon="solar:basketball-bold-duotone" text="Item 2" isActive />
-        <Menu.Item icon="solar:basketball-bold-duotone" text="Item 3" isDisabled />
+        <Menu.Item id="1" icon="solar:basketball-bold-duotone" text="Item 1" />
+        <Menu.Item id="2" icon="solar:basketball-bold-duotone" text="Item 2" isActive />
+        <Menu.Item id="3" icon="solar:basketball-bold-duotone" text="Item 3" isDisabled />
+        <Menu.Item id="4" icon="solar:basketball-bold-duotone" text="Item 4" subText="Item 4 sub text" />
         <Menu.CollapseItem
+          id="5"
           icon="solar:basketball-bold-duotone"
-          text="Item 4"
+          text="Collapse Item 1"
           subItems={[
-            { icon: "solar:basketball-bold-duotone", text: "SubItem 1" },
-            { icon: "solar:basketball-bold-duotone", text: "SubItem 2" },
+            { id: "5-1", icon: "solar:basketball-bold-duotone", text: "SubItem 1" },
+            { id: "5-2", icon: "solar:basketball-bold-duotone", text: "SubItem 2" },
           ]}
         />
-        <Menu.Item icon="solar:basketball-bold-duotone" text="Item 5" subText="Item 4 sub text" />
+        <Menu.CollapseItem
+          id="6"
+          icon="solar:basketball-bold-duotone"
+          text="Collapse Item 2"
+          subItems={[
+            { id: "6-1", icon: "solar:basketball-bold-duotone", text: "SubItem 1" },
+            { id: "6-2", icon: "solar:basketball-bold-duotone", text: "SubItem 2" },
+          ]}
+        />
       </Menu.List>
     );
   },

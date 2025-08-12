@@ -84,9 +84,19 @@ const meta = {
     onChange: (e) => console.log(e.target.value),
     // value: "a",
     options: [
-      { label: "Option a", value: "a" },
-      { label: "Option b", value: "b", disabled: true },
       {
+        id: "a",
+        label: "Option a",
+        value: "a",
+      },
+      {
+        id: "b",
+        label: "Option b",
+        value: "b",
+        disabled: true,
+      },
+      {
+        id: "c",
         label:
           "qwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnm",
         value: "c",
