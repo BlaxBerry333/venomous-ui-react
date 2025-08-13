@@ -9,11 +9,6 @@ const meta = {
   parameters: { layout: "centered" },
   tags: ["!autodocs", "!dev"],
   argTypes: {
-    children: {
-      description: "The content to be rendered inside the product card",
-      control: false,
-      table: { type: { summary: "React.ReactNode" } },
-    },
     title: {
       description: "The title of the product",
       control: { type: "text" },
@@ -24,12 +19,6 @@ const meta = {
       control: { type: "text" },
       table: { type: { summary: "string" } },
     },
-    onCloseMenu: {
-      description: "The callback function to be called when the menu is closed",
-      control: false,
-      type: { name: "string", required: true },
-      table: { category: "Events", type: { summary: "() => void" } },
-    },
     renderMenu: {
       description: "The callback function to be called to render the menu",
       control: false,
@@ -38,10 +27,8 @@ const meta = {
     },
   },
   args: {
-    children: null,
     title: "Title",
     description: "Description",
-    onCloseMenu: () => {},
     renderMenu: () => null,
   },
 } satisfies Meta<typeof Cards.Product>;
@@ -58,8 +45,8 @@ export const Default: Story = {
         {...args}
         renderMenu={() => (
           <Menu.List>
-            <Menu.Item text="Edit" icon="solar:pen-line-duotone" onClick={() => {}} />
-            <Menu.Item text="Delete" icon="solar:trash-bin-trash-line-duotone" onClick={() => {}} />
+            <Menu.Item id="Edit" text="Edit" icon="solar:pen-line-duotone" onClick={() => {}} />
+            <Menu.Item id="Delete" text="Delete" icon="solar:trash-bin-trash-line-duotone" onClick={() => {}} />
           </Menu.List>
         )}
       />

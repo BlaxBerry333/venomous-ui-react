@@ -92,7 +92,6 @@ const Tab = React.memo<TabProps>(
             position: "relative",
             ...(variant === "pills" && {
               background: BackgroundColors[themeMode].secondary,
-              padding: "4px",
               borderRadius: "8px",
             }),
             ...(variant === "underline" && {
@@ -198,8 +197,9 @@ const Tab = React.memo<TabProps>(
               className={clsx("Venomous-UI-React--Tabs.Content")}
               style={{
                 width: "100%",
-                padding: "16px",
+                padding: "16px 8px",
                 position: "relative",
+                boxSizing: "border-box",
                 ...tabContentStyle,
               }}
             >

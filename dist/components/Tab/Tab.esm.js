@@ -3,11 +3,11 @@ import c from "clsx";
 import t from "react";
 import { BorderColors as F, BackgroundColors as b, TextColors as W } from "../../utils/design/colors.esm.js";
 import { Shadows as v } from "../../utils/design/Shadow.esm.js";
-import E from "../Icon/Icon.esm.js";
+import z from "../Icon/Icon.esm.js";
 import { Space as I } from "../Space/index.esm.js";
 import { Theme as g } from "../Theme/index.esm.js";
-import { Typography as j } from "../Typography/index.esm.js";
-import { motion as h, AnimatePresence as z } from "framer-motion";
+import { Typography as E } from "../Typography/index.esm.js";
+import { motion as h, AnimatePresence as j } from "framer-motion";
 const L = t.memo(
   ({
     tabs: n,
@@ -20,9 +20,9 @@ const L = t.memo(
     tabIndicatorStyle: S,
     tabContentStyle: w
   }) => {
-    const { themeMode: s } = g.useThemeMode(), { themeColor: m } = g.useThemeColor(), [y, p] = t.useState(!1), [o, N] = t.useState(T), [B, U] = t.useState({}), u = t.useRef([]), l = t.useCallback(() => {
-      if (u.current[o]) {
-        const e = u.current[o];
+    const { themeMode: s } = g.useThemeMode(), { themeColor: m } = g.useThemeColor(), [y, u] = t.useState(!1), [o, N] = t.useState(T), [B, U] = t.useState({}), p = t.useRef([]), l = t.useCallback(() => {
+      if (p.current[o]) {
+        const e = p.current[o];
         if (e) {
           const r = !!n[o].icon, { offsetLeft: d, offsetWidth: A } = e;
           U({
@@ -32,8 +32,8 @@ const L = t.memo(
         }
       }
     }, [o, i, n, y]);
-    t.useLayoutEffect(() => (p(!0), () => {
-      p(!1);
+    t.useLayoutEffect(() => (u(!0), () => {
+      u(!1);
     }), []), t.useEffect(() => {
       l();
     }, [l]), t.useEffect(() => {
@@ -44,7 +44,7 @@ const L = t.memo(
     }, [o, n.length, l]);
     const V = t.useCallback(
       (e, r) => {
-        p(!1), t.startTransition(() => {
+        u(!1), t.startTransition(() => {
           N(e);
         }), x(e, r);
       },
@@ -67,7 +67,6 @@ const L = t.memo(
                 position: "relative",
                 ...i === "pills" && {
                   background: b[s].secondary,
-                  padding: "4px",
                   borderRadius: "8px"
                 },
                 ...i === "underline" && {
@@ -82,7 +81,7 @@ const L = t.memo(
                   h.button,
                   {
                     ref: (d) => {
-                      d && (u.current[r] = d);
+                      d && (p.current[r] = d);
                     },
                     onClick: () => V(r, e),
                     className: c("Venomous-UI-React--Tabs.Item"),
@@ -110,7 +109,7 @@ const L = t.memo(
                     },
                     children: [
                       e.icon && /* @__PURE__ */ a(
-                        E,
+                        z,
                         {
                           icon: e.icon,
                           width: 20,
@@ -121,7 +120,7 @@ const L = t.memo(
                         }
                       ),
                       /* @__PURE__ */ a(
-                        j.Text,
+                        E.Text,
                         {
                           text: e.label,
                           style: {
@@ -165,7 +164,7 @@ const L = t.memo(
               ]
             }
           ),
-          /* @__PURE__ */ a(z, { mode: "wait", children: n[o] && /* @__PURE__ */ a(
+          /* @__PURE__ */ a(j, { mode: "wait", children: n[o] && /* @__PURE__ */ a(
             h.div,
             {
               variants: {
@@ -178,8 +177,9 @@ const L = t.memo(
               className: c("Venomous-UI-React--Tabs.Content"),
               style: {
                 width: "100%",
-                padding: "16px",
+                padding: "16px 8px",
                 position: "relative",
+                boxSizing: "border-box",
                 ...w
               },
               children: n[o].content

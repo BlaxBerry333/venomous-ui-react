@@ -47,6 +47,7 @@ import "../Space/SpaceGrid.esm.js";
 import "../Tab/Tab.esm.js";
 import "../Table/Table.esm.js";
 import { Theme as c } from "../Theme/index.esm.js";
+import "../Transition/TransitionCollapseSide.esm.js";
 import "../Transition/TransitionsCollapse.esm.js";
 import "../Typography/TypographyCode.esm.js";
 import "../Typography/TypographyParagraph.esm.js";

@@ -1,1 +1,1 @@
-"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const e=require("./TransitionsCollapse.js"),s={Collapse:e.default};exports.Transitions=s;
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const e=require("./TransitionCollapseSide.js"),s=require("./TransitionsCollapse.js"),i={Collapse:s.default,CollapseSide:e.default};exports.Transitions=i;

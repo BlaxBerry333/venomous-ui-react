@@ -20,11 +20,10 @@ export interface CardsBookProps extends React.PropsWithChildren {
     coverImage: null | string;
     title: string;
 }
-export interface CardsProductProps extends React.PropsWithChildren {
+export interface CardsProductProps {
     className?: string;
     title?: string;
     description?: string;
-    onCloseMenu: () => void;
     renderMenu: () => React.ReactNode;
 }
 export interface CardsTitleBlockProps extends React.HTMLAttributes<HTMLDivElement> {

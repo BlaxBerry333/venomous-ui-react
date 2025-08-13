@@ -1,0 +1,43 @@
+import { Meta, Canvas, Controls } from "@storybook/blocks";
+import * as Stories from "./TransitionCollapseSide.stories";
+
+<Meta of={Stories} />
+
+# Transitions.CollapseSide
+
+<Canvas
+  of={Stories.Default}
+  sourceState="hidden"
+  source={{
+    code: [
+      'import { Transitions } from "venomous-ui-react/components";',
+      "",
+      "function App() {",
+      "  return (",
+      "    <Transitions.CollapseSide",
+      '      storageKey="VENOMOUS_UI__TRANSITION_COLLAPSE_SIDE",',
+      "      expandSideWidth={200}",
+      "      collapsedSideWidth={60}",
+      "      style={{",
+      '        height: "500px",',
+      "        top: 0,",
+      "      }}",
+      "      renderContent={(params) => (",
+      "        <Menu.List",
+      "          className={params.className}",
+      '          style={{ ...params.baseStyles, width: "100%", height: "100%", padding: "8px", border: "1px solid grey" }}',
+      "        >",
+      '          <Menu.Item id="Item 1" icon="solar:basketball-bold-duotone" text="Item 1" />',
+      '          <Menu.Item id="Item 2" icon="solar:basketball-bold-duotone" text="Item 2" subText="Item 2 sub text" />',
+      '          <Menu.Item id="Item 3" icon="solar:basketball-bold-duotone" text="Item 3" />',
+      '          <div style={{ height: "100vh", backgroundColor: "crimson" }} />',
+      "        </Menu.List>",
+      "      )}",
+      "    />",
+      "  );",
+      "}",
+    ].join("\n"),
+  }}
+/>
+
+<Controls />

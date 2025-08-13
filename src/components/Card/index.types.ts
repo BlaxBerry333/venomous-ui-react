@@ -24,11 +24,10 @@ export interface CardsBookProps extends React.PropsWithChildren {
   title: string;
 }
 
-export interface CardsProductProps extends React.PropsWithChildren {
+export interface CardsProductProps {
   className?: string;
   title?: string;
   description?: string;
-  onCloseMenu: () => void;
   renderMenu: () => React.ReactNode;
 }
 

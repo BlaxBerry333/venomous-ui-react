@@ -11,6 +11,29 @@ The width defaults to `100%` of the parent element.
 
 It is recommended to be defined as child element of `<Space.Grid>` or manually add `style={{ width: ? }}` to itself.
 
-<Canvas of={Stories.Default} />
+<Canvas
+  of={Stories.Default}
+  sourceState="hidden"
+  source={{
+    code: [
+      'import { Cards, Menu } from "venomous-ui-react/components";',
+      "",
+      "function App() {",
+      "  return (",
+      "    <Cards.Product",
+      '      title="?"',
+      '      description="?"',
+      "      renderMenu={() => (",
+      "        <Menu.List>",
+      '          <Menu.Item id="Edit" text="Edit" icon="solar:pen-line-duotone" onClick={() => {}} />',
+      '          <Menu.Item id="Delete" text="Delete" icon="solar:trash-bin-trash-line-duotone" onClick={() => {}} />',
+      "        </Menu.List>",
+      "      )}",
+      "    />",
+      "  );",
+      "}",
+    ].join("\n"),
+  }}
+/>
 
 <Controls />

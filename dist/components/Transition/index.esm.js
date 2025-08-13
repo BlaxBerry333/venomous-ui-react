@@ -1,7 +1,9 @@
-import o from "./TransitionsCollapse.esm.js";
-const i = {
-  Collapse: o
+import o from "./TransitionCollapseSide.esm.js";
+import i from "./TransitionsCollapse.esm.js";
+const r = {
+  Collapse: i,
+  CollapseSide: o
 };
 export {
-  i as Transitions
+  r as Transitions
 };

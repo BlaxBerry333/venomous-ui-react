@@ -1,4 +1,5 @@
 import type { ContainerProps } from "../Container";
+import type { TransitionsCollapseSideProps } from "../Transition/index.types";
 import type { LayoutContextValue } from "./context/index.";
 
 export interface LayoutProviderProps extends React.PropsWithChildren {
@@ -18,12 +19,8 @@ export interface LayoutSideProps extends React.HTMLAttributes<HTMLElement> {
 }
 
 export interface LayoutCollapseSideProps extends Omit<LayoutSideProps, "children"> {
-  collapsedSideWidth: number;
-  renderContent: (params: {
-    isCollapsed: boolean;
-    className: string;
-    baseStyles: React.CSSProperties;
-  }) => React.ReactNode;
+  collapsedSideWidth: TransitionsCollapseSideProps["collapsedSideWidth"];
+  renderContent: TransitionsCollapseSideProps["renderContent"];
 }
 
 export interface LayoutContentProps extends React.HTMLAttributes<HTMLElement> {

@@ -37,9 +37,9 @@ export const Sample: Story = {
                 className={params.className}
                 style={{ ...params.baseStyles, width: "100%", height: "100%", padding: "8px" }}
               >
-                <Menu.Item icon="solar:basketball-bold-duotone" text="Item 1" />
-                <Menu.Item icon="solar:basketball-bold-duotone" text="Item 2" subText="Item 2 sub text" />
-                <Menu.Item icon="solar:basketball-bold-duotone" text="Item 3" />
+                <Menu.Item id="Item 1" icon="solar:basketball-bold-duotone" text="Item 1" />
+                <Menu.Item id="Item 2" icon="solar:basketball-bold-duotone" text="Item 2" subText="Item 2 sub text" />
+                <Menu.Item id="Item 3" icon="solar:basketball-bold-duotone" text="Item 3" />
                 <div style={{ height: "100vh", backgroundColor: "crimson" }} />
               </Menu.List>
             )}
