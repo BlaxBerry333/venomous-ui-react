@@ -21,7 +21,6 @@ export const Sample: Story = {
   name: "Sample",
   render: function RenderStory() {
     return (
-      // eslint-disable-next-line react-x/no-context-provider
       <Layout.Provider maxBreakpoint={BreakPointName.sm} headerHeight={60} footerHeight={80}>
         <Layout.Header>
           <div style={{ height: "100%", backgroundColor: "skyblue" }} />

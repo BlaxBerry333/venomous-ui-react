@@ -35,6 +35,11 @@ const meta = {
       options: [undefined, "solar:basketball-bold-duotone"],
       table: { type: { summary: "string" } },
     },
+    iconStyle: {
+      description: "The style of the icon to be rendered at the start of the menu item",
+      control: false,
+      table: { type: { summary: "CSSProperties" } },
+    },
     isDisabled: {
       description: "Whether the menu item is disabled",
       control: { type: "boolean" },
@@ -58,6 +63,7 @@ const meta = {
     text: "xxxxxxx",
     subText: "yyyyyyy",
     icon: undefined,
+    iconStyle: undefined,
     isDisabled: false,
     isActive: false,
     actionButtonProps: undefined,

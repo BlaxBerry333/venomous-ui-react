@@ -1,47 +1,48 @@
-import { jsxs as d, jsx as t } from "react/jsx-runtime";
-import n from "clsx";
+import { jsxs as n, jsx as t } from "react/jsx-runtime";
+import d from "clsx";
 import c from "react";
-import { TextColors as h, BackgroundColors as f, BorderColors as x } from "../../utils/design/colors.esm.js";
-import { Shadows as u } from "../../utils/design/Shadow.esm.js";
+import { TextColors as h, BackgroundColors as f, BorderColors as u } from "../../utils/design/colors.esm.js";
+import { Shadows as x } from "../../utils/design/Shadow.esm.js";
 import { ThemeMode as r } from "../../utils/design/ThemeMode.esm.js";
 import y from "../Icon/Icon.esm.js";
-import { Space as g } from "../Space/index.esm.js";
-import { Theme as C } from "../Theme/index.esm.js";
-import { Typography as k } from "../Typography/index.esm.js";
-const b = c.memo(
-  ({ text: i, isDisabled: a, className: m, style: s, closeIcon: e, closeIconPosition: l = "end", onClose: p }) => {
-    const { themeMode: o } = C.useThemeMode();
-    return /* @__PURE__ */ d(
-      g.Flex,
+import { Space as C } from "../Space/index.esm.js";
+import { Theme as g } from "../Theme/index.esm.js";
+import { Typography as b } from "../Typography/index.esm.js";
+const k = c.memo(
+  ({ text: i, isDisabled: a, className: m, style: s, closeIcon: e, closeIconPosition: p = "end", onClose: l }) => {
+    const { themeMode: o } = g.useThemeMode();
+    return /* @__PURE__ */ n(
+      C.Flex,
       {
         row: !0,
         gap: 4,
-        className: n("Venomous-UI-React--Chip", m),
+        className: d("Venomous-UI-React--Chip", m),
         style: {
           WebkitTapHighlightColor: "transparent",
           width: "max-content",
           alignItems: "center",
-          flexDirection: l === "start" ? "row" : "row-reverse",
+          flexDirection: p === "start" ? "row" : "row-reverse",
+          justifyContent: e ? "space-between" : "center",
           cursor: a ? "not-allowed" : "default",
           borderRadius: "12px",
           padding: "2px 8px",
           borderWidth: 1.5,
           borderStyle: "solid",
-          borderColor: x[o].primary,
-          boxShadow: u[o].tertiary,
+          borderColor: u[o].primary,
+          boxShadow: x[o].tertiary,
           backgroundColor: f[o === r.Dark ? r.Light : r.Dark].secondary,
           color: h[o === r.Dark ? r.Light : r.Dark].primary,
           ...s
         },
         children: [
-          e && /* @__PURE__ */ t(y, { icon: e, onClick: p, style: { color: "inherit", cursor: "pointer" } }),
-          /* @__PURE__ */ t(k.Text, { as: "small", text: i, isEllipsis: !0, style: { color: "inherit" } })
+          e && /* @__PURE__ */ t(y, { icon: e, onClick: l, style: { color: "inherit", cursor: "pointer" } }),
+          /* @__PURE__ */ t(b.Text, { as: "small", text: i, isEllipsis: !0, style: { color: "inherit" } })
         ]
       }
     );
   }
 );
-b.displayName = "Chip";
+k.displayName = "Chip";
 export {
-  b as default
+  k as default
 };

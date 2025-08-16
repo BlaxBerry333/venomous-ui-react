@@ -18,6 +18,7 @@ const MenuItem = React.memo<MenuItemProps>(
     className,
     style,
     icon,
+    iconStyle,
     text,
     subText,
     isDisabled = false,
@@ -83,7 +84,16 @@ const MenuItem = React.memo<MenuItemProps>(
       >
         <Space.Flex row style={{ minHeight: "40px", height: "100%", alignItems: "center", color: textColor }}>
           {/* start icon */}
-          {icon && <Icon icon={icon} width={24} style={{ color: "inherit" }} />}
+          {icon && (
+            <Icon
+              icon={icon}
+              width={24}
+              style={{
+                color: "inherit",
+                ...iconStyle,
+              }}
+            />
+          )}
 
           {/* text */}
           <Space.Flex

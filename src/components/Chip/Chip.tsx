@@ -24,6 +24,7 @@ const Chip = React.memo<ChipProps>(
           width: "max-content",
           alignItems: "center",
           flexDirection: closeIconPosition === "start" ? "row" : "row-reverse",
+          justifyContent: closeIcon ? "space-between" : "center",
           cursor: isDisabled ? "not-allowed" : "default",
           borderRadius: "12px",
           padding: "2px 8px",

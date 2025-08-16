@@ -5,10 +5,11 @@ import React from "react";
 import clsx from "clsx";
 import type { SpaceFlexProps } from "./index.types";
 
-const SpaceFlex = React.memo<SpaceFlexProps>(
-  ({ children, className, style, row = true, column = false, gap = "8px", ...props }) => {
+const SpaceFlex = React.forwardRef<HTMLDivElement, SpaceFlexProps>(
+  ({ children, className, style, row = true, column = false, gap = "8px", ...props }, ref) => {
     return (
       <div
+        ref={ref}
         className={clsx("Venomous-UI-React--Space.Flex", className)}
         style={{
           boxSizing: "border-box",

@@ -21,7 +21,7 @@ const f = a.lazy(() => import("../Popover/index.esm.js").then((r) => ({ default:
         f,
         {
           direction: "left",
-          renderTrigger: (p) => /* @__PURE__ */ o(
+          renderTrigger: ({ isOpen: p }) => /* @__PURE__ */ o(
             c.Icon,
             {
               icon: "solar:hamburger-menu-line-duotone",

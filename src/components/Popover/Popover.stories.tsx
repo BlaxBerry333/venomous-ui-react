@@ -21,6 +21,12 @@ const meta = {
       options: ["top", "bottom", "right", "left"],
       table: { type: { summary: `"top"|"bottom|"right"|"left"` }, defaultValue: { summary: '"bottom"' } },
     },
+    alignment: {
+      description: "The alignment of the popover",
+      control: { type: "select" },
+      options: ["start", "center", "end"],
+      table: { type: { summary: `"start"|"center"|"end"` }, defaultValue: { summary: '"center"' } },
+    },
     trigger: {
       description: "How to trigger the popover",
       control: { type: "select" },
@@ -31,7 +37,12 @@ const meta = {
       description: "The content to be rendered inside the trigger",
       control: false,
       type: { name: "string", required: true },
-      table: { category: "Events", type: { summary: "(isOpen: boolean) => React.ReactNode;" } },
+      table: {
+        category: "Events",
+        type: {
+          summary: "(params: { isOpen: boolean; close: VoidFunction; toggle: VoidFunction }) => React.ReactNode;",
+        },
+      },
     },
     style: {
       description: "The style of the popover ( trigger )",
@@ -52,6 +63,7 @@ const meta = {
   args: {
     children: null,
     direction: "bottom",
+    alignment: "center",
     trigger: "click",
     renderTrigger: () => null,
     onClickOutside: () => {},

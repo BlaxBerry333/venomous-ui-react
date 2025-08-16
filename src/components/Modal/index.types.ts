@@ -3,6 +3,7 @@ import type { BreakPointName } from "@/utils";
 export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   isOpen: boolean;
   onClose: () => void;
+  portalTargetId?: string; // 渲染到哪个元素 ( 默认渲染到 body 中的根元素 <div id="root"/> )
 
   maskClosable?: boolean; // 是否允许点击遮罩关闭
   maxBreakpoint?: BreakPointName; // 最大宽度 ( xs | sm | md | lg | xl | xxl )

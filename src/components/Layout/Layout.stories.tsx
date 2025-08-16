@@ -24,7 +24,6 @@ export const LayoutSample1: Story = {
   name: "Default",
   render: function RenderStory() {
     return (
-      // eslint-disable-next-line react-x/no-context-provider
       <Layout.Provider maxBreakpoint={BreakPointName.xl} headerHeight={60} footerHeight={80} sideWidth={300}>
         <Layout.Header>
           <div style={{ height: "100%", backgroundColor: "skyblue" }} />
@@ -51,7 +50,6 @@ export const LayoutSample2: Story = {
   name: "Default",
   render: function RenderStory() {
     return (
-      // eslint-disable-next-line react-x/no-context-provider
       <Layout.Provider maxBreakpoint={BreakPointName.sm} headerHeight={60} footerHeight={80}>
         <Layout.Header>
           <div style={{ height: "100%", backgroundColor: "skyblue" }} />
@@ -76,16 +74,16 @@ export const LayoutSample3: Story = {
       [isCollapsed],
     );
     return (
-      // eslint-disable-next-line react-x/no-context-provider
       <Layout.Provider maxBreakpoint={BreakPointName.xl} headerHeight={60} footerHeight={80} sideWidth={300}>
         <Layout.Header>
           <div style={{ height: "100%", backgroundColor: "skyblue" }} />
         </Layout.Header>
 
         <Space.Flex row gap={0}>
-          <Layout.CollapseSide isCollapsed={isCollapsed} collapsedSideWidth={60}>
-            <div style={{ height: "200vh", backgroundColor: "crimson" }} />
-          </Layout.CollapseSide>
+          <Layout.CollapseSide
+            collapsedSideWidth={60}
+            renderContent={() => <div style={{ height: "200vh", backgroundColor: "crimson" }} />}
+          />
           <Space.Flex column gap={0}>
             <Layout.Content style={{ position: "relative" }}>
               <Buttons.Icon

@@ -87,7 +87,10 @@ export default tseslint.config(
       '@typescript-eslint/no-unsafe-argument': 'off',
       'react-hooks/exhaustive-deps': 'off',
 
-      ...reactX.configs['recommended-typescript'].rules,
+      ...reactX.configs["recommended-typescript"].rules,
+      "react-x/no-context-provider": "off",
+      "react-x/no-forward-ref": "off",
+
       ...reactDom.configs.recommended.rules,
     },
   }

@@ -1,7 +1,12 @@
 export interface PopoverProps extends React.HTMLAttributes<HTMLDivElement> {
     direction?: "top" | "bottom" | "left" | "right";
+    alignment?: "start" | "center" | "end";
     trigger?: "click" | "hover";
-    renderTrigger: (isOpen: boolean) => React.ReactNode;
+    renderTrigger: (params: {
+        isOpen: boolean;
+        close: VoidFunction;
+        toggle: VoidFunction;
+    }) => React.ReactNode;
     contentStyle?: React.CSSProperties;
     onClickOutside?: () => void;
 }

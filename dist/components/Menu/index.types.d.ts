@@ -17,6 +17,7 @@ export interface MenuItemProps extends Omit<React.HTMLAttributes<HTMLLIElement>,
     as?: keyof typeof MenuItemTagMap;
     id: string;
     icon?: IconProps["icon"];
+    iconStyle?: IconProps["style"];
     text: string;
     subText?: string;
     isDisabled?: boolean;

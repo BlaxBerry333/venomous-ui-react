@@ -29,7 +29,7 @@ const meta = {
       description: "The style of the icon",
       if: { arg: "icon" },
       control: { type: "object" },
-      table: { type: { summary: "CSSProperties" } },
+      table: { type: { summary: "React.CSSProperties" } },
     },
     variant: {
       description: "The variant of the button",

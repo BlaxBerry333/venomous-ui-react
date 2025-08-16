@@ -72,7 +72,7 @@ const Tab = React.memo<TabProps>(
         React.startTransition(() => {
           setActiveIndex(index);
         });
-        onChange(index, tabItem);
+        onChange?.(index, tabItem);
       },
       [onChange],
     );
@@ -109,18 +109,21 @@ const Tab = React.memo<TabProps>(
               ref={(el) => {
                 if (el) tabRefs.current[index] = el;
               }}
-              onClick={() => handleTabClick(index, tab)}
+              onClick={() => {
+                if (tab.isDisabled) return;
+                handleTabClick(index, tab);
+              }}
               className={clsx("Venomous-UI-React--Tabs.Item")}
               style={{
                 WebkitTapHighlightColor: "transparent",
                 padding: "12px 20px",
                 display: "flex",
                 alignItems: "center",
-                cursor: "pointer",
+                cursor: tab.isDisabled ? "not-allowed" : "pointer",
                 fontWeight: "500",
                 outline: "none",
                 border: "none",
-                color: TextColors[themeMode].primary,
+                color: tab.isDisabled ? TextColors[themeMode].disabled : TextColors[themeMode].primary,
                 background: "transparent",
                 transition: "color 0.2s ease",
                 ...(variant === "pills" && {

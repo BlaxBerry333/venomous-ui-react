@@ -2,6 +2,7 @@ import type { BreakPointName } from "@/utils";
 export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
     isOpen: boolean;
     onClose: () => void;
+    portalTargetId?: string;
     maskClosable?: boolean;
     maxBreakpoint?: BreakPointName;
 }

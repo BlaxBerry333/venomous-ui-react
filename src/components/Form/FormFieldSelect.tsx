@@ -119,10 +119,41 @@ const CustomSelect = React.memo<
 >(({ commonStyles, setIsFocused, disabled, name, value, options, onChange, className, style }) => {
   const [selectedValue, setSelectedValue] = React.useState<FormFieldOption["value"] | null>(value || null);
   const [isOpen, setIsOpen] = React.useState(false);
+  const triggerRef = React.useRef<HTMLDivElement>(null); // 添加 ref
+  const [actualWidth, setActualWidth] = React.useState<number>(0); // 存储实际宽度
 
   React.useEffect(() => {
     setSelectedValue(value || null);
   }, [value]);
+
+  // 获取实际宽度
+  React.useEffect(() => {
+    if (triggerRef.current) {
+      const updateWidth = () => {
+        const rect = triggerRef.current?.getBoundingClientRect();
+        if (rect) {
+          setActualWidth(rect.width);
+        }
+      };
+
+      // 初始设置
+      updateWidth();
+
+      // 监听窗口大小变化（对于 fullWidth 很重要）
+      window.addEventListener("resize", updateWidth);
+      return () => window.removeEventListener("resize", updateWidth);
+    }
+  }, []);
+
+  // 当组件打开时也更新宽度，确保准确
+  React.useEffect(() => {
+    if (isOpen && triggerRef.current) {
+      const rect = triggerRef.current.getBoundingClientRect();
+      if (rect && rect.width !== actualWidth) {
+        setActualWidth(rect.width);
+      }
+    }
+  }, [isOpen, actualWidth]);
 
   const handleOptionChange = React.useCallback(
     (newValue: FormFieldOption["value"]) => {
@@ -154,28 +185,38 @@ const CustomSelect = React.memo<
 
   const displayText = React.useMemo<string>(
     () => options.find((option) => option.value === selectedValue)?.label || "",
-    [selectedValue],
+    [options, selectedValue], // 添加 options 依赖
   );
 
-  const selectWidth = style?.width ?? commonStyles.minWidth;
+  // 使用实际宽度，如果还没获取到就用样式中的宽度作为后备
+  const menuWidth = actualWidth || style?.width;
 
   return (
     <Popover
       direction="bottom"
+      alignment="start"
       trigger="click"
       style={{ width: "100%" }}
-      onClickOutside={() => setIsFocused(false)}
+      onClickOutside={() => {
+        setIsOpen(false);
+        setIsFocused(false);
+      }}
       contentStyle={{
-        width: selectWidth,
+        width: menuWidth,
       }}
       renderTrigger={() => (
         <Space.Flex
+          ref={triggerRef}
           row
-          onClick={() => setIsFocused(true)}
+          onClick={() => {
+            setIsOpen(true);
+            setIsFocused(true);
+          }}
           style={{
             ...commonStyles,
             height: commonStyles.minHeight,
-            width: selectWidth,
+            width: "100%",
+            maxWidth: menuWidth,
             display: "flex",
             alignItems: "center",
           }}
@@ -216,7 +257,10 @@ const CustomSelect = React.memo<
             onClick={() => {
               if (!option.disabled) handleOptionChange(option.value);
             }}
-            style={{ cursor: option.disabled ? "not-allowed" : "pointer", fontSize: TypographySize.small }}
+            style={{
+              cursor: option.disabled ? "not-allowed" : "pointer",
+              fontSize: TypographySize.small,
+            }}
           />
         ))}
       </Menu.List>

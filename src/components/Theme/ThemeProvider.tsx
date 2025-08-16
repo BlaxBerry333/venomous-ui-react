@@ -90,6 +90,5 @@ export default function ThemeProvider({
     [themeMode, setThemeMode, toggleThemeMode, resetThemeMode, themeColor, setThemeColor, resetThemeColor],
   );
 
-  // eslint-disable-next-line react-x/no-context-provider
   return <ThemeContext.Provider value={contextValue}>{children}</ThemeContext.Provider>;
 }

@@ -36,27 +36,27 @@ const meta = {
     tabContainerStyle: {
       description: "The style of the tab container",
       control: false,
-      table: { type: { summary: "CSSProperties" } },
+      table: { type: { summary: "React.CSSProperties" } },
     },
     tabItemContainerStyle: {
       description: "The style of the tab items's container",
       control: false,
-      table: { type: { summary: "CSSProperties" } },
+      table: { type: { summary: "React.CSSProperties" } },
     },
     tabItemStyle: {
       description: "The style of the tab item",
       control: false,
-      table: { type: { summary: "CSSProperties" } },
+      table: { type: { summary: "React.CSSProperties" } },
     },
     tabIndicatorStyle: {
       description: "The style of the tab indicator",
       control: false,
-      table: { type: { summary: "CSSProperties" } },
+      table: { type: { summary: "React.CSSProperties" } },
     },
     tabContentStyle: {
       description: "The style of the tab content",
       control: false,
-      table: { type: { summary: "CSSProperties" } },
+      table: { type: { summary: "React.CSSProperties" } },
     },
   },
   args: {
@@ -88,17 +88,23 @@ const tabs: TabItemProps[] = [
     label: "AA",
     content: <Typography.Paragraph>AA...</Typography.Paragraph>,
   },
+  {
+    key: "home",
+    label: "BB",
+    isDisabled: true,
+    content: <Typography.Paragraph>AA...</Typography.Paragraph>,
+  },
   // 携带 icon
   {
     key: "products",
     icon: "solar:basketball-bold-duotone",
-    label: "BB",
+    label: "CC",
     content: <Typography.Paragraph>BB...</Typography.Paragraph>,
   },
   // 懒加载
   {
     key: "about",
-    label: "CC",
+    label: "DD",
     content: (
       <React.Suspense fallback={<div>Loading...</div>}>
         <Typography.Paragraph>CC...</Typography.Paragraph>

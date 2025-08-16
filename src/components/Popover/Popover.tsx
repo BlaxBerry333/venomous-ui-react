@@ -14,7 +14,16 @@ type PopoverPosition = {
 };
 
 const Popover = React.memo<PopoverProps>(
-  ({ children, style, contentStyle, direction = "bottom", renderTrigger, trigger = "click", onClickOutside }) => {
+  ({
+    children,
+    style,
+    contentStyle,
+    direction = "bottom",
+    alignment = "center",
+    renderTrigger,
+    trigger = "click",
+    onClickOutside,
+  }) => {
     const handler = useHandler();
     const wrapperRef = React.useRef<HTMLDivElement>(null);
     const triggerRef = React.useRef<HTMLDivElement>(null);
@@ -60,19 +69,47 @@ const Popover = React.memo<PopoverProps>(
         switch (direction) {
           case "top":
             top = relativeTop - popoverHeight;
-            left = relativeLeft + triggerRect.width / 2 - popoverWidth / 2;
+            // 水平对齐（相对于触发器的宽度）
+            if (alignment === "start") {
+              left = relativeLeft;
+            } else if (alignment === "end") {
+              left = relativeLeft + triggerRect.width - popoverWidth;
+            } else {
+              left = relativeLeft + triggerRect.width / 2 - popoverWidth / 2;
+            }
             break;
           case "bottom":
             top = relativeTop + triggerRect.height;
-            left = relativeLeft + triggerRect.width / 2 - popoverWidth / 2;
+            // 水平对齐（相对于触发器的宽度）
+            if (alignment === "start") {
+              left = relativeLeft;
+            } else if (alignment === "end") {
+              left = relativeLeft + triggerRect.width - popoverWidth;
+            } else {
+              left = relativeLeft + triggerRect.width / 2 - popoverWidth / 2;
+            }
             break;
           case "left":
-            top = relativeTop + triggerRect.height / 2 - popoverHeight / 2;
             left = relativeLeft - popoverWidth;
+            // 垂直对齐（相对于触发器的高度）
+            if (alignment === "start") {
+              top = relativeTop;
+            } else if (alignment === "end") {
+              top = relativeTop + triggerRect.height - popoverHeight;
+            } else {
+              top = relativeTop + triggerRect.height / 2 - popoverHeight / 2;
+            }
             break;
           case "right":
-            top = relativeTop + triggerRect.height / 2 - popoverHeight / 2;
             left = relativeLeft + triggerRect.width;
+            // 垂直对齐（相对于触发器的高度）
+            if (alignment === "start") {
+              top = relativeTop;
+            } else if (alignment === "end") {
+              top = relativeTop + triggerRect.height - popoverHeight;
+            } else {
+              top = relativeTop + triggerRect.height / 2 - popoverHeight / 2;
+            }
             break;
           default:
             top = relativeTop + triggerRect.height;
@@ -81,7 +118,7 @@ const Popover = React.memo<PopoverProps>(
 
         setPosition({ top, left });
       }
-    }, [handler.isOpen, direction]);
+    }, [handler.isOpen, direction, alignment]);
 
     // hover模式的事件处理函数
     const handleWrapperMouseEnter = () => {
@@ -116,7 +153,11 @@ const Popover = React.memo<PopoverProps>(
               }
             : {})}
         >
-          {renderTrigger(handler.isOpen)}
+          {renderTrigger({
+            isOpen: handler.isOpen,
+            close: handler.close,
+            toggle: handler.toggle,
+          })}
         </div>
 
         <AnimatePresence>

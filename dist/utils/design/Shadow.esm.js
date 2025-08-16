@@ -16,7 +16,7 @@ const r = {
     `,
     // 内阴影
     inset: `
-      inset 0px 2px 4px 0px rgba(255, 255, 255, 0.7)
+      inset 0px 0px 2px 0px rgba(255, 255, 255, 0.7)
     `
   },
   [p.Light]: {
@@ -35,7 +35,7 @@ const r = {
     `,
     // 内阴影
     inset: `
-      inset 0px 2px 4px 0px rgba(0, 0, 0, 0.3)
+      inset 0px 0px 2px 0px rgba(0, 0, 0, 0.3)
     `
   }
 };

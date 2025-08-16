@@ -1,1 +1,1 @@
-{"version":3,"file":"SpaceFlex.d.ts","sourceRoot":"","sources":["../../../src/components/Space/SpaceFlex.tsx"],"names":[],"mappings":"AAEA,OAAO,KAAK,MAAM,OAAO,CAAC;AAG1B,OAAO,KAAK,EAAE,cAAc,EAAE,MAAM,eAAe,CAAC;AAEpD,QAAA,MAAM,SAAS,4CAqBd,CAAC;AAGF,eAAe,SAAS,CAAC"}
+{"version":3,"file":"SpaceFlex.d.ts","sourceRoot":"","sources":["../../../src/components/Space/SpaceFlex.tsx"],"names":[],"mappings":"AAEA,OAAO,KAAK,MAAM,OAAO,CAAC;AAG1B,OAAO,KAAK,EAAE,cAAc,EAAE,MAAM,eAAe,CAAC;AAEpD,QAAA,MAAM,SAAS,uFAsBd,CAAC;AAGF,eAAe,SAAS,CAAC"}

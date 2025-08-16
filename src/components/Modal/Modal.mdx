@@ -1,10 +1,24 @@
 import { Meta, Canvas, Controls } from "@storybook/blocks";
-import * as Stories from "./ModalsConfirm.stories";
+import * as Stories from "./Modal.stories";
 
 <Meta of={Stories} />
 
-# Modals.Confirm
+# Modal
 
 <Canvas of={Stories.Default} sourceState="hidden" />
 
 <Controls />
+
+## TroubleShotting
+
+<br />
+
+#### When used in deeply nested child components, its `position` is not based on the entire page, but on the current element.
+
+The default `position` of a `<Modal>` is based on the most recently nested `relative` element. In deeply nested components, it is recommended to use `<Portal.Render>`.
+
+```tsx
+<Portal.Render targetElementID="root">
+  <Modal {...props} />
+</Portal.Render>
+```

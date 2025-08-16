@@ -28,7 +28,7 @@ const CardsProduct = React.memo<CardsProductProps>(({ className, title = "", des
       <React.Suspense fallback={null}>
         <Popover
           direction="left"
-          renderTrigger={(isOpen) => (
+          renderTrigger={({ isOpen }) => (
             <Buttons.Icon
               icon="solar:hamburger-menu-line-duotone"
               variant="ghost"

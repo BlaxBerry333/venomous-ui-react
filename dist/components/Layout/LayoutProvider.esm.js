@@ -17,10 +17,7 @@ const l = i.memo(
       () => ({ headerHeight: r, footerHeight: t, sideWidth: e }),
       [r, t, e]
     );
-    return (
-      // eslint-disable-next-line react-x/no-context-provider
-      /* @__PURE__ */ m(f.Provider, { value: p, children: /* @__PURE__ */ m(d, { maxBreakpoint: n, children: a }) })
-    );
+    return /* @__PURE__ */ m(f.Provider, { value: p, children: /* @__PURE__ */ m(d, { maxBreakpoint: n, children: a }) });
   }
 );
 l.displayName = "Layout.Provider";

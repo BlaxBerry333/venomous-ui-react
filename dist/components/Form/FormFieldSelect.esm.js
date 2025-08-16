@@ -1,197 +1,222 @@
-import { jsxs as v, jsx as s } from "react/jsx-runtime";
-import g from "clsx";
-import a from "react";
-import O from "../../hooks/useElementFocus/index.esm.js";
+import { jsxs as k, jsx as a } from "react/jsx-runtime";
+import E from "clsx";
+import t from "react";
+import B from "../../hooks/useElementFocus/index.esm.js";
 import "../../utils/design/colors.esm.js";
 import "../../utils/design/Shadow.esm.js";
-import { TypographySize as z } from "../../utils/design/TypographySize.esm.js";
+import { TypographySize as W } from "../../utils/design/TypographySize.esm.js";
 import b from "../Icon/Icon.esm.js";
-import { Menu as y } from "../Menu/index.esm.js";
+import { Menu as x } from "../Menu/index.esm.js";
 import D from "../Popover/Popover.esm.js";
-import { Space as E } from "../Space/index.esm.js";
+import { Space as L } from "../Space/index.esm.js";
 import { Typography as P } from "../Typography/index.esm.js";
-import { useFormFieldStyle as R } from "./_useFormFieldStyle.esm.js";
-import j from "./FormField.esm.js";
-const B = a.memo(
+import { useFormFieldStyle as j } from "./_useFormFieldStyle.esm.js";
+import A from "./FormField.esm.js";
+const I = t.memo(
   ({
-    isOriginalSelect: c = !1,
-    fullWidth: t,
-    required: p = !1,
-    isError: r = !1,
-    disabled: i = !1,
+    isOriginalSelect: m = !1,
+    fullWidth: r,
+    required: g = !1,
+    isError: i = !1,
+    disabled: o = !1,
     label: u,
     helpText: l,
-    ...f
+    ...h
   }) => {
-    const { isFocused: m, setIsFocused: d, handleFocus: n, handleBlur: h } = O(), { commonStyles: o } = R({
-      fullWidth: t,
-      isDisabled: i,
-      isError: r,
-      isFocused: m
+    const { isFocused: c, setIsFocused: d, handleFocus: f, handleBlur: p } = B(), { commonStyles: s } = j({
+      fullWidth: r,
+      isDisabled: o,
+      isError: i,
+      isFocused: c
     });
-    return /* @__PURE__ */ v(
-      j,
+    return /* @__PURE__ */ k(
+      A,
       {
         label: u,
-        required: p,
-        isDisabled: i,
-        isError: r,
-        isFocused: m,
-        fullWidth: t,
+        required: g,
+        isDisabled: o,
+        isError: i,
+        isFocused: c,
+        fullWidth: r,
         helpText: l,
         children: [
-          c && /* @__PURE__ */ s(
-            x,
+          m && /* @__PURE__ */ a(
+            R,
             {
-              commonStyles: o,
-              handleFocus: n,
-              handleBlur: h,
-              disabled: i,
-              ...f
+              commonStyles: s,
+              handleFocus: f,
+              handleBlur: p,
+              disabled: o,
+              ...h
             }
           ),
-          !c && /* @__PURE__ */ s(w, { commonStyles: o, setIsFocused: d, disabled: i, ...f })
+          !m && /* @__PURE__ */ a(T, { commonStyles: s, setIsFocused: d, disabled: o, ...h })
         ]
       }
     );
   }
 );
-B.displayName = "FormField.Select";
-const x = a.memo(
+I.displayName = "FormField.Select";
+const R = t.memo(
   ({
-    commonStyles: c,
-    handleFocus: t,
-    handleBlur: p,
-    name: r,
-    autoComplete: i = "off",
+    commonStyles: m,
+    handleFocus: r,
+    handleBlur: g,
+    name: i,
+    autoComplete: o = "off",
     options: u,
     onChange: l,
-    value: f,
-    disabled: m,
+    value: h,
+    disabled: c,
     className: d,
-    style: n,
-    ...h
-  }) => /* @__PURE__ */ s(
+    style: f,
+    ...p
+  }) => /* @__PURE__ */ a(
     "select",
     {
-      name: r,
-      autoComplete: i,
-      disabled: m,
-      onFocus: t,
-      onBlur: p,
+      name: i,
+      autoComplete: o,
+      disabled: c,
+      onFocus: r,
+      onBlur: g,
       onChange: l,
-      value: f,
-      className: g("Venomous-UI-React--FormField.Select", d),
+      value: h,
+      className: E("Venomous-UI-React--FormField.Select", d),
       style: {
         boxSizing: "border-box",
-        ...c,
-        ...n
+        ...m,
+        ...f
       },
-      ...h,
-      children: u.map((o) => /* @__PURE__ */ s("option", { value: o.value, disabled: o.disabled, children: o.label }, o.value))
+      ...p,
+      children: u.map((s) => /* @__PURE__ */ a("option", { value: s.value, disabled: s.disabled, children: s.label }, s.value))
     }
   )
-), w = a.memo(({ commonStyles: c, setIsFocused: t, disabled: p, name: r, value: i, options: u, onChange: l, className: f, style: m }) => {
-  const [d, n] = a.useState(i || null), [h, o] = a.useState(!1);
-  a.useEffect(() => {
-    n(i || null);
-  }, [i]);
-  const k = a.useCallback(
-    (e) => {
-      n(e), o(!1), t(!1);
-      const F = {
-        target: { name: r, value: e },
-        currentTarget: { name: r, value: e }
+), T = t.memo(({ commonStyles: m, setIsFocused: r, disabled: g, name: i, value: o, options: u, onChange: l, className: h, style: c }) => {
+  const [d, f] = t.useState(o || null), [p, s] = t.useState(!1), S = t.useRef(null), [F, w] = t.useState(0);
+  t.useEffect(() => {
+    f(o || null);
+  }, [o]), t.useEffect(() => {
+    if (S.current) {
+      const e = () => {
+        var y;
+        const n = (y = S.current) == null ? void 0 : y.getBoundingClientRect();
+        n && w(n.width);
       };
-      l == null || l(F);
-    },
-    [r, l, t]
-  ), T = a.useCallback(
+      return e(), window.addEventListener("resize", e), () => window.removeEventListener("resize", e);
+    }
+  }, []), t.useEffect(() => {
+    if (p && S.current) {
+      const e = S.current.getBoundingClientRect();
+      e && e.width !== F && w(e.width);
+    }
+  }, [p, F]);
+  const z = t.useCallback(
     (e) => {
-      e.stopPropagation(), n(null), t(!1);
-      const F = {
-        target: { name: r, value: "" },
-        currentTarget: { name: r, value: "" }
+      f(e), s(!1), r(!1);
+      const n = {
+        target: { name: i, value: e },
+        currentTarget: { name: i, value: e }
       };
-      l == null || l(F);
+      l == null || l(n);
     },
-    [r, l, t]
-  ), N = a.useMemo(
+    [i, l, r]
+  ), N = t.useCallback(
+    (e) => {
+      e.stopPropagation(), f(null), r(!1);
+      const n = {
+        target: { name: i, value: "" },
+        currentTarget: { name: i, value: "" }
+      };
+      l == null || l(n);
+    },
+    [i, l, r]
+  ), O = t.useMemo(
     () => {
       var e;
-      return ((e = u.find((F) => F.value === d)) == null ? void 0 : e.label) || "";
+      return ((e = u.find((n) => n.value === d)) == null ? void 0 : e.label) || "";
     },
-    [d]
-  ), S = (m == null ? void 0 : m.width) ?? c.minWidth;
-  return /* @__PURE__ */ s(
+    [u, d]
+    // 添加 options 依赖
+  ), v = F || (c == null ? void 0 : c.width);
+  return /* @__PURE__ */ a(
     D,
     {
       direction: "bottom",
+      alignment: "start",
       trigger: "click",
       style: { width: "100%" },
-      onClickOutside: () => t(!1),
-      contentStyle: {
-        width: S
+      onClickOutside: () => {
+        s(!1), r(!1);
       },
-      renderTrigger: () => /* @__PURE__ */ v(
-        E.Flex,
+      contentStyle: {
+        width: v
+      },
+      renderTrigger: () => /* @__PURE__ */ k(
+        L.Flex,
         {
+          ref: S,
           row: !0,
-          onClick: () => t(!0),
+          onClick: () => {
+            s(!0), r(!0);
+          },
           style: {
-            ...c,
-            height: c.minHeight,
-            width: S,
+            ...m,
+            height: m.minHeight,
+            width: "100%",
+            maxWidth: v,
             display: "flex",
             alignItems: "center"
           },
           children: [
-            /* @__PURE__ */ s(P.Paragraph, { ellipsis: 1, style: { flex: 1 }, children: N }),
-            d && !p && /* @__PURE__ */ s(
+            /* @__PURE__ */ a(P.Paragraph, { ellipsis: 1, style: { flex: 1 }, children: O }),
+            d && !g && /* @__PURE__ */ a(
               b,
               {
                 icon: "solar:close-circle-line-duotone",
                 width: 16,
-                onClick: T,
+                onClick: N,
                 style: {
                   cursor: "pointer",
                   transition: "color 0.2s ease"
                 }
               }
             ),
-            /* @__PURE__ */ s(
+            /* @__PURE__ */ a(
               b,
               {
                 icon: "solar:alt-arrow-down-line-duotone",
                 width: 16,
                 style: {
                   transition: "transform 0.2s ease",
-                  transform: h ? "rotate(180deg)" : "rotate(0deg)"
+                  transform: p ? "rotate(180deg)" : "rotate(0deg)"
                 }
               }
             )
           ]
         }
       ),
-      children: /* @__PURE__ */ s(y.List, { as: "ul", className: g("Venomous-UI-React--FormField.Select", f), style: { width: "100%" }, children: u.map((e) => /* @__PURE__ */ s(
-        y.Item,
+      children: /* @__PURE__ */ a(x.List, { as: "ul", className: E("Venomous-UI-React--FormField.Select", h), style: { width: "100%" }, children: u.map((e) => /* @__PURE__ */ a(
+        x.Item,
         {
           id: e.id,
           text: e.label,
           isDisabled: e.disabled,
           isActive: e.value === d,
           onClick: () => {
-            e.disabled || k(e.value);
+            e.disabled || z(e.value);
           },
-          style: { cursor: e.disabled ? "not-allowed" : "pointer", fontSize: z.small }
+          style: {
+            cursor: e.disabled ? "not-allowed" : "pointer",
+            fontSize: W.small
+          }
         },
         e.id
       )) })
     }
   );
 });
-x.displayName = "FormField.Select.Original";
-w.displayName = "FormField.Select.Custom";
+R.displayName = "FormField.Select.Original";
+T.displayName = "FormField.Select.Custom";
 export {
-  B as default
+  I as default
 };

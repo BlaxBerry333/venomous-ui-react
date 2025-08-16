@@ -19,7 +19,6 @@ const preview: Preview = {
     (Story) => {
       const isDark = useDarkMode();
       return (
-        // eslint-disable-next-line react-x/no-context-provider
         <Theme.Provider>
           <ThemeModeObserver isDark={isDark} />
           <div

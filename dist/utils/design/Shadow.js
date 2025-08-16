@@ -6,7 +6,7 @@
     `,tertiary:`
       0px 0px 4px 0px rgba(255, 255, 255, 0.2)
     `,inset:`
-      inset 0px 2px 4px 0px rgba(255, 255, 255, 0.7)
+      inset 0px 0px 2px 0px rgba(255, 255, 255, 0.7)
     `},[p.ThemeMode.Light]:{primary:`
       0px 0px 4px 0px rgba(0, 0, 0, 0.4),
       0px 0px 2px -1px rgba(0, 0, 0, 0.25)
@@ -15,5 +15,5 @@
     `,tertiary:`
       0px 0px 4px 0px rgba(0, 0, 0, 0.2)
     `,inset:`
-      inset 0px 2px 4px 0px rgba(0, 0, 0, 0.3)
+      inset 0px 0px 2px 0px rgba(0, 0, 0, 0.3)
     `}};exports.Shadows=x;
