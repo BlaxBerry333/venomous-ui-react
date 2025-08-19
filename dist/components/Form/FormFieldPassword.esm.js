@@ -1,93 +1,99 @@
-import { jsx as d, jsxs as x } from "react/jsx-runtime";
-import v from "clsx";
-import t from "react";
-import C from "../../hooks/useElementFocus/index.esm.js";
-import V from "../Icon/Icon.esm.js";
-import { useFormFieldStyle as k } from "./_useFormFieldStyle.esm.js";
-import S from "./FormField.esm.js";
-const D = t.memo(
+import { jsx as u, jsxs as V } from "react/jsx-runtime";
+import k from "clsx";
+import a from "react";
+import v from "../../hooks/useElementFocus/index.esm.js";
+import S from "../Icon/Icon.esm.js";
+import { useFormFieldStyle as B } from "./_useFormFieldStyle.esm.js";
+import D from "./FormField.esm.js";
+const I = a.memo(
   ({
-    className: l,
-    style: n,
-    fullWidth: e,
-    autoComplete: a = "off",
-    required: i = !1,
-    isError: r = !1,
-    disabled: o = !1,
-    name: p,
-    value: u,
-    label: g,
-    helpText: f,
-    ...F
+    className: d,
+    style: c,
+    fullWidth: r,
+    autoComplete: m = "off",
+    required: l = !1,
+    isError: n = !1,
+    disabled: e = !1,
+    name: F,
+    value: b,
+    label: w,
+    helpText: y,
+    ...o
   }) => {
-    const { isFocused: c, handleFocus: b, handleBlur: w } = C(), { outlineColor: y, commonStyles: s, textColor: h } = k({
-      fullWidth: e,
-      isDisabled: o,
-      isError: r,
-      isFocused: c
-    }), { isPasswordVisible: m, togglePasswordVisibility: P } = I(!1);
-    return /* @__PURE__ */ d(
-      S,
+    const { isFocused: f, handleFocus: h, handleBlur: P } = v(), { outlineColor: x, commonStyles: i, textColor: p } = B({
+      fullWidth: r,
+      isDisabled: e,
+      isError: n,
+      isFocused: f
+    }), { isPasswordVisible: g, togglePasswordVisibility: C } = R(!1);
+    return /* @__PURE__ */ u(
+      D,
       {
-        label: g,
-        required: i,
-        isDisabled: o,
-        isFocused: c,
-        isError: r,
-        fullWidth: e,
-        helpText: f,
-        children: /* @__PURE__ */ x(
+        label: w,
+        required: l,
+        isDisabled: e,
+        isFocused: f,
+        isError: n,
+        fullWidth: r,
+        helpText: y,
+        children: /* @__PURE__ */ V(
           "div",
           {
             style: {
-              ...s,
+              ...i,
               position: "relative",
               overflow: "hidden",
               padding: 0
             },
             children: [
-              /* @__PURE__ */ d(
+              /* @__PURE__ */ u(
                 "input",
                 {
-                  type: m ? "text" : "password",
-                  name: p,
-                  value: u,
-                  autoComplete: a,
+                  type: g ? "text" : "password",
+                  name: F,
+                  value: b,
+                  autoComplete: m,
                   spellCheck: !1,
-                  disabled: o,
-                  onFocus: o ? void 0 : b,
-                  onBlur: o ? void 0 : w,
-                  className: v("Venomous-UI-React--FormField.Password", l),
+                  disabled: e,
+                  onFocus: (s) => {
+                    var t;
+                    e || (h(s), (t = o.onFocus) == null || t.call(o, s));
+                  },
+                  onBlur: (s) => {
+                    var t;
+                    e || (P(s), (t = o.onBlur) == null || t.call(o, s));
+                  },
+                  className: k("Venomous-UI-React--FormField.Password", d),
                   style: {
                     boxSizing: "border-box",
                     border: "none",
                     outline: "none",
                     position: "relative",
                     width: "calc(100% - 34px)",
-                    minHeight: s.minHeight,
-                    color: h,
-                    backgroundColor: s.backgroundColor,
-                    padding: s.padding,
+                    minHeight: i.minHeight,
+                    color: p,
+                    backgroundColor: i.backgroundColor,
+                    padding: i.padding,
                     paddingRight: 0,
-                    ...n
+                    ...c
                   },
-                  ...F
+                  ...o
                 }
               ),
-              /* @__PURE__ */ d(
-                V,
+              /* @__PURE__ */ u(
+                S,
                 {
-                  icon: m ? "solar:eye-linear" : "solar:eye-closed-broken",
+                  icon: g ? "solar:eye-linear" : "solar:eye-closed-broken",
                   width: 20,
-                  onClick: P,
+                  onClick: C,
                   style: {
                     position: "absolute",
                     top: "50%",
                     right: 0,
                     transform: "translateY(-50%)",
                     cursor: "pointer",
-                    color: y,
-                    padding: s.padding
+                    color: x,
+                    padding: i.padding
                   }
                 }
               )
@@ -98,18 +104,18 @@ const D = t.memo(
     );
   }
 );
-D.displayName = "FormField.Password";
-function I(l = !1) {
-  const [n, e] = t.useState(l), a = t.useCallback((i) => {
-    t.startTransition(() => {
-      i.preventDefault(), i.stopPropagation(), e((r) => !r);
+I.displayName = "FormField.Password";
+function R(d = !1) {
+  const [c, r] = a.useState(d), m = a.useCallback((l) => {
+    a.startTransition(() => {
+      l.preventDefault(), l.stopPropagation(), r((n) => !n);
     });
   }, []);
   return {
-    isPasswordVisible: n,
-    togglePasswordVisibility: a
+    isPasswordVisible: c,
+    togglePasswordVisibility: m
   };
 }
 export {
-  D as default
+  I as default
 };

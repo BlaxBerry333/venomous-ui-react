@@ -1,65 +1,71 @@
-import { jsx as s } from "react/jsx-runtime";
-import y from "clsx";
-import h from "react";
-import S from "../../hooks/useElementFocus/index.esm.js";
-import { useFormFieldStyle as T } from "./_useFormFieldStyle.esm.js";
-import v from "./FormField.esm.js";
-const z = h.memo(
+import { jsx as n } from "react/jsx-runtime";
+import S from "clsx";
+import T from "react";
+import z from "../../hooks/useElementFocus/index.esm.js";
+import { useFormFieldStyle as D } from "./_useFormFieldStyle.esm.js";
+import N from "./FormField.esm.js";
+const R = T.memo(
   ({
-    className: t,
-    style: a,
-    fullWidth: o,
-    required: l = !1,
-    isError: r = !1,
-    disabled: e = !1,
-    rows: i = 3,
-    name: n,
-    value: c,
-    label: F,
-    helpText: f,
-    ...u
+    className: i,
+    style: c,
+    fullWidth: r,
+    required: s = !1,
+    isError: l = !1,
+    disabled: o = !1,
+    rows: F = 3,
+    name: u,
+    value: f,
+    label: x,
+    helpText: d,
+    ...e
   }) => {
-    const { isFocused: m, handleFocus: p, handleBlur: x } = S(), { commonStyles: d } = T({
-      fullWidth: o,
-      isDisabled: e,
-      isError: r,
-      isFocused: m
+    const { isFocused: a, handleFocus: y, handleBlur: h } = z(), { commonStyles: B } = D({
+      fullWidth: r,
+      isDisabled: o,
+      isError: l,
+      isFocused: a
     });
-    return /* @__PURE__ */ s(
-      v,
+    return /* @__PURE__ */ n(
+      N,
       {
-        label: F,
-        required: l,
-        isDisabled: e,
-        isError: r,
-        isFocused: m,
-        fullWidth: o,
-        helpText: f,
-        children: /* @__PURE__ */ s(
+        label: x,
+        required: s,
+        isDisabled: o,
+        isError: l,
+        isFocused: a,
+        fullWidth: r,
+        helpText: d,
+        children: /* @__PURE__ */ n(
           "textarea",
           {
-            name: n,
-            value: c,
-            disabled: e,
-            onFocus: e ? void 0 : p,
-            onBlur: e ? void 0 : x,
+            name: u,
+            value: f,
+            disabled: o,
+            onFocus: (m) => {
+              var t;
+              o || (y(m), (t = e.onFocus) == null || t.call(e, m));
+            },
+            onBlur: (m) => {
+              var t;
+              o || (h(m), (t = e.onBlur) == null || t.call(e, m));
+            },
             spellCheck: !1,
-            rows: i,
-            className: y("Venomous-UI-React--FormField.Textarea", t),
+            rows: F,
+            className: S("Venomous-UI-React--FormField.Textarea", i),
             style: {
               boxSizing: "border-box",
               resize: "none",
-              ...d,
-              ...a
+              ...B,
+              ...c
             },
-            ...u
+            ...e
           }
         )
       }
     );
   }
 );
-z.displayName = "FormField.Textarea";
+R.displayName = "FormField.Textarea";
 export {
-  z as default
+  R as default
 };

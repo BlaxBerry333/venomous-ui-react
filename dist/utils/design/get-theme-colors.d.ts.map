@@ -1,1 +1,1 @@
-{"version":3,"file":"get-theme-colors.d.ts","sourceRoot":"","sources":["../../../src/utils/design/get-theme-colors.ts"],"names":[],"mappings":"AAEA,OAAO,KAAK,EAAE,SAAS,EAAE,MAAM,0BAA0B,CAAC;AAG1D,eAAO,MAAM,cAAc,UAAW,SAAS;;;;CAI7C,CAAC"}
+{"version":3,"file":"get-theme-colors.d.ts","sourceRoot":"","sources":["../../../src/utils/design/get-theme-colors.ts"],"names":[],"mappings":"AAEA,OAAO,KAAK,EAAE,SAAS,EAAE,MAAM,0BAA0B,CAAC;AAG1D,eAAO,MAAM,cAAc,UAAW,SAAS;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;CAI7C,CAAC"}

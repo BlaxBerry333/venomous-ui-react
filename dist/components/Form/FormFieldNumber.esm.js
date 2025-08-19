@@ -1,64 +1,70 @@
-import { jsx as s } from "react/jsx-runtime";
-import x from "clsx";
-import y from "react";
-import N from "../../hooks/useElementFocus/index.esm.js";
-import { useFormFieldStyle as S } from "./_useFormFieldStyle.esm.js";
-import h from "./FormField.esm.js";
-const v = y.memo(
+import { jsx as l } from "react/jsx-runtime";
+import B from "clsx";
+import S from "react";
+import h from "../../hooks/useElementFocus/index.esm.js";
+import { useFormFieldStyle as D } from "./_useFormFieldStyle.esm.js";
+import R from "./FormField.esm.js";
+const g = S.memo(
   ({
-    className: t,
-    style: i,
-    fullWidth: e,
-    autoComplete: l = "off",
-    required: n = !1,
-    isError: m = !1,
-    disabled: o = !1,
-    name: u,
-    value: F,
-    label: c,
-    helpText: a,
-    ...f
+    className: i,
+    style: F,
+    fullWidth: t,
+    autoComplete: c = "off",
+    required: f = !1,
+    isError: n = !1,
+    disabled: m = !1,
+    name: s,
+    value: a,
+    label: b,
+    helpText: d,
+    ...e
   }) => {
-    const { isFocused: r, handleFocus: p, handleBlur: d } = N(), { commonStyles: b } = S({
-      fullWidth: e,
-      isDisabled: o,
-      isError: m,
-      isFocused: r
+    const { isFocused: u, handleFocus: x, handleBlur: y } = h(), { commonStyles: N } = D({
+      fullWidth: t,
+      isDisabled: m,
+      isError: n,
+      isFocused: u
     });
-    return /* @__PURE__ */ s(
-      h,
+    return /* @__PURE__ */ l(
+      R,
       {
-        label: c,
-        required: n,
-        isDisabled: o,
-        isError: m,
-        isFocused: r,
-        fullWidth: e,
-        helpText: a,
-        children: /* @__PURE__ */ s(
+        label: b,
+        required: f,
+        isDisabled: m,
+        isError: n,
+        isFocused: u,
+        fullWidth: t,
+        helpText: d,
+        children: /* @__PURE__ */ l(
           "input",
           {
             type: "number",
-            name: u,
-            value: F,
-            autoComplete: l,
-            disabled: o,
-            onFocus: o ? void 0 : p,
-            onBlur: o ? void 0 : d,
-            className: x("Venomous-UI-React--FormField.Number", t),
+            name: s,
+            value: a,
+            autoComplete: c,
+            disabled: m,
+            onFocus: (o) => {
+              var r;
+              m || (x(o), (r = e.onFocus) == null || r.call(e, o));
+            },
+            onBlur: (o) => {
+              var r;
+              m || (y(o), (r = e.onBlur) == null || r.call(e, o));
+            },
+            className: B("Venomous-UI-React--FormField.Number", i),
             style: {
               boxSizing: "border-box",
-              ...b,
-              ...i
+              ...N,
+              ...F
             },
-            ...f
+            ...e
           }
         )
       }
     );
   }
 );
-v.displayName = "FormField.Number";
+g.displayName = "FormField.Number";
 export {
-  v as default
+  g as default
 };
