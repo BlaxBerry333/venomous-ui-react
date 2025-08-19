@@ -38,8 +38,8 @@ export function useFormFieldStyle({
 
   const borderColor = React.useMemo<React.CSSProperties["borderColor"]>(() => {
     if (isError) return ThemeColor.RubyCopperhead;
-    if (isDisabled) return BorderColors[themeMode].secondary;
-    else return BorderColors[themeMode].primary;
+    if (isDisabled) return BorderColors[themeMode].tertiary;
+    else return BorderColors[themeMode].secondary;
   }, [isError, themeMode]);
 
   const outlineColor = React.useMemo<React.CSSProperties["color"]>(() => {

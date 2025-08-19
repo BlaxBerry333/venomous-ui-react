@@ -60,8 +60,16 @@ const FormFieldPassword = React.memo<FormFieldTextProps>(
             autoComplete={autoComplete}
             spellCheck={false}
             disabled={disabled}
-            onFocus={disabled ? undefined : handleFocus}
-            onBlur={disabled ? undefined : handleBlur}
+            onFocus={(e) => {
+              if (disabled) return;
+              handleFocus(e);
+              props.onFocus?.(e);
+            }}
+            onBlur={(e) => {
+              if (disabled) return;
+              handleBlur(e);
+              props.onBlur?.(e);
+            }}
             className={clsx("Venomous-UI-React--FormField.Password", className)}
             style={{
               boxSizing: "border-box",

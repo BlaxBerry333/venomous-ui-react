@@ -3,7 +3,7 @@
 import clsx from "clsx";
 import React from "react";
 
-import { BackgroundColors, BorderColors, Shadows, TextColors, ThemeMode } from "@/utils/design";
+import { BorderColors, Shadows, TextColors } from "@/utils/design";
 import { Icon } from "../Icon";
 import { Space } from "../Space";
 import { Theme } from "../Theme";
@@ -13,6 +13,7 @@ import type { ChipProps } from "./index.types";
 const Chip = React.memo<ChipProps>(
   ({ text, isDisabled, className, style, closeIcon, closeIconPosition = "end", onClose }) => {
     const { themeMode } = Theme.useThemeMode();
+    const { themeColor } = Theme.useThemeColor();
 
     return (
       <Space.Flex
@@ -30,15 +31,15 @@ const Chip = React.memo<ChipProps>(
           padding: "2px 8px",
           borderWidth: 1.5,
           borderStyle: "solid",
-          borderColor: BorderColors[themeMode].primary,
+          borderColor: BorderColors[themeMode].tertiary,
           boxShadow: Shadows[themeMode].tertiary,
-          backgroundColor: BackgroundColors[themeMode === ThemeMode.Dark ? ThemeMode.Light : ThemeMode.Dark].secondary,
-          color: TextColors[themeMode === ThemeMode.Dark ? ThemeMode.Light : ThemeMode.Dark].primary,
+          backgroundColor: themeColor,
+          color: TextColors["dark"].primary,
           ...style,
         }}
       >
         {closeIcon && <Icon icon={closeIcon} onClick={onClose} style={{ color: "inherit", cursor: "pointer" }} />}
-        <Typography.Text as="small" text={text} isEllipsis style={{ color: "inherit" }} />
+        <Typography.Text as="small" text={text} isEllipsis style={{ color: "inherit", fontWeight: "inherit" }} />
       </Space.Flex>
     );
   },

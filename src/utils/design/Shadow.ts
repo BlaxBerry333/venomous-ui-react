@@ -1,6 +1,6 @@
 import { ThemeMode } from "./ThemeMode";
 
-export const Shadows: Record<ThemeMode, Record<"primary" | "secondary" | "tertiary" | "inset", string>> = {
+export const Shadows = {
   [ThemeMode.Dark]: {
     // 卡片
     primary: `
@@ -40,4 +40,4 @@ export const Shadows: Record<ThemeMode, Record<"primary" | "secondary" | "tertia
       inset 0px 0px 2px 0px rgba(0, 0, 0, 0.3)
     `,
   },
-};
+} as const;

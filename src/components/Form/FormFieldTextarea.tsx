@@ -46,8 +46,16 @@ const FormFieldTextarea = React.memo<FormFieldTextareaProps>(
           name={name}
           value={value}
           disabled={disabled}
-          onFocus={disabled ? undefined : handleFocus}
-          onBlur={disabled ? undefined : handleBlur}
+          onFocus={(e) => {
+            if (disabled) return;
+            handleFocus(e);
+            props.onFocus?.(e);
+          }}
+          onBlur={(e) => {
+            if (disabled) return;
+            handleBlur(e);
+            props.onBlur?.(e);
+          }}
           spellCheck={false}
           rows={rows}
           className={clsx("Venomous-UI-React--FormField.Textarea", className)}

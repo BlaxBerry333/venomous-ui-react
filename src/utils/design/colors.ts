@@ -7,10 +7,7 @@ export const SemanticColors = {
   info: "#2196f3",
 } as const;
 
-export const TextColors: Record<
-  ThemeMode,
-  Record<"primary" | "secondary" | "tertiary" | "quaternary" | "disabled", string>
-> = {
+export const TextColors = {
   [ThemeMode.Dark]: {
     primary: "#ffffff", // 主要文本
     secondary: "#cccccc", // 次要文本
@@ -25,9 +22,9 @@ export const TextColors: Record<
     quaternary: "#9e9e9e", // 最弱文本
     disabled: "#bdbdbd", // 禁用文本
   },
-};
+} as const;
 
-export const BackgroundColors: Record<ThemeMode, Record<"primary" | "secondary", string>> = {
+export const BackgroundColors = {
   [ThemeMode.Dark]: {
     primary: "#181818", // 主背景
     secondary: "#363636ff", // 卡片/面板背景
@@ -36,9 +33,9 @@ export const BackgroundColors: Record<ThemeMode, Record<"primary" | "secondary",
     primary: "#ffffff", // 主背景
     secondary: "#f8f9fa", // 卡片/面板背景
   },
-};
+} as const;
 
-export const BorderColors: Record<ThemeMode, Record<"primary" | "secondary" | "tertiary" | "quaternary", string>> = {
+export const BorderColors = {
   [ThemeMode.Dark]: {
     primary: "rgba(255, 255, 255, 0.55)",
     secondary: "rgba(255, 255, 255, 0.25)",
@@ -51,4 +48,4 @@ export const BorderColors: Record<ThemeMode, Record<"primary" | "secondary" | "t
     tertiary: "rgba(0, 0, 0, 0.15)",
     quaternary: "rgba(0, 0, 0, 0.05)",
   },
-};
+} as const;

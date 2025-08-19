@@ -38,7 +38,7 @@ const meta = {
     iconStyle: {
       description: "The style of the icon to be rendered at the start of the menu item",
       control: false,
-      table: { type: { summary: "CSSProperties" } },
+      table: { type: { summary: "React.CSSProperties" } },
     },
     isDisabled: {
       description: "Whether the menu item is disabled",
