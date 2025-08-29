@@ -2,7 +2,6 @@
 
 import React from "react";
 
-import { BreakPointName } from "@/utils";
 import { Container } from "../Container";
 import { LAYOUT_CONTEXT_DEFAULT_VALUE, LayoutContext } from "./context/index.";
 import type { LayoutProviderProps } from "./index.types";
@@ -10,7 +9,7 @@ import type { LayoutProviderProps } from "./index.types";
 const LayoutProvider = React.memo<LayoutProviderProps>(
   ({
     children,
-    maxBreakpoint = BreakPointName.xl,
+    maxBreakpoint,
     headerHeight = LAYOUT_CONTEXT_DEFAULT_VALUE.headerHeight,
     footerHeight = LAYOUT_CONTEXT_DEFAULT_VALUE.footerHeight,
     sideWidth = LAYOUT_CONTEXT_DEFAULT_VALUE.sideWidth,

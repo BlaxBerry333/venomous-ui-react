@@ -16,13 +16,15 @@ The layout of a page can be achieved quickly by combining these components, but 
 
 <br />
 
-#### The【Layout Sample 1】doesn't fixed, when pulling down the page, the entire layout scrolled together
+#### The Layout doesn't fixed, when pulling down the page, the entire layout scrolled together
 
 Pulling down the page will triggers the **pull-to-refresh** feature. It's normal browser behavior, not an issue with layout components. But you can disable this behavior by using the following CSS:
 
 ```css
 html,
 body {
+  height: 100svh;
+
   /* disable overscroll and pull-to-refresh */
   overscroll-behavior: none;
   scroll-behavior: smooth;

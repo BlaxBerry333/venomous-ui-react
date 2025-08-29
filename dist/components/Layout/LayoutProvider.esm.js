@@ -1,26 +1,23 @@
 import { jsx as m } from "react/jsx-runtime";
-import i from "react";
-import "../../utils/design/colors.esm.js";
-import "../../utils/design/Shadow.esm.js";
-import { BreakPointName as u } from "../../utils/design/ThemeBreakpoint.esm.js";
+import a from "react";
 import d from "../Container/Container.esm.js";
-import { LAYOUT_CONTEXT_DEFAULT_VALUE as o, LayoutContext as f } from "./context/context.esm.js";
-const l = i.memo(
+import { LAYOUT_CONTEXT_DEFAULT_VALUE as o, LayoutContext as p } from "./context/context.esm.js";
+const s = a.memo(
   ({
-    children: a,
-    maxBreakpoint: n = u.xl,
+    children: i,
+    maxBreakpoint: n,
     headerHeight: r = o.headerHeight,
-    footerHeight: t = o.footerHeight,
-    sideWidth: e = o.sideWidth
+    footerHeight: e = o.footerHeight,
+    sideWidth: t = o.sideWidth
   }) => {
-    const p = i.useMemo(
-      () => ({ headerHeight: r, footerHeight: t, sideWidth: e }),
-      [r, t, e]
+    const u = a.useMemo(
+      () => ({ headerHeight: r, footerHeight: e, sideWidth: t }),
+      [r, e, t]
     );
-    return /* @__PURE__ */ m(f.Provider, { value: p, children: /* @__PURE__ */ m(d, { maxBreakpoint: n, children: a }) });
+    return /* @__PURE__ */ m(p.Provider, { value: u, children: /* @__PURE__ */ m(d, { maxBreakpoint: n, children: i }) });
   }
 );
-l.displayName = "Layout.Provider";
+s.displayName = "Layout.Provider";
 export {
-  l as default
+  s as default
 };
