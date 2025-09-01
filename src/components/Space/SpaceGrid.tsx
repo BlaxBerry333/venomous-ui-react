@@ -4,12 +4,12 @@ import clsx from "clsx";
 import React from "react";
 
 import { Theme } from "@/components";
-import { BreakPointName } from "@/utils";
+import { BREAK_POINT_NAMES, type BreakPointName } from "@/utils";
 import type { SpaceGridProps } from "./index.types";
 
 const SpaceGrid = React.memo<SpaceGridProps>(({ children, className, style, columns = 1, spacing = 16, ...props }) => {
   const { screenSize } = Theme.useThemeBreakpoint();
-  const safeScreenSize = screenSize ?? BreakPointName.xs;
+  const safeScreenSize = screenSize ?? BREAK_POINT_NAMES.xs;
 
   const columnCount = React.useMemo<number>(
     () => __getCurrentColumns(columns, safeScreenSize),
@@ -41,7 +41,7 @@ const SpaceGrid = React.memo<SpaceGridProps>(({ children, className, style, colu
 SpaceGrid.displayName = "Space.Grid";
 export default SpaceGrid;
 
-const breakpoints = Object.keys(BreakPointName) as BreakPointName[];
+const breakpoints = Object.keys(BREAK_POINT_NAMES) as BreakPointName[];
 
 // 获取当前屏幕尺寸对应的列数
 function __getCurrentColumns(columns: SpaceGridProps["columns"] = 1, screenSize: BreakPointName): number {

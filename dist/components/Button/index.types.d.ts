@@ -1,4 +1,4 @@
-import type { SemanticColors } from "@/utils";
+import type { SemanticColorName } from "@/utils";
 import type { IconProps } from "../Icon";
 export declare const ButtonVariantMap: {
     readonly contained: "contained";
@@ -15,7 +15,7 @@ export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonE
     iconPosition?: "start" | "end";
     iconWidth?: IconProps["width"];
     iconStyle?: IconProps["style"];
-    semanticColor?: keyof typeof SemanticColors;
+    semanticColor?: SemanticColorName;
 }
 export interface ButtonsIconProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "children" | "color"> {
     variant?: keyof typeof ButtonVariantMap;
@@ -24,6 +24,6 @@ export interface ButtonsIconProps extends Omit<React.ButtonHTMLAttributes<HTMLBu
     icon: IconProps["icon"];
     iconWidth?: IconProps["width"];
     iconStyle?: IconProps["style"];
-    semanticColor?: keyof typeof SemanticColors;
+    semanticColor?: SemanticColorName;
 }
 //# sourceMappingURL=index.types.d.ts.map

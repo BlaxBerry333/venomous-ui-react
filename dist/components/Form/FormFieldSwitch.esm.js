@@ -1,14 +1,15 @@
 import { jsxs as I, jsx as i } from "react/jsx-runtime";
-import W from "react";
-import { BackgroundColors as j } from "../../utils/design/colors.esm.js";
-import { Shadows as N } from "../../utils/design/Shadow.esm.js";
-import { ThemeColor as P } from "../../utils/design/ThemeColor.esm.js";
-import T from "clsx";
-import { useFormFieldStyle as z } from "./_useFormFieldStyle.esm.js";
-import { useToggleFormFieldChecked as A } from "./_useToggleFormFieldChecked.esm.js";
-import B from "./Label.esm.js";
-import { AnimatePresence as D, motion as s } from "framer-motion";
-const l = 48, c = 24, r = 18, a = 4, H = W.memo(
+import v from "react";
+import { SEMANTIC_COLORS as A, BACKGROUND_COLORS as N } from "../../utils/design/colors.esm.js";
+import { SHADOWS as W } from "../../utils/design/Shadow.esm.js";
+import "../../utils/design/ThemeBreakpoint.esm.js";
+import "../../utils/design/TypographySize.esm.js";
+import D from "clsx";
+import { useFormFieldStyle as L } from "./_useFormFieldStyle.esm.js";
+import { useToggleFormFieldChecked as j } from "./_useToggleFormFieldChecked.esm.js";
+import H from "./Label.esm.js";
+import { AnimatePresence as P, motion as s } from "framer-motion";
+const l = 48, c = 24, r = 18, a = 4, T = v.memo(
   ({
     className: d,
     style: m,
@@ -22,17 +23,17 @@ const l = 48, c = 24, r = 18, a = 4, H = W.memo(
     onChange: k,
     label: y,
     labelPosition: C = "right",
-    ...b
+    ...S
   }) => {
-    const { inputRef: w, isChecked: o, toggleOriginalIsChecked: x, toggleCustomIsChecked: F } = A({
+    const { inputRef: b, isChecked: o, toggleOriginalIsChecked: x, toggleCustomIsChecked: F } = j({
       checked: u,
       disabled: e,
       onChange: k
-    }), { backgroundColor: S, outlineColor: R, borderColor: v, commonStyles: n } = z({
+    }), { backgroundColor: w, outlineColor: R, borderColor: O, commonStyles: n } = L({
       isDisabled: e,
       isError: t
     });
-    return /* @__PURE__ */ I(B, { label: y, required: p, isError: t, position: C, children: [
+    return /* @__PURE__ */ I(H, { label: y, required: p, isError: t, position: C, children: [
       /* @__PURE__ */ i(
         "input",
         {
@@ -40,12 +41,12 @@ const l = 48, c = 24, r = 18, a = 4, H = W.memo(
           name: f,
           value: g,
           checked: o,
-          ref: w,
+          ref: b,
           onChange: x,
           autoComplete: h,
           disabled: e,
           style: { display: "none" },
-          ...b
+          ...S
         }
       ),
       /* @__PURE__ */ i(
@@ -58,13 +59,13 @@ const l = 48, c = 24, r = 18, a = 4, H = W.memo(
             cursor: e ? "not-allowed" : "pointer",
             opacity: e ? 0.6 : 1
           },
-          children: /* @__PURE__ */ i(D, { children: /* @__PURE__ */ i(
+          children: /* @__PURE__ */ i(P, { children: /* @__PURE__ */ i(
             s.div,
             {
               initial: !1,
               animate: o ? "checked" : "unchecked",
               transition: { type: "spring", stiffness: 700, damping: 30 },
-              className: T("Venomous-UI-React--FormField.Switch", d),
+              className: D("Venomous-UI-React--FormField.Switch", d),
               style: {
                 width: l,
                 height: c,
@@ -74,8 +75,8 @@ const l = 48, c = 24, r = 18, a = 4, H = W.memo(
                 borderRadius: c / 2,
                 borderWidth: n.borderWidth,
                 borderStyle: n.borderStyle,
-                borderColor: v,
-                backgroundColor: o ? R : S,
+                borderColor: O,
+                backgroundColor: o ? R : w,
                 ...m
               },
               children: /* @__PURE__ */ i(
@@ -93,8 +94,8 @@ const l = 48, c = 24, r = 18, a = 4, H = W.memo(
                     height: r,
                     borderRadius: "50%",
                     position: "absolute",
-                    boxShadow: N.light.primary,
-                    backgroundColor: t && !o ? P.RubyCopperhead : j.light.secondary
+                    boxShadow: W.light.primary,
+                    backgroundColor: t && !o ? A.error : N.light.secondary
                   }
                 }
               )
@@ -105,7 +106,7 @@ const l = 48, c = 24, r = 18, a = 4, H = W.memo(
     ] });
   }
 );
-H.displayName = "FormField.Switch";
+T.displayName = "FormField.Switch";
 export {
-  H as default
+  T as default
 };

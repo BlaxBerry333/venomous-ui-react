@@ -1,11 +1,12 @@
 import i from "react";
 import "../../utils/design/colors.esm.js";
 import "../../utils/design/Shadow.esm.js";
-import { ThemeBreakPoint as a, BreakPointName as e } from "../../utils/design/ThemeBreakpoint.esm.js";
+import { THEME_BREAKPOINTS as a, BREAK_POINT_NAMES as e } from "../../utils/design/ThemeBreakpoint.esm.js";
+import "../../utils/design/TypographySize.esm.js";
 const p = new Map(
   Object.values(e).map((t, o) => [t, o])
 );
-function v() {
+function T() {
   const [t, o] = i.useState(!1), [n, d] = i.useState(() => g()), [f, x] = i.useState(!1), s = i.useRef(null);
   i.useEffect(() => {
     const c = () => {
@@ -48,5 +49,5 @@ function g() {
 }
 export {
   g as _getSmartDefaultBreakpoint,
-  v as default
+  T as default
 };

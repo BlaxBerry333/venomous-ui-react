@@ -1,10 +1,11 @@
-export declare const SemanticColors: {
+export declare const SEMANTIC_COLORS: {
     readonly success: "#4caf50";
     readonly error: "#f44336";
     readonly warning: "#ff9800";
     readonly info: "#2196f3";
 };
-export declare const TextColors: {
+export type SemanticColorName = keyof typeof SEMANTIC_COLORS;
+export declare const TEXT_COLORS: {
     readonly dark: {
         readonly primary: "#ffffff";
         readonly secondary: "#cccccc";
@@ -20,7 +21,7 @@ export declare const TextColors: {
         readonly disabled: "#bdbdbd";
     };
 };
-export declare const BackgroundColors: {
+export declare const BACKGROUND_COLORS: {
     readonly dark: {
         readonly primary: "#181818";
         readonly secondary: "#363636ff";
@@ -30,7 +31,7 @@ export declare const BackgroundColors: {
         readonly secondary: "#f8f9fa";
     };
 };
-export declare const BorderColors: {
+export declare const BORDER_COLORS: {
     readonly dark: {
         readonly primary: "rgba(255, 255, 255, 0.55)";
         readonly secondary: "rgba(255, 255, 255, 0.25)";

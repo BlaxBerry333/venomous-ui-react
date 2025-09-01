@@ -1,6 +1,6 @@
 "use client";
 
-import { ThemeMode } from "@/utils/design/ThemeMode";
+import { THEME_MODES, type ThemeMode } from "../design/ThemeMode";
 
 function checkSystemIsDarkMode(): boolean {
   if (typeof window !== "undefined") {
@@ -14,5 +14,5 @@ function checkSystemIsDarkMode(): boolean {
  */
 export function getSystemThemeMode(): ThemeMode {
   const isDark = checkSystemIsDarkMode();
-  return isDark ? ThemeMode.Dark : ThemeMode.Light;
+  return isDark ? THEME_MODES.Dark : THEME_MODES.Light;
 }

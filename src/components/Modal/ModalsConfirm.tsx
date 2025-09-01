@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import { BreakPointName } from "@/utils";
+import { BREAK_POINT_NAMES } from "@/utils";
 import clsx from "clsx";
 import { Button } from "../Button";
 import { Space } from "../Space";
@@ -17,7 +17,7 @@ const ModalsConfirm = React.memo<ModalsConfirmProps>(
     isOpen,
     onClose,
     maskClosable = false,
-    maxBreakpoint = BreakPointName.xs,
+    maxBreakpoint = BREAK_POINT_NAMES.xs,
     title,
     description,
     isConformLoading = false,

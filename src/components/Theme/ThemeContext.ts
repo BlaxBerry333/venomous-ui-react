@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import type { ThemeColor, ThemeMode } from "@/utils";
+import type { ThemeMode } from "@/utils";
 
 export interface ThemeModeContextType {
   themeMode: ThemeMode;
@@ -13,8 +13,8 @@ export interface ThemeModeContextType {
 }
 
 export interface ThemeColorContextType {
-  themeColor: ThemeColor;
-  setThemeColor: (themeColor: ThemeColor) => void;
+  themeColor: string;
+  setThemeColor: (themeColor: string) => void;
   resetThemeColor: VoidFunction;
 }
 

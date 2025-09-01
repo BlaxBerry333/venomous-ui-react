@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 
 import { useHandler } from "@/hooks";
-import { BreakPointName } from "@/utils";
+import { BREAK_POINT_NAMES } from "@/utils";
 import { Button } from "../Button";
 import { Typography } from "../Typography";
 import { Modal } from "./index";
@@ -39,7 +39,7 @@ const meta = {
     maxBreakpoint: {
       description: "The maximum breakpoint of the modal",
       control: { type: "select" },
-      options: Object.values(BreakPointName),
+      options: Object.values(BREAK_POINT_NAMES),
       table: { type: { summary: `"xs"|"sm"|"md"|"lg"|"xl"|"xxl"` }, defaultValue: { summary: '"xs"' } },
     },
   },
@@ -48,7 +48,7 @@ const meta = {
     isOpen: false,
     onClose: () => {},
     maskClosable: true,
-    maxBreakpoint: BreakPointName.xs,
+    maxBreakpoint: BREAK_POINT_NAMES.xs,
   },
 } satisfies Meta<typeof Modal>;
 

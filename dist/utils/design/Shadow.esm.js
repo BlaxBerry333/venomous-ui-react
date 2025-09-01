@@ -1,4 +1,4 @@
-import { ThemeMode as p } from "./ThemeMode.esm.js";
+import { THEME_MODES as p } from "./ThemeMode.esm.js";
 const r = {
   [p.Dark]: {
     // 卡片
@@ -40,5 +40,5 @@ const r = {
   }
 };
 export {
-  r as Shadows
+  r as SHADOWS
 };

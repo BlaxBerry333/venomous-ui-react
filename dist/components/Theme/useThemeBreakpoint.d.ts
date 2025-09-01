@@ -1,4 +1,4 @@
-import { BreakPointName } from "@/utils";
+import { type BreakPointName } from "@/utils";
 export default function useThemeBreakpoint(): {
     screenSize: BreakPointName;
     isLargerThanOrEqual: (targetBreakpoint: BreakPointName) => boolean;

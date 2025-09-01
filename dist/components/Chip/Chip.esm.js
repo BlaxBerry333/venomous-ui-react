@@ -1,17 +1,19 @@
-import { jsxs as p, jsx as e } from "react/jsx-runtime";
+import { jsxs as n, jsx as e } from "react/jsx-runtime";
 import d from "clsx";
 import c from "react";
 import h from "../../hooks/useDesign/index.esm.js";
-import { TextColors as f } from "../../utils/design/colors.esm.js";
+import { TEXT_COLORS as f } from "../../utils/design/colors.esm.js";
 import "../../utils/design/Shadow.esm.js";
+import "../../utils/design/ThemeBreakpoint.esm.js";
+import "../../utils/design/TypographySize.esm.js";
 import u from "../Icon/Icon.esm.js";
 import { Space as x } from "../Space/index.esm.js";
 import { Theme as C } from "../Theme/index.esm.js";
 import { Typography as y } from "../Typography/index.esm.js";
 const g = c.memo(
-  ({ text: t, isDisabled: i, className: s, style: a, closeIcon: r, closeIconPosition: m = "end", onClose: l }) => {
-    const { themeColor: n } = C.useThemeColor(), o = h();
-    return /* @__PURE__ */ p(
+  ({ text: t, isDisabled: i, className: s, style: m, closeIcon: r, closeIconPosition: a = "end", onClose: p }) => {
+    const { themeColor: l } = C.useThemeColor(), o = h();
+    return /* @__PURE__ */ n(
       x.Flex,
       {
         row: !0,
@@ -21,7 +23,7 @@ const g = c.memo(
           WebkitTapHighlightColor: "transparent",
           width: "max-content",
           alignItems: "center",
-          flexDirection: m === "start" ? "row" : "row-reverse",
+          flexDirection: a === "start" ? "row" : "row-reverse",
           justifyContent: r ? "space-between" : "center",
           cursor: i ? "not-allowed" : "default",
           borderRadius: "12px",
@@ -30,12 +32,12 @@ const g = c.memo(
           borderStyle: "solid",
           borderColor: o.BorderColors.tertiary,
           boxShadow: o.Shadows.tertiary,
-          backgroundColor: n,
+          backgroundColor: l,
           color: f.dark.primary,
-          ...a
+          ...m
         },
         children: [
-          r && /* @__PURE__ */ e(u, { icon: r, onClick: l, style: { color: "inherit", cursor: "pointer" } }),
+          r && /* @__PURE__ */ e(u, { icon: r, onClick: p, style: { color: "inherit", cursor: "pointer" } }),
           /* @__PURE__ */ e(y.Text, { as: "small", text: t, isEllipsis: !0, style: { color: "inherit", fontWeight: "inherit" } })
         ]
       }

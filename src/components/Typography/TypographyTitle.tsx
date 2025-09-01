@@ -3,14 +3,14 @@
 import clsx from "clsx";
 import React from "react";
 
-import { TypographySize } from "@/utils";
+import { TYPOGRAPHY_SIZES } from "@/utils";
 import { useTypographyStyle } from "./_useTypographyStyle";
 import { TypographyTitleTagMap, type TypographyTitleProps } from "./index.types";
 
 const TypographyTitle = React.memo<TypographyTitleProps>(
   ({ text, as = TypographyTitleTagMap.h4, ellipsis = 0, className, style, semanticColor, ...props }) => {
     const Tag = React.useMemo(() => TypographyTitleTagMap[as], [as]);
-    const fontSize = React.useMemo(() => TypographySize[as], [as]);
+    const fontSize = React.useMemo(() => TYPOGRAPHY_SIZES[as], [as]);
 
     const { fontColor, ellipsisStyles } = useTypographyStyle({ ellipsis, semanticColor });
 

@@ -1,8 +1,8 @@
 import React from "react";
-import { SemanticColors } from "@/utils";
+import { type SemanticColorName } from "@/utils";
 type Props = Partial<{
     ellipsis: number;
-    semanticColor?: keyof typeof SemanticColors;
+    semanticColor?: SemanticColorName;
 }>;
 export declare function useTypographyStyle({ ellipsis, semanticColor }: Props): {
     fontColor: import("csstype").Property.Color | undefined;

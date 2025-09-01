@@ -2,6 +2,8 @@ import i from "react";
 import c from "../../hooks/useDesign/index.esm.js";
 import "../../utils/design/colors.esm.js";
 import "../../utils/design/Shadow.esm.js";
+import "../../utils/design/ThemeBreakpoint.esm.js";
+import "../../utils/design/TypographySize.esm.js";
 import { getOpacityHex as a, hexNormalize as s, getDarkerHex as m, getLighterHex as u } from "../../utils/tools/get-colors.esm.js";
 import d from "./useThemeColor.esm.js";
 const h = i.memo(() => (b(), null));

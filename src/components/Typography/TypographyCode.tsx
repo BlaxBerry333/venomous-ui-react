@@ -3,7 +3,7 @@
 import clsx from "clsx";
 import React from "react";
 
-import { ThemeColor, TypographySize } from "@/utils";
+import { THEME_COLORS, TYPOGRAPHY_SIZES } from "@/utils";
 import type { TypographyCodeProps } from "./index.types";
 
 const TypographyCode = React.memo<TypographyCodeProps>(({ className, style, text, ...props }) => {
@@ -11,12 +11,12 @@ const TypographyCode = React.memo<TypographyCodeProps>(({ className, style, text
     <code
       className={clsx("Venomous-UI-React--Typography.Code", className)}
       style={{
-        color: ThemeColor.TourmalineStiletto,
+        color: THEME_COLORS.RubyCopperhead,
         backgroundColor: "#E7E9EB",
         border: "1px solid #CCCCCC",
         borderRadius: "4px",
         padding: "2px 4px",
-        fontSize: TypographySize.small,
+        fontSize: TYPOGRAPHY_SIZES.small,
         fontWeight: 600,
         ...style,
       }}

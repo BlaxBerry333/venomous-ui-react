@@ -4,7 +4,7 @@ import clsx from "clsx";
 import React from "react";
 
 import { useElementFocus } from "@/hooks";
-import { TypographySize } from "@/utils";
+import { TYPOGRAPHY_SIZES } from "@/utils";
 import { Icon } from "../Icon";
 import { Menu } from "../Menu";
 import { Popover } from "../Popover";
@@ -259,7 +259,7 @@ const CustomSelect = React.memo<
             }}
             style={{
               cursor: option.disabled ? "not-allowed" : "pointer",
-              fontSize: TypographySize.small,
+              fontSize: TYPOGRAPHY_SIZES.small,
             }}
           />
         ))}

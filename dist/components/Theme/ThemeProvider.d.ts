@@ -1,9 +1,9 @@
 import React from "react";
-import { ThemeColor, ThemeMode } from "@/utils";
+import { type ThemeMode } from "@/utils";
 interface ThemeModeProviderProps {
     children: React.ReactNode;
     defaultThemeMode?: ThemeMode;
-    defaultThemeColor?: ThemeColor;
+    defaultThemeColor?: string;
     storageKey?: {
         THEME_MODE: string;
         THEME_COLOR: string;

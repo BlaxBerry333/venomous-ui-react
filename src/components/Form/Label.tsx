@@ -4,7 +4,7 @@ import clsx from "clsx";
 import React from "react";
 
 import { useDesign } from "@/hooks";
-import { ThemeColor } from "@/utils";
+import { SEMANTIC_COLORS } from "@/utils";
 import { Space } from "../Space";
 import { Typography } from "../Typography";
 import { LabelPositionMap, type LabelProps } from "./index.types";
@@ -34,7 +34,7 @@ const Label = React.memo<LabelProps>(
           ...(position === LabelPositionMap.top && { flexDirection: "column", alignItems: "flex-start" }),
           ...(position === LabelPositionMap.left && { flexDirection: "row", alignItems: "center" }),
           ...(position === LabelPositionMap.right && { flexDirection: "row-reverse", alignItems: "center" }),
-          color: isError ? ThemeColor.RubyCopperhead : design.TextColors.primary,
+          color: isError ? SEMANTIC_COLORS.error : design.TextColors.primary,
           ...style,
         }}
         {...props}
@@ -43,7 +43,7 @@ const Label = React.memo<LabelProps>(
         <Space.Flex row gap={0} style={{ width: "100%", alignItems: "center" }}>
           {/* required star */}
           {required && (
-            <Typography.Text as="small" text="*" style={{ color: ThemeColor.RubyCopperhead, marginRight: "2px" }} />
+            <Typography.Text as="small" text="*" style={{ color: SEMANTIC_COLORS.error, marginRight: "2px" }} />
           )}
           {/* label text */}
           <Typography.Text

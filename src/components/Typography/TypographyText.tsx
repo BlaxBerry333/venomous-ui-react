@@ -3,7 +3,7 @@
 import clsx from "clsx";
 import React from "react";
 
-import { TypographySize, TypographySizeName } from "@/utils";
+import { TYPOGRAPHY_SIZES, TYPOGRAPHY_SIZE_NAME } from "@/utils";
 import { useTypographyStyle } from "./_useTypographyStyle";
 import { TypographyTextTagMap, type TypographyTextProps } from "./index.types";
 
@@ -18,12 +18,12 @@ const TypographyText = React.memo<TypographyTextProps>(
     const fontSize = React.useMemo<React.CSSProperties["fontSize"]>(() => {
       switch (Tag) {
         case TypographyTextTagMap.strong:
-          return TypographySize[TypographySizeName.strong];
+          return TYPOGRAPHY_SIZES[TYPOGRAPHY_SIZE_NAME.strong];
         case TypographyTextTagMap.small:
-          return TypographySize[TypographySizeName.small];
+          return TYPOGRAPHY_SIZES[TYPOGRAPHY_SIZE_NAME.small];
         case TypographyTextTagMap.span:
         default:
-          return TypographySize[TypographySizeName.text];
+          return TYPOGRAPHY_SIZES[TYPOGRAPHY_SIZE_NAME.text];
       }
     }, [Tag]);
 

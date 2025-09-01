@@ -1,1 +1,1 @@
-"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});var x=(l=>(l.xs="xs",l.sm="sm",l.md="md",l.lg="lg",l.xl="xl",l.xxl="xxl",l))(x||{});const s={xs:444,sm:600,md:960,lg:1280,xl:1920,xxl:2560};exports.BreakPointName=x;exports.ThemeBreakPoint=s;
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const l={xs:"xs",sm:"sm",md:"md",lg:"lg",xl:"xl",xxl:"xxl"},x={[l.xs]:444,[l.sm]:600,[l.md]:960,[l.lg]:1280,[l.xl]:1920,[l.xxl]:2560};exports.BREAK_POINT_NAMES=l;exports.THEME_BREAKPOINTS=x;

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { ThemeColor, ThemeMode } from "@/utils";
+import { THEME_COLORS, THEME_MODES } from "@/utils";
 import { Theme } from ".";
 import { Button, Buttons } from "../Button";
 import { Card } from "../Card";
@@ -37,13 +37,13 @@ export const Default: Story = {
               />
               <Button
                 text="Dark"
-                isDisabled={themeMode === ThemeMode.Dark}
-                onClick={() => setThemeMode(ThemeMode.Dark)}
+                isDisabled={themeMode === THEME_MODES.Dark}
+                onClick={() => setThemeMode(THEME_MODES.Dark)}
               />
               <Button
                 text="Light"
-                isDisabled={themeMode === ThemeMode.Light}
-                onClick={() => setThemeMode(ThemeMode.Light)}
+                isDisabled={themeMode === THEME_MODES.Light}
+                onClick={() => setThemeMode(THEME_MODES.Light)}
               />
               <Typography.Title text={`themeMode: ${themeMode}`} />
             </Space.Flex>
@@ -55,7 +55,7 @@ export const Default: Story = {
             <Space.Flex style={{ flexWrap: "wrap" }}>
               <Typography.Title text={`themeColor: ${themeColor}`} />
 
-              {Object.values(ThemeColor).map((color) => (
+              {Object.values(THEME_COLORS).map((color) => (
                 <Card
                   key={color}
                   style={{

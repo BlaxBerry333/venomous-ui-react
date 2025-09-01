@@ -5,6 +5,8 @@ import O from "../../hooks/useDesign/index.esm.js";
 import v from "../../hooks/useElementHover/index.esm.js";
 import "../../utils/design/colors.esm.js";
 import "../../utils/design/Shadow.esm.js";
+import "../../utils/design/ThemeBreakpoint.esm.js";
+import "../../utils/design/TypographySize.esm.js";
 import { getOpacityHex as R } from "../../utils/tools/get-colors.esm.js";
 import { Buttons as E } from "../Button/index.esm.js";
 import U from "../Icon/Icon.esm.js";
@@ -22,20 +24,20 @@ const L = o.memo(
     text: w,
     subText: d,
     isDisabled: r = !1,
-    isActive: x = !1,
+    isActive: t = !1,
     actionButtonProps: e = void 0,
-    ...t
+    ...x
   }) => {
-    const { themeColor: a } = j.useThemeColor(), l = O(), C = o.useMemo(() => x ? R(a, 0.1) : "transparent", [r, x, l]), f = o.useMemo(() => r ? l.TextColors.disabled : x ? a : l.TextColors.primary, [r, x, l, a]), { handleMouseDown: S, handleMouseUp: T, handleMouseLeave: I } = v({
+    const { themeColor: i } = j.useThemeColor(), l = O(), C = o.useMemo(() => t ? R(i, 0.1) : "transparent", [r, t, l]), f = o.useMemo(() => r ? l.TextColors.disabled : t ? i : l.TextColors.primary, [r, t, l, i]), { handleMouseDown: S, handleMouseUp: T, handleMouseLeave: p } = v({
       isDisabled: r
-    }), p = o.useCallback(
-      (i) => {
-        r || (i.currentTarget.style.boxShadow = l.Shadows.tertiary);
+    }), I = o.useCallback(
+      (a) => {
+        r || (a.currentTarget.style.boxShadow = l.Shadows.tertiary);
       },
       [r, l]
     ), H = o.useCallback(
-      (i) => {
-        r || (i.currentTarget.style.boxShadow = "none");
+      (a) => {
+        r || (a.currentTarget.style.boxShadow = "none");
       },
       [r]
     );
@@ -52,17 +54,17 @@ const L = o.memo(
           padding: "8px",
           paddingRight: e != null && e.icon ? "0px" : "8px",
           borderRadius: "8px",
-          cursor: r ? "not-allowed" : t != null && t.onClick ? "pointer" : "default",
+          cursor: r ? "not-allowed" : x != null && x.onClick ? "pointer" : "default",
           backgroundColor: C,
           // transition: "box-shadow 0.2s ease-in-out",
           ...M
         },
         onMouseDown: S,
         onMouseUp: T,
-        onMouseLeave: I,
-        onMouseOver: p,
+        onMouseLeave: p,
+        onMouseOver: I,
         onMouseOut: H,
-        ...t,
+        ...x,
         children: /* @__PURE__ */ g(n.Flex, { row: !0, style: { minHeight: "40px", height: "100%", alignItems: "center", color: f }, children: [
           m && /* @__PURE__ */ h(
             U,

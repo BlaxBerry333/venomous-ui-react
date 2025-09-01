@@ -1,9 +1,11 @@
 import r from "react";
-import s from "../../hooks/useDesign/index.esm.js";
-import { SemanticColors as m } from "../../utils/design/colors.esm.js";
+import p from "../../hooks/useDesign/index.esm.js";
+import { SEMANTIC_COLORS as m } from "../../utils/design/colors.esm.js";
 import "../../utils/design/Shadow.esm.js";
-function y({ ellipsis: e = 0, semanticColor: o }) {
-  const t = s(), i = r.useMemo(() => o ? m[o] : t.TextColors.primary, [t, o]), n = r.useMemo(() => e ? {
+import "../../utils/design/ThemeBreakpoint.esm.js";
+import "../../utils/design/TypographySize.esm.js";
+function a({ ellipsis: e = 0, semanticColor: t }) {
+  const o = p(), i = r.useMemo(() => t ? m[t] : o.TextColors.primary, [o, t]), n = r.useMemo(() => e ? {
     textOverflow: "ellipsis",
     display: "-webkit-box",
     WebkitLineClamp: e,
@@ -16,5 +18,5 @@ function y({ ellipsis: e = 0, semanticColor: o }) {
   };
 }
 export {
-  y as useTypographyStyle
+  a as useTypographyStyle
 };

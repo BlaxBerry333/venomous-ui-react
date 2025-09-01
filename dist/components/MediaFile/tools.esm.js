@@ -1,17 +1,19 @@
 import "../../utils/design/colors.esm.js";
 import "../../utils/design/Shadow.esm.js";
-import { ThemeColor as e } from "../../utils/design/ThemeColor.esm.js";
+import "../../utils/design/ThemeBreakpoint.esm.js";
+import "../../utils/design/TypographySize.esm.js";
+import { THEME_COLORS as e } from "../../utils/design/ThemeColor.esm.js";
 import { MediaFileTypeMap as t } from "./index.types.esm.js";
-function p(r) {
+function m(r) {
   const a = Object.entries(t).find(([, c]) => c === r);
   if (!a)
     throw new Error(`Unsupported mime type: ${r}`);
   return a[0];
 }
-function u(r) {
+function d(r) {
   return t[r];
 }
-function m(r) {
+function l(r) {
   switch (r) {
     case ".jpg":
     case ".jpeg":
@@ -54,7 +56,7 @@ function m(r) {
   }
 }
 export {
-  u as extensionToMimeType,
-  m as getMediaFileTypeColor,
-  p as mimeTypeToExtension
+  d as extensionToMimeType,
+  l as getMediaFileTypeColor,
+  m as mimeTypeToExtension
 };

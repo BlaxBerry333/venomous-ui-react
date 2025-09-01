@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { BreakPointName, ThemeBreakPoint, ThemeColor } from "@/utils";
+import { BREAK_POINT_NAMES, THEME_BREAKPOINTS, THEME_COLORS } from "@/utils";
 import { Container } from ".";
 import { Space } from "../Space";
 import { Typography } from "../Typography";
@@ -19,13 +19,13 @@ const meta = {
     maxBreakpoint: {
       description: "The max breakpoint of the container",
       control: { type: "select" },
-      options: Object.values(BreakPointName),
+      options: Object.values(BREAK_POINT_NAMES),
       table: { type: { summary: `"xs"|"sm"|"md"|"lg"|"xl"|"xxl"` }, defaultValue: { summary: '"lg"' } },
     },
   },
   args: {
     children: null,
-    maxBreakpoint: BreakPointName.lg,
+    maxBreakpoint: BREAK_POINT_NAMES.lg,
   },
 } satisfies Meta<typeof Container>;
 
@@ -38,9 +38,9 @@ export const Default: Story = {
   render: function RenderStory(args) {
     return (
       <Container maxBreakpoint={args.maxBreakpoint} style={{ border: "0.1px solid grey" }}>
-        <Space.Flex column gap={16} style={{ backgroundColor: ThemeColor.EmeraldMamba }}>
+        <Space.Flex column gap={16} style={{ backgroundColor: THEME_COLORS.EmeraldMamba }}>
           <Typography.Text as="strong" text={`BreakPointName: ${args.maxBreakpoint}`} />
-          {args.maxBreakpoint && <Typography.Text text={`max-width: ${ThemeBreakPoint[args.maxBreakpoint]}px`} />}
+          {args.maxBreakpoint && <Typography.Text text={`max-width: ${THEME_BREAKPOINTS[args.maxBreakpoint]}px`} />}
         </Space.Flex>
       </Container>
     );

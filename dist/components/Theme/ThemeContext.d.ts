@@ -1,5 +1,5 @@
 import React from "react";
-import type { ThemeColor, ThemeMode } from "@/utils";
+import type { ThemeMode } from "@/utils";
 export interface ThemeModeContextType {
     themeMode: ThemeMode;
     setThemeMode: (themeMode: ThemeMode) => void;
@@ -8,8 +8,8 @@ export interface ThemeModeContextType {
     isDarkThemeMode: boolean;
 }
 export interface ThemeColorContextType {
-    themeColor: ThemeColor;
-    setThemeColor: (themeColor: ThemeColor) => void;
+    themeColor: string;
+    setThemeColor: (themeColor: string) => void;
     resetThemeColor: VoidFunction;
 }
 export type ThemeContextValueType = ThemeModeContextType & ThemeColorContextType;

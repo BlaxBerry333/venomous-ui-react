@@ -3,7 +3,7 @@
 import clsx from "clsx";
 import React from "react";
 
-import { ThemeBreakPoint } from "@/utils";
+import { THEME_BREAKPOINTS } from "@/utils";
 import type { ContainerProps } from "./Container.types";
 
 const Container = React.memo<ContainerProps>(({ children, maxBreakpoint, className, style, ...props }) => {
@@ -14,7 +14,7 @@ const Container = React.memo<ContainerProps>(({ children, maxBreakpoint, classNa
         boxSizing: "border-box",
         margin: "0 auto",
         width: "100%",
-        maxWidth: !maxBreakpoint ? "100%" : ThemeBreakPoint[maxBreakpoint],
+        maxWidth: !maxBreakpoint ? "100%" : THEME_BREAKPOINTS[maxBreakpoint],
         ...style,
       }}
       {...props}

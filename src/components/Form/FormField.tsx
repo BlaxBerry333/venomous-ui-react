@@ -4,7 +4,7 @@ import clsx from "clsx";
 import React from "react";
 
 import { useDesign } from "@/hooks";
-import { ThemeColor, TypographySize } from "@/utils";
+import { SEMANTIC_COLORS, TYPOGRAPHY_SIZES } from "@/utils";
 import { Icon } from "../Icon";
 import { Space } from "../Space";
 import { Theme } from "../Theme";
@@ -46,7 +46,7 @@ const FormField = React.memo<FormFieldProps>(
           margin: 0,
           width: fullWidth ? "100%" : "max-content",
           color: isError
-            ? ThemeColor.RubyCopperhead
+            ? SEMANTIC_COLORS.error
             : isDisabled
               ? design.TextColors.disabled
               : isFocused
@@ -64,7 +64,7 @@ const FormField = React.memo<FormFieldProps>(
                 as="small"
                 text="*"
                 style={{
-                  color: ThemeColor.RubyCopperhead,
+                  color: SEMANTIC_COLORS.error,
                   fontWeight: "bold",
                   verticalAlign: "text-bottom",
                 }}
@@ -93,7 +93,7 @@ const FormField = React.memo<FormFieldProps>(
               style={{
                 display: "flex",
                 alignItems: "center",
-                fontSize: TypographySize.small,
+                fontSize: TYPOGRAPHY_SIZES.small,
                 color: helperTextColor,
                 paddingLeft: "4px",
               }}

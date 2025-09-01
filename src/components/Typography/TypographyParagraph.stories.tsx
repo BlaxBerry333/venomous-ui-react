@@ -2,7 +2,7 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { SemanticColors } from "@/utils";
+import { SEMANTIC_COLORS } from "@/utils";
 import { Typography } from ".";
 
 const meta = {
@@ -24,8 +24,8 @@ const meta = {
     semanticColor: {
       description: "The built-in built-in semantic color of the text",
       control: { type: "select" },
-      options: [...Object.keys(SemanticColors), undefined],
-      table: { type: { summary: `undefined|SemanticColors"` }, defaultValue: { summary: "undefined" } },
+      options: [...Object.keys(SEMANTIC_COLORS), undefined],
+      table: { type: { summary: `undefined|SemanticColorName"` }, defaultValue: { summary: "undefined" } },
     },
   },
   args: {

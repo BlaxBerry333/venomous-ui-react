@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { BreakPointName } from "@/utils";
+import { BREAK_POINT_NAMES } from "@/utils";
 import { Layout } from ".";
 
 const meta = {
@@ -21,7 +21,7 @@ export const Sample: Story = {
   name: "Sample",
   render: function RenderStory() {
     return (
-      <Layout.Provider maxBreakpoint={BreakPointName.sm} headerHeight={60} footerHeight={80}>
+      <Layout.Provider maxBreakpoint={BREAK_POINT_NAMES.sm} headerHeight={60} footerHeight={80}>
         <Layout.Header>
           <div style={{ height: "100%", backgroundColor: "skyblue" }} />
         </Layout.Header>

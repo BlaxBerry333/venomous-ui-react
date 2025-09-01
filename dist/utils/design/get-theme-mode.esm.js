@@ -1,4 +1,4 @@
-import { ThemeMode as e } from "./ThemeMode.esm.js";
+import { THEME_MODES as e } from "./ThemeMode.esm.js";
 function r() {
   return typeof window < "u" ? window.matchMedia("(prefers-color-scheme: dark)").matches : !1;
 }

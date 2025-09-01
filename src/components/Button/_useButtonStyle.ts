@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useDesign } from "@/hooks";
-import { getLighterHex, getOpacityHex, SemanticColors } from "@/utils";
+import { getLighterHex, getOpacityHex, SEMANTIC_COLORS } from "@/utils";
 import { Theme } from "../Theme";
 import { ButtonVariantMap, type ButtonProps } from "./index.types";
 
@@ -23,7 +23,7 @@ export function useButtonStyle({
     }
     switch (variant) {
       case ButtonVariantMap.contained:
-        return semanticColor ? SemanticColors[semanticColor] : themeColor;
+        return semanticColor ? SEMANTIC_COLORS[semanticColor] : themeColor;
       case ButtonVariantMap.outlined:
         return design.BackgroundColors.secondary;
       case ButtonVariantMap.ghost:
@@ -42,9 +42,9 @@ export function useButtonStyle({
     }
     switch (variant) {
       case ButtonVariantMap.contained:
-        return semanticColor ? getLighterHex(SemanticColors[semanticColor], 0.25) : getOpacityHex(themeColor, 0.5);
+        return semanticColor ? getLighterHex(SEMANTIC_COLORS[semanticColor], 0.25) : getOpacityHex(themeColor, 0.5);
       case ButtonVariantMap.outlined:
-        return semanticColor ? SemanticColors[semanticColor] : themeColor;
+        return semanticColor ? SEMANTIC_COLORS[semanticColor] : themeColor;
       case ButtonVariantMap.ghost:
         return design.BorderColors.secondary;
       case ButtonVariantMap.transparent:
@@ -61,7 +61,7 @@ export function useButtonStyle({
       case ButtonVariantMap.contained:
         return "#ffffff";
       case ButtonVariantMap.outlined:
-        return semanticColor ? SemanticColors[semanticColor] : themeColor;
+        return semanticColor ? SEMANTIC_COLORS[semanticColor] : themeColor;
       case ButtonVariantMap.ghost:
       default:
         return design.TextColors.primary;

@@ -2,10 +2,10 @@
 
 import React from "react";
 
-import { BreakPointName, ThemeBreakPoint } from "@/utils";
+import { BREAK_POINT_NAMES, THEME_BREAKPOINTS, type BreakPointName } from "@/utils";
 
 const breakpointIndexMap: Map<BreakPointName, number> = new Map(
-  Object.values(BreakPointName).map((bp, index) => [bp, index]),
+  Object.values(BREAK_POINT_NAMES).map((bp, index) => [bp, index]),
 );
 
 export default function useThemeBreakpoint() {
@@ -21,12 +21,12 @@ export default function useThemeBreakpoint() {
   React.useEffect(() => {
     const getScreenSize = (): BreakPointName => {
       const width = window.innerWidth;
-      if (width >= ThemeBreakPoint.xxl) return BreakPointName.xxl;
-      if (width >= ThemeBreakPoint.xl) return BreakPointName.xl;
-      if (width >= ThemeBreakPoint.lg) return BreakPointName.lg;
-      if (width >= ThemeBreakPoint.md) return BreakPointName.md;
-      if (width >= ThemeBreakPoint.sm) return BreakPointName.sm;
-      return BreakPointName.xs;
+      if (width >= THEME_BREAKPOINTS.xxl) return BREAK_POINT_NAMES.xxl;
+      if (width >= THEME_BREAKPOINTS.xl) return BREAK_POINT_NAMES.xl;
+      if (width >= THEME_BREAKPOINTS.lg) return BREAK_POINT_NAMES.lg;
+      if (width >= THEME_BREAKPOINTS.md) return BREAK_POINT_NAMES.md;
+      if (width >= THEME_BREAKPOINTS.sm) return BREAK_POINT_NAMES.sm;
+      return BREAK_POINT_NAMES.xs;
     };
     // 使用防抖优化，避免 resize 事件过于频繁触发
     const handleResize = () => {
@@ -83,7 +83,7 @@ export default function useThemeBreakpoint() {
 export function _getSmartDefaultBreakpoint(): BreakPointName {
   // SSR 环境：返回移动端优先的断点
   if (typeof window === "undefined") {
-    return BreakPointName.xs;
+    return BREAK_POINT_NAMES.xs;
   }
 
   // 客户端环境：尝试从用户代理等线索推断
@@ -92,11 +92,11 @@ export function _getSmartDefaultBreakpoint(): BreakPointName {
   const isTablet = /iPad|Android(?!.*Mobile)|Kindle|Silk/i.test(userAgent);
 
   if (isMobile && !isTablet) {
-    return BreakPointName.xs;
+    return BREAK_POINT_NAMES.xs;
   } else if (isTablet) {
-    return BreakPointName.md;
+    return BREAK_POINT_NAMES.md;
   } else {
     // 桌面端，使用一个相对安全的默认值
-    return BreakPointName.lg;
+    return BREAK_POINT_NAMES.lg;
   }
 }

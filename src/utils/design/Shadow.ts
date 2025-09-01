@@ -1,7 +1,7 @@
-import { ThemeMode } from "./ThemeMode";
+import { THEME_MODES } from "./ThemeMode";
 
-export const Shadows = {
-  [ThemeMode.Dark]: {
+export const SHADOWS = {
+  [THEME_MODES.Dark]: {
     // 卡片
     primary: `
       0px 0px 4px 0px rgba(255, 255, 255, 0.7),
@@ -21,7 +21,7 @@ export const Shadows = {
     `,
   },
 
-  [ThemeMode.Light]: {
+  [THEME_MODES.Light]: {
     // 卡片
     primary: `
       0px 0px 4px 0px rgba(0, 0, 0, 0.4),

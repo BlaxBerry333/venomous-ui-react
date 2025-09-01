@@ -3,18 +3,18 @@
 import React from "react";
 
 import { useDesign } from "@/hooks";
-import { SemanticColors } from "@/utils";
+import { SEMANTIC_COLORS, type SemanticColorName } from "@/utils";
 
 type Props = Partial<{
   ellipsis: number;
-  semanticColor?: keyof typeof SemanticColors;
+  semanticColor?: SemanticColorName;
 }>;
 
 export function useTypographyStyle({ ellipsis = 0, semanticColor }: Props) {
   const design = useDesign();
 
   const fontColor = React.useMemo<React.CSSProperties["color"]>(() => {
-    return semanticColor ? SemanticColors[semanticColor] : design.TextColors.primary;
+    return semanticColor ? SEMANTIC_COLORS[semanticColor] : design.TextColors.primary;
   }, [design, semanticColor]);
 
   const ellipsisStyles = React.useMemo<React.CSSProperties>(() => {

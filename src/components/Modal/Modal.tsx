@@ -5,12 +5,12 @@ import { AnimatePresence, motion } from "motion/react";
 import React from "react";
 
 import { useDesign } from "@/hooks";
-import { BreakPointName, getOpacityHex, ThemeBreakPoint } from "@/utils";
+import { BREAK_POINT_NAMES, getOpacityHex, THEME_BREAKPOINTS } from "@/utils";
 import { Card } from "../Card";
 import type { ModalProps } from "./index.types";
 
 const Modal = React.memo<ModalProps>(
-  ({ children, className, style, isOpen, onClose, maskClosable = true, maxBreakpoint = BreakPointName.xs }) => {
+  ({ children, className, style, isOpen, onClose, maskClosable = true, maxBreakpoint = BREAK_POINT_NAMES.xs }) => {
     const design = useDesign();
 
     return (
@@ -51,8 +51,8 @@ const Modal = React.memo<ModalProps>(
                 alignItems: "center",
                 height: "max-content",
                 maxHeight: "90%",
-                width: ThemeBreakPoint[maxBreakpoint],
-                maxWidth: ThemeBreakPoint[maxBreakpoint],
+                width: THEME_BREAKPOINTS[maxBreakpoint],
+                maxWidth: THEME_BREAKPOINTS[maxBreakpoint],
               }}
             >
               <Card style={{ width: "100%", ...style }}>{children}</Card>

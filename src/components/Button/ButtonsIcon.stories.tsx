@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { SemanticColors } from "@/utils";
+import { SEMANTIC_COLORS } from "@/utils";
 import { Buttons } from "./index";
 import { ButtonVariantMap } from "./index.types";
 
@@ -44,8 +44,8 @@ const meta = {
       description: "The built-in semantic color of the button",
       if: { arg: "variant", neq: "ghost" },
       control: { type: "select" },
-      options: [...Object.keys(SemanticColors), undefined],
-      table: { type: { summary: `undefined|SemanticColors"` }, defaultValue: { summary: "undefined" } },
+      options: [...Object.keys(SEMANTIC_COLORS), undefined],
+      table: { type: { summary: `undefined|SemanticColorName"` }, defaultValue: { summary: "undefined" } },
     },
     isLoading: {
       description: "Whether the button is loading",

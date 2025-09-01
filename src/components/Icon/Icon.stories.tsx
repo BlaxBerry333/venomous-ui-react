@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { SemanticColors } from "@/utils";
+import { SEMANTIC_COLORS } from "@/utils";
 import { Icon } from "./index";
 
 const meta = {
@@ -20,20 +20,16 @@ const meta = {
       control: { type: "number" },
       table: { type: { summary: "number" }, defaultValue: { summary: "20" } },
     },
-    color: {
-      table: { disable: true },
-    },
     semanticColor: {
       description: "The built-in semantic color of the icon svg",
       control: { type: "select" },
-      options: [...Object.keys(SemanticColors), undefined],
-      table: { type: { summary: `undefined|SemanticColors"` }, defaultValue: { summary: "undefined" } },
+      options: [...Object.keys(SEMANTIC_COLORS), undefined],
+      table: { type: { summary: `undefined|SemanticColorName"` }, defaultValue: { summary: "undefined" } },
     },
   },
   args: {
     icon: "solar:basketball-bold-duotone",
     width: 20,
-    color: "auto",
     semanticColor: undefined,
   },
 } satisfies Meta<typeof Icon>;

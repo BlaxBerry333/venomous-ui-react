@@ -28,17 +28,17 @@ This library supports on-demand imports, changing the import style can reduces t
 
 ```tsx
 // 1st import style
-import { Button, type ButtonProps, useHandler, TypographySize, type Handler } from "venomous-ui-react";
+import { Button, type ButtonProps, useHandler, TYPOGRAPHY_SIZES, type Handler } from "venomous-ui-react";
 
 // 2nd import style
 import { Button, type ButtonProps } from "venomous-ui-react/components";
 import { useHandler, type Handler } from "venomous-ui-react/hooks";
-import { TypographySize } from "venomous-ui-react/utils";
+import { TYPOGRAPHY_SIZES } from "venomous-ui-react/utils";
 
 // 3rd import style
 import { Button, type ButtonProps } from "venomous-ui-react/components/Button";
 import useHandler, { type Handler } from "venomous-ui-react/hooks/useHandler";
-import TypographySize from "venomous-ui-react/utils/TypographySize";
+import { TYPOGRAPHY_SIZES } from "venomous-ui-react/utils/TypographySize";
 ```
 
 ## Development scripts

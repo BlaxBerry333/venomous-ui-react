@@ -3,7 +3,7 @@
 import clsx from "clsx";
 import React from "react";
 
-import { TextColors } from "@/utils";
+import { TEXT_COLORS } from "@/utils";
 import type { MediaFileTypeImageProps } from "./index.types";
 import { getMediaFileTypeColor } from "./tools";
 
@@ -12,7 +12,7 @@ const MediaFileTypeImage = React.memo<MediaFileTypeImageProps>(({ fileExtension,
     () => getMediaFileTypeColor(fileExtension),
     [fileExtension],
   );
-  const textColor: React.CSSProperties["color"] = TextColors.dark.primary;
+  const textColor: React.CSSProperties["color"] = TEXT_COLORS.dark.primary;
 
   return (
     <svg

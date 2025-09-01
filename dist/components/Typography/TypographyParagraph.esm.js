@@ -1,26 +1,27 @@
 import { jsx as s } from "react/jsx-runtime";
-import y from "clsx";
-import l from "react";
+import l from "clsx";
+import y from "react";
 import "../../utils/design/colors.esm.js";
 import "../../utils/design/Shadow.esm.js";
-import { TypographySize as g } from "../../utils/design/TypographySize.esm.js";
+import "../../utils/design/ThemeBreakpoint.esm.js";
+import { TYPOGRAPHY_SIZES as g } from "../../utils/design/TypographySize.esm.js";
 import { useTypographyStyle as h } from "./_useTypographyStyle.esm.js";
-const n = l.memo(
-  ({ children: o, className: r, style: p, ellipsis: a = 0, semanticColor: t, ...e }) => {
-    const { fontColor: i, ellipsisStyles: m } = h({ ellipsis: a, semanticColor: t });
+const n = y.memo(
+  ({ children: o, className: r, style: t, ellipsis: p = 0, semanticColor: a, ...e }) => {
+    const { fontColor: m, ellipsisStyles: i } = h({ ellipsis: p, semanticColor: a });
     return /* @__PURE__ */ s(
       "p",
       {
-        className: y("Venomous-UI-React--Typography.Paragraph", r),
+        className: l("Venomous-UI-React--Typography.Paragraph", r),
         style: {
           boxSizing: "border-box",
           margin: 0,
           width: "100%",
           fontSize: g.text,
           lineHeight: 1.5,
-          color: i,
-          ...m,
-          ...p
+          color: m,
+          ...i,
+          ...t
         },
         ...e,
         children: o

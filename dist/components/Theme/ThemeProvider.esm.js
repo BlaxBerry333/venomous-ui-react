@@ -1,60 +1,62 @@
-import { jsx as D } from "react/jsx-runtime";
+import { jsx as S } from "react/jsx-runtime";
 import e from "react";
 import "../../utils/design/colors.esm.js";
 import "../../utils/design/Shadow.esm.js";
-import { ThemeColor as C } from "../../utils/design/ThemeColor.esm.js";
-import { ThemeMode as E } from "../../utils/design/ThemeMode.esm.js";
-import d from "./ThemeContext.esm.js";
-const S = E.Light, L = C.EmeraldMamba, k = {
+import "../../utils/design/ThemeBreakpoint.esm.js";
+import "../../utils/design/TypographySize.esm.js";
+import { THEME_COLORS as f } from "../../utils/design/ThemeColor.esm.js";
+import { THEME_MODES as E } from "../../utils/design/ThemeMode.esm.js";
+import L from "./ThemeContext.esm.js";
+const h = E.Light, p = f.EmeraldMamba, R = {
   THEME_MODE: "VENOMOUS_UI__THEME_MODE",
   THEME_COLOR: "VENOMOUS_UI__THEME_COLOR"
 };
-function g({
-  children: f,
-  defaultThemeMode: r = S,
-  defaultThemeColor: l = L,
-  storageKey: o = k
+function V({
+  children: u,
+  defaultThemeMode: O = h,
+  defaultThemeColor: M = p,
+  storageKey: o = R
 }) {
-  const [c, h] = e.useState(!1);
+  const [c, C] = e.useState(!1);
   e.useEffect(() => {
-    h(!0);
+    C(!0);
   }, []);
-  const [s, m] = e.useState(r), [M, O] = e.useState(l), T = e.useCallback((t) => {
+  const [s, m] = e.useState(O), [r, T] = e.useState(M), a = e.useCallback((t) => {
     m(t);
-  }, []), n = e.useCallback(() => {
-    m((t) => t === E.Dark ? E.Light : E.Dark);
   }, []), _ = e.useCallback(() => {
-    m(r);
-  }, [r]), u = e.useCallback((t) => {
-    O(t);
+    m((t) => t === E.Dark ? E.Light : E.Dark);
+  }, []), l = e.useCallback(() => {
+    m(O);
+  }, [O]), n = e.useCallback((t) => {
+    T(t);
   }, []), i = e.useCallback(() => {
-    O(l);
-  }, [l]);
+    T(M);
+  }, [M]);
   e.useEffect(() => {
     if (c) {
       const t = localStorage.getItem(o.THEME_MODE);
       t && Object.values(E).includes(t) && m(t);
-      const a = localStorage.getItem(o.THEME_COLOR);
-      a && Object.values(C).includes(a) && O(a);
+      const D = localStorage.getItem(o.THEME_COLOR);
+      T(D || M);
     }
   }, [c, o.THEME_COLOR, o.THEME_MODE]), e.useEffect(() => {
-    c && (localStorage.setItem(o.THEME_MODE, s), localStorage.setItem(o.THEME_COLOR, M));
-  }, [c, o.THEME_MODE, o.THEME_COLOR, s, M]);
+    c && (localStorage.setItem(o.THEME_MODE, s), localStorage.setItem(o.THEME_COLOR, r));
+  }, [c, o.THEME_MODE, o.THEME_COLOR, s, r]);
   const H = e.useMemo(
     () => ({
       themeMode: s,
-      setThemeMode: T,
-      toggleThemeMode: n,
-      resetThemeMode: _,
+      setThemeMode: a,
+      toggleThemeMode: _,
+      resetThemeMode: l,
       isDarkThemeMode: s === E.Dark,
-      themeColor: M,
-      setThemeColor: u,
+      themeColor: r,
+      setThemeColor: n,
       resetThemeColor: i
     }),
-    [s, T, n, _, M, u, i]
+    [s, a, _, l, r, n, i]
   );
-  return /* @__PURE__ */ D(d.Provider, { value: H, children: f });
+  return /* @__PURE__ */ S(L.Provider, { value: H, children: u });
 }
 export {
-  g as default
+  V as default
 };

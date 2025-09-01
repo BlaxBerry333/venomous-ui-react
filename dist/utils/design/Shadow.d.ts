@@ -1,4 +1,4 @@
-export declare const Shadows: {
+export declare const SHADOWS: {
     readonly dark: {
         readonly primary: "\n      0px 0px 4px 0px rgba(255, 255, 255, 0.7),\n      0px 0px 2px -1px rgba(255, 255, 255, 0.7)\n    ";
         readonly secondary: "\n      0px 0px 4px 0px rgba(255, 255, 255, 0.4)\n    ";

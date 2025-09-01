@@ -3,7 +3,7 @@
 import React from "react";
 
 import { useDesign } from "@/hooks";
-import { ThemeColor, TypographySize } from "@/utils";
+import { SEMANTIC_COLORS, TYPOGRAPHY_SIZES } from "@/utils";
 import { Theme } from "../Theme";
 
 export function useFormFieldStyle({
@@ -26,25 +26,25 @@ export function useFormFieldStyle({
   }, [isDisabled, design]);
 
   const textColor = React.useMemo<React.CSSProperties["color"]>(() => {
-    if (isError) return ThemeColor.RubyCopperhead;
+    if (isError) return SEMANTIC_COLORS.error;
     if (isDisabled) return design.TextColors.disabled;
     else return design.TextColors.primary;
   }, [isError, isDisabled, design]);
 
   const helperTextColor = React.useMemo<React.CSSProperties["color"]>(() => {
-    if (isError) return ThemeColor.RubyCopperhead;
+    if (isError) return SEMANTIC_COLORS.error;
     if (isDisabled) return design.TextColors.disabled;
     else return design.TextColors.quaternary;
   }, [isError, isDisabled, design]);
 
   const borderColor = React.useMemo<React.CSSProperties["borderColor"]>(() => {
-    if (isError) return ThemeColor.RubyCopperhead;
+    if (isError) return SEMANTIC_COLORS.error;
     if (isDisabled) return design.BorderColors.tertiary;
     else return design.BorderColors.secondary;
   }, [isError, design]);
 
   const outlineColor = React.useMemo<React.CSSProperties["color"]>(() => {
-    if (isError) return ThemeColor.RubyCopperhead;
+    if (isError) return SEMANTIC_COLORS.error;
     else return themeColor;
   }, [isError, design, themeColor]);
 
@@ -55,7 +55,7 @@ export function useFormFieldStyle({
       minWidth: fullWidth ? "100%" : 200,
       minHeight: 40,
       padding: "8px",
-      fontSize: TypographySize.text,
+      fontSize: TYPOGRAPHY_SIZES.text,
       backgroundColor,
       color: textColor,
       borderRadius: "8px",

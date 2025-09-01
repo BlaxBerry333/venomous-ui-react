@@ -3,7 +3,7 @@
 import clsx from "clsx";
 import React from "react";
 
-import { TypographySize } from "@/utils";
+import { TYPOGRAPHY_SIZES } from "@/utils";
 import { useTypographyStyle } from "./_useTypographyStyle";
 import type { TypographyParagraphProps } from "./index.types";
 
@@ -18,7 +18,7 @@ const TypographyParagraph = React.memo<TypographyParagraphProps>(
           boxSizing: "border-box",
           margin: 0,
           width: "100%",
-          fontSize: TypographySize.text,
+          fontSize: TYPOGRAPHY_SIZES.text,
           lineHeight: 1.5,
           color: fontColor,
           ...ellipsisStyles,

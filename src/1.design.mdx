@@ -1,7 +1,7 @@
 import { Meta } from "@storybook/blocks";
 
 import { Card, Space, Typography, Theme } from "./components";
-import { SemanticColors, ThemeColor, TextColors, BackgroundColors, BorderColors } from "./utils";
+import { SEMANTIC_COLORS, THEME_COLORS, TEXT_COLORS, BACKGROUND_COLORS, BORDER_COLORS } from "./utils";
 
 <Meta title="Design" />
 
@@ -11,6 +11,40 @@ import { SemanticColors, ThemeColor, TextColors, BackgroundColors, BorderColors 
 
 <br />
 
+## Modes
+
+The component library provides `light` and `dark` theme modes.
+
+```tsx
+import { Theme } from "venomous-ui-react/components";
+import { THEME_MODES, type ThemeMode, getSystemThemeMode } from "venomous-ui-react/utils";
+
+function Component() {
+  const { themeMode, setThemeMode, toggleThemeMode, resetThemeMode, isDarkThemeMode } = Theme.useThemeMode();
+  const isLightMode = themeMode === THEME_MODES.Light;
+  const systemThemeMode: ThemeMode = getSystemThemeMode();
+
+  return <>...</>;
+}
+```
+
+## Breakpoints
+
+The component library provides `xs`、`sm`、`md`、`lg`、`xl`、`xxl` breakpoints.
+
+```tsx
+import { Theme } from "venomous-ui-react/components";
+import { THEME_BREAKPOINTS } from "venomous-ui-react/utils";
+
+function Component() {
+  const { screenSize, isLargerThanOrEqual } = Theme.useBreakpoints();
+  const isXsScreen = screenSize === THEME_BREAKPOINTS.Xs;
+  const isLargerThanXsScreen = isLargerThanOrEqual(THEME_BREAKPOINTS.Xs);
+
+  return <>...</>;
+}
+```
+
 ## Colors
 
 The component library provides a set of built-in default colors that can be used directly. There are two ways to access colors:
@@ -19,11 +53,11 @@ The component library provides a set of built-in default colors that can be used
 
 ```tsx
 import { Theme } from "venomous-ui-react/components";
-import { ThemeColor } from "venomous-ui-react/utils";
+import { TEXT_COLORS } from "venomous-ui-react/utils";
 
 function Component() {
   const { themeMode } = Theme.useThemeMode();
-  const primaryText = TextColors[themeMode].primary;
+  const primaryText = TEXT_COLORS[themeMode].primary;
 
   return <>...</>;
 }
@@ -47,7 +81,7 @@ function Component() {
 ### SemanticColors
 
 <Space.Grid columns={{ xs: 2, sm: 4, md: 4, lg: 4, xl: 5, xxl: 6 }} spacing={4}>
-  {Object.entries(SemanticColors).map(([name, value]) => (
+  {Object.entries(SEMANTIC_COLORS).map(([name, value]) => (
     <Card key={name} style={{ backgroundColor: value, border: "none" }}>
       <Space.Flex row style={{ alignItems: "center", justifyContent: "space-between" }}>
         <Typography.Text text={name} as="strong" style={{ fontSize: 10, color: "#ffffff" }} />
@@ -58,13 +92,13 @@ function Component() {
 </Space.Grid>
 
 ```tsx
-import { SemanticColors } from "venomous-ui-react/utils";
+import { SEMANTIC_COLORS, type SemanticColorName } from "venomous-ui-react/utils";
 ```
 
-### ThemeColor
+### ThemeColors
 
 <Space.Grid columns={{ xs: 1, sm: 2, md: 3, lg: 4, xl: 5, xxl: 6 }} spacing={4}>
-  {Object.entries(ThemeColor).map(([name, value]) => (
+  {Object.entries(THEME_COLORS).map(([name, value]) => (
     <Card key={name} style={{ backgroundColor: value, border: "none" }}>
       <Space.Flex row style={{ alignItems: "center", justifyContent: "space-between" }}>
         <Typography.Text text={name} as="strong" style={{ fontSize: 10, color: "#ffffff" }} />
@@ -75,7 +109,7 @@ import { SemanticColors } from "venomous-ui-react/utils";
 </Space.Grid>
 
 ```tsx
-import { ThemeColor } from "venomous-ui-react/utils";
+import { THEME_COLORS, type ThemeColorName } from "venomous-ui-react/utils";
 ```
 
 ### TextColors
@@ -83,12 +117,12 @@ import { ThemeColor } from "venomous-ui-react/utils";
 <Space.Grid
   columns={{ xs: 1, sm: 2, md: 3, lg: 4, xl: 4, xxl: 4 }}
   spacing={24}
-  style={{ backgroundColor: BackgroundColors.dark.primary, padding: 24 }}
+  style={{ backgroundColor: BACKGROUND_COLORS.dark.primary, padding: 24 }}
 >
-  {Object.entries(TextColors.dark).map(([name, value]) => (
+  {Object.entries(TEXT_COLORS.dark).map(([name, value]) => (
     <Card key={name} style={{ backgroundColor: value, border: "none" }}>
       <Space.Flex column style={{ alignItems: "center", justifyContent: "space-between" }}>
-        <Typography.Text text={name} as="strong" style={{ fontSize: 10, color: ThemeColor.TourmalineStiletto }} />
+        <Typography.Text text={name} as="strong" style={{ fontSize: 10, color: THEME_COLORS.TourmalineStiletto }} />
         <Typography.Code text={value} style={{ fontSize: 10 }} />
       </Space.Flex>
     </Card>
@@ -97,12 +131,12 @@ import { ThemeColor } from "venomous-ui-react/utils";
 <Space.Grid
   columns={{ xs: 1, sm: 2, md: 3, lg: 4, xl: 4, xxl: 4 }}
   spacing={24}
-  style={{ backgroundColor: BackgroundColors.light.primary, padding: 24, border: "1px solid grey" }}
+  style={{ backgroundColor: BACKGROUND_COLORS.light.primary, padding: 24, border: "1px solid grey" }}
 >
-  {Object.entries(TextColors.light).map(([name, value]) => (
+  {Object.entries(TEXT_COLORS.light).map(([name, value]) => (
     <Card key={name} style={{ backgroundColor: value, border: "none" }}>
       <Space.Flex column style={{ alignItems: "center", justifyContent: "space-between" }}>
-        <Typography.Text text={name} as="strong" style={{ fontSize: 10, color: ThemeColor.TourmalineStiletto }} />
+        <Typography.Text text={name} as="strong" style={{ fontSize: 10, color: THEME_COLORS.TourmalineStiletto }} />
         <Typography.Code text={value} style={{ fontSize: 10 }} />
       </Space.Flex>
     </Card>
@@ -110,26 +144,26 @@ import { ThemeColor } from "venomous-ui-react/utils";
 </Space.Grid>
 
 ```tsx
-import { TextColors } from "venomous-ui-react/utils";
+import { TEXT_COLORS } from "venomous-ui-react/utils";
 ```
 
 ### BackgroundColors
 
 <Space.Grid columns={{ xs: 1, sm: 2, md: 3, lg: 4, xl: 4, xxl: 4 }} spacing={24} style={{ padding: 24 }}>
-  {Object.entries(BackgroundColors.dark).map(([name, value]) => (
+  {Object.entries(BACKGROUND_COLORS.dark).map(([name, value]) => (
     <Card key={name} style={{ backgroundColor: value, border: "none" }}>
       <Space.Flex column style={{ alignItems: "center", justifyContent: "space-between" }}>
-        <Typography.Text text={name} as="strong" style={{ fontSize: 10, color: ThemeColor.TourmalineStiletto }} />
+        <Typography.Text text={name} as="strong" style={{ fontSize: 10, color: THEME_COLORS.TourmalineStiletto }} />
         <Typography.Code text={value} style={{ fontSize: 10 }} />
       </Space.Flex>
     </Card>
   ))}
 </Space.Grid>
 <Space.Grid columns={{ xs: 1, sm: 2, md: 3, lg: 4, xl: 4, xxl: 4 }} spacing={24} style={{ padding: 24 }}>
-  {Object.entries(BackgroundColors.light).map(([name, value]) => (
+  {Object.entries(BACKGROUND_COLORS.light).map(([name, value]) => (
     <Card key={name} style={{ backgroundColor: value, border: "none" }}>
       <Space.Flex column style={{ alignItems: "center", justifyContent: "space-between" }}>
-        <Typography.Text text={name} as="strong" style={{ fontSize: 10, color: ThemeColor.TourmalineStiletto }} />
+        <Typography.Text text={name} as="strong" style={{ fontSize: 10, color: THEME_COLORS.TourmalineStiletto }} />
         <Typography.Code text={value} style={{ fontSize: 10 }} />
       </Space.Flex>
     </Card>
@@ -137,7 +171,7 @@ import { TextColors } from "venomous-ui-react/utils";
 </Space.Grid>
 
 ```tsx
-import { BackgroundColors } from "venomous-ui-react/utils";
+import { BACKGROUND_COLORS } from "venomous-ui-react/utils";
 ```
 
 ### BorderColors
@@ -145,12 +179,12 @@ import { BackgroundColors } from "venomous-ui-react/utils";
 <Space.Grid
   columns={{ xs: 1, sm: 2, md: 3, lg: 4, xl: 4, xxl: 4 }}
   spacing={24}
-  style={{ backgroundColor: BackgroundColors.dark.primary, padding: "24px" }}
+  style={{ backgroundColor: BACKGROUND_COLORS.dark.primary, padding: "24px" }}
 >
-  {Object.entries(BorderColors.dark).map(([name, value]) => (
+  {Object.entries(BORDER_COLORS.dark).map(([name, value]) => (
     <Card key={name} style={{ backgroundColor: value, border: "none" }}>
       <Space.Flex column style={{ alignItems: "center", justifyContent: "space-between" }}>
-        <Typography.Text text={name} as="strong" style={{ fontSize: 10, color: ThemeColor.TourmalineStiletto }} />
+        <Typography.Text text={name} as="strong" style={{ fontSize: 10, color: THEME_COLORS.TourmalineStiletto }} />
         <Typography.Code text={value} style={{ fontSize: 10 }} />
       </Space.Flex>
     </Card>
@@ -159,12 +193,12 @@ import { BackgroundColors } from "venomous-ui-react/utils";
 <Space.Grid
   columns={{ xs: 1, sm: 2, md: 3, lg: 4, xl: 4, xxl: 4 }}
   spacing={24}
-  style={{ backgroundColor: BackgroundColors.light.primary, padding: "24px", border: "1px solid grey" }}
+  style={{ backgroundColor: BACKGROUND_COLORS.light.primary, padding: "24px", border: "1px solid grey" }}
 >
-  {Object.entries(BorderColors.light).map(([name, value]) => (
+  {Object.entries(BORDER_COLORS.light).map(([name, value]) => (
     <Card key={name} style={{ backgroundColor: value, border: "none" }}>
       <Space.Flex column style={{ alignItems: "center", justifyContent: "space-between" }}>
-        <Typography.Text text={name} as="strong" style={{ fontSize: 10, color: ThemeColor.TourmalineStiletto }} />
+        <Typography.Text text={name} as="strong" style={{ fontSize: 10, color: THEME_COLORS.TourmalineStiletto }} />
         <Typography.Code text={value} style={{ fontSize: 10 }} />
       </Space.Flex>
     </Card>
@@ -172,7 +206,7 @@ import { BackgroundColors } from "venomous-ui-react/utils";
 </Space.Grid>
 
 ```tsx
-import { BorderColors } from "venomous-ui-react/utils";
+import { BORDER_COLORS } from "venomous-ui-react/utils";
 ```
 
 </Theme.Provider>

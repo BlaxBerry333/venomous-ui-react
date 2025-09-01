@@ -3,14 +3,15 @@ import t from "clsx";
 import a from "react";
 import "../../utils/design/colors.esm.js";
 import "../../utils/design/Shadow.esm.js";
-import { ThemeColor as i } from "../../utils/design/ThemeColor.esm.js";
-import { TypographySize as d } from "../../utils/design/TypographySize.esm.js";
-const l = a.memo(({ className: o, style: r, text: e, ...p }) => /* @__PURE__ */ m(
+import "../../utils/design/ThemeBreakpoint.esm.js";
+import { TYPOGRAPHY_SIZES as d } from "../../utils/design/TypographySize.esm.js";
+import { THEME_COLORS as i } from "../../utils/design/ThemeColor.esm.js";
+const s = a.memo(({ className: o, style: r, text: p, ...e }) => /* @__PURE__ */ m(
   "code",
   {
     className: t("Venomous-UI-React--Typography.Code", o),
     style: {
-      color: i.TourmalineStiletto,
+      color: i.RubyCopperhead,
       backgroundColor: "#E7E9EB",
       border: "1px solid #CCCCCC",
       borderRadius: "4px",
@@ -19,11 +20,11 @@ const l = a.memo(({ className: o, style: r, text: e, ...p }) => /* @__PURE__ */ 
       fontWeight: 600,
       ...r
     },
-    ...p,
-    children: e
+    ...e,
+    children: p
   }
 ));
-l.displayName = "Typography.Code";
+s.displayName = "Typography.Code";
 export {
-  l as default
+  s as default
 };

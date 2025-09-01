@@ -31,6 +31,8 @@ import "../MediaFile/MediaFileTypeImage.esm.js";
 import "../MediaFile/MediaFileUploader.esm.js";
 import "../../utils/design/colors.esm.js";
 import "../../utils/design/Shadow.esm.js";
+import "../../utils/design/ThemeBreakpoint.esm.js";
+import "../../utils/design/TypographySize.esm.js";
 import "../Menu/MenuCollapseItem.esm.js";
 import "../Menu/MenuItem.esm.js";
 import "../Menu/MenuList.esm.js";

@@ -26,9 +26,10 @@ import "../../components/Layout/LayoutProvider.esm.js";
 import "../../components/Layout/LayoutSide.esm.js";
 import "../../components/MediaFile/MediaFileTypeImage.esm.js";
 import "../../components/MediaFile/MediaFileUploader.esm.js";
-import { BorderColors as t, BackgroundColors as m, TextColors as i } from "../../utils/design/colors.esm.js";
-import { Shadows as p } from "../../utils/design/Shadow.esm.js";
-import { TypographySize as e } from "../../utils/design/TypographySize.esm.js";
+import { BORDER_COLORS as m, BACKGROUND_COLORS as t, TEXT_COLORS as i } from "../../utils/design/colors.esm.js";
+import { SHADOWS as p } from "../../utils/design/Shadow.esm.js";
+import "../../utils/design/ThemeBreakpoint.esm.js";
+import { TYPOGRAPHY_SIZES as e } from "../../utils/design/TypographySize.esm.js";
 import "../../components/Menu/MenuCollapseItem.esm.js";
 import "../../components/Menu/MenuItem.esm.js";
 import "../../components/Menu/MenuList.esm.js";
@@ -53,13 +54,13 @@ import "../../components/Typography/TypographyCode.esm.js";
 import "../../components/Typography/TypographyParagraph.esm.js";
 import "../../components/Typography/TypographyText.esm.js";
 import "../../components/Typography/TypographyTitle.esm.js";
-function uo() {
+function Ro() {
   const { themeMode: o } = s.useThemeMode();
   return r.useMemo(
     () => ({
       TextColors: i[o],
-      BackgroundColors: m[o],
-      BorderColors: t[o],
+      BackgroundColors: t[o],
+      BorderColors: m[o],
       Shadows: p[o],
       TypographySize: e
     }),
@@ -67,5 +68,5 @@ function uo() {
   );
 }
 export {
-  uo as default
+  Ro as default
 };

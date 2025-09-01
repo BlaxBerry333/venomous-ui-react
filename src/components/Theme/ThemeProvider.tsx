@@ -2,11 +2,11 @@
 
 import React from "react";
 
-import { ThemeColor, ThemeMode } from "@/utils";
+import { THEME_COLORS, THEME_MODES, type ThemeMode } from "@/utils";
 import ThemeContext, { type ThemeContextValueType } from "./ThemeContext";
 
-const DEFAULT_THEME_MODE = ThemeMode.Light;
-const DEFAULT_THEME_COLOR = ThemeColor.EmeraldMamba;
+const DEFAULT_THEME_MODE = THEME_MODES.Light;
+const DEFAULT_THEME_COLOR = THEME_COLORS.EmeraldMamba;
 const STORAGE_KEY = {
   THEME_MODE: "VENOMOUS_UI__THEME_MODE",
   THEME_COLOR: "VENOMOUS_UI__THEME_COLOR",
@@ -15,7 +15,7 @@ const STORAGE_KEY = {
 interface ThemeModeProviderProps {
   children: React.ReactNode;
   defaultThemeMode?: ThemeMode;
-  defaultThemeColor?: ThemeColor;
+  defaultThemeColor?: string;
   storageKey?: {
     THEME_MODE: string;
     THEME_COLOR: string;
@@ -34,21 +34,21 @@ export default function ThemeProvider({
   }, []);
 
   const [themeMode, setThemeModeState] = React.useState<ThemeMode>(defaultThemeMode);
-  const [themeColor, setThemeColorState] = React.useState<ThemeColor>(defaultThemeColor);
+  const [themeColor, setThemeColorState] = React.useState<string>(defaultThemeColor);
 
   const setThemeMode = React.useCallback((newTheme: ThemeMode) => {
     setThemeModeState(newTheme);
   }, []);
 
   const toggleThemeMode = React.useCallback(() => {
-    setThemeModeState((current) => (current === ThemeMode.Dark ? ThemeMode.Light : ThemeMode.Dark));
+    setThemeModeState((current) => (current === THEME_MODES.Dark ? THEME_MODES.Light : THEME_MODES.Dark));
   }, []);
 
   const resetThemeMode = React.useCallback(() => {
     setThemeModeState(defaultThemeMode);
   }, [defaultThemeMode]);
 
-  const setThemeColor = React.useCallback((newThemeColor: ThemeColor) => {
+  const setThemeColor = React.useCallback((newThemeColor: string) => {
     setThemeColorState(newThemeColor);
   }, []);
 
@@ -59,13 +59,11 @@ export default function ThemeProvider({
   React.useEffect(() => {
     if (mounted) {
       const storedThemeMode = localStorage.getItem(storageKey.THEME_MODE);
-      if (storedThemeMode && Object.values(ThemeMode).includes(storedThemeMode as ThemeMode)) {
+      if (storedThemeMode && Object.values(THEME_MODES).includes(storedThemeMode as ThemeMode)) {
         setThemeModeState(storedThemeMode as ThemeMode);
       }
       const storedThemeColor = localStorage.getItem(storageKey.THEME_COLOR);
-      if (storedThemeColor && Object.values(ThemeColor).includes(storedThemeColor as ThemeColor)) {
-        setThemeColorState(storedThemeColor as ThemeColor);
-      }
+      setThemeColorState(storedThemeColor || defaultThemeColor);
     }
   }, [mounted, storageKey.THEME_COLOR, storageKey.THEME_MODE]);
 
@@ -82,7 +80,7 @@ export default function ThemeProvider({
       setThemeMode,
       toggleThemeMode,
       resetThemeMode,
-      isDarkThemeMode: themeMode === ThemeMode.Dark,
+      isDarkThemeMode: themeMode === THEME_MODES.Dark,
       themeColor,
       setThemeColor,
       resetThemeColor,

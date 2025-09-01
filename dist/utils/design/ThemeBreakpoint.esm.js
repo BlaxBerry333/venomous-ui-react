@@ -1,13 +1,19 @@
-var l = /* @__PURE__ */ ((x) => (x.xs = "xs", x.sm = "sm", x.md = "md", x.lg = "lg", x.xl = "xl", x.xxl = "xxl", x))(l || {});
-const s = {
-  xs: 444,
-  sm: 600,
-  md: 960,
-  lg: 1280,
-  xl: 1920,
-  xxl: 2560
+const x = {
+  xs: "xs",
+  sm: "sm",
+  md: "md",
+  lg: "lg",
+  xl: "xl",
+  xxl: "xxl"
+}, l = {
+  [x.xs]: 444,
+  [x.sm]: 600,
+  [x.md]: 960,
+  [x.lg]: 1280,
+  [x.xl]: 1920,
+  [x.xxl]: 2560
 };
 export {
-  l as BreakPointName,
-  s as ThemeBreakPoint
+  x as BREAK_POINT_NAMES,
+  l as THEME_BREAKPOINTS
 };

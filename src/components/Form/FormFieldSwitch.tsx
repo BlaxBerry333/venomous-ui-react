@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from "motion/react";
 import React from "react";
 
-import { BackgroundColors, Shadows, ThemeColor } from "@/utils";
+import { BACKGROUND_COLORS, SEMANTIC_COLORS, SHADOWS } from "@/utils";
 import clsx from "clsx";
 import { useFormFieldStyle } from "./_useFormFieldStyle";
 import { useToggleFormFieldChecked } from "./_useToggleFormFieldChecked";
@@ -99,8 +99,8 @@ const FormFieldSwitch = React.memo<FormFieldCheckboxProps>(
                   height: knobSize,
                   borderRadius: "50%",
                   position: "absolute",
-                  boxShadow: Shadows.light.primary,
-                  backgroundColor: isError && !isChecked ? ThemeColor.RubyCopperhead : BackgroundColors.light.secondary,
+                  boxShadow: SHADOWS.light.primary,
+                  backgroundColor: isError && !isChecked ? SEMANTIC_COLORS.error : BACKGROUND_COLORS.light.secondary,
                 }}
               />
             </motion.div>

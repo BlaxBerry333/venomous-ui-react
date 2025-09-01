@@ -4,7 +4,7 @@ import React from "react";
 import { useDarkMode } from "storybook-dark-mode";
 
 import { Theme } from "../src/components";
-import { BackgroundColors, ThemeMode } from "../src/utils";
+import { BACKGROUND_COLORS, THEME_MODES } from "../src/utils";
 
 const preview: Preview = {
   parameters: {
@@ -33,7 +33,7 @@ const preview: Preview = {
               justifyContent: "center",
               alignItems: "center",
               borderRadius: "8px",
-              backgroundColor: BackgroundColors[isDark ? ThemeMode.Dark : ThemeMode.Light].primary,
+              backgroundColor: BACKGROUND_COLORS[isDark ? THEME_MODES.Dark : THEME_MODES.Light].primary,
               overflow: "scroll",
               position: "relative",
             }}
@@ -52,7 +52,7 @@ export default preview;
 const ThemeModeObserver: React.FC<{ isDark: boolean }> = ({ isDark }) => {
   const { setThemeMode } = Theme.useThemeMode();
   React.useEffect(() => {
-    setThemeMode(isDark ? ThemeMode.Dark : ThemeMode.Light);
+    setThemeMode(isDark ? THEME_MODES.Dark : THEME_MODES.Light);
   }, [isDark]);
   return null;
 };

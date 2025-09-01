@@ -1,4 +1,4 @@
-import type { SemanticColors } from "@/utils";
+import type { SemanticColorName } from "@/utils";
 import type { IconProps as IconifyIconProps } from "@iconify/react";
 
 export interface IconProps extends Omit<IconifyIconProps, "color"> {
@@ -7,5 +7,5 @@ export interface IconProps extends Omit<IconifyIconProps, "color"> {
   style?: React.CSSProperties;
   className?: string;
 
-  semanticColor?: keyof typeof SemanticColors;
+  semanticColor?: SemanticColorName;
 }

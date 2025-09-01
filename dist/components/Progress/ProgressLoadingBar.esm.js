@@ -1,19 +1,21 @@
 import { jsx as d } from "react/jsx-runtime";
-import p from "clsx";
+import g from "clsx";
 import e from "react";
 import h from "../../hooks/useDesign/index.esm.js";
 import "../../utils/design/colors.esm.js";
 import "../../utils/design/Shadow.esm.js";
-import { getOpacityHex as c, getLighterHex as w } from "../../utils/tools/get-colors.esm.js";
+import "../../utils/design/ThemeBreakpoint.esm.js";
+import "../../utils/design/TypographySize.esm.js";
+import { getOpacityHex as m, getLighterHex as w } from "../../utils/tools/get-colors.esm.js";
 import { Theme as x } from "../Theme/index.esm.js";
 import { useAnimation as v, motion as b } from "framer-motion";
-const y = e.memo(({ height: i = 8, className: m, style: u }) => {
+const y = e.memo(({ height: i = 8, className: c, style: u }) => {
   const t = v(), { themeColor: s } = x.useThemeColor(), f = h(), n = e.useRef(null), [o, l] = e.useState(0);
   return e.useEffect(() => {
     const r = () => {
       if (n.current) {
-        const a = n.current.offsetWidth, g = a * 0.3;
-        l(a - g);
+        const a = n.current.offsetWidth, p = a * 0.3;
+        l(a - p);
       }
     };
     return r(), window.addEventListener("resize", r), () => window.removeEventListener("resize", r);
@@ -27,13 +29,13 @@ const y = e.memo(({ height: i = 8, className: m, style: u }) => {
     "div",
     {
       ref: n,
-      className: p("Venomous-UI-React--Progress.LoadingBar", m),
+      className: g("Venomous-UI-React--Progress.LoadingBar", c),
       style: {
         position: "relative",
         width: "100%",
         height: i,
         overflow: "hidden",
-        backgroundColor: c(s, 0.2),
+        backgroundColor: m(s, 0.2),
         borderRadius: i / 2,
         boxShadow: f.Shadows.tertiary,
         ...u
@@ -48,7 +50,7 @@ const y = e.memo(({ height: i = 8, className: m, style: u }) => {
             left: 0,
             height: "100%",
             width: "50%",
-            backgroundImage: `linear-gradient(45deg, ${c(s, 0.15)} 0%, ${w(s, 0.1)} 90%)`,
+            backgroundImage: `linear-gradient(45deg, ${m(s, 0.15)} 0%, ${w(s, 0.1)} 90%)`,
             borderRadius: i / 2
           }
         }

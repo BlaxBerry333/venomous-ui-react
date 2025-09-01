@@ -8,3 +8,4 @@ export {
   hslToHex,
   rgbToHex,
 } from "./get-colors";
+export { getSystemThemeMode } from "./get-theme-mode";

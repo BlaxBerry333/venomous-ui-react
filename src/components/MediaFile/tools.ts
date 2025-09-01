@@ -2,7 +2,7 @@
 
 "use client";
 
-import { ThemeColor } from "@/utils";
+import { THEME_COLORS } from "@/utils";
 import { MediaFileTypeMap, type MediaFileExtension, type MediaFileMimeType } from "./index.types";
 
 /**
@@ -30,28 +30,28 @@ export function getMediaFileTypeColor(fileExtension: MediaFileExtension) {
     case ".png":
     case ".webp":
     case ".gif":
-      return ThemeColor.TurquoiseFerDeLance; // 蓝色
+      return THEME_COLORS.TurquoiseFerDeLance; // 蓝色
     case ".svg":
     case ".js":
     case ".json":
-      return ThemeColor.TopazMamushi; // 金色
+      return THEME_COLORS.TopazMamushi; // 金色
     case ".pdf":
-      return ThemeColor.GarnetViper; // 红色
+      return THEME_COLORS.GarnetViper; // 红色
     case ".html":
     case ".mp4":
     case ".avi":
-      return ThemeColor.TopazCoral; // 橙色
+      return THEME_COLORS.TopazCoral; // 橙色
     case ".css":
-      return ThemeColor.AlexandriteAnaconda; // 紫色
+      return THEME_COLORS.AlexandriteAnaconda; // 紫色
     case ".xls":
     case ".xlsx":
     case ".csv":
-      return ThemeColor.EmeraldMamba; // 绿色
+      return THEME_COLORS.EmeraldMamba; // 绿色
     case ".doc":
     case ".docx":
-      return ThemeColor.SapphireCobra; // 蓝色
+      return THEME_COLORS.SapphireCobra; // 蓝色
     case ".mp3":
-      return ThemeColor.MalachitePython; // 绿色
+      return THEME_COLORS.MalachitePython; // 绿色
     case ".txt":
     default:
       return "#5c5c5c"; // 灰色

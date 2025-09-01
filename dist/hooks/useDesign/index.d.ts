@@ -41,6 +41,16 @@ export default function useDesign(): {
         readonly tertiary: "\n      0px 0px 4px 0px rgba(0, 0, 0, 0.2)\n    ";
         readonly inset: "\n      inset 0px 0px 2px 0px rgba(0, 0, 0, 0.3)\n    ";
     };
-    TypographySize: Record<import("@/utils/design").TypographySizeName, string>;
+    TypographySize: {
+        readonly h1: "4rem";
+        readonly h2: "3rem";
+        readonly h3: "2.25rem";
+        readonly h4: "1.875rem";
+        readonly h5: "1.5rem";
+        readonly h6: "1.25rem";
+        readonly text: "1rem";
+        readonly strong: "1rem";
+        readonly small: "0.75rem";
+    };
 };
 //# sourceMappingURL=index.d.ts.map

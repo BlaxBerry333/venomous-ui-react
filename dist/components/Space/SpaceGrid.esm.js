@@ -30,7 +30,8 @@ import "../MediaFile/MediaFileTypeImage.esm.js";
 import "../MediaFile/MediaFileUploader.esm.js";
 import "../../utils/design/colors.esm.js";
 import "../../utils/design/Shadow.esm.js";
-import { BreakPointName as s } from "../../utils/design/ThemeBreakpoint.esm.js";
+import { BREAK_POINT_NAMES as s } from "../../utils/design/ThemeBreakpoint.esm.js";
+import "../../utils/design/TypographySize.esm.js";
 import "../Menu/MenuCollapseItem.esm.js";
 import "../Menu/MenuItem.esm.js";
 import "../Menu/MenuList.esm.js";
@@ -54,8 +55,8 @@ import "../Typography/TypographyCode.esm.js";
 import "../Typography/TypographyParagraph.esm.js";
 import "../Typography/TypographyText.esm.js";
 import "../Typography/TypographyTitle.esm.js";
-const S = n.memo(({ children: t, className: m, style: p, columns: r = 1, spacing: o = 16, ...a }) => {
-  const { screenSize: u } = x.useThemeBreakpoint(), e = u ?? s.xs, c = n.useMemo(
+const S = n.memo(({ children: t, className: m, style: p, columns: r = 1, spacing: o = 16, ...u }) => {
+  const { screenSize: c } = x.useThemeBreakpoint(), e = c ?? s.xs, a = n.useMemo(
     () => b(r, e),
     [r, e]
   ), f = n.useMemo(
@@ -70,11 +71,11 @@ const S = n.memo(({ children: t, className: m, style: p, columns: r = 1, spacing
         boxSizing: "border-box",
         width: "100%",
         display: "grid",
-        gridTemplateColumns: `repeat(${c}, 1fr)`,
+        gridTemplateColumns: `repeat(${a}, 1fr)`,
         gap: `${f}px`,
         ...p
       },
-      ...a,
+      ...u,
       children: t
     }
   );

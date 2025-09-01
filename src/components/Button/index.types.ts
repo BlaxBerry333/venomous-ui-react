@@ -1,4 +1,4 @@
-import type { SemanticColors } from "@/utils";
+import type { SemanticColorName } from "@/utils";
 import type { IconProps } from "../Icon";
 
 export const ButtonVariantMap = {
@@ -20,7 +20,7 @@ export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonE
   iconWidth?: IconProps["width"];
   iconStyle?: IconProps["style"];
 
-  semanticColor?: keyof typeof SemanticColors;
+  semanticColor?: SemanticColorName;
 }
 
 export interface ButtonsIconProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "children" | "color"> {
@@ -33,5 +33,5 @@ export interface ButtonsIconProps extends Omit<React.ButtonHTMLAttributes<HTMLBu
   iconWidth?: IconProps["width"];
   iconStyle?: IconProps["style"];
 
-  semanticColor?: keyof typeof SemanticColors;
+  semanticColor?: SemanticColorName;
 }

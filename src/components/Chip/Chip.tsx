@@ -4,7 +4,7 @@ import clsx from "clsx";
 import React from "react";
 
 import { useDesign } from "@/hooks";
-import { TextColors } from "@/utils/design";
+import { TEXT_COLORS } from "@/utils/design";
 import { Icon } from "../Icon";
 import { Space } from "../Space";
 import { Theme } from "../Theme";
@@ -35,7 +35,7 @@ const Chip = React.memo<ChipProps>(
           borderColor: design.BorderColors.tertiary,
           boxShadow: design.Shadows.tertiary,
           backgroundColor: themeColor,
-          color: TextColors["dark"].primary,
+          color: TEXT_COLORS["dark"].primary,
           ...style,
         }}
       >
