@@ -1,4 +1,4 @@
-"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const i=require("react"),n=require("../../utils/design/colors.js");require("../../utils/design/Shadow.js");const r=require("../../utils/tools/get-colors.js"),s=require("./index.js"),a=i.memo(()=>(d(),null));a.displayName="Theme.InjectToHTML";function d(){const{themeMode:l}=s.Theme.useThemeMode(),{themeColor:o}=s.Theme.useThemeColor(),e=i.useMemo(()=>({light:r.getLighterHex(o,.2),dark:r.getDarkerHex(o,.8),origin:r.hexNormalize(o),opacity:r.getOpacityHex(o,.6)}),[o]);i.useInsertionEffect(()=>{document.documentElement.style.backgroundColor=n.BackgroundColors[l].primary,document.body.style.backgroundColor=n.BackgroundColors[l].primary},[l]),i.useInsertionEffect(()=>{if(typeof window>"u")return;const c="theme-palette-style";let t=document.getElementById(c);t||(t=document.createElement("style"),t.id=c,document.head.appendChild(t));const u=`
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const l=require("react"),s=require("../../hooks/useDesign/index.js");require("../../utils/design/colors.js");require("../../utils/design/Shadow.js");const i=require("../../utils/tools/get-colors.js"),u=require("./useThemeColor.js"),c=l.memo(()=>(d(),null));c.displayName="Theme.InjectToHTML";function d(){const{themeColor:o}=u.default(),r=s.default(),e=l.useMemo(()=>({light:i.getLighterHex(o,.2),dark:i.getDarkerHex(o,.8),origin:i.hexNormalize(o),opacity:i.getOpacityHex(o,.6)}),[r,o]);l.useInsertionEffect(()=>{document.documentElement.style.backgroundColor=r.BackgroundColors.primary,document.body.style.backgroundColor=r.BackgroundColors.primary},[r]),l.useInsertionEffect(()=>{if(typeof window>"u")return;const n="theme-palette-style";let t=document.getElementById(n);t||(t=document.createElement("style"),t.id=n,document.head.appendChild(t));const a=`
       /* ==============================
          Global Theme Palette Styles
          ============================== */
@@ -39,4 +39,4 @@
         scrollbar-color: ${e.origin} rgba(0, 0, 0, 0.1);
         scrollbar-width: thin;
       }
-    `;t.innerHTML=u},[e])}exports.default=a;
+    `;t.innerHTML=a},[e])}exports.default=c;

@@ -1,47 +1,48 @@
 import { jsx as h, jsxs as g } from "react/jsx-runtime";
-import v from "clsx";
+import k from "clsx";
 import o from "react";
-import R from "../../hooks/useElementHover/index.esm.js";
-import { TextColors as n } from "../../utils/design/colors.esm.js";
-import { Shadows as E } from "../../utils/design/Shadow.esm.js";
-import { getOpacityHex as U } from "../../utils/tools/get-colors.esm.js";
-import { Buttons as j } from "../Button/index.esm.js";
-import F from "../Icon/Icon.esm.js";
-import { Space as y } from "../Space/index.esm.js";
-import { Theme as u } from "../Theme/index.esm.js";
-import { Typography as M } from "../Typography/index.esm.js";
-import { MenuItemTagMap as L } from "./index.types.esm.js";
-const N = o.memo(
+import O from "../../hooks/useDesign/index.esm.js";
+import v from "../../hooks/useElementHover/index.esm.js";
+import "../../utils/design/colors.esm.js";
+import "../../utils/design/Shadow.esm.js";
+import { getOpacityHex as R } from "../../utils/tools/get-colors.esm.js";
+import { Buttons as E } from "../Button/index.esm.js";
+import U from "../Icon/Icon.esm.js";
+import { Space as n } from "../Space/index.esm.js";
+import { Theme as j } from "../Theme/index.esm.js";
+import { Typography as y } from "../Typography/index.esm.js";
+import { MenuItemTagMap as F } from "./index.types.esm.js";
+const L = o.memo(
   ({
-    as: s = L.li,
-    className: c,
-    style: w,
-    icon: l,
-    iconStyle: S,
-    text: T,
-    subText: f,
+    as: s = F.li,
+    className: u,
+    style: M,
+    icon: m,
+    iconStyle: c,
+    text: w,
+    subText: d,
     isDisabled: r = !1,
     isActive: x = !1,
     actionButtonProps: e = void 0,
-    ...a
+    ...t
   }) => {
-    const { themeMode: m } = u.useThemeMode(), { themeColor: t } = u.useThemeColor(), C = o.useMemo(() => x ? U(t, 0.1) : "transparent", [r, x, t, m]), i = o.useMemo(() => r ? n[m].disabled : x ? t : n[m].primary, [r, x, t, m]), { handleMouseDown: I, handleMouseUp: H, handleMouseLeave: k } = R({
+    const { themeColor: a } = j.useThemeColor(), l = O(), C = o.useMemo(() => x ? R(a, 0.1) : "transparent", [r, x, l]), f = o.useMemo(() => r ? l.TextColors.disabled : x ? a : l.TextColors.primary, [r, x, l, a]), { handleMouseDown: S, handleMouseUp: T, handleMouseLeave: I } = v({
       isDisabled: r
     }), p = o.useCallback(
-      (d) => {
-        r || (d.currentTarget.style.boxShadow = E[m].tertiary);
+      (i) => {
+        r || (i.currentTarget.style.boxShadow = l.Shadows.tertiary);
       },
-      [r]
-    ), O = o.useCallback(
-      (d) => {
-        r || (d.currentTarget.style.boxShadow = "none");
+      [r, l]
+    ), H = o.useCallback(
+      (i) => {
+        r || (i.currentTarget.style.boxShadow = "none");
       },
       [r]
     );
     return /* @__PURE__ */ h(
       s,
       {
-        className: v("Venomous-UI-React--Menu.Item", c),
+        className: k("Venomous-UI-React--Menu.Item", u),
         style: {
           boxSizing: "border-box",
           listStyle: "none",
@@ -51,45 +52,45 @@ const N = o.memo(
           padding: "8px",
           paddingRight: e != null && e.icon ? "0px" : "8px",
           borderRadius: "8px",
-          cursor: r ? "not-allowed" : a != null && a.onClick ? "pointer" : "default",
+          cursor: r ? "not-allowed" : t != null && t.onClick ? "pointer" : "default",
           backgroundColor: C,
           // transition: "box-shadow 0.2s ease-in-out",
-          ...w
+          ...M
         },
-        onMouseDown: I,
-        onMouseUp: H,
-        onMouseLeave: k,
+        onMouseDown: S,
+        onMouseUp: T,
+        onMouseLeave: I,
         onMouseOver: p,
-        onMouseOut: O,
-        ...a,
-        children: /* @__PURE__ */ g(y.Flex, { row: !0, style: { minHeight: "40px", height: "100%", alignItems: "center", color: i }, children: [
-          l && /* @__PURE__ */ h(
-            F,
+        onMouseOut: H,
+        ...t,
+        children: /* @__PURE__ */ g(n.Flex, { row: !0, style: { minHeight: "40px", height: "100%", alignItems: "center", color: f }, children: [
+          m && /* @__PURE__ */ h(
+            U,
             {
-              icon: l,
+              icon: m,
               width: 24,
               style: {
                 color: "inherit",
-                ...S
+                ...c
               }
             }
           ),
           /* @__PURE__ */ g(
-            y.Flex,
+            n.Flex,
             {
               column: !0,
               gap: 0,
               style: {
                 flex: 1,
                 flexGrow: 1,
-                maxWidth: l && !(e != null && e.icon) ? "calc(100% - 32px)" : !l && (e != null && e.icon) ? "calc(100% - 48px)" : l && (e != null && e.icon) ? "calc(100% - 80px)" : "100%"
+                maxWidth: m && !(e != null && e.icon) ? "calc(100% - 32px)" : !m && (e != null && e.icon) ? "calc(100% - 48px)" : m && (e != null && e.icon) ? "calc(100% - 80px)" : "100%"
               },
               children: [
                 /* @__PURE__ */ h(
-                  M.Text,
+                  y.Text,
                   {
                     as: "strong",
-                    text: T,
+                    text: w,
                     isEllipsis: !0,
                     style: {
                       width: "100%",
@@ -98,11 +99,11 @@ const N = o.memo(
                     }
                   }
                 ),
-                f && /* @__PURE__ */ h(
-                  M.Text,
+                d && /* @__PURE__ */ h(
+                  y.Text,
                   {
                     as: "small",
-                    text: f,
+                    text: d,
                     isEllipsis: !0,
                     style: {
                       width: "100%",
@@ -114,7 +115,7 @@ const N = o.memo(
             }
           ),
           !!(e != null && e.icon) && /* @__PURE__ */ h(
-            j.Icon,
+            E.Icon,
             {
               variant: "transparent",
               isDisabled: r,
@@ -125,7 +126,7 @@ const N = o.memo(
                 ...e.style
               },
               iconStyle: {
-                color: i,
+                color: f,
                 ...e.iconStyle
               },
               ...e
@@ -136,7 +137,7 @@ const N = o.memo(
     );
   }
 );
-N.displayName = "Menu.Item";
+L.displayName = "Menu.Item";
 export {
-  N as default
+  L as default
 };

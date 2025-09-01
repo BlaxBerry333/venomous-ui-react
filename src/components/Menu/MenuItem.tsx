@@ -3,8 +3,8 @@
 import clsx from "clsx";
 import React from "react";
 
-import { useElementHover } from "@/hooks";
-import { getOpacityHex, Shadows, TextColors } from "@/utils";
+import { useDesign, useElementHover } from "@/hooks";
+import { getOpacityHex } from "@/utils";
 import { Buttons } from "../Button";
 import { Icon } from "../Icon";
 import { Space } from "../Space";
@@ -26,19 +26,19 @@ const MenuItem = React.memo<MenuItemProps>(
     actionButtonProps = undefined,
     ...props
   }) => {
-    const { themeMode } = Theme.useThemeMode();
     const { themeColor } = Theme.useThemeColor();
+    const design = useDesign();
 
     const backgroundColor = React.useMemo<Exclude<React.CSSProperties["backgroundColor"], undefined>>(() => {
       if (isActive) return getOpacityHex(themeColor, 0.1);
       return "transparent";
-    }, [isDisabled, isActive, themeColor, themeMode]);
+    }, [isDisabled, isActive, design]);
 
     const textColor = React.useMemo<Exclude<React.CSSProperties["color"], undefined>>(() => {
-      if (isDisabled) return TextColors[themeMode].disabled;
+      if (isDisabled) return design.TextColors.disabled;
       if (isActive) return themeColor;
-      return TextColors[themeMode].primary;
-    }, [isDisabled, isActive, themeColor, themeMode]);
+      return design.TextColors.primary;
+    }, [isDisabled, isActive, design, themeColor]);
 
     const { handleMouseDown, handleMouseUp, handleMouseLeave } = useElementHover<HTMLLIElement>({
       isDisabled,
@@ -46,9 +46,9 @@ const MenuItem = React.memo<MenuItemProps>(
     const handleMouseOverStyles: React.MouseEventHandler<HTMLLIElement> = React.useCallback(
       (e) => {
         if (isDisabled) return;
-        e.currentTarget.style.boxShadow = Shadows[themeMode].tertiary;
+        e.currentTarget.style.boxShadow = design.Shadows.tertiary;
       },
-      [isDisabled],
+      [isDisabled, design],
     );
     const handleMouseOutStyles: React.MouseEventHandler<HTMLLIElement> = React.useCallback(
       (e) => {

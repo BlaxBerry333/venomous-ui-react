@@ -4,14 +4,14 @@ import clsx from "clsx";
 import { AnimatePresence, motion } from "motion/react";
 import React from "react";
 
-import { BackgroundColors, getOpacityHex } from "@/utils";
+import { useDesign } from "@/hooks";
+import { getOpacityHex } from "@/utils";
 import { Card } from "../Card";
-import { Theme } from "../Theme";
 import type { DrawerProps } from "./index.types";
 
 const Drawer = React.memo<DrawerProps>(
   ({ isOpen, onClose, children, direction = "left", maskClosable = true, width = 300, height = 300, style }) => {
-    const { themeMode } = Theme.useThemeMode();
+    const design = useDesign();
 
     return (
       <>
@@ -32,7 +32,7 @@ const Drawer = React.memo<DrawerProps>(
                 zIndex: 999,
                 width: "100vw",
                 height: "100svh",
-                backgroundColor: getOpacityHex(BackgroundColors[themeMode].primary, 0.5),
+                backgroundColor: getOpacityHex(design.BackgroundColors.primary, 0.5),
                 backdropFilter: "blur(2px)",
                 pointerEvents: isOpen ? "auto" : "none",
               }}

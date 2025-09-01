@@ -1,10 +1,8 @@
 import t from "react";
-import { BackgroundColors as l, BorderColors as u } from "../../utils/design/colors.esm.js";
-import { Shadows as c } from "../../utils/design/Shadow.esm.js";
-import { Theme as i } from "../Theme/index.esm.js";
+import l from "../../hooks/useDesign/index.esm.js";
 import { CardVariantMap as e } from "./index.types.esm.js";
-function C({ variant: r }) {
-  const { themeMode: o } = i.useThemeMode(), s = t.useMemo(() => {
+function p({ variant: r }) {
+  const s = l(), o = t.useMemo(() => {
     switch (r) {
       case e.transparent:
         return "transparent";
@@ -12,19 +10,19 @@ function C({ variant: r }) {
       case e.outlined:
       case e.frostedGlass:
       default:
-        return l[o].secondary;
+        return s.BackgroundColors.secondary;
     }
-  }, [o, r]), a = t.useMemo(() => {
+  }, [s, r]), a = t.useMemo(() => {
     switch (r) {
       case e.outlined:
       case e.transparent:
-        return u[o].tertiary;
+        return s.BorderColors.tertiary;
       case e.elevated:
       case e.frostedGlass:
       default:
         return "transparent";
     }
-  }, [o, r]), n = t.useMemo(() => {
+  }, [s, r]), n = t.useMemo(() => {
     switch (r) {
       case e.outlined:
       case e.transparent:
@@ -32,28 +30,28 @@ function C({ variant: r }) {
       case e.elevated:
       case e.frostedGlass:
       default:
-        return c[o].primary;
+        return s.Shadows.primary;
     }
-  }, [o, r]), d = t.useMemo(() => ({
+  }, [s, r]), d = t.useMemo(() => ({
     borderRadius: "8px",
     padding: "16px",
     outlineWidth: 1.5,
     outlineStyle: "solid",
     outlineColor: a,
-    backgroundColor: s,
+    backgroundColor: o,
     boxShadow: n,
     ...r === e.frostedGlass && {
       backdropFilter: "blur(8px) brightness(0.8)",
       WebkitBackdropFilter: "blur(8px) brightness(0.8)"
     }
-  }), [a, s, n, r]);
+  }), [a, o, n, r]);
   return {
-    backgroundColor: s,
+    backgroundColor: o,
     borderColor: a,
     boxShadow: n,
     commonStyles: d
   };
 }
 export {
-  C as default
+  p as default
 };

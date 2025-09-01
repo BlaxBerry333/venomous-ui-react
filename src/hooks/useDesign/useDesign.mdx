@@ -1,0 +1,23 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="hooks/useDesign" />
+
+# useDesign
+
+`useDesign()` is used to access the design tokens.
+
+It returns an object containing all the colors used in the component library.
+
+```tsx
+import { useDesign } from "venomous-ui-react/hooks";
+
+function Component() {
+  const design = useDesign();
+
+  const primaryText = design.TextColors.primary;
+  const primaryBackground = design.BackgroundColors.primary;
+  const primaryBorder = design.BorderColors.primary;
+
+  return <>...</>;
+}
+```

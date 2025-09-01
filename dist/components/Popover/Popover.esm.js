@@ -1,97 +1,148 @@
-import { jsxs as L, jsx as h } from "react/jsx-runtime";
-import m from "clsx";
+import { jsxs as L, jsx as u } from "react/jsx-runtime";
+import h from "clsx";
 import { AnimatePresence as N, motion as O } from "framer-motion";
-import l from "react";
-import W from "../../hooks/useHandler/index.esm.js";
+import m from "react";
+import "../Button/ButtonsIcon.esm.js";
+import "../Button/Button.esm.js";
 import "../Card/CardsBook.esm.js";
 import "../Card/CardsProduct.esm.js";
 import "../Card/CardsTitleBlock.esm.js";
-import C from "../Card/Card.esm.js";
-const M = l.memo(
+import W from "../Card/Card.esm.js";
+import "../Chip/Chip.esm.js";
+import "../Container/Container.esm.js";
+import "../Drawer/Drawer.esm.js";
+import "../Form/FormFieldCheckbox.esm.js";
+import "../Form/FormFieldNumber.esm.js";
+import "../Form/FormFieldPassword.esm.js";
+import "../Form/FormFieldRadio.esm.js";
+import "../Form/FormFieldSelect.esm.js";
+import "../Form/FormFieldSwitch.esm.js";
+import "../Form/FormFieldText.esm.js";
+import "../Form/FormFieldTextarea.esm.js";
+import "../Form/Form.esm.js";
+import "../Icon/Icon.esm.js";
+import "../Layout/LayoutCollapseSide.esm.js";
+import "../Layout/LayoutContent.esm.js";
+import "../Layout/LayoutFooter.esm.js";
+import "../Layout/LayoutHeader.esm.js";
+import "../Layout/LayoutProvider.esm.js";
+import "../Layout/LayoutSide.esm.js";
+import "../MediaFile/MediaFileTypeImage.esm.js";
+import "../MediaFile/MediaFileUploader.esm.js";
+import "../../utils/design/colors.esm.js";
+import "../../utils/design/Shadow.esm.js";
+import "../Menu/MenuCollapseItem.esm.js";
+import "../Menu/MenuItem.esm.js";
+import "../Menu/MenuList.esm.js";
+import "../Modal/ModalsConfirm.esm.js";
+import "../Modal/Modal.esm.js";
+import "../NoSSR/NoSSR.esm.js";
+import "../Notification/Notification.esm.js";
+import "sonner";
+import "../Portal/PortalRender.esm.js";
+import "../Progress/ProgressLoadingBar.esm.js";
+import "../Progress/ProgressPageLoading.esm.js";
+import "../Progress/ProgressScrollbar.esm.js";
+import "../Space/SpaceFlex.esm.js";
+import "../Space/SpaceGrid.esm.js";
+import "../Tab/Tab.esm.js";
+import "../Table/Table.esm.js";
+import "../Theme/ThemeInjectToHTML.esm.js";
+import "../Theme/ThemeProvider.esm.js";
+import "../Theme/useThemeBreakpoint.esm.js";
+import "../Theme/ThemeContext.esm.js";
+import "../Transition/TransitionCollapseSide.esm.js";
+import "../Transition/TransitionsCollapse.esm.js";
+import "../Typography/TypographyCode.esm.js";
+import "../Typography/TypographyParagraph.esm.js";
+import "../Typography/TypographyText.esm.js";
+import "../Typography/TypographyTitle.esm.js";
+import C from "../../hooks/useHandler/index.esm.js";
+const M = m.memo(
   ({
     children: y,
     style: b,
     contentStyle: k,
     direction: g = "bottom",
-    alignment: s = "center",
+    alignment: i = "center",
     renderTrigger: x,
-    trigger: p = "click",
+    trigger: c = "click",
     onClickOutside: v
   }) => {
-    const t = W(), R = l.useRef(null), u = l.useRef(null), a = l.useRef(null), [w, P] = l.useState({ top: 0, left: 0 });
-    l.useEffect(() => {
-      if (p !== "click") return;
-      const f = (e) => {
-        var i;
-        a.current && !a.current.contains(e.target) && !((i = u.current) != null && i.contains(e.target)) && (t.close(), v && v());
+    const e = C(), R = m.useRef(null), d = m.useRef(null), l = m.useRef(null), [w, P] = m.useState({ top: 0, left: 0 });
+    m.useEffect(() => {
+      if (c !== "click") return;
+      const a = (t) => {
+        var p;
+        l.current && !l.current.contains(t.target) && !((p = d.current) != null && p.contains(t.target)) && (e.close(), v && v());
       };
-      return t.isOpen && document.addEventListener("mousedown", f), () => {
-        document.removeEventListener("mousedown", f);
+      return e.isOpen && document.addEventListener("mousedown", a), () => {
+        document.removeEventListener("mousedown", a);
       };
-    }, [t, p, v]), l.useEffect(() => {
-      if (t.isOpen && R.current && u.current && a.current) {
-        const f = R.current.getBoundingClientRect(), e = u.current.getBoundingClientRect(), i = a.current.offsetWidth, d = a.current.offsetHeight, n = e.top - f.top, c = e.left - f.left;
+    }, [e, c, v]), m.useEffect(() => {
+      if (e.isOpen && R.current && d.current && l.current) {
+        const a = R.current.getBoundingClientRect(), t = d.current.getBoundingClientRect(), p = l.current.offsetWidth, f = l.current.offsetHeight, s = t.top - a.top, n = t.left - a.left;
         let o, r;
         switch (g) {
           case "top":
-            o = n - d, s === "start" ? r = c : s === "end" ? r = c + e.width - i : r = c + e.width / 2 - i / 2;
+            o = s - f, i === "start" ? r = n : i === "end" ? r = n + t.width - p : r = n + t.width / 2 - p / 2;
             break;
           case "bottom":
-            o = n + e.height, s === "start" ? r = c : s === "end" ? r = c + e.width - i : r = c + e.width / 2 - i / 2;
+            o = s + t.height, i === "start" ? r = n : i === "end" ? r = n + t.width - p : r = n + t.width / 2 - p / 2;
             break;
           case "left":
-            r = c - i, s === "start" ? o = n : s === "end" ? o = n + e.height - d : o = n + e.height / 2 - d / 2;
+            r = n - p, i === "start" ? o = s : i === "end" ? o = s + t.height - f : o = s + t.height / 2 - f / 2;
             break;
           case "right":
-            r = c + e.width, s === "start" ? o = n : s === "end" ? o = n + e.height - d : o = n + e.height / 2 - d / 2;
+            r = n + t.width, i === "start" ? o = s : i === "end" ? o = s + t.height - f : o = s + t.height / 2 - f / 2;
             break;
           default:
-            o = n + e.height, r = c + e.width / 2 - i / 2;
+            o = s + t.height, r = n + t.width / 2 - p / 2;
         }
         P({ top: o, left: r });
       }
-    }, [t.isOpen, g, s]);
+    }, [e.isOpen, g, i]);
     const E = () => {
-      p === "hover" && t.open();
+      c === "hover" && e.open();
     }, I = () => {
-      p === "hover" && t.close();
+      c === "hover" && e.close();
     };
     return /* @__PURE__ */ L(
       "div",
       {
         ref: R,
-        className: m("Venomous-UI-React--Popover.TriggerWrapper"),
+        className: h("Venomous-UI-React--Popover.TriggerWrapper"),
         style: { display: "inline-block", position: "relative", ...b },
-        ...p === "hover" ? {
+        ...c === "hover" ? {
           onMouseEnter: E,
           onMouseLeave: I
         } : {},
         children: [
-          /* @__PURE__ */ h(
+          /* @__PURE__ */ u(
             "div",
             {
-              ref: u,
+              ref: d,
               style: { display: "inline-block", width: "100%" },
-              className: m("Venomous-UI-React--Popover.Trigger"),
-              ...p === "click" ? {
-                onClick: t.toggle
+              className: h("Venomous-UI-React--Popover.Trigger"),
+              ...c === "click" ? {
+                onClick: e.toggle
               } : {},
               children: x({
-                isOpen: t.isOpen,
-                close: t.close,
-                toggle: t.toggle
+                isOpen: e.isOpen,
+                close: e.close,
+                toggle: e.toggle
               })
             }
           ),
-          /* @__PURE__ */ h(N, { children: t.isOpen && /* @__PURE__ */ h(
+          /* @__PURE__ */ u(N, { children: e.isOpen && /* @__PURE__ */ u(
             O.div,
             {
-              ref: a,
+              ref: l,
               initial: { opacity: 0, y: 0 },
               animate: { opacity: 1, y: 0 },
               exit: { opacity: 0, y: 0 },
               transition: { duration: 0.2 },
-              className: m("Venomous-UI-React--Popover"),
+              className: h("Venomous-UI-React--Popover"),
               style: {
                 boxSizing: "border-box",
                 position: "absolute",
@@ -99,10 +150,10 @@ const M = l.memo(
                 left: w.left,
                 zIndex: 1e3
               },
-              children: /* @__PURE__ */ h(
-                C,
+              children: /* @__PURE__ */ u(
+                W,
                 {
-                  className: m("Venomous-UI-React--Popover.Content"),
+                  className: h("Venomous-UI-React--Popover.Content"),
                   style: { width: "100%", padding: "8px", ...k },
                   children: y
                 }

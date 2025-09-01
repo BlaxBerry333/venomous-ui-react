@@ -1,23 +1,23 @@
 import { jsxs as f, Fragment as b, jsx as o } from "react/jsx-runtime";
 import r from "clsx";
 import u from "react";
-import { BackgroundColors as x } from "../../utils/design/colors.esm.js";
+import g from "../../hooks/useDesign/index.esm.js";
+import "../../utils/design/colors.esm.js";
 import "../../utils/design/Shadow.esm.js";
-import { getOpacityHex as g } from "../../utils/tools/get-colors.esm.js";
+import { getOpacityHex as x } from "../../utils/tools/get-colors.esm.js";
 import "../Card/CardsBook.esm.js";
 import "../Card/CardsProduct.esm.js";
 import "../Card/CardsTitleBlock.esm.js";
 import R from "../Card/Card.esm.js";
-import { Theme as y } from "../Theme/index.esm.js";
 import { AnimatePresence as m, motion as s } from "framer-motion";
-const w = u.memo(
-  ({ isOpen: e, onClose: p, children: d, direction: t = "left", maskClosable: l = !0, width: a = 300, height: i = 300, style: n }) => {
-    const { themeMode: h } = y.useThemeMode();
+const y = u.memo(
+  ({ isOpen: e, onClose: p, children: d, direction: t = "left", maskClosable: n = !0, width: a = 300, height: i = 300, style: l }) => {
+    const h = g();
     return /* @__PURE__ */ f(b, { children: [
       /* @__PURE__ */ o(m, { children: e && /* @__PURE__ */ o(
         s.div,
         {
-          onClick: l ? p : void 0,
+          onClick: n ? p : void 0,
           initial: { opacity: 0 },
           animate: { opacity: 1 },
           exit: { opacity: 0 },
@@ -30,7 +30,7 @@ const w = u.memo(
             zIndex: 999,
             width: "100vw",
             height: "100svh",
-            backgroundColor: g(x[h].primary, 0.5),
+            backgroundColor: x(h.BackgroundColors.primary, 0.5),
             backdropFilter: "blur(2px)",
             pointerEvents: e ? "auto" : "none"
           }
@@ -100,7 +100,7 @@ const w = u.memo(
                   borderBottomLeftRadius: 0,
                   borderBottomRightRadius: 0
                 },
-                ...n
+                ...l
               },
               children: d
             }
@@ -110,7 +110,7 @@ const w = u.memo(
     ] });
   }
 );
-w.displayName = "Drawer";
+y.displayName = "Drawer";
 export {
-  w as default
+  y as default
 };

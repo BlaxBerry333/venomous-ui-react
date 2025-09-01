@@ -3,7 +3,8 @@
 import clsx from "clsx";
 import React from "react";
 
-import { BorderColors, Shadows, TextColors } from "@/utils/design";
+import { useDesign } from "@/hooks";
+import { TextColors } from "@/utils/design";
 import { Icon } from "../Icon";
 import { Space } from "../Space";
 import { Theme } from "../Theme";
@@ -12,8 +13,8 @@ import type { ChipProps } from "./index.types";
 
 const Chip = React.memo<ChipProps>(
   ({ text, isDisabled, className, style, closeIcon, closeIconPosition = "end", onClose }) => {
-    const { themeMode } = Theme.useThemeMode();
     const { themeColor } = Theme.useThemeColor();
+    const design = useDesign();
 
     return (
       <Space.Flex
@@ -31,8 +32,8 @@ const Chip = React.memo<ChipProps>(
           padding: "2px 8px",
           borderWidth: 1.5,
           borderStyle: "solid",
-          borderColor: BorderColors[themeMode].tertiary,
-          boxShadow: Shadows[themeMode].tertiary,
+          borderColor: design.BorderColors.tertiary,
+          boxShadow: design.Shadows.tertiary,
           backgroundColor: themeColor,
           color: TextColors["dark"].primary,
           ...style,

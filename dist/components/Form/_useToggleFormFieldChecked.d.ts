@@ -4,6 +4,6 @@ export declare function useToggleFormFieldChecked({ checked, disabled, onChange,
     inputRef: React.RefObject<HTMLInputElement | null>;
     isChecked: boolean;
     toggleOriginalIsChecked: React.ChangeEventHandler<HTMLInputElement>;
-    toggleCustomIsChecked: React.MouseEventHandler<HTMLDivElement | SVGSVGElement>;
+    toggleCustomIsChecked: React.MouseEventHandler<SVGSVGElement | HTMLDivElement>;
 };
 //# sourceMappingURL=_useToggleFormFieldChecked.d.ts.map

@@ -2,8 +2,9 @@
 
 import React from "react";
 
-import { BackgroundColors, getDarkerHex, getLighterHex, getOpacityHex, hexNormalize } from "@/utils";
-import { Theme } from ".";
+import { useDesign } from "@/hooks";
+import { getDarkerHex, getLighterHex, getOpacityHex, hexNormalize } from "@/utils";
+import useThemeColor from "./useThemeColor";
 
 const ThemeInjectToHTML = React.memo(() => {
   useThemeInjectToHTML();
@@ -23,8 +24,8 @@ export default ThemeInjectToHTML;
  *
  */
 function useThemeInjectToHTML() {
-  const { themeMode } = Theme.useThemeMode();
-  const { themeColor } = Theme.useThemeColor();
+  const { themeColor } = useThemeColor();
+  const design = useDesign();
 
   const colors = React.useMemo(
     () => ({
@@ -33,13 +34,13 @@ function useThemeInjectToHTML() {
       origin: hexNormalize(themeColor),
       opacity: getOpacityHex(themeColor, 0.6),
     }),
-    [themeColor],
+    [design, themeColor],
   );
 
   React.useInsertionEffect(() => {
-    document.documentElement.style.backgroundColor = BackgroundColors[themeMode].primary;
-    document.body.style.backgroundColor = BackgroundColors[themeMode].primary;
-  }, [themeMode]);
+    document.documentElement.style.backgroundColor = design.BackgroundColors.primary;
+    document.body.style.backgroundColor = design.BackgroundColors.primary;
+  }, [design]);
 
   React.useInsertionEffect(() => {
     if (typeof window === "undefined") {

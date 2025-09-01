@@ -1,64 +1,65 @@
-import { jsxs as e, jsx as r } from "react/jsx-runtime";
-import T from "clsx";
-import b from "react";
-import { TextColors as s } from "../../utils/design/colors.esm.js";
+import { jsxs as e, jsx as t } from "react/jsx-runtime";
+import u from "clsx";
+import C from "react";
+import F from "../../hooks/useDesign/index.esm.js";
+import "../../utils/design/colors.esm.js";
 import "../../utils/design/Shadow.esm.js";
-import { ThemeColor as d } from "../../utils/design/ThemeColor.esm.js";
-import { TypographySize as C } from "../../utils/design/TypographySize.esm.js";
-import R from "../Icon/Icon.esm.js";
-import { Space as S } from "../Space/index.esm.js";
-import { Theme as c } from "../Theme/index.esm.js";
+import { ThemeColor as p } from "../../utils/design/ThemeColor.esm.js";
+import { TypographySize as T } from "../../utils/design/TypographySize.esm.js";
+import b from "../Icon/Icon.esm.js";
+import { Space as R } from "../Space/index.esm.js";
+import { Theme as S } from "../Theme/index.esm.js";
 import { Typography as l } from "../Typography/index.esm.js";
 import { useFormFieldStyle as w } from "./_useFormFieldStyle.esm.js";
-const z = b.memo(
+const z = C.memo(
   ({
-    children: f,
-    className: h,
-    style: g,
-    fullWidth: m = !1,
-    required: i = !1,
+    children: d,
+    className: c,
+    style: f,
+    fullWidth: i = !1,
+    required: m = !1,
     isDisabled: o = !1,
-    isError: t = !1,
-    isFocused: x = !1,
+    isError: r = !1,
+    isFocused: g = !1,
     label: a,
     helpText: n,
-    ...y
+    ...h
   }) => {
-    const { themeColor: u } = c.useThemeColor(), { themeMode: p } = c.useThemeMode(), { helperTextColor: F } = w({
-      fullWidth: m,
+    const { themeColor: x } = S.useThemeColor(), s = F(), { helperTextColor: y } = w({
+      fullWidth: i,
       isDisabled: o,
-      isError: t
+      isError: r
     });
     return /* @__PURE__ */ e(
       "fieldset",
       {
         disabled: o,
-        className: T("Venomous-UI-React--FormField", h),
+        className: u("Venomous-UI-React--FormField", c),
         style: {
           boxSizing: "border-box",
           border: "none",
           padding: 0,
           margin: 0,
-          width: m ? "100%" : "max-content",
-          color: t ? d.RubyCopperhead : o ? s[p].disabled : x ? u : s[p].primary,
-          ...g
+          width: i ? "100%" : "max-content",
+          color: r ? p.RubyCopperhead : o ? s.TextColors.disabled : g ? x : s.TextColors.primary,
+          ...f
         },
-        ...y,
+        ...h,
         children: [
           a && /* @__PURE__ */ e("legend", { style: { padding: 0, color: "inherit" }, children: [
-            i && /* @__PURE__ */ r(
+            m && /* @__PURE__ */ t(
               l.Text,
               {
                 as: "small",
                 text: "*",
                 style: {
-                  color: d.RubyCopperhead,
+                  color: p.RubyCopperhead,
                   fontWeight: "bold",
                   verticalAlign: "text-bottom"
                 }
               }
             ),
-            /* @__PURE__ */ r(
+            /* @__PURE__ */ t(
               l.Text,
               {
                 as: "small",
@@ -66,26 +67,26 @@ const z = b.memo(
                 style: {
                   color: "inherit",
                   fontWeight: "bold",
-                  paddingLeft: i ? "2px" : "4px"
+                  paddingLeft: m ? "2px" : "4px"
                 }
               }
             )
           ] }),
-          /* @__PURE__ */ e(S.Flex, { column: !0, gap: 0, style: { width: "100%" }, children: [
-            f,
+          /* @__PURE__ */ e(R.Flex, { column: !0, gap: 0, style: { width: "100%" }, children: [
+            d,
             n && /* @__PURE__ */ e(
               l.Paragraph,
               {
                 style: {
                   display: "flex",
                   alignItems: "center",
-                  fontSize: C.small,
-                  color: F,
+                  fontSize: T.small,
+                  color: y,
                   paddingLeft: "4px"
                 },
                 children: [
-                  t && /* @__PURE__ */ r(
-                    R,
+                  r && /* @__PURE__ */ t(
+                    b,
                     {
                       icon: "solar:danger-triangle-outline",
                       width: 14,

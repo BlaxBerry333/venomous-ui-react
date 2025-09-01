@@ -2,12 +2,11 @@
 
 import React from "react";
 
-import { BackgroundColors, BorderColors, Shadows } from "@/utils";
-import { Theme } from "../Theme";
+import { useDesign } from "@/hooks";
 import { CardVariantMap, type CardProps } from "./index.types";
 
 export default function useCardStyle({ variant }: Pick<CardProps, "variant">) {
-  const { themeMode } = Theme.useThemeMode();
+  const design = useDesign();
 
   const backgroundColor = React.useMemo<React.CSSProperties["backgroundColor"]>(() => {
     switch (variant) {
@@ -17,21 +16,21 @@ export default function useCardStyle({ variant }: Pick<CardProps, "variant">) {
       case CardVariantMap.outlined:
       case CardVariantMap.frostedGlass:
       default:
-        return BackgroundColors[themeMode].secondary;
+        return design.BackgroundColors.secondary;
     }
-  }, [themeMode, variant]);
+  }, [design, variant]);
 
   const borderColor = React.useMemo<React.CSSProperties["borderColor"]>(() => {
     switch (variant) {
       case CardVariantMap.outlined:
       case CardVariantMap.transparent:
-        return BorderColors[themeMode].tertiary;
+        return design.BorderColors.tertiary;
       case CardVariantMap.elevated:
       case CardVariantMap.frostedGlass:
       default:
         return "transparent";
     }
-  }, [themeMode, variant]);
+  }, [design, variant]);
 
   const boxShadow = React.useMemo<React.CSSProperties["boxShadow"]>(() => {
     switch (variant) {
@@ -41,9 +40,9 @@ export default function useCardStyle({ variant }: Pick<CardProps, "variant">) {
       case CardVariantMap.elevated:
       case CardVariantMap.frostedGlass:
       default:
-        return Shadows[themeMode].primary;
+        return design.Shadows.primary;
     }
-  }, [themeMode, variant]);
+  }, [design, variant]);
 
   const commonStyles = React.useMemo<React.CSSProperties>(() => {
     return {

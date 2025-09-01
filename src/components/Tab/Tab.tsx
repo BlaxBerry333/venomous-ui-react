@@ -4,7 +4,7 @@ import clsx from "clsx";
 import { AnimatePresence, motion } from "motion/react";
 import React from "react";
 
-import { BackgroundColors, BorderColors, Shadows, TextColors } from "@/utils";
+import { useDesign } from "@/hooks";
 import { Icon } from "../Icon";
 import { Space } from "../Space";
 import { Theme } from "../Theme";
@@ -23,8 +23,8 @@ const Tab = React.memo<TabProps>(
     tabIndicatorStyle,
     tabContentStyle,
   }) => {
-    const { themeMode } = Theme.useThemeMode();
     const { themeColor } = Theme.useThemeColor();
+    const design = useDesign();
 
     const [isInitialRender, setIsInitialRender] = React.useState<boolean>(false);
 
@@ -91,13 +91,13 @@ const Tab = React.memo<TabProps>(
           style={{
             position: "relative",
             ...(variant === "pills" && {
-              background: BackgroundColors[themeMode].secondary,
+              background: design.BackgroundColors.secondary,
               borderRadius: "8px",
             }),
             ...(variant === "underline" && {
               borderBottomWidth: 1.5,
               borderBottomStyle: "solid",
-              borderBottomColor: BorderColors[themeMode].secondary,
+              borderBottomColor: design.BorderColors.secondary,
             }),
             ...tabItemContainerStyle,
           }}
@@ -123,7 +123,7 @@ const Tab = React.memo<TabProps>(
                 fontWeight: "500",
                 outline: "none",
                 border: "none",
-                color: tab.isDisabled ? TextColors[themeMode].disabled : TextColors[themeMode].primary,
+                color: tab.isDisabled ? design.TextColors.disabled : design.TextColors.primary,
                 background: "transparent",
                 transition: "color 0.2s ease",
                 ...(variant === "pills" && {
@@ -171,8 +171,8 @@ const Tab = React.memo<TabProps>(
                 zIndex: 1,
                 height: "calc(100% - 8px)",
                 borderRadius: "6px",
-                background: BackgroundColors[themeMode].primary,
-                boxShadow: Shadows[themeMode].tertiary,
+                background: design.BackgroundColors.primary,
+                boxShadow: design.Shadows.tertiary,
               }),
               ...(variant === "underline" && {
                 bottom: "-2px",

@@ -4,14 +4,14 @@ import clsx from "clsx";
 import { AnimatePresence, motion } from "motion/react";
 import React from "react";
 
-import { BackgroundColors, BreakPointName, getOpacityHex, ThemeBreakPoint } from "@/utils";
+import { useDesign } from "@/hooks";
+import { BreakPointName, getOpacityHex, ThemeBreakPoint } from "@/utils";
 import { Card } from "../Card";
-import { Theme } from "../Theme";
 import type { ModalProps } from "./index.types";
 
 const Modal = React.memo<ModalProps>(
   ({ children, className, style, isOpen, onClose, maskClosable = true, maxBreakpoint = BreakPointName.xs }) => {
-    const { themeMode } = Theme.useThemeMode();
+    const design = useDesign();
 
     return (
       <AnimatePresence>
@@ -33,7 +33,7 @@ const Modal = React.memo<ModalProps>(
               zIndex: 1000,
               width: "100svw",
               height: "100svh",
-              backgroundColor: getOpacityHex(BackgroundColors[themeMode].primary, 0.5),
+              backgroundColor: getOpacityHex(design.BackgroundColors.primary, 0.5),
               backdropFilter: "blur(2px)",
               opacity: isOpen ? 1 : 0,
             }}

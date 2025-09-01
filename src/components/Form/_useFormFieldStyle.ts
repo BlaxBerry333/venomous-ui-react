@@ -2,7 +2,8 @@
 
 import React from "react";
 
-import { BackgroundColors, BorderColors, TextColors, ThemeColor, TypographySize } from "@/utils";
+import { useDesign } from "@/hooks";
+import { ThemeColor, TypographySize } from "@/utils";
 import { Theme } from "../Theme";
 
 export function useFormFieldStyle({
@@ -16,36 +17,36 @@ export function useFormFieldStyle({
   isError?: boolean;
   isFocused?: boolean;
 }) {
-  const { themeMode } = Theme.useThemeMode();
   const { themeColor } = Theme.useThemeColor();
+  const design = useDesign();
 
   const backgroundColor = React.useMemo<React.CSSProperties["backgroundColor"]>(() => {
-    if (isDisabled) return BackgroundColors[themeMode].secondary;
+    if (isDisabled) return design.BackgroundColors.secondary;
     else return "transparent";
-  }, [isDisabled, themeMode]);
+  }, [isDisabled, design]);
 
   const textColor = React.useMemo<React.CSSProperties["color"]>(() => {
     if (isError) return ThemeColor.RubyCopperhead;
-    if (isDisabled) return TextColors[themeMode].disabled;
-    else return TextColors[themeMode].primary;
-  }, [isError, isDisabled, themeMode]);
+    if (isDisabled) return design.TextColors.disabled;
+    else return design.TextColors.primary;
+  }, [isError, isDisabled, design]);
 
   const helperTextColor = React.useMemo<React.CSSProperties["color"]>(() => {
     if (isError) return ThemeColor.RubyCopperhead;
-    if (isDisabled) return TextColors[themeMode].disabled;
-    else return TextColors[themeMode].quaternary;
-  }, [isError, isDisabled, themeMode]);
+    if (isDisabled) return design.TextColors.disabled;
+    else return design.TextColors.quaternary;
+  }, [isError, isDisabled, design]);
 
   const borderColor = React.useMemo<React.CSSProperties["borderColor"]>(() => {
     if (isError) return ThemeColor.RubyCopperhead;
-    if (isDisabled) return BorderColors[themeMode].tertiary;
-    else return BorderColors[themeMode].secondary;
-  }, [isError, themeMode]);
+    if (isDisabled) return design.BorderColors.tertiary;
+    else return design.BorderColors.secondary;
+  }, [isError, design]);
 
   const outlineColor = React.useMemo<React.CSSProperties["color"]>(() => {
     if (isError) return ThemeColor.RubyCopperhead;
     else return themeColor;
-  }, [isError, themeColor]);
+  }, [isError, design, themeColor]);
 
   const commonStyles = React.useMemo(
     () => ({

@@ -3,9 +3,9 @@
 import clsx from "clsx";
 import React from "react";
 
-import { TextColors, ThemeColor } from "@/utils";
+import { useDesign } from "@/hooks";
+import { ThemeColor } from "@/utils";
 import { Space } from "../Space";
-import { Theme } from "../Theme";
 import { Typography } from "../Typography";
 import { LabelPositionMap, type LabelProps } from "./index.types";
 
@@ -21,7 +21,7 @@ const Label = React.memo<LabelProps>(
     position = LabelPositionMap.top,
     ...props
   }) => {
-    const { themeMode } = Theme.useThemeMode();
+    const design = useDesign();
 
     return (
       <label
@@ -34,7 +34,7 @@ const Label = React.memo<LabelProps>(
           ...(position === LabelPositionMap.top && { flexDirection: "column", alignItems: "flex-start" }),
           ...(position === LabelPositionMap.left && { flexDirection: "row", alignItems: "center" }),
           ...(position === LabelPositionMap.right && { flexDirection: "row-reverse", alignItems: "center" }),
-          color: isError ? ThemeColor.RubyCopperhead : TextColors[themeMode].primary,
+          color: isError ? ThemeColor.RubyCopperhead : design.TextColors.primary,
           ...style,
         }}
         {...props}

@@ -4,15 +4,16 @@ import clsx from "clsx";
 import { motion, useAnimation } from "motion/react";
 import React from "react";
 
-import { getLighterHex, getOpacityHex, Shadows } from "@/utils";
+import { useDesign } from "@/hooks";
+import { getLighterHex, getOpacityHex } from "@/utils";
 import { Theme } from "../Theme";
 import type { ProgressLoadingBarProps } from "./index.types";
 
 const ProgressLoadingBar = React.memo<ProgressLoadingBarProps>(({ height = 8, className, style }) => {
   const controls = useAnimation();
 
-  const { themeMode } = Theme.useThemeMode();
   const { themeColor } = Theme.useThemeColor();
+  const design = useDesign();
 
   const containerRef = React.useRef<HTMLDivElement>(null);
   const [maxX, setMaxX] = React.useState<number>(0);
@@ -52,7 +53,7 @@ const ProgressLoadingBar = React.memo<ProgressLoadingBarProps>(({ height = 8, cl
         overflow: "hidden",
         backgroundColor: getOpacityHex(themeColor, 0.2),
         borderRadius: height / 2,
-        boxShadow: Shadows[themeMode].tertiary,
+        boxShadow: design.Shadows.tertiary,
         ...style,
       }}
     >

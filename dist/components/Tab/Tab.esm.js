@@ -1,37 +1,36 @@
 import { jsxs as x, jsx as a } from "react/jsx-runtime";
 import l from "clsx";
 import t from "react";
-import { BorderColors as W, BackgroundColors as y, TextColors as I } from "../../utils/design/colors.esm.js";
-import { Shadows as v } from "../../utils/design/Shadow.esm.js";
-import z from "../Icon/Icon.esm.js";
-import { Space as T } from "../Space/index.esm.js";
-import { Theme as R } from "../Theme/index.esm.js";
-import { Typography as D } from "../Typography/index.esm.js";
-import { motion as h, AnimatePresence as E } from "framer-motion";
-const j = t.memo(
+import V from "../../hooks/useDesign/index.esm.js";
+import A from "../Icon/Icon.esm.js";
+import { Space as h } from "../Space/index.esm.js";
+import { Theme as D } from "../Theme/index.esm.js";
+import { Typography as F } from "../Typography/index.esm.js";
+import { motion as b, AnimatePresence as W } from "framer-motion";
+const v = t.memo(
   ({
     tabs: s,
-    defaultActiveIndex: g = 0,
+    defaultActiveIndex: I = 0,
     onChange: c,
     variant: r = "pills",
-    tabContainerStyle: k,
-    tabItemContainerStyle: S,
-    tabItemStyle: w,
-    tabIndicatorStyle: C,
-    tabContentStyle: N
+    tabContainerStyle: g,
+    tabItemContainerStyle: T,
+    tabItemStyle: R,
+    tabIndicatorStyle: k,
+    tabContentStyle: C
   }) => {
-    const { themeMode: n } = R.useThemeMode(), { themeColor: u } = R.useThemeColor(), [b, p] = t.useState(!1), [o, B] = t.useState(g), [U, V] = t.useState({}), f = t.useRef([]), d = t.useCallback(() => {
+    const { themeColor: u } = D.useThemeColor(), n = V(), [y, p] = t.useState(!1), [o, S] = t.useState(I), [w, B] = t.useState({}), f = t.useRef([]), d = t.useCallback(() => {
       if (f.current[o]) {
         const e = f.current[o];
         if (e) {
-          const i = !!s[o].icon, { offsetLeft: m, offsetWidth: F } = e;
-          V({
+          const i = !!s[o].icon, { offsetLeft: m, offsetWidth: U } = e;
+          B({
             left: m,
-            width: F + (b && i ? 24 : 0)
+            width: U + (y && i ? 24 : 0)
           });
         }
       }
-    }, [o, r, s, b]);
+    }, [o, r, s, y]);
     t.useLayoutEffect(() => (p(!0), () => {
       p(!1);
     }), []), t.useEffect(() => {
@@ -42,49 +41,49 @@ const j = t.memo(
       });
       return () => cancelAnimationFrame(e);
     }, [o, s.length, d]);
-    const A = t.useCallback(
+    const N = t.useCallback(
       (e, i) => {
         p(!1), t.startTransition(() => {
-          B(e);
+          S(e);
         }), c == null || c(e, i);
       },
       [c]
     );
     return /* @__PURE__ */ x(
-      T.Flex,
+      h.Flex,
       {
         column: !0,
         gap: 0,
         className: l("Venomous-UI-React--Tabs.Container"),
-        style: { width: "100%", ...k },
+        style: { width: "100%", ...g },
         children: [
           /* @__PURE__ */ x(
-            T.Flex,
+            h.Flex,
             {
               row: !0,
               className: l("Venomous-UI-React--Tabs.ItemContainer"),
               style: {
                 position: "relative",
                 ...r === "pills" && {
-                  background: y[n].secondary,
+                  background: n.BackgroundColors.secondary,
                   borderRadius: "8px"
                 },
                 ...r === "underline" && {
                   borderBottomWidth: 1.5,
                   borderBottomStyle: "solid",
-                  borderBottomColor: W[n].secondary
+                  borderBottomColor: n.BorderColors.secondary
                 },
-                ...S
+                ...T
               },
               children: [
                 s.map((e, i) => /* @__PURE__ */ x(
-                  h.button,
+                  b.button,
                   {
                     ref: (m) => {
                       m && (f.current[i] = m);
                     },
                     onClick: () => {
-                      e.isDisabled || A(i, e);
+                      e.isDisabled || N(i, e);
                     },
                     className: l("Venomous-UI-React--Tabs.Item"),
                     style: {
@@ -96,7 +95,7 @@ const j = t.memo(
                       fontWeight: "500",
                       outline: "none",
                       border: "none",
-                      color: e.isDisabled ? I[n].disabled : I[n].primary,
+                      color: e.isDisabled ? n.TextColors.disabled : n.TextColors.primary,
                       background: "transparent",
                       transition: "color 0.2s ease",
                       ...r === "pills" && {
@@ -107,11 +106,11 @@ const j = t.memo(
                       ...r === "underline" && {
                         borderRadius: 0
                       },
-                      ...w
+                      ...R
                     },
                     children: [
                       e.icon && /* @__PURE__ */ a(
-                        z,
+                        A,
                         {
                           icon: e.icon,
                           width: 20,
@@ -122,7 +121,7 @@ const j = t.memo(
                         }
                       ),
                       /* @__PURE__ */ a(
-                        D.Text,
+                        F.Text,
                         {
                           text: e.label,
                           style: {
@@ -135,7 +134,7 @@ const j = t.memo(
                   e.key || i
                 )),
                 /* @__PURE__ */ a(
-                  h.div,
+                  b.div,
                   {
                     initial: { opacity: 0, scale: 0.8 },
                     animate: { opacity: 1, scale: 1 },
@@ -144,14 +143,14 @@ const j = t.memo(
                     className: l("Venomous-UI-React--Tabs.Indicator"),
                     style: {
                       position: "absolute",
-                      ...U,
+                      ...w,
                       ...r === "pills" && {
                         top: "4px",
                         zIndex: 1,
                         height: "calc(100% - 8px)",
                         borderRadius: "6px",
-                        background: y[n].primary,
-                        boxShadow: v[n].tertiary
+                        background: n.BackgroundColors.primary,
+                        boxShadow: n.Shadows.tertiary
                       },
                       ...r === "underline" && {
                         bottom: "-2px",
@@ -159,15 +158,15 @@ const j = t.memo(
                         background: u,
                         borderRadius: "4px"
                       },
-                      ...C
+                      ...k
                     }
                   }
                 )
               ]
             }
           ),
-          /* @__PURE__ */ a(E, { mode: "wait", children: s[o] && /* @__PURE__ */ a(
-            h.div,
+          /* @__PURE__ */ a(W, { mode: "wait", children: s[o] && /* @__PURE__ */ a(
+            b.div,
             {
               variants: {
                 enter: { opacity: 1, x: 0, transition: { duration: 0.2, ease: "easeOut" } },
@@ -182,7 +181,7 @@ const j = t.memo(
                 padding: "16px 8px",
                 position: "relative",
                 boxSizing: "border-box",
-                ...N
+                ...C
               },
               children: s[o].content
             },
@@ -193,7 +192,7 @@ const j = t.memo(
     );
   }
 );
-j.displayName = "Tab";
+v.displayName = "Tab";
 export {
-  j as default
+  v as default
 };

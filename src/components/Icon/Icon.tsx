@@ -4,15 +4,16 @@ import { Icon as Iconify } from "@iconify/react";
 import clsx from "clsx";
 import React from "react";
 
-import { SemanticColors, TextColors } from "@/utils";
-import { Theme } from "../Theme";
+import { useDesign } from "@/hooks";
+import { SemanticColors } from "@/utils";
 import type { IconProps } from "./Icon.types";
 
 const Icon = React.memo<IconProps>(({ className, style, icon, width = 20, semanticColor, ...props }) => {
-  const { themeMode } = Theme.useThemeMode();
+  const design = useDesign();
+
   const iconColor = React.useMemo<React.CSSProperties["color"]>(() => {
-    return semanticColor ? SemanticColors[semanticColor] : TextColors[themeMode].primary;
-  }, [themeMode, semanticColor]);
+    return semanticColor ? SemanticColors[semanticColor] : design.TextColors.primary;
+  }, [design, semanticColor]);
 
   return (
     <Iconify

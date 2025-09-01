@@ -3,10 +3,8 @@
 import clsx from "clsx";
 import React from "react";
 
-import { useHandler } from "@/hooks";
-import { BorderColors } from "@/utils";
+import { useDesign, useHandler } from "@/hooks";
 import { Space } from "../Space";
-import { Theme } from "../Theme";
 import { Transitions } from "../Transition";
 import { MenuItemTagMap, type MenuCollapseItemProps } from "./index.types";
 import MenuItem from "./MenuItem";
@@ -26,11 +24,11 @@ const MenuCollapseItem = React.memo<MenuCollapseItemProps>(
     subItems,
     ...props
   }) => {
-    const { themeMode } = Theme.useThemeMode();
+    const design = useDesign();
 
     const color = React.useMemo<React.CSSProperties["color"]>(() => {
-      return BorderColors[themeMode].quaternary;
-    }, [themeMode]);
+      return design.BorderColors.quaternary;
+    }, [design]);
 
     const handler = useHandler(isCollapsed);
     const isOpen: boolean = handler.isOpen;

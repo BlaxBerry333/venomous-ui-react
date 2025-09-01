@@ -1,66 +1,66 @@
 import c from "react";
-import { BackgroundColors as m, SemanticColors as p, BorderColors as x, TextColors as l } from "../../utils/design/colors.esm.js";
-import { Shadows as w } from "../../utils/design/Shadow.esm.js";
-import { TypographySize as g } from "../../utils/design/TypographySize.esm.js";
-import { getLighterHex as S, getOpacityHex as M } from "../../utils/tools/get-colors.esm.js";
+import x from "../../hooks/useDesign/index.esm.js";
+import { SemanticColors as p } from "../../utils/design/colors.esm.js";
+import "../../utils/design/Shadow.esm.js";
+import { getLighterHex as l, getOpacityHex as m } from "../../utils/tools/get-colors.esm.js";
 import { Theme as y } from "../Theme/index.esm.js";
 import { ButtonVariantMap as e } from "./index.types.esm.js";
-function R({
+function z({
   isLoading: n,
   isDisabled: u,
-  variant: t,
-  semanticColor: r
+  variant: r,
+  semanticColor: o
 }) {
-  const { themeColor: s } = y.useThemeColor(), { themeMode: o } = y.useThemeMode(), f = c.useMemo(() => {
+  const { themeColor: s } = y.useThemeColor(), t = x(), f = c.useMemo(() => {
     if (n || u)
-      return t === e.ghost || t === e.transparent ? "transparent" : m[o].secondary;
-    switch (t) {
+      return r === e.ghost || r === e.transparent ? "transparent" : t.BackgroundColors.secondary;
+    switch (r) {
       case e.contained:
-        return r ? p[r] : s;
+        return o ? p[o] : s;
       case e.outlined:
-        return m[o].secondary;
+        return t.BackgroundColors.secondary;
       case e.ghost:
       case e.transparent:
       default:
         return "transparent";
     }
-  }, [t, s, o, n, u, r]), a = c.useMemo(() => {
+  }, [r, n, u, o, t, s]), d = c.useMemo(() => {
     if (n || u)
-      return t === e.transparent ? "transparent" : x[o].tertiary;
-    switch (t) {
+      return r === e.transparent ? "transparent" : t.BorderColors.tertiary;
+    switch (r) {
       case e.contained:
-        return r ? S(p[r], 0.25) : M(s, 0.5);
+        return o ? l(p[o], 0.25) : m(s, 0.5);
       case e.outlined:
-        return r ? p[r] : s;
+        return o ? p[o] : s;
       case e.ghost:
-        return x[o].secondary;
+        return t.BorderColors.secondary;
       case e.transparent:
       default:
         return "transparent";
     }
-  }, [t, s, o, n, u, r]), d = c.useMemo(() => {
+  }, [r, n, u, o, t, s]), a = c.useMemo(() => {
     if (n || u)
-      return l[o].disabled;
-    switch (t) {
+      return t.TextColors.disabled;
+    switch (r) {
       case e.contained:
         return "#ffffff";
       case e.outlined:
-        return r ? p[r] : s;
+        return o ? p[o] : s;
       case e.ghost:
       default:
-        return l[o].primary;
+        return t.TextColors.primary;
     }
-  }, [t, s, o, n, u, r]), h = c.useMemo(() => {
-    switch (t) {
+  }, [r, n, u, o, t, s]), h = c.useMemo(() => {
+    switch (r) {
       case e.ghost:
       case e.transparent:
         return "none";
       case e.contained:
       case e.outlined:
       default:
-        return w[o].secondary;
+        return t.Shadows.secondary;
     }
-  }, [t, s, o]);
+  }, [r, t]);
   return {
     buttonStyles: c.useMemo(
       () => ({
@@ -75,20 +75,20 @@ function R({
         height: "40px",
         padding: "0px 16px",
         textTransform: "capitalize",
-        fontSize: g.text,
+        fontSize: t.TypographySize.text,
         fontWeight: "bold",
         cursor: n ? "wait" : u ? "not-allowed" : "pointer",
         borderRadius: "8px",
         borderWidth: 2,
-        borderColor: a,
+        borderColor: d,
         boxShadow: h,
         backgroundColor: f,
-        color: d
+        color: a
       }),
-      [n, u, a, f, d, h]
+      [n, u, r, o, t, f, d, h, a]
     )
   };
 }
 export {
-  R as useButtonStyle
+  z as useButtonStyle
 };

@@ -1,29 +1,30 @@
-import r from "react";
-import { BackgroundColors as c } from "../../utils/design/colors.esm.js";
+import i from "react";
+import c from "../../hooks/useDesign/index.esm.js";
+import "../../utils/design/colors.esm.js";
 import "../../utils/design/Shadow.esm.js";
-import { getOpacityHex as m, hexNormalize as s, getDarkerHex as u, getLighterHex as d } from "../../utils/tools/get-colors.esm.js";
-import { Theme as n } from "./index.esm.js";
-const h = r.memo(() => (b(), null));
+import { getOpacityHex as a, hexNormalize as s, getDarkerHex as m, getLighterHex as u } from "../../utils/tools/get-colors.esm.js";
+import d from "./useThemeColor.esm.js";
+const h = i.memo(() => (b(), null));
 h.displayName = "Theme.InjectToHTML";
 function b() {
-  const { themeMode: i } = n.useThemeMode(), { themeColor: o } = n.useThemeColor(), e = r.useMemo(
+  const { themeColor: o } = d(), r = c(), e = i.useMemo(
     () => ({
-      light: d(o, 0.2),
-      dark: u(o, 0.8),
+      light: u(o, 0.2),
+      dark: m(o, 0.8),
       origin: s(o),
-      opacity: m(o, 0.6)
+      opacity: a(o, 0.6)
     }),
-    [o]
+    [r, o]
   );
-  r.useInsertionEffect(() => {
-    document.documentElement.style.backgroundColor = c[i].primary, document.body.style.backgroundColor = c[i].primary;
-  }, [i]), r.useInsertionEffect(() => {
+  i.useInsertionEffect(() => {
+    document.documentElement.style.backgroundColor = r.BackgroundColors.primary, document.body.style.backgroundColor = r.BackgroundColors.primary;
+  }, [r]), i.useInsertionEffect(() => {
     if (typeof window > "u")
       return;
     const l = "theme-palette-style";
     let t = document.getElementById(l);
     t || (t = document.createElement("style"), t.id = l, document.head.appendChild(t));
-    const a = `
+    const n = `
       /* ==============================
          Global Theme Palette Styles
          ============================== */
@@ -65,7 +66,7 @@ function b() {
         scrollbar-width: thin;
       }
     `;
-    t.innerHTML = a;
+    t.innerHTML = n;
   }, [e]);
 }
 export {

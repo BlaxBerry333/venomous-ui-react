@@ -3,7 +3,8 @@
 import clsx from "clsx";
 import React from "react";
 
-import { TextColors, ThemeColor, TypographySize } from "@/utils";
+import { useDesign } from "@/hooks";
+import { ThemeColor, TypographySize } from "@/utils";
 import { Icon } from "../Icon";
 import { Space } from "../Space";
 import { Theme } from "../Theme";
@@ -26,7 +27,7 @@ const FormField = React.memo<FormFieldProps>(
     ...props
   }) => {
     const { themeColor } = Theme.useThemeColor();
-    const { themeMode } = Theme.useThemeMode();
+    const design = useDesign();
 
     const { helperTextColor } = useFormFieldStyle({
       fullWidth,
@@ -47,10 +48,10 @@ const FormField = React.memo<FormFieldProps>(
           color: isError
             ? ThemeColor.RubyCopperhead
             : isDisabled
-              ? TextColors[themeMode].disabled
+              ? design.TextColors.disabled
               : isFocused
                 ? themeColor
-                : TextColors[themeMode].primary,
+                : design.TextColors.primary,
           ...style,
         }}
         {...props}

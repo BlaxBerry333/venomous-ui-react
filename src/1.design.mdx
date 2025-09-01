@@ -13,7 +13,34 @@ import { SemanticColors, ThemeColor, TextColors, BackgroundColors, BorderColors 
 
 ## Colors
 
-The component library provides a set of built-in default colors that can be used directly.
+The component library provides a set of built-in default colors that can be used directly. There are two ways to access colors:
+
+> Use the <Typography.Code text="Theme.useThemeMode()" /> hook to get the theme mode and then access the colors.
+
+```tsx
+import { Theme } from "venomous-ui-react/components";
+import { ThemeColor } from "venomous-ui-react/utils";
+
+function Component() {
+  const { themeMode } = Theme.useThemeMode();
+  const primaryText = TextColors[themeMode].primary;
+
+  return <>...</>;
+}
+```
+
+> Use the <Typography.Code text="useDesign()" /> hook to access the colors directly.
+
+```tsx
+import { useDesign } from "venomous-ui-react/hooks";
+
+function Component() {
+  const design = useDesign();
+  const primaryText = design.TextColors.primary;
+
+  return <>...</>;
+}
+```
 
 <br />
 

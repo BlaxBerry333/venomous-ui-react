@@ -1,175 +1,217 @@
-import { jsxs as k, jsx as a } from "react/jsx-runtime";
+import { jsxs as k, jsx as s } from "react/jsx-runtime";
 import E from "clsx";
-import t from "react";
-import B from "../../hooks/useElementFocus/index.esm.js";
+import e from "react";
+import "../Button/ButtonsIcon.esm.js";
+import "../Button/Button.esm.js";
+import "../Card/CardsBook.esm.js";
+import "../Card/CardsProduct.esm.js";
+import "../Card/CardsTitleBlock.esm.js";
+import "../Card/Card.esm.js";
+import "../Chip/Chip.esm.js";
+import "../Container/Container.esm.js";
+import "../Drawer/Drawer.esm.js";
+import "./FormFieldCheckbox.esm.js";
+import "./FormFieldNumber.esm.js";
+import "./FormFieldPassword.esm.js";
+import "./FormFieldRadio.esm.js";
+import "./FormFieldSwitch.esm.js";
+import "./FormFieldText.esm.js";
+import "./FormFieldTextarea.esm.js";
+import "./Form.esm.js";
+import b from "../Icon/Icon.esm.js";
+import "../Layout/LayoutCollapseSide.esm.js";
+import "../Layout/LayoutContent.esm.js";
+import "../Layout/LayoutFooter.esm.js";
+import "../Layout/LayoutHeader.esm.js";
+import "../Layout/LayoutProvider.esm.js";
+import "../Layout/LayoutSide.esm.js";
+import "../MediaFile/MediaFileTypeImage.esm.js";
+import "../MediaFile/MediaFileUploader.esm.js";
 import "../../utils/design/colors.esm.js";
 import "../../utils/design/Shadow.esm.js";
-import { TypographySize as W } from "../../utils/design/TypographySize.esm.js";
-import b from "../Icon/Icon.esm.js";
+import { TypographySize as B } from "../../utils/design/TypographySize.esm.js";
 import { Menu as x } from "../Menu/index.esm.js";
-import D from "../Popover/Popover.esm.js";
-import { Space as L } from "../Space/index.esm.js";
-import { Typography as P } from "../Typography/index.esm.js";
+import "../Modal/ModalsConfirm.esm.js";
+import "../Modal/Modal.esm.js";
+import "../NoSSR/NoSSR.esm.js";
+import "../Notification/Notification.esm.js";
+import "sonner";
+import W from "../Popover/Popover.esm.js";
+import "../Portal/PortalRender.esm.js";
+import "../Progress/ProgressLoadingBar.esm.js";
+import "../Progress/ProgressPageLoading.esm.js";
+import "../Progress/ProgressScrollbar.esm.js";
+import { Space as D } from "../Space/index.esm.js";
+import "../Tab/Tab.esm.js";
+import "../Table/Table.esm.js";
+import "../Theme/ThemeInjectToHTML.esm.js";
+import "../Theme/ThemeProvider.esm.js";
+import "../Theme/useThemeBreakpoint.esm.js";
+import "../Theme/ThemeContext.esm.js";
+import "../Transition/TransitionCollapseSide.esm.js";
+import "../Transition/TransitionsCollapse.esm.js";
+import { Typography as L } from "../Typography/index.esm.js";
+import P from "../../hooks/useElementFocus/index.esm.js";
 import { useFormFieldStyle as j } from "./_useFormFieldStyle.esm.js";
 import A from "./FormField.esm.js";
-const I = t.memo(
+const I = e.memo(
   ({
-    isOriginalSelect: m = !1,
-    fullWidth: r,
+    isOriginalSelect: d = !1,
+    fullWidth: i,
     required: g = !1,
-    isError: i = !1,
-    disabled: o = !1,
-    label: u,
-    helpText: l,
+    isError: o = !1,
+    disabled: m = !1,
+    label: n,
+    helpText: r,
     ...h
   }) => {
-    const { isFocused: c, setIsFocused: d, handleFocus: f, handleBlur: p } = B(), { commonStyles: s } = j({
-      fullWidth: r,
-      isDisabled: o,
-      isError: i,
-      isFocused: c
+    const { isFocused: a, setIsFocused: c, handleFocus: u, handleBlur: f } = P(), { commonStyles: l } = j({
+      fullWidth: i,
+      isDisabled: m,
+      isError: o,
+      isFocused: a
     });
     return /* @__PURE__ */ k(
       A,
       {
-        label: u,
+        label: n,
         required: g,
-        isDisabled: o,
-        isError: i,
-        isFocused: c,
-        fullWidth: r,
-        helpText: l,
+        isDisabled: m,
+        isError: o,
+        isFocused: a,
+        fullWidth: i,
+        helpText: r,
         children: [
-          m && /* @__PURE__ */ a(
+          d && /* @__PURE__ */ s(
             R,
             {
-              commonStyles: s,
-              handleFocus: f,
-              handleBlur: p,
-              disabled: o,
+              commonStyles: l,
+              handleFocus: u,
+              handleBlur: f,
+              disabled: m,
               ...h
             }
           ),
-          !m && /* @__PURE__ */ a(T, { commonStyles: s, setIsFocused: d, disabled: o, ...h })
+          !d && /* @__PURE__ */ s(T, { commonStyles: l, setIsFocused: c, disabled: m, ...h })
         ]
       }
     );
   }
 );
 I.displayName = "FormField.Select";
-const R = t.memo(
+const R = e.memo(
   ({
-    commonStyles: m,
-    handleFocus: r,
+    commonStyles: d,
+    handleFocus: i,
     handleBlur: g,
-    name: i,
-    autoComplete: o = "off",
-    options: u,
-    onChange: l,
+    name: o,
+    autoComplete: m = "off",
+    options: n,
+    onChange: r,
     value: h,
-    disabled: c,
-    className: d,
-    style: f,
-    ...p
-  }) => /* @__PURE__ */ a(
+    disabled: a,
+    className: c,
+    style: u,
+    ...f
+  }) => /* @__PURE__ */ s(
     "select",
     {
-      name: i,
-      autoComplete: o,
-      disabled: c,
-      onFocus: r,
+      name: o,
+      autoComplete: m,
+      disabled: a,
+      onFocus: i,
       onBlur: g,
-      onChange: l,
+      onChange: r,
       value: h,
-      className: E("Venomous-UI-React--FormField.Select", d),
+      className: E("Venomous-UI-React--FormField.Select", c),
       style: {
         boxSizing: "border-box",
-        ...m,
-        ...f
+        ...d,
+        ...u
       },
-      ...p,
-      children: u.map((s) => /* @__PURE__ */ a("option", { value: s.value, disabled: s.disabled, children: s.label }, s.value))
+      ...f,
+      children: n.map((l) => /* @__PURE__ */ s("option", { value: l.value, disabled: l.disabled, children: l.label }, l.value))
     }
   )
-), T = t.memo(({ commonStyles: m, setIsFocused: r, disabled: g, name: i, value: o, options: u, onChange: l, className: h, style: c }) => {
-  const [d, f] = t.useState(o || null), [p, s] = t.useState(!1), S = t.useRef(null), [F, w] = t.useState(0);
-  t.useEffect(() => {
-    f(o || null);
-  }, [o]), t.useEffect(() => {
+), T = e.memo(({ commonStyles: d, setIsFocused: i, disabled: g, name: o, value: m, options: n, onChange: r, className: h, style: a }) => {
+  const [c, u] = e.useState(m || null), [f, l] = e.useState(!1), S = e.useRef(null), [F, w] = e.useState(0);
+  e.useEffect(() => {
+    u(m || null);
+  }, [m]), e.useEffect(() => {
     if (S.current) {
-      const e = () => {
+      const t = () => {
         var y;
-        const n = (y = S.current) == null ? void 0 : y.getBoundingClientRect();
-        n && w(n.width);
+        const p = (y = S.current) == null ? void 0 : y.getBoundingClientRect();
+        p && w(p.width);
       };
-      return e(), window.addEventListener("resize", e), () => window.removeEventListener("resize", e);
+      return t(), window.addEventListener("resize", t), () => window.removeEventListener("resize", t);
     }
-  }, []), t.useEffect(() => {
-    if (p && S.current) {
-      const e = S.current.getBoundingClientRect();
-      e && e.width !== F && w(e.width);
+  }, []), e.useEffect(() => {
+    if (f && S.current) {
+      const t = S.current.getBoundingClientRect();
+      t && t.width !== F && w(t.width);
     }
-  }, [p, F]);
-  const z = t.useCallback(
-    (e) => {
-      f(e), s(!1), r(!1);
-      const n = {
-        target: { name: i, value: e },
-        currentTarget: { name: i, value: e }
+  }, [f, F]);
+  const z = e.useCallback(
+    (t) => {
+      u(t), l(!1), i(!1);
+      const p = {
+        target: { name: o, value: t },
+        currentTarget: { name: o, value: t }
       };
-      l == null || l(n);
+      r == null || r(p);
     },
-    [i, l, r]
-  ), N = t.useCallback(
-    (e) => {
-      e.stopPropagation(), f(null), r(!1);
-      const n = {
-        target: { name: i, value: "" },
-        currentTarget: { name: i, value: "" }
+    [o, r, i]
+  ), N = e.useCallback(
+    (t) => {
+      t.stopPropagation(), u(null), i(!1);
+      const p = {
+        target: { name: o, value: "" },
+        currentTarget: { name: o, value: "" }
       };
-      l == null || l(n);
+      r == null || r(p);
     },
-    [i, l, r]
-  ), O = t.useMemo(
+    [o, r, i]
+  ), O = e.useMemo(
     () => {
-      var e;
-      return ((e = u.find((n) => n.value === d)) == null ? void 0 : e.label) || "";
+      var t;
+      return ((t = n.find((p) => p.value === c)) == null ? void 0 : t.label) || "";
     },
-    [u, d]
+    [n, c]
     // 添加 options 依赖
-  ), v = F || (c == null ? void 0 : c.width);
-  return /* @__PURE__ */ a(
-    D,
+  ), v = F || (a == null ? void 0 : a.width);
+  return /* @__PURE__ */ s(
+    W,
     {
       direction: "bottom",
       alignment: "start",
       trigger: "click",
       style: { width: "100%" },
       onClickOutside: () => {
-        s(!1), r(!1);
+        l(!1), i(!1);
       },
       contentStyle: {
         width: v
       },
       renderTrigger: () => /* @__PURE__ */ k(
-        L.Flex,
+        D.Flex,
         {
           ref: S,
           row: !0,
           onClick: () => {
-            s(!0), r(!0);
+            l(!0), i(!0);
           },
           style: {
-            ...m,
-            height: m.minHeight,
+            ...d,
+            height: d.minHeight,
             width: "100%",
             maxWidth: v,
             display: "flex",
             alignItems: "center"
           },
           children: [
-            /* @__PURE__ */ a(P.Paragraph, { ellipsis: 1, style: { flex: 1 }, children: O }),
-            d && !g && /* @__PURE__ */ a(
+            /* @__PURE__ */ s(L.Paragraph, { ellipsis: 1, style: { flex: 1 }, children: O }),
+            c && !g && /* @__PURE__ */ s(
               b,
               {
                 icon: "solar:close-circle-line-duotone",
@@ -181,36 +223,36 @@ const R = t.memo(
                 }
               }
             ),
-            /* @__PURE__ */ a(
+            /* @__PURE__ */ s(
               b,
               {
                 icon: "solar:alt-arrow-down-line-duotone",
                 width: 16,
                 style: {
                   transition: "transform 0.2s ease",
-                  transform: p ? "rotate(180deg)" : "rotate(0deg)"
+                  transform: f ? "rotate(180deg)" : "rotate(0deg)"
                 }
               }
             )
           ]
         }
       ),
-      children: /* @__PURE__ */ a(x.List, { as: "ul", className: E("Venomous-UI-React--FormField.Select", h), style: { width: "100%" }, children: u.map((e) => /* @__PURE__ */ a(
+      children: /* @__PURE__ */ s(x.List, { as: "ul", className: E("Venomous-UI-React--FormField.Select", h), style: { width: "100%" }, children: n.map((t) => /* @__PURE__ */ s(
         x.Item,
         {
-          id: e.id,
-          text: e.label,
-          isDisabled: e.disabled,
-          isActive: e.value === d,
+          id: t.id,
+          text: t.label,
+          isDisabled: t.disabled,
+          isActive: t.value === c,
           onClick: () => {
-            e.disabled || z(e.value);
+            t.disabled || z(t.value);
           },
           style: {
-            cursor: e.disabled ? "not-allowed" : "pointer",
-            fontSize: W.small
+            cursor: t.disabled ? "not-allowed" : "pointer",
+            fontSize: B.small
           }
         },
-        e.id
+        t.id
       )) })
     }
   );

@@ -2,8 +2,8 @@
 
 import React from "react";
 
-import { SemanticColors, TextColors } from "@/utils";
-import { Theme } from "../Theme";
+import { useDesign } from "@/hooks";
+import { SemanticColors } from "@/utils";
 
 type Props = Partial<{
   ellipsis: number;
@@ -11,11 +11,11 @@ type Props = Partial<{
 }>;
 
 export function useTypographyStyle({ ellipsis = 0, semanticColor }: Props) {
-  const { themeMode } = Theme.useThemeMode();
+  const design = useDesign();
 
   const fontColor = React.useMemo<React.CSSProperties["color"]>(() => {
-    return semanticColor ? SemanticColors[semanticColor] : TextColors[themeMode].primary;
-  }, [themeMode, semanticColor]);
+    return semanticColor ? SemanticColors[semanticColor] : design.TextColors.primary;
+  }, [design, semanticColor]);
 
   const ellipsisStyles = React.useMemo<React.CSSProperties>(() => {
     return ellipsis

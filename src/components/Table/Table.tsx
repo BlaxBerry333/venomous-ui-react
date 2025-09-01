@@ -3,8 +3,7 @@
 import clsx from "clsx";
 import React from "react";
 
-import { BackgroundColors, BorderColors, TextColors } from "@/utils";
-import { Theme } from "../Theme";
+import { useDesign } from "@/hooks";
 import type { TableCellProps, TableProps, TableRowProps } from "./index.types";
 
 const defaultRowUnionKey = (_: unknown, index: number): string => String(index);
@@ -123,12 +122,12 @@ MemoizedTable.displayName = "Table";
 export default MemoizedTable as typeof Table;
 
 const TableRow = React.memo<TableRowProps>(({ style, ...props }) => {
-  const { themeMode } = Theme.useThemeMode();
+  const design = useDesign();
   return (
     <tr
       style={{
         boxSizing: "border-box",
-        color: TextColors[themeMode].primary,
+        color: design.TextColors.primary,
         ...style,
       }}
       {...props}
@@ -137,18 +136,18 @@ const TableRow = React.memo<TableRowProps>(({ style, ...props }) => {
 });
 
 const TableCell = React.memo<TableCellProps>(({ as: Tag = "td", style, ...props }) => {
-  const { themeMode } = Theme.useThemeMode();
+  const design = useDesign();
   return (
     <Tag
       style={{
         boxSizing: "border-box",
         padding: "16px 24px",
         textAlign: "left",
-        color: TextColors[themeMode].primary,
-        backgroundColor: Tag === "td" ? "transparent" : BackgroundColors[themeMode].secondary,
+        color: design.TextColors.primary,
+        backgroundColor: Tag === "td" ? "transparent" : design.BackgroundColors.secondary,
         borderBottomWidth: 1,
         borderBottomStyle: "solid",
-        borderBottomColor: BorderColors[themeMode].quaternary,
+        borderBottomColor: design.BorderColors.quaternary,
         ...style,
       }}
       {...props}
