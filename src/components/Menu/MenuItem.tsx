@@ -4,7 +4,7 @@ import clsx from "clsx";
 import React from "react";
 
 import { useDesign, useElementHover } from "@/hooks";
-import { getOpacityHex } from "@/utils";
+import { getOpacityHex, SEMANTIC_COLORS } from "@/utils";
 import { Buttons } from "../Button";
 import { Icon } from "../Icon";
 import { Space } from "../Space";
@@ -24,6 +24,7 @@ const MenuItem = React.memo<MenuItemProps>(
     isDisabled = false,
     isActive = false,
     actionButtonProps = undefined,
+    semanticColor,
     ...props
   }) => {
     const { themeColor } = Theme.useThemeColor();
@@ -37,8 +38,9 @@ const MenuItem = React.memo<MenuItemProps>(
     const textColor = React.useMemo<Exclude<React.CSSProperties["color"], undefined>>(() => {
       if (isDisabled) return design.TextColors.disabled;
       if (isActive) return themeColor;
+      if (semanticColor) return SEMANTIC_COLORS[semanticColor];
       return design.TextColors.primary;
-    }, [isDisabled, isActive, design, themeColor]);
+    }, [isDisabled, isActive, design, themeColor, semanticColor]);
 
     const { handleMouseDown, handleMouseUp, handleMouseLeave } = useElementHover<HTMLLIElement>({
       isDisabled,

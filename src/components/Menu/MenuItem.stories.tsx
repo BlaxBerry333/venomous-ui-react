@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
+import { SEMANTIC_COLORS } from "@/utils";
 import { Menu } from ".";
 import { MenuItemTagMap } from "./index.types";
 
@@ -56,6 +57,13 @@ const meta = {
       options: [undefined, { icon: "solar:hamburger-menu-line-duotone", onClick: () => {} }],
       table: { type: { summary: "{icon:string; onClick:VoidFunction;}" }, defaultValue: { summary: "undefined" } },
     },
+    semanticColor: {
+      description: "The built-in semantic color of the item",
+      if: { arg: "variant", neq: "ghost" },
+      control: { type: "select" },
+      options: [...Object.keys(SEMANTIC_COLORS), undefined],
+      table: { type: { summary: `undefined|SemanticColorName"` }, defaultValue: { summary: "undefined" } },
+    },
   },
   args: {
     as: "li",
@@ -67,6 +75,7 @@ const meta = {
     isDisabled: false,
     isActive: false,
     actionButtonProps: undefined,
+    semanticColor: undefined,
   },
 } satisfies Meta<typeof Menu.Item>;
 

@@ -97,7 +97,7 @@ const FormFieldPassword = React.memo<FormFieldTextProps>(
               transform: "translateY(-50%)",
               cursor: "pointer",
               color: outlineColor,
-              padding: commonStyles.padding,
+              margin: `0 ${commonStyles.padding}`,
             }}
           />
         </div>

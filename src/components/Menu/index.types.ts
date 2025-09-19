@@ -1,3 +1,4 @@
+import type { SemanticColorName } from "@/utils";
 import type { ButtonsIconProps } from "../Button/index.types";
 import type { IconProps } from "../Icon";
 
@@ -17,7 +18,7 @@ export interface MenuListProps extends React.HTMLAttributes<HTMLUListElement | H
   as?: keyof typeof MenuListTagMap;
 }
 
-export interface MenuItemProps extends Omit<React.HTMLAttributes<HTMLLIElement>, "children"> {
+export interface MenuItemProps extends Omit<React.HTMLAttributes<HTMLLIElement>, "children" | "color"> {
   as?: keyof typeof MenuItemTagMap;
   id: string;
   icon?: IconProps["icon"];
@@ -27,6 +28,8 @@ export interface MenuItemProps extends Omit<React.HTMLAttributes<HTMLLIElement>,
   isDisabled?: boolean;
   isActive?: boolean;
   actionButtonProps?: ButtonsIconProps;
+
+  semanticColor?: SemanticColorName;
 }
 
 export interface MenuCollapseItemProps extends Omit<MenuItemProps, "actionButton"> {
