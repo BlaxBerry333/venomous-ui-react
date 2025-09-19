@@ -1,36 +1,37 @@
-import { jsx as h, jsxs as g } from "react/jsx-runtime";
+import { jsx as h, jsxs as n } from "react/jsx-runtime";
 import k from "clsx";
 import o from "react";
-import O from "../../hooks/useDesign/index.esm.js";
+import R from "../../hooks/useDesign/index.esm.js";
 import v from "../../hooks/useElementHover/index.esm.js";
-import "../../utils/design/colors.esm.js";
+import { SEMANTIC_COLORS as E } from "../../utils/design/colors.esm.js";
 import "../../utils/design/Shadow.esm.js";
 import "../../utils/design/ThemeBreakpoint.esm.js";
 import "../../utils/design/TypographySize.esm.js";
-import { getOpacityHex as R } from "../../utils/tools/get-colors.esm.js";
-import { Buttons as E } from "../Button/index.esm.js";
+import { getOpacityHex as L } from "../../utils/tools/get-colors.esm.js";
+import { Buttons as N } from "../Button/index.esm.js";
 import U from "../Icon/Icon.esm.js";
-import { Space as n } from "../Space/index.esm.js";
+import { Space as y } from "../Space/index.esm.js";
 import { Theme as j } from "../Theme/index.esm.js";
-import { Typography as y } from "../Typography/index.esm.js";
+import { Typography as u } from "../Typography/index.esm.js";
 import { MenuItemTagMap as F } from "./index.types.esm.js";
-const L = o.memo(
+const W = o.memo(
   ({
-    as: s = F.li,
-    className: u,
-    style: M,
+    as: M = F.li,
+    className: s,
+    style: w,
     icon: m,
-    iconStyle: c,
-    text: w,
+    iconStyle: S,
+    text: c,
     subText: d,
     isDisabled: r = !1,
     isActive: t = !1,
     actionButtonProps: e = void 0,
+    semanticColor: i,
     ...x
   }) => {
-    const { themeColor: i } = j.useThemeColor(), l = O(), C = o.useMemo(() => t ? R(i, 0.1) : "transparent", [r, t, l]), f = o.useMemo(() => r ? l.TextColors.disabled : t ? i : l.TextColors.primary, [r, t, l, i]), { handleMouseDown: S, handleMouseUp: T, handleMouseLeave: p } = v({
+    const { themeColor: f } = j.useThemeColor(), l = R(), T = o.useMemo(() => t ? L(f, 0.1) : "transparent", [r, t, l]), g = o.useMemo(() => r ? l.TextColors.disabled : t ? f : i ? E[i] : l.TextColors.primary, [r, t, l, f, i]), { handleMouseDown: C, handleMouseUp: I, handleMouseLeave: p } = v({
       isDisabled: r
-    }), I = o.useCallback(
+    }), O = o.useCallback(
       (a) => {
         r || (a.currentTarget.style.boxShadow = l.Shadows.tertiary);
       },
@@ -42,9 +43,9 @@ const L = o.memo(
       [r]
     );
     return /* @__PURE__ */ h(
-      s,
+      M,
       {
-        className: k("Venomous-UI-React--Menu.Item", u),
+        className: k("Venomous-UI-React--Menu.Item", s),
         style: {
           boxSizing: "border-box",
           listStyle: "none",
@@ -55,17 +56,17 @@ const L = o.memo(
           paddingRight: e != null && e.icon ? "0px" : "8px",
           borderRadius: "8px",
           cursor: r ? "not-allowed" : x != null && x.onClick ? "pointer" : "default",
-          backgroundColor: C,
+          backgroundColor: T,
           // transition: "box-shadow 0.2s ease-in-out",
-          ...M
+          ...w
         },
-        onMouseDown: S,
-        onMouseUp: T,
+        onMouseDown: C,
+        onMouseUp: I,
         onMouseLeave: p,
-        onMouseOver: I,
+        onMouseOver: O,
         onMouseOut: H,
         ...x,
-        children: /* @__PURE__ */ g(n.Flex, { row: !0, style: { minHeight: "40px", height: "100%", alignItems: "center", color: f }, children: [
+        children: /* @__PURE__ */ n(y.Flex, { row: !0, style: { minHeight: "40px", height: "100%", alignItems: "center", color: g }, children: [
           m && /* @__PURE__ */ h(
             U,
             {
@@ -73,12 +74,12 @@ const L = o.memo(
               width: 24,
               style: {
                 color: "inherit",
-                ...c
+                ...S
               }
             }
           ),
-          /* @__PURE__ */ g(
-            n.Flex,
+          /* @__PURE__ */ n(
+            y.Flex,
             {
               column: !0,
               gap: 0,
@@ -89,10 +90,10 @@ const L = o.memo(
               },
               children: [
                 /* @__PURE__ */ h(
-                  y.Text,
+                  u.Text,
                   {
                     as: "strong",
-                    text: w,
+                    text: c,
                     isEllipsis: !0,
                     style: {
                       width: "100%",
@@ -102,7 +103,7 @@ const L = o.memo(
                   }
                 ),
                 d && /* @__PURE__ */ h(
-                  y.Text,
+                  u.Text,
                   {
                     as: "small",
                     text: d,
@@ -117,7 +118,7 @@ const L = o.memo(
             }
           ),
           !!(e != null && e.icon) && /* @__PURE__ */ h(
-            E.Icon,
+            N.Icon,
             {
               variant: "transparent",
               isDisabled: r,
@@ -128,7 +129,7 @@ const L = o.memo(
                 ...e.style
               },
               iconStyle: {
-                color: f,
+                color: g,
                 ...e.iconStyle
               },
               ...e
@@ -139,7 +140,7 @@ const L = o.memo(
     );
   }
 );
-L.displayName = "Menu.Item";
+W.displayName = "Menu.Item";
 export {
-  L as default
+  W as default
 };

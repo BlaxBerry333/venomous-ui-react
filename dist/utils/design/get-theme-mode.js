@@ -1,1 +1,0 @@
-"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const e=require("./ThemeMode.js");function t(){return typeof window<"u"?window.matchMedia("(prefers-color-scheme: dark)").matches:!1}function r(){return t()?e.THEME_MODES.Dark:e.THEME_MODES.Light}exports.getSystemThemeMode=r;

@@ -4,5 +4,4 @@ export { BREAK_POINT_NAMES, THEME_BREAKPOINTS, type BreakPointName, type ThemeBr
 export { TYPOGRAPHY_SIZES, TYPOGRAPHY_SIZE_NAME, type TypographySize, type TypographySizeName } from "./TypographySize";
 export { THEME_COLORS, type ThemeColorName } from "./ThemeColor";
 export { THEME_MODES, type ThemeMode } from "./ThemeMode";
-export { getSystemThemeMode } from "./get-theme-mode";
 //# sourceMappingURL=index.d.ts.map

@@ -149,7 +149,7 @@ const I = l.memo(
                     transform: "translateY(-50%)",
                     cursor: "pointer",
                     color: P,
-                    padding: t.padding
+                    margin: `0 ${t.padding}`
                   }
                 }
               )

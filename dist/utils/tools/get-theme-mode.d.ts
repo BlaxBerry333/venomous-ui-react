@@ -1,4 +1,4 @@
-import { type ThemeMode } from "./ThemeMode";
+import { type ThemeMode } from "../design/ThemeMode";
 /**
  * get theme mode from current system
  */
