@@ -1,4 +1,4 @@
-import type { BreakPointName } from "@/utils";
+import type { BreakPointName } from "../../utils";
 export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
     isOpen: boolean;
     onClose: () => void;

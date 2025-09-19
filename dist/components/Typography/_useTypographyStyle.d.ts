@@ -1,5 +1,5 @@
 import React from "react";
-import { type SemanticColorName } from "@/utils";
+import { type SemanticColorName } from "../../utils";
 type Props = Partial<{
     ellipsis: number;
     semanticColor?: SemanticColorName;

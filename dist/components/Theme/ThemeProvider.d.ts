@@ -1,5 +1,5 @@
 import React from "react";
-import { type ThemeMode } from "@/utils";
+import { type ThemeMode } from "../../utils";
 interface ThemeModeProviderProps {
     children: React.ReactNode;
     defaultThemeMode?: ThemeMode;

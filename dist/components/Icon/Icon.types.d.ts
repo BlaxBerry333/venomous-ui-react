@@ -1,4 +1,4 @@
-import type { SemanticColorName } from "@/utils";
+import type { SemanticColorName } from "../../utils";
 import type { IconProps as IconifyIconProps } from "@iconify/react";
 export interface IconProps extends Omit<IconifyIconProps, "color"> {
     icon: IconifyIconProps["icon"];

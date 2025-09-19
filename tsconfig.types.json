@@ -11,7 +11,12 @@
     "noEmit": false,
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": false,
-    "module": "ESNext"
+    "module": "ESNext",
+
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "include": ["src/**/*"],
   "exclude": ["**/*.stories.tsx", "**/*.test.tsx", "**/*.spec.tsx", "node_modules", "dist"]

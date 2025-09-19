@@ -1,4 +1,4 @@
-import type { SemanticColorName } from "@/utils";
+import type { SemanticColorName } from "../../utils";
 export declare const TypographyTitleTagMap: {
     readonly h1: "h1";
     readonly h2: "h2";

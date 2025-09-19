@@ -1,4 +1,4 @@
-import type { SemanticColorName } from "@/utils";
+import type { SemanticColorName } from "../../utils";
 import type { ButtonsIconProps } from "../Button/index.types";
 import type { IconProps } from "../Icon";
 export declare const MenuListTagMap: {

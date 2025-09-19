@@ -60,7 +60,7 @@
     "dev": "storybook dev --port 5100",
     "build": "npm run clean-dist && npm run build:libs && npm run build:types && npm run build:storybook",
     "build:storybook": "storybook build",
-    "build:types": "tsc -p tsconfig.types.json",
+    "build:types": "tsc -p tsconfig.types.json && tsc-alias -p tsconfig.types.json",
     "build:libs": "vite build",
     "prepare": "husky",
     "check:packages": "npx depcheck",
@@ -89,10 +89,10 @@
   },
   "peerDependencies": {
     "@iconify/react": "^5.2.1",
+    "clsx": "^2.1.1",
     "motion": "^12.23.6",
     "react": ">=18.0.0",
     "react-dom": ">=18.0.0",
-    "clsx": "^2.1.1",
     "sonner": "^2.0.6"
   },
   "devDependencies": {
@@ -131,6 +131,7 @@
     "stylelint": "^16.17.0",
     "stylelint-config-standard": "^37.0.0",
     "stylelint-config-standard-scss": "^14.0.0",
+    "tsc-alias": "^1.8.16",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.24.1",
     "vite": "^6.2.0"

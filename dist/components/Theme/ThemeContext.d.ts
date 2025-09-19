@@ -1,5 +1,5 @@
 import React from "react";
-import type { ThemeMode } from "@/utils";
+import type { ThemeMode } from "../../utils";
 export interface ThemeModeContextType {
     themeMode: ThemeMode;
     setThemeMode: (themeMode: ThemeMode) => void;

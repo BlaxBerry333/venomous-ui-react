@@ -1,4 +1,4 @@
-import type { SemanticColorName } from "@/utils";
+import type { SemanticColorName } from "../../utils";
 import type { IconProps } from "../Icon";
 export declare const ButtonVariantMap: {
     readonly contained: "contained";
