@@ -86,7 +86,6 @@ const Tab = React.memo<TabProps>(
       >
         {/* Tab导航栏 */}
         <Space.Flex
-          row
           className={clsx("Venomous-UI-React--Tabs.ItemContainer")}
           style={{
             position: "relative",

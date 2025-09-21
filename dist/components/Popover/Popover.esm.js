@@ -1,15 +1,16 @@
-import { jsxs as L, jsx as u } from "react/jsx-runtime";
+import { jsxs as N, jsx as d } from "react/jsx-runtime";
 import h from "clsx";
-import { AnimatePresence as N, motion as O } from "framer-motion";
-import m from "react";
+import { AnimatePresence as O, motion as W } from "framer-motion";
+import c from "react";
 import "../Button/ButtonsIcon.esm.js";
 import "../Button/Button.esm.js";
 import "../Card/CardsBook.esm.js";
 import "../Card/CardsProduct.esm.js";
 import "../Card/CardsTitleBlock.esm.js";
-import W from "../Card/Card.esm.js";
+import C from "../Card/Card.esm.js";
 import "../Chip/Chip.esm.js";
 import "../Container/Container.esm.js";
+import "../Divider/Divider.esm.js";
 import "../Drawer/Drawer.esm.js";
 import "../Form/FormFieldCheckbox.esm.js";
 import "../Form/FormFieldNumber.esm.js";
@@ -59,33 +60,34 @@ import "../Typography/TypographyCode.esm.js";
 import "../Typography/TypographyParagraph.esm.js";
 import "../Typography/TypographyText.esm.js";
 import "../Typography/TypographyTitle.esm.js";
-import C from "../../hooks/useHandler/index.esm.js";
-const M = m.memo(
+import M from "../../hooks/useHandler/index.esm.js";
+const U = c.memo(
   ({
-    children: y,
-    style: b,
+    children: b,
+    style: g,
     contentStyle: k,
-    direction: g = "bottom",
+    triggerStyle: x,
+    direction: w = "bottom",
     alignment: i = "center",
-    renderTrigger: x,
-    trigger: c = "click",
+    renderTrigger: P,
+    trigger: m = "click",
     onClickOutside: v
   }) => {
-    const e = C(), R = m.useRef(null), d = m.useRef(null), l = m.useRef(null), [w, P] = m.useState({ top: 0, left: 0 });
-    m.useEffect(() => {
-      if (c !== "click") return;
+    const e = M(), R = c.useRef(null), u = c.useRef(null), l = c.useRef(null), [y, E] = c.useState({ top: 0, left: 0 });
+    c.useEffect(() => {
+      if (m !== "click") return;
       const a = (t) => {
         var p;
-        l.current && !l.current.contains(t.target) && !((p = d.current) != null && p.contains(t.target)) && (e.close(), v && v());
+        l.current && !l.current.contains(t.target) && !((p = u.current) != null && p.contains(t.target)) && (e.close(), v && v());
       };
       return e.isOpen && document.addEventListener("mousedown", a), () => {
         document.removeEventListener("mousedown", a);
       };
-    }, [e, c, v]), m.useEffect(() => {
-      if (e.isOpen && R.current && d.current && l.current) {
-        const a = R.current.getBoundingClientRect(), t = d.current.getBoundingClientRect(), p = l.current.offsetWidth, f = l.current.offsetHeight, s = t.top - a.top, n = t.left - a.left;
+    }, [e, m, v]), c.useEffect(() => {
+      if (e.isOpen && R.current && u.current && l.current) {
+        const a = R.current.getBoundingClientRect(), t = u.current.getBoundingClientRect(), p = l.current.offsetWidth, f = l.current.offsetHeight, s = t.top - a.top, n = t.left - a.left;
         let o, r;
-        switch (g) {
+        switch (w) {
           case "top":
             o = s - f, i === "start" ? r = n : i === "end" ? r = n + t.width - p : r = n + t.width / 2 - p / 2;
             break;
@@ -101,43 +103,46 @@ const M = m.memo(
           default:
             o = s + t.height, r = n + t.width / 2 - p / 2;
         }
-        P({ top: o, left: r });
+        E({ top: o, left: r });
       }
-    }, [e.isOpen, g, i]);
-    const E = () => {
-      c === "hover" && e.open();
-    }, I = () => {
-      c === "hover" && e.close();
+    }, [e.isOpen, w, i]);
+    const I = () => {
+      m === "hover" && e.open();
+    }, L = () => {
+      m === "hover" && e.close();
     };
-    return /* @__PURE__ */ L(
+    return /* @__PURE__ */ N(
       "div",
       {
         ref: R,
         className: h("Venomous-UI-React--Popover.TriggerWrapper"),
-        style: { display: "inline-block", position: "relative", ...b },
-        ...c === "hover" ? {
-          onMouseEnter: E,
-          onMouseLeave: I
+        style: { display: "inline-block", position: "relative", ...g },
+        ...m === "hover" ? {
+          onMouseEnter: I,
+          onMouseLeave: L
         } : {},
         children: [
-          /* @__PURE__ */ u(
+          /* @__PURE__ */ d(
             "div",
             {
-              ref: d,
-              style: { display: "inline-block", width: "100%" },
+              ref: u,
               className: h("Venomous-UI-React--Popover.Trigger"),
-              ...c === "click" ? {
-                onClick: e.toggle
-              } : {},
-              children: x({
+              style: {
+                display: "inline-block",
+                width: "100%",
+                cursor: m === "click" ? "pointer" : "auto",
+                ...x
+              },
+              ...m === "click" ? { onClick: e.toggle } : {},
+              children: P({
                 isOpen: e.isOpen,
                 close: e.close,
                 toggle: e.toggle
               })
             }
           ),
-          /* @__PURE__ */ u(N, { children: e.isOpen && /* @__PURE__ */ u(
-            O.div,
+          /* @__PURE__ */ d(O, { children: e.isOpen && /* @__PURE__ */ d(
+            W.div,
             {
               ref: l,
               initial: { opacity: 0, y: 0 },
@@ -148,16 +153,16 @@ const M = m.memo(
               style: {
                 boxSizing: "border-box",
                 position: "absolute",
-                top: w.top,
-                left: w.left,
+                top: y.top,
+                left: y.left,
                 zIndex: 1e3
               },
-              children: /* @__PURE__ */ u(
-                W,
+              children: /* @__PURE__ */ d(
+                C,
                 {
                   className: h("Venomous-UI-React--Popover.Content"),
                   style: { width: "100%", padding: "8px", ...k },
-                  children: y
+                  children: b
                 }
               )
             }
@@ -167,7 +172,7 @@ const M = m.memo(
     );
   }
 );
-M.displayName = "Popover";
+U.displayName = "Popover";
 export {
-  M as default
+  U as default
 };

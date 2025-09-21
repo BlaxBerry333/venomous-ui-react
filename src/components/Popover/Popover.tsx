@@ -18,6 +18,7 @@ const Popover = React.memo<PopoverProps>(
     children,
     style,
     contentStyle,
+    triggerStyle,
     direction = "bottom",
     alignment = "center",
     renderTrigger,
@@ -145,13 +146,14 @@ const Popover = React.memo<PopoverProps>(
       >
         <div
           ref={triggerRef}
-          style={{ display: "inline-block", width: "100%" }}
           className={clsx("Venomous-UI-React--Popover.Trigger")}
-          {...(trigger === "click"
-            ? {
-                onClick: handler.toggle,
-              }
-            : {})}
+          style={{
+            display: "inline-block",
+            width: "100%",
+            cursor: trigger === "click" ? "pointer" : "auto",
+            ...triggerStyle,
+          }}
+          {...(trigger === "click" ? { onClick: handler.toggle } : {})}
         >
           {renderTrigger({
             isOpen: handler.isOpen,

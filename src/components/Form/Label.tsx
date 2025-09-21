@@ -40,7 +40,7 @@ const Label = React.memo<LabelProps>(
         {...props}
       >
         {/* required star + label */}
-        <Space.Flex row gap={0} style={{ width: "100%", alignItems: "center" }}>
+        <Space.Flex gap={0} style={{ width: "100%", alignItems: "center" }}>
           {/* required star */}
           {required && (
             <Typography.Text as="small" text="*" style={{ color: SEMANTIC_COLORS.error, marginRight: "2px" }} />

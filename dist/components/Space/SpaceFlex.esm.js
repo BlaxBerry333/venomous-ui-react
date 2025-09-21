@@ -1,28 +1,28 @@
-import { jsx as x } from "react/jsx-runtime";
-import c from "react";
-import s from "clsx";
-const f = c.forwardRef(
-  ({ children: a, className: i, style: r, row: o = !0, column: t = !1, gap: e = "8px", ...l }, m) => /* @__PURE__ */ x(
+import { jsx as m } from "react/jsx-runtime";
+import s from "react";
+import x from "clsx";
+const c = s.forwardRef(
+  ({ children: a, className: i, style: r, column: o = !1, gap: e = 0, ...t }, l) => /* @__PURE__ */ m(
     "div",
     {
-      ref: m,
-      className: s("Venomous-UI-React--Space.Flex", i),
+      ref: l,
+      className: x("Venomous-UI-React--Space.Flex", i),
       style: {
         boxSizing: "border-box",
         display: "flex",
         width: "100%",
-        flexDirection: t ? "column" : "row",
+        flexDirection: o ? "column" : "row",
         alignItems: o ? "flex-start" : r == null ? void 0 : r.alignItems,
         ...Array.isArray(e) ? { rowGap: e[0], columnGap: e[1] } : { gap: e },
         position: "relative",
         ...r
       },
-      ...l,
+      ...t,
       children: a
     }
   )
 );
-f.displayName = "Space.Flex";
+c.displayName = "Space.Flex";
 export {
-  f as default
+  c as default
 };

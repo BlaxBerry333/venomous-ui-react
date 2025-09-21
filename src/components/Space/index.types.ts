@@ -6,7 +6,6 @@ export interface SpaceGridProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export interface SpaceFlexProps extends React.HTMLAttributes<HTMLDivElement> {
-  row?: boolean;
   column?: boolean;
   gap?: number | [number, number];
 }

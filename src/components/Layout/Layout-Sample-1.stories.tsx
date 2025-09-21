@@ -26,7 +26,7 @@ export const Sample: Story = {
         <Layout.Header>
           <div style={{ height: "100%", backgroundColor: "skyblue" }} />
         </Layout.Header>
-        <Space.Flex row gap={0}>
+        <Space.Flex gap={0}>
           <Layout.Side>
             <div style={{ height: "200vh", backgroundColor: "crimson" }} />
           </Layout.Side>

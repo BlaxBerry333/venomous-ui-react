@@ -11,11 +11,11 @@ import E from "./MenuList.esm.js";
 const F = o.memo(
   ({
     as: n = B.li,
-    className: x,
+    className: C,
     style: r,
-    icon: C,
-    text: I,
-    subText: M,
+    icon: I,
+    text: M,
+    subText: w,
     isDisabled: i = !1,
     isActive: y = !1,
     isCollapsed: a = !1,
@@ -37,7 +37,7 @@ const F = o.memo(
         h,
         {
           as: n,
-          className: L("Venomous-UI-React--Menu.CollapseItem", x),
+          className: L("Venomous-UI-React--Menu.CollapseItem", C),
           style: {
             padding: "8px",
             ...k ? {
@@ -47,9 +47,9 @@ const F = o.memo(
             } : { outline: "none" },
             ...r
           },
-          icon: C,
-          text: I,
-          subText: M,
+          icon: I,
+          text: M,
+          subText: w,
           isDisabled: i,
           isActive: y || p !== null,
           onClick: O,
@@ -60,8 +60,8 @@ const F = o.memo(
           ...S
         }
       ),
-      /* @__PURE__ */ t(A.Collapse, { isOpen: e.isOpen, children: /* @__PURE__ */ t(E, { style: { width: r == null ? void 0 : r.width, padding: "4px 2px 4px 24px" }, children: b.map(({ style: l, onClick: u, ...s }) => /* @__PURE__ */ d(v.Flex, { row: !0, gap: 0, style: { width: "100%" }, children: [
-        /* @__PURE__ */ t(w, { color: c }),
+      /* @__PURE__ */ t(A.Collapse, { isOpen: e.isOpen, children: /* @__PURE__ */ t(E, { style: { width: r == null ? void 0 : r.width, padding: "4px 2px 4px 24px" }, children: b.map(({ style: l, onClick: u, ...s }) => /* @__PURE__ */ d(v.Flex, { gap: 0, style: { width: "100%" }, children: [
+        /* @__PURE__ */ t(x, { color: c }),
         /* @__PURE__ */ t(
           h,
           {
@@ -83,7 +83,7 @@ const F = o.memo(
   }
 );
 F.displayName = "Menu.CollapseItem";
-const w = o.memo(({ color: n }) => /* @__PURE__ */ d(g, { children: [
+const x = o.memo(({ color: n }) => /* @__PURE__ */ d(g, { children: [
   /* @__PURE__ */ t(
     "i",
     {
@@ -114,7 +114,7 @@ const w = o.memo(({ color: n }) => /* @__PURE__ */ d(g, { children: [
     }
   )
 ] }));
-w.displayName = "Menu.CollapseItemTreeLine";
+x.displayName = "Menu.CollapseItemTreeLine";
 export {
   F as default
 };

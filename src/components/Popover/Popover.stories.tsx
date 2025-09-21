@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Button } from "../Button";
+import { Typography } from "../Typography";
 import Popover from "./Popover";
 
 const meta = {
@@ -45,12 +45,17 @@ const meta = {
       },
     },
     style: {
-      description: "The style of the popover ( trigger )",
+      description: "The style of the popover ( wrapper )",
       control: false,
       table: { type: { summary: "React.CSSProperties" } },
     },
     contentStyle: {
       description: "The style of the popover ( content )",
+      control: false,
+      table: { type: { summary: "React.CSSProperties" } },
+    },
+    triggerStyle: {
+      description: "The style of the trigger ( trigger )",
       control: false,
       table: { type: { summary: "React.CSSProperties" } },
     },
@@ -78,7 +83,7 @@ export const Default: Story = {
   name: "Default",
   render: function RenderStory(args) {
     return (
-      <Popover {...args} renderTrigger={() => <Button text="Open" />}>
+      <Popover {...args} renderTrigger={() => <Typography.Text text="PopoverTrigger" />}>
         <div style={{ width: "200px", height: "100px", backgroundColor: "pink" }} />
         <div style={{ width: "200px", height: "100px", backgroundColor: "skyblue" }} />
       </Popover>

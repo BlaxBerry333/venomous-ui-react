@@ -13,29 +13,21 @@ const meta = {
       control: false,
       table: { type: { summary: "React.ReactNode" } },
     },
-    row: {
-      description: "Whether the flex container is a row flex container",
-      if: { arg: "column", neq: true },
-      control: { type: "boolean" },
-      table: { type: { summary: "boolean" }, defaultValue: { summary: "true" } },
-    },
     column: {
       description: "Whether the flex container is a column flex container",
-      if: { arg: "row", neq: true },
       control: { type: "boolean" },
       table: { type: { summary: "boolean" }, defaultValue: { summary: "false" } },
     },
     gap: {
       description: "The gap between the flex items",
       control: { type: "number", min: 0 },
-      table: { type: { summary: "number | [number, number]" }, defaultValue: { summary: "8" } },
+      table: { type: { summary: "number | [number, number]" }, defaultValue: { summary: "0" } },
     },
   },
   args: {
     children: null,
-    row: true,
     column: false,
-    gap: 8,
+    gap: 0,
   },
 } satisfies Meta<typeof Space.Flex>;
 

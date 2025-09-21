@@ -28,7 +28,7 @@ export const LayoutSample1: Story = {
         <Layout.Header>
           <div style={{ height: "100%", backgroundColor: "skyblue" }} />
         </Layout.Header>
-        <Space.Flex row gap={0}>
+        <Space.Flex gap={0}>
           <Layout.Side>
             <div style={{ height: "200vh", backgroundColor: "crimson" }} />
           </Layout.Side>
@@ -79,7 +79,7 @@ export const LayoutSample3: Story = {
           <div style={{ height: "100%", backgroundColor: "skyblue" }} />
         </Layout.Header>
 
-        <Space.Flex row gap={0}>
+        <Space.Flex gap={0}>
           <Layout.CollapseSide
             collapsedSideWidth={60}
             renderContent={() => <div style={{ height: "200vh", backgroundColor: "crimson" }} />}

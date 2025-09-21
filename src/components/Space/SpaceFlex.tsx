@@ -6,7 +6,7 @@ import clsx from "clsx";
 import type { SpaceFlexProps } from "./index.types";
 
 const SpaceFlex = React.forwardRef<HTMLDivElement, SpaceFlexProps>(
-  ({ children, className, style, row = true, column = false, gap = "8px", ...props }, ref) => {
+  ({ children, className, style, column = false, gap = 0, ...props }, ref) => {
     return (
       <div
         ref={ref}
@@ -15,8 +15,8 @@ const SpaceFlex = React.forwardRef<HTMLDivElement, SpaceFlexProps>(
           boxSizing: "border-box",
           display: "flex",
           width: "100%",
-          flexDirection: column ? "column" : row ? "row" : "row",
-          alignItems: row ? "flex-start" : style?.alignItems,
+          flexDirection: column ? "column" : "row",
+          alignItems: column ? "flex-start" : style?.alignItems,
           ...(Array.isArray(gap) ? { rowGap: gap[0], columnGap: gap[1] } : { gap }),
           position: "relative",
           ...style,

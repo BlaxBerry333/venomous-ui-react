@@ -1,37 +1,36 @@
-import { jsx as h, jsxs as n } from "react/jsx-runtime";
+import { jsx as h, jsxs as f } from "react/jsx-runtime";
 import k from "clsx";
 import o from "react";
-import R from "../../hooks/useDesign/index.esm.js";
+import O from "../../hooks/useDesign/index.esm.js";
 import v from "../../hooks/useElementHover/index.esm.js";
-import { SEMANTIC_COLORS as E } from "../../utils/design/colors.esm.js";
+import "../../utils/design/colors.esm.js";
 import "../../utils/design/Shadow.esm.js";
 import "../../utils/design/ThemeBreakpoint.esm.js";
 import "../../utils/design/TypographySize.esm.js";
-import { getOpacityHex as L } from "../../utils/tools/get-colors.esm.js";
-import { Buttons as N } from "../Button/index.esm.js";
+import { getOpacityHex as R } from "../../utils/tools/get-colors.esm.js";
+import { Buttons as E } from "../Button/index.esm.js";
 import U from "../Icon/Icon.esm.js";
-import { Space as y } from "../Space/index.esm.js";
+import { Space as g } from "../Space/index.esm.js";
 import { Theme as j } from "../Theme/index.esm.js";
-import { Typography as u } from "../Typography/index.esm.js";
+import { Typography as y } from "../Typography/index.esm.js";
 import { MenuItemTagMap as F } from "./index.types.esm.js";
-const W = o.memo(
+const L = o.memo(
   ({
-    as: M = F.li,
-    className: s,
-    style: w,
+    as: s = F.li,
+    className: u,
+    style: M,
     icon: m,
-    iconStyle: S,
-    text: c,
-    subText: d,
+    iconStyle: c,
+    text: w,
+    subText: n,
     isDisabled: r = !1,
-    isActive: t = !1,
+    isActive: i = !1,
     actionButtonProps: e = void 0,
-    semanticColor: i,
-    ...x
+    ...t
   }) => {
-    const { themeColor: f } = j.useThemeColor(), l = R(), T = o.useMemo(() => t ? L(f, 0.1) : "transparent", [r, t, l]), g = o.useMemo(() => r ? l.TextColors.disabled : t ? f : i ? E[i] : l.TextColors.primary, [r, t, l, f, i]), { handleMouseDown: C, handleMouseUp: I, handleMouseLeave: p } = v({
+    const { themeColor: x } = j.useThemeColor(), l = O(), C = o.useMemo(() => i ? R(x, 0.1) : "transparent", [r, i, l]), d = o.useMemo(() => r ? l.TextColors.disabled : i ? x : l.TextColors.primary, [r, i, l, x]), { handleMouseDown: S, handleMouseUp: T, handleMouseLeave: p } = v({
       isDisabled: r
-    }), O = o.useCallback(
+    }), I = o.useCallback(
       (a) => {
         r || (a.currentTarget.style.boxShadow = l.Shadows.tertiary);
       },
@@ -43,30 +42,30 @@ const W = o.memo(
       [r]
     );
     return /* @__PURE__ */ h(
-      M,
+      s,
       {
-        className: k("Venomous-UI-React--Menu.Item", s),
+        className: k("Venomous-UI-React--Menu.Item", u),
         style: {
           boxSizing: "border-box",
           listStyle: "none",
           WebkitTapHighlightColor: "transparent",
           minHeight: "40px",
           margin: 0,
-          padding: "8px",
+          padding: "0 8px",
           paddingRight: e != null && e.icon ? "0px" : "8px",
           borderRadius: "8px",
-          cursor: r ? "not-allowed" : x != null && x.onClick ? "pointer" : "default",
-          backgroundColor: T,
-          // transition: "box-shadow 0.2s ease-in-out",
-          ...w
+          cursor: r ? "not-allowed" : t != null && t.onClick ? "pointer" : "default",
+          backgroundColor: C,
+          color: d,
+          ...M
         },
-        onMouseDown: C,
-        onMouseUp: I,
+        onMouseDown: S,
+        onMouseUp: T,
         onMouseLeave: p,
-        onMouseOver: O,
+        onMouseOver: I,
         onMouseOut: H,
-        ...x,
-        children: /* @__PURE__ */ n(y.Flex, { row: !0, style: { minHeight: "40px", height: "100%", alignItems: "center", color: g }, children: [
+        ...t,
+        children: /* @__PURE__ */ f(g.Flex, { style: { minHeight: "40px", height: "100%", alignItems: "center", color: "inherit" }, children: [
           m && /* @__PURE__ */ h(
             U,
             {
@@ -74,12 +73,12 @@ const W = o.memo(
               width: 24,
               style: {
                 color: "inherit",
-                ...S
+                ...c
               }
             }
           ),
-          /* @__PURE__ */ n(
-            y.Flex,
+          /* @__PURE__ */ f(
+            g.Flex,
             {
               column: !0,
               gap: 0,
@@ -90,10 +89,10 @@ const W = o.memo(
               },
               children: [
                 /* @__PURE__ */ h(
-                  u.Text,
+                  y.Text,
                   {
                     as: "strong",
-                    text: c,
+                    text: w,
                     isEllipsis: !0,
                     style: {
                       width: "100%",
@@ -102,11 +101,11 @@ const W = o.memo(
                     }
                   }
                 ),
-                d && /* @__PURE__ */ h(
-                  u.Text,
+                n && /* @__PURE__ */ h(
+                  y.Text,
                   {
                     as: "small",
-                    text: d,
+                    text: n,
                     isEllipsis: !0,
                     style: {
                       width: "100%",
@@ -118,7 +117,7 @@ const W = o.memo(
             }
           ),
           !!(e != null && e.icon) && /* @__PURE__ */ h(
-            N.Icon,
+            E.Icon,
             {
               variant: "transparent",
               isDisabled: r,
@@ -129,7 +128,7 @@ const W = o.memo(
                 ...e.style
               },
               iconStyle: {
-                color: g,
+                color: d,
                 ...e.iconStyle
               },
               ...e
@@ -140,7 +139,7 @@ const W = o.memo(
     );
   }
 );
-W.displayName = "Menu.Item";
+L.displayName = "Menu.Item";
 export {
-  W as default
+  L as default
 };

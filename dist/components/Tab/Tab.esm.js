@@ -60,7 +60,6 @@ const v = t.memo(
           /* @__PURE__ */ x(
             h.Flex,
             {
-              row: !0,
               className: l("Venomous-UI-React--Tabs.ItemContainer"),
               style: {
                 position: "relative",

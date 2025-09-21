@@ -39,7 +39,7 @@ const I = h.memo(
         },
         ...x,
         children: [
-          /* @__PURE__ */ o(b.Flex, { row: !0, gap: 0, style: { width: "100%", alignItems: "center" }, children: [
+          /* @__PURE__ */ o(b.Flex, { gap: 0, style: { width: "100%", alignItems: "center" }, children: [
             r && /* @__PURE__ */ l(a.Text, { as: "small", text: "*", style: { color: m.error, marginRight: "2px" } }),
             /* @__PURE__ */ l(
               a.Text,

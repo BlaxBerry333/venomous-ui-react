@@ -4,7 +4,7 @@ import clsx from "clsx";
 import React from "react";
 
 import { useDesign, useElementHover } from "@/hooks";
-import { getOpacityHex, SEMANTIC_COLORS } from "@/utils";
+import { getOpacityHex } from "@/utils";
 import { Buttons } from "../Button";
 import { Icon } from "../Icon";
 import { Space } from "../Space";
@@ -24,7 +24,6 @@ const MenuItem = React.memo<MenuItemProps>(
     isDisabled = false,
     isActive = false,
     actionButtonProps = undefined,
-    semanticColor,
     ...props
   }) => {
     const { themeColor } = Theme.useThemeColor();
@@ -38,9 +37,8 @@ const MenuItem = React.memo<MenuItemProps>(
     const textColor = React.useMemo<Exclude<React.CSSProperties["color"], undefined>>(() => {
       if (isDisabled) return design.TextColors.disabled;
       if (isActive) return themeColor;
-      if (semanticColor) return SEMANTIC_COLORS[semanticColor];
       return design.TextColors.primary;
-    }, [isDisabled, isActive, design, themeColor, semanticColor]);
+    }, [isDisabled, isActive, design, themeColor]);
 
     const { handleMouseDown, handleMouseUp, handleMouseLeave } = useElementHover<HTMLLIElement>({
       isDisabled,
@@ -69,12 +67,12 @@ const MenuItem = React.memo<MenuItemProps>(
           WebkitTapHighlightColor: "transparent",
           minHeight: "40px",
           margin: 0,
-          padding: "8px",
+          padding: "0 8px",
           paddingRight: actionButtonProps?.icon ? "0px" : "8px",
           borderRadius: "8px",
           cursor: isDisabled ? "not-allowed" : props?.onClick ? "pointer" : "default",
           backgroundColor,
-          // transition: "box-shadow 0.2s ease-in-out",
+          color: textColor,
           ...style,
         }}
         onMouseDown={handleMouseDown}
@@ -84,7 +82,7 @@ const MenuItem = React.memo<MenuItemProps>(
         onMouseOut={handleMouseOutStyles}
         {...props}
       >
-        <Space.Flex row style={{ minHeight: "40px", height: "100%", alignItems: "center", color: textColor }}>
+        <Space.Flex style={{ minHeight: "40px", height: "100%", alignItems: "center", color: "inherit" }}>
           {/* start icon */}
           {icon && (
             <Icon

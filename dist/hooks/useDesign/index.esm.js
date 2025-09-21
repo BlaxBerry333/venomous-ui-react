@@ -7,6 +7,7 @@ import "../../components/Card/CardsTitleBlock.esm.js";
 import "../../components/Card/Card.esm.js";
 import "../../components/Chip/Chip.esm.js";
 import "../../components/Container/Container.esm.js";
+import "../../components/Divider/Divider.esm.js";
 import "../../components/Drawer/Drawer.esm.js";
 import "../../components/Form/FormFieldCheckbox.esm.js";
 import "../../components/Form/FormFieldNumber.esm.js";
@@ -54,7 +55,7 @@ import "../../components/Typography/TypographyCode.esm.js";
 import "../../components/Typography/TypographyParagraph.esm.js";
 import "../../components/Typography/TypographyText.esm.js";
 import "../../components/Typography/TypographyTitle.esm.js";
-function Ro() {
+function fo() {
   const { themeMode: o } = s.useThemeMode();
   return r.useMemo(
     () => ({
@@ -68,5 +69,5 @@ function Ro() {
   );
 }
 export {
-  Ro as default
+  fo as default
 };

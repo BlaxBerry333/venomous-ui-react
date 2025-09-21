@@ -207,7 +207,6 @@ const CustomSelect = React.memo<
       renderTrigger={() => (
         <Space.Flex
           ref={triggerRef}
-          row
           onClick={() => {
             setIsOpen(true);
             setIsFocused(true);

@@ -11,7 +11,7 @@ const meta = {
   parameters: { layout: "centered" },
   decorators: [
     (Story) => (
-      <Space.Flex row style={{ width: "300px" }}>
+      <Space.Flex style={{ width: "300px" }}>
         <Story />
       </Space.Flex>
     ),
@@ -72,7 +72,7 @@ export const Default: Story = {
         <FormField.Text name="d" label="D" required />
         <FormField.Text name="e" label="E" helpText="Something went wrong, please try again" />
         <FormField.Text name="f" label="F" disabled value="Disabled" />
-        <Space.Flex row>
+        <Space.Flex>
           <Button type="submit" text="Submit" />
           <Button type="reset" text="Reset" />
         </Space.Flex>

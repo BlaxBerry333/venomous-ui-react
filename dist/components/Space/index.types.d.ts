@@ -4,7 +4,6 @@ export interface SpaceGridProps extends React.HTMLAttributes<HTMLDivElement> {
     spacing?: number | Partial<Record<BreakPointName, number>>;
 }
 export interface SpaceFlexProps extends React.HTMLAttributes<HTMLDivElement> {
-    row?: boolean;
     column?: boolean;
     gap?: number | [number, number];
 }

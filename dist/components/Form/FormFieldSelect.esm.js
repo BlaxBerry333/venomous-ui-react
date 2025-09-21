@@ -9,6 +9,7 @@ import "../Card/CardsTitleBlock.esm.js";
 import "../Card/Card.esm.js";
 import "../Chip/Chip.esm.js";
 import "../Container/Container.esm.js";
+import "../Divider/Divider.esm.js";
 import "../Drawer/Drawer.esm.js";
 import "./FormFieldCheckbox.esm.js";
 import "./FormFieldNumber.esm.js";
@@ -57,12 +58,12 @@ import { useFormFieldStyle as I } from "./_useFormFieldStyle.esm.js";
 import L from "./FormField.esm.js";
 const j = e.memo(
   ({
-    isOriginalSelect: n = !1,
+    isOriginalSelect: d = !1,
     fullWidth: i,
     required: S = !1,
     isError: o = !1,
     disabled: m = !1,
-    label: p,
+    label: n,
     helpText: r,
     ...h
   }) => {
@@ -75,7 +76,7 @@ const j = e.memo(
     return /* @__PURE__ */ E(
       L,
       {
-        label: p,
+        label: n,
         required: S,
         isDisabled: m,
         isError: o,
@@ -83,7 +84,7 @@ const j = e.memo(
         fullWidth: i,
         helpText: r,
         children: [
-          n && /* @__PURE__ */ s(
+          d && /* @__PURE__ */ s(
             k,
             {
               commonStyles: l,
@@ -93,7 +94,7 @@ const j = e.memo(
               ...h
             }
           ),
-          !n && /* @__PURE__ */ s(O, { commonStyles: l, setIsFocused: a, disabled: m, ...h })
+          !d && /* @__PURE__ */ s(O, { commonStyles: l, setIsFocused: a, disabled: m, ...h })
         ]
       }
     );
@@ -102,12 +103,12 @@ const j = e.memo(
 j.displayName = "FormField.Select";
 const k = e.memo(
   ({
-    commonStyles: n,
+    commonStyles: d,
     handleFocus: i,
     handleBlur: S,
     name: o,
     autoComplete: m = "off",
-    options: p,
+    options: n,
     onChange: r,
     value: h,
     disabled: c,
@@ -127,60 +128,60 @@ const k = e.memo(
       className: R("Venomous-UI-React--FormField.Select", a),
       style: {
         boxSizing: "border-box",
-        ...n,
+        ...d,
         ...u
       },
       ...f,
-      children: p.map((l) => /* @__PURE__ */ s("option", { value: l.value, disabled: l.disabled, children: l.label }, l.value))
+      children: n.map((l) => /* @__PURE__ */ s("option", { value: l.value, disabled: l.disabled, children: l.label }, l.value))
     }
   )
-), O = e.memo(({ commonStyles: n, setIsFocused: i, disabled: S, name: o, value: m, options: p, onChange: r, className: h, style: c }) => {
-  const [a, u] = e.useState(m || null), [f, l] = e.useState(!1), g = e.useRef(null), [F, w] = e.useState(0);
+), O = e.memo(({ commonStyles: d, setIsFocused: i, disabled: S, name: o, value: m, options: n, onChange: r, className: h, style: c }) => {
+  const [a, u] = e.useState(m || null), [f, l] = e.useState(!1), g = e.useRef(null), [F, v] = e.useState(0);
   e.useEffect(() => {
     u(m || null);
   }, [m]), e.useEffect(() => {
     if (g.current) {
       const t = () => {
         var b;
-        const d = (b = g.current) == null ? void 0 : b.getBoundingClientRect();
-        d && w(d.width);
+        const p = (b = g.current) == null ? void 0 : b.getBoundingClientRect();
+        p && v(p.width);
       };
       return t(), window.addEventListener("resize", t), () => window.removeEventListener("resize", t);
     }
   }, []), e.useEffect(() => {
     if (f && g.current) {
       const t = g.current.getBoundingClientRect();
-      t && t.width !== F && w(t.width);
+      t && t.width !== F && v(t.width);
     }
   }, [f, F]);
   const T = e.useCallback(
     (t) => {
       u(t), l(!1), i(!1);
-      const d = {
+      const p = {
         target: { name: o, value: t },
         currentTarget: { name: o, value: t }
       };
-      r == null || r(d);
+      r == null || r(p);
     },
     [o, r, i]
   ), N = e.useCallback(
     (t) => {
       t.stopPropagation(), u(null), i(!1);
-      const d = {
+      const p = {
         target: { name: o, value: "" },
         currentTarget: { name: o, value: "" }
       };
-      r == null || r(d);
+      r == null || r(p);
     },
     [o, r, i]
   ), P = e.useMemo(
     () => {
       var t;
-      return ((t = p.find((d) => d.value === a)) == null ? void 0 : t.label) || "";
+      return ((t = n.find((p) => p.value === a)) == null ? void 0 : t.label) || "";
     },
-    [p, a]
+    [n, a]
     // 添加 options 依赖
-  ), v = F || (c == null ? void 0 : c.width);
+  ), w = F || (c == null ? void 0 : c.width);
   return /* @__PURE__ */ s(
     B,
     {
@@ -192,21 +193,20 @@ const k = e.memo(
         l(!1), i(!1);
       },
       contentStyle: {
-        width: v
+        width: w
       },
       renderTrigger: () => /* @__PURE__ */ E(
         W.Flex,
         {
           ref: g,
-          row: !0,
           onClick: () => {
             l(!0), i(!0);
           },
           style: {
-            ...n,
-            height: n.minHeight,
+            ...d,
+            height: d.minHeight,
             width: "100%",
-            maxWidth: v,
+            maxWidth: w,
             display: "flex",
             alignItems: "center"
           },
@@ -238,7 +238,7 @@ const k = e.memo(
           ]
         }
       ),
-      children: /* @__PURE__ */ s(x.List, { as: "ul", className: R("Venomous-UI-React--FormField.Select", h), style: { width: "100%" }, children: p.map((t) => /* @__PURE__ */ s(
+      children: /* @__PURE__ */ s(x.List, { as: "ul", className: R("Venomous-UI-React--FormField.Select", h), style: { width: "100%" }, children: n.map((t) => /* @__PURE__ */ s(
         x.Item,
         {
           id: t.id,

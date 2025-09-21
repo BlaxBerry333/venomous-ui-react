@@ -12,7 +12,7 @@ const meta = {
   tags: ["!autodocs", "!dev"],
   decorators: [
     (Story) => (
-      <Space.Flex row style={{ padding: "16px" }}>
+      <Space.Flex style={{ padding: "16px" }}>
         <Story />
       </Space.Flex>
     ),

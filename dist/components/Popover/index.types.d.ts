@@ -8,6 +8,7 @@ export interface PopoverProps extends React.HTMLAttributes<HTMLDivElement> {
         toggle: VoidFunction;
     }) => React.ReactNode;
     contentStyle?: React.CSSProperties;
+    triggerStyle?: React.CSSProperties;
     onClickOutside?: () => void;
 }
 //# sourceMappingURL=index.types.d.ts.map

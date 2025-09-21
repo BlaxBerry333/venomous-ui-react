@@ -88,7 +88,7 @@ const MenuCollapseItem = React.memo<MenuCollapseItemProps>(
         <Transitions.Collapse isOpen={handler.isOpen}>
           <MenuList style={{ width: style?.width, padding: "4px 2px 4px 24px" }}>
             {subItems.map(({ style: subItemStyle, onClick: subItemOnClick, ...item }) => (
-              <Space.Flex key={item.id} row gap={0} style={{ width: "100%" }}>
+              <Space.Flex key={item.id} gap={0} style={{ width: "100%" }}>
                 <MenuCollapseItemTreeLine color={color} />
                 <MenuItem
                   isActive={selectedSubItemID === item.id}

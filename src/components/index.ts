@@ -2,6 +2,7 @@ export * from "./Button";
 export * from "./Card";
 export * from "./Chip";
 export * from "./Container";
+export * from "./Divider";
 export * from "./Drawer";
 export * from "./Form";
 export * from "./Icon";

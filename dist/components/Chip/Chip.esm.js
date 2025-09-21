@@ -16,7 +16,6 @@ const g = c.memo(
     return /* @__PURE__ */ n(
       x.Flex,
       {
-        row: !0,
         gap: 4,
         className: d("Venomous-UI-React--Chip", s),
         style: {

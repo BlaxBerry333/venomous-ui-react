@@ -1,0 +1,33 @@
+import { Meta, Canvas, Controls } from "@storybook/blocks";
+import * as Stories from "./Divider.stories";
+
+<Meta of={Stories} />
+
+# Divider
+
+<Canvas of={Stories.Default} />
+
+<Controls />
+
+## TroubleShotting
+
+<br />
+
+#### It is messy to use in flex layout of the `<Space.Flex>`
+
+```tsx
+// container is flex
+<Space.Flex>
+  <Typography.Text text="XXX" />
+  <Divider column />
+  <Typography.Text text="XXX" />
+</Space.Flex>
+
+
+// container is not flex
+<Space.Flex column>
+  <Typography.Text text="XXX" />
+  <Divider />
+  <Typography.Text text="XXX" />
+</Space.Flex>
+```

@@ -49,7 +49,7 @@ const ModalsConfirm = React.memo<ModalsConfirmProps>(
 
         <Typography.Paragraph style={{ padding: "8px 0 24px" }}>{description}</Typography.Paragraph>
 
-        <Space.Flex row gap={8} style={{ justifyContent: "flex-end" }}>
+        <Space.Flex gap={8} style={{ justifyContent: "flex-end" }}>
           <Button
             variant="outlined"
             text={cancelText}

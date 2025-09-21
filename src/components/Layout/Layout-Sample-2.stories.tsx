@@ -28,7 +28,7 @@ export const Sample: Story = {
           <div style={{ height: "100%", backgroundColor: "skyblue" }} />
         </Layout.Header>
 
-        <Space.Flex row gap={0}>
+        <Space.Flex gap={0}>
           <Layout.CollapseSide
             collapsedSideWidth={56}
             renderContent={(params) => (

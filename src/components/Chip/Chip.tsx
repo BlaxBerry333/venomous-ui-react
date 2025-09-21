@@ -18,7 +18,6 @@ const Chip = React.memo<ChipProps>(
 
     return (
       <Space.Flex
-        row
         gap={4}
         className={clsx("Venomous-UI-React--Chip", className)}
         style={{
