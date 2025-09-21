@@ -102,6 +102,7 @@ const MenuItem = React.memo<MenuItemProps>(
             style={{
               flex: 1,
               flexGrow: 1,
+              marginLeft: icon ? "8px" : "0px",
               maxWidth:
                 icon && !actionButtonProps?.icon
                   ? "calc(100% - 32px)"
@@ -118,7 +119,6 @@ const MenuItem = React.memo<MenuItemProps>(
               isEllipsis
               style={{
                 width: "100%",
-                lineHeight: "1rem",
                 color: "inherit",
               }}
             />

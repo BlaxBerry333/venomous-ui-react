@@ -29,7 +29,7 @@ export const Default: Story = {
   name: "Default",
   render: function RenderStory(args) {
     return (
-      <Space.Flex column={!args.column}>
+      <Space.Flex column={!args.column} style={{ height: "200px" }}>
         <Typography.Text text="Content above" />
         <Divider {...args} />
         <Typography.Text text="Content below" />

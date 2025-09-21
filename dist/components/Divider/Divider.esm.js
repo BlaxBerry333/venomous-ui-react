@@ -6,15 +6,14 @@ const l = o.memo(({ className: i, style: t, column: e = !1, ...s }) => {
   const r = a(), d = o.useMemo(() => e ? {
     border: "none",
     borderLeft: `1px solid ${r.BorderColors.tertiary}`,
-    margin: "0 16px",
+    margin: "0 8px",
     height: "100%",
-    minHeight: "20px",
     width: "1px",
     writingMode: "vertical-lr"
   } : {
     border: "none",
     borderTop: `1px solid ${r.BorderColors.tertiary}`,
-    margin: "16px 0",
+    margin: "8px 0",
     width: "100%"
   }, [e, r]);
   return /* @__PURE__ */ m(
