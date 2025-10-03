@@ -24,6 +24,7 @@ const MenuItem = React.memo<MenuItemProps>(
     isDisabled = false,
     isActive = false,
     actionButtonProps = undefined,
+    renderStartElement,
     ...props
   }) => {
     const { themeColor } = Theme.useThemeColor();
@@ -67,7 +68,7 @@ const MenuItem = React.memo<MenuItemProps>(
           WebkitTapHighlightColor: "transparent",
           minHeight: "40px",
           margin: 0,
-          padding: "0 8px",
+          padding: "4px 8px",
           paddingRight: actionButtonProps?.icon ? "0px" : "8px",
           borderRadius: "8px",
           cursor: isDisabled ? "not-allowed" : props?.onClick ? "pointer" : "default",
@@ -84,7 +85,7 @@ const MenuItem = React.memo<MenuItemProps>(
       >
         <Space.Flex style={{ minHeight: "40px", height: "100%", alignItems: "center", color: "inherit" }}>
           {/* start icon */}
-          {icon && (
+          {!renderStartElement && icon && (
             <Icon
               icon={icon}
               width={24}
@@ -95,6 +96,9 @@ const MenuItem = React.memo<MenuItemProps>(
             />
           )}
 
+          {/* start custom element */}
+          {renderStartElement && renderStartElement({ isDisabled, isActive })}
+
           {/* text */}
           <Space.Flex
             column
@@ -102,7 +106,7 @@ const MenuItem = React.memo<MenuItemProps>(
             style={{
               flex: 1,
               flexGrow: 1,
-              marginLeft: icon ? "8px" : "0px",
+              marginLeft: icon || renderStartElement ? "8px" : "0px",
               maxWidth:
                 icon && !actionButtonProps?.icon
                   ? "calc(100% - 32px)"
@@ -140,8 +144,7 @@ const MenuItem = React.memo<MenuItemProps>(
             <Buttons.Icon
               variant="transparent"
               isDisabled={isDisabled}
-              // icon={actionButtonProps.icon}
-              // onClick={actionButtonProps.onClick}
+              {...actionButtonProps}
               style={{
                 height: "auto",
                 width: "auto",
@@ -152,7 +155,6 @@ const MenuItem = React.memo<MenuItemProps>(
                 color: textColor,
                 ...actionButtonProps.iconStyle,
               }}
-              {...actionButtonProps}
             />
           )}
         </Space.Flex>

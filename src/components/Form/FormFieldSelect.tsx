@@ -4,7 +4,6 @@ import clsx from "clsx";
 import React from "react";
 
 import { useElementFocus } from "@/hooks";
-import { TYPOGRAPHY_SIZES } from "@/utils";
 import { Icon } from "../Icon";
 import { Menu } from "../Menu";
 import { Popover } from "../Popover";
@@ -121,6 +120,12 @@ const CustomSelect = React.memo<
   const [isOpen, setIsOpen] = React.useState(false);
   const triggerRef = React.useRef<HTMLDivElement>(null); // 添加 ref
   const [actualWidth, setActualWidth] = React.useState<number>(0); // 存储实际宽度
+  const menuWidth = actualWidth || style?.width;
+
+  const selectedOption = React.useMemo<FormFieldOption | undefined>(
+    () => options.find((option) => option.value === selectedValue),
+    [options, selectedValue],
+  );
 
   React.useEffect(() => {
     setSelectedValue(value || null);
@@ -183,14 +188,6 @@ const CustomSelect = React.memo<
     [name, onChange, setIsFocused],
   );
 
-  const displayText = React.useMemo<string>(
-    () => options.find((option) => option.value === selectedValue)?.label || "",
-    [options, selectedValue], // 添加 options 依赖
-  );
-
-  // 使用实际宽度，如果还没获取到就用样式中的宽度作为后备
-  const menuWidth = actualWidth || style?.width;
-
   return (
     <Popover
       direction="bottom"
@@ -221,7 +218,7 @@ const CustomSelect = React.memo<
           }}
         >
           <Typography.Paragraph ellipsis={1} style={{ flex: 1 }}>
-            {displayText}
+            {selectedOption?.label || ""}
           </Typography.Paragraph>
           {selectedValue && !disabled && (
             <Icon
@@ -255,10 +252,6 @@ const CustomSelect = React.memo<
             isActive={option.value === selectedValue}
             onClick={() => {
               if (!option.disabled) handleOptionChange(option.value);
-            }}
-            style={{
-              cursor: option.disabled ? "not-allowed" : "pointer",
-              fontSize: TYPOGRAPHY_SIZES.small,
             }}
           />
         ))}

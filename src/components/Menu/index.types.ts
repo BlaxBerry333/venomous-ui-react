@@ -27,6 +27,7 @@ export interface MenuItemProps extends Omit<React.HTMLAttributes<HTMLLIElement>,
   isDisabled?: boolean;
   isActive?: boolean;
   actionButtonProps?: ButtonsIconProps;
+  renderStartElement?: (params: { isDisabled?: boolean; isActive?: boolean }) => React.ReactNode;
 }
 
 export interface MenuCollapseItemProps extends Omit<MenuItemProps, "actionButton"> {

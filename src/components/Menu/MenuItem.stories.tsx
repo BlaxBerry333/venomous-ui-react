@@ -31,6 +31,7 @@ const meta = {
     },
     icon: {
       description: "The icon to be rendered at the start of the menu item",
+      if: { arg: "renderStartElement", neq: true },
       control: { type: "select" },
       options: [undefined, "solar:basketball-bold-duotone"],
       table: { type: { summary: "string" } },
@@ -56,6 +57,12 @@ const meta = {
       options: [undefined, { icon: "solar:hamburger-menu-line-duotone", onClick: () => {} }],
       table: { type: { summary: "{icon:string; onClick:VoidFunction;}" }, defaultValue: { summary: "undefined" } },
     },
+    renderStartElement: {
+      description: "The content to be rendered before the main text",
+      control: { type: "select" },
+      options: [undefined, () => <img src="https://avatars.githubusercontent.com/u/166675080?v=4" height={100} />],
+      table: { type: { summary: "React.ReactNode" }, defaultValue: { summary: "undefined" } },
+    },
   },
   args: {
     as: "li",
@@ -67,6 +74,7 @@ const meta = {
     isDisabled: false,
     isActive: false,
     actionButtonProps: undefined,
+    renderStartElement: undefined,
   },
 } satisfies Meta<typeof Menu.Item>;
 

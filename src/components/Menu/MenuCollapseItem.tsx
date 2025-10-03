@@ -53,6 +53,13 @@ const MenuCollapseItem = React.memo<MenuCollapseItemProps>(
       }
     }, []);
 
+    // 当外部的 isActive 变为 false 时，清除内部选中的子项
+    React.useEffect(() => {
+      if (!isActive) {
+        setSelectedSubItemID(null);
+      }
+    }, [isActive]);
+
     React.useEffect(() => {
       handler.setIsOpen(isCollapsed);
     }, [isCollapsed]);
