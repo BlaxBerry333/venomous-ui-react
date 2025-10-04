@@ -1,57 +1,59 @@
-import { jsxs as d, Fragment as g, jsx as t } from "react/jsx-runtime";
-import L from "clsx";
+import { jsxs as c, Fragment as x, jsx as t } from "react/jsx-runtime";
+import E from "clsx";
 import o from "react";
-import N from "../../hooks/useDesign/index.esm.js";
-import j from "../../hooks/useHandler/index.esm.js";
-import { Space as v } from "../Space/index.esm.js";
-import { Transitions as A } from "../Transition/index.esm.js";
-import { MenuItemTagMap as B } from "./index.types.esm.js";
-import h from "./MenuItem.esm.js";
-import E from "./MenuList.esm.js";
-const F = o.memo(
+import L from "../../hooks/useDesign/index.esm.js";
+import N from "../../hooks/useHandler/index.esm.js";
+import { Space as j } from "../Space/index.esm.js";
+import { Transitions as B } from "../Transition/index.esm.js";
+import { MenuItemTagMap as F } from "./index.types.esm.js";
+import g from "./MenuItem.esm.js";
+import R from "./MenuList.esm.js";
+const q = o.memo(
   ({
-    as: n = B.li,
-    className: C,
+    as: n = F.li,
+    className: I,
     style: r,
-    icon: I,
-    text: M,
-    subText: w,
+    icon: M,
+    text: w,
+    subText: y,
     isDisabled: i = !1,
-    isActive: y = !1,
-    isCollapsed: a = !1,
+    isActive: a = !1,
+    isCollapsed: p = !1,
     subItems: b,
     ...S
   }) => {
-    const m = N(), c = o.useMemo(() => m.BorderColors.quaternary, [m]), e = j(a), k = e.isOpen, [p, f] = o.useState(null), O = o.useCallback(() => {
+    const f = L(), h = o.useMemo(() => f.BorderColors.quaternary, [f]), e = N(p), k = e.isOpen, [u, d] = o.useState(null), O = o.useCallback(() => {
       if (i)
         return;
       const l = e.isOpen;
-      e.setIsOpen(!l), l && f(null);
+      e.setIsOpen(!l), l && d(null);
     }, [e.isOpen, i]);
     return o.useEffect(() => {
-      p !== null && e.open();
+      u !== null && e.open();
     }, []), o.useEffect(() => {
-      e.setIsOpen(a);
-    }, [a]), /* @__PURE__ */ d(g, { children: [
+      a || d(null);
+    }, [a]), o.useEffect(() => {
+      e.setIsOpen(p);
+    }, [p]), /* @__PURE__ */ c(x, { children: [
       /* @__PURE__ */ t(
-        h,
+        g,
         {
           as: n,
-          className: L("Venomous-UI-React--Menu.CollapseItem", C),
+          className: E("Venomous-UI-React--Menu.CollapseItem", I),
           style: {
             padding: "8px",
             ...k ? {
               outlineWidth: 1.5,
               outlineStyle: "solid",
-              outlineColor: c
+              outlineColor: h
             } : { outline: "none" },
             ...r
           },
-          icon: I,
-          text: M,
-          subText: w,
+          icon: M,
+          text: w,
+          subText: y,
           isDisabled: i,
-          isActive: y || p !== null,
+          isActive: a || u !== null,
           onClick: O,
           actionButtonProps: {
             icon: e.isOpen ? "solar:alt-arrow-up-bold-duotone" : "solar:alt-arrow-down-bold-duotone",
@@ -60,14 +62,14 @@ const F = o.memo(
           ...S
         }
       ),
-      /* @__PURE__ */ t(A.Collapse, { isOpen: e.isOpen, children: /* @__PURE__ */ t(E, { style: { width: r == null ? void 0 : r.width, padding: "4px 2px 4px 24px" }, children: b.map(({ style: l, onClick: u, ...s }) => /* @__PURE__ */ d(v.Flex, { gap: 0, style: { width: "100%" }, children: [
-        /* @__PURE__ */ t(x, { color: c }),
+      /* @__PURE__ */ t(B.Collapse, { isOpen: e.isOpen, children: /* @__PURE__ */ t(R, { style: { width: r == null ? void 0 : r.width, padding: "4px 2px 4px 24px" }, children: b.map(({ style: l, onClick: m, ...s }) => /* @__PURE__ */ c(j.Flex, { gap: 0, style: { width: "100%" }, children: [
+        /* @__PURE__ */ t(C, { color: h }),
         /* @__PURE__ */ t(
-          h,
+          g,
           {
-            isActive: p === s.id,
+            isActive: u === s.id,
             onClick: (T) => {
-              f(s.id), u == null || u(T);
+              d(s.id), m == null || m(T);
             },
             style: {
               width: "100%",
@@ -82,8 +84,8 @@ const F = o.memo(
     ] });
   }
 );
-F.displayName = "Menu.CollapseItem";
-const x = o.memo(({ color: n }) => /* @__PURE__ */ d(g, { children: [
+q.displayName = "Menu.CollapseItem";
+const C = o.memo(({ color: n }) => /* @__PURE__ */ c(x, { children: [
   /* @__PURE__ */ t(
     "i",
     {
@@ -114,7 +116,7 @@ const x = o.memo(({ color: n }) => /* @__PURE__ */ d(g, { children: [
     }
   )
 ] }));
-x.displayName = "Menu.CollapseItemTreeLine";
+C.displayName = "Menu.CollapseItemTreeLine";
 export {
-  F as default
+  q as default
 };

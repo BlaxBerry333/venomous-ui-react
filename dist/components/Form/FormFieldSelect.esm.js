@@ -31,19 +31,19 @@ import "../MediaFile/MediaFileUploader.esm.js";
 import "../../utils/design/colors.esm.js";
 import "../../utils/design/Shadow.esm.js";
 import "../../utils/design/ThemeBreakpoint.esm.js";
-import { TYPOGRAPHY_SIZES as z } from "../../utils/design/TypographySize.esm.js";
-import { Menu as x } from "../Menu/index.esm.js";
+import "../../utils/design/TypographySize.esm.js";
+import { Menu as k } from "../Menu/index.esm.js";
 import "../Modal/ModalsConfirm.esm.js";
 import "../Modal/Modal.esm.js";
 import "../NoSSR/NoSSR.esm.js";
 import "../Notification/Notification.esm.js";
 import "sonner";
-import B from "../Popover/Popover.esm.js";
+import W from "../Popover/Popover.esm.js";
 import "../Portal/PortalRender.esm.js";
 import "../Progress/ProgressLoadingBar.esm.js";
 import "../Progress/ProgressPageLoading.esm.js";
 import "../Progress/ProgressScrollbar.esm.js";
-import { Space as W } from "../Space/index.esm.js";
+import { Space as z } from "../Space/index.esm.js";
 import "../Tab/Tab.esm.js";
 import "../Table/Table.esm.js";
 import "../Theme/ThemeInjectToHTML.esm.js";
@@ -52,69 +52,69 @@ import "../Theme/useThemeBreakpoint.esm.js";
 import "../Theme/ThemeContext.esm.js";
 import "../Transition/TransitionCollapseSide.esm.js";
 import "../Transition/TransitionsCollapse.esm.js";
-import { Typography as A } from "../Typography/index.esm.js";
-import D from "../../hooks/useElementFocus/index.esm.js";
-import { useFormFieldStyle as I } from "./_useFormFieldStyle.esm.js";
-import L from "./FormField.esm.js";
-const j = e.memo(
+import { Typography as D } from "../Typography/index.esm.js";
+import L from "../../hooks/useElementFocus/index.esm.js";
+import { useFormFieldStyle as P } from "./_useFormFieldStyle.esm.js";
+import j from "./FormField.esm.js";
+const A = e.memo(
   ({
-    isOriginalSelect: d = !1,
+    isOriginalSelect: p = !1,
     fullWidth: i,
-    required: S = !1,
+    required: g = !1,
     isError: o = !1,
     disabled: m = !1,
     label: n,
     helpText: r,
-    ...h
+    ...f
   }) => {
-    const { isFocused: c, setIsFocused: a, handleFocus: u, handleBlur: f } = D(), { commonStyles: l } = I({
+    const { isFocused: c, setIsFocused: a, handleFocus: d, handleBlur: u } = L(), { commonStyles: l } = P({
       fullWidth: i,
       isDisabled: m,
       isError: o,
       isFocused: c
     });
     return /* @__PURE__ */ E(
-      L,
+      j,
       {
         label: n,
-        required: S,
+        required: g,
         isDisabled: m,
         isError: o,
         isFocused: c,
         fullWidth: i,
         helpText: r,
         children: [
-          d && /* @__PURE__ */ s(
-            k,
+          p && /* @__PURE__ */ s(
+            N,
             {
               commonStyles: l,
-              handleFocus: u,
-              handleBlur: f,
+              handleFocus: d,
+              handleBlur: u,
               disabled: m,
-              ...h
+              ...f
             }
           ),
-          !d && /* @__PURE__ */ s(O, { commonStyles: l, setIsFocused: a, disabled: m, ...h })
+          !p && /* @__PURE__ */ s(B, { commonStyles: l, setIsFocused: a, disabled: m, ...f })
         ]
       }
     );
   }
 );
-j.displayName = "FormField.Select";
-const k = e.memo(
+A.displayName = "FormField.Select";
+const N = e.memo(
   ({
-    commonStyles: d,
+    commonStyles: p,
     handleFocus: i,
-    handleBlur: S,
+    handleBlur: g,
     name: o,
     autoComplete: m = "off",
     options: n,
     onChange: r,
-    value: h,
+    value: f,
     disabled: c,
     className: a,
-    style: u,
-    ...f
+    style: d,
+    ...u
   }) => /* @__PURE__ */ s(
     "select",
     {
@@ -122,68 +122,64 @@ const k = e.memo(
       autoComplete: m,
       disabled: c,
       onFocus: i,
-      onBlur: S,
+      onBlur: g,
       onChange: r,
-      value: h,
+      value: f,
       className: R("Venomous-UI-React--FormField.Select", a),
       style: {
         boxSizing: "border-box",
-        ...d,
-        ...u
+        ...p,
+        ...d
       },
-      ...f,
+      ...u,
       children: n.map((l) => /* @__PURE__ */ s("option", { value: l.value, disabled: l.disabled, children: l.label }, l.value))
     }
   )
-), O = e.memo(({ commonStyles: d, setIsFocused: i, disabled: S, name: o, value: m, options: n, onChange: r, className: h, style: c }) => {
-  const [a, u] = e.useState(m || null), [f, l] = e.useState(!1), g = e.useRef(null), [F, v] = e.useState(0);
+), B = e.memo(({ commonStyles: p, setIsFocused: i, disabled: g, name: o, value: m, options: n, onChange: r, className: f, style: c }) => {
+  const [a, d] = e.useState(m || null), [u, l] = e.useState(!1), F = e.useRef(null), [S, w] = e.useState(0), b = S || (c == null ? void 0 : c.width), v = e.useMemo(
+    () => n.find((t) => t.value === a),
+    [n, a]
+  );
   e.useEffect(() => {
-    u(m || null);
+    d(m || null);
   }, [m]), e.useEffect(() => {
-    if (g.current) {
+    if (F.current) {
       const t = () => {
-        var b;
-        const p = (b = g.current) == null ? void 0 : b.getBoundingClientRect();
-        p && v(p.width);
+        var x;
+        const h = (x = F.current) == null ? void 0 : x.getBoundingClientRect();
+        h && w(h.width);
       };
       return t(), window.addEventListener("resize", t), () => window.removeEventListener("resize", t);
     }
   }, []), e.useEffect(() => {
-    if (f && g.current) {
-      const t = g.current.getBoundingClientRect();
-      t && t.width !== F && v(t.width);
+    if (u && F.current) {
+      const t = F.current.getBoundingClientRect();
+      t && t.width !== S && w(t.width);
     }
-  }, [f, F]);
-  const T = e.useCallback(
+  }, [u, S]);
+  const O = e.useCallback(
     (t) => {
-      u(t), l(!1), i(!1);
-      const p = {
+      d(t), l(!1), i(!1);
+      const h = {
         target: { name: o, value: t },
         currentTarget: { name: o, value: t }
       };
-      r == null || r(p);
+      r == null || r(h);
     },
     [o, r, i]
-  ), N = e.useCallback(
+  ), T = e.useCallback(
     (t) => {
-      t.stopPropagation(), u(null), i(!1);
-      const p = {
+      t.stopPropagation(), d(null), i(!1);
+      const h = {
         target: { name: o, value: "" },
         currentTarget: { name: o, value: "" }
       };
-      r == null || r(p);
+      r == null || r(h);
     },
     [o, r, i]
-  ), P = e.useMemo(
-    () => {
-      var t;
-      return ((t = n.find((p) => p.value === a)) == null ? void 0 : t.label) || "";
-    },
-    [n, a]
-    // 添加 options 依赖
-  ), w = F || (c == null ? void 0 : c.width);
+  );
   return /* @__PURE__ */ s(
-    B,
+    W,
     {
       direction: "bottom",
       alignment: "start",
@@ -193,31 +189,31 @@ const k = e.memo(
         l(!1), i(!1);
       },
       contentStyle: {
-        width: w
+        width: b
       },
       renderTrigger: () => /* @__PURE__ */ E(
-        W.Flex,
+        z.Flex,
         {
-          ref: g,
+          ref: F,
           onClick: () => {
             l(!0), i(!0);
           },
           style: {
-            ...d,
-            height: d.minHeight,
+            ...p,
+            height: p.minHeight,
             width: "100%",
-            maxWidth: w,
+            maxWidth: b,
             display: "flex",
             alignItems: "center"
           },
           children: [
-            /* @__PURE__ */ s(A.Paragraph, { ellipsis: 1, style: { flex: 1 }, children: P }),
-            a && !S && /* @__PURE__ */ s(
+            /* @__PURE__ */ s(D.Paragraph, { ellipsis: 1, style: { flex: 1 }, children: (v == null ? void 0 : v.label) || "" }),
+            a && !g && /* @__PURE__ */ s(
               y,
               {
                 icon: "solar:close-circle-line-duotone",
                 width: 16,
-                onClick: N,
+                onClick: T,
                 style: {
                   cursor: "pointer",
                   transition: "color 0.2s ease"
@@ -231,26 +227,22 @@ const k = e.memo(
                 width: 16,
                 style: {
                   transition: "transform 0.2s ease",
-                  transform: f ? "rotate(180deg)" : "rotate(0deg)"
+                  transform: u ? "rotate(180deg)" : "rotate(0deg)"
                 }
               }
             )
           ]
         }
       ),
-      children: /* @__PURE__ */ s(x.List, { as: "ul", className: R("Venomous-UI-React--FormField.Select", h), style: { width: "100%" }, children: n.map((t) => /* @__PURE__ */ s(
-        x.Item,
+      children: /* @__PURE__ */ s(k.List, { as: "ul", className: R("Venomous-UI-React--FormField.Select", f), style: { width: "100%" }, children: n.map((t) => /* @__PURE__ */ s(
+        k.Item,
         {
           id: t.id,
           text: t.label,
           isDisabled: t.disabled,
           isActive: t.value === a,
           onClick: () => {
-            t.disabled || T(t.value);
-          },
-          style: {
-            cursor: t.disabled ? "not-allowed" : "pointer",
-            fontSize: z.small
+            t.disabled || O(t.value);
           }
         },
         t.id
@@ -258,8 +250,8 @@ const k = e.memo(
     }
   );
 });
-k.displayName = "FormField.Select.Original";
-O.displayName = "FormField.Select.Custom";
+N.displayName = "FormField.Select.Original";
+B.displayName = "FormField.Select.Custom";
 export {
-  j as default
+  A as default
 };
