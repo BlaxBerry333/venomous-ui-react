@@ -1,0 +1,41 @@
+{
+  "ignorePaths": [
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/.next/**",
+    "**/.vscode/**",
+    "**/.git/**",
+    "**/.DS_Store/**",
+    "**/__tests__/**",
+    "**/__mocks__/**",
+    "**/__snapshots__/**",
+    "**/coverage/**",
+    "**/reports/**",
+    "**/logs/**",
+    "**/temp/**",
+    "**/temp_*/**",
+    "**/.storybook/**",
+    "**/storybook-static/**",
+    "**/*.stories.tsx",
+    "**/.claude/**",
+    "CLAUDE.md"
+  ],
+  "words": [
+    "autodocs",
+    "Blax",
+    "Bothrops",
+    "eslintcache",
+    "hugeicons",
+    "Iconify",
+    "mozfullscreenchange",
+    "newpassword",
+    "nextjs",
+    "pallete",
+    "prettiercache",
+    "prettierrc",
+    "tsbuildinfo",
+    "venomous",
+    "vercel",
+    "webkitfullscreenchange"
+  ]
+}

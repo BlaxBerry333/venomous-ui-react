@@ -1,0 +1,165 @@
+{
+  "name": "venomous-ui-react",
+  "version": "1.0.0",
+  "description": "A lightweight React component library built with Hooks and inline styles for exploring UI architecture",
+  "author": "BlaxBerry",
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "component-library",
+    "typescript"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.esm.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.js"
+    },
+    "./components": {
+      "types": "./dist/components/index.d.ts",
+      "import": "./dist/components/index.esm.js",
+      "require": "./dist/components/index.js"
+    },
+    "./components/*": {
+      "types": "./dist/components/*/index.d.ts",
+      "import": "./dist/components/*/index.esm.js",
+      "require": "./dist/components/*/index.js"
+    },
+    "./hooks": {
+      "types": "./dist/hooks/index.d.ts",
+      "import": "./dist/hooks/index.esm.js",
+      "require": "./dist/hooks/index.js"
+    },
+    "./hooks/*": {
+      "types": "./dist/hooks/*/index.d.ts",
+      "import": "./dist/hooks/*/index.esm.js",
+      "require": "./dist/hooks/*/index.js"
+    },
+    "./constants": {
+      "types": "./dist/constants/index.d.ts",
+      "import": "./dist/constants/index.esm.js",
+      "require": "./dist/constants/index.js"
+    },
+    "./constants/*": {
+      "types": "./dist/constants/*/index.d.ts",
+      "import": "./dist/constants/*/index.esm.js",
+      "require": "./dist/constants/*/index.js"
+    },
+    "./tools": {
+      "types": "./dist/tools/index.d.ts",
+      "import": "./dist/tools/index.esm.js",
+      "require": "./dist/tools/index.js"
+    },
+    "./tools/*": {
+      "types": "./dist/tools/*/index.d.ts",
+      "import": "./dist/tools/*/index.esm.js",
+      "require": "./dist/tools/*/index.js"
+    }
+  },
+  "homepage": "https://github.com/BlaxBerry333/venomous-ui-react",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BlaxBerry333/venomous-ui-react"
+  },
+  "bugs": {
+    "url": "https://github.com/BlaxBerry333/venomous-ui-react/issues"
+  },
+  "scripts": {
+    "dev": "storybook dev --port 5100",
+    "build": "npm run clean-dist && npm run build:libs && npm run build:types && npm run build:storybook",
+    "build:storybook": "storybook build",
+    "build:types": "tsc -p tsconfig.types.json && tsc-alias -p tsconfig.types.json",
+    "build:libs": "vite build",
+    "prepare": "husky",
+    "test": "vitest run",
+    "test:all": "vitest run --coverage",
+    "test:all:ui": "vitest --ui --coverage",
+    "check:packages": "npx depcheck",
+    "check:type:all": "tsc --noEmit --incremental --tsBuildInfoFile ./.cache/.tsbuildinfo",
+    "check:eslint:all": "eslint . --cache --cache-location=./.cache/.eslintcache",
+    "check:prettier:all": "prettier . --check --cache --cache-location=./.cache/.prettiercache",
+    "check:cspell:all": "cspell --cache --cache-location=./.cache/.cspellcache --no-progress --show-suggestions '**/*.{ts,tsx,js,jsx,md,mdx}'",
+    "check:all": "concurrently --kill-others-on-fail --names \"check:type:all,check:eslint:all,check:prettier:all,check:cspell:all\" \"npm run check:type:all\" \"npm run check:eslint:all\" \"npm run check:prettier:all\" \"npm run check:cspell:all\"",
+    "format:eslint:all": "eslint . --fix --cache --cache-location=./.cache/.eslintcache",
+    "format:eslint:staged": "eslint --fix ",
+    "format:prettier:all": "prettier . --write --cache --cache-location=./.cache/.prettiercache",
+    "format:prettier:staged": "prettier --write",
+    "format:all": "concurrently --kill-others-on-fail --names \"format:eslint:all,format:prettier:all\" \"npm run format:eslint:all\" \"npm run format:prettier:all\"",
+    "clean-dist": "rm -rf dist",
+    "clean-cache": "rm -rf node_modules/.cache .cache",
+    "clean-linter-cache": "rm -rf .cache"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx,jsx}": [
+      "npm run format:eslint:staged --",
+      "npm run format:prettier:staged --"
+    ],
+    "*.{json,css,md,mdx}": [
+      "npm run format:prettier:staged --"
+    ]
+  },
+  "dependencies": {
+    "clsx": "^2.1.1"
+  },
+  "peerDependencies": {
+    "@iconify/react": "^5.2.1",
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.21.0",
+    "@storybook/addon-essentials": "^8.6.12",
+    "@storybook/addon-interactions": "^8.6.12",
+    "@storybook/blocks": "^8.6.12",
+    "@storybook/manager-api": "^8.6.12",
+    "@storybook/react-vite": "^8.6.12",
+    "@storybook/test": "^8.6.12",
+    "@storybook/theming": "^8.6.12",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^22.14.0",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react-swc": "^3.8.0",
+    "@vitest/coverage-v8": "^4.0.9",
+    "@vitest/ui": "^4.0.9",
+    "concurrently": "^9.1.2",
+    "cspell": "^9.0.1",
+    "eslint": "^9.21.0",
+    "eslint-plugin-react-dom": "^1.40.3",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "eslint-plugin-react-x": "^1.40.3",
+    "eslint-plugin-storybook": "^0.12.0",
+    "eslint-plugin-unused-imports": "^4.1.4",
+    "globals": "^15.15.0",
+    "happy-dom": "^20.0.10",
+    "husky": "^9.1.7",
+    "prettier": "^3.5.3",
+    "prettier-plugin-css-order": "^2.1.2",
+    "prettier-plugin-organize-attributes": "^1.0.0",
+    "prettier-plugin-organize-imports": "^4.1.0",
+    "prettier-plugin-style-order": "^0.2.2",
+    "rollup-plugin-visualizer": "^5.14.0",
+    "storybook": "^8.6.12",
+    "storybook-dark-mode": "^4.0.2",
+    "stylelint": "^16.17.0",
+    "stylelint-config-standard": "^37.0.0",
+    "stylelint-config-standard-scss": "^14.0.0",
+    "tsc-alias": "^1.8.16",
+    "typescript": "~5.7.2",
+    "typescript-eslint": "^8.24.1",
+    "vite": "^6.2.0",
+    "vitest": "^4.0.9"
+  }
+}

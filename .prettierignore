@@ -1,0 +1,50 @@
+# IDE settings
+.idea/
+.vscode/
+
+# Package manager files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Test coverage
+coverage/
+
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+.next/
+out/
+
+# Env
+.env*
+
+# Cache directories
+.cache/
+.temp/
+.tmp/
+
+# Static assets
+public/
+assets/
+
+# Minified files
+*.min.js
+*.min.css
+
+# Generated files
+generated/
+.next/
+
+# Config files
+.prettierrc.mjs
+*.config.js
+*.config.mjs
+*.config.cjs
+
+# AI
+CLAUDE.md
+.claude/

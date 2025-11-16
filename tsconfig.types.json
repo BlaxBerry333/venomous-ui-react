@@ -1,0 +1,23 @@
+{
+  "extends": "./tsconfig.app.json",
+  "compilerOptions": {
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "outDir": "./dist",
+    "declarationMap": true,
+
+    "rootDir": "./src",
+
+    "noEmit": false,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": false,
+    "module": "ESNext",
+
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["**/*.stories.tsx", "**/*.test.tsx", "**/*.spec.tsx", "node_modules", "dist"]
+}
