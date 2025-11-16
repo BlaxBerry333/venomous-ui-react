@@ -1,0 +1,117 @@
+import { Meta, Source, Subtitle } from "@storybook/blocks";
+
+import { TEXT_COLORS } from "./TEXT_COLORS";
+import { Space, Typography } from "@/components";
+
+<Meta title="constants/designs/TEXT_COLORS" />
+
+# TEXT_COLORS
+
+<br />
+
+<Space.Grid columns={{ XS: 1, SM: 2, MD: 3, LG: 3 }} spacing={16}>
+  {Object.entries(TEXT_COLORS["light"]).map(([key, value]) => (
+    <Space.Flex
+      column
+      spacing={8}
+      key={key}
+      style={{ flex: 1, backgroundColor: value, padding: "40px", border: "1px solid black" }}
+    >
+      <Typography.Text as="code" text={value} />
+      <Typography.Text as="code" text={`TEXT_COLORS.light[${key}]`} />
+    </Space.Flex>
+  ))}
+  {Object.entries(TEXT_COLORS["dark"]).map(([key, value]) => (
+    <Space.Flex
+      column
+      spacing={8}
+      key={key}
+      style={{ flex: 1, backgroundColor: value, padding: "40px", border: "1px solid black" }}
+    >
+      <Typography.Text as="code" text={value} />
+      <Typography.Text as="code" text={`TEXT_COLORS.light[${key}]`} />
+    </Space.Flex>
+  ))}
+</Space.Grid>
+
+<br />
+<br />
+
+## Usage
+
+<Subtitle>直接导入使用 ( 需要指明当前 `ThemeMode` )</Subtitle>
+
+<Source
+  language="tsx"
+  dark
+  code={`
+"use client";
+
+import { TEXT_COLORS } from "venomous-ui-react/constants";
+
+export default function App() {
+  console.log(TEXT_COLORS.light[1], TEXT_COLORS.dark[2], TEXT_COLORS.dark[3]);
+  return null;
+}
+  `.trim()}
+/>
+
+<Subtitle>使用 `useThemeDesigns()` 获取</Subtitle>
+
+<Source
+  language="tsx"
+  dark
+  code={`
+"use client";
+
+import { Theme } from "venomous-ui-react/components";
+import { useThemeDesign } from "venomous-ui-react/hooks";
+
+const TEXT = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.";
+
+export function App() {
+  return (
+    <Theme.Provider>
+      <Component />
+    </Theme.Provider>
+  );
+}
+
+export function Component() {
+  const { TextColors } = useThemeDesigns();
+  return (
+    <>
+      <p style={{ color: TextColors[1] }}>{TEXT}</p>
+      <p style={{ color: TextColors[2] }}>{TEXT}</p>
+    </>
+  )
+}
+`.trim()}
+/>
+
+<Subtitle>使用 `<Typography>` 组件书写文本</Subtitle>
+
+<Source
+  language="tsx"
+  dark
+  code={`
+"use client";
+
+import { Theme, Typography } from "venomous-ui-react/components";
+
+const TEXT = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.";
+
+export default function App() {
+  return (
+    <Theme.Provider>
+      <Typography.Title text={TEXT} />
+      <Typography.Title text={TEXT} as="h1" />
+      <Typography.Title text={TEXT} as="h5" />
+      <Typography.Text text={TEXT} />
+      <Typography.Text text={TEXT} as="strong"/>
+      <Typography.Paragraph text={TEXT} />
+    </Theme.Provider>
+  );
+}
+  `.trim()}
+/>

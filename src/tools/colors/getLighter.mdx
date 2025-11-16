@@ -1,0 +1,55 @@
+import { Meta } from "@storybook/blocks";
+
+import { getLighter } from "./get-colors";
+import { Space } from "@/components/Space";
+
+<Meta title="tools/getLighter" />
+
+# getLighter
+
+用于基于一个 Hex 颜色获取一个更亮的 Hex 颜色
+
+```tsx
+"use client";
+
+import { getLighter } from "venomous-ui-react/tools/getLighter";
+
+console.log(getLighter("#4CAF50", 0)); // #4CAF50
+console.log(getLighter("#4CAF50", 0.5)); // #72FF78
+console.log(getLighter("#4CAF50", 1)); // #FFFFFF
+```
+
+<Space.Grid columns={{ XS: 1, SM: 2, MD: 3, LG: 3 }} spacing={16}>
+  {[
+    {
+      key: `"#4CAF50"`,
+      value: "#4CAF50",
+    },
+    {
+      key: `getLighter("#4CAF50", 0.25)`,
+      value: getLighter("#4CAF50", 0.25),
+    },
+    {
+      key: `getLighter("#4CAF50", 0.5)`,
+      value: getLighter("#4CAF50", 0.5),
+    },
+    {
+      key: `getLighter("#4CAF50", 0.75)`,
+      value: getLighter("#4CAF50", 0.75),
+    },
+    {
+      key: `getLighter("#4CAF50", 1)`,
+      value: getLighter("#4CAF50", 1),
+    },
+  ].map(({ key, value }) => (
+    <Space.Flex
+      column
+      spacing={8}
+      key={value}
+      style={{ flex: 1, backgroundColor: value, padding: "40px", border: "1px solid black" }}
+    >
+      <code>{key}</code>
+      <code>{value}</code>
+    </Space.Flex>
+  ))}
+</Space.Grid>

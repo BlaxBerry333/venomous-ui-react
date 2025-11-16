@@ -1,0 +1,134 @@
+import { Meta, Source } from "@storybook/blocks";
+
+import { Theme, Space } from "./components";
+import { PALETTE_COLORS, THEME_MODES, THEME_BREAKPOINTS, THEME_BREAKPOINT_RANGES } from "./constants/designs";
+
+<Meta title="Design System" />
+
+<Theme.Provider>
+
+# Design System
+
+<br />
+
+## Built-in Design Tokens and Constants
+
+This library provides a set of built-in design tokens and constants for styling and theming components.
+
+You can use Hook `useThemeDesigns()` from the `venomous-ui-react/hooks` module to access the built-in design tokens.
+
+<Source
+  language="tsx"
+  dark
+  code={`
+"use client";
+
+import { Theme } from "venomous-ui-react/components";
+import { useThemeDesign } from "venomous-ui-react/hooks";
+
+const TEXT = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.";
+
+export function App() {
+  return (
+    <Theme.Provider>
+      <Component />
+    </Theme.Provider>
+  );
+}
+
+export function Component() {
+  const builtInDesignTokens = useThemeDesigns();
+  return null;
+}
+`.trim()}
+/>
+
+you can also import constants directly from the `venomous-ui-react/constants` module.
+
+<Source
+  language="tsx"
+  dark
+  code={`
+"use client";
+
+import {
+  BACKGROUND_COLORS,
+  BORDER_COLORS,
+  PALETTE_COLORS,
+  SEMANTIC_COLORS,
+  SHADOW_STYLES,
+  TYPOGRAPHY_SIZES,
+  TYPOGRAPHY_LINE_HEIGHTS,
+  TEXT_COLORS,
+  THEME_BREAKPOINT_RANGES,
+  THEME_BREAKPOINTS,
+  THEME_MODES,
+} from "venomous-ui-react/constants";
+
+`.trim()}
+/>
+
+<br />
+
+## Custom Design
+
+You can override the built-in design tokens and styles of components by passing custom design objects to the `<Theme.Provider>`.
+
+<Source
+  language="tsx"
+  dark
+  code={`
+"use client";
+
+import { Theme } from "venomous-ui-react/components";
+import { PALETTE_COLORS } from "venomous-ui-react/constants";
+import { getDarker, getLighter } from "venomous-ui-react/tools";
+
+export function App() {
+  return (
+    <Theme.Provider
+      /* override built-in components styles ( style attribute ) */
+      customStyles={{
+        Button: {
+          backgroundImage: "url(https://github.githubassets.com/assets/universe_25_1-cloud-2-47e97c624870.webp)",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          height: 60,
+          fontSize: 20,
+        },
+        Popover: {
+          backgroundImage: "url('/assets/backgrounds/01.avif')",
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+        },
+        Dialog: {
+          backgroundImage: "url('/assets/backgrounds/01.avif')",
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+        },
+      }}
+
+      /* override built-in design tokens */
+      customDesign={{
+        PaletteColors: PALETTE_COLORS.MAMBA,
+        TextColors: {
+          1: "#0c86ea",
+          2: getDarker("#0c86ea", 0.2),
+          3: getLighter("#0c86ea", 0.2),
+          disabled: "#0c86ea",
+        }
+      }}>
+      {/* Your app content */}
+      {/* All components go here */}
+    </Theme.Provider>
+
+);
+}
+`.trim()}
+/>
+
+<br />
+<br />
+
+</Theme.Provider>

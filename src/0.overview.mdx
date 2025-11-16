@@ -1,0 +1,73 @@
+import { Meta, Source } from "@storybook/blocks";
+
+import { SEMANTIC_COLORS } from "./constants";
+import { Badge, Card, Space, Typography, Theme } from "./components";
+
+<Meta title="Overview" />
+
+<Theme.Provider >
+
+# Venomous UI React
+
+A lightweight React component library built entirely with <Typography.Text text="React Hooks" as="strong" color={SEMANTIC_COLORS.ERROR} /> and <Typography.Text text="JSX inline styles" as="strong" color={SEMANTIC_COLORS.ERROR} />. <br />
+
+This is a <Typography.Text text="personal learning project" as="strong" /> focused on exploring UI component architecture, abstraction patterns, and build optimization in React. While it demonstrates production-level code quality in certain aspects, it is <Typography.Text text="not intended for production use" as="strong" /> and remains a learning-focused project.
+
+<br />
+## Key Features
+
+<Space.Grid columns={{ XS: 1, SM: 2, MD: 3, LG: 3, XL: 3, XXL: 3 }} spacing={16}>
+  {[
+    {
+      title: "⚡️ Extremely Lightweight",
+      description:
+        "Main entry at just 2.4KB gzipped. Individual components range 1-4KB, making it 10-30x smaller than mainstream UI libraries while maintaining full functionality.",
+    },
+    {
+      title: "📦 100% TypeScript",
+      description:
+        "Full type safety with 213 .d.ts files. Exports all component props, refs, and utility types for comprehensive type-safe development.",
+    },
+    {
+      title: "🎯 Perfect Tree-Shaking",
+      description:
+        "preserveModules build strategy with sideEffects: false ensures optimal code splitting. Import only what you need to minimize bundle size.",
+    },
+    {
+      title: "💅 Zero CSS Dependencies",
+      description:
+        "All styles are pure JSX inline styles, eliminating external CSS files. Still supports className for custom overrides and extensions.",
+    },
+    {
+      title: "🔧 Built From Scratch",
+      description:
+        "No dependency on MUI, Ant Design, or Tailwind CSS. Every component is custom-designed and implemented to explore architecture patterns.",
+    },
+    {
+      title: "🎨 Theming System",
+      description:
+        "Comprehensive theming support with light/dark modes, customizable design tokens, and component-level style overrides via Theme.Provider.",
+    },
+  ].map((item, index) => (
+    <Card key={index} style={{ width: "100%", minHeight: "180px" }}>
+      <Typography.Title as="h4" text={item.title} style={{ marginBottom: "12px" }} />
+      <Typography.Paragraph text={item.description} style={{ fontSize: "14px", lineHeight: "1.6" }} />
+    </Card>
+  ))}
+</Space.Grid>
+
+<br />
+
+## Installation
+
+This is a personal learning project, not published to npm. Install directly from GitHub:
+
+```shell
+# Step 1: Install the library from GitHub repository
+npm install git+https://github.com/BlaxBerry333/venomous-ui-react
+
+# Step 2: Import Optional peer dependencies ( if you use the corresponding components )
+npm install @iconify/react@5
+```
+
+</Theme.Provider >

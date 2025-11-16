@@ -1,0 +1,125 @@
+import { Meta, Source, Subtitle } from "@storybook/blocks";
+
+import { TYPOGRAPHY_SIZES } from "./TYPOGRAPHY_SIZES";
+import { TYPOGRAPHY_LINE_HEIGHTS } from "./TYPOGRAPHY_LINE_HEIGHTS";
+import { Card, Box, Space, Typography } from "@/components";
+
+<Meta title="constants/designs/TYPOGRAPHY_SIZES" />
+
+# TYPOGRAPHY_SIZES
+
+<br />
+
+<Space.Grid columns={{ XS: 1, SM: 2, MD: 2, LG: 2 }} spacing={16}>
+  {Object.entries(TYPOGRAPHY_SIZES.TITLE).map(([key, value]) => (
+    <Card key={key} variant="outlined" style={{ padding: "16px", color: "#642323" }}>
+      <Space.Flex column spacing={4}>
+        <Typography.Text as="code" text={`TYPOGRAPHY_SIZES.TITLE.${key}`} />
+        <Typography.Text as="code" text={`{ fontSize: ${value} }`} style={{ fontSize: 10 }} />
+      </Space.Flex>
+      <p style={{ fontSize: value, lineHeight: TYPOGRAPHY_LINE_HEIGHTS.TITLE[key] }}>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+      </p>
+    </Card>
+  ))}
+  {Object.entries(TYPOGRAPHY_SIZES.TEXT).map(([key, value]) => (
+    <Card key={key} variant="outlined" style={{ padding: "16px", color: "#642323" }}>
+      <Space.Flex column spacing={4}>
+        <Typography.Text as="code" text={`TYPOGRAPHY_SIZES.TEXT.${key}`} />
+        <Typography.Text as="code" text={`{ fontSize: ${value} }`} style={{ fontSize: 10 }} />
+      </Space.Flex>
+      <p style={{ fontSize: value, lineHeight: TYPOGRAPHY_LINE_HEIGHTS.TEXT[key] }}>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+        a type specimen book.
+      </p>
+    </Card>
+  ))}
+</Space.Grid>
+
+<br />
+<br />
+
+## Usage
+
+推荐使用 `<Typography>` 组件书写文本，因为内部已经做了自动样式处理。<br />
+想自定义样式可以直接导入使用，或通过 `useThemeDesigns()` 获取。
+
+<Subtitle>使用 `<Typography>` 系列组件书写文本</Subtitle>
+
+<Source
+  language="tsx"
+  dark
+  code={`
+"use client";
+
+import { Theme, Typography } from "venomous-ui-react/components";
+
+const TEXT = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.";
+
+export default function App() {
+  return (
+    <Theme.Provider>
+      <Typography.Title text={TEXT} />
+      <Typography.Title text={TEXT} as="h1" />
+      <Typography.Title text={TEXT} as="h5" />
+      <Typography.Text text={TEXT} />
+      <Typography.Text text={TEXT} as="strong"/>
+      <Typography.Paragraph text={TEXT} />
+    </Theme.Provider>
+  );
+}
+  `.trim()}
+/>
+
+<Subtitle>直接导入使用</Subtitle>
+
+<Source
+  language="tsx"
+  dark
+  code={`
+"use client";
+
+import { TYPOGRAPHY_SIZES } from "venomous-ui-react/constants";
+
+export default function App() {
+  return (
+    <>
+      <p style={{ fontSize: TYPOGRAPHY_SIZES.TITLE.H1 }}>{TEXT}</p>
+      <p style={{ fontSize: TYPOGRAPHY_SIZES.TEXT.BASE }}>{TEXT}</p>
+    </>
+  );
+}
+  `.trim()}
+/>
+
+<Subtitle>使用 `useThemeDesigns()` 获取</Subtitle>
+
+<Source
+  language="tsx"
+  dark
+  code={`
+"use client";
+
+import { Theme } from "venomous-ui-react/components";
+import { useThemeDesign } from "venomous-ui-react/hooks";
+
+export function App() {
+  return (
+    <Theme.Provider>
+      <Component />
+    </Theme.Provider>
+  );
+}
+
+export function Component() {
+  const { TypographyLineHeights } = useThemeDesigns();
+  return (
+    <>
+      <p style={{ fontSize: TYPOGRAPHY_SIZES.TITLE.H1 }}>{TEXT}</p>
+      <p style={{ fontSize: TYPOGRAPHY_SIZES.TEXT.BASE }}>{TEXT}</p>
+    </>
+  );
+}
+`.trim()}
+/>

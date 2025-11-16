@@ -1,0 +1,23 @@
+import { Meta } from "@storybook/blocks";
+
+import { SEMANTIC_COLORS } from "@/constants/designs";
+import { Space, Card, Typography } from "@/components";
+import { COMPONENT_DISPLAY_NAMES } from "./COMPONENT_DISPLAY_NAMES";
+
+<Meta title="constants/names/COMPONENT_DISPLAY_NAMES" />
+
+# COMPONENT_DISPLAY_NAMES
+
+所有组件的 `displayName` 常量，用于 React DevTools 中的组件名称显示和调试。
+
+<Space.Grid columns={{ XS: 1, SM: 1, MD: 2, LG: 2 }} spacing={8}>
+  {Object.entries(COMPONENT_DISPLAY_NAMES).map(([key, value]) => (
+    <Card key={key}>
+      <Typography.Title as="h5" text={key} />
+      <Typography.Text as="code" text={value} color={SEMANTIC_COLORS.INFO} />
+    </Card>
+  ))}
+</Space.Grid>
+
+<br />
+<br />

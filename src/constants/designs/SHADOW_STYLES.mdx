@@ -1,0 +1,83 @@
+import { Meta, Source, Subtitle } from "@storybook/blocks";
+
+import { SHADOW_STYLES } from "./SHADOW_STYLES";
+import { Box, Space, Typography } from "@/components";
+import { BACKGROUND_COLORS } from "./BACKGROUND_COLORS";
+
+<Meta title="constants/designs/SHADOW_STYLES" />
+
+# SHADOW_STYLES
+
+<br />
+
+<Space.Grid columns={{ XS: 2, SM: 2, MD: 3, LG: 3 }} spacing={16}>
+  <Box style={{ flex: 1, padding: "20px", backgroundColor: BACKGROUND_COLORS.light[1] }}>
+    <Typography.Text as="code" text="No Shadow" />
+  </Box>
+  {Object.entries(SHADOW_STYLES.light).map(([key, value]) => (
+    <Box key={key} style={{ flex: 1, padding: "20px", backgroundColor: BACKGROUND_COLORS.light[1], boxShadow: value }}>
+      <Typography.Text as="code" text={`SHADOW_STYLES.light[${key}]`} />
+    </Box>
+  ))}
+  <Box style={{ flex: 1, padding: "20px", backgroundColor: BACKGROUND_COLORS.dark[1] }}>
+    <Typography.Text as="code" text="No Shadow" />
+  </Box>
+  {Object.entries(SHADOW_STYLES.dark).map(([key, value]) => (
+    <Box key={key} style={{ flex: 1, padding: "20px", backgroundColor: BACKGROUND_COLORS.dark[1], boxShadow: value }}>
+      <Typography.Text as="code" text={`SHADOW_STYLES.dark[${key}]`} />
+    </Box>
+  ))}
+</Space.Grid>
+
+<br />
+<br />
+
+## Usage
+
+<Subtitle>直接导入使用 ( 需要指明当前 `ThemeMode` )</Subtitle>
+
+<Source
+  language="tsx"
+  dark
+  code={`
+"use client";
+
+import { SHADOW_STYLES } from "venomous-ui-react/constants";
+
+export default function App() {
+  console.log(SHADOW_STYLES.light[1], SHADOW_STYLES.dark[1], SHADOW_STYLES.dark[2]);
+  return null;
+}
+  `.trim()}
+/>
+
+<Subtitle>使用 `useThemeDesigns()` 获取</Subtitle>
+
+<Source
+  language="tsx"
+  dark
+  code={`
+"use client";
+
+import { Theme } from "venomous-ui-react/components";
+import { useThemeDesign } from "venomous-ui-react/hooks";
+
+export function App() {
+  return (
+    <Theme.Provider>
+      <Component />
+    </Theme.Provider>
+  );
+}
+
+export function Component() {
+  const { ShadowStyles } = useThemeDesigns();
+  return (
+    <div style={{ boxShadow: ShadowStyles[1] }}>
+      Hello World
+    </div>
+  )
+}
+`.trim()}
+
+/>

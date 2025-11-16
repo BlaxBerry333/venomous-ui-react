@@ -1,0 +1,39 @@
+import { Meta, Source } from "@storybook/blocks";
+
+<Meta title="hooks/useThemeBreakpoint" />
+
+# useThemeBreakpoint
+
+用于获取当前浏览器宽度对应的断点、断点范围等信息。
+
+<Source
+  language="tsx"
+  dark
+  code={`
+"use client";
+
+import { useThemeBreakpoint } from "venomous-ui-react/hooks";
+`.trim()}
+/>
+
+## Types
+
+<Source
+  language="ts"
+  dark
+  code={`
+type HookReturnType = {
+  breakpoint: TThemeBreakpoint;
+  breakpointRange: TThemeBreakpointRange;
+}
+// optional
+type HookParametersType = {
+  \_\_?: {
+    windowSizeCalculationDebounceMS?: number; // default: 150
+  }
+}
+// Related Types
+type TThemeBreakpoint = "XS" | "SM" | "MD" | "LG" | "XL" | "XXL";
+type TThemeBreakpointRange = [number, number];
+`.trim()}
+/>

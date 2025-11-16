@@ -1,0 +1,15 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="tools/getSystemThemeMode" />
+
+# getSystemThemeMode
+
+用于获取当前系统的主题模式
+
+```tsx
+"use client";
+
+import { getSystemThemeMode } from "venomous-ui-react/tools/getSystemThemeMode";
+
+console.log(getSystemThemeMode()); // "light" | "dark"
+```

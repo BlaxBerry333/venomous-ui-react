@@ -1,0 +1,23 @@
+import { Meta } from "@storybook/blocks";
+
+import { SEMANTIC_COLORS } from "@/constants/designs";
+import { Space, Card, Typography } from "@/components";
+import { COMPONENT_CLASSNAME_NAMES, COMPONENT_CLASSNAME_PREFIX } from "./COMPONENT_CLASSNAME_NAMES";
+
+<Meta title="constants/names/COMPONENT_CLASSNAME_NAMES" />
+
+# COMPONENT_CLASSNAME_NAMES
+
+所有组件的 `className` 常量，以 `__VENOMOUS_UI__` 前缀开头。
+
+<Space.Grid columns={{ XS: 1, SM: 1, MD: 2, LG: 2 }} spacing={8}>
+  {Object.entries(COMPONENT_CLASSNAME_NAMES).map(([key, value]) => (
+    <Card key={key}>
+      <Typography.Title as="h5" text={key} />
+      <Typography.Text as="code" text={value} color={SEMANTIC_COLORS.WARNING} />
+    </Card>
+  ))}
+</Space.Grid>
+
+<br />
+<br />

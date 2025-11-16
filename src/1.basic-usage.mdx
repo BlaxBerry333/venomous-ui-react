@@ -1,0 +1,129 @@
+import { Meta, Source } from "@storybook/blocks";
+import { Theme } from "./components";
+
+<Meta title="Basic Usage" />
+
+<Theme.Provider>
+
+# Basic Usage
+
+<br />
+
+## How to Import
+
+This library supports 3 import styles for flexibility and tree-shaking optimization
+
+<Source
+  language="tsx"
+  dark
+  code={`
+// Style 1: 
+// Import everything from the root
+import { Button, type ButtonProps, useThemeMode, PALETTE_COLORS } from "venomous-ui-react";
+
+// Style 2:
+// Import by category
+import { Button, type ButtonProps } from "venomous-ui-react/components";
+import { useThemeMode } from "venomous-ui-react/hooks";
+import { PALETTE_COLORS } from "venomous-ui-react/constants";
+
+// Style 3:
+// Import specific components/hooks (finest granularity)
+import { Button, type ButtonProps } from "venomous-ui-react/components/Buttons";
+import { useThemeMode } from "venomous-ui-react/hooks/useThemeMode";
+import { PALETTE_COLORS } from "venomous-ui-react/constants/designs/PALETTE_COLORS";
+`.trim()}
+/>
+
+---
+
+## Wrapping Everything
+
+All components rely on a shared React Context for theming and design tokens.
+
+You MUST wrap the root of your application with `<Theme.Provider>` to ensure correct rendering:
+
+<Source
+  language="tsx"
+  dark
+  code={`
+"use client";
+
+import { Theme } from "venomous-ui-react/components";
+
+export default function App() {
+  return (
+    <Theme.Provider>
+      {/* Your app content */}
+      {/* All components go here */}
+    </Theme.Provider>
+  );
+}
+  `.trim()}
+/>
+
+---
+
+### Used in SSR Frameworks
+
+If you're using a Server-Side Rendering ( SSR ) framework like Next.js, wrap all components with `<NoSSR>` to prevent hydration mismatch errors:
+
+<Source
+  language="tsx"
+  dark
+  code={`
+"use client";
+
+import { Theme, NoSSR } from "venomous-ui-react/components";
+
+export default function App() {
+  return (
+    <NoSSR>
+      <Theme.Provider>
+        {/* Your app content */}
+        {/* All components go here */}
+      </Theme.Provider>
+    </NoSSR>
+  );
+}
+  `.trim()}
+/>
+
+---
+
+### Error Boundary (Optional)
+
+This library provides an optional `<ErrorBoundary>` component to catch JavaScript errors in your component tree:
+
+> You can also use your own error boundary implementation.
+
+<Source
+  language="tsx"
+  dark
+  code={`
+"use client";
+
+import { Theme, ErrorBoundary } from "venomous-ui-react/components";
+
+export default function App() {
+  return (
+    <Theme.Provider>
+      <ErrorBoundary
+        fallback={(error, errorInfo, reset) => (
+          <div>
+            <h2>Oops! Something went wrong.</h2>
+            <p>{error.message}</p>
+            <button onClick={reset}>Try again</button>
+          </div>
+        )}
+      >
+        {/* Your app content */}
+        {/* All components go here */}
+      </ErrorBoundary>
+    </Theme.Provider>
+  );
+}
+  `.trim()}
+/>
+
+</Theme.Provider>

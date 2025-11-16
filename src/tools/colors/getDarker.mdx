@@ -1,0 +1,55 @@
+import { Meta } from "@storybook/blocks";
+
+import { getDarker } from "./get-colors";
+import { Space } from "@/components/Space";
+
+<Meta title="tools/getDarker" />
+
+# getDarker
+
+用于基于一个 Hex 颜色获取一个更暗 Hex 颜色
+
+```tsx
+"use client";
+
+import { getDarker } from "venomous-ui-react/tools/getDarker";
+
+console.log(getDarker("#4CAF50", 0)); // #4CAF50
+console.log(getDarker("#4CAF50", 0.5)); // #265828
+console.log(getDarker("#4CAF50", 1)); // #000000
+```
+
+<Space.Grid columns={{ XS: 1, SM: 2, MD: 3, LG: 3 }} spacing={16}>
+  {[
+    {
+      key: `"#4CAF50"`,
+      value: "#4CAF50",
+    },
+    {
+      key: `getDarker("#4CAF50", 0.25)`,
+      value: getDarker("#4CAF50", 0.25),
+    },
+    {
+      key: `getDarker("#4CAF50", 0.5)`,
+      value: getDarker("#4CAF50", 0.5),
+    },
+    {
+      key: `getDarker("#4CAF50", 0.75)`,
+      value: getDarker("#4CAF50", 0.75),
+    },
+    {
+      key: `getDarker("#4CAF50", 1)`,
+      value: getDarker("#4CAF50", 1),
+    },
+  ].map(({ key, value }) => (
+    <Space.Flex
+      column
+      spacing={8}
+      key={value}
+      style={{ flex: 1, backgroundColor: value, padding: "40px", border: "1px solid black" }}
+    >
+      <code>{key}</code>
+      <code>{value}</code>
+    </Space.Flex>
+  ))}
+</Space.Grid>

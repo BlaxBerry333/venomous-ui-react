@@ -1,0 +1,72 @@
+import { Meta, Source, Subtitle } from "@storybook/blocks";
+
+import { THEME_BREAKPOINTS, THEME_BREAKPOINT_RANGES } from "./THEME_BREAKPOINTS";
+import { Space, Typography } from "@/components";
+
+<Meta title="constants/designs/THEME_BREAKPOINTS" />
+
+# THEME_BREAKPOINTS
+
+我准备了几个内置的断点及其对应的浏览器宽度范围，涵盖从超小屏到超大屏的各种设备。
+
+<Space.Grid columns={{ XS: 1 }} spacing={16}>
+  {Object.entries(THEME_BREAKPOINTS).map(([key, value]) => {
+    const [min, max] = THEME_BREAKPOINT_RANGES[value];
+    const rangeText = max === Infinity ? `${min}px ~` : `${min}px ~ ${max}px`;
+    return (
+      <Space.Flex key={key} spacing={16}>
+        <Typography.Text as="code" text={`THEME_BREAKPOINTS.${key}`} />
+        <Typography.Text as="code" text={rangeText} />
+      </Space.Flex>
+    );
+  })}
+</Space.Grid>
+
+<br />
+<br />
+
+## Usage
+
+<Subtitle>直接导入使用</Subtitle>
+
+<Source
+  language="tsx"
+  dark
+  code={`
+"use client";
+
+import { THEME_BREAKPOINTS, THEME_BREAKPOINT_RANGES } from "venomous-ui-react/constants/designs";
+
+export default function App() {
+  console.log(THEME_BREAKPOINTS.MD, THEME_BREAKPOINT_RANGES.MD);
+  return null;
+}
+  `.trim()}
+/>
+
+<Subtitle>使用 `useThemeDesigns()` 获取</Subtitle>
+
+<Source
+  language="tsx"
+  dark
+  code={`
+"use client";
+
+import { Theme } from "venomous-ui-react/components";
+import { useThemeDesign } from "venomous-ui-react/hooks";
+
+export function App() {
+  return (
+    <Theme.Provider>
+      <Component />
+    </Theme.Provider>
+  );
+}
+
+export function Component() {
+  const { breakpoint: currentBreakpoint, breakpointRange } = useThemeBreakpoint();
+  console.log(currentBreakpoint, breakpointRange);
+  return null;
+}
+`.trim()}
+/>

@@ -1,0 +1,74 @@
+import { Meta, Source } from "@storybook/blocks";
+
+<Meta title="hooks/useElementMouseEvents" />
+
+# useElementMouseEvents
+
+用于管理元素的 mouse click 状态和事件处理。
+
+<Source
+  language="tsx"
+  dark
+  code={`
+"use client";
+
+import { useElementMouseEvents } from "@/venomous-ui-react/hooks";
+`.trim()}
+/>
+
+## Types
+
+<Source
+  language="ts"
+  dark
+  code={`
+type HookParametersType = {
+  disabled?: boolean;                         // 是否禁用 active 效果
+  onMouseDown?: React.MouseEventHandler<T>;   // 外部传入的 mouseDown 事件
+  onMouseUp?: React.MouseEventHandler<T>;     // 外部传入的 mouseUp 事件
+}
+type HookReturnType = {
+  isClicked: boolean;                         // 当前是否处于按下状态
+  MouseDownEvent: React.MouseEventHandler<T>; // 合并后的 mouseDown 事件
+  MouseUpEvent: React.MouseEventHandler<T>;   // 合并后的 mouseUp 事件
+}
+`.trim()}
+/>
+
+## Usage
+
+<Source
+  language="tsx"
+  dark
+  code={`
+"use client";
+
+import React from "react";
+import { Theme } from "venomous-ui-react/components";
+import { useElementMouseEvents } from "@/venomous-ui-react/hooks";
+
+export function App() {
+  return (
+    <Theme.Provider>
+      <Component />
+    </Theme.Provider>
+  );
+}
+
+export function Component() {
+  const { isClicked, MouseDownEvent, MouseUpEvent } = useElementMouseEvents({
+    disabled: false,
+    onMouseDown: e => console.log(e),
+    onMouseUp: e => console.log(e),
+  });
+  
+  return (
+    <div
+      onMouseDown={MouseDownEvent}
+      onMouseUp={MouseUpEvent}
+      style={{ transform: isClicked ? "scale(0.98)" : "scale(1)" }}
+    >
+      Content
+    </div>
+  ); 
+} `.trim()} />

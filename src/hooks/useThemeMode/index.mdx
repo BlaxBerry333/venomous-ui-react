@@ -1,0 +1,34 @@
+import { Meta, Source } from "@storybook/blocks";
+
+<Meta title="hooks/useThemeMode" />
+
+# useThemeMode
+
+用于获取当前 `ThemeMode` 和切换功能。
+
+<Source
+  language="tsx"
+  dark
+  code={`
+"use client";
+
+import { useThemeMode } from "venomous-ui-react/hooks";
+`.trim()}
+/>
+
+## Types
+
+<Source
+  language="ts"
+  dark
+  code={`
+type HookReturnType = {
+  themeMode: TThemeMode;
+  setThemeMode: (mode: TThemeMode) => void
+  isDarkMode: boolean;
+  toggleThemeMode: () => void
+}
+// Related Types
+type TThemeMode = "dark" | "light";
+`.trim()}
+/>

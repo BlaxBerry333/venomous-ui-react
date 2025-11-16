@@ -1,0 +1,44 @@
+import { Meta, Source, Subtitle } from "@storybook/blocks";
+
+import { SEMANTIC_COLORS } from "./SEMANTIC_COLORS";
+import { Space, Typography } from "@/components";
+
+<Meta title="constants/designs/SEMANTIC_COLORS" />
+
+# SEMANTIC_COLORS
+
+我准备了几个内置的颜色，可以直接使用。
+
+<Space.Grid columns={{ XS: 1, SM: 2, MD: 3, LG: 3 }} spacing={16}>
+  {Object.entries(SEMANTIC_COLORS).map(([key, value]) => (
+    <Space.Flex
+      column
+      spacing={8}
+      key={key}
+      style={{ flex: 1, backgroundColor: value, padding: "40px", border: "1px solid black" }}
+    >
+      <Typography.Text as="code" text={value} />
+      <Typography.Text as="code" text={`SEMANTIC_COLORS.${key}`} />
+    </Space.Flex>
+  ))}
+</Space.Grid>
+
+<br />
+<br />
+
+## Usage
+
+<Subtitle>直接导入使用</Subtitle>
+
+<Source
+  language="tsx"
+  dark
+  code={`
+"use client";
+
+import { SEMANTIC_COLORS } from "venomous-ui-react/constants";
+
+const { SUCCESS, ERROR, WARNING, INFO, DISABLED } = SEMANTIC_COLORS;
+console.log(SUCCESS, ERROR, WARNING, INFO, DISABLED);
+`.trim()}
+/>

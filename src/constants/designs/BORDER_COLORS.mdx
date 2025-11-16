@@ -1,0 +1,87 @@
+import { Meta, Source, Subtitle } from "@storybook/blocks";
+
+import { BORDER_COLORS } from "./BORDER_COLORS";
+import { Space, Typography } from "@/components";
+
+<Meta title="constants/designs/BORDER_COLORS" />
+
+# BORDER_COLORS
+
+<br />
+
+<Space.Grid columns={{ XS: 1, SM: 2, MD: 3, LG: 3 }} spacing={16}>
+  {Object.entries(BORDER_COLORS["light"]).map(([key, value]) => (
+    <Space.Flex
+      column
+      spacing={8}
+      key={key}
+      style={{ flex: 1, backgroundColor: "transparent", padding: "40px", border: `2px solid ${value}` }}
+    >
+      <Typography.Text as="code" text={value} />
+      <Typography.Text as="code" text={`BORDER_COLORS.light[${key}]`} />
+    </Space.Flex>
+  ))}
+  {Object.entries(BORDER_COLORS["dark"]).map(([key, value]) => (
+    <Space.Flex
+      column
+      spacing={8}
+      key={key}
+      style={{ flex: 1, backgroundColor: "transparent", padding: "40px", border: `2px solid ${value}` }}
+    >
+      <Typography.Text as="code" text={value} />
+      <Typography.Text as="code" text={`BORDER_COLORS.dark[${key}]`} />
+    </Space.Flex>
+  ))}
+</Space.Grid>
+
+<br />
+<br />
+
+## Usage
+
+<Subtitle>直接导入使用 ( 需要指明当前 `ThemeMode` )</Subtitle>
+
+<Source
+  language="tsx"
+  dark
+  code={`
+"use client";
+
+import { BORDER_COLORS } from "venomous-ui-react/constants";
+
+export default function App() {
+  console.log(BORDER_COLORS.light[1], BORDER_COLORS.dark[1], BORDER_COLORS.dark[2]);
+  return null;
+}
+  `.trim()}
+/>
+
+<Subtitle>使用 `useThemeDesigns()` 获取</Subtitle>
+
+<Source
+  language="tsx"
+  dark
+  code={`
+"use client";
+
+import { Theme } from "venomous-ui-react/components";
+import { useThemeDesign } from "venomous-ui-react/hooks";
+
+export function App() {
+  return (
+    <Theme.Provider>
+      <Component />
+    </Theme.Provider>
+  );
+}
+
+export function Component() {
+  const { BorderColors } = useThemeDesigns();
+  return (
+    <div style={{ padding: "40px", border: \`2px solid \${BorderColors[1]}\` }}>
+      Hello World
+    </div>
+  )
+}
+`.trim()}
+/>

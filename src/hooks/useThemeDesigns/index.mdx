@@ -1,0 +1,69 @@
+import { Meta, Source } from "@storybook/blocks";
+
+<Meta title="hooks/useThemeDesigns" />
+
+# useThemeDesigns
+
+用于获取当前 `ThemeMode` 对应的主题设计。若通过 `<Theme.Provider>` 设置了自定义主题设计则返回自定义主题设计，否则返回默认主题设计。
+
+<Source
+  language="tsx"
+  dark
+  code={`
+"use client";
+
+import { useThemeDesigns } from "venomous-ui-react/hooks";
+`.trim()}
+/>
+
+## Types
+
+<Source
+  language="ts"
+  dark
+  code={`
+// return type
+type TThemeDesigns = {
+  PaletteColors: TPaletteColor;
+  TextColors: TTextColors;
+  BackgroundColors: TBackgroundColors;
+  BorderColors: TBorderColors;
+  ShadowStyles: TShadowStyles;
+  TypographySizes: TTypographySizes;
+  TypographyLineHeights: TypographyLineHeights;
+};
+// optional
+type TPaletteColors = {
+  1: string; // Primary
+  2: string; // Secondary
+  3: string; // Tertiary
+};
+type TTextColors = {
+  1: string; // Primary
+  2: string; // Secondary
+  3: string; // Tertiary
+  disabled: string; // Disabled
+};
+type TBackgroundColors = {
+  1: string; // Primary
+  2: string; // Secondary
+  3: string; // Tertiary
+};
+type TBorderColors = {
+  1: string; // Primary
+  2: string; // Secondary
+};
+type TShadowStyles = {
+  1: string; // Primary
+  2: string; // Secondary
+};
+type TTypographySizes = {
+  TITLE: { H1: string; H2: string; H3: string; H4: string; H5: string; H6: string };
+  TEXT: { LARGE: string; BASE: string; SMALL: string; CAPTION: string };
+};
+type TypographyLineHeights = {
+  TITLE: { H1: number; H2: number; H3: number; H4: number; H5: number; H6: number };
+  TEXT: { LARGE: number; BASE: number; SMALL: number; CAPTION: number };
+};
+`.trim()}
+/>
