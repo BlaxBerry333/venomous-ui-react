@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const e=require("./THEME_MODES.js"),E={[e.THEME_MODES.LIGHT]:{1:"#212121",2:"#424242",3:"#616161",disabled:"#bdbdbd"},[e.THEME_MODES.DARK]:{1:"#e0e0e0",2:"#a0a0a0",3:"#757575",disabled:"#4a4a4a"}};exports.TEXT_COLORS=E;

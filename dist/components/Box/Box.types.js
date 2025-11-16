@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const e={DIV:"div",SECTION:"section",ARTICLE:"article",MAIN:"main",ASIDE:"aside",HEADER:"header",FOOTER:"footer",NAV:"nav"};exports.BOX_ELEMENT_MAP=e;

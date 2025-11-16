@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const e=require("./Box.component.js"),o=require("./Box.hooks.js"),t=require("./Box.types.js");exports.Box=e.default;exports.useBoxStyles=o.useBoxStyles;exports.BOX_ELEMENT_MAP=t.BOX_ELEMENT_MAP;

@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const e=require("./FormLabel.component.js"),o=require("./FormLabel.hooks.js");exports.FormLabel=e.default;exports.useFormLabelStyles=o.useFormLabelStyles;

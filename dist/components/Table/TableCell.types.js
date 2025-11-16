@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const E={TH:"th",TD:"td"},L={LEFT:"left",CENTER:"center",RIGHT:"right"},_={ASC:"asc",DESC:"desc"};exports.TABLE_CELL_ALIGN_MAP=L;exports.TABLE_CELL_ELEMENT_MAP=E;exports.TABLE_CELL_SORT_ORDER_MAP=_;

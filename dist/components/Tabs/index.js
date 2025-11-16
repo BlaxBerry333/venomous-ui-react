@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const e=require("./TabsContainer.component.js"),t=require("./TabsTab.component.js"),a=require("./TabsTabList.component.js"),n=require("./TabsTabPanel.component.js"),o={Container:e.default,Tab:t.default,TabList:a.default,TabPanel:n.default};exports.Tabs=o;

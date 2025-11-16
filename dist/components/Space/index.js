@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const e=require("./SpaceFlex.component.js"),c=require("./SpaceGrid.component.js"),t=require("./SpaceFlex.hooks.js"),o=require("./SpaceGrid.hooks.js"),r={Flex:e.default,Grid:c.default};exports.useSpaceFlexStyles=t.useSpaceFlexStyles;exports.useSpaceGridStyles=o.useSpaceGridStyles;exports.Space=r;

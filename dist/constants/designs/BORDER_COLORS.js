@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const E=require("./THEME_MODES.js"),O={[E.THEME_MODES.DARK]:{1:"#3A3A3A",2:"#555555"},[E.THEME_MODES.LIGHT]:{1:"#c8c8c8",2:"#a0a0a0"}};exports.BORDER_COLORS=O;

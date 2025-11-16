@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const E={XS:"XS",SM:"SM",MD:"MD",LG:"LG",XL:"XL",XXL:"XXL"},S={[E.XS]:[0,575],[E.SM]:[576,767],[E.MD]:[768,1023],[E.LG]:[1024,1365],[E.XL]:[1366,1919],[E.XXL]:[1920,1/0]};exports.THEME_BREAKPOINTS=E;exports.THEME_BREAKPOINT_RANGES=S;

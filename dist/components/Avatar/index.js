@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const e=require("./Avatar.component.js"),t=require("./Avatar.hooks.js"),A=require("./Avatar.types.js");exports.Avatar=e.default;exports.useAvatarActions=t.useAvatarActions;exports.useAvatarStyles=t.useAvatarStyles;exports.AVATAR_SHAPE_MAP=A.AVATAR_SHAPE_MAP;

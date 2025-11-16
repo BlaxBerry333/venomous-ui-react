@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const t={DOT:"dot",TEXT:"text"},T={TOP_RIGHT:"top-right",TOP_LEFT:"top-left",BOTTOM_RIGHT:"bottom-right",BOTTOM_LEFT:"bottom-left"};exports.BADGE_PLACEMENT_MAP=T;exports.BADGE_VARIANT_MAP=t;

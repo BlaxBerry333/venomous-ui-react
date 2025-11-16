@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const H={TITLE:{H1:1.55,H2:1.5,H3:1.45,H4:1.4,H5:1.3,H6:1.2},TEXT:{LARGE:1.5,BASE:1.5,SMALL:1.5,CAPTION:1.5}};exports.TYPOGRAPHY_LINE_HEIGHTS=H;

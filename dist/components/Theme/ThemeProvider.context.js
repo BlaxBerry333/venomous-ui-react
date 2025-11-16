@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const e=require("react"),t=require("../../tools/systems/getSystemThemeMode.js"),o=e.createContext({themeMode:t.getSystemThemeMode(),setThemeMode:()=>{},customDesigns:{},customStyles:{}});exports.ThemeProviderContext=o;

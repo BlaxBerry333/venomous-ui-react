@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const o=require("./Dialog.component.js"),e=require("./Dialog.hooks.js");exports.Dialog=o.default;exports.useDialogActions=e.useDialogActions;exports.useDialogStyles=e.useDialogStyles;

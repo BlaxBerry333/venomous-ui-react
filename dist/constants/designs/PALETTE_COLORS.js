@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const E={VIPER:{1:"#8B0000",2:"#5C0000",3:"#CD7E7E"},MAMBA:{1:"#4CAF50",2:"#2E7D32",3:"#B9DDAA"},DART_FROG:{1:"#0091FF",2:"#004F8A",3:"#8DB8D8"},WOLFSBANE:{1:"#512DA8",2:"#311C6B",3:"#C9BFE3"},OLEANDER:{1:"#CE347F",2:"#88194F",3:"#E6BAD2"}};exports.PALETTE_COLORS=E;

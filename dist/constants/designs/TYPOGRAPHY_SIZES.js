@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const T={TITLE:{H1:"40px",H2:"32px",H3:"25px",H4:"20px",H5:"16px",H6:"15px"},TEXT:{LARGE:"18px",BASE:"16px",SMALL:"14px",CAPTION:"12px"}},E={h1:"H1",h2:"H2",h3:"H3",h4:"H4",h5:"H5",h6:"H6"};exports.TYPOGRAPHY_SIZES=T;exports.__TITLE_ELEMENT_TO_TYPOGRAPHY_SIZE_MAP=E;

@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const e=require("./Chip.component.js"),t=require("./Chip.hooks.js");exports.Chip=e.default;exports.useChipStyles=t.useChipStyles;

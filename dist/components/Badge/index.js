@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const t=require("./Badge.component.js"),A=require("./Badge.hooks.js"),e=require("./Badge.types.js");exports.Badge=t.default;exports.useBadgeStyles=A.useBadgeStyles;exports.BADGE_PLACEMENT_MAP=e.BADGE_PLACEMENT_MAP;exports.BADGE_VARIANT_MAP=e.BADGE_VARIANT_MAP;
