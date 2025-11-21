@@ -1,3 +1,0 @@
-export { COMPONENT_DISPLAY_NAMES, type TComponentDisplayName } from "./COMPONENT_DISPLAY_NAMES";
-export { COMPONENT_CLASSNAME_NAMES, COMPONENT_CLASSNAME_PREFIX } from "./COMPONENT_CLASSNAME_NAMES";
-//# sourceMappingURL=index.d.ts.map

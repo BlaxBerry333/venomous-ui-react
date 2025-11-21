@@ -1,6 +1,6 @@
 import { jsxs as e, jsx as f, Fragment as u } from "react/jsx-runtime";
 import o from "react";
-import { clsx as y } from "../../node_modules/clsx/dist/clsx.esm.js";
+import y from "clsx";
 import "../Progress/ProgressBar.component.esm.js";
 import { COMPONENT_DISPLAY_NAMES as N } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
 import { COMPONENT_CLASSNAME_NAMES as S } from "../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";

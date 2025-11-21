@@ -1,6 +1,6 @@
 import { jsxs as n, jsx as o } from "react/jsx-runtime";
 import i from "react";
-import { clsx as h } from "../../node_modules/clsx/dist/clsx.esm.js";
+import h from "clsx";
 import "../Buttons/Button.component.esm.js";
 import { COMPONENT_DISPLAY_NAMES as g } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
 import { COMPONENT_CLASSNAME_NAMES as x } from "../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";

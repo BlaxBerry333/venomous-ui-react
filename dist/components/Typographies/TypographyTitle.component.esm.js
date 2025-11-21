@@ -1,6 +1,6 @@
 import { jsx as l } from "react/jsx-runtime";
 import r from "react";
-import { clsx as y } from "../../node_modules/clsx/dist/clsx.esm.js";
+import y from "clsx";
 import { COMPONENT_DISPLAY_NAMES as T } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
 import { COMPONENT_CLASSNAME_NAMES as f } from "../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";
 import "../../constants/designs/BACKGROUND_COLORS.esm.js";

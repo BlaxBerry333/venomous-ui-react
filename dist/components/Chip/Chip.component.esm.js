@@ -1,5 +1,5 @@
 import { jsxs as N, jsx as r } from "react/jsx-runtime";
-import { clsx as d } from "../../node_modules/clsx/dist/clsx.esm.js";
+import d from "clsx";
 import i from "react";
 import C from "../Avatar/Avatar.component.esm.js";
 import { COMPONENT_DISPLAY_NAMES as E } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";

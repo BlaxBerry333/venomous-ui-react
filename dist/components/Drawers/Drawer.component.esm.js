@@ -1,5 +1,5 @@
 import { jsx as r } from "react/jsx-runtime";
-import { clsx as N } from "../../node_modules/clsx/dist/clsx.esm.js";
+import N from "clsx";
 import t from "react";
 import S from "../Backdrop/Backdrop.component.esm.js";
 import { COMPONENT_DISPLAY_NAMES as w } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";

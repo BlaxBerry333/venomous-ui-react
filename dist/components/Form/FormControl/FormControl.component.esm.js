@@ -1,6 +1,6 @@
 import { jsx as M, jsxs as n, Fragment as p } from "react/jsx-runtime";
 import o from "react";
-import { clsx as h } from "../../../node_modules/clsx/dist/clsx.esm.js";
+import h from "clsx";
 import { Space as E } from "../../Space/index.esm.js";
 import { Typography as R } from "../../Typographies/index.esm.js";
 import { COMPONENT_DISPLAY_NAMES as _ } from "../../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";

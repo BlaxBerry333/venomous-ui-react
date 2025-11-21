@@ -1,1 +1,0 @@
-{"version":3,"file":"ScrollToTop.hooks.d.ts","sourceRoot":"","sources":["../../../src/components/Buttons/ScrollToTop.hooks.ts"],"names":[],"mappings":"AAEA,OAAO,KAAK,MAAM,OAAO,CAAC;AAE1B,OAAO,KAAK,EAAE,gBAAgB,EAAE,MAAM,qBAAqB,CAAC;AAK5D,wBAAgB,qBAAqB,CAAC,EAAE,QAAc,EAAE,OAAO,EAAE,EAAE,IAAI,CAAC,gBAAgB,EAAE,UAAU,GAAG,SAAS,CAAC;;qBAuBzG,KAAK,CAAC,UAAU,CAAC,iBAAiB,CAAC;EAc1C"}

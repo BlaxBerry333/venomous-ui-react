@@ -1,6 +1,6 @@
 import { jsx as t } from "react/jsx-runtime";
 import y from "react";
-import { clsx as n } from "../../node_modules/clsx/dist/clsx.esm.js";
+import n from "clsx";
 import s from "../Box/Box.component.esm.js";
 import { COMPONENT_DISPLAY_NAMES as I } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
 import { COMPONENT_CLASSNAME_NAMES as l } from "../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";

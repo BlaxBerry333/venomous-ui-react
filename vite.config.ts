@@ -37,6 +37,7 @@ export default defineConfig({
         "react-dom",
         "react/jsx-runtime",
         "@iconify/react", // peerDependencies
+        "clsx", // dependencies，但是由使用方安装
       ],
       output: [
         {
