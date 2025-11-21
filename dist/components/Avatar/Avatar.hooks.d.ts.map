@@ -1,0 +1,1 @@
+{"version":3,"file":"Avatar.hooks.d.ts","sourceRoot":"","sources":["../../../src/components/Avatar/Avatar.hooks.ts"],"names":[],"mappings":"AAEA,OAAO,KAAK,MAAM,OAAO,CAAC;AAK1B,OAAO,EAAoB,KAAK,WAAW,EAAE,MAAM,gBAAgB,CAAC;AAEpE,wBAAgB,eAAe,CAAC,EAAE,KAAgB,EAAE,KAAU,EAAE,EAAE,OAAO,CAAC,WAAW,CAAC;;;;;;;;;EAyFrF;AAED,wBAAgB,gBAAgB,CAAC,EAAE,GAAG,EAAE,EAAE,OAAO,CAAC,WAAW,CAAC;;;EAW7D"}
