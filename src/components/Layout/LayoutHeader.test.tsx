@@ -25,14 +25,14 @@ describe("Layout.Header", () => {
     expect(screen.getByText("Header Content")).toBeDefined();
   });
 
-  it("renders Logo", () => {
-    render(<LayoutHeader Logo={<div data-testid="logo">Logo</div>} />, { wrapper });
+  it("renders renderLogo", () => {
+    render(<LayoutHeader renderLogo={() => <div data-testid="logo">Logo</div>} />, { wrapper });
 
     expect(screen.getByTestId("logo")).toBeDefined();
   });
 
-  it("renders Menu", () => {
-    render(<LayoutHeader Menu={<div data-testid="menu">Menu</div>} />, { wrapper });
+  it("renders renderActions", () => {
+    render(<LayoutHeader renderActions={() => <div data-testid="menu">Menu</div>} />, { wrapper });
 
     expect(screen.getByTestId("menu")).toBeDefined();
   });

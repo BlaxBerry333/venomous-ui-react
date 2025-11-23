@@ -4,17 +4,17 @@ export type LayoutFooterRef = BoxRef;
 
 export interface LayoutFooterProps extends Omit<BoxProps, "as" | "children"> {
   /**
-   * Copyright element.
+   * Render copyright element (left side).
    */
-  Copyright?: React.ReactNode;
+  renderCopyright?: () => React.ReactNode;
 
   /**
-   * Links element.
+   * Render links element (right side).
    */
-  Links?: React.ReactNode;
+  renderLinks?: () => React.ReactNode;
 
   /**
-   * Custom children (overrides copyright and links).
+   * Custom children (overrides renderCopyright and renderLinks).
    */
   children?: React.ReactNode;
 }

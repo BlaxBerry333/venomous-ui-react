@@ -17,14 +17,17 @@ const LayoutFooter = React.memo(
         style,
         children,
 
-        Copyright,
-        Links,
+        renderCopyright,
+        renderLinks,
 
         ...props
       },
       ref,
     ) => {
       const { componentStyle } = useLayoutFooterStyles();
+
+      const copyright = renderCopyright?.();
+      const links = renderLinks?.();
 
       return (
         <Space.Flex
@@ -36,8 +39,8 @@ const LayoutFooter = React.memo(
         >
           {children || (
             <>
-              {Copyright}
-              {Links}
+              {copyright}
+              {links}
             </>
           )}
         </Space.Flex>

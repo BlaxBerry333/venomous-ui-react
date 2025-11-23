@@ -18,8 +18,8 @@ const LayoutHeader = React.memo(
         style,
         children,
 
-        Logo,
-        Menu,
+        renderLogo,
+        renderActions,
 
         showProgressBar = true,
         ProgressBarProps,
@@ -29,6 +29,9 @@ const LayoutHeader = React.memo(
       ref,
     ) => {
       const { componentStyle } = useLayoutHeaderStyles();
+
+      const logo = renderLogo?.();
+      const actions = renderActions?.();
 
       return (
         <Space.Flex
@@ -48,8 +51,8 @@ const LayoutHeader = React.memo(
 
           {children || (
             <>
-              {Logo}
-              {Menu}
+              {logo}
+              {actions}
             </>
           )}
         </Space.Flex>

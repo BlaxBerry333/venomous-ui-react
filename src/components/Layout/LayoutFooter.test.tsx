@@ -25,14 +25,14 @@ describe("Layout.Footer", () => {
     expect(screen.getByText("Footer Content")).toBeDefined();
   });
 
-  it("renders Copyright", () => {
-    render(<LayoutFooter Copyright={<div data-testid="copyright">© 2024</div>} />, { wrapper });
+  it("renders renderCopyright", () => {
+    render(<LayoutFooter renderCopyright={() => <div data-testid="copyright">© 2024</div>} />, { wrapper });
 
     expect(screen.getByTestId("copyright")).toBeDefined();
   });
 
-  it("renders Links", () => {
-    render(<LayoutFooter Links={<div data-testid="links">Links</div>} />, { wrapper });
+  it("renders renderLinks", () => {
+    render(<LayoutFooter renderLinks={() => <div data-testid="links">Links</div>} />, { wrapper });
 
     expect(screen.getByTestId("links")).toBeDefined();
   });

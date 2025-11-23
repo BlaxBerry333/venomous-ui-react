@@ -85,8 +85,8 @@ type Story = StoryObj<typeof meta>;
 export const BasicLayout: Story = {
   name: "Header + Footer",
   argTypes: {
-    Logo: { control: false, table: { disable: true } },
-    Menu: { control: false, table: { disable: true } },
+    renderLogo: { control: false, table: { disable: true } },
+    renderActions: { control: false, table: { disable: true } },
     style: { control: false, table: { disable: true } },
     children: { control: false, table: { disable: true } },
     showProgressBar: { control: false, table: { disable: true } },
@@ -101,14 +101,14 @@ export const BasicLayout: Story = {
           style={{ height: HEADER_HEIGHT, padding: "0 16px" }}
           showProgressBar
           ProgressBarProps={{ color: "#4CAF50" }}
-          Logo={<Typography.Title text="My App" />}
-          Menu={
+          renderLogo={() => <Typography.Title text="My App" />}
+          renderActions={() => (
             <Space.Flex spacing={24} style={{ height: "100%", justifyContent: "flex-end", flex: 1 }}>
               <a href="#home">Home</a>
               <a href="#about">About</a>
               <a href="#contact">Contact</a>
             </Space.Flex>
-          }
+          )}
         />
 
         {/* main content */}
@@ -131,13 +131,15 @@ export const BasicLayout: Story = {
           {/* footer */}
           <Layout.Footer
             style={{ minHeight: HEADER_HEIGHT }}
-            Copyright={<Typography.Text text={`© ${new Date().getFullYear()} My Company. All rights reserved.`} />}
-            Links={
+            renderCopyright={() => (
+              <Typography.Text text={`© ${new Date().getFullYear()} My Company. All rights reserved.`} />
+            )}
+            renderLinks={() => (
               <Space.Flex spacing={16} style={{ height: "100%", justifyContent: "flex-end", flex: 1 }}>
                 <a href="#privacy">Privacy Policy</a>
                 <a href="#terms">Terms of Service</a>
               </Space.Flex>
-            }
+            )}
           />
         </Box>
       </>
@@ -164,8 +166,8 @@ function App() {
         showProgressBar
         ProgressBarProps={{ color: "#4CAF50" }}
         style={{ height: HEADER_HEIGHT, padding: "0 16px" }}
-        Logo={() => <Typography.Title text="My App" />}
-        Menu={() => (
+        renderLogo={() => <Typography.Title text="My App" />}
+        renderActions={() => (
           <Space.Flex spacing={24} style={{ height: "100%", justifyContent: "flex-end", flex: 1 }}>
             <a href="#home">Home</a>
             <a href="#about">About</a>
@@ -194,13 +196,13 @@ function App() {
         {/* footer */}
         <Layout.Footer
           style={{ minHeight: HEADER_HEIGHT }}
-          Copyright={<Typography.Text text={\`© \${new Date().getFullYear()} My Company. All rights reserved.\`} />}
-          Links={
+          renderCopyright={() => <Typography.Text text={\`© \${new Date().getFullYear()} My Company. All rights reserved.\`} />}
+          renderLinks={() => (
             <Space.Flex spacing={16} style={{ height: "100%", justifyContent: "flex-end", flex: 1 }}>
               <a href="#privacy">Privacy Policy</a>
               <a href="#terms">Terms of Service</a>
             </Space.Flex>
-          }
+          )}
         />
       </Box>
     </Theme.Provider>
@@ -226,14 +228,14 @@ export const WithSidebar: Story = {
           showProgressBar
           ProgressBarProps={{ color: "#4CAF50" }}
           style={{ height: HEADER_HEIGHT, padding: "0 16px" }}
-          Logo={<Typography.Title text="My App" />}
-          Menu={
+          renderLogo={() => <Typography.Title text="My App" />}
+          renderActions={() => (
             <Space.Flex spacing={24} style={{ height: "100%", justifyContent: "flex-end", flex: 1 }}>
               <a href="#home">Home</a>
               <a href="#about">About</a>
               <a href="#contact">Contact</a>
             </Space.Flex>
-          }
+          )}
         />
 
         {/* main content */}
@@ -287,13 +289,15 @@ export const WithSidebar: Story = {
             {/* footer */}
             <Layout.Footer
               style={{ minHeight: HEADER_HEIGHT }}
-              Copyright={<Typography.Text text={`© ${new Date().getFullYear()} My Company. All rights reserved.`} />}
-              Links={
+              renderCopyright={() => (
+                <Typography.Text text={`© ${new Date().getFullYear()} My Company. All rights reserved.`} />
+              )}
+              renderLinks={() => (
                 <Space.Flex spacing={16} style={{ height: "100%", justifyContent: "flex-end", flex: 1 }}>
                   <a href="#privacy">Privacy Policy</a>
                   <a href="#terms">Terms of Service</a>
                 </Space.Flex>
-              }
+              )}
             />
           </Box>
         </Space.Flex>
@@ -323,14 +327,14 @@ function App() {
         showProgressBar
         ProgressBarProps={{ color: "#4CAF50" }}
         style={{ height: HEADER_HEIGHT, padding: "0 16px" }}
-        Logo={<Typography.Title text="My App" />}
-        Menu={
+        renderLogo={() => <Typography.Title text="My App" />}
+        renderActions={() => (
           <Space.Flex spacing={24} style={{ height: "100%", justifyContent: "flex-end", flex: 1 }}>
             <a href="#home">Home</a>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
           </Space.Flex>
-        }
+        )}
       />
 
       {/* main content */}
@@ -384,13 +388,13 @@ function App() {
           {/* footer */}
           <Layout.Footer
             style={{ minHeight: HEADER_HEIGHT }}
-            Copyright={<Typography.Text text={\`© \${new Date().getFullYear()} My Company. All rights reserved.\`} />}
-            Links={
+            renderCopyright={() => <Typography.Text text={\`© \${new Date().getFullYear()} My Company. All rights reserved.\`} />}
+            renderLinks={() => (
               <Space.Flex spacing={16} style={{ height: "100%", justifyContent: "flex-end", flex: 1 }}>
                 <a href="#privacy">Privacy Policy</a>
                 <a href="#terms">Terms of Service</a>
               </Space.Flex>
-            }
+            )}
           />
         </Box>
       </Space.Flex>
@@ -423,14 +427,14 @@ export const CollapsibleSidebar: Story = {
             backgroundColor: "transparent",
             backdropFilter: "blur(10px)",
           }}
-          Logo={<Typography.Title text="My App" />}
-          Menu={
+          renderLogo={() => <Typography.Title text="My App" />}
+          renderActions={() => (
             <Space.Flex spacing={24} style={{ height: "100%", justifyContent: "flex-end", flex: 1 }}>
               <a href="#home">Home</a>
               <a href="#about">About</a>
               <a href="#contact">Contact</a>
             </Space.Flex>
-          }
+          )}
         />
 
         {/* main content */}
@@ -493,13 +497,15 @@ export const CollapsibleSidebar: Story = {
             {/* footer */}
             <Layout.Footer
               style={{ minHeight: HEADER_HEIGHT, padding: "8px 16px" }}
-              Copyright={<Typography.Text text={`© ${new Date().getFullYear()} My Company. All rights reserved.`} />}
-              Links={
+              renderCopyright={() => (
+                <Typography.Text text={`© ${new Date().getFullYear()} My Company. All rights reserved.`} />
+              )}
+              renderLinks={() => (
                 <Space.Flex spacing={16} style={{ height: "100%", justifyContent: "flex-end", flex: 1 }}>
                   <a href="#privacy">Privacy Policy</a>
                   <a href="#terms">Terms of Service</a>
                 </Space.Flex>
-              }
+              )}
             />
           </Box>
         </Space.Flex>
@@ -536,14 +542,14 @@ function App() {
           backgroundColor: "transparent",
           backdropFilter: "blur(10px)",
         }}
-        Logo={<Typography.Title text="My App" />}
-        Menu={
+        renderLogo={() => <Typography.Title text="My App" />}
+        renderActions={() => (
           <Space.Flex spacing={24} style={{ height: "100%", justifyContent: "flex-end", flex: 1 }}>
             <a href="#home">Home</a>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
           </Space.Flex>
-        }
+        )}
       />
 
       {/* main content */}
@@ -606,13 +612,13 @@ function App() {
           {/* footer */}
           <Layout.Footer
             style={{ minHeight: HEADER_HEIGHT, padding: "8px 16px" }}
-            Copyright={<Typography.Text text={\`© \${new Date().getFullYear()} My Company. All rights reserved.\`} />}
-            Links={
+            renderCopyright={() => <Typography.Text text={\`© \${new Date().getFullYear()} My Company. All rights reserved.\`} />}
+            renderLinks={() => (
               <Space.Flex spacing={16} style={{ height: "100%", justifyContent: "flex-end", flex: 1 }}>
                 <a href="#privacy">Privacy Policy</a>
                 <a href="#terms">Terms of Service</a>
               </Space.Flex>
-            }
+            )}
           />
         </Box>
       </Space.Flex>
@@ -707,13 +713,13 @@ export const SidebarWithHeader: Story = {
               top: 0,
               zIndex: 100,
             }}
-            Menu={
+            renderActions={() => (
               <Space.Flex spacing={24} style={{ height: "100%", justifyContent: "flex-end", flex: 1 }}>
                 <a href="#home">Home</a>
                 <a href="#about">About</a>
                 <a href="#contact">Contact</a>
               </Space.Flex>
-            }
+            )}
           />
 
           {/* main content */}
@@ -728,13 +734,15 @@ export const SidebarWithHeader: Story = {
           {/* footer */}
           <Layout.Footer
             style={{ minHeight: HEADER_HEIGHT, padding: "8px 16px" }}
-            Copyright={<Typography.Text text={`© ${new Date().getFullYear()} My Company. All rights reserved.`} />}
-            Links={
+            renderCopyright={() => (
+              <Typography.Text text={`© ${new Date().getFullYear()} My Company. All rights reserved.`} />
+            )}
+            renderLinks={() => (
               <Space.Flex spacing={16} style={{ height: "100%", justifyContent: "flex-end", flex: 1 }}>
                 <a href="#privacy">Privacy Policy</a>
                 <a href="#terms">Terms of Service</a>
               </Space.Flex>
-            }
+            )}
           />
         </Box>
       </Space.Flex>
@@ -833,13 +841,13 @@ function App() {
               top: 0,
               zIndex: 100,
             }}
-            Menu={
+            renderActions={() => (
               <Space.Flex spacing={24} style={{ height: "100%", justifyContent: "flex-end", flex: 1 }}>
                 <a href="#home">Home</a>
                 <a href="#about">About</a>
                 <a href="#contact">Contact</a>
               </Space.Flex>
-            }
+            )}
           />
 
           {/* main content */}
@@ -854,13 +862,13 @@ function App() {
           {/* footer */}
           <Layout.Footer
             style={{ minHeight: HEADER_HEIGHT, padding: "8px 16px" }}
-            Copyright={<Typography.Text text={\`© \${new Date().getFullYear()} My Company. All rights reserved.\`} />}
-            Links={
+            renderCopyright={() => <Typography.Text text={\`© \${new Date().getFullYear()} My Company. All rights reserved.\`} />}
+            renderLinks={() => (
               <Space.Flex spacing={16} style={{ height: "100%", justifyContent: "flex-end", flex: 1 }}>
                 <a href="#privacy">Privacy Policy</a>
                 <a href="#terms">Terms of Service</a>
               </Space.Flex>
-            }
+            )}
           />
         </Box>
       </Space.Flex>
