@@ -23,6 +23,7 @@ const PageScrollProgressBar = React.memo(
           style={{ ...containerStyle, ...style }}
           value={displayValue}
           color={color}
+          animated={false}
           {...props}
         />
       );

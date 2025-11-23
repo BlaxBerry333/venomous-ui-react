@@ -2,7 +2,8 @@ import type { ProgressBarProps, ProgressBarRef } from "./ProgressBar.types";
 
 export type PageScrollProgressBarRef = ProgressBarRef;
 
-export interface PageScrollProgressBarProps extends Omit<ProgressBarProps, "value" | "onChange" | "children"> {
+export interface PageScrollProgressBarProps
+  extends Omit<ProgressBarProps, "value" | "onChange" | "children" | "animated"> {
   /**
    * Progress bar color
    */

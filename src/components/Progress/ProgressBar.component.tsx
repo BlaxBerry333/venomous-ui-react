@@ -14,7 +14,7 @@ const ProgressBar = React.memo(
     ({ className, style, value, onChange, animated = false, color, ...props }, ref) => {
       const { displayValue } = useProgressBarActions({ value, onChange, animated });
       const { containerStyle, insideBarStyle } = useProgressBarStyles({
-        height: 4,
+        height: 6,
         color,
         displayValue,
       });

@@ -8,7 +8,7 @@ import type { PageScrollProgressBarProps } from "./PageScrollProgressBar.types";
 import { useProgressBarStyles } from "./ProgressBar.hooks";
 
 export function usePageScrollProgressBarStyles({ color, disablePortal = false }: Partial<PageScrollProgressBarProps>) {
-  const { containerStyle: __progressBarContainerStyle } = useProgressBarStyles({ color });
+  const { containerStyle: __progressBarContainerStyle } = useProgressBarStyles({ height: 4, color });
   const customStyle = useCustomStyle({ displayName: COMPONENT_DISPLAY_NAMES.PageScrollProgressBar });
 
   const containerStyle = React.useMemo<React.CSSProperties>(() => {
