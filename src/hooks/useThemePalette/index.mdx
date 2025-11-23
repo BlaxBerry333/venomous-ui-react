@@ -1,0 +1,37 @@
+import { Meta, Source } from "@storybook/blocks";
+
+<Meta title="hooks/useThemePalette" />
+
+# useThemePalette
+
+用于获取当前调色板 `ThemePalette` 和设置功能。
+
+<Source
+  language="tsx"
+  dark
+  code={`
+"use client";
+
+import { useThemePalette } from "venomous-ui-react/hooks";
+`.trim()}
+/>
+
+## Types
+
+<Source
+  language="ts"
+  dark
+  code={`
+type HookReturnType = { 
+  themePalette: TPaletteColors;                       // 当前调色板对象
+  setThemePalette: (palette: TPaletteColors) => void; // 设置调色板（ 接受任意 TPaletteColors 对象 ）
+  resetToDefaultPalette: () => void;                  // 重置到默认调色板（ PALETTE_COLORS.WOLFSBANE ）
+} 
+// Related Types
+type TPaletteColors = {
+  1: string; // 主色
+  2: string; // 中间色
+  3: string; // 辅助色
+};
+`.trim()}
+/>

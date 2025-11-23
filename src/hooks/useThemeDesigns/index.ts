@@ -5,7 +5,6 @@ import React from "react";
 import {
   BACKGROUND_COLORS,
   BORDER_COLORS,
-  PALETTE_COLORS,
   SHADOW_STYLES,
   TEXT_COLORS,
   TYPOGRAPHY_LINE_HEIGHTS,
@@ -14,15 +13,17 @@ import {
 } from "@/constants";
 import useCustomDesigns from "../useCustomDesigns";
 import useThemeMode from "../useThemeMode";
+import useThemePalette from "../useThemePalette";
 
 export default function useThemeDesigns(): TThemeDesigns {
   const { themeMode } = useThemeMode();
+  const { themePalette } = useThemePalette();
   const customDesign = useCustomDesigns();
 
   return React.useMemo(
     () =>
       ({
-        PaletteColors: customDesign?.PaletteColors || PALETTE_COLORS.WOLFSBANE,
+        PaletteColors: customDesign?.PaletteColors || themePalette,
         TextColors: customDesign?.TextColors || TEXT_COLORS[themeMode],
         BackgroundColors: customDesign?.BackgroundColors || BACKGROUND_COLORS[themeMode],
         BorderColors: customDesign?.BorderColors || BORDER_COLORS[themeMode],
@@ -30,6 +31,6 @@ export default function useThemeDesigns(): TThemeDesigns {
         TypographySizes: customDesign?.TypographySizes || TYPOGRAPHY_SIZES,
         TypographyLineHeights: customDesign?.TypographyLineHeights || TYPOGRAPHY_LINE_HEIGHTS,
       }) satisfies TThemeDesigns,
-    [themeMode, customDesign],
+    [themeMode, themePalette, customDesign],
   );
 }

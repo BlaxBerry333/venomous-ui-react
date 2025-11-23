@@ -1,9 +1,9 @@
 import { act, render } from "@testing-library/react";
 
-import { COMPONENT_DISPLAY_NAMES, THEME_MODES } from "@/constants";
+import { COMPONENT_DISPLAY_NAMES, PALETTE_COLORS, THEME_MODES } from "@/constants";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import { useThemeMode } from "@/hooks";
+import { useThemeMode, useThemePalette } from "@/hooks";
 import ThemeProvider from "./ThemeProvider.component";
 
 // Test component to access theme context
@@ -248,6 +248,261 @@ describe("ThemeProvider", () => {
     });
   });
 
+  // ========== Theme Palette Tests ==========
+  describe("Theme Palette", () => {
+    it("initializes with default palette (WOLFSBANE)", () => {
+      function TestPaletteComponent() {
+        const { themePalette } = useThemePalette();
+        return <div data-testid="palette-1">{themePalette[1]}</div>;
+      }
+
+      const { getByTestId } = render(
+        <ThemeProvider>
+          <TestPaletteComponent />
+        </ThemeProvider>,
+      );
+
+      const paletteElement = getByTestId("palette-1");
+      expect(paletteElement.textContent).toBe(PALETTE_COLORS.WOLFSBANE[1]);
+    });
+
+    it("initializes with customDesigns.PaletteColors", () => {
+      const customPaletteColors = {
+        1: "#ff0000",
+        2: "#00ff00",
+        3: "#0000ff",
+      };
+
+      function TestPaletteComponent() {
+        const { themePalette } = useThemePalette();
+        return <div data-testid="palette-1">{themePalette[1]}</div>;
+      }
+
+      const { getByTestId } = render(
+        <ThemeProvider customDesigns={{ PaletteColors: customPaletteColors }}>
+          <TestPaletteComponent />
+        </ThemeProvider>,
+      );
+
+      const paletteElement = getByTestId("palette-1");
+      expect(paletteElement.textContent).toBe("#ff0000");
+    });
+
+    it("allows palette to be changed with setThemePalette", () => {
+      function TestPaletteWithChange() {
+        const { themePalette, setThemePalette } = useThemePalette();
+        return (
+          <div>
+            <div data-testid="palette-1">{themePalette[1]}</div>
+            <button onClick={() => setThemePalette(PALETTE_COLORS.VIPER)}>Set VIPER</button>
+            <button onClick={() => setThemePalette(PALETTE_COLORS.MAMBA)}>Set MAMBA</button>
+          </div>
+        );
+      }
+
+      const { getByTestId, getByText } = render(
+        <ThemeProvider>
+          <TestPaletteWithChange />
+        </ThemeProvider>,
+      );
+
+      const paletteElement = getByTestId("palette-1");
+
+      // Initially WOLFSBANE
+      expect(paletteElement.textContent).toBe(PALETTE_COLORS.WOLFSBANE[1]);
+
+      // Click to set VIPER
+      act(() => {
+        getByText("Set VIPER").click();
+      });
+      expect(paletteElement.textContent).toBe(PALETTE_COLORS.VIPER[1]);
+
+      // Click to set MAMBA
+      act(() => {
+        getByText("Set MAMBA").click();
+      });
+      expect(paletteElement.textContent).toBe(PALETTE_COLORS.MAMBA[1]);
+    });
+
+    it("allows custom palette object via setThemePalette", () => {
+      const customPalette = {
+        1: "#aaaaaa",
+        2: "#bbbbbb",
+        3: "#cccccc",
+      };
+
+      function TestPaletteWithCustom() {
+        const { themePalette, setThemePalette } = useThemePalette();
+        return (
+          <div>
+            <div data-testid="palette-1">{themePalette[1]}</div>
+            <button onClick={() => setThemePalette(customPalette)}>Set Custom</button>
+          </div>
+        );
+      }
+
+      const { getByTestId, getByText } = render(
+        <ThemeProvider>
+          <TestPaletteWithCustom />
+        </ThemeProvider>,
+      );
+
+      const paletteElement = getByTestId("palette-1");
+
+      // Initially WOLFSBANE
+      expect(paletteElement.textContent).toBe(PALETTE_COLORS.WOLFSBANE[1]);
+
+      // Set custom palette
+      act(() => {
+        getByText("Set Custom").click();
+      });
+
+      expect(paletteElement.textContent).toBe("#aaaaaa");
+    });
+
+    it("persists palette to localStorage when changed", () => {
+      function TestPaletteWithChange() {
+        const { setThemePalette } = useThemePalette();
+        return (
+          <div>
+            <button onClick={() => setThemePalette(PALETTE_COLORS.OLEANDER)}>Set OLEANDER</button>
+          </div>
+        );
+      }
+
+      const { getByText } = render(
+        <ThemeProvider>
+          <TestPaletteWithChange />
+        </ThemeProvider>,
+      );
+
+      // Click to set OLEANDER
+      act(() => {
+        getByText("Set OLEANDER").click();
+      });
+
+      // Verify localStorage was updated
+      const stored = localStorage.getItem("VENOMOUS_UI__THEME_PALETTE");
+      expect(stored).toBe(JSON.stringify(PALETTE_COLORS.OLEANDER));
+    });
+
+    it("persists custom palette object to localStorage", () => {
+      const customPalette = {
+        1: "#111111",
+        2: "#222222",
+        3: "#333333",
+      };
+
+      function TestPaletteWithCustom() {
+        const { setThemePalette } = useThemePalette();
+        return (
+          <div>
+            <button onClick={() => setThemePalette(customPalette)}>Set Custom</button>
+          </div>
+        );
+      }
+
+      const { getByText } = render(
+        <ThemeProvider>
+          <TestPaletteWithCustom />
+        </ThemeProvider>,
+      );
+
+      // Set custom palette
+      act(() => {
+        getByText("Set Custom").click();
+      });
+
+      // Verify localStorage was updated with JSON
+      const stored = localStorage.getItem("VENOMOUS_UI__THEME_PALETTE");
+      expect(stored).toBe(JSON.stringify(customPalette));
+    });
+
+    it("loads persisted palette from localStorage", () => {
+      const customPalette = {
+        1: "#444444",
+        2: "#555555",
+        3: "#666666",
+      };
+
+      localStorage.setItem("VENOMOUS_UI__THEME_PALETTE", JSON.stringify(customPalette));
+
+      function TestPaletteComponent() {
+        const { themePalette } = useThemePalette();
+        return <div data-testid="palette-1">{themePalette[1]}</div>;
+      }
+
+      const { getByTestId } = render(
+        <ThemeProvider>
+          <TestPaletteComponent />
+        </ThemeProvider>,
+      );
+
+      const paletteElement = getByTestId("palette-1");
+      expect(paletteElement.textContent).toBe("#444444");
+    });
+
+    it("resets to default palette (WOLFSBANE)", () => {
+      const customPalette = {
+        1: "#111111",
+        2: "#222222",
+        3: "#333333",
+      };
+
+      function TestPaletteWithReset() {
+        const { themePalette, setThemePalette, resetToDefaultPalette } = useThemePalette();
+        return (
+          <div>
+            <div data-testid="palette-1">{themePalette[1]}</div>
+            <button onClick={() => setThemePalette(customPalette)}>Set Custom</button>
+            <button onClick={resetToDefaultPalette}>Reset</button>
+          </div>
+        );
+      }
+
+      const { getByTestId, getByText } = render(
+        <ThemeProvider>
+          <TestPaletteWithReset />
+        </ThemeProvider>,
+      );
+
+      const paletteElement = getByTestId("palette-1");
+
+      // Set custom
+      act(() => {
+        getByText("Set Custom").click();
+      });
+      expect(paletteElement.textContent).toBe("#111111");
+
+      // Click to reset
+      act(() => {
+        getByText("Reset").click();
+      });
+
+      // Should be WOLFSBANE now
+      expect(paletteElement.textContent).toBe(PALETTE_COLORS.WOLFSBANE[1]);
+    });
+
+    it("handles invalid localStorage palette value", () => {
+      localStorage.setItem("VENOMOUS_UI__THEME_PALETTE", "invalid-json");
+
+      function TestPaletteComponent() {
+        const { themePalette } = useThemePalette();
+        return <div data-testid="palette-1">{themePalette[1]}</div>;
+      }
+
+      const { getByTestId } = render(
+        <ThemeProvider>
+          <TestPaletteComponent />
+        </ThemeProvider>,
+      );
+
+      const paletteElement = getByTestId("palette-1");
+      // Should fall back to WOLFSBANE
+      expect(paletteElement.textContent).toBe(PALETTE_COLORS.WOLFSBANE[1]);
+    });
+  });
+
   // ========== Custom Designs Tests ==========
   describe("Custom Designs", () => {
     it("accepts customDesigns prop", () => {
@@ -256,8 +511,6 @@ describe("ThemeProvider", () => {
           1: "#ff0000",
           2: "#00ff00",
           3: "#0000ff",
-          4: "#ffff00",
-          5: "#ff00ff",
         },
       };
 
@@ -276,8 +529,6 @@ describe("ThemeProvider", () => {
           1: "#ff0000",
           2: "#00ff00",
           3: "#0000ff",
-          4: "#ffff00",
-          5: "#ff00ff",
         },
       };
 
