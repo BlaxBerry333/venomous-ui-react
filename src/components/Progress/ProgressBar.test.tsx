@@ -122,13 +122,13 @@ describe("ProgressBar", () => {
     expect(progressBar).toBeDefined();
   });
 
-  it("applies default height of 4px", () => {
+  it("applies default height of 8px", () => {
     const { container } = render(<ProgressBar />, { wrapper });
 
     const progressBar = container.querySelector<ProgressBarRef>(
       `div[class*='${COMPONENT_CLASSNAME_NAMES.ProgressBar}']`,
     );
-    expect(progressBar?.style.height).toBe("4px");
+    expect(progressBar?.style.height).toBe("8px");
   });
 
   it("applies default color from theme", () => {

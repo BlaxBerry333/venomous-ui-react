@@ -172,7 +172,7 @@ export const CustomStylesExample: Story = {
   parameters: {
     docs: {
       description: {
-        story: "默认高度为 `6px` 且宽度为充满父元素，可以通过 `style` 设置自定义宽度与高度以及更多样式。",
+        story: "默认高度为 `8px` 且宽度为充满父元素，可以通过 `style` 设置自定义宽度与高度以及更多样式。",
       },
       source: {
         code: `
