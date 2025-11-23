@@ -3,15 +3,15 @@ import type { PageScrollProgressBarProps } from "../../components/Progress";
 export type LayoutHeaderRef = BoxRef;
 export interface LayoutHeaderProps extends Omit<BoxProps, "as" | "children"> {
     /**
-     * Logo element ( left side ).
+     * Render logo element (left side).
      */
-    Logo?: React.ReactNode;
+    renderLogo?: () => React.ReactNode;
     /**
-     * Menu element (right side).
+     * Render actions element (right side: menu, buttons, user info, etc).
      */
-    Menu?: React.ReactNode;
+    renderActions?: () => React.ReactNode;
     /**
-     * Custom children ( overrides logo and menu ).
+     * Custom children (overrides renderLogo and renderActions).
      */
     children?: React.ReactNode;
     /**

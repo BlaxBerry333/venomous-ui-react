@@ -1,15 +1,15 @@
 import t from "react";
-import { COMPONENT_DISPLAY_NAMES as a } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
+import { COMPONENT_DISPLAY_NAMES as f } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
 import "../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";
 import "../../constants/designs/BACKGROUND_COLORS.esm.js";
 import "../../constants/designs/BORDER_COLORS.esm.js";
 import "../../constants/designs/SHADOW_STYLES.esm.js";
 import "../../constants/designs/TEXT_COLORS.esm.js";
 import "../../constants/designs/THEME_BREAKPOINTS.esm.js";
-import f from "../../hooks/useThemeDesigns/index.esm.js";
+import a from "../../hooks/useThemeDesigns/index.esm.js";
 import "../Theme/ThemeProvider.context.esm.js";
 import S from "../../hooks/useCustomStyle/index.esm.js";
-function z({
+function k({
   collapsed: i,
   onCollapsedChange: o
 }) {
@@ -29,23 +29,25 @@ function z({
     [e, s]
   );
 }
-function D({
+function z({
   expandedWidth: i = 280,
   collapsedWidth: o = 80,
   collapsed: e
 }) {
-  const { BackgroundColors: r, BorderColors: s } = f(), n = S({ displayName: a.LayoutSide }), m = t.useMemo(() => {
+  const { BackgroundColors: r, BorderColors: s } = a(), n = S({ displayName: f.LayoutSide }), m = t.useMemo(() => {
     const u = e ? o : i;
     return {
       width: `${u}px`,
       minWidth: `${u}px`,
       height: "100dvh"
     };
-  }, [e, o, i]), c = t.useMemo(
+  }, [e, o, i]), l = t.useMemo(
     () => ({
       boxSizing: "border-box",
       WebkitTapHighlightColor: "transparent",
       // -- default styles --
+      display: "flex",
+      flexDirection: "column",
       overflow: "visible",
       position: "fixed",
       top: 0,
@@ -59,17 +61,17 @@ function D({
       ...n
     }),
     [r, s, m, n]
-  ), p = t.useMemo(
+  ), c = t.useMemo(
     () => ({
       position: "relative",
       width: "100%",
-      height: "100%",
+      flex: 1,
       overflowX: "hidden",
       overflowY: "auto",
       zIndex: 1
     }),
     []
-  ), l = t.useMemo(
+  ), p = t.useMemo(
     () => ({
       position: "absolute",
       top: 8,
@@ -80,12 +82,12 @@ function D({
     []
   );
   return {
-    componentStyle: c,
-    wrapperStyle: p,
-    collapseButtonStyle: l
+    componentStyle: l,
+    wrapperStyle: c,
+    collapseButtonStyle: p
   };
 }
 export {
-  z as useLayoutSideActions,
-  D as useLayoutSideStyles
+  k as useLayoutSideActions,
+  z as useLayoutSideStyles
 };

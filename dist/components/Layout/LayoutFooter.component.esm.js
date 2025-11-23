@@ -1,44 +1,44 @@
-import { jsx as f, jsxs as l, Fragment as c } from "react/jsx-runtime";
-import o from "react";
-import N from "clsx";
-import { Space as n } from "../Space/index.esm.js";
-import { COMPONENT_DISPLAY_NAMES as y } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
-import { COMPONENT_CLASSNAME_NAMES as S } from "../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";
+import { jsx as N, jsxs as S, Fragment as e } from "react/jsx-runtime";
+import m from "react";
+import u from "clsx";
+import { Space as F } from "../Space/index.esm.js";
+import { COMPONENT_DISPLAY_NAMES as x } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
+import { COMPONENT_CLASSNAME_NAMES as y } from "../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";
 import "../../constants/designs/BACKGROUND_COLORS.esm.js";
 import "../../constants/designs/BORDER_COLORS.esm.js";
 import "../../constants/designs/SHADOW_STYLES.esm.js";
 import "../../constants/designs/TEXT_COLORS.esm.js";
 import "../../constants/designs/THEME_BREAKPOINTS.esm.js";
-import { useLayoutFooterStyles as u } from "./LayoutFooter.hooks.esm.js";
-const F = o.memo(
-  o.forwardRef(
+import { useLayoutFooterStyles as A } from "./LayoutFooter.hooks.esm.js";
+const E = m.memo(
+  m.forwardRef(
     ({
-      className: r,
-      style: t,
-      children: m,
-      Copyright: e,
-      Links: p,
-      ...a
-    }, i) => {
-      const { componentStyle: s } = u();
-      return /* @__PURE__ */ f(
-        n.Flex,
+      className: a,
+      style: p,
+      children: r,
+      renderCopyright: o,
+      renderLinks: t,
+      ...s
+    }, c) => {
+      const { componentStyle: f } = A(), l = o == null ? void 0 : o(), i = t == null ? void 0 : t();
+      return /* @__PURE__ */ N(
+        F.Flex,
         {
           as: "footer",
-          ref: i,
-          className: N(S.LayoutFooter, r),
-          style: { ...s, ...t },
-          ...a,
-          children: m || /* @__PURE__ */ l(c, { children: [
-            e,
-            p
+          ref: c,
+          className: u(y.LayoutFooter, a),
+          style: { ...f, ...p },
+          ...s,
+          children: r || /* @__PURE__ */ S(e, { children: [
+            l,
+            i
           ] })
         }
       );
     }
   )
 );
-F.displayName = y.LayoutFooter;
+E.displayName = x.LayoutFooter;
 export {
-  F as default
+  E as default
 };
