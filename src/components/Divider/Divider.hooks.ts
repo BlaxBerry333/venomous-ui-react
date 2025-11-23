@@ -14,8 +14,12 @@ export function useDividerStyles({ column }: Partial<DividerProps>) {
   const DynamicOrientationStyles = React.useMemo<React.CSSProperties>(() => {
     if (column) {
       return {
-        border: "none",
-        borderLeft: `1px solid ${BorderColors[2]}`,
+        borderTop: 0,
+        borderRight: 0,
+        borderBottom: 0,
+        borderLeftWidth: 1,
+        borderLeftStyle: "solid",
+        borderLeftColor: BorderColors[2],
         margin: "0 8px",
         alignSelf: "stretch",
         width: "1px",
@@ -23,8 +27,12 @@ export function useDividerStyles({ column }: Partial<DividerProps>) {
       };
     } else {
       return {
-        border: "none",
-        borderTop: `1px solid ${BorderColors[2]}`,
+        borderLeft: 0,
+        borderRight: 0,
+        borderBottom: 0,
+        borderTopWidth: 1,
+        borderTopStyle: "solid",
+        borderTopColor: BorderColors[2],
         margin: "8px 0",
         width: "100%",
       };

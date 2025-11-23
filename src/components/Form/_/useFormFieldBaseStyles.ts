@@ -71,7 +71,8 @@ export function useFormFieldBaseStyles({
       case FORM_FIELD_VARIANT_MAP.TEXT:
         return {
           backgroundColor: "transparent",
-          border: "none",
+          borderWidth: 0,
+          borderStyle: "none",
           borderRadius: 0,
         };
       case FORM_FIELD_VARIANT_MAP.OUTLINED:
@@ -217,7 +218,8 @@ export function useFormFieldBaseStyles({
             flex: 1,
             width: "100%",
             height: "100%",
-            border: "none",
+            borderWidth: 0,
+            borderStyle: "none",
             outline: "none",
             backgroundColor: "transparent",
             color: "inherit",

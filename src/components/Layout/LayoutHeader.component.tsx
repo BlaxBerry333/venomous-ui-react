@@ -44,7 +44,12 @@ const LayoutHeader = React.memo(
           {showProgressBar && (
             <PageScrollProgressBar
               disablePortal
-              style={{ border: "none", backgroundColor: "transparent", ...ProgressBarProps?.style }}
+              style={{
+                borderWidth: 0,
+                borderStyle: "none",
+                backgroundColor: "transparent",
+                ...ProgressBarProps?.style,
+              }}
               {...ProgressBarProps}
             />
           )}
