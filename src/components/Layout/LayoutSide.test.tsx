@@ -25,10 +25,56 @@ describe("Layout.Side", () => {
     expect(screen.getByText("Side Content")).toBeDefined();
   });
 
-  it("renders Menu", () => {
+  it("renders Menu via renderMenu prop", () => {
     render(<LayoutSide renderMenu={() => <div data-testid="menu">Menu</div>} />, { wrapper });
 
     expect(screen.getByTestId("menu")).toBeDefined();
+  });
+
+  it("renders Menu via children function", () => {
+    render(
+      <LayoutSide>
+        {(collapsed) => <div data-testid="menu-fn">Menu {collapsed ? "Collapsed" : "Expanded"}</div>}
+      </LayoutSide>,
+      { wrapper },
+    );
+
+    expect(screen.getByTestId("menu-fn")).toBeDefined();
+    expect(screen.getByText(/Menu Expanded/i)).toBeDefined();
+  });
+
+  it("renders Header via renderHeader prop", () => {
+    render(
+      <LayoutSide renderHeader={(collapsed) => <div data-testid="header">Header {collapsed ? "C" : "E"}</div>} />,
+      { wrapper },
+    );
+
+    expect(screen.getByTestId("header")).toBeDefined();
+  });
+
+  it("renders Bottom via renderBottom prop", () => {
+    render(
+      <LayoutSide
+        renderBottom={(collapsed) => <div data-testid="bottom">Bottom {collapsed ? "Collapsed" : "Expanded"}</div>}
+      />,
+      { wrapper },
+    );
+
+    expect(screen.getByTestId("bottom")).toBeDefined();
+    expect(screen.getByText(/Bottom Expanded/i)).toBeDefined();
+  });
+
+  it("renders custom collapse button via renderCollapseButton prop", () => {
+    const renderCollapseButton = vi.fn((collapsed, toggle) => (
+      <button data-testid="custom-collapse-btn" onClick={toggle}>
+        {collapsed ? "Expand" : "Collapse"}
+      </button>
+    ));
+
+    render(<LayoutSide collapsible renderCollapseButton={renderCollapseButton} />, { wrapper });
+
+    expect(screen.getByTestId("custom-collapse-btn")).toBeDefined();
+    expect(renderCollapseButton).toHaveBeenCalled();
   });
 
   it("toggles collapse on button click when collapsible", () => {

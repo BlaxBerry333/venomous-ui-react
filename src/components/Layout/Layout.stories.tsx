@@ -3,18 +3,17 @@ import React from "react";
 import { ArgTypes, Heading, Markdown, Source, Subtitle, Title } from "@storybook/blocks";
 import type { Meta, StoryObj } from "@storybook/react";
 
+import { Box } from "@/components/Box";
+import { IconButton, ScrollToTop } from "@/components/Buttons";
 import { Icon } from "@/components/Icon";
 import { Menu } from "@/components/Menu";
 import { Space } from "@/components/Space";
 import { Typography } from "@/components/Typographies";
 import { Layout } from ".";
-import { Box } from "../Box";
-import { IconButton, ScrollToTop } from "../Buttons";
-import { default as LayoutHeaderComponent } from "./LayoutHeader.component";
 
 const meta = {
   title: "components/Layout",
-  component: LayoutHeaderComponent,
+  component: Layout.Header,
   tags: ["autodocs"],
   parameters: {
     layout: "fullscreen",
@@ -77,7 +76,7 @@ const meta = {
       ),
     },
   },
-} satisfies Meta<typeof LayoutHeaderComponent>;
+} satisfies Meta<typeof Layout.Header>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -161,6 +160,7 @@ const HEADER_HEIGHT: number = 60;
 function App() {
   return (
     <Theme.Provider>
+      <Theme.ResetCSSStyle />
       {/* header */}
       <Layout.Header
         showProgressBar
@@ -322,6 +322,7 @@ const SIDE_WIDTH: number = 280;
 function App() {
   return (
     <Theme.Provider>
+      <Theme.ResetCSSStyle />
       {/* header */}
       <Layout.Header
         showProgressBar
@@ -534,6 +535,7 @@ function App() {
 
   return (
     <Theme.Provider>
+      <Theme.ResetCSSStyle />
       {/* header */}
       <Layout.Header
         style={{
@@ -632,7 +634,7 @@ function App() {
 };
 
 export const SidebarWithHeader: Story = {
-  name: "Side ( render Header + Menu )",
+  name: "Side ( render Header + Menu + Bottom )",
   argTypes: BasicLayout.argTypes,
   render: function RenderStory() {
     const HEADER_HEIGHT: number = 60;
@@ -650,6 +652,10 @@ export const SidebarWithHeader: Story = {
           collapsible
           collapsed={collapsed}
           onCollapsedChange={setCollapsed}
+          style={{
+            top: 0,
+            height: "100dvh",
+          }}
           renderHeader={(isCollapsed) => (
             <Box
               style={{
@@ -683,12 +689,20 @@ export const SidebarWithHeader: Story = {
                 label={isCollapsed ? undefined : "Settings"}
                 onClick={() => alert("Settings")}
               />
+              <div style={{ height: "300vh" }} />
             </Menu.List>
           )}
-          style={{
-            top: 0,
-            height: "100dvh",
-          }}
+          renderBottom={() => (
+            <Space.Flex
+              style={{
+                height: HEADER_HEIGHT,
+                padding: "16px",
+                borderTop: "1px solid rgba(0, 0, 0, 0.1)",
+              }}
+            >
+              <Typography.Text text="© 2023 All rights reserved." />
+            </Space.Flex>
+          )}
         />
 
         {/* content */}
@@ -770,6 +784,7 @@ function App() {
 
   return (
     <Theme.Provider>
+      <Theme.ResetCSSStyle />
       <Space.Flex>
         {/* sidebar */}
         <Layout.Side
@@ -778,6 +793,10 @@ function App() {
           collapsible
           collapsed={collapsed}
           onCollapsedChange={setCollapsed}
+          style={{
+            top: 0,
+            height: "100dvh",
+          }}
           renderHeader={(isCollapsed) => (
             <Box
               style={{
@@ -813,10 +832,17 @@ function App() {
               />
             </Menu.List>
           )}
-          style={{
-            top: 0,
-            height: "100dvh",
-          }}
+          renderBottom={() => (
+            <Space.Flex
+              style={{
+                height: HEADER_HEIGHT,
+                padding: "16px",
+                borderTop: "1px solid rgba(0, 0, 0, 0.1)",
+              }}
+            >
+              <Typography.Text text="© 2023 All rights reserved." />
+            </Space.Flex>
+          )}
         />
 
         {/* content */}

@@ -102,9 +102,20 @@ export function useLayoutSideStyles({
     [],
   );
 
+  const bottomStyle = React.useMemo<React.CSSProperties>(
+    () => ({
+      position: "relative",
+      width: "100%",
+      flexShrink: 0,
+      zIndex: 1,
+    }),
+    [],
+  );
+
   return {
     componentStyle,
     wrapperStyle,
     collapseButtonStyle,
+    bottomStyle,
   };
 }

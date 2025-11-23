@@ -47,6 +47,11 @@ export interface LayoutSideProps extends Omit<BoxProps, "as" | "children"> {
   renderMenu?: (collapsed: boolean) => React.ReactNode;
 
   /**
+   * Render bottom content (fixed at bottom, e.g., settings, user profile).
+   */
+  renderBottom?: (collapsed: boolean) => React.ReactNode;
+
+  /**
    * Content children (alternative to renderMenu).
    */
   children?: React.ReactNode | ((collapsed: boolean) => React.ReactNode);

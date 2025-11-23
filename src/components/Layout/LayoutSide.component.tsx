@@ -29,6 +29,7 @@ const LayoutSide = React.memo(
 
         renderHeader,
         renderMenu,
+        renderBottom,
 
         ...props
       },
@@ -41,7 +42,7 @@ const LayoutSide = React.memo(
       });
 
       // ========== Styles Hook ==========
-      const { componentStyle, wrapperStyle, collapseButtonStyle } = useLayoutSideStyles({
+      const { componentStyle, wrapperStyle, collapseButtonStyle, bottomStyle } = useLayoutSideStyles({
         expandedWidth,
         collapsedWidth,
         collapsed: isCollapsed,
@@ -63,6 +64,12 @@ const LayoutSide = React.memo(
         }
         return children;
       }, [renderMenu, children, isCollapsed]);
+
+      // ========== Bottom Content ==========
+      const bottomContent = React.useMemo(() => {
+        if (!renderBottom) return null;
+        return renderBottom(isCollapsed);
+      }, [renderBottom, isCollapsed]);
 
       // ========== 折叠按钮 ==========
       const collapseButton = React.useMemo(() => {
@@ -95,6 +102,7 @@ const LayoutSide = React.memo(
           {collapseButton}
           {header}
           <div style={wrapperStyle}>{menuContent}</div>
+          {bottomContent && <div style={bottomStyle}>{bottomContent}</div>}
         </Box>
       );
     },
