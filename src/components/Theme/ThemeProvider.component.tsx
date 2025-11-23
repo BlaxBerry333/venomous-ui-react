@@ -3,12 +3,17 @@
 import React from "react";
 
 import { COMPONENT_DISPLAY_NAMES, type TThemeMode } from "@/constants";
-import { getSystemThemeMode } from "@/tools";
 import { ThemeProviderContext } from "./ThemeProvider.context";
+import { __getInitialThemeMode, __persistThemeMode } from "./ThemeProvider.hooks";
 import type { ThemeProviderProps } from "./ThemeProvider.types";
 
 const ThemeProvider = React.memo<ThemeProviderProps>(({ children, customDesigns, customStyles }) => {
-  const [themeMode, setThemeMode] = React.useState<TThemeMode>(getSystemThemeMode());
+  const [themeMode, setThemeModeState] = React.useState<TThemeMode>(__getInitialThemeMode);
+
+  const setThemeMode = React.useCallback((mode: TThemeMode) => {
+    setThemeModeState(mode);
+    __persistThemeMode(mode);
+  }, []);
 
   const contextValue = React.useMemo(
     () => ({
@@ -17,7 +22,7 @@ const ThemeProvider = React.memo<ThemeProviderProps>(({ children, customDesigns,
       themeMode,
       setThemeMode,
     }),
-    [customDesigns, customStyles, themeMode],
+    [customDesigns, customStyles, themeMode, setThemeMode],
   );
 
   return <ThemeProviderContext.Provider value={contextValue}>{children}</ThemeProviderContext.Provider>;

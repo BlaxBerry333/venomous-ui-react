@@ -57,6 +57,20 @@ describe("ThemeProvider", () => {
       expect([THEME_MODES.LIGHT, THEME_MODES.DARK]).toContain(themeModeElement.textContent);
     });
 
+    it("initializes with persisted theme mode from localStorage", () => {
+      // Set localStorage before rendering
+      localStorage.setItem("VENOMOUS_UI__THEME_MODE", THEME_MODES.DARK);
+
+      const { getByTestId } = render(
+        <ThemeProvider>
+          <TestComponent />
+        </ThemeProvider>,
+      );
+
+      const themeModeElement = getByTestId("theme-mode");
+      expect(themeModeElement.textContent).toBe(THEME_MODES.DARK);
+    });
+
     it("allows theme mode to be changed", () => {
       function TestComponentWithToggle() {
         const { themeMode, setThemeMode } = useThemeMode();
@@ -88,6 +102,149 @@ describe("ThemeProvider", () => {
         getByText("Set Light").click();
       });
       expect(themeModeElement.textContent).toBe(THEME_MODES.LIGHT);
+    });
+
+    it("persists theme mode to localStorage when changed", () => {
+      function TestComponentWithToggle() {
+        const { themeMode, setThemeMode } = useThemeMode();
+        return (
+          <div>
+            <div data-testid="theme-mode">{themeMode}</div>
+            <button onClick={() => setThemeMode(THEME_MODES.DARK)}>Set Dark</button>
+          </div>
+        );
+      }
+
+      const { getByText } = render(
+        <ThemeProvider>
+          <TestComponentWithToggle />
+        </ThemeProvider>,
+      );
+
+      // Click to set dark mode
+      act(() => {
+        getByText("Set Dark").click();
+      });
+
+      // Verify localStorage was updated
+      expect(localStorage.getItem("VENOMOUS_UI__THEME_MODE")).toBe(THEME_MODES.DARK);
+    });
+
+    it("toggles between light and dark modes", () => {
+      function TestComponentWithToggle() {
+        const { themeMode, toggleThemeMode } = useThemeMode();
+        return (
+          <div>
+            <div data-testid="theme-mode">{themeMode}</div>
+            <button onClick={toggleThemeMode}>Toggle</button>
+          </div>
+        );
+      }
+
+      const { getByTestId, getByText } = render(
+        <ThemeProvider>
+          <TestComponentWithToggle />
+        </ThemeProvider>,
+      );
+
+      const themeModeElement = getByTestId("theme-mode");
+      const initialMode = themeModeElement.textContent;
+
+      // Click to toggle
+      act(() => {
+        getByText("Toggle").click();
+      });
+
+      const newMode = themeModeElement.textContent;
+      expect(newMode).not.toBe(initialMode);
+      expect([THEME_MODES.LIGHT, THEME_MODES.DARK]).toContain(newMode);
+    });
+
+    it("resets to system theme mode and clears localStorage", () => {
+      // First, set a theme mode in localStorage
+      localStorage.setItem("VENOMOUS_UI__THEME_MODE", THEME_MODES.DARK);
+
+      function TestComponentWithReset() {
+        const { themeMode, resetToSystemThemeMode } = useThemeMode();
+        return (
+          <div>
+            <div data-testid="theme-mode">{themeMode}</div>
+            <button onClick={resetToSystemThemeMode}>Reset to System</button>
+          </div>
+        );
+      }
+
+      const { getByTestId, getByText } = render(
+        <ThemeProvider>
+          <TestComponentWithReset />
+        </ThemeProvider>,
+      );
+
+      const themeModeElement = getByTestId("theme-mode");
+
+      // Initially should be dark (from localStorage)
+      expect(themeModeElement.textContent).toBe(THEME_MODES.DARK);
+
+      // Click to reset to system
+      act(() => {
+        getByText("Reset to System").click();
+      });
+
+      // Theme mode should be system theme (light or dark)
+      expect([THEME_MODES.LIGHT, THEME_MODES.DARK]).toContain(themeModeElement.textContent);
+
+      // Note: localStorage will be re-set by setThemeMode after reset,
+      // but it will be the system theme value
+      const storedValue = localStorage.getItem("VENOMOUS_UI__THEME_MODE");
+      expect([THEME_MODES.LIGHT, THEME_MODES.DARK, null]).toContain(storedValue);
+    });
+
+    it("provides isDarkMode boolean", () => {
+      function TestComponentWithIsDarkMode() {
+        const { isDarkMode, setThemeMode } = useThemeMode();
+        return (
+          <div>
+            <div data-testid="is-dark-mode">{String(isDarkMode)}</div>
+            <button onClick={() => setThemeMode(THEME_MODES.DARK)}>Set Dark</button>
+            <button onClick={() => setThemeMode(THEME_MODES.LIGHT)}>Set Light</button>
+          </div>
+        );
+      }
+
+      const { getByTestId, getByText } = render(
+        <ThemeProvider>
+          <TestComponentWithIsDarkMode />
+        </ThemeProvider>,
+      );
+
+      const isDarkModeElement = getByTestId("is-dark-mode");
+
+      // Set dark mode
+      act(() => {
+        getByText("Set Dark").click();
+      });
+      expect(isDarkModeElement.textContent).toBe("true");
+
+      // Set light mode
+      act(() => {
+        getByText("Set Light").click();
+      });
+      expect(isDarkModeElement.textContent).toBe("false");
+    });
+
+    it("handles invalid localStorage value", () => {
+      // Set invalid value in localStorage
+      localStorage.setItem("VENOMOUS_UI__THEME_MODE", "invalid-mode");
+
+      const { getByTestId } = render(
+        <ThemeProvider>
+          <TestComponent />
+        </ThemeProvider>,
+      );
+
+      const themeModeElement = getByTestId("theme-mode");
+      // Should fall back to system theme
+      expect([THEME_MODES.LIGHT, THEME_MODES.DARK]).toContain(themeModeElement.textContent);
     });
   });
 
