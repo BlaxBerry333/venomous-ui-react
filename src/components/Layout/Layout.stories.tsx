@@ -52,6 +52,12 @@ const meta = {
           <Markdown>{CollapsibleSidebar.parameters?.docs?.description?.story}</Markdown>
           <Source language="tsx" dark code={CollapsibleSidebar.parameters?.docs?.source?.code} />
 
+          <Subtitle>
+            <code>{SidebarWithHeader.name}</code>
+          </Subtitle>
+          <Markdown>{SidebarWithHeader.parameters?.docs?.description?.story}</Markdown>
+          <Source language="tsx" dark code={SidebarWithHeader.parameters?.docs?.source?.code} />
+
           <Heading>API</Heading>
           <Subtitle>
             <code>{`<Layout.Header>`}</code>
@@ -593,6 +599,254 @@ function App() {
             <Typography.Title text="Main Content" />
             <Typography.Paragraph text="Scroll down to see the ScrollToTop button..." />
             <div style={{ height: "150vh" }} />
+          </Box>
+
+          <ScrollToTop distance={200} style={{ bottom: HEADER_HEIGHT }} />
+
+          {/* footer */}
+          <Layout.Footer
+            style={{ minHeight: HEADER_HEIGHT, padding: "8px 16px" }}
+            Copyright={<Typography.Text text={\`© \${new Date().getFullYear()} My Company. All rights reserved.\`} />}
+            Links={
+              <Space.Flex spacing={16} style={{ height: "100%", justifyContent: "flex-end", flex: 1 }}>
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+              </Space.Flex>
+            }
+          />
+        </Box>
+      </Space.Flex>
+    </Theme.Provider>
+  );
+}
+        `.trim(),
+      },
+    },
+  },
+};
+
+export const SidebarWithHeader: Story = {
+  name: "Side ( render Header + Menu )",
+  argTypes: BasicLayout.argTypes,
+  render: function RenderStory() {
+    const HEADER_HEIGHT: number = 60;
+    const SIDE_EXPANDED_WIDTH: number = 280;
+    const SIDE_COLLAPSED_WIDTH: number = 80;
+
+    const [collapsed, setCollapsed] = React.useState(false);
+
+    return (
+      <Space.Flex>
+        {/* sidebar */}
+        <Layout.Side
+          expandedWidth={SIDE_EXPANDED_WIDTH}
+          collapsedWidth={SIDE_COLLAPSED_WIDTH}
+          collapsible
+          collapsed={collapsed}
+          onCollapsedChange={setCollapsed}
+          renderHeader={(isCollapsed) => (
+            <Box
+              style={{
+                boxSizing: "border-box",
+                height: HEADER_HEIGHT,
+                padding: "0 16px",
+                borderBottom: "1px solid rgba(0, 0, 0, 0.1)",
+                display: "flex",
+                alignItems: "center",
+                gap: 12,
+              }}
+            >
+              <Icon icon="solar:user-circle-bold" width={32} height={32} />
+              {!isCollapsed && <Typography.Text as="strong" text="User Profile" />}
+            </Box>
+          )}
+          renderMenu={(isCollapsed) => (
+            <Menu.List spacing={8} style={{ padding: 8 }}>
+              <Menu.Item
+                Icon={<Icon icon="solar:home-linear" />}
+                label={isCollapsed ? undefined : "Home"}
+                onClick={() => alert("Home")}
+              />
+              <Menu.Item
+                Icon={<Icon icon="solar:chart-linear" />}
+                label={isCollapsed ? undefined : "Analytics"}
+                onClick={() => alert("Analytics")}
+              />
+              <Menu.Item
+                Icon={<Icon icon="solar:settings-linear" />}
+                label={isCollapsed ? undefined : "Settings"}
+                onClick={() => alert("Settings")}
+              />
+            </Menu.List>
+          )}
+          style={{
+            top: 0,
+            height: "100dvh",
+          }}
+        />
+
+        {/* content */}
+        <Box
+          as="main"
+          style={{
+            minHeight: "100vh",
+            flexGrow: 1,
+            marginLeft: collapsed ? SIDE_COLLAPSED_WIDTH : SIDE_EXPANDED_WIDTH,
+            transition: "margin-left 0.25s ease-in-out",
+            position: "relative",
+          }}
+        >
+          {/* header */}
+          <Layout.Header
+            style={{
+              height: HEADER_HEIGHT,
+              padding: "0 16px",
+              backgroundColor: "transparent",
+              backdropFilter: "blur(10px)",
+              position: "sticky",
+              top: 0,
+              zIndex: 100,
+            }}
+            Menu={
+              <Space.Flex spacing={24} style={{ height: "100%", justifyContent: "flex-end", flex: 1 }}>
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+              </Space.Flex>
+            }
+          />
+
+          {/* main content */}
+          <Box style={{ padding: "16px 16px" }}>
+            <Typography.Title text="Main Content" />
+            <Typography.Paragraph text="Sidebar with separated header and menu areas." />
+            <div style={{ height: "200vh" }} />
+          </Box>
+
+          <ScrollToTop distance={200} style={{ bottom: HEADER_HEIGHT }} />
+
+          {/* footer */}
+          <Layout.Footer
+            style={{ minHeight: HEADER_HEIGHT, padding: "8px 16px" }}
+            Copyright={<Typography.Text text={`© ${new Date().getFullYear()} My Company. All rights reserved.`} />}
+            Links={
+              <Space.Flex spacing={16} style={{ height: "100%", justifyContent: "flex-end", flex: 1 }}>
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+              </Space.Flex>
+            }
+          />
+        </Box>
+      </Space.Flex>
+    );
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "侧边栏支持分离的头部和菜单区域：使用 `renderHeader` 渲染顶部内容（如 logo、用户信息），使用 `renderMenu` 渲染菜单。两个区域语义清晰，便于维护。",
+      },
+      source: {
+        code: `
+"use client";
+
+import React from "react";
+import { Theme, Layout, Space, Typography, Menu, Icon, Box, ScrollToTop } from "venomous-ui-react/components";
+
+const HEADER_HEIGHT: number = 60;
+const SIDE_EXPANDED_WIDTH: number = 280;
+const SIDE_COLLAPSED_WIDTH: number = 80;
+
+function App() {
+  const [collapsed, setCollapsed] = React.useState(false);
+
+  return (
+    <Theme.Provider>
+      <Space.Flex>
+        {/* sidebar */}
+        <Layout.Side
+          expandedWidth={SIDE_EXPANDED_WIDTH}
+          collapsedWidth={SIDE_COLLAPSED_WIDTH}
+          collapsible
+          collapsed={collapsed}
+          onCollapsedChange={setCollapsed}
+          renderHeader={(isCollapsed) => (
+            <Box
+              style={{
+                boxSizing: "border-box",
+                height: HEADER_HEIGHT,
+                padding: "0 16px",
+                borderBottom: "1px solid rgba(0, 0, 0, 0.1)",
+                display: "flex",
+                alignItems: "center",
+                gap: 12,
+              }}
+            >
+              <Icon icon="solar:user-circle-bold" width={32} height={32} />
+              {!isCollapsed && <Typography.Text as="strong" text="User Profile" />}
+            </Box>
+          )}
+          renderMenu={(isCollapsed) => (
+            <Menu.List spacing={8} style={{ padding: 8 }}>
+              <Menu.Item
+                Icon={<Icon icon="solar:home-linear" />}
+                label={isCollapsed ? undefined : "Home"}
+                onClick={() => alert("Home")}
+              />
+              <Menu.Item
+                Icon={<Icon icon="solar:chart-linear" />}
+                label={isCollapsed ? undefined : "Analytics"}
+                onClick={() => alert("Analytics")}
+              />
+              <Menu.Item
+                Icon={<Icon icon="solar:settings-linear" />}
+                label={isCollapsed ? undefined : "Settings"}
+                onClick={() => alert("Settings")}
+              />
+            </Menu.List>
+          )}
+          style={{
+            top: 0,
+            height: "100dvh",
+          }}
+        />
+
+        {/* content */}
+        <Box
+          as="main"
+          style={{
+            minHeight: "100vh",
+            flexGrow: 1,
+            marginLeft: collapsed ? SIDE_COLLAPSED_WIDTH : SIDE_EXPANDED_WIDTH,
+            transition: "margin-left 0.25s ease-in-out",
+            position: "relative",
+          }}
+        >
+          {/* header */}
+          <Layout.Header
+            style={{
+              height: HEADER_HEIGHT,
+              padding: "0 16px",
+              backgroundColor: "transparent",
+              backdropFilter: "blur(10px)",
+              position: "sticky",
+              top: 0,
+              zIndex: 100,
+            }}
+            Menu={
+              <Space.Flex spacing={24} style={{ height: "100%", justifyContent: "flex-end", flex: 1 }}>
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+              </Space.Flex>
+            }
+          />
+
+          {/* main content */}
+          <Box style={{ padding: "16px 16px" }}>
+            <Typography.Title text="Main Content" />
+            <Typography.Paragraph text="Sidebar with separated header and menu areas." />
+            <div style={{ height: "200vh" }} />
           </Box>
 
           <ScrollToTop distance={200} style={{ bottom: HEADER_HEIGHT }} />

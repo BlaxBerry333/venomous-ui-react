@@ -37,6 +37,11 @@ export interface LayoutSideProps extends Omit<BoxProps, "as" | "children"> {
   renderCollapseButton?: (collapsed: boolean, toggle: () => void) => React.ReactNode;
 
   /**
+   * Render header content (e.g., logo, title).
+   */
+  renderHeader?: (collapsed: boolean) => React.ReactNode;
+
+  /**
    * Render menu content.
    */
   renderMenu?: (collapsed: boolean) => React.ReactNode;

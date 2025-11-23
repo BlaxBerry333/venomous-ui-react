@@ -27,6 +27,7 @@ const LayoutSide = React.memo(
         onCollapsedChange,
         renderCollapseButton,
 
+        renderHeader,
         renderMenu,
 
         ...props
@@ -46,8 +47,14 @@ const LayoutSide = React.memo(
         collapsed: isCollapsed,
       });
 
-      // ========== 内容 ==========
-      const content = React.useMemo(() => {
+      // ========== Header ==========
+      const header = React.useMemo(() => {
+        if (!renderHeader) return null;
+        return renderHeader(isCollapsed);
+      }, [renderHeader, isCollapsed]);
+
+      // ========== Menu Content ==========
+      const menuContent = React.useMemo(() => {
         if (renderMenu) {
           return renderMenu(isCollapsed);
         }
@@ -86,7 +93,8 @@ const LayoutSide = React.memo(
           {...props}
         >
           {collapseButton}
-          <div style={wrapperStyle}>{content}</div>
+          {header}
+          <div style={wrapperStyle}>{menuContent}</div>
         </Box>
       );
     },

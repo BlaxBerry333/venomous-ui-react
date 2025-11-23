@@ -61,6 +61,8 @@ export function useLayoutSideStyles({
       WebkitTapHighlightColor: "transparent",
 
       // -- default styles --
+      display: "flex",
+      flexDirection: "column",
       overflow: "visible",
       position: "fixed",
       top: 0,
@@ -81,7 +83,7 @@ export function useLayoutSideStyles({
     () => ({
       position: "relative",
       width: "100%",
-      height: "100%",
+      flex: 1,
       overflowX: "hidden",
       overflowY: "auto",
       zIndex: 1,
