@@ -1,4 +1,4 @@
-import a from "react";
+import i from "react";
 import { useButtonStyles as x } from "../Buttons/Button.hooks.esm.js";
 import { BUTTON_VARIANT_MAP as N } from "../Buttons/Button.types.esm.js";
 import "../Space/SpaceFlex.component.esm.js";
@@ -14,17 +14,18 @@ import "../../constants/designs/TEXT_COLORS.esm.js";
 import "../../constants/designs/THEME_BREAKPOINTS.esm.js";
 import P from "../../hooks/useThemeDesigns/index.esm.js";
 import A from "../../hooks/useThemeMode/index.esm.js";
-import I from "../../hooks/useCustomStyle/index.esm.js";
-import { hexToRgba as O } from "../../tools/colors/get-colors.esm.js";
-function X({
+import { hexToRgba as I } from "../../tools/colors/get-colors.esm.js";
+import "../Theme/ThemeProvider.context.esm.js";
+import O from "../../hooks/useCustomStyle/index.esm.js";
+function Z({
   spacing: C = 8,
-  selected: i,
+  selected: a,
   disabled: m,
   clickable: s,
   isHovered: y,
   isClicked: S
 }) {
-  const { isDarkMode: t } = A(), { PaletteColors: l } = P(), f = I({ displayName: k.MenuItem }), d = h({
+  const { isDarkMode: t } = A(), { PaletteColors: l } = P(), f = O({ displayName: k.MenuItem }), d = h({
     column: !1,
     spacing: C
   }), o = x({
@@ -32,9 +33,9 @@ function X({
     disabled: m,
     isHovered: y,
     isClicked: S
-  }), n = a.useMemo(() => {
+  }), n = i.useMemo(() => {
     var e, g, D;
-    if (!i) return {};
+    if (!a) return {};
     const r = (e = o == null ? void 0 : o.componentStyle) == null ? void 0 : e.backgroundColor;
     if (r && typeof r == "string") {
       const M = r.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
@@ -50,9 +51,9 @@ function X({
     const c = l[1];
     return {
       color: (D = o == null ? void 0 : o.componentStyle) == null ? void 0 : D.color,
-      backgroundColor: O(c, t ? 0.25 : 0.2)
+      backgroundColor: I(c, t ? 0.25 : 0.2)
     };
-  }, [i, t, l, o == null ? void 0 : o.componentStyle]), p = a.useMemo(() => {
+  }, [a, t, l, o == null ? void 0 : o.componentStyle]), p = i.useMemo(() => {
     var r, c, e;
     return s ? {
       ...o == null ? void 0 : o.__.DynamicStateStyles,
@@ -76,7 +77,7 @@ function X({
     o == null ? void 0 : o.__.DynamicPressedStyles
   ]);
   return {
-    componentStyle: a.useMemo(
+    componentStyle: i.useMemo(
       () => ({
         // -- default style --
         ...d.componentStyle,
@@ -96,5 +97,5 @@ function X({
   };
 }
 export {
-  X as useMenuItemStyles
+  Z as useMenuItemStyles
 };

@@ -7,9 +7,9 @@ import "../../../constants/designs/SHADOW_STYLES.esm.js";
 import "../../../constants/designs/TEXT_COLORS.esm.js";
 import "../../../constants/designs/THEME_BREAKPOINTS.esm.js";
 import P from "../../../hooks/useThemeDesigns/index.esm.js";
+import { hexToRgba as S } from "../../../tools/colors/get-colors.esm.js";
 import "../../Theme/ThemeProvider.context.esm.js";
-import S from "../../../hooks/useCustomStyle/index.esm.js";
-import { hexToRgba as x } from "../../../tools/colors/get-colors.esm.js";
+import x from "../../../hooks/useCustomStyle/index.esm.js";
 import { FORM_FIELD_VARIANT_MAP as p } from "./FormFieldBase.types.esm.js";
 function N({
   displayNames: e,
@@ -22,7 +22,7 @@ function N({
   isHovered: u,
   customConfig: r
 }) {
-  const { PaletteColors: M, TextColors: a, BackgroundColors: d, BorderColors: i, TypographySizes: c, ShadowStyles: D } = P(), I = S({ displayName: e.wrapper }), O = S({ displayName: e.input }), X = S({ displayName: e.prefix }), _ = S({ displayName: e.suffix }), z = S({ displayName: e.wrapper }), h = l.useMemo(() => {
+  const { PaletteColors: M, TextColors: a, BackgroundColors: d, BorderColors: i, TypographySizes: c, ShadowStyles: D } = P(), I = x({ displayName: e.wrapper }), O = x({ displayName: e.input }), X = x({ displayName: e.prefix }), _ = x({ displayName: e.suffix }), z = x({ displayName: e.wrapper }), h = l.useMemo(() => {
     switch (o) {
       case p.TEXT:
         return {
@@ -67,7 +67,7 @@ function N({
       case p.TEXT:
         return {
           color: n.ERROR,
-          backgroundColor: x(n.ERROR, 0.05)
+          backgroundColor: S(n.ERROR, 0.05)
         };
       default:
         return {
@@ -79,21 +79,21 @@ function N({
     const t = b ? n.ERROR : M[1];
     return s ? o === p.TEXT ? {
       color: t,
-      backgroundColor: x(t, 0.05),
+      backgroundColor: S(t, 0.05),
       outline: "none"
     } : {
       color: t,
       borderColor: t,
       backgroundColor: d[1],
-      boxShadow: `0 0 0 2px ${x(t, 0.2)}`,
+      boxShadow: `0 0 0 2px ${S(t, 0.2)}`,
       outline: "none"
     } : u ? o === p.TEXT ? {
       color: t,
-      backgroundColor: x(t, 0.05)
+      backgroundColor: S(t, 0.05)
     } : {
       color: t,
       borderColor: t,
-      backgroundColor: x(t, 0.05)
+      backgroundColor: S(t, 0.05)
     } : {};
   }, [b, s, u, o, M, d]), A = l.useMemo(
     () => e.wrapper ? {

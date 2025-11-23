@@ -10,5 +10,6 @@ export declare function useLayoutSideStyles({ expandedWidth, collapsedWidth, col
     componentStyle: React.CSSProperties;
     wrapperStyle: React.CSSProperties;
     collapseButtonStyle: React.CSSProperties;
+    bottomStyle: React.CSSProperties;
 };
 //# sourceMappingURL=LayoutSide.hooks.d.ts.map

@@ -9,11 +9,12 @@ import "../../constants/designs/TEXT_COLORS.esm.js";
 import "../../constants/designs/THEME_BREAKPOINTS.esm.js";
 import b from "../../hooks/useThemeDesigns/index.esm.js";
 import S from "../../hooks/useThemeMode/index.esm.js";
-import p from "../../hooks/useCustomStyle/index.esm.js";
 import { getDarker as h, getLighter as N } from "../../tools/colors/get-colors.esm.js";
+import "../Theme/ThemeProvider.context.esm.js";
+import p from "../../hooks/useCustomStyle/index.esm.js";
 import O from "./Notification.manager.esm.js";
 import { NOTIFICATION_POSITION_MAP as l } from "./Notification.types.esm.js";
-function v({ position: s = "top-right", offset: t = 0 }) {
+function k({ position: s = "top-right", offset: t = 0 }) {
   const o = p({ displayName: d.Notification }), m = n.useMemo(() => {
     switch (s) {
       case l.TOP_RIGHT:
@@ -49,7 +50,7 @@ function v({ position: s = "top-right", offset: t = 0 }) {
     )
   };
 }
-function k({ type: s }) {
+function F({ type: s }) {
   const { isDarkMode: t } = S(), { ShadowStyles: o } = b(), m = p({ displayName: d.NotificationItem }), r = n.useMemo(() => T[s], [s]);
   return {
     componentStyle: n.useMemo(() => ({
@@ -72,7 +73,7 @@ function k({ type: s }) {
     }
   };
 }
-function F({ maxCount: s = 5 }) {
+function W({ maxCount: s = 5 }) {
   const [t, o] = n.useState([]);
   n.useEffect(() => {
     const r = /* @__PURE__ */ new Map(), a = O.subscribe((e) => {
@@ -105,7 +106,7 @@ function F({ maxCount: s = 5 }) {
   };
 }
 export {
-  v as useNotificationContainerStyles,
-  k as useNotificationItemStyles,
-  F as useNotificationManager
+  k as useNotificationContainerStyles,
+  F as useNotificationItemStyles,
+  W as useNotificationManager
 };

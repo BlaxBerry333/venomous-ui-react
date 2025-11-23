@@ -10,9 +10,10 @@ import S from "../../hooks/useElementHoverEvents/index.esm.js";
 import T from "../../hooks/useElementMouseEvents/index.esm.js";
 import C from "../../hooks/useThemeDesigns/index.esm.js";
 import R from "../../hooks/useThemeMode/index.esm.js";
-import v from "../../hooks/useCustomStyle/index.esm.js";
-import { hexToRgba as x } from "../../tools/colors/get-colors.esm.js";
-function $({
+import { hexToRgba as v } from "../../tools/colors/get-colors.esm.js";
+import "../Theme/ThemeProvider.context.esm.js";
+import x from "../../hooks/useCustomStyle/index.esm.js";
+function z({
   color: n,
   selected: a = !1,
   disabled: t = !1,
@@ -20,9 +21,9 @@ function $({
   isHovered: f,
   isClicked: M
 }) {
-  const { isDarkMode: b } = R(), { PaletteColors: u, TextColors: r } = C(), d = v({ displayName: E.TabsTab }), s = e.useMemo(() => {
+  const { isDarkMode: b } = R(), { PaletteColors: u, TextColors: r } = C(), d = x({ displayName: E.TabsTab }), s = e.useMemo(() => {
     const i = n || u[1];
-    return x(i, b ? 0.12 : 0.1);
+    return v(i, b ? 0.12 : 0.1);
   }, [n, u, b]), m = e.useMemo(() => {
     const i = n || u[1];
     return a ? {
@@ -89,7 +90,7 @@ function $({
     }
   };
 }
-function z({
+function V({
   value: n,
   selected: a,
   disabled: t,
@@ -137,6 +138,6 @@ function z({
   );
 }
 export {
-  z as useTabsTabActions,
-  $ as useTabsTabStyles
+  V as useTabsTabActions,
+  z as useTabsTabStyles
 };

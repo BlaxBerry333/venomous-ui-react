@@ -10,10 +10,11 @@ import N from "../../hooks/useElementHoverEvents/index.esm.js";
 import x from "../../hooks/useElementMouseEvents/index.esm.js";
 import k from "../../hooks/useThemeDesigns/index.esm.js";
 import A from "../../hooks/useThemeMode/index.esm.js";
-import O from "../../hooks/useCustomStyle/index.esm.js";
 import { getLighter as D, getDarker as g, hexToRgba as T } from "../../tools/colors/get-colors.esm.js";
+import "../Theme/ThemeProvider.context.esm.js";
+import O from "../../hooks/useCustomStyle/index.esm.js";
 import { BUTTON_VARIANT_MAP as n } from "./Button.types.esm.js";
-function q({
+function G({
   disabled: r,
   loading: s,
   variant: u,
@@ -158,7 +159,7 @@ function q({
     }
   };
 }
-function G({
+function J({
   disabled: r,
   loading: s,
   onMouseEnter: u,
@@ -195,6 +196,6 @@ function G({
   };
 }
 export {
-  G as useButtonActions,
-  q as useButtonStyles
+  J as useButtonActions,
+  G as useButtonStyles
 };

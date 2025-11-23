@@ -10,9 +10,10 @@ import h from "../../hooks/useElementHoverEvents/index.esm.js";
 import y from "../../hooks/useElementMouseEvents/index.esm.js";
 import S from "../../hooks/useThemeDesigns/index.esm.js";
 import E from "../../hooks/useThemeMode/index.esm.js";
-import b from "../../hooks/useCustomStyle/index.esm.js";
 import { getLighter as g, getDarker as f } from "../../tools/colors/get-colors.esm.js";
-function H({
+import "../Theme/ThemeProvider.context.esm.js";
+import b from "../../hooks/useCustomStyle/index.esm.js";
+function W({
   clickable: e,
   color: o,
   isHovered: c,
@@ -72,7 +73,7 @@ function H({
     }
   };
 }
-function W({ clickable: e, onClick: o }) {
+function R({ clickable: e, onClick: o }) {
   const { isHovered: c, MouseEnterEvent: p, MouseLeaveEvent: t } = h({
     disabled: !e
   }), { isClicked: i, MouseDownEvent: a, MouseUpEvent: n } = y({
@@ -104,6 +105,6 @@ function W({ clickable: e, onClick: o }) {
   };
 }
 export {
-  W as useChipActions,
-  H as useChipStyles
+  R as useChipActions,
+  W as useChipStyles
 };

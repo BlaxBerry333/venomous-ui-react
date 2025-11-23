@@ -1,15 +1,15 @@
 import t from "react";
-import { COMPONENT_DISPLAY_NAMES as f } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
+import { COMPONENT_DISPLAY_NAMES as a } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
 import "../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";
 import "../../constants/designs/BACKGROUND_COLORS.esm.js";
 import "../../constants/designs/BORDER_COLORS.esm.js";
 import "../../constants/designs/SHADOW_STYLES.esm.js";
 import "../../constants/designs/TEXT_COLORS.esm.js";
 import "../../constants/designs/THEME_BREAKPOINTS.esm.js";
-import a from "../../hooks/useThemeDesigns/index.esm.js";
+import S from "../../hooks/useThemeDesigns/index.esm.js";
 import "../Theme/ThemeProvider.context.esm.js";
-import S from "../../hooks/useCustomStyle/index.esm.js";
-function k({
+import d from "../../hooks/useCustomStyle/index.esm.js";
+function D({
   collapsed: i,
   onCollapsedChange: o
 }) {
@@ -29,12 +29,12 @@ function k({
     [e, s]
   );
 }
-function z({
+function L({
   expandedWidth: i = 280,
   collapsedWidth: o = 80,
   collapsed: e
 }) {
-  const { BackgroundColors: r, BorderColors: s } = a(), n = S({ displayName: f.LayoutSide }), m = t.useMemo(() => {
+  const { BackgroundColors: r, BorderColors: s } = S(), n = d({ displayName: a.LayoutSide }), m = t.useMemo(() => {
     const u = e ? o : i;
     return {
       width: `${u}px`,
@@ -80,14 +80,23 @@ function z({
       zIndex: 101
     }),
     []
+  ), f = t.useMemo(
+    () => ({
+      position: "relative",
+      width: "100%",
+      flexShrink: 0,
+      zIndex: 1
+    }),
+    []
   );
   return {
     componentStyle: l,
     wrapperStyle: c,
-    collapseButtonStyle: p
+    collapseButtonStyle: p,
+    bottomStyle: f
   };
 }
 export {
-  k as useLayoutSideActions,
-  z as useLayoutSideStyles
+  D as useLayoutSideActions,
+  L as useLayoutSideStyles
 };
