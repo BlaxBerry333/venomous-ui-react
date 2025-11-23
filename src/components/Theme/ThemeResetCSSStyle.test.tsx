@@ -90,18 +90,15 @@ describe("ThemeResetCSSStyle", () => {
       expect(content).toContain("color: white");
     });
 
-    it("style element contains scrollbar styles", () => {
+    it("style element contains smooth scroll and transition styles", () => {
       render(<ThemeResetCSSStyle />, { wrapper });
 
       const styleElement = document.getElementById("__VENOUS_UI_RESET_CSS_STYLE__");
       const content = styleElement?.textContent || "";
 
-      expect(content).toContain("::-webkit-scrollbar");
-      expect(content).toContain("::-webkit-scrollbar-track");
-      expect(content).toContain("::-webkit-scrollbar-thumb");
-      expect(content).toContain("width: 8px");
-      expect(content).toContain("height: 8px");
-      expect(content).toContain("border-radius: 4px");
+      expect(content).toContain("transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out");
+      expect(content).toContain("overscroll-behavior: none");
+      expect(content).toContain("scroll-behavior: smooth");
     });
   });
 

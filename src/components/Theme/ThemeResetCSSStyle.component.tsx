@@ -31,7 +31,6 @@ const ThemeResetCSSStyle = React.memo(() => {
         padding: 0;
       }
 
-      /* ========== HTML & Body ========== */ 
       html, body {
         max-width: 100vw;
         min-height: 100svh;
@@ -43,9 +42,11 @@ const ThemeResetCSSStyle = React.memo(() => {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         text-rendering: optimizeLegibility;
+        transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
+        overscroll-behavior: none;
+        scroll-behavior: smooth;
       }
 
-      /* ========== a ========== */
       a {
         color: inherit;
         text-decoration: none;
@@ -55,22 +56,6 @@ const ThemeResetCSSStyle = React.memo(() => {
       ::selection {
         background-color: ${getLighter(PaletteColors[1], 0.5)};
         color: white;
-      }
-
-      /* ========== Scrollbar ========== */ 
-      ::-webkit-scrollbar {
-        width: 8px;
-        height: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: transparent;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: ${BorderColors[2]};
-        border-radius: 4px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: ${BorderColors[1]};
       }
     `;
 
