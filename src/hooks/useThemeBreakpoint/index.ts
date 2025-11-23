@@ -38,8 +38,23 @@ export default function useThemeBreakpoint(props?: { __?: { windowSizeCalculatio
 
   return React.useMemo(
     () => ({
+      // Current breakpoint info
       breakpoint,
       breakpointRange: THEME_BREAKPOINT_RANGES[breakpoint],
+
+      // Convenient boolean flags
+      isXS: breakpoint === THEME_BREAKPOINTS.XS,
+      isSM: breakpoint === THEME_BREAKPOINTS.SM,
+      isMD: breakpoint === THEME_BREAKPOINTS.MD,
+      isLG: breakpoint === THEME_BREAKPOINTS.LG,
+      isXL: breakpoint === THEME_BREAKPOINTS.XL,
+      isXXL: breakpoint === THEME_BREAKPOINTS.XXL,
+
+      // Comparison functions (pure functions, stable references)
+      isLargerThan: (target: TThemeBreakpoint) => __isLargerThan(breakpoint, target),
+      isSmallerThan: (target: TThemeBreakpoint) => __isSmallerThan(breakpoint, target),
+      isLargerThanOrEqual: (target: TThemeBreakpoint) => __isLargerThanOrEqual(breakpoint, target),
+      isSmallerThanOrEqual: (target: TThemeBreakpoint) => __isSmallerThanOrEqual(breakpoint, target),
     }),
     [breakpoint],
   );
@@ -56,4 +71,28 @@ function __getBreakpointFromWidth(width: number): TThemeBreakpoint {
     }
   }
   return THEME_BREAKPOINTS.XS;
+}
+
+function __isLargerThan(current: TThemeBreakpoint, target: TThemeBreakpoint): boolean {
+  const currentMin = THEME_BREAKPOINT_RANGES[current][0];
+  const targetMin = THEME_BREAKPOINT_RANGES[target][0];
+  return currentMin > targetMin;
+}
+
+function __isSmallerThan(current: TThemeBreakpoint, target: TThemeBreakpoint): boolean {
+  const currentMax = THEME_BREAKPOINT_RANGES[current][1];
+  const targetMax = THEME_BREAKPOINT_RANGES[target][1];
+  return currentMax < targetMax;
+}
+
+function __isLargerThanOrEqual(current: TThemeBreakpoint, target: TThemeBreakpoint): boolean {
+  const currentMin = THEME_BREAKPOINT_RANGES[current][0];
+  const targetMin = THEME_BREAKPOINT_RANGES[target][0];
+  return currentMin >= targetMin;
+}
+
+function __isSmallerThanOrEqual(current: TThemeBreakpoint, target: TThemeBreakpoint): boolean {
+  const currentMax = THEME_BREAKPOINT_RANGES[current][1];
+  const targetMax = THEME_BREAKPOINT_RANGES[target][1];
+  return currentMax <= targetMax;
 }

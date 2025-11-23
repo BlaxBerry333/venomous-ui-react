@@ -23,17 +23,126 @@ import { useThemeBreakpoint } from "venomous-ui-react/hooks";
   dark
   code={`
 type HookReturnType = {
+  // Current breakpoint info
   breakpoint: TThemeBreakpoint;
   breakpointRange: TThemeBreakpointRange;
+  // Convenient boolean flags
+  isXS: boolean;
+  isSM: boolean;
+  isMD: boolean;
+  isLG: boolean;
+  isXL: boolean;
+  isXXL: boolean;
+  // Comparison functions
+  isLargerThan: (target: TThemeBreakpoint) => boolean;
+  isSmallerThan: (target: TThemeBreakpoint) => boolean;
+  isLargerThanOrEqual: (target: TThemeBreakpoint) => boolean;
+  isSmallerThanOrEqual: (target: TThemeBreakpoint) => boolean;
 }
-// optional
+// Optional parameters
 type HookParametersType = {
   \_\_?: {
     windowSizeCalculationDebounceMS?: number; // default: 150
   }
 }
+
 // Related Types
 type TThemeBreakpoint = "XS" | "SM" | "MD" | "LG" | "XL" | "XXL";
 type TThemeBreakpointRange = [number, number];
+`.trim()}
+/>
+
+## Usage Examples
+
+### Basic Usage - Boolean Flags
+
+<Source
+  language="tsx"
+  dark
+  code={`
+"use client";
+
+import React from "react";
+import { useThemeBreakpoint } from "venomous-ui-react/hooks";
+
+function MyComponent() {
+const { isXS, isSM, isMD, isLG, isXL, isXXL } = useThemeBreakpoint();
+
+if (isXS || isSM) {
+return <MobileView />;
+}
+
+if (isMD) {
+return <TabletView />;
+}
+
+return <DesktopView />;
+}
+`.trim()}
+/>
+
+### Comparison Functions
+
+<Source
+  language="tsx"
+  dark
+  code={`
+"use client";
+
+import React from "react";
+import { useThemeBreakpoint } from "venomous-ui-react/hooks";
+import { THEME_BREAKPOINTS } from "venomous-ui-react/constants";
+
+function ResponsiveLayout() {
+const { isLargerThan, isLargerThanOrEqual, isSmallerThan } = useThemeBreakpoint();
+
+// Show sidebar only on MD and larger
+const showSidebar = isLargerThanOrEqual(THEME_BREAKPOINTS.MD);
+
+// Use compact mode for mobile
+const isCompact = isSmallerThan(THEME_BREAKPOINTS.SM);
+
+// Show advanced features for large screens
+const showAdvanced = isLargerThan(THEME_BREAKPOINTS.LG);
+
+return (
+
+<div>
+  {showSidebar && <Sidebar compact={isCompact} />}
+  <MainContent advanced={showAdvanced} />
+</div>
+); } `.trim()} />
+
+### Dynamic Breakpoint Comparison
+
+<Source
+  language="tsx"
+  dark
+  code={`
+"use client";
+
+import React from "react";
+import { useThemeBreakpoint } from "venomous-ui-react/hooks";
+import { THEME_BREAKPOINTS } from "venomous-ui-react/constants";
+
+function AdaptiveGrid() {
+const { breakpoint, isLargerThanOrEqual } = useThemeBreakpoint();
+
+const columns = React.useMemo(() => {
+if (isLargerThanOrEqual(THEME_BREAKPOINTS.XL)) return 4;
+if (isLargerThanOrEqual(THEME_BREAKPOINTS.LG)) return 3;
+if (isLargerThanOrEqual(THEME_BREAKPOINTS.MD)) return 2;
+return 1;
+}, [isLargerThanOrEqual]);
+
+return (
+
+<div style={{ display: "grid", gridTemplateColumns: \`repeat(\${columns}, 1fr)\` }}>
+{items.map((item) => (
+<Card key={item.id} {...item} />
+))}
+</div>
+);
+}
 `.trim()}
 />
