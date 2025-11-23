@@ -9,7 +9,7 @@ import "../../constants/designs/THEME_BREAKPOINTS.esm.js";
 import c from "../../hooks/useCustomStyle/index.esm.js";
 import { useProgressBarStyles as a } from "./ProgressBar.hooks.esm.js";
 function E({ color: r, disablePortal: o = !1 }) {
-  const { containerStyle: t } = a({ color: r }), e = c({ displayName: l.PageScrollProgressBar });
+  const { containerStyle: t } = a({ height: 4, color: r }), e = c({ displayName: l.PageScrollProgressBar });
   return {
     containerStyle: n.useMemo(() => o ? {
       // -- default style --

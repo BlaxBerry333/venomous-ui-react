@@ -15,7 +15,7 @@ const g = o.memo(
   o.forwardRef(
     ({ className: t, style: e, value: m, onChange: i, animated: a = !1, color: p, ...l }, f) => {
       const { displayValue: c } = y({ value: m, onChange: i, animated: a }), { containerStyle: n, insideBarStyle: N } = B({
-        height: 4,
+        height: 6,
         color: p,
         displayValue: c
       });

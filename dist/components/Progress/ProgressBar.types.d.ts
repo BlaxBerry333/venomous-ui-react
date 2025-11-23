@@ -12,7 +12,7 @@ export interface ProgressBarProps extends Omit<BoxProps, "as" | "maxWidth" | "ch
     onChange?: (value: number) => void;
     /**
      * Enable auto-animation mode (0 → 100 loop)
-     * @default true
+     * @default false
      */
     animated?: boolean;
     /**

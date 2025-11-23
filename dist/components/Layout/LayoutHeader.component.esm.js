@@ -1,5 +1,5 @@
-import { jsxs as a, jsx as S, Fragment as d } from "react/jsx-runtime";
-import l from "react";
+import { jsxs as a, jsx as N, Fragment as d } from "react/jsx-runtime";
+import e from "react";
 import x from "clsx";
 import "../Progress/ProgressBar.component.esm.js";
 import { COMPONENT_DISPLAY_NAMES as E } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
@@ -10,13 +10,13 @@ import "../../constants/designs/SHADOW_STYLES.esm.js";
 import "../../constants/designs/TEXT_COLORS.esm.js";
 import "../../constants/designs/THEME_BREAKPOINTS.esm.js";
 import "../Theme/ThemeProvider.context.esm.js";
-import n from "../Progress/PageScrollProgressBar.component.esm.js";
-import { Space as s } from "../Space/index.esm.js";
-import { useLayoutHeaderStyles as C } from "./LayoutHeader.hooks.esm.js";
-const H = l.memo(
-  l.forwardRef(
+import b from "../Progress/PageScrollProgressBar.component.esm.js";
+import { Space as h } from "../Space/index.esm.js";
+import { useLayoutHeaderStyles as n } from "./LayoutHeader.hooks.esm.js";
+const s = e.memo(
+  e.forwardRef(
     ({
-      className: e,
+      className: l,
       style: i,
       children: p,
       renderLogo: m,
@@ -24,28 +24,33 @@ const H = l.memo(
       showProgressBar: r = !0,
       ProgressBarProps: t,
       ...f
-    }, c) => {
-      const { componentStyle: u } = C(), y = m == null ? void 0 : m(), N = o == null ? void 0 : o();
+    }, y) => {
+      const { componentStyle: c } = n(), u = m == null ? void 0 : m(), S = o == null ? void 0 : o();
       return /* @__PURE__ */ a(
-        s.Flex,
+        h.Flex,
         {
           as: "header",
-          ref: c,
-          className: x(M.LayoutHeader, e),
-          style: { ...u, ...i },
+          ref: y,
+          className: x(M.LayoutHeader, l),
+          style: { ...c, ...i },
           ...f,
           children: [
-            r && /* @__PURE__ */ S(
-              n,
+            r && /* @__PURE__ */ N(
+              b,
               {
                 disablePortal: !0,
-                style: { border: "none", backgroundColor: "transparent", ...t == null ? void 0 : t.style },
+                style: {
+                  borderWidth: 0,
+                  borderStyle: "none",
+                  backgroundColor: "transparent",
+                  ...t == null ? void 0 : t.style
+                },
                 ...t
               }
             ),
             p || /* @__PURE__ */ a(d, { children: [
-              y,
-              N
+              u,
+              S
             ] })
           ]
         }
@@ -53,7 +58,7 @@ const H = l.memo(
     }
   )
 );
-H.displayName = E.LayoutHeader;
+s.displayName = E.LayoutHeader;
 export {
-  H as default
+  s as default
 };

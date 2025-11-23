@@ -6,7 +6,7 @@ import { SEMANTIC_COLORS as n } from "../../../constants/designs/SEMANTIC_COLORS
 import "../../../constants/designs/SHADOW_STYLES.esm.js";
 import "../../../constants/designs/TEXT_COLORS.esm.js";
 import "../../../constants/designs/THEME_BREAKPOINTS.esm.js";
-import W from "../../../hooks/useThemeDesigns/index.esm.js";
+import P from "../../../hooks/useThemeDesigns/index.esm.js";
 import "../../Theme/ThemeProvider.context.esm.js";
 import S from "../../../hooks/useCustomStyle/index.esm.js";
 import { hexToRgba as x } from "../../../tools/colors/get-colors.esm.js";
@@ -22,12 +22,13 @@ function N({
   isHovered: u,
   customConfig: r
 }) {
-  const { PaletteColors: M, TextColors: a, BackgroundColors: d, BorderColors: i, TypographySizes: c, ShadowStyles: D } = W(), I = S({ displayName: e.wrapper }), O = S({ displayName: e.input }), X = S({ displayName: e.prefix }), _ = S({ displayName: e.suffix }), z = S({ displayName: e.wrapper }), h = l.useMemo(() => {
+  const { PaletteColors: M, TextColors: a, BackgroundColors: d, BorderColors: i, TypographySizes: c, ShadowStyles: D } = P(), I = S({ displayName: e.wrapper }), O = S({ displayName: e.input }), X = S({ displayName: e.prefix }), _ = S({ displayName: e.suffix }), z = S({ displayName: e.wrapper }), h = l.useMemo(() => {
     switch (o) {
       case p.TEXT:
         return {
           backgroundColor: "transparent",
-          border: "none",
+          borderWidth: 0,
+          borderStyle: "none",
           borderRadius: 0
         };
       case p.OUTLINED:
@@ -128,14 +129,15 @@ function N({
       r == null ? void 0 : r.wrapperExtraStyles,
       I
     ]
-  ), B = l.useMemo(
+  ), W = l.useMemo(
     () => e.input ? {
       // -- default styles --
       boxSizing: "border-box",
       flex: 1,
       width: "100%",
       height: "100%",
-      border: "none",
+      borderWidth: 0,
+      borderStyle: "none",
       outline: "none",
       backgroundColor: "transparent",
       color: "inherit",
@@ -147,7 +149,7 @@ function N({
       ...O
     } : {},
     [O, r == null ? void 0 : r.inputExtraStyles, e.input]
-  ), F = l.useMemo(
+  ), B = l.useMemo(
     () => e.prefix ? {
       // -- default styles --
       display: "flex",
@@ -159,7 +161,7 @@ function N({
       ...X
     } : {},
     [X, r == null ? void 0 : r.prefixExtraStyles, e.prefix]
-  ), L = l.useMemo(
+  ), F = l.useMemo(
     () => e.suffix ? {
       // -- default styles --
       display: "flex",
@@ -171,7 +173,7 @@ function N({
       ..._
     } : {},
     [_, r == null ? void 0 : r.suffixExtraStyles, e.suffix]
-  ), P = l.useMemo(
+  ), L = l.useMemo(
     () => e.dropdown ? {
       // -- default styles --
       boxSizing: "border-box",
@@ -189,10 +191,10 @@ function N({
   );
   return {
     wrapperStyle: A,
-    inputStyle: B,
-    prefixStyle: F,
-    suffixStyle: L,
-    dropdownStyle: P,
+    inputStyle: W,
+    prefixStyle: B,
+    suffixStyle: F,
+    dropdownStyle: L,
     __: {
       DynamicVariantStyles: h,
       DynamicStateStyles: E,
