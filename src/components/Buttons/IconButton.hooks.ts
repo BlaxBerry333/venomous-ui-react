@@ -5,14 +5,14 @@ import React from "react";
 import { COMPONENT_DISPLAY_NAMES } from "@/constants";
 import useCustomStyle from "@/hooks/useCustomStyle";
 import { useButtonStyles } from "./Button.hooks";
-import { ICON_BUTTON_SHAPE_MAP, type IconButtonProps } from "./IconButton.types";
+import { BUTTON_VARIANT_MAP } from "./Button.types";
+import { ICON_BUTTON_VARIANT_MAP, type IconButtonProps } from "./IconButton.types";
 
 export function useIconButtonStyles({
   disabled,
   loading,
   variant,
   color,
-  shape,
   isHovered,
   isClicked,
 }: Partial<IconButtonProps> & { isHovered?: boolean; isClicked?: boolean }) {
@@ -21,18 +21,18 @@ export function useIconButtonStyles({
   const { componentStyle: buttonStyle, __ } = useButtonStyles({
     disabled,
     loading,
-    variant,
+    variant: BUTTON_VARIANT_MAP.CONTAINED,
     color,
     isHovered,
     isClicked,
   });
 
-  const DynamicShapeStyles = React.useMemo<React.CSSProperties>(() => {
-    const isCircle = shape === ICON_BUTTON_SHAPE_MAP.CIRCLE;
+  const DynamicVariantStyles = React.useMemo<React.CSSProperties>(() => {
+    const isCircle = variant === ICON_BUTTON_VARIANT_MAP.CIRCLE;
     return {
       borderRadius: isCircle ? "50%" : 8,
     };
-  }, [shape]);
+  }, [variant]);
 
   const DynamicSizeStyles = React.useMemo<React.CSSProperties>(
     () => ({
@@ -52,20 +52,20 @@ export function useIconButtonStyles({
     () => ({
       // -- default style --
       ...buttonStyle,
-      ...DynamicShapeStyles,
+      ...DynamicVariantStyles,
       ...DynamicSizeStyles,
 
       // -- custom style --
       ...customStyle,
     }),
-    [buttonStyle, DynamicShapeStyles, DynamicSizeStyles, customStyle],
+    [buttonStyle, DynamicVariantStyles, DynamicSizeStyles, customStyle],
   );
 
   return {
     componentStyle,
     __: {
       ...__,
-      DynamicShapeStyles,
+      DynamicVariantStyles,
       DynamicSizeStyles,
     },
   };

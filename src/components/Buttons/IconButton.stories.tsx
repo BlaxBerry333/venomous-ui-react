@@ -1,7 +1,7 @@
 import { ArgTypes, Heading, Markdown, Source, Subtitle, Title } from "@storybook/blocks";
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { BUTTON_VARIANT_MAP, ICON_BUTTON_SHAPE_MAP, IconButton } from ".";
+import { ICON_BUTTON_VARIANT_MAP, IconButton } from ".";
 
 import { default as IconStoriesMeta } from "@/components/Icon/Icon.stories";
 import { default as ButtonStoriesMeta } from "./Button.stories";
@@ -15,17 +15,16 @@ const meta = {
     icon: IconStoriesMeta.argTypes.icon,
     disabled: ButtonStoriesMeta.argTypes.disabled,
     loading: ButtonStoriesMeta.argTypes.loading,
-    variant: ButtonStoriesMeta.argTypes.variant,
     color: ButtonStoriesMeta.argTypes.color,
-    shape: {
-      description: "The shape of the button.",
-      type: { name: "other", value: "keyof typeof ICON_BUTTON_SHAPE_MAP" },
+    variant: {
+      description: "The variant (shape) of the icon button.",
+      type: { name: "other", value: "keyof typeof ICON_BUTTON_VARIANT_MAP" },
       table: {
-        type: { summary: `${Object.values(ICON_BUTTON_SHAPE_MAP).join("|")}` },
-        defaultValue: { summary: `"${ICON_BUTTON_SHAPE_MAP.SQUARE}"` },
+        type: { summary: `${Object.values(ICON_BUTTON_VARIANT_MAP).join(" | ")}` },
+        defaultValue: { summary: `"${ICON_BUTTON_VARIANT_MAP.SQUARE}"` },
       },
       control: { type: "radio" },
-      options: Object.values(ICON_BUTTON_SHAPE_MAP),
+      options: Object.values(ICON_BUTTON_VARIANT_MAP),
     },
   },
   parameters: {
@@ -54,7 +53,7 @@ function App() {
   return (
     <Theme.Provider>
       <IconButton icon="mdi:heart" />
-      <IconButton icon="mdi:heart" shape="circle" />
+      <IconButton icon="mdi:heart" variant="circle" />
       <IconButton icon="mdi:heart" loading />
       <IconButton icon="mdi:heart" disabled />
     </Theme.Provider>
@@ -78,8 +77,7 @@ type Story = StoryObj<typeof meta>;
 export const Playground: Story = {
   args: {
     icon: "mdi:heart",
-    variant: BUTTON_VARIANT_MAP.CONTAINED,
-    shape: ICON_BUTTON_SHAPE_MAP.SQUARE,
+    variant: ICON_BUTTON_VARIANT_MAP.SQUARE,
     color: undefined,
     disabled: false,
     loading: false,

@@ -5,8 +5,7 @@ import React from "react";
 import clsx from "clsx";
 
 import { Box } from "@/components/Box";
-import { IconButton } from "@/components/Buttons";
-import { ICON_BUTTON_SHAPE_MAP } from "@/components/Buttons/IconButton.types";
+import { ICON_BUTTON_VARIANT_MAP, IconButton } from "@/components/Buttons";
 import { COMPONENT_CLASSNAME_NAMES, COMPONENT_DISPLAY_NAMES } from "@/constants";
 import { useLayoutSideActions, useLayoutSideStyles } from "./LayoutSide.hooks";
 import type { LayoutSideProps, LayoutSideRef } from "./LayoutSide.types";
@@ -57,8 +56,7 @@ const LayoutSide = React.memo(
         return (
           <IconButton
             icon={isCollapsed ? "solar:arrow-right-bold" : "solar:arrow-left-bold"}
-            shape={ICON_BUTTON_SHAPE_MAP.CIRCLE}
-            variant="outlined"
+            variant={ICON_BUTTON_VARIANT_MAP.CIRCLE}
             onClick={toggle}
             style={collapseButtonStyle}
           />

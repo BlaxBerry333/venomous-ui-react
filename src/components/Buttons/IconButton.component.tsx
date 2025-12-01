@@ -7,9 +7,8 @@ import clsx from "clsx";
 import { Icon } from "@/components/Icon";
 import { COMPONENT_CLASSNAME_NAMES, COMPONENT_DISPLAY_NAMES } from "@/constants";
 import { useButtonActions } from "./Button.hooks";
-import { BUTTON_VARIANT_MAP } from "./Button.types";
 import { useIconButtonStyles } from "./IconButton.hooks";
-import { ICON_BUTTON_SHAPE_MAP, type IconButtonProps, type IconButtonRef } from "./IconButton.types";
+import { ICON_BUTTON_VARIANT_MAP, type IconButtonProps, type IconButtonRef } from "./IconButton.types";
 
 const IconButton = React.memo(
   React.forwardRef<IconButtonRef, IconButtonProps>(
@@ -21,8 +20,7 @@ const IconButton = React.memo(
         icon,
         disabled = false,
         loading = false,
-        variant = BUTTON_VARIANT_MAP.CONTAINED,
-        shape = ICON_BUTTON_SHAPE_MAP.SQUARE,
+        variant = ICON_BUTTON_VARIANT_MAP.SQUARE,
         color,
         onMouseEnter,
         onMouseLeave,
@@ -44,7 +42,6 @@ const IconButton = React.memo(
         disabled,
         loading,
         variant,
-        shape,
         color,
         isHovered,
         isClicked,

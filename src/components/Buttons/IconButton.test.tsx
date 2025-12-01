@@ -5,9 +5,9 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import { Theme } from "@/components/Theme";
 import { COMPONENT_CLASSNAME_NAMES, COMPONENT_DISPLAY_NAMES } from "@/constants";
 
-import { BUTTON_VARIANT_MAP, type ButtonRef } from "./Button.types";
+import { type ButtonRef } from "./Button.types";
 import IconButton from "./IconButton.component";
-import { ICON_BUTTON_SHAPE_MAP } from "./IconButton.types";
+import { ICON_BUTTON_VARIANT_MAP } from "./IconButton.types";
 
 const wrapper = ({ children }: { children: React.ReactNode }) => <Theme.Provider>{children}</Theme.Provider>;
 
@@ -46,37 +46,23 @@ describe("IconButton", () => {
     expect(button?.type).toBe("button");
   });
 
-  it("renders contained variant by default", () => {
+  it("renders with gradient background by default", () => {
     const { container } = render(<IconButton icon="mdi:home" />, { wrapper });
 
     const button = container.querySelector<ButtonRef>("button");
     expect(button?.style.color).toBe("#ffffff");
-    expect(button?.style.backgroundColor).toBeTruthy();
+    expect(button?.style.background).toContain("radial-gradient");
   });
 
-  it("renders outlined variant correctly", () => {
-    const { container } = render(<IconButton icon="mdi:home" variant={BUTTON_VARIANT_MAP.OUTLINED} />, { wrapper });
-
-    const button = container.querySelector<ButtonRef>("button");
-    expect(button?.style.backgroundColor).toBe("transparent");
-  });
-
-  it("renders text variant correctly", () => {
-    const { container } = render(<IconButton icon="mdi:home" variant={BUTTON_VARIANT_MAP.TEXT} />, { wrapper });
-
-    const button = container.querySelector<ButtonRef>("button");
-    expect(button?.style.backgroundColor).toBe("transparent");
-  });
-
-  it("applies square shape by default", () => {
+  it("applies square variant by default", () => {
     const { container } = render(<IconButton icon="mdi:home" />, { wrapper });
 
     const button = container.querySelector<ButtonRef>("button");
     expect(button?.style.borderRadius).toBe("8px");
   });
 
-  it("applies circle shape correctly", () => {
-    const { container } = render(<IconButton icon="mdi:home" shape={ICON_BUTTON_SHAPE_MAP.CIRCLE} />, { wrapper });
+  it("applies circle variant correctly", () => {
+    const { container } = render(<IconButton icon="mdi:home" variant={ICON_BUTTON_VARIANT_MAP.CIRCLE} />, { wrapper });
 
     const button = container.querySelector<ButtonRef>("button");
     expect(button?.style.borderRadius).toBe("50%");
@@ -111,7 +97,7 @@ describe("IconButton", () => {
     const { container } = render(<IconButton icon="mdi:home" color="#ff5722" />, { wrapper });
 
     const button = container.querySelector<ButtonRef>("button");
-    expect(button?.style.backgroundColor).toBe("#ff5722");
+    expect(button?.style.background).toContain("#ff5722");
   });
 
   it("disables button when disabled is true", () => {
@@ -264,19 +250,8 @@ describe("IconButton", () => {
     expect(button?.style.height).toBe("50px");
   });
 
-  it("combines variant and shape correctly", () => {
-    const { container } = render(
-      <IconButton icon="mdi:home" variant={BUTTON_VARIANT_MAP.OUTLINED} shape={ICON_BUTTON_SHAPE_MAP.CIRCLE} />,
-      { wrapper },
-    );
-
-    const button = container.querySelector<ButtonRef>("button");
-    expect(button?.style.backgroundColor).toBe("transparent");
-    expect(button?.style.borderRadius).toBe("50%");
-  });
-
-  it("switches between shapes correctly", () => {
-    const { container, rerender } = render(<IconButton icon="mdi:home" shape={ICON_BUTTON_SHAPE_MAP.SQUARE} />, {
+  it("switches between variants correctly", () => {
+    const { container, rerender } = render(<IconButton icon="mdi:home" variant={ICON_BUTTON_VARIANT_MAP.SQUARE} />, {
       wrapper,
     });
 
@@ -285,7 +260,7 @@ describe("IconButton", () => {
 
     rerender(
       <Theme.Provider>
-        <IconButton icon="mdi:home" shape={ICON_BUTTON_SHAPE_MAP.CIRCLE} />
+        <IconButton icon="mdi:home" variant={ICON_BUTTON_VARIANT_MAP.CIRCLE} />
       </Theme.Provider>,
     );
 
