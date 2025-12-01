@@ -76,7 +76,7 @@ describe("Button", () => {
     const button = container.querySelector<ButtonRef>("button");
     expect(button?.disabled).toBe(true);
     expect(button?.style.cursor).toBe("not-allowed");
-    expect(button?.style.opacity).toBe("0.65");
+    expect(button?.style.opacity).toBe("0.6");
   });
 
   it("applies loading state correctly", () => {
@@ -85,7 +85,7 @@ describe("Button", () => {
     const button = container.querySelector<ButtonRef>("button");
     expect(button?.disabled).toBe(true);
     expect(button?.style.cursor).toBe("wait");
-    expect(button?.style.opacity).toBe("0.65");
+    expect(button?.style.opacity).toBe("0.7");
   });
 
   it("applies fullWidth correctly", () => {
@@ -108,8 +108,8 @@ describe("Button", () => {
     const { container } = render(<Button text="Button" color="#ff5722" />, { wrapper });
 
     const button = container.querySelector<ButtonRef>("button");
-    // For contained variant, custom color is applied as backgroundColor
-    expect(button?.style.backgroundColor).toBe("#ff5722");
+    // For contained variant, custom color is applied as gradient background
+    expect(button?.style.background).toContain("#ff5722");
   });
 
   it("applies custom className", () => {

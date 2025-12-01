@@ -5,7 +5,7 @@ import React from "react";
 import { COMPONENT_DISPLAY_NAMES } from "@/constants";
 import { useElementHoverEvents, useElementMouseEvents, useThemeDesigns, useThemeMode } from "@/hooks";
 import useCustomStyle from "@/hooks/useCustomStyle";
-import { getDarker, getLighter, hexToRgba } from "@/tools";
+import { getDarker, getLighter, hexToRgba, isLightColor } from "@/tools";
 import { BUTTON_VARIANT_MAP, type ButtonProps } from "./Button.types";
 
 export function useButtonStyles({
@@ -21,123 +21,129 @@ export function useButtonStyles({
   const { PaletteColors, TextColors, ShadowStyles, TypographySizes } = useThemeDesigns();
   const customStyle = useCustomStyle({ displayName: COMPONENT_DISPLAY_NAMES.Button });
 
+  // 提取公共值，避免重复计算
+  const themeColor = color || PaletteColors[1];
+  const isDisabled = disabled || loading;
+
+  // ========== Variant 基础样式 ==========
   const DynamicVariantStyles = React.useMemo<React.CSSProperties>(() => {
-    const themeColor = color || PaletteColors[1];
     switch (variant) {
-      case BUTTON_VARIANT_MAP.OUTLINED: {
-        const borderColor = isDarkMode ? getLighter(themeColor, 0.15) : getDarker(themeColor, 0.15);
+      case BUTTON_VARIANT_MAP.OUTLINED:
         return {
           color: themeColor,
           backgroundColor: "transparent",
-          borderColor: borderColor,
-          outlineColor: borderColor,
+          borderColor: themeColor,
+          borderWidth: 1.5,
           boxShadow: "none",
         };
-      }
       case BUTTON_VARIANT_MAP.TEXT:
         return {
           color: themeColor,
           backgroundColor: "transparent",
           borderColor: "transparent",
-          outlineColor: "transparent",
+          borderWidth: 0,
           boxShadow: "none",
         };
       case BUTTON_VARIANT_MAP.CONTAINED:
       default: {
-        const borderColor = isDarkMode ? getLighter(themeColor, 0.15) : getDarker(themeColor, 0.25);
+        const highlightColor = getLighter(themeColor, isDarkMode ? 0.18 : 0.12);
+        const shadowColor = getDarker(themeColor, isDarkMode ? 0.28 : 0.2);
+        const textColor = isLightColor(themeColor, 0.45) ? "#1a1a1a" : "#ffffff";
         return {
-          color: "#ffffff",
-          backgroundColor: themeColor,
-          borderColor: borderColor,
-          outlineColor: borderColor,
+          color: textColor,
+          background: `radial-gradient(ellipse 120% 100% at 25% 20%, ${highlightColor} 0%, ${themeColor} 45%, ${shadowColor} 100%)`,
+          borderColor: "transparent",
+          borderWidth: 0,
           boxShadow: ShadowStyles[1],
         };
       }
     }
-  }, [variant, color, PaletteColors, ShadowStyles, isDarkMode]);
+  }, [variant, themeColor, ShadowStyles, isDarkMode]);
 
+  // ========== State 状态样式（disabled/loading） ==========
   const DynamicStateStyles = React.useMemo<React.CSSProperties>(() => {
-    return disabled || loading
-      ? {
-          cursor: disabled ? "not-allowed" : "wait",
-          opacity: 0.65,
-          color: TextColors["disabled"],
-          borderColor: TextColors["disabled"],
-          outlineColor: TextColors["disabled"],
-          boxShadow: "none",
-        }
-      : {
-          cursor: "pointer",
-          opacity: 1,
-        };
-  }, [disabled, loading, TextColors]);
-
-  const DynamicHoverStyles = React.useMemo<React.CSSProperties>(() => {
-    if (disabled || loading || !isHovered || isClicked) {
-      return {};
+    if (!isDisabled) {
+      return { cursor: "pointer", opacity: 1 };
     }
-    const themeColor = color || PaletteColors[1];
-    switch (variant) {
-      case BUTTON_VARIANT_MAP.TEXT: {
+
+    if (loading && !disabled) {
+      const base: React.CSSProperties = { cursor: "wait", opacity: 0.7, pointerEvents: "none" };
+      if (variant === BUTTON_VARIANT_MAP.CONTAINED) {
+        return { ...base, boxShadow: "none" };
+      }
+      return {
+        ...base,
+        color: themeColor,
+        borderColor: variant === BUTTON_VARIANT_MAP.OUTLINED ? themeColor : undefined,
+      };
+    }
+
+    const base: React.CSSProperties = {
+      cursor: "not-allowed",
+      opacity: 0.6,
+      boxShadow: "none",
+      pointerEvents: "none",
+      color: TextColors["disabled"],
+    };
+
+    if (variant === BUTTON_VARIANT_MAP.OUTLINED) {
+      return { ...base, borderColor: TextColors["disabled"] };
+    }
+    if (variant === BUTTON_VARIANT_MAP.CONTAINED) {
+      return {
+        ...base,
+        background: "none",
+        backgroundColor: isDarkMode ? "rgba(255,255,255,0.12)" : "rgba(0,0,0,0.12)",
+      };
+    }
+    return base;
+  }, [variant, themeColor, isDisabled, disabled, loading, TextColors, isDarkMode]);
+
+  // ========== Interaction 交互样式（hover/pressed 合并） ==========
+  const DynamicInteractionStyles = React.useMemo<React.CSSProperties>(() => {
+    if (isDisabled) return {};
+
+    if (isClicked) {
+      if (variant === BUTTON_VARIANT_MAP.CONTAINED) {
+        const topShadow = getDarker(themeColor, isDarkMode ? 0.25 : 0.18);
+        const midColor = getDarker(themeColor, isDarkMode ? 0.12 : 0.08);
+        const bottomHighlight = getDarker(themeColor, isDarkMode ? 0.05 : 0.02);
         return {
-          backgroundColor: hexToRgba(themeColor, isDarkMode ? 0.12 : 0.1),
+          background: `radial-gradient(ellipse 120% 80% at 50% 85%, ${bottomHighlight} 0%, ${midColor} 50%, ${topShadow} 100%)`,
+          transform: "scale(0.97)",
+          boxShadow: `inset 0 2px 4px ${hexToRgba("#000000", isDarkMode ? 0.25 : 0.15)}`,
         };
       }
-      case BUTTON_VARIANT_MAP.OUTLINED: {
+      return {
+        backgroundColor: hexToRgba(themeColor, isDarkMode ? 0.2 : 0.12),
+        transform: "scale(0.97)",
+      };
+    }
+
+    if (isHovered) {
+      if (variant === BUTTON_VARIANT_MAP.CONTAINED) {
+        const highlightColor = getLighter(themeColor, isDarkMode ? 0.28 : 0.2);
+        const midColor = getLighter(themeColor, isDarkMode ? 0.08 : 0.05);
+        const shadowColor = getDarker(themeColor, isDarkMode ? 0.18 : 0.12);
         return {
-          backgroundColor: hexToRgba(themeColor, isDarkMode ? 0.25 : 0.1),
-        };
-      }
-      case BUTTON_VARIANT_MAP.CONTAINED:
-      default: {
-        return {
-          backgroundColor: getLighter(themeColor, isDarkMode ? 0.25 : 0.1),
+          background: `radial-gradient(ellipse 130% 110% at 25% 15%, ${highlightColor} 0%, ${midColor} 40%, ${shadowColor} 100%)`,
           boxShadow: ShadowStyles[2],
         };
       }
-    }
-  }, [variant, disabled, loading, isHovered, isClicked, color, PaletteColors, ShadowStyles, isDarkMode]);
-
-  const DynamicPressedStyles = React.useMemo<React.CSSProperties>(() => {
-    if (disabled || loading || !isClicked) {
-      return {};
-    }
-    const themeColor = color || PaletteColors[1];
-    switch (variant) {
-      case BUTTON_VARIANT_MAP.TEXT: {
+      if (variant === BUTTON_VARIANT_MAP.OUTLINED) {
         return {
-          backgroundColor: hexToRgba(themeColor, isDarkMode ? 0.2 : 0.12),
+          backgroundColor: hexToRgba(themeColor, isDarkMode ? 0.15 : 0.08),
         };
       }
-      case BUTTON_VARIANT_MAP.OUTLINED: {
-        return {
-          backgroundColor: hexToRgba(themeColor, isDarkMode ? 0.2 : 0.12),
-          transform: "scale(0.98)",
-        };
-      }
-      case BUTTON_VARIANT_MAP.CONTAINED:
-      default: {
-        return {
-          backgroundColor: getDarker(themeColor, isDarkMode ? 0.2 : 0.25),
-          transform: "scale(0.98)",
-          boxShadow: "none",
-        };
-      }
+      return {
+        backgroundColor: hexToRgba(themeColor, isDarkMode ? 0.12 : 0.08),
+      };
     }
-  }, [variant, disabled, loading, isClicked, color, PaletteColors, isDarkMode]);
 
-  const DynamicFullWidthStyles = React.useMemo<React.CSSProperties>(() => {
-    return fullWidth
-      ? {
-          width: "100%",
-          minWidth: "100%",
-        }
-      : {
-          width: "auto",
-          minWidth: 56,
-        };
-  }, [fullWidth]);
+    return {};
+  }, [variant, themeColor, isDisabled, isHovered, isClicked, ShadowStyles, isDarkMode]);
 
+  // ========== 最终合并样式 ==========
   const componentStyle = React.useMemo<React.CSSProperties>(
     () => ({
       boxSizing: "border-box",
@@ -146,45 +152,27 @@ export function useButtonStyles({
       // -- default style --
       userSelect: "none",
       position: "relative",
-      padding: "2px 8px",
+      padding: "4px 12px",
       height: 40,
       fontWeight: 600,
       fontSize: TypographySizes.TEXT.BASE,
       borderRadius: 8,
-      borderWidth: 1,
-      outlineWidth: 1,
-      outlineStyle: "solid",
-      transition: "all 0.25s ease-in-out",
+      borderStyle: "solid",
+      transition:
+        "transform 0.1s ease-out, background 0.2s ease-in-out, background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, opacity 0.2s ease-in-out",
+      width: fullWidth ? "100%" : "auto",
+      minWidth: fullWidth ? "100%" : 56,
       ...DynamicVariantStyles,
       ...DynamicStateStyles,
-      ...DynamicFullWidthStyles,
-      ...DynamicHoverStyles,
-      ...DynamicPressedStyles,
+      ...DynamicInteractionStyles,
 
       // -- custom style --
       ...customStyle,
     }),
-    [
-      TypographySizes,
-      DynamicVariantStyles,
-      DynamicStateStyles,
-      DynamicFullWidthStyles,
-      DynamicHoverStyles,
-      DynamicPressedStyles,
-      customStyle,
-    ],
+    [TypographySizes, fullWidth, DynamicVariantStyles, DynamicStateStyles, DynamicInteractionStyles, customStyle],
   );
 
-  return {
-    componentStyle,
-    __: {
-      DynamicVariantStyles,
-      DynamicStateStyles,
-      DynamicFullWidthStyles,
-      DynamicHoverStyles,
-      DynamicPressedStyles,
-    },
-  };
+  return { componentStyle };
 }
 
 export function useButtonActions({

@@ -46,6 +46,37 @@ export function hexToRgba(hex: string, alpha: number): string {
   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }
 
+/**
+ * Calculate relative luminance of a color
+ * @param hex color
+ * @returns luminance value between 0 (darkest) and 1 (lightest)
+ * @see https://www.w3.org/TR/WCAG20/#relativeluminancedef
+ */
+export function getLuminance(hex: string): number {
+  const { r, g, b } = __hexToRgb(hex);
+
+  const toLinear = (c: number) => {
+    const sRGB = c / 255;
+    return sRGB <= 0.03928 ? sRGB / 12.92 : Math.pow((sRGB + 0.055) / 1.055, 2.4);
+  };
+
+  return 0.2126 * toLinear(r) + 0.7152 * toLinear(g) + 0.0722 * toLinear(b);
+}
+
+/**
+ * Determine if a color is light (for choosing contrasting text color)
+ * @param hex color
+ * @param threshold luminance threshold (default 0.5)
+ * @returns true if the color is light, false if dark
+ * @example
+ * isLightColor("#FFFFFF");  // true
+ * isLightColor("#000000");  // false
+ * isLightColor("#4CAF50");  // false (green is considered dark)
+ */
+export function isLightColor(hex: string, threshold = 0.5): boolean {
+  return getLuminance(hex) > threshold;
+}
+
 function __hexToRgb(hex: string): { r: number; g: number; b: number } {
   hex = hex.replace("#", "");
   if (hex.length === 3) {
