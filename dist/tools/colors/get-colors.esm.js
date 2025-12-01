@@ -1,35 +1,47 @@
-function w(t, r) {
-  if (r < 0 || r > 1)
+function w(r, t) {
+  if (t < 0 || t > 1)
     throw new Error("Factor must be between 0 ~ 1.");
-  return i(t, r, !0);
+  return b(r, t, !0);
 }
-function c(t, r) {
-  if (r < 0 || r > 1)
+function f(r, t) {
+  if (t < 0 || t > 1)
     throw new Error("Factor must be between 0 ~ 1.");
-  return i(t, r, !1);
+  return b(r, t, !1);
 }
-function p(t, r) {
-  if (r < 0 || r > 1)
+function p(r, t) {
+  if (t < 0 || t > 1)
     throw new Error("Alpha must be between 0 ~ 1.");
-  const { r: n, g: e, b: u } = s(t);
-  return `rgba(${n}, ${e}, ${u}, ${r})`;
+  const { r: n, g: e, b: o } = g(r);
+  return `rgba(${n}, ${e}, ${o}, ${t})`;
 }
-function s(t) {
-  return t = t.replace("#", ""), t.length === 3 && (t = t.split("").map((r) => r + r).join("")), {
-    r: parseInt(t.substring(0, 2), 16),
-    g: parseInt(t.substring(2, 4), 16),
-    b: parseInt(t.substring(4, 6), 16)
+function c(r) {
+  const { r: t, g: n, b: e } = g(r), o = (i) => {
+    const u = i / 255;
+    return u <= 0.03928 ? u / 12.92 : Math.pow((u + 0.055) / 1.055, 2.4);
+  };
+  return 0.2126 * o(t) + 0.7152 * o(n) + 0.0722 * o(e);
+}
+function m(r, t = 0.5) {
+  return c(r) > t;
+}
+function g(r) {
+  return r = r.replace("#", ""), r.length === 3 && (r = r.split("").map((t) => t + t).join("")), {
+    r: parseInt(r.substring(0, 2), 16),
+    g: parseInt(r.substring(2, 4), 16),
+    b: parseInt(r.substring(4, 6), 16)
   };
 }
-function a(t, r, n) {
-  return `#${((1 << 24) + (t << 16) + (r << 8) + n).toString(16).slice(1).toUpperCase()}`;
+function a(r, t, n) {
+  return `#${((1 << 24) + (r << 16) + (t << 8) + n).toString(16).slice(1).toUpperCase()}`;
 }
-function i(t, r, n) {
-  const e = (o) => n ? Math.max(o - o * r, 0) : Math.min(o + (255 - o) * r, 255), { r: u, g: b, b: g } = s(t);
-  return a(Math.round(e(u)), Math.round(e(b)), Math.round(e(g)));
+function b(r, t, n) {
+  const e = (s) => n ? Math.max(s - s * t, 0) : Math.min(s + (255 - s) * t, 255), { r: o, g: i, b: u } = g(r);
+  return a(Math.round(e(o)), Math.round(e(i)), Math.round(e(u)));
 }
 export {
   w as getDarker,
-  c as getLighter,
-  p as hexToRgba
+  f as getLighter,
+  c as getLuminance,
+  p as hexToRgba,
+  m as isLightColor
 };

@@ -1,20 +1,20 @@
 import type { IconProps } from "../../components/Icon";
 import { type ButtonProps, type ButtonRef } from "./Button.types";
-export declare const ICON_BUTTON_SHAPE_MAP: {
+export declare const ICON_BUTTON_VARIANT_MAP: {
     readonly CIRCLE: "circle";
     readonly SQUARE: "square";
 };
 export type IconButtonRef = ButtonRef;
-export interface IconButtonProps extends Omit<ButtonProps, "text"> {
+export interface IconButtonProps extends Omit<ButtonProps, "text" | "variant"> {
     /**
      * The iconify icon name to display.
      * @required
      */
     icon: IconProps["icon"];
     /**
-     * The shape of the button.
+     * The variant (shape) of the icon button.
      * @default "square"
      */
-    shape?: (typeof ICON_BUTTON_SHAPE_MAP)[keyof typeof ICON_BUTTON_SHAPE_MAP];
+    variant?: (typeof ICON_BUTTON_VARIANT_MAP)[keyof typeof ICON_BUTTON_VARIANT_MAP];
 }
 //# sourceMappingURL=IconButton.types.d.ts.map

@@ -1,33 +1,33 @@
-import e from "react";
-import { COMPONENT_DISPLAY_NAMES as S } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
+import t from "react";
+import { COMPONENT_DISPLAY_NAMES as u } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
 import "../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";
 import "../../constants/designs/BACKGROUND_COLORS.esm.js";
 import "../../constants/designs/BORDER_COLORS.esm.js";
 import "../../constants/designs/SHADOW_STYLES.esm.js";
 import "../../constants/designs/TEXT_COLORS.esm.js";
 import "../../constants/designs/THEME_BREAKPOINTS.esm.js";
-import a from "../../hooks/useCustomStyle/index.esm.js";
-import { useButtonStyles as _ } from "./Button.hooks.esm.js";
-import { ICON_BUTTON_SHAPE_MAP as d } from "./IconButton.types.esm.js";
-function R({
+import y from "../../hooks/useCustomStyle/index.esm.js";
+import { useButtonStyles as S } from "./Button.hooks.esm.js";
+import { BUTTON_VARIANT_MAP as a } from "./Button.types.esm.js";
+import { ICON_BUTTON_VARIANT_MAP as N } from "./IconButton.types.esm.js";
+function E({
   disabled: r,
   loading: s,
-  variant: c,
-  color: p,
-  shape: n,
-  isHovered: l,
-  isClicked: u
+  variant: o,
+  color: c,
+  isHovered: p,
+  isClicked: l
 }) {
-  const i = a({ displayName: S.IconButton }), { componentStyle: m, __: y } = _({
+  const e = y({ displayName: u.IconButton }), { componentStyle: i } = S({
     disabled: r,
     loading: s,
-    variant: c,
-    color: p,
-    isHovered: l,
-    isClicked: u
-  }), t = e.useMemo(() => ({
-    borderRadius: n === d.CIRCLE ? "50%" : 8
-  }), [n]), o = e.useMemo(
+    variant: a.CONTAINED,
+    color: c,
+    isHovered: p,
+    isClicked: l
+  }), n = t.useMemo(() => ({
+    borderRadius: o === N.CIRCLE ? "50%" : 8
+  }), [o]), m = t.useMemo(
     () => ({
       display: "inline-flex",
       alignItems: "center",
@@ -41,24 +41,19 @@ function R({
     []
   );
   return {
-    componentStyle: e.useMemo(
+    componentStyle: t.useMemo(
       () => ({
         // -- default style --
+        ...i,
+        ...n,
         ...m,
-        ...t,
-        ...o,
         // -- custom style --
-        ...i
+        ...e
       }),
-      [m, t, o, i]
-    ),
-    __: {
-      ...y,
-      DynamicShapeStyles: t,
-      DynamicSizeStyles: o
-    }
+      [i, n, m, e]
+    )
   };
 }
 export {
-  R as useIconButtonStyles
+  E as useIconButtonStyles
 };

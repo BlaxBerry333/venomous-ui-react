@@ -19,8 +19,8 @@ const _ = p.memo(
       children: i,
       distance: S = 300,
       onClick: T,
-      ...e
-    }, l) => {
+      ...l
+    }, e) => {
       const { isVisible: a, handleClick: n } = u({
         distance: S,
         onClick: T
@@ -28,7 +28,7 @@ const _ = p.memo(
       return i ? /* @__PURE__ */ o(m.Fade, { visible: a, duration: 200, children: /* @__PURE__ */ o(
         "button",
         {
-          ref: l,
+          ref: e,
           type: "button",
           className: s(c.ScrollToTop, r),
           style: {
@@ -38,15 +38,15 @@ const _ = p.memo(
           },
           onClick: n,
           "aria-label": "Scroll to top",
-          ...e,
+          ...l,
           children: i
         }
       ) }) : /* @__PURE__ */ o(m.Fade, { visible: a, duration: 200, children: /* @__PURE__ */ o(
         f,
         {
-          ref: l,
+          ref: e,
           icon: "solar:alt-arrow-up-bold",
-          shape: "circle",
+          variant: "circle",
           className: s(c.ScrollToTop, r),
           style: {
             ...d,
@@ -54,7 +54,7 @@ const _ = p.memo(
           },
           onClick: n,
           "aria-label": "Scroll to top",
-          ...e
+          ...l
         }
       ) });
     }

@@ -22,24 +22,13 @@ export interface MenuItemProps extends Omit<React.HTMLAttributes<MenuItemRef>, "
      */
     spacing?: SpaceFlexProps["spacing"];
     /**
-     * Icon element (displayed before label). Ignored if `children` is provided.
+     * Element displayed before label. Ignored if `children` is provided.
      */
-    Icon?: React.ReactNode;
+    StartIcon?: React.ReactNode;
     /**
-     * Label Text content. Ignored if `children` is provided.
+     * Element displayed after label. Ignored if `children` is provided.
      */
-    label?: TypographyParagraphProps["text"];
-    /**
-     * Text ellipsis rows. Ignored if `children` is provided.
-     * - `0`: no ellipsis
-     * - `>= 1`: max rows before ellipsis
-     * @default 1
-     */
-    labelEllipsis?: TypographyParagraphProps["ellipsis"];
-    /**
-     * Label style. Ignored if `children` is provided.
-     */
-    LabelStyle?: TypographyParagraphProps["style"];
+    EndIcon?: React.ReactNode;
     /**
      * Selected state. Ignored if `children` is provided.
      */
@@ -48,5 +37,21 @@ export interface MenuItemProps extends Omit<React.HTMLAttributes<MenuItemRef>, "
      * Disabled state. Ignored if `children` is provided.
      */
     disabled?: boolean;
+    /**
+     * Sub label text content. Ignored if `children` is provided.
+     */
+    subLabel?: TypographyParagraphProps["text"];
+    /**
+     * Sub label text content props. Ignored if `children` is provided.
+     */
+    SubLabelProps?: Omit<TypographyParagraphProps, "text">;
+    /**
+     * Label Text content. Ignored if `children` is provided.
+     */
+    label?: TypographyParagraphProps["text"];
+    /**
+     * Label Text content props. Ignored if `children` is provided.
+     */
+    LabelProps?: Omit<TypographyParagraphProps, "text">;
 }
 //# sourceMappingURL=MenuItem.types.d.ts.map

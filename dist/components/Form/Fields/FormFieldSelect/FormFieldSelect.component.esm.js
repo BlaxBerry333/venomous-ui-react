@@ -1,92 +1,90 @@
-import { jsx as l, jsxs as m, Fragment as w } from "react/jsx-runtime";
-import o from "react";
-import p from "clsx";
+import { jsx as l, jsxs as p, Fragment as C } from "react/jsx-runtime";
+import r from "react";
+import u from "clsx";
 import F from "../../../Box/Box.component.esm.js";
-import { COMPONENT_DISPLAY_NAMES as ee } from "../../../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
-import { COMPONENT_CLASSNAME_NAMES as u } from "../../../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";
+import { COMPONENT_DISPLAY_NAMES as X } from "../../../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
+import { COMPONENT_CLASSNAME_NAMES as f } from "../../../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";
 import "../../../../constants/designs/BACKGROUND_COLORS.esm.js";
 import "../../../../constants/designs/BORDER_COLORS.esm.js";
 import "../../../../constants/designs/SHADOW_STYLES.esm.js";
 import "../../../../constants/designs/TEXT_COLORS.esm.js";
 import "../../../../constants/designs/THEME_BREAKPOINTS.esm.js";
 import "../../../Theme/ThemeProvider.context.esm.js";
-import { FORM_FIELD_VARIANT_MAP as te } from "../../_/FormFieldBase.types.esm.js";
+import { FORM_FIELD_VARIANT_MAP as Z } from "../../_/FormFieldBase.types.esm.js";
 import N from "../../../Icon/Icon.component.esm.js";
 import { Menu as O } from "../../../Menu/index.esm.js";
-import le from "../../../Popover/Popover.component.esm.js";
-import { Space as re } from "../../../Space/index.esm.js";
-import { Typography as oe } from "../../../Typographies/index.esm.js";
-import { useFormFieldSelectDisplay as ie } from "./FormFieldSelect.hooks.esm.js";
-const ne = o.memo(
-  o.forwardRef(
+import ee from "../../../Popover/Popover.component.esm.js";
+import { Space as te } from "../../../Space/index.esm.js";
+import { Typography as le } from "../../../Typographies/index.esm.js";
+import { useFormFieldSelectDisplay as oe } from "./FormFieldSelect.hooks.esm.js";
+const re = r.memo(
+  r.forwardRef(
     ({
-      wrapperClassName: E,
-      wrapperStyle: x,
-      dropdownClassName: D,
-      dropdownStyle: I,
+      wrapperClassName: g,
+      wrapperStyle: E,
+      dropdownClassName: x,
+      dropdownStyle: D,
       optionClassName: b,
-      optionStyle: M,
+      optionStyle: I,
       multiple: c = !1,
-      value: f,
-      defaultValue: h,
-      onChange: _,
-      placeholder: A = "",
+      value: h,
+      defaultValue: S,
+      onChange: M,
+      placeholder: _ = "",
       // eslint-disable-next-line react-x/no-unstable-default-props
       options: d = [],
       maxDropdownHeight: P = 300,
-      variant: L = te.OUTLINED,
-      error: T = !1,
-      fullWidth: k = !1,
-      disabled: s = !1,
-      name: V,
-      form: R,
-      required: W = !1,
-      onMouseEnter: j,
-      onMouseLeave: q,
-      onMouseDown: B,
-      onMouseUp: K,
-      ...Y
+      variant: A = Z.OUTLINED,
+      error: L = !1,
+      fullWidth: T = !1,
+      disabled: m = !1,
+      name: k,
+      form: V,
+      required: R = !1,
+      onMouseEnter: W,
+      onMouseLeave: j,
+      onMouseDown: q,
+      onMouseUp: B,
+      ...K
     }, n) => {
-      const [H, U] = o.useState(void 0), a = o.useRef(null);
-      o.useEffect(() => {
+      const [Y, H] = r.useState(void 0), a = r.useRef(null);
+      r.useEffect(() => {
         a.current && n && (typeof n == "function" ? n(a.current) : n.current = a.current);
       }, [n]);
-      const y = f !== void 0, {
-        open: S,
-        actualValue: $,
-        computedWrapperStyle: z,
+      const y = h !== void 0, {
+        actualValue: U,
+        computedWrapperStyle: $,
         displayContentData: i,
         dropdownContentData: t,
-        handleOpenChange: G,
-        handleKeyDown: J,
-        WrapperElementEvents: Q
-      } = ie({
+        handleKeyDown: z,
+        WrapperElementEvents: G
+      } = oe({
         options: d,
         multiple: c,
-        value: f,
-        defaultValue: h,
-        onChange: _,
-        placeholder: A,
-        variant: L,
-        error: T,
-        fullWidth: k,
-        disabled: s,
+        value: h,
+        defaultValue: S,
+        onChange: M,
+        placeholder: _,
+        variant: A,
+        error: L,
+        fullWidth: T,
+        disabled: m,
         maxDropdownHeight: P,
-        width: H,
+        width: Y,
         autoCloseOnSelect: !0,
         isControlled: y,
         selectRef: a,
-        dropdownClassName: D,
-        dropdownStyle: I,
+        dropdownClassName: x,
+        dropdownStyle: D,
         optionClassName: b,
-        optionStyle: M,
-        onMouseEnter: j,
-        onMouseLeave: q,
-        onMouseDown: B,
-        onMouseUp: K
-      }), X = o.useMemo(
+        optionStyle: I,
+        onMouseEnter: W,
+        onMouseLeave: j,
+        onMouseDown: q,
+        onMouseUp: B
+      }), J = r.useMemo(
         () => /* @__PURE__ */ l(
-          oe.Paragraph,
+          le.Paragraph,
           {
             text: i.text,
             ellipsis: 1,
@@ -98,77 +96,75 @@ const ne = o.memo(
           }
         ),
         [i.text, i.width, i.opacity]
-      ), Z = o.useMemo(() => t.filteredOptions.length === 0 ? null : /* @__PURE__ */ l(
+      ), Q = r.useMemo(() => t.filteredOptions.length === 0 ? null : /* @__PURE__ */ l(
         O.List,
         {
-          className: p(u.FormFieldSelectDropdown, t.dropdownClassName),
+          className: u(f.FormFieldSelectDropdown, t.dropdownClassName),
           style: t.mergedDropdownStyle,
           children: t.filteredOptions.map((e) => {
-            var C, v;
-            const r = t.multiple ? ((C = t.selectedValuesSet) == null ? void 0 : C.has(e.value)) ?? !1 : ((v = t.selectedOption) == null ? void 0 : v.value) === e.value, g = e.disabled || !1;
+            var v, w;
+            const s = t.multiple ? ((v = t.selectedValuesSet) == null ? void 0 : v.has(e.value)) ?? !1 : ((w = t.selectedOption) == null ? void 0 : w.value) === e.value, o = e.disabled || !1;
             return /* @__PURE__ */ l(
               O.Item,
               {
-                className: p(u.FormFieldSelectOption, t.optionClassName),
+                className: u(f.FormFieldSelectOption, t.optionClassName),
                 style: t.mergedOptionStyle,
-                Icon: t.multiple ? /* @__PURE__ */ l(N, { icon: r ? "solar:check-square-bold" : "solar:square-outline" }) : void 0,
+                StartIcon: t.multiple ? /* @__PURE__ */ l(N, { icon: s ? "solar:check-square-bold" : "solar:square-outline" }) : void 0,
                 label: e.label,
-                labelEllipsis: 1,
-                selected: r,
-                disabled: g,
-                onClick: () => !g && t.handleSelect(e)
+                LabelProps: { ellipsis: 1 },
+                selected: s,
+                disabled: o,
+                onClick: () => !o && t.handleSelect(e)
               },
               `${e.value}`
             );
           })
         }
       ), [t]);
-      return /* @__PURE__ */ m(w, { children: [
+      return /* @__PURE__ */ p(C, { children: [
         /* @__PURE__ */ l(
           "select",
           {
             ref: a,
-            name: V,
-            ...y ? { value: $ } : { defaultValue: h },
-            form: R,
-            required: W,
-            disabled: s,
+            name: k,
+            ...y ? { value: U } : { defaultValue: S },
+            form: V,
+            required: R,
+            disabled: m,
             multiple: c,
             "aria-hidden": "true",
             tabIndex: -1,
             onChange: void 0,
-            style: ae,
-            ...Y,
-            children: c ? d.map((e) => /* @__PURE__ */ l("option", { value: String(e.value), children: e.label }, String(e.value))) : /* @__PURE__ */ m(w, { children: [
+            style: ie,
+            ...K,
+            children: c ? d.map((e) => /* @__PURE__ */ l("option", { value: String(e.value), children: e.label }, String(e.value))) : /* @__PURE__ */ p(C, { children: [
               /* @__PURE__ */ l("option", { value: "", hidden: !0 }),
               d.map((e) => /* @__PURE__ */ l("option", { value: String(e.value), children: e.label }, String(e.value)))
             ] })
           }
         ),
         /* @__PURE__ */ l(
-          le,
+          ee,
           {
-            open: S && !s,
-            onOpenChange: G,
+            defaultOpen: !1,
             placement: "bottom",
-            trigger: "click",
+            triggerEvent: "click",
             autoCloseOnClickOutside: !0,
-            content: Z,
-            children: ({ ref: e }) => /* @__PURE__ */ m(
-              re.Flex,
+            trigger: ({ ref: e, isOpen: s }) => /* @__PURE__ */ p(
+              te.Flex,
               {
                 as: "div",
-                ref: (r) => {
-                  typeof e == "function" ? e(r) : e && "current" in e && (e.current = r), r && U(r.getBoundingClientRect().width);
+                ref: (o) => {
+                  typeof e == "function" ? e(o) : e && "current" in e && (e.current = o), o && H(o.getBoundingClientRect().width);
                 },
-                className: p(u.FormFieldSelect, E),
-                style: { ...z, ...x },
-                tabIndex: s ? -1 : 0,
-                onKeyDown: J,
+                className: u(f.FormFieldSelect, g),
+                style: { ...$, ...E },
+                tabIndex: m ? -1 : 0,
+                onKeyDown: z,
                 spacing: 8,
-                ...Q,
+                ...G,
                 children: [
-                  /* @__PURE__ */ l(F, { as: "div", style: { flex: 1, color: "inherit" }, children: X }),
+                  /* @__PURE__ */ l(F, { as: "div", style: { flex: 1, color: "inherit" }, children: J }),
                   /* @__PURE__ */ l(
                     F,
                     {
@@ -177,7 +173,7 @@ const ne = o.memo(
                         display: "flex",
                         alignItems: "center",
                         transition: "transform 0.25s ease-in-out",
-                        transform: S ? "rotate(180deg)" : "rotate(0deg)",
+                        transform: s ? "rotate(180deg)" : "rotate(0deg)",
                         color: "inherit"
                       },
                       children: /* @__PURE__ */ l(N, { icon: "solar:alt-arrow-down-linear" })
@@ -185,15 +181,16 @@ const ne = o.memo(
                   )
                 ]
               }
-            )
+            ),
+            children: Q
           }
         )
       ] });
     }
   )
 );
-ne.displayName = ee.FormFieldSelect;
-const ae = {
+re.displayName = X.FormFieldSelect;
+const ie = {
   position: "absolute",
   opacity: 0,
   pointerEvents: "none",
@@ -201,5 +198,5 @@ const ae = {
   height: 0
 };
 export {
-  ne as default
+  re as default
 };

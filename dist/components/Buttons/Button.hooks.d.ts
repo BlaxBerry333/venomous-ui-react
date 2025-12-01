@@ -5,13 +5,6 @@ export declare function useButtonStyles({ disabled, loading, variant, color, ful
     isClicked?: boolean;
 }): {
     componentStyle: React.CSSProperties;
-    __: {
-        DynamicVariantStyles: React.CSSProperties;
-        DynamicStateStyles: React.CSSProperties;
-        DynamicFullWidthStyles: React.CSSProperties;
-        DynamicHoverStyles: React.CSSProperties;
-        DynamicPressedStyles: React.CSSProperties;
-    };
 };
 export declare function useButtonActions({ disabled, loading, onMouseEnter, onMouseLeave, onMouseDown, onMouseUp, }: Partial<ButtonProps>): {
     isHovered: boolean;

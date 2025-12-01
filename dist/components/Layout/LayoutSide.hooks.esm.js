@@ -1,47 +1,47 @@
-import t from "react";
-import { COMPONENT_DISPLAY_NAMES as a } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
+import e from "react";
+import { COMPONENT_DISPLAY_NAMES as p } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
 import "../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";
 import "../../constants/designs/BACKGROUND_COLORS.esm.js";
 import "../../constants/designs/BORDER_COLORS.esm.js";
 import "../../constants/designs/SHADOW_STYLES.esm.js";
 import "../../constants/designs/TEXT_COLORS.esm.js";
 import "../../constants/designs/THEME_BREAKPOINTS.esm.js";
-import S from "../../hooks/useThemeDesigns/index.esm.js";
+import f from "../../hooks/useThemeDesigns/index.esm.js";
 import "../Theme/ThemeProvider.context.esm.js";
-import d from "../../hooks/useCustomStyle/index.esm.js";
-function D({
+import a from "../../hooks/useCustomStyle/index.esm.js";
+function w({
   collapsed: i,
-  onCollapsedChange: o
+  onCollapsedChange: t
 }) {
-  const [e, r] = t.useState(!1);
-  t.useEffect(() => {
+  const [o, r] = e.useState(!1);
+  e.useEffect(() => {
     i !== void 0 && r(i);
   }, [i]);
-  const s = t.useCallback(() => {
-    const n = !e;
-    r(n), o == null || o(n);
-  }, [e, o]);
-  return t.useMemo(
+  const s = e.useCallback(() => {
+    const n = !o;
+    r(n), t == null || t(n);
+  }, [o, t]);
+  return e.useMemo(
     () => ({
-      collapsed: e,
+      collapsed: o,
       toggle: s
     }),
-    [e, s]
+    [o, s]
   );
 }
-function L({
+function I({
   expandedWidth: i = 280,
-  collapsedWidth: o = 80,
-  collapsed: e
+  collapsedWidth: t = 80,
+  collapsed: o
 }) {
-  const { BackgroundColors: r, BorderColors: s } = S(), n = d({ displayName: a.LayoutSide }), m = t.useMemo(() => {
-    const u = e ? o : i;
+  const { BackgroundColors: r, BorderColors: s } = f(), n = a({ displayName: p.LayoutSide }), m = e.useMemo(() => {
+    const u = o ? t : i;
     return {
       width: `${u}px`,
       minWidth: `${u}px`,
       height: "100dvh"
     };
-  }, [e, o, i]), l = t.useMemo(
+  }, [o, t, i]), c = e.useMemo(
     () => ({
       boxSizing: "border-box",
       WebkitTapHighlightColor: "transparent",
@@ -61,17 +61,7 @@ function L({
       ...n
     }),
     [r, s, m, n]
-  ), c = t.useMemo(
-    () => ({
-      position: "relative",
-      width: "100%",
-      flex: 1,
-      overflowX: "hidden",
-      overflowY: "auto",
-      zIndex: 1
-    }),
-    []
-  ), p = t.useMemo(
+  ), l = e.useMemo(
     () => ({
       position: "absolute",
       top: 8,
@@ -80,23 +70,13 @@ function L({
       zIndex: 101
     }),
     []
-  ), f = t.useMemo(
-    () => ({
-      position: "relative",
-      width: "100%",
-      flexShrink: 0,
-      zIndex: 1
-    }),
-    []
   );
   return {
-    componentStyle: l,
-    wrapperStyle: c,
-    collapseButtonStyle: p,
-    bottomStyle: f
+    componentStyle: c,
+    collapseButtonStyle: l
   };
 }
 export {
-  D as useLayoutSideActions,
-  L as useLayoutSideStyles
+  w as useLayoutSideActions,
+  I as useLayoutSideStyles
 };

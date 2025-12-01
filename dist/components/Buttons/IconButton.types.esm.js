@@ -1,7 +1,7 @@
-const c = {
+const A = {
   CIRCLE: "circle",
   SQUARE: "square"
 };
 export {
-  c as ICON_BUTTON_SHAPE_MAP
+  A as ICON_BUTTON_VARIANT_MAP
 };

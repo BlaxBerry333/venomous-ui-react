@@ -18,7 +18,7 @@ import { Typography as s } from "../Typographies/index.esm.js";
 import { useNotificationItemStyles as d } from "./Notification.hooks.esm.js";
 import { NOTIFICATION_TYPE_MAP as r } from "./Notification.types.esm.js";
 const y = i.memo(
-  ({ className: p, style: f, id: e, type: t, title: a, description: l, closable: N, onClose: c }) => {
+  ({ className: p, style: f, id: e, type: t, title: l, description: a, closable: N, onClose: c }) => {
     const {
       componentStyle: u,
       __: { DynamicColor: m }
@@ -44,14 +44,13 @@ const y = i.memo(
         children: [
           /* @__PURE__ */ o(A, { icon: S, color: m, style: { flexShrink: 0, marginLeft: 8 } }),
           /* @__PURE__ */ n("div", { style: { flex: 1 }, children: [
-            a && /* @__PURE__ */ o(s.Paragraph, { weight: "bold", text: a }),
-            l && /* @__PURE__ */ o(s.Paragraph, { weight: "normal", size: "CAPTION", text: l })
+            l && /* @__PURE__ */ o(s.Paragraph, { weight: "bold", text: l }),
+            a && /* @__PURE__ */ o(s.Paragraph, { weight: "normal", size: "CAPTION", text: a })
           ] }),
           N && /* @__PURE__ */ o(
             C,
             {
               icon: "solar:close-circle-linear",
-              variant: "text",
               onClick: I,
               color: m,
               style: { color: "inherit", alignSelf: "flex-start" }

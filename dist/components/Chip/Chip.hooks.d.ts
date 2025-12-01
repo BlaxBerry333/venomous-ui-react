@@ -1,13 +1,13 @@
 import React from "react";
-import type { ChipProps } from "./Chip.types";
-export declare function useChipStyles({ clickable, color, isHovered, isClicked, }: Partial<ChipProps> & {
+import { type ChipProps } from "./Chip.types";
+export declare function useChipStyles({ variant, clickable, color, isHovered, isClicked, }: Partial<ChipProps> & {
     clickable?: boolean;
     isHovered?: boolean;
     isClicked?: boolean;
 }): {
     componentStyle: React.CSSProperties;
     __: {
-        DynamicColorStyles: React.CSSProperties;
+        DynamicVariantStyles: React.CSSProperties;
         DynamicClickableStyles: React.CSSProperties;
         DynamicInteractionStyles: React.CSSProperties;
     };

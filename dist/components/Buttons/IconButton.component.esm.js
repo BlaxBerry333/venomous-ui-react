@@ -10,69 +10,66 @@ import "../../constants/designs/SHADOW_STYLES.esm.js";
 import "../../constants/designs/TEXT_COLORS.esm.js";
 import "../../constants/designs/THEME_BREAKPOINTS.esm.js";
 import "../Theme/ThemeProvider.context.esm.js";
-import { useButtonActions as P } from "./Button.hooks.esm.js";
-import { BUTTON_VARIANT_MAP as h } from "./Button.types.esm.js";
-import { useIconButtonStyles as v } from "./IconButton.hooks.esm.js";
-import { ICON_BUTTON_SHAPE_MAP as x } from "./IconButton.types.esm.js";
-const L = e.memo(
+import { useButtonActions as T } from "./Button.hooks.esm.js";
+import { useIconButtonStyles as h } from "./IconButton.hooks.esm.js";
+import { ICON_BUTTON_VARIANT_MAP as v } from "./IconButton.types.esm.js";
+const x = e.memo(
   e.forwardRef(
     ({
-      className: m,
-      style: i,
+      className: i,
+      style: m,
       type: s = "button",
       icon: p,
-      disabled: t = !1,
-      loading: o = !1,
-      variant: c = h.CONTAINED,
-      shape: N = x.SQUARE,
+      disabled: o = !1,
+      loading: t = !1,
+      variant: c = v.SQUARE,
       color: f,
-      onMouseEnter: A,
-      onMouseLeave: E,
-      onMouseDown: _,
-      onMouseUp: l,
-      ...u
-    }, I) => {
-      const { ElementEvents: O, isHovered: S, isClicked: T } = P({
-        disabled: t,
-        loading: o,
-        onMouseEnter: A,
-        onMouseLeave: E,
-        onMouseDown: _,
-        onMouseUp: l
-      }), { componentStyle: a } = v({
-        disabled: t,
-        loading: o,
+      onMouseEnter: N,
+      onMouseLeave: l,
+      onMouseDown: u,
+      onMouseUp: A,
+      ...E
+    }, _) => {
+      const { ElementEvents: I, isHovered: S, isClicked: O } = T({
+        disabled: o,
+        loading: t,
+        onMouseEnter: N,
+        onMouseLeave: l,
+        onMouseDown: u,
+        onMouseUp: A
+      }), { componentStyle: a } = h({
+        disabled: o,
+        loading: t,
         variant: c,
-        shape: N,
         color: f,
         isHovered: S,
-        isClicked: T
+        isClicked: O
       });
       return /* @__PURE__ */ y(
         "button",
         {
           type: s,
-          ref: I,
-          className: B(M.IconButton, m),
-          style: { ...a, ...i },
-          disabled: t || o,
-          ...u,
-          ...O,
+          ref: _,
+          className: B(M.IconButton, i),
+          style: { ...a, ...m },
+          disabled: o || t,
+          ...E,
+          ...I,
           children: [
-            /* @__PURE__ */ r(n, { icon: p, style: { color: "inherit", opacity: o ? 0 : 1, pointerEvents: "none" } }),
-            o && /* @__PURE__ */ r(n, { icon: "svg-spinners:270-ring-with-bg", width: 20, style: R })
+            /* @__PURE__ */ r(n, { icon: p, style: { color: "inherit", opacity: t ? 0 : 1, pointerEvents: "none" } }),
+            t && /* @__PURE__ */ r(n, { icon: "svg-spinners:270-ring-with-bg", width: 20, style: L })
           ]
         }
       );
     }
   )
 );
-L.displayName = C.IconButton;
-const R = {
+x.displayName = C.IconButton;
+const L = {
   position: "absolute",
   color: "inherit",
   pointerEvents: "none"
 };
 export {
-  L as default
+  x as default
 };

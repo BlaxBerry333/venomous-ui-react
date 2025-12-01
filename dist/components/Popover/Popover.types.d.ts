@@ -5,43 +5,43 @@ export declare const POPOVER_PLACEMENT_MAP: {
     readonly LEFT: "left";
     readonly RIGHT: "right";
 };
-export declare const POPOVER_TRIGGER_MAP: {
+export declare const POPOVER_TRIGGER_EVENT_MAP: {
     readonly CLICK: "click";
     readonly HOVER: "hover";
 };
 export type PopoverRef = BoxRef;
 /**
- * Render props provided to children function.
+ * Render props provided to trigger function.
  */
-export interface PopoverRenderProps {
+export interface PopoverTriggerRenderProps {
     /**
-     * Ref to attach to the trigger element (required for positioning).
+     * Ref to attach to the trigger element (required for positioning and event binding).
      * This ref can be safely cast to the specific element type you're using.
+     * @required - Must be attached to the trigger element.
      */
     ref: React.Ref<any>;
     /**
      * Whether the popover is currently open.
      */
-    open: boolean;
-    /**
-     * Function to toggle the popover open state.
-     */
-    onToggle: () => void;
+    isOpen: boolean;
 }
-export interface PopoverProps extends Omit<BoxProps, "as" | "maxWidth" | "children" | "content"> {
+export interface PopoverProps extends Omit<BoxProps, "as" | "maxWidth" | "children"> {
     /**
      * Render props function to render the trigger element.
+     * The function receives { ref, isOpen } and must return a React element with ref attached.
+     * @example
+     * trigger={({ ref, isOpen }) => <Button ref={ref}>{isOpen ? "Close" : "Open"}</Button>}
      */
-    children: (props: PopoverRenderProps) => React.ReactElement;
+    trigger: (props: PopoverTriggerRenderProps) => React.ReactElement;
     /**
      * The content to display inside the popover.
      */
-    content: React.ReactNode;
+    children: React.ReactNode;
     /**
-     * The trigger type of how to show the content.
+     * The event type that triggers the popover to show/hide.
      * @default "click"
      */
-    trigger?: (typeof POPOVER_TRIGGER_MAP)[keyof typeof POPOVER_TRIGGER_MAP];
+    triggerEvent?: (typeof POPOVER_TRIGGER_EVENT_MAP)[keyof typeof POPOVER_TRIGGER_EVENT_MAP];
     /**
      * The placement of the popover.
      * @default "bottom"
@@ -58,17 +58,9 @@ export interface PopoverProps extends Omit<BoxProps, "as" | "maxWidth" | "childr
      */
     autoCloseOnClickOutside?: boolean;
     /**
-     * Default open state (uncontrolled mode).
+     * Default open state.
      * @default false
      */
     defaultOpen?: boolean;
-    /**
-     * Controlled open state.
-     */
-    open?: boolean;
-    /**
-     * Callback fired when the open state changes.
-     */
-    onOpenChange?: (open: boolean) => void;
 }
 //# sourceMappingURL=Popover.types.d.ts.map
