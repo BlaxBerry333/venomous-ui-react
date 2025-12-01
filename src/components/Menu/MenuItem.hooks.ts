@@ -61,19 +61,32 @@ export function useMenuItemStyles({
   }, [selected, isDarkMode, PaletteColors, __ButtonStyles?.componentStyle]);
 
   const DynamicClickableStyles = React.useMemo<React.CSSProperties>(() => {
-    return clickable
-      ? {
-          userSelect: __ButtonStyles?.componentStyle?.userSelect,
-          cursor: __ButtonStyles?.componentStyle?.cursor,
-          transition: __ButtonStyles?.componentStyle?.transition,
-        }
-      : {
-          userSelect: disabled ? "none" : "text",
-          cursor: disabled ? "not-allowed" : "default",
-          transform: "none",
-          backgroundColor: "transparent",
-        };
-  }, [clickable, disabled, __ButtonStyles?.componentStyle]);
+    if (!clickable) {
+      return {
+        userSelect: disabled ? "none" : "text",
+        cursor: disabled ? "not-allowed" : "default",
+        transform: "none",
+        backgroundColor: "transparent",
+      };
+    }
+
+    const baseStyles: React.CSSProperties = {
+      userSelect: __ButtonStyles?.componentStyle?.userSelect,
+      cursor: __ButtonStyles?.componentStyle?.cursor,
+      transition: __ButtonStyles?.componentStyle?.transition,
+    };
+
+    // hover/click 时添加背景色和 transform（覆盖 selected 状态）
+    if (isHovered || isClicked) {
+      return {
+        ...baseStyles,
+        backgroundColor: __ButtonStyles?.componentStyle?.backgroundColor,
+        transform: __ButtonStyles?.componentStyle?.transform,
+      };
+    }
+
+    return baseStyles;
+  }, [clickable, disabled, isHovered, isClicked, __ButtonStyles?.componentStyle]);
 
   const componentStyle = React.useMemo<React.CSSProperties>(
     () => ({
