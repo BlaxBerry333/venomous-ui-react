@@ -60,7 +60,7 @@ const ScrollToTop = React.memo(
           <IconButton
             ref={ref}
             icon="solar:alt-arrow-up-bold"
-            variant="circle"
+            circle
             className={clsx(COMPONENT_CLASSNAME_NAMES.ScrollToTop, className)}
             style={{
               ...__FIXED_POSITION_STYLE,

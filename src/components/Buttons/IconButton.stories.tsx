@@ -1,7 +1,7 @@
 import { ArgTypes, Heading, Markdown, Source, Subtitle, Title } from "@storybook/blocks";
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { ICON_BUTTON_VARIANT_MAP, IconButton } from ".";
+import { BUTTON_VARIANT_MAP, IconButton } from ".";
 
 import { default as IconStoriesMeta } from "@/components/Icon/Icon.stories";
 import { default as ButtonStoriesMeta } from "./Button.stories";
@@ -16,16 +16,7 @@ const meta = {
     disabled: ButtonStoriesMeta.argTypes.disabled,
     loading: ButtonStoriesMeta.argTypes.loading,
     color: ButtonStoriesMeta.argTypes.color,
-    variant: {
-      description: "The variant (shape) of the icon button.",
-      type: { name: "other", value: "keyof typeof ICON_BUTTON_VARIANT_MAP" },
-      table: {
-        type: { summary: `${Object.values(ICON_BUTTON_VARIANT_MAP).join(" | ")}` },
-        defaultValue: { summary: `"${ICON_BUTTON_VARIANT_MAP.SQUARE}"` },
-      },
-      control: { type: "radio" },
-      options: Object.values(ICON_BUTTON_VARIANT_MAP),
-    },
+    variant: ButtonStoriesMeta.argTypes.variant,
   },
   parameters: {
     layout: "centered",
@@ -77,7 +68,8 @@ type Story = StoryObj<typeof meta>;
 export const Playground: Story = {
   args: {
     icon: "mdi:heart",
-    variant: ICON_BUTTON_VARIANT_MAP.SQUARE,
+    variant: BUTTON_VARIANT_MAP.CONTAINED,
+    circle: false,
     color: undefined,
     disabled: false,
     loading: false,

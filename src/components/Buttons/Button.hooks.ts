@@ -36,7 +36,7 @@ export function useButtonStyles({
           borderWidth: 1.5,
           boxShadow: "none",
         };
-      case BUTTON_VARIANT_MAP.TEXT:
+      case BUTTON_VARIANT_MAP.GHOST:
         return {
           color: themeColor,
           backgroundColor: "transparent",

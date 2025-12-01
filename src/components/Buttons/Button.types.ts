@@ -1,7 +1,7 @@
 export const BUTTON_VARIANT_MAP = {
   CONTAINED: "contained",
   OUTLINED: "outlined",
-  TEXT: "text",
+  GHOST: "ghost",
 } as const;
 
 export type ButtonRef = HTMLButtonElement;

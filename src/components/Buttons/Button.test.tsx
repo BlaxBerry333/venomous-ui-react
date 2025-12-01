@@ -61,8 +61,8 @@ describe("Button", () => {
     expect(button?.style.borderColor).toBeTruthy();
   });
 
-  it("renders text variant correctly", () => {
-    const { container } = render(<Button text="Button" variant={BUTTON_VARIANT_MAP.TEXT} />, { wrapper });
+  it("renders ghost variant correctly", () => {
+    const { container } = render(<Button text="Button" variant={BUTTON_VARIANT_MAP.GHOST} />, { wrapper });
 
     const button = container.querySelector<ButtonRef>("button");
     expect(button?.style.backgroundColor).toBe("transparent");
@@ -279,10 +279,10 @@ describe("Button", () => {
       localStorage.removeItem("venomous-ui-theme-mode");
     });
 
-    it("applies hover styles in dark mode for text variant", () => {
-      render(<Button text="Text Button" variant={BUTTON_VARIANT_MAP.TEXT} />, { wrapper });
+    it("applies hover styles in dark mode for ghost variant", () => {
+      render(<Button text="Ghost Button" variant={BUTTON_VARIANT_MAP.GHOST} />, { wrapper });
 
-      const button = screen.getByText("Text Button");
+      const button = screen.getByText("Ghost Button");
       fireEvent.mouseEnter(button);
 
       expect(button).toBeDefined();
@@ -306,10 +306,10 @@ describe("Button", () => {
       expect(button).toBeDefined();
     });
 
-    it("applies pressed styles in dark mode for text variant", () => {
-      render(<Button text="Text Button" variant={BUTTON_VARIANT_MAP.TEXT} />, { wrapper });
+    it("applies pressed styles in dark mode for ghost variant", () => {
+      render(<Button text="Ghost Button" variant={BUTTON_VARIANT_MAP.GHOST} />, { wrapper });
 
-      const button = screen.getByText("Text Button");
+      const button = screen.getByText("Ghost Button");
       fireEvent.mouseDown(button);
 
       expect(button).toBeDefined();

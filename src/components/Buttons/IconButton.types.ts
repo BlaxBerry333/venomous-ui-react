@@ -1,14 +1,9 @@
 import type { IconProps } from "@/components/Icon";
 import { type ButtonProps, type ButtonRef } from "./Button.types";
 
-export const ICON_BUTTON_VARIANT_MAP = {
-  CIRCLE: "circle",
-  SQUARE: "square",
-} as const;
-
 export type IconButtonRef = ButtonRef;
 
-export interface IconButtonProps extends Omit<ButtonProps, "text" | "variant"> {
+export interface IconButtonProps extends Omit<ButtonProps, "text"> {
   /**
    * The iconify icon name to display.
    * @required
@@ -16,8 +11,8 @@ export interface IconButtonProps extends Omit<ButtonProps, "text" | "variant"> {
   icon: IconProps["icon"];
 
   /**
-   * The variant (shape) of the icon button.
-   * @default "square"
+   * Whether the icon button should be circular.
+   * @default false
    */
-  variant?: (typeof ICON_BUTTON_VARIANT_MAP)[keyof typeof ICON_BUTTON_VARIANT_MAP];
+  circle?: boolean;
 }
