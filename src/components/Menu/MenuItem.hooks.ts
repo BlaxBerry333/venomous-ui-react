@@ -63,9 +63,6 @@ export function useMenuItemStyles({
   const DynamicClickableStyles = React.useMemo<React.CSSProperties>(() => {
     return clickable
       ? {
-          ...__ButtonStyles?.__.DynamicStateStyles,
-          ...__ButtonStyles?.__.DynamicHoverStyles,
-          ...__ButtonStyles?.__.DynamicPressedStyles,
           userSelect: __ButtonStyles?.componentStyle?.userSelect,
           cursor: __ButtonStyles?.componentStyle?.cursor,
           transition: __ButtonStyles?.componentStyle?.transition,
@@ -76,14 +73,7 @@ export function useMenuItemStyles({
           transform: "none",
           backgroundColor: "transparent",
         };
-  }, [
-    clickable,
-    disabled,
-    __ButtonStyles?.componentStyle,
-    __ButtonStyles?.__.DynamicStateStyles,
-    __ButtonStyles?.__.DynamicHoverStyles,
-    __ButtonStyles?.__.DynamicPressedStyles,
-  ]);
+  }, [clickable, disabled, __ButtonStyles?.componentStyle]);
 
   const componentStyle = React.useMemo<React.CSSProperties>(
     () => ({

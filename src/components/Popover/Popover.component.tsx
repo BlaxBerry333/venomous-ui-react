@@ -9,7 +9,7 @@ import { Portal } from "@/components/Portal";
 import { Transition } from "@/components/Transition";
 import { COMPONENT_CLASSNAME_NAMES, COMPONENT_DISPLAY_NAMES } from "@/constants";
 import { usePopoverActions, usePopoverPosition, usePopoverStyles } from "./Popover.hooks";
-import { POPOVER_TRIGGER_MAP, type PopoverProps, type PopoverRef } from "./Popover.types";
+import { POPOVER_TRIGGER_EVENT_MAP, type PopoverProps, type PopoverRef } from "./Popover.types";
 
 const Popover = React.memo(
   React.forwardRef<PopoverRef, PopoverProps>(
@@ -17,61 +17,53 @@ const Popover = React.memo(
       {
         className,
         style,
+        trigger,
         children,
-        content,
-        trigger = POPOVER_TRIGGER_MAP.CLICK,
+        triggerEvent = POPOVER_TRIGGER_EVENT_MAP.CLICK,
         placement = "bottom",
         offset = 2,
         autoCloseOnClickOutside = true,
         defaultOpen = false,
-        open: controlledOpen,
-        onOpenChange,
         ...props
       },
       ref,
     ) => {
-      // ========== 内部 ref（用于定位和事件绑定） ==========
       const triggerRef = React.useRef<HTMLElement | null>(null);
       const popoverRef = React.useRef<HTMLElement | null>(null);
 
-      // ========== 状态和事件管理 ==========
-      const { open, onToggle, PopoverMouseEvents } = usePopoverActions({
+      const { open: isOpen, PopoverMouseEvents } = usePopoverActions({
         defaultOpen,
-        open: controlledOpen,
-        onOpenChange,
-        trigger,
+        triggerEvent,
         autoCloseOnClickOutside,
         triggerRef,
         popoverRef,
       });
 
-      // ========== 位置计算 ==========
-      const { position } = usePopoverPosition({
+      const { position, isPositioned, isTriggerVisible } = usePopoverPosition({
         triggerRef,
         popoverRef,
         placement,
         offset,
-        open,
+        isOpen,
       });
 
-      // ========== 样式计算 ==========
-      const { componentStyle } = usePopoverStyles({ position });
-
-      // ========== 渲染触发器元素（Render Props） ==========
-      const triggerElement = React.useMemo(() => {
-        return children({
-          ref: triggerRef,
-          open,
-          onToggle,
-        });
-      }, [children, open, onToggle]);
+      const { componentStyle } = usePopoverStyles({
+        position,
+        isPositioned,
+        isTriggerVisible,
+      });
 
       return (
         <>
-          {triggerElement}
+          {/* Trigger Element */}
+          {trigger({
+            ref: triggerRef,
+            isOpen,
+          })}
 
+          {/* Popover Content */}
           <Portal>
-            <Transition.Fade visible={open}>
+            <Transition.Fade visible={isOpen}>
               <Box
                 as="div"
                 ref={(node) => {
@@ -84,7 +76,7 @@ const Popover = React.memo(
                 {...props}
                 {...PopoverMouseEvents}
               >
-                {content}
+                {children}
               </Box>
             </Transition.Fade>
           </Portal>

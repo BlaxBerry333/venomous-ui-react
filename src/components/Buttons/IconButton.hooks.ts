@@ -18,7 +18,7 @@ export function useIconButtonStyles({
 }: Partial<IconButtonProps> & { isHovered?: boolean; isClicked?: boolean }) {
   const customStyle = useCustomStyle({ displayName: COMPONENT_DISPLAY_NAMES.IconButton });
 
-  const { componentStyle: buttonStyle, __ } = useButtonStyles({
+  const { componentStyle: buttonStyle } = useButtonStyles({
     disabled,
     loading,
     variant: BUTTON_VARIANT_MAP.CONTAINED,
@@ -63,10 +63,5 @@ export function useIconButtonStyles({
 
   return {
     componentStyle,
-    __: {
-      ...__,
-      DynamicVariantStyles,
-      DynamicSizeStyles,
-    },
   };
 }

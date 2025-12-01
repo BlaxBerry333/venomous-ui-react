@@ -6,7 +6,7 @@ export type { ButtonProps, ButtonRef } from "./Button.types";
 export { default as IconButton } from "./IconButton.component";
 export { useIconButtonStyles } from "./IconButton.hooks";
 export { ICON_BUTTON_VARIANT_MAP } from "./IconButton.types";
-export type { IconButtonProps, IconButtonRef, TIconButtonVariant } from "./IconButton.types";
+export type { IconButtonProps, IconButtonRef } from "./IconButton.types";
 
 export { default as ScrollToTop } from "./ScrollToTop.component";
 export { useScrollToTopActions } from "./ScrollToTop.hooks";

@@ -72,12 +72,10 @@ const FormFieldSelect = React.memo(
 
       // ========== 使用整合后的 hook ==========
       const {
-        open,
         actualValue,
         computedWrapperStyle,
         displayContentData,
         dropdownContentData,
-        handleOpenChange,
         handleKeyDown,
         WrapperElementEvents,
       } = useFormFieldSelectDisplay({
@@ -143,13 +141,13 @@ const FormFieldSelect = React.memo(
                   key={`${option.value}`}
                   className={clsx(COMPONENT_CLASSNAME_NAMES.FormFieldSelectOption, dropdownContentData.optionClassName)}
                   style={dropdownContentData.mergedOptionStyle}
-                  Icon={
+                  StartIcon={
                     dropdownContentData.multiple ? (
                       <Icon icon={isSelected ? "solar:check-square-bold" : "solar:square-outline"} />
                     ) : undefined
                   }
                   label={option.label}
-                  labelEllipsis={1}
+                  LabelProps={{ ellipsis: 1 }}
                   selected={isSelected}
                   disabled={isDisabled}
                   onClick={() => !isDisabled && dropdownContentData.handleSelect(option)}
@@ -200,21 +198,18 @@ const FormFieldSelect = React.memo(
 
           {/* 自定义 UI */}
           <Popover
-            open={open && !disabled}
-            onOpenChange={handleOpenChange}
+            defaultOpen={false}
             placement="bottom"
-            trigger="click"
+            triggerEvent="click"
             autoCloseOnClickOutside
-            content={dropdownContent}
-          >
-            {({ ref: popoverRef }) => (
+            trigger={({ ref: triggerRef, isOpen }) => (
               <Space.Flex
                 as="div"
                 ref={(node) => {
-                  if (typeof popoverRef === "function") {
-                    popoverRef(node);
-                  } else if (popoverRef && "current" in popoverRef) {
-                    popoverRef.current = node as HTMLElement | null;
+                  if (typeof triggerRef === "function") {
+                    triggerRef(node);
+                  } else if (triggerRef && "current" in triggerRef) {
+                    triggerRef.current = node as HTMLElement | null;
                   }
                   if (node) {
                     setWidth(node.getBoundingClientRect().width);
@@ -239,7 +234,7 @@ const FormFieldSelect = React.memo(
                     display: "flex",
                     alignItems: "center",
                     transition: "transform 0.25s ease-in-out",
-                    transform: open ? "rotate(180deg)" : "rotate(0deg)",
+                    transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
                     color: "inherit",
                   }}
                 >
@@ -247,6 +242,8 @@ const FormFieldSelect = React.memo(
                 </Box>
               </Space.Flex>
             )}
+          >
+            {dropdownContent}
           </Popover>
         </>
       );

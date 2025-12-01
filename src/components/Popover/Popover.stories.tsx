@@ -7,22 +7,22 @@ import { Button } from "@/components/Buttons";
 import { Card } from "@/components/Cards";
 import { Space } from "@/components/Space";
 import { Typography } from "@/components/Typographies";
-import { Popover, POPOVER_PLACEMENT_MAP, POPOVER_TRIGGER_MAP } from ".";
+import { Popover, POPOVER_PLACEMENT_MAP, POPOVER_TRIGGER_EVENT_MAP } from ".";
 
 const meta = {
   title: "components/<Popover>",
   component: Popover,
   tags: ["autodocs"],
   argTypes: {
-    children: {
+    trigger: {
       description: "Render props function to render the trigger element.",
       type: { name: "function", required: true },
       table: {
-        type: { summary: "(props: PopoverRenderProps) => React.ReactElement" },
+        type: { summary: "(props: PopoverTriggerRenderProps) => React.ReactElement" },
       },
       control: false,
     },
-    content: {
+    children: {
       description: "The content to display inside the popover.",
       type: { name: "other", value: "React.ReactNode", required: true },
       table: {
@@ -30,15 +30,15 @@ const meta = {
       },
       control: false,
     },
-    trigger: {
-      description: "The trigger type of how to show the content.",
-      type: { name: "other", value: `${Object.values(POPOVER_TRIGGER_MAP).join(" | ")}` },
+    triggerEvent: {
+      description: "The event type that triggers the popover to show/hide.",
+      type: { name: "other", value: `${Object.values(POPOVER_TRIGGER_EVENT_MAP).join(" | ")}` },
       table: {
-        type: { summary: `${Object.values(POPOVER_TRIGGER_MAP).join(" | ")}` },
-        defaultValue: { summary: `"${POPOVER_TRIGGER_MAP.CLICK}"` },
+        type: { summary: `${Object.values(POPOVER_TRIGGER_EVENT_MAP).join(" | ")}` },
+        defaultValue: { summary: `"${POPOVER_TRIGGER_EVENT_MAP.CLICK}"` },
       },
       control: { type: "radio" },
-      options: Object.values(POPOVER_TRIGGER_MAP),
+      options: Object.values(POPOVER_TRIGGER_EVENT_MAP),
     },
     placement: {
       description: "The placement of the popover.",
@@ -66,34 +66,17 @@ const meta = {
         type: { summary: "boolean" },
         defaultValue: { summary: "true" },
       },
-      if: { arg: "trigger", eq: POPOVER_TRIGGER_MAP.CLICK },
+      if: { arg: "triggerEvent", eq: POPOVER_TRIGGER_EVENT_MAP.CLICK },
       control: { type: "boolean" },
     },
     defaultOpen: {
-      description: "Default open state (uncontrolled mode).",
+      description: "Default open state.",
       type: { name: "boolean" },
       table: {
         type: { summary: "boolean" },
         defaultValue: { summary: "false" },
       },
       control: { type: "boolean" },
-    },
-    open: {
-      description: "Controlled open state.",
-      type: { name: "boolean" },
-      table: {
-        type: { summary: "boolean" },
-      },
-      control: { type: "boolean" },
-    },
-    onOpenChange: {
-      description: "Callback fired when the open state changes.",
-      type: { name: "function" },
-      table: {
-        category: "Events",
-        type: { summary: "(open: boolean) => void" },
-      },
-      control: false,
     },
   },
   parameters: {
@@ -125,12 +108,14 @@ function App() {
   return (
     <Theme.Provider>
       <Popover
-        content={<Card>Popover Content</Card>}
-        trigger="click"
+        triggerEvent="click"
         placement="bottom"
         offset={8}
+        trigger={({ ref, isOpen }) => (
+          <Button ref={ref} text={isOpen ? "Close" : "Open"} />
+        )}
       >
-        {({ ref }) => <Button ref={ref} text="Click Me" />}
+        <Card>Popover Content</Card>
       </Popover>
     </Theme.Provider>
   );
@@ -140,10 +125,6 @@ function App() {
 
           <Heading>API</Heading>
           <ArgTypes />
-
-          <Heading>{ControlledModeExample.name}</Heading>
-          <Description of={ControlledModeExample} />
-          <Canvas of={ControlledModeExample} />
 
           <Heading>{AllPlacementsExample.name}</Heading>
           <Description of={AllPlacementsExample} />
@@ -163,96 +144,31 @@ export const Playground: Story = {
   render: function RenderStory(args) {
     return (
       <Popover
-        trigger={args.trigger}
+        triggerEvent={args.triggerEvent}
         placement={args.placement}
         offset={args.offset}
         autoCloseOnClickOutside={args.autoCloseOnClickOutside}
         defaultOpen={args.defaultOpen}
-        content={
-          <Card variant="outlined" style={{ padding: 24, backgroundColor: "pink" }}>
-            <Typography.Text text="Popover Content" />
-          </Card>
-        }
+        trigger={({ ref, isOpen }) => <Button ref={ref} text={isOpen ? "Close Popover" : "Open Popover"} />}
       >
-        {({ ref }) => <Button ref={ref} text="Click to toggle Popover" />}
+        <Card variant="outlined" style={{ padding: 24, backgroundColor: "pink" }}>
+          <Typography.Text text="Popover Content" />
+        </Card>
       </Popover>
     );
   },
   argTypes: {
+    trigger: { control: false, table: { disable: true } },
     children: { control: false, table: { disable: true } },
-    content: { control: false, table: { disable: true } },
   },
   args: {
-    trigger: POPOVER_TRIGGER_MAP.CLICK,
+    triggerEvent: POPOVER_TRIGGER_EVENT_MAP.CLICK,
     placement: POPOVER_PLACEMENT_MAP.BOTTOM,
     offset: 2,
     autoCloseOnClickOutside: true,
     defaultOpen: false,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } as any,
-};
-
-export const ControlledModeExample: Story = {
-  name: "Controlled Mode Example",
-  tags: ["!dev"],
-  parameters: {
-    docs: {
-      source: {
-        sourceState: "hidden",
-        code: `
-"use client";
-
-import React from "react";
-import { Theme, Button, Card, Popover } from "venomous-ui-react/components";
-
-function App() {
-  const [open, setOpen] = React.useState(false);
-
-  return (
-    <Theme.Provider>
-      <Popover
-        content={<Card>Controlled Popover</Card>}
-        open={open}
-        onOpenChange={setOpen}
-      >
-        {({ ref, open }) => (
-          <Button ref={ref} text={open ? "Close" : "Open"} />
-        )}
-      </Popover>
-    </Theme.Provider>
-  );
-}
-  `.trim(),
-      },
-    },
-  },
-  argTypes: {
-    trigger: { control: false, table: { disable: true } },
-    placement: { control: false, table: { disable: true } },
-    offset: { control: false, table: { disable: true } },
-    autoCloseOnClickOutside: { control: false, table: { disable: true } },
-    defaultOpen: { control: false, table: { disable: true } },
-    open: { control: false, table: { disable: true } },
-    onOpenChange: { control: false, table: { disable: true } },
-  },
-  args: Playground.args,
-  render: function RenderStory() {
-    const [open, setOpen] = React.useState(false);
-
-    return (
-      <Popover
-        content={
-          <Card variant="outlined" style={{ padding: 24 }}>
-            <Typography.Text text="Controlled Popover" />
-          </Card>
-        }
-        open={open}
-        onOpenChange={setOpen}
-      >
-        {({ ref, open }) => <Button ref={ref} text={open ? "Close" : "Open"} />}
-      </Popover>
-    );
-  },
 };
 
 export const AllPlacementsExample: Story = {
@@ -281,20 +197,20 @@ function App() {
   return (
     <Theme.Provider>
       <Space.Flex spacing={16}>
-        <Popover content={commonContent} placement="top">
-          {({ ref }) => <Button ref={ref} text="Top" />}
+        <Popover placement="top" trigger={({ ref }) => <Button ref={ref} text="Top" />}>
+          {commonContent}
         </Popover>
 
-        <Popover content={commonContent} placement="bottom">
-          {({ ref }) => <Button ref={ref} text="Bottom" />}
+        <Popover placement="bottom" trigger={({ ref }) => <Button ref={ref} text="Bottom" />}>
+          {commonContent}
         </Popover>
 
-        <Popover content={commonContent} placement="left">
-          {({ ref }) => <Button ref={ref} text="Left" />}
+        <Popover placement="left" trigger={({ ref }) => <Button ref={ref} text="Left" />}>
+          {commonContent}
         </Popover>
 
-        <Popover content={commonContent} placement="right">
-          {({ ref }) => <Button ref={ref} text="Right" />}
+        <Popover placement="right" trigger={({ ref }) => <Button ref={ref} text="Right" />}>
+          {commonContent}
         </Popover>
       </Space.Flex>
     </Theme.Provider>
@@ -305,13 +221,11 @@ function App() {
     },
   },
   argTypes: {
-    trigger: { control: false, table: { disable: true } },
+    triggerEvent: { control: false, table: { disable: true } },
     placement: { control: false, table: { disable: true } },
     offset: { control: false, table: { disable: true } },
     autoCloseOnClickOutside: { control: false, table: { disable: true } },
     defaultOpen: { control: false, table: { disable: true } },
-    open: { control: false, table: { disable: true } },
-    onOpenChange: { control: false, table: { disable: true } },
   },
   args: Playground.args,
   render: function RenderStory() {
@@ -325,20 +239,20 @@ function App() {
     );
     return (
       <Space.Flex spacing={16}>
-        <Popover content={commonContent} placement="top">
-          {({ ref }) => <Button ref={ref} text="Top" />}
+        <Popover placement="top" trigger={({ ref }) => <Button ref={ref} text="Top" />}>
+          {commonContent}
         </Popover>
 
-        <Popover content={commonContent} placement="bottom">
-          {({ ref }) => <Button ref={ref} text="Bottom" />}
+        <Popover placement="bottom" trigger={({ ref }) => <Button ref={ref} text="Bottom" />}>
+          {commonContent}
         </Popover>
 
-        <Popover content={commonContent} placement="left">
-          {({ ref }) => <Button ref={ref} text="Left" />}
+        <Popover placement="left" trigger={({ ref }) => <Button ref={ref} text="Left" />}>
+          {commonContent}
         </Popover>
 
-        <Popover content={commonContent} placement="right">
-          {({ ref }) => <Button ref={ref} text="Right" />}
+        <Popover placement="right" trigger={({ ref }) => <Button ref={ref} text="Right" />}>
+          {commonContent}
         </Popover>
       </Space.Flex>
     );
