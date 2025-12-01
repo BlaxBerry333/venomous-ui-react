@@ -308,7 +308,7 @@ export const CustomChildrenExample: Story = {
       </Space.Flex>
 
       <Chip
-        text="New"
+        label="New"
         onClick={(e) => {
           e.stopPropagation();
           console.log("Clicked Chip");

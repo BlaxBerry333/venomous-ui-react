@@ -1,35 +1,64 @@
 import { ArgTypes, Heading, Markdown, Source, Subtitle, Title } from "@storybook/blocks";
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { default as AvatarStoriesMeta, Playground as AvatarStoryPlayground } from "@/components/Avatar/Avatar.stories";
-import { Chip } from ".";
+import { default as AvatarStoriesMeta } from "@/components/Avatar/Avatar.stories";
+import { Chip, CHIP_VARIANT_MAP } from ".";
+import { Avatar } from "../Avatar";
+import { Icon } from "../Icon";
 
 const meta = {
   title: "components/<Chip>",
   component: Chip,
   tags: ["autodocs"],
   argTypes: {
-    text: {
+    label: {
       description: "The text to display in the chip.",
       type: { name: "string", required: true },
       control: { type: "text" },
+    },
+    variant: {
+      description: "The variant of the chip.",
+      type: { name: "other", value: "keyof typeof CHIP_VARIANT_MAP" },
+      table: {
+        type: { summary: `${Object.values(CHIP_VARIANT_MAP).join(" | ")}` },
+        defaultValue: { summary: `"${CHIP_VARIANT_MAP.CONTAINED}"` },
+      },
+      control: { type: "radio" },
+      options: Object.values(CHIP_VARIANT_MAP),
     },
     color: {
       description: "The color of the chip ( hex string ).",
       type: { name: "string" },
       control: { type: "color" },
     },
-    AvatarProps: {
-      description: "Avatar props to display an avatar before the text.",
-      type: { name: "other", value: "AvatarProps" },
+    StartIcon: {
+      description: "Element displayed before label.",
+      type: { name: "other", value: "React.ReactNode" },
+      table: {
+        type: { summary: "React.ReactNode" },
+      },
       control: { type: "radio" },
-      options: [undefined, "AvatarProps"],
+      options: [undefined, "<span>🏠</span>", "<Icon />"],
       mapping: {
         undefined: undefined,
-        AvatarProps: {
-          ...AvatarStoryPlayground.args,
-          src: AvatarStoriesMeta.argTypes?.src?.options?.[2],
-        },
+        "<span>🏠</span>": <span>🏠</span>,
+        "<Icon />": <Icon icon="solar:home-2-linear" />,
+        "<Avatar />": <Avatar width={20} src={AvatarStoriesMeta.argTypes?.src?.options?.[2]} />,
+      },
+    },
+    EndIcon: {
+      description: "Element displayed after label.",
+      type: { name: "other", value: "React.ReactNode" },
+      table: {
+        type: { summary: "React.ReactNode" },
+      },
+      control: { type: "radio" },
+      options: [undefined, "<span>🏠</span>", "<Icon />"],
+      mapping: {
+        undefined: undefined,
+        "<span>🏠</span>": <span>🏠</span>,
+        "<Icon />": <Icon icon="solar:home-2-linear" />,
+        "<Avatar />": <Avatar width={20} src={AvatarStoriesMeta.argTypes?.src?.options?.[2]} />,
       },
     },
     onClick: {
@@ -75,15 +104,17 @@ import { Theme, Chip } from "venomous-ui-react/components";
 function App() {
   return (
     <Theme.Provider>
-      <Chip text="AAA" />
-      <Chip text="BBB" color="#4CAF50" />
-      <Chip text="CCC" onClick={() => alert("CCC clicked!")} />
+      {/* Contained variant (default) */}
+      <Chip label="Contained" />
+      <Chip label="With Color" color="#4CAF50" />
 
-      {/* With Avatar */}
-      <Chip
-        text="Alex Chen"
-        AvatarProps={{ src: "${AvatarStoriesMeta.argTypes?.src?.options?.[2]}" }}
-      />
+      {/* Outlined variant */}
+      <Chip label="Outlined" variant="outlined" />
+      <Chip label="Outlined Color" variant="outlined" color="#ff5722" />
+
+      {/* Clickable */}
+      <Chip label="Clickable" onClick={() => alert("clicked!")} />
+      <Chip label="Outlined Clickable" variant="outlined" onClick={() => alert("clicked!")} />
     </Theme.Provider>
   );
 }
@@ -105,9 +136,11 @@ type Story = StoryObj<typeof meta>;
 export const Playground: Story = {
   name: "Playground",
   args: {
-    text: "Chip",
+    label: "Chip Text",
+    variant: CHIP_VARIANT_MAP.CONTAINED,
     color: undefined,
-    AvatarProps: undefined,
+    StartIcon: undefined,
+    EndIcon: undefined,
     onClick: undefined,
   },
 };

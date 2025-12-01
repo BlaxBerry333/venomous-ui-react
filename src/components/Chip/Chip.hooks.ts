@@ -5,10 +5,11 @@ import React from "react";
 import { COMPONENT_DISPLAY_NAMES } from "@/constants";
 import { useElementHoverEvents, useElementMouseEvents, useThemeDesigns, useThemeMode } from "@/hooks";
 import useCustomStyle from "@/hooks/useCustomStyle";
-import { getDarker, getLighter } from "@/tools";
-import type { ChipProps } from "./Chip.types";
+import { getDarker, getLighter, hexToRgba } from "@/tools";
+import { CHIP_VARIANT_MAP, type ChipProps } from "./Chip.types";
 
 export function useChipStyles({
+  variant = CHIP_VARIANT_MAP.CONTAINED,
   clickable,
   color,
   isHovered,
@@ -22,76 +23,104 @@ export function useChipStyles({
   const { PaletteColors, TypographySizes } = useThemeDesigns();
   const customStyle = useCustomStyle({ displayName: COMPONENT_DISPLAY_NAMES.Chip });
 
-  const DynamicColorStyles = React.useMemo<React.CSSProperties>(() => {
-    const bgColor = color || PaletteColors[1];
-    const borderColor = isDarkMode ? getLighter(bgColor, 0.15) : getDarker(bgColor, 0.2);
-    return {
-      backgroundColor: bgColor,
-      borderColor: borderColor,
-      color: "#FFFFFF",
-    };
-  }, [color, PaletteColors, isDarkMode]);
+  const DynamicVariantStyles = React.useMemo<React.CSSProperties>(() => {
+    const themeColor = color || PaletteColors[1];
+
+    switch (variant) {
+      case CHIP_VARIANT_MAP.CONTAINED:
+        return {
+          backgroundColor: themeColor,
+          borderColor: "transparent",
+          color: "#FFFFFF",
+        };
+      case CHIP_VARIANT_MAP.OUTLINED:
+        return {
+          backgroundColor: "transparent",
+          borderColor: themeColor,
+          color: themeColor,
+        };
+      default:
+        return {};
+    }
+  }, [variant, color, PaletteColors]);
 
   const DynamicClickableStyles = React.useMemo<React.CSSProperties>(() => {
     if (!clickable) {
-      return { cursor: "default" };
+      return {
+        cursor: "default",
+      };
     }
     return {
       cursor: "pointer",
       transition: "all 0.25s ease-in-out",
+      userSelect: "none",
     };
   }, [clickable]);
 
   const DynamicInteractionStyles = React.useMemo<React.CSSProperties>(() => {
     if (!clickable) return {};
-    const bgColor = color || PaletteColors[1];
+
+    const themeColor = color || PaletteColors[1];
+
+    // Active/Clicked 状态
     if (isClicked) {
+      if (variant === CHIP_VARIANT_MAP.CONTAINED) {
+        return {
+          transform: "scale(0.95)",
+          backgroundColor: isDarkMode ? getDarker(themeColor, 0.15) : getDarker(themeColor, 0.2),
+        };
+      }
+      // OUTLINED
       return {
         transform: "scale(0.95)",
-        backgroundColor: isDarkMode ? getDarker(bgColor, 0.15) : getDarker(bgColor, 0.2),
+        backgroundColor: hexToRgba(themeColor, isDarkMode ? 0.2 : 0.15),
       };
     }
+
+    // Hover 状态
     if (isHovered) {
+      if (variant === CHIP_VARIANT_MAP.CONTAINED) {
+        return {
+          backgroundColor: isDarkMode ? getLighter(themeColor, 0.1) : getDarker(themeColor, 0.1),
+        };
+      }
+      // OUTLINED
       return {
-        backgroundColor: isDarkMode ? getLighter(bgColor, 0.1) : getDarker(bgColor, 0.1),
+        backgroundColor: hexToRgba(themeColor, isDarkMode ? 0.15 : 0.1),
       };
     }
+
     return {};
-  }, [clickable, isHovered, isClicked, color, PaletteColors, isDarkMode]);
+  }, [variant, clickable, isHovered, isClicked, color, PaletteColors, isDarkMode]);
 
   const componentStyle = React.useMemo<React.CSSProperties>(
     () => ({
-      boxSizing: "border-box",
-      WebkitTapHighlightColor: "transparent",
-      userSelect: "none",
-
       // -- default style --
       display: "inline-flex",
       alignItems: "center",
       gap: 6,
-      height: 28,
+      height: 30,
       padding: `0 12px`,
-      borderRadius: 14,
+      borderRadius: 16,
       borderWidth: "1.5px",
       borderStyle: "solid",
       fontSize: TypographySizes.TEXT.CAPTION,
-      lineHeight: "28px",
-      fontWeight: 500,
+      fontWeight: "bold",
       whiteSpace: "nowrap",
-      ...DynamicColorStyles,
+      ...DynamicVariantStyles,
       ...DynamicClickableStyles,
       ...DynamicInteractionStyles,
 
       // -- custom style override --
       ...customStyle,
     }),
-    [TypographySizes, DynamicColorStyles, DynamicClickableStyles, DynamicInteractionStyles, customStyle],
+    [TypographySizes, DynamicVariantStyles, DynamicClickableStyles, DynamicInteractionStyles, customStyle],
   );
 
   return {
     componentStyle,
     __: {
-      DynamicColorStyles,
+      DynamicVariantStyles,
       DynamicClickableStyles,
       DynamicInteractionStyles,
     },
