@@ -4,9 +4,10 @@ import React from "react";
 
 import clsx from "clsx";
 
+import { useButtonActions } from "@/components/Buttons/Button.hooks";
+import { Space } from "@/components/Space";
 import { Typography } from "@/components/Typographies";
 import { COMPONENT_CLASSNAME_NAMES, COMPONENT_DISPLAY_NAMES } from "@/constants";
-import { useButtonActions } from "../Buttons/Button.hooks";
 import { useMenuItemStyles } from "./MenuItem.hooks";
 import type { MenuItemProps, MenuItemRef } from "./MenuItem.types";
 
@@ -18,10 +19,12 @@ const MenuItem = React.memo(
         style,
         as: __as = "li",
         children,
-        Icon,
+        StartIcon,
+        EndIcon,
         label,
-        labelEllipsis = 0,
-        LabelStyle,
+        LabelProps,
+        subLabel,
+        SubLabelProps,
         spacing = 8,
         selected,
         disabled = false,
@@ -74,15 +77,28 @@ const MenuItem = React.memo(
         >
           {children || (
             <>
-              {Icon}
-              {label && (
-                <Typography.Paragraph
-                  text={label}
-                  ellipsis={labelEllipsis}
-                  weight="bold"
-                  style={{ flex: 1, color: "inherit", userSelect: "inherit", ...LabelStyle }}
-                />
-              )}
+              {StartIcon}
+
+              <Space.Flex column style={{ flex: 1 }}>
+                {label && (
+                  <Typography.Paragraph
+                    text={label}
+                    weight="bold"
+                    {...LabelProps}
+                    style={{ flex: 1, color: "inherit", userSelect: "inherit", ...LabelProps?.style }}
+                  />
+                )}
+                {subLabel && (
+                  <Typography.Paragraph
+                    text={subLabel}
+                    size="CAPTION"
+                    {...SubLabelProps}
+                    style={{ flex: 1, color: "inherit", userSelect: "inherit", ...SubLabelProps?.style }}
+                  />
+                )}
+              </Space.Flex>
+
+              {EndIcon}
             </>
           )}
         </Tag>

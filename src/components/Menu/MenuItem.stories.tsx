@@ -4,7 +4,7 @@ import { ArgTypes, Canvas, Description, Heading, Markdown, Source, Subtitle, Tit
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { Chip } from "@/components/Chip";
-import { default as IconStoriesMeta, Playground as IconStoryPlayground } from "@/components/Icon/Icon.stories";
+import { Playground as IconStoryPlayground } from "@/components/Icon/Icon.stories";
 import { Space } from "@/components/Space";
 import { default as SpaceFlexStoriesMeta } from "@/components/Space/SpaceFlex.stories";
 import { Typography } from "@/components/Typographies";
@@ -37,10 +37,42 @@ const meta = {
       ...SpaceFlexStoriesMeta.argTypes.spacing,
       description: `${SpaceFlexStoriesMeta.argTypes.spacing.description} Ignored if \`children\` is provided.`,
     },
-    Icon: {
-      ...IconStoriesMeta.argTypes.icon,
-      description: "The icon to be rendered. If provided `children` will be ignored.",
-      type: { name: "string", required: false },
+    selected: {
+      description: "Selected state. Ignored if `children` is provided.",
+      type: { name: "boolean" },
+      table: {
+        type: { summary: "boolean" },
+      },
+      control: { type: "boolean" },
+    },
+    disabled: {
+      description: "Disabled state. Ignored if `children` is provided.",
+      type: { name: "boolean" },
+      table: {
+        type: { summary: "boolean" },
+      },
+      control: { type: "boolean" },
+    },
+    StartIcon: {
+      description: "Element displayed before label. Ignored if `children` is provided.",
+      type: { name: "other", value: "React.ReactNode" },
+      table: {
+        type: { summary: "React.ReactNode" },
+      },
+      control: { type: "radio" },
+      options: [undefined, "<span>🏠</span>", "<Icon />"],
+      mapping: {
+        undefined: undefined,
+        "<span>🏠</span>": <span>🏠</span>,
+        "<Icon />": <Icon icon={IconStoryPlayground.args.icon} />,
+      },
+    },
+    EndIcon: {
+      description: "Element displayed after label. Ignored if `children` is provided.",
+      type: { name: "other", value: "React.ReactNode" },
+      table: {
+        type: { summary: "React.ReactNode" },
+      },
       control: { type: "radio" },
       options: [undefined, "<span>🏠</span>", "<Icon />"],
       mapping: {
@@ -57,38 +89,29 @@ const meta = {
       },
       control: { type: "text" },
     },
-    labelEllipsis: {
-      description: "Text ellipsis rows (0 = no ellipsis, >=1 = max rows). Ignored if `children` is provided.",
-      type: { name: "number" },
+    subLabel: {
+      description: "Sub Label Text content. Ignored if `children` is provided.",
+      type: { name: "string" },
       table: {
-        type: { summary: "number" },
-        defaultValue: { summary: "0" },
+        type: { summary: "string" },
       },
-      control: { type: "number", min: 0, max: 5, step: 1 },
+      control: { type: "text" },
     },
-    LabelStyle: {
-      description: "Label style. Ignored if `children` is provided.",
-      type: { name: "other", value: "React.CSSProperties" },
+    LabelProps: {
+      description: "Label Typography props. Ignored if `children` is provided.",
+      type: { name: "other", value: "TypographyParagraphProps" },
       table: {
-        type: { summary: "React.CSSProperties" },
+        type: { summary: "TypographyParagraphProps" },
       },
       control: false,
     },
-    selected: {
-      description: "Selected state. Ignored if `children` is provided.",
-      type: { name: "boolean" },
+    SubLabelProps: {
+      description: "Sub Label Typography props. Ignored if `children` is provided.",
+      type: { name: "other", value: "TypographyParagraphProps" },
       table: {
-        type: { summary: "boolean" },
+        type: { summary: "TypographyParagraphProps" },
       },
-      control: { type: "boolean" },
-    },
-    disabled: {
-      description: "Disabled state. Ignored if `children` is provided.",
-      type: { name: "boolean" },
-      table: {
-        type: { summary: "boolean" },
-      },
-      control: { type: "boolean" },
+      control: false,
     },
     onClick: {
       description: "Click handler (enables clickable styles)",
@@ -135,9 +158,9 @@ function App() {
     <Theme.Provider>
       <Menu.List as="ul" spacing={8} style={{ width: 300 }}>
         <Menu.Item as="li" label="Home" />
-        <Menu.Item as="li" label="About" />
-        <Menu.Item as="li" icon={<span>🏠</span>} label="Home" />
-        <Menu.Item as="li" icon={<span>👤</span>} label="Profile" disabled />
+        <Menu.Item as="li" label="About" subLabel="xxxx" />
+        <Menu.Item as="li" StartIcon={<span>🏠</span>} label="Home" />
+        <Menu.Item as="li" EndIcon={<span>👤</span>} label="Profile" disabled />
       </Menu.List>
     </Theme.Provider>
   );
@@ -153,8 +176,80 @@ function App() {
           <Canvas
             of={SelectableExample}
             sourceState="hidden"
+            source={{ code: SelectableExample.parameters?.docs?.source?.code }}
+          />
+
+          <Heading>{CustomChildrenExample.name}</Heading>
+          <Description of={CustomChildrenExample} />
+          <Canvas
+            of={CustomChildrenExample}
+            sourceState="hidden"
             source={{
-              code: `
+              code: CustomChildrenExample.parameters?.docs?.source?.code,
+            }}
+          />
+        </>
+      ),
+    },
+  },
+} satisfies Meta<typeof Menu.Item>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Playground: Story = {
+  name: "Playground",
+  argTypes: {
+    children: { control: false },
+    LabelProps: { control: false },
+    SubLabelProps: { control: false },
+  },
+  args: {
+    as: "li",
+    spacing: 8,
+    selected: false,
+    disabled: false,
+    StartIcon: undefined,
+    EndIcon: undefined,
+    label: "Label Text",
+    subLabel: "Sub Label Text",
+    LabelProps: undefined,
+    SubLabelProps: undefined,
+    onClick: undefined,
+  },
+};
+
+export const SelectableExample: Story = {
+  name: "Selectable Example",
+  tags: ["!dev"],
+  render: function RenderStory() {
+    const [selectedId, setSelectedId] = React.useState<string | null>(null);
+    return (
+      <Menu.List spacing={4}>
+        {Array.from({ length: 3 }).map((_, index) => {
+          const id = String(index);
+          return (
+            <Menu.Item
+              key={id}
+              StartIcon={<span>🏠</span>}
+              EndIcon={(index + 1) % 2 === 0 ? <span>👤</span> : undefined}
+              label={`Menu Item ${index + 1}`}
+              subLabel="xxxx"
+              LabelProps={{ ellipsis: 1 }}
+              SubLabelProps={{ ellipsis: 0 }}
+              selected={id === selectedId}
+              onClick={() => setSelectedId(id)}
+            />
+          );
+        })}
+      </Menu.List>
+    );
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
 "use client";
 
 import React from "react";
@@ -172,8 +267,11 @@ function App() {
           return (
             <Menu.Item
               key={id}
+              StartIcon={<span>🏠</span>}
+              EndIcon={(index + 1) % 2 === 0 ? <span>👤</span> : undefined}
               label={\`Menu Item \${index + 1}\`}
-              icon={<span>🏠</span>}
+              LabelProps={{ ellipsis: 1 }}
+              SubLabelProps={{ ellipsis: 0 }}
               selected={id === selectedId}
               onClick={() => setSelectedId(id)}
             />
@@ -184,95 +282,8 @@ function App() {
   );
 }
   `.trim(),
-            }}
-          />
-
-          <Heading>{CustomChildrenExample.name}</Heading>
-          <Description of={CustomChildrenExample} />
-          <Canvas
-            of={CustomChildrenExample}
-            sourceState="hidden"
-            source={{
-              code: `
-"use client";
-
-import React from "react";
-
-import { Theme, Icon, Chip, Menu } from "venomous-ui-react/components";
-
-function App() {
-  const [selectedId, setSelectedId] = React.useState<string | null>(null);
-
-  return (
-    <Theme.Provider>
-      <Menu.Item spacing={16} style={{ width: 200, border: "1px solid grey" }} onClick={() => console.log("Clicked")}>
-        <Typography.Text as="strong" text="🏠" />
-  
-        <Space.Flex column style={{ flex: 1 }}>
-          <Typography.Paragraph text="Main Label" weight="bold" ellipsis={1} />
-          <Typography.Paragraph
-            text="Sub Label with very long text that should be truncated"
-            size="CAPTION"
-            ellipsis={1}
-          />
-        </Space.Flex>
-  
-        <Chip text="New" />
-      </Menu.Item>
-    </Theme.Provider>
-  );
-}
-  `.trim(),
-            }}
-          />
-        </>
-      ),
+      },
     },
-  },
-} satisfies Meta<typeof Menu.Item>;
-
-export default meta;
-
-type Story = StoryObj<typeof meta>;
-
-export const Playground: Story = {
-  name: "Playground",
-  argTypes: {
-    children: { control: false },
-  },
-  args: {
-    as: "li",
-    label: "Menu Item ( If using labelEllipsis width is required )",
-    labelEllipsis: 1,
-    Icon: undefined,
-    onClick: undefined,
-    spacing: 8,
-    selected: false,
-    disabled: false,
-  },
-};
-
-export const SelectableExample: Story = {
-  name: "Selectable Example",
-  tags: ["!dev"],
-  render: function RenderStory() {
-    const [selectedId, setSelectedId] = React.useState<string | null>(null);
-    return (
-      <Menu.List spacing={4}>
-        {Array.from({ length: 3 }).map((_, index) => {
-          const id = String(index);
-          return (
-            <Menu.Item
-              key={id}
-              label={`Menu Item ${index + 1}`}
-              Icon={<span>🏠</span>}
-              selected={id === selectedId}
-              onClick={() => setSelectedId(id)}
-            />
-          );
-        })}
-      </Menu.List>
-    );
   },
 };
 
@@ -305,4 +316,44 @@ export const CustomChildrenExample: Story = {
       />
     </Menu.Item>
   ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "通过 `<Menu.Item>` 的 `children` 属性可以自定义子元素。<br/>如下：用 `children` 代替 `Icon`、`label`、`subLabel`、`LabelProps`、`SubLabelProps`",
+      },
+      source: {
+        code: `
+"use client";
+
+import React from "react";
+
+import { Theme, Icon, Chip, Menu } from "venomous-ui-react/components";
+
+function App() {
+  const [selectedId, setSelectedId] = React.useState<string | null>(null);
+
+  return (
+    <Theme.Provider>
+      <Menu.Item spacing={16} style={{ width: 200, border: "1px solid grey" }} onClick={() => console.log("Clicked")}>
+        <Typography.Text as="strong" text="🏠" />
+  
+        <Space.Flex column style={{ flex: 1 }}>
+          <Typography.Paragraph text="Main Label" weight="bold" ellipsis={1} />
+          <Typography.Paragraph
+            text="Sub Label with very long text that should be truncated"
+            size="CAPTION"
+            ellipsis={1}
+          />
+        </Space.Flex>
+  
+        <Chip text="New" />
+      </Menu.Item>
+    </Theme.Provider>
+  );
+}
+  `.trim(),
+      },
+    },
+  },
 };
