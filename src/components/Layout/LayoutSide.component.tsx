@@ -35,41 +35,16 @@ const LayoutSide = React.memo(
       },
       ref,
     ) => {
-      // ========== Actions Hook ==========
       const { collapsed: isCollapsed, toggle } = useLayoutSideActions({
         collapsed,
         onCollapsedChange,
       });
 
-      // ========== Styles Hook ==========
-      const { componentStyle, wrapperStyle, collapseButtonStyle, bottomStyle } = useLayoutSideStyles({
+      const { componentStyle, collapseButtonStyle } = useLayoutSideStyles({
         expandedWidth,
         collapsedWidth,
         collapsed: isCollapsed,
       });
-
-      // ========== Header ==========
-      const header = React.useMemo(() => {
-        if (!renderHeader) return null;
-        return renderHeader(isCollapsed);
-      }, [renderHeader, isCollapsed]);
-
-      // ========== Menu Content ==========
-      const menuContent = React.useMemo(() => {
-        if (renderMenu) {
-          return renderMenu(isCollapsed);
-        }
-        if (typeof children === "function") {
-          return children(isCollapsed);
-        }
-        return children;
-      }, [renderMenu, children, isCollapsed]);
-
-      // ========== Bottom Content ==========
-      const bottomContent = React.useMemo(() => {
-        if (!renderBottom) return null;
-        return renderBottom(isCollapsed);
-      }, [renderBottom, isCollapsed]);
 
       // ========== 折叠按钮 ==========
       const collapseButton = React.useMemo(() => {
@@ -90,7 +65,21 @@ const LayoutSide = React.memo(
         );
       }, [collapsible, isCollapsed, toggle, renderCollapseButton, collapseButtonStyle]);
 
-      // ========== 侧边栏渲染 ==========
+      // ========== Content ==========
+      const content = React.useMemo(() => {
+        if (children) {
+          return typeof children === "function" ? children(isCollapsed) : children;
+        }
+
+        return (
+          <>
+            {renderHeader?.(isCollapsed)}
+            {renderMenu?.(isCollapsed)}
+            {renderBottom?.(isCollapsed)}
+          </>
+        );
+      }, [children, isCollapsed, renderHeader, renderMenu, renderBottom]);
+
       return (
         <Box
           as="aside"
@@ -100,9 +89,7 @@ const LayoutSide = React.memo(
           {...props}
         >
           {collapseButton}
-          {header}
-          <div style={wrapperStyle}>{menuContent}</div>
-          {bottomContent && <div style={bottomStyle}>{bottomContent}</div>}
+          {content}
         </Box>
       );
     },

@@ -79,18 +79,6 @@ export function useLayoutSideStyles({
     [BackgroundColors, BorderColors, DynamicDimensionStyles, customStyle],
   );
 
-  const wrapperStyle = React.useMemo<React.CSSProperties>(
-    () => ({
-      position: "relative",
-      width: "100%",
-      flex: 1,
-      overflowX: "hidden",
-      overflowY: "auto",
-      zIndex: 1,
-    }),
-    [],
-  );
-
   const collapseButtonStyle = React.useMemo<React.CSSProperties>(
     () => ({
       position: "absolute",
@@ -102,20 +90,8 @@ export function useLayoutSideStyles({
     [],
   );
 
-  const bottomStyle = React.useMemo<React.CSSProperties>(
-    () => ({
-      position: "relative",
-      width: "100%",
-      flexShrink: 0,
-      zIndex: 1,
-    }),
-    [],
-  );
-
   return {
     componentStyle,
-    wrapperStyle,
     collapseButtonStyle,
-    bottomStyle,
   };
 }
