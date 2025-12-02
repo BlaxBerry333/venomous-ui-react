@@ -5,6 +5,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { Button } from "@/components/Buttons";
 import { FORM_FIELD_VARIANT_MAP } from "@/components/Form/_";
+import { Icon } from "@/components/Icon";
 import { Space } from "@/components/Space";
 import { FormFieldSelect, type FormFieldSelectOption } from ".";
 
@@ -19,6 +20,32 @@ const __FRUITS_OPTIONS: FormFieldSelectOption<string>[] = [
   { label: "Mango", value: "mango" },
   { label: "Peach", value: "peach" },
   { label: "CherryxxxxxxxxxxxxCherryxxxxxxxxxxxxCherryxxxxxxxxxxxxCherryxxxxxxxxxxxx", value: "cherry" },
+];
+
+const __PLATFORM_OPTIONS: FormFieldSelectOption<string>[] = [
+  {
+    label: "GitHub",
+    value: "github",
+    StartIcon: <Icon icon="mdi:github" />,
+    subLabel: "Most popular",
+  },
+  {
+    label: "GitLab",
+    value: "gitlab",
+    StartIcon: <Icon icon="mdi:gitlab" />,
+    subLabel: "Self-hosted available",
+  },
+  {
+    label: "Bitbucket",
+    value: "bitbucket",
+    StartIcon: <Icon icon="mdi:bitbucket" />,
+  },
+  {
+    label: "Azure DevOps",
+    value: "azure",
+    StartIcon: <Icon icon="mdi:microsoft-azure-devops" />,
+    subLabel: "Enterprise",
+  },
 ];
 
 const meta = {
@@ -212,6 +239,16 @@ function App() {
             of={MultipleSelectExample}
             sourceState="hidden"
             source={{ code: MultipleSelectExample.parameters?.docs?.source?.code }}
+          />
+
+          <Subtitle>
+            <code>{WithIconsExample.name}</code>
+          </Subtitle>
+          <Description of={WithIconsExample} />
+          <Canvas
+            of={WithIconsExample}
+            sourceState="hidden"
+            source={{ code: WithIconsExample.parameters?.docs?.source?.code }}
           />
 
           <Heading>API</Heading>
@@ -534,6 +571,146 @@ function App() {
           <Button onClick={handleSubmit} text="提交" />
         </Space.Flex>
       </Space.Flex>
+    </Theme.Provider>
+  );
+}
+        `.trim(),
+      },
+    },
+  },
+};
+
+export const WithIconsExample: Story = {
+  name: "With Icons & SubLabel",
+  tags: ["!dev"],
+  args: {
+    options: [],
+  },
+  decorators: [
+    (Story) => (
+      <div style={{ width: 300 }}>
+        <Story />
+      </div>
+    ),
+  ],
+  render: function RenderStory() {
+    const [multiple, setMultiple] = React.useState<boolean>(false);
+    const [singleValue, setSingleValue] = React.useState<string>("");
+    const [multipleValues, setMultipleValues] = React.useState<string[]>([]);
+
+    const handleToggleMultiple = () => {
+      setMultiple((prev) => !prev);
+      // 切换模式时重置选中值
+      setSingleValue("");
+      setMultipleValues([]);
+    };
+
+    const displayValue = multiple ? multipleValues.join(", ") || "(none)" : singleValue || "(none)";
+
+    return (
+      <Space.Flex column spacing={24} style={{ padding: 24, maxWidth: 400 }}>
+        {/* 模式切换器 */}
+        <Space.Flex spacing={8} style={{ width: "auto" }}>
+          <Button
+            text="Single"
+            variant={!multiple ? "contained" : "outlined"}
+            onClick={() => !multiple || handleToggleMultiple()}
+          />
+          <Button
+            text="Multiple"
+            variant={multiple ? "contained" : "outlined"}
+            onClick={() => multiple || handleToggleMultiple()}
+          />
+        </Space.Flex>
+
+        {/* FormFieldSelect */}
+        {multiple ? (
+          <FormFieldSelect
+            multiple
+            options={__PLATFORM_OPTIONS}
+            value={multipleValues}
+            onChange={setMultipleValues}
+            placeholder="Select platforms..."
+            fullWidth
+          />
+        ) : (
+          <FormFieldSelect
+            options={__PLATFORM_OPTIONS}
+            value={singleValue}
+            onChange={setSingleValue}
+            placeholder="Select a platform..."
+            fullWidth
+          />
+        )}
+
+        <div
+          style={{
+            padding: 16,
+            backgroundColor: "#f5f5f5",
+            borderRadius: 8,
+            fontFamily: "monospace",
+            fontSize: 14,
+          }}
+        >
+          Mode: {multiple ? "Multiple" : "Single"}
+          <br />
+          Selected: {displayValue}
+        </div>
+      </Space.Flex>
+    );
+  },
+  parameters: {
+    layout: "centered",
+    docs: {
+      description: {
+        story:
+          "带图标和副标签的选项示例：选择项 option 支持 `StartIcon`、`EndIcon`、`subLabel` 等 `<Menu.Item>` 的属性，可以自定义选项的显示内容。选中项会在 `EndIcon` 位置显示对应的选中图标（单选为勾选，多选为 checkbox）。",
+      },
+      source: {
+        code: `
+"use client";
+
+import React from "react";
+import { Theme, FormField, Icon } from "venomous-ui-react/components";
+
+const options = [
+  {
+    label: "GitHub",
+    value: "github",
+    StartIcon: <Icon icon="mdi:github" />,
+    subLabel: "Most popular",
+  },
+  {
+    label: "GitLab",
+    value: "gitlab",
+    StartIcon: <Icon icon="mdi:gitlab" />,
+    subLabel: "Self-hosted available",
+  },
+  {
+    label: "Bitbucket",
+    value: "bitbucket",
+    StartIcon: <Icon icon="mdi:bitbucket" />,
+  },
+  {
+    label: "Azure DevOps",
+    value: "azure",
+    StartIcon: <Icon icon="mdi:microsoft-azure-devops" />,
+    subLabel: "Enterprise",
+  },
+];
+
+function App() {
+  const [value, setValue] = React.useState<string>("");
+
+  return (
+    <Theme.Provider>
+      <FormField.Select
+        options={options}
+        value={value}
+        onChange={setValue}
+        placeholder="Select a platform..."
+      />
+      <div>Selected: {value || "(none)"}</div>
     </Theme.Provider>
   );
 }

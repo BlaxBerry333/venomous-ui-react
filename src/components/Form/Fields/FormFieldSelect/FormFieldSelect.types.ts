@@ -1,4 +1,5 @@
 import type { FormFieldBaseProps } from "@/components/Form/_";
+import type { MenuItemProps } from "@/components/Menu";
 
 /**
  * FormFieldSelect Option 数据结构
@@ -20,6 +21,33 @@ export interface FormFieldSelectOption<T = any> {
    * @default false
    */
   disabled?: boolean;
+
+  /**
+   * Element displayed before label (e.g., icon, avatar).
+   * In multiple mode, checkbox icon will be prepended before this.
+   */
+  StartIcon?: MenuItemProps["StartIcon"];
+
+  /**
+   * Element displayed after label.
+   * In single mode, checked icon will override this when selected.
+   */
+  EndIcon?: MenuItemProps["EndIcon"];
+
+  /**
+   * Sub label text content.
+   */
+  subLabel?: MenuItemProps["subLabel"];
+
+  /**
+   * Sub label props.
+   */
+  SubLabelProps?: MenuItemProps["SubLabelProps"];
+
+  /**
+   * Label props (for custom styling).
+   */
+  LabelProps?: MenuItemProps["LabelProps"];
 }
 
 /**

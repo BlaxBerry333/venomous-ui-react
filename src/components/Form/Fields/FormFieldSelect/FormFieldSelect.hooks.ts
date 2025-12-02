@@ -441,6 +441,10 @@ export function useFormFieldSelectDisplay({
       text: displayText,
       width: widthValue,
       opacity: hasValue ? 1 : 0.5,
+      // 返回选中项信息供 trigger 使用
+      selectedOption,
+      selectedOptions,
+      multiple,
     };
   }, [displayText, multiple, selectedOption, selectedOptions, width]);
 

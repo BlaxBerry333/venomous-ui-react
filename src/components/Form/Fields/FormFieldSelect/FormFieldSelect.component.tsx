@@ -105,20 +105,25 @@ const FormFieldSelect = React.memo(
       });
 
       // ========== 渲染显示内容 ==========
-      const displayContent = React.useMemo(
-        () => (
-          <Typography.Paragraph
-            text={displayContentData.text}
-            ellipsis={1}
-            style={{
-              width: displayContentData.width,
-              color: "inherit",
-              opacity: displayContentData.opacity,
-            }}
-          />
-        ),
-        [displayContentData.text, displayContentData.width, displayContentData.opacity],
-      );
+      const displayContent = React.useMemo(() => {
+        // 获取选中项的 StartIcon（单选取第一个，多选不显示图标）
+        const selectedStartIcon = !displayContentData.multiple && displayContentData.selectedOption?.StartIcon;
+
+        return (
+          <Space.Flex spacing={8} style={{ flex: 1, color: "inherit", alignItems: "center", minWidth: 0 }}>
+            {selectedStartIcon}
+            <Typography.Paragraph
+              text={displayContentData.text}
+              ellipsis={1}
+              style={{
+                flex: 1,
+                color: "inherit",
+                opacity: displayContentData.opacity,
+              }}
+            />
+          </Space.Flex>
+        );
+      }, [displayContentData]);
 
       // ========== 渲染下拉内容 ==========
       const dropdownContent = React.useMemo(() => {
@@ -135,19 +140,28 @@ const FormFieldSelect = React.memo(
                 : dropdownContentData.selectedOption?.value === option.value;
               const isDisabled = option.disabled || false;
 
+              // StartIcon 逻辑：始终显示用户自定义
+              const startIconElement = option.StartIcon;
+
+              // EndIcon 逻辑：选中时显示勾选图标，多选未选中时显示空方框
+              const endIconElement = isSelected ? (
+                <Icon icon="solar:check-read-linear" />
+              ) : (
+                (option.EndIcon ?? (dropdownContentData.multiple ? <Icon icon="solar:square-outline" /> : undefined))
+              );
+
               return (
                 <Menu.Item
                   // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
                   key={`${option.value}`}
                   className={clsx(COMPONENT_CLASSNAME_NAMES.FormFieldSelectOption, dropdownContentData.optionClassName)}
                   style={dropdownContentData.mergedOptionStyle}
-                  StartIcon={
-                    dropdownContentData.multiple ? (
-                      <Icon icon={isSelected ? "solar:check-square-bold" : "solar:square-outline"} />
-                    ) : undefined
-                  }
+                  StartIcon={startIconElement}
+                  EndIcon={endIconElement}
                   label={option.label}
-                  LabelProps={{ ellipsis: 1 }}
+                  LabelProps={{ ellipsis: 1, ...option.LabelProps }}
+                  subLabel={option.subLabel}
+                  SubLabelProps={option.SubLabelProps}
                   selected={isSelected}
                   disabled={isDisabled}
                   onClick={() => !isDisabled && dropdownContentData.handleSelect(option)}
@@ -223,9 +237,7 @@ const FormFieldSelect = React.memo(
                 {...WrapperElementEvents}
               >
                 {/* Display Content */}
-                <Box as="div" style={{ flex: 1, color: "inherit" }}>
-                  {displayContent}
-                </Box>
+                {displayContent}
 
                 {/* Dropdown Icon */}
                 <Box
