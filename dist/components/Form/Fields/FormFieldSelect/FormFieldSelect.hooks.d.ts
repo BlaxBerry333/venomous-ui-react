@@ -62,6 +62,9 @@ export declare function useFormFieldSelectDisplay({ options, multiple, value, de
         text: string;
         width: number;
         opacity: number;
+        selectedOption: FormFieldSelectOption<any[]> | undefined;
+        selectedOptions: FormFieldSelectOption<any[]>[];
+        multiple: boolean;
     };
     dropdownContentData: {
         filteredOptions: FormFieldSelectOption<any[]>[];

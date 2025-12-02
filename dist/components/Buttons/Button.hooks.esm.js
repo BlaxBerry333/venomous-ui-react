@@ -10,7 +10,7 @@ import w from "../../hooks/useElementHoverEvents/index.esm.js";
 import k from "../../hooks/useElementMouseEvents/index.esm.js";
 import O from "../../hooks/useThemeDesigns/index.esm.js";
 import A from "../../hooks/useThemeMode/index.esm.js";
-import { getLighter as D, getDarker as C, isLightColor as I, hexToRgba as S } from "../../tools/colors/get-colors.esm.js";
+import { getLighter as D, getDarker as C, isLightColor as I, hexToRgba as E } from "../../tools/colors/get-colors.esm.js";
 import "../Theme/ThemeProvider.context.esm.js";
 import L from "../../hooks/useCustomStyle/index.esm.js";
 import { BUTTON_VARIANT_MAP as r } from "./Button.types.esm.js";
@@ -20,7 +20,7 @@ function J({
   variant: t,
   color: T,
   fullWidth: b,
-  isHovered: E,
+  isHovered: S,
   isClicked: p
 }) {
   const { isDarkMode: e } = A(), { PaletteColors: i, TextColors: a, ShadowStyles: c, TypographySizes: h } = O(), g = L({ displayName: x.Button }), o = T || i[1], u = d || m, f = l.useMemo(() => {
@@ -33,7 +33,7 @@ function J({
           borderWidth: 1.5,
           boxShadow: "none"
         };
-      case r.TEXT:
+      case r.GHOST:
         return {
           color: o,
           backgroundColor: "transparent",
@@ -84,15 +84,15 @@ function J({
         return {
           background: `radial-gradient(ellipse 120% 80% at 50% 85%, ${C(o, e ? 0.05 : 0.02)} 0%, ${s} 50%, ${n} 100%)`,
           transform: "scale(0.97)",
-          boxShadow: `inset 0 2px 4px ${S("#000000", e ? 0.25 : 0.15)}`
+          boxShadow: `inset 0 2px 4px ${E("#000000", e ? 0.25 : 0.15)}`
         };
       }
       return {
-        backgroundColor: S(o, e ? 0.2 : 0.12),
+        backgroundColor: E(o, e ? 0.2 : 0.12),
         transform: "scale(0.97)"
       };
     }
-    if (E) {
+    if (S) {
       if (t === r.CONTAINED) {
         const n = D(o, e ? 0.28 : 0.2), s = D(o, e ? 0.08 : 0.05), y = C(o, e ? 0.18 : 0.12);
         return {
@@ -101,13 +101,13 @@ function J({
         };
       }
       return t === r.OUTLINED ? {
-        backgroundColor: S(o, e ? 0.15 : 0.08)
+        backgroundColor: E(o, e ? 0.15 : 0.08)
       } : {
-        backgroundColor: S(o, e ? 0.12 : 0.08)
+        backgroundColor: E(o, e ? 0.12 : 0.08)
       };
     }
     return {};
-  }, [t, o, u, E, p, c, e]);
+  }, [t, o, u, S, p, c, e]);
   return { componentStyle: l.useMemo(
     () => ({
       boxSizing: "border-box",
@@ -139,12 +139,12 @@ function K({
   onMouseEnter: t,
   onMouseLeave: T,
   onMouseDown: b,
-  onMouseUp: E
+  onMouseUp: S
 }) {
   const p = d || m, { isClicked: e, MouseUpEvent: i, MouseDownEvent: a } = k({
     disabled: p,
     onMouseDown: b,
-    onMouseUp: E
+    onMouseUp: S
   }), { isHovered: c, MouseEnterEvent: h, MouseLeaveEvent: g } = w({
     disabled: p,
     onMouseEnter: t,

@@ -1,7 +1,7 @@
 export declare const BUTTON_VARIANT_MAP: {
     readonly CONTAINED: "contained";
     readonly OUTLINED: "outlined";
-    readonly TEXT: "text";
+    readonly GHOST: "ghost";
 };
 export type ButtonRef = HTMLButtonElement;
 export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<ButtonRef>, "children" | "color"> {

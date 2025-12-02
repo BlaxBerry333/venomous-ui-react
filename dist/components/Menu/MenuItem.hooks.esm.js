@@ -1,4 +1,4 @@
-import p from "react";
+import f from "react";
 import { useButtonStyles as N } from "../Buttons/Button.hooks.esm.js";
 import { BUTTON_VARIANT_MAP as h } from "../Buttons/Button.types.esm.js";
 import "../Space/SpaceFlex.component.esm.js";
@@ -17,75 +17,82 @@ import I from "../../hooks/useThemeMode/index.esm.js";
 import { hexToRgba as O } from "../../tools/colors/get-colors.esm.js";
 import "../Theme/ThemeProvider.context.esm.js";
 import P from "../../hooks/useCustomStyle/index.esm.js";
-function Z({
-  spacing: M = 8,
-  selected: i,
-  disabled: m,
-  clickable: s,
-  isHovered: C,
-  isClicked: y
+function H({
+  spacing: C = 8,
+  selected: u,
+  disabled: c,
+  clickable: g,
+  isHovered: a,
+  isClicked: i
 }) {
-  const { isDarkMode: a } = I(), { PaletteColors: l } = A(), u = P({ displayName: D.MenuItem }), f = k({
+  const { isDarkMode: S } = I(), { PaletteColors: b } = A(), M = P({ displayName: D.MenuItem }), d = k({
     column: !1,
-    spacing: M
+    spacing: C
   }), o = N({
     variant: h.OUTLINED,
-    disabled: m,
-    isHovered: C,
-    isClicked: y
-  }), t = p.useMemo(() => {
-    var e, g, S;
-    if (!i) return {};
+    disabled: c,
+    isHovered: a,
+    isClicked: i
+  }), s = f.useMemo(() => {
+    var e, n, m;
+    if (!u) return {};
     const r = (e = o == null ? void 0 : o.componentStyle) == null ? void 0 : e.backgroundColor;
     if (r && typeof r == "string") {
-      const d = r.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
-      if (d) {
-        const [, b, T, x] = d;
+      const t = r.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+      if (t) {
+        const [, y, T, x] = t;
         return {
-          color: (g = o == null ? void 0 : o.componentStyle) == null ? void 0 : g.color,
-          backgroundColor: `rgba(${b}, ${T}, ${x}, 0.25)`
+          color: (n = o == null ? void 0 : o.componentStyle) == null ? void 0 : n.color,
+          backgroundColor: `rgba(${y}, ${T}, ${x}, 0.25)`
           // 加深透明度到 25%
         };
       }
     }
-    const n = l[1];
+    const p = b[1];
     return {
-      color: (S = o == null ? void 0 : o.componentStyle) == null ? void 0 : S.color,
-      backgroundColor: O(n, a ? 0.25 : 0.2)
+      color: (m = o == null ? void 0 : o.componentStyle) == null ? void 0 : m.color,
+      backgroundColor: O(p, S ? 0.25 : 0.2)
     };
-  }, [i, a, l, o == null ? void 0 : o.componentStyle]), c = p.useMemo(() => {
-    var r, n, e;
-    return s ? {
-      userSelect: (r = o == null ? void 0 : o.componentStyle) == null ? void 0 : r.userSelect,
-      cursor: (n = o == null ? void 0 : o.componentStyle) == null ? void 0 : n.cursor,
-      transition: (e = o == null ? void 0 : o.componentStyle) == null ? void 0 : e.transition
-    } : {
-      userSelect: m ? "none" : "text",
-      cursor: m ? "not-allowed" : "default",
-      transform: "none",
-      backgroundColor: "transparent"
+  }, [u, S, b, o == null ? void 0 : o.componentStyle]), l = f.useMemo(() => {
+    var p, e, n, m, t;
+    if (!g)
+      return {
+        userSelect: c ? "none" : "text",
+        cursor: c ? "not-allowed" : "default",
+        transform: "none",
+        backgroundColor: "transparent"
+      };
+    const r = {
+      userSelect: (p = o == null ? void 0 : o.componentStyle) == null ? void 0 : p.userSelect,
+      cursor: (e = o == null ? void 0 : o.componentStyle) == null ? void 0 : e.cursor,
+      transition: (n = o == null ? void 0 : o.componentStyle) == null ? void 0 : n.transition
     };
-  }, [s, m, o == null ? void 0 : o.componentStyle]);
+    return a || i ? {
+      ...r,
+      backgroundColor: (m = o == null ? void 0 : o.componentStyle) == null ? void 0 : m.backgroundColor,
+      transform: (t = o == null ? void 0 : o.componentStyle) == null ? void 0 : t.transform
+    } : r;
+  }, [g, c, a, i, o == null ? void 0 : o.componentStyle]);
   return {
-    componentStyle: p.useMemo(
+    componentStyle: f.useMemo(
       () => ({
         // -- default style --
-        ...f.componentStyle,
-        ...t,
-        ...c,
+        ...d.componentStyle,
+        ...s,
+        ...l,
         padding: "8px 12px",
         borderRadius: 8,
         // -- custom style --
-        ...u
+        ...M
       }),
-      [f.componentStyle, t, c, u]
+      [d.componentStyle, s, l, M]
     ),
     __: {
-      DynamicSelectedStyles: t,
-      DynamicClickableStyles: c
+      DynamicSelectedStyles: s,
+      DynamicClickableStyles: l
     }
   };
 }
 export {
-  Z as useMenuItemStyles
+  H as useMenuItemStyles
 };

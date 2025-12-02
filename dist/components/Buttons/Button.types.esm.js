@@ -1,7 +1,7 @@
 const T = {
   CONTAINED: "contained",
   OUTLINED: "outlined",
-  TEXT: "text"
+  GHOST: "ghost"
 };
 export {
   T as BUTTON_VARIANT_MAP

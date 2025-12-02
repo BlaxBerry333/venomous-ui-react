@@ -1,8 +1,8 @@
-import { jsx as l, jsxs as p, Fragment as C } from "react/jsx-runtime";
-import r from "react";
+import { jsxs as c, jsx as l, Fragment as E } from "react/jsx-runtime";
+import n from "react";
 import u from "clsx";
-import F from "../../../Box/Box.component.esm.js";
-import { COMPONENT_DISPLAY_NAMES as X } from "../../../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
+import ee from "../../../Box/Box.component.esm.js";
+import { COMPONENT_DISPLAY_NAMES as te } from "../../../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
 import { COMPONENT_CLASSNAME_NAMES as f } from "../../../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";
 import "../../../../constants/designs/BACKGROUND_COLORS.esm.js";
 import "../../../../constants/designs/BORDER_COLORS.esm.js";
@@ -10,109 +10,116 @@ import "../../../../constants/designs/SHADOW_STYLES.esm.js";
 import "../../../../constants/designs/TEXT_COLORS.esm.js";
 import "../../../../constants/designs/THEME_BREAKPOINTS.esm.js";
 import "../../../Theme/ThemeProvider.context.esm.js";
-import { FORM_FIELD_VARIANT_MAP as Z } from "../../_/FormFieldBase.types.esm.js";
-import N from "../../../Icon/Icon.component.esm.js";
-import { Menu as O } from "../../../Menu/index.esm.js";
-import ee from "../../../Popover/Popover.component.esm.js";
-import { Space as te } from "../../../Space/index.esm.js";
-import { Typography as le } from "../../../Typographies/index.esm.js";
-import { useFormFieldSelectDisplay as oe } from "./FormFieldSelect.hooks.esm.js";
-const re = r.memo(
-  r.forwardRef(
+import { FORM_FIELD_VARIANT_MAP as le } from "../../_/FormFieldBase.types.esm.js";
+import S from "../../../Icon/Icon.component.esm.js";
+import { Menu as F } from "../../../Menu/index.esm.js";
+import re from "../../../Popover/Popover.component.esm.js";
+import { Space as g } from "../../../Space/index.esm.js";
+import { Typography as oe } from "../../../Typographies/index.esm.js";
+import { useFormFieldSelectDisplay as ne } from "./FormFieldSelect.hooks.esm.js";
+const ae = n.memo(
+  n.forwardRef(
     ({
-      wrapperClassName: g,
-      wrapperStyle: E,
-      dropdownClassName: x,
-      dropdownStyle: D,
-      optionClassName: b,
-      optionStyle: I,
-      multiple: c = !1,
+      wrapperClassName: C,
+      wrapperStyle: N,
+      dropdownClassName: O,
+      dropdownStyle: x,
+      optionClassName: w,
+      optionStyle: D,
+      multiple: d = !1,
       value: h,
-      defaultValue: S,
-      onChange: M,
-      placeholder: _ = "",
+      defaultValue: y,
+      onChange: L,
+      placeholder: P = "",
       // eslint-disable-next-line react-x/no-unstable-default-props
-      options: d = [],
-      maxDropdownHeight: P = 300,
-      variant: A = Z.OUTLINED,
-      error: L = !1,
+      options: m = [],
+      maxDropdownHeight: M = 300,
+      variant: _ = le.OUTLINED,
+      error: A = !1,
       fullWidth: T = !1,
-      disabled: m = !1,
+      disabled: p = !1,
       name: k,
       form: V,
-      required: R = !1,
-      onMouseEnter: W,
+      required: W = !1,
+      onMouseEnter: R,
       onMouseLeave: j,
-      onMouseDown: q,
-      onMouseUp: B,
-      ...K
-    }, n) => {
-      const [Y, H] = r.useState(void 0), a = r.useRef(null);
-      r.useEffect(() => {
-        a.current && n && (typeof n == "function" ? n(a.current) : n.current = a.current);
-      }, [n]);
-      const y = h !== void 0, {
+      onMouseDown: B,
+      onMouseUp: K,
+      ...Y
+    }, a) => {
+      const [q, H] = n.useState(void 0), s = n.useRef(null);
+      n.useEffect(() => {
+        s.current && a && (typeof a == "function" ? a(s.current) : a.current = s.current);
+      }, [a]);
+      const v = h !== void 0, {
         actualValue: U,
         computedWrapperStyle: $,
         displayContentData: i,
         dropdownContentData: t,
         handleKeyDown: z,
         WrapperElementEvents: G
-      } = oe({
-        options: d,
-        multiple: c,
+      } = ne({
+        options: m,
+        multiple: d,
         value: h,
-        defaultValue: S,
-        onChange: M,
-        placeholder: _,
-        variant: A,
-        error: L,
+        defaultValue: y,
+        onChange: L,
+        placeholder: P,
+        variant: _,
+        error: A,
         fullWidth: T,
-        disabled: m,
-        maxDropdownHeight: P,
-        width: Y,
+        disabled: p,
+        maxDropdownHeight: M,
+        width: q,
         autoCloseOnSelect: !0,
-        isControlled: y,
-        selectRef: a,
-        dropdownClassName: x,
-        dropdownStyle: D,
-        optionClassName: b,
-        optionStyle: I,
-        onMouseEnter: W,
+        isControlled: v,
+        selectRef: s,
+        dropdownClassName: O,
+        dropdownStyle: x,
+        optionClassName: w,
+        optionStyle: D,
+        onMouseEnter: R,
         onMouseLeave: j,
-        onMouseDown: q,
-        onMouseUp: B
-      }), J = r.useMemo(
-        () => /* @__PURE__ */ l(
-          le.Paragraph,
-          {
-            text: i.text,
-            ellipsis: 1,
-            style: {
-              width: i.width,
-              color: "inherit",
-              opacity: i.opacity
+        onMouseDown: B,
+        onMouseUp: K
+      }), J = n.useMemo(() => {
+        var r;
+        const e = !i.multiple && ((r = i.selectedOption) == null ? void 0 : r.StartIcon);
+        return /* @__PURE__ */ c(g.Flex, { spacing: 8, style: { flex: 1, color: "inherit", alignItems: "center", minWidth: 0 }, children: [
+          e,
+          /* @__PURE__ */ l(
+            oe.Paragraph,
+            {
+              text: i.text,
+              ellipsis: 1,
+              style: {
+                flex: 1,
+                color: "inherit",
+                opacity: i.opacity
+              }
             }
-          }
-        ),
-        [i.text, i.width, i.opacity]
-      ), Q = r.useMemo(() => t.filteredOptions.length === 0 ? null : /* @__PURE__ */ l(
-        O.List,
+          )
+        ] });
+      }, [i]), Q = n.useMemo(() => t.filteredOptions.length === 0 ? null : /* @__PURE__ */ l(
+        F.List,
         {
           className: u(f.FormFieldSelectDropdown, t.dropdownClassName),
           style: t.mergedDropdownStyle,
           children: t.filteredOptions.map((e) => {
-            var v, w;
-            const s = t.multiple ? ((v = t.selectedValuesSet) == null ? void 0 : v.has(e.value)) ?? !1 : ((w = t.selectedOption) == null ? void 0 : w.value) === e.value, o = e.disabled || !1;
+            var b, I;
+            const r = t.multiple ? ((b = t.selectedValuesSet) == null ? void 0 : b.has(e.value)) ?? !1 : ((I = t.selectedOption) == null ? void 0 : I.value) === e.value, o = e.disabled || !1, X = e.StartIcon, Z = r ? /* @__PURE__ */ l(S, { icon: "solar:check-read-linear" }) : e.EndIcon ?? (t.multiple ? /* @__PURE__ */ l(S, { icon: "solar:square-outline" }) : void 0);
             return /* @__PURE__ */ l(
-              O.Item,
+              F.Item,
               {
                 className: u(f.FormFieldSelectOption, t.optionClassName),
                 style: t.mergedOptionStyle,
-                StartIcon: t.multiple ? /* @__PURE__ */ l(N, { icon: s ? "solar:check-square-bold" : "solar:square-outline" }) : void 0,
+                StartIcon: X,
+                EndIcon: Z,
                 label: e.label,
-                LabelProps: { ellipsis: 1 },
-                selected: s,
+                LabelProps: { ellipsis: 1, ...e.LabelProps },
+                subLabel: e.subLabel,
+                SubLabelProps: e.SubLabelProps,
+                selected: r,
                 disabled: o,
                 onClick: () => !o && t.handleSelect(e)
               },
@@ -121,62 +128,62 @@ const re = r.memo(
           })
         }
       ), [t]);
-      return /* @__PURE__ */ p(C, { children: [
+      return /* @__PURE__ */ c(E, { children: [
         /* @__PURE__ */ l(
           "select",
           {
-            ref: a,
+            ref: s,
             name: k,
-            ...y ? { value: U } : { defaultValue: S },
+            ...v ? { value: U } : { defaultValue: y },
             form: V,
-            required: R,
-            disabled: m,
-            multiple: c,
+            required: W,
+            disabled: p,
+            multiple: d,
             "aria-hidden": "true",
             tabIndex: -1,
             onChange: void 0,
-            style: ie,
-            ...K,
-            children: c ? d.map((e) => /* @__PURE__ */ l("option", { value: String(e.value), children: e.label }, String(e.value))) : /* @__PURE__ */ p(C, { children: [
+            style: se,
+            ...Y,
+            children: d ? m.map((e) => /* @__PURE__ */ l("option", { value: String(e.value), children: e.label }, String(e.value))) : /* @__PURE__ */ c(E, { children: [
               /* @__PURE__ */ l("option", { value: "", hidden: !0 }),
-              d.map((e) => /* @__PURE__ */ l("option", { value: String(e.value), children: e.label }, String(e.value)))
+              m.map((e) => /* @__PURE__ */ l("option", { value: String(e.value), children: e.label }, String(e.value)))
             ] })
           }
         ),
         /* @__PURE__ */ l(
-          ee,
+          re,
           {
             defaultOpen: !1,
             placement: "bottom",
             triggerEvent: "click",
             autoCloseOnClickOutside: !0,
-            trigger: ({ ref: e, isOpen: s }) => /* @__PURE__ */ p(
-              te.Flex,
+            trigger: ({ ref: e, isOpen: r }) => /* @__PURE__ */ c(
+              g.Flex,
               {
                 as: "div",
                 ref: (o) => {
                   typeof e == "function" ? e(o) : e && "current" in e && (e.current = o), o && H(o.getBoundingClientRect().width);
                 },
-                className: u(f.FormFieldSelect, g),
-                style: { ...$, ...E },
-                tabIndex: m ? -1 : 0,
+                className: u(f.FormFieldSelect, C),
+                style: { ...$, ...N },
+                tabIndex: p ? -1 : 0,
                 onKeyDown: z,
                 spacing: 8,
                 ...G,
                 children: [
-                  /* @__PURE__ */ l(F, { as: "div", style: { flex: 1, color: "inherit" }, children: J }),
+                  J,
                   /* @__PURE__ */ l(
-                    F,
+                    ee,
                     {
                       as: "div",
                       style: {
                         display: "flex",
                         alignItems: "center",
                         transition: "transform 0.25s ease-in-out",
-                        transform: s ? "rotate(180deg)" : "rotate(0deg)",
+                        transform: r ? "rotate(180deg)" : "rotate(0deg)",
                         color: "inherit"
                       },
-                      children: /* @__PURE__ */ l(N, { icon: "solar:alt-arrow-down-linear" })
+                      children: /* @__PURE__ */ l(S, { icon: "solar:alt-arrow-down-linear" })
                     }
                   )
                 ]
@@ -189,8 +196,8 @@ const re = r.memo(
     }
   )
 );
-re.displayName = X.FormFieldSelect;
-const ie = {
+ae.displayName = te.FormFieldSelect;
+const se = {
   position: "absolute",
   opacity: 0,
   pointerEvents: "none",
@@ -198,5 +205,5 @@ const ie = {
   height: 0
 };
 export {
-  re as default
+  ae as default
 };

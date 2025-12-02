@@ -1,9 +1,9 @@
-import { jsx as I, jsxs as u, Fragment as T } from "react/jsx-runtime";
+import { jsx as g, jsxs as u, Fragment as C } from "react/jsx-runtime";
 import p from "react";
-import g from "clsx";
+import I from "clsx";
 import P from "../Box/Box.component.esm.js";
-import { COMPONENT_DISPLAY_NAMES as R } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
-import { COMPONENT_CLASSNAME_NAMES as w } from "../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";
+import { COMPONENT_DISPLAY_NAMES as w } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
+import { COMPONENT_CLASSNAME_NAMES as M } from "../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";
 import "../../constants/designs/BACKGROUND_COLORS.esm.js";
 import "../../constants/designs/BORDER_COLORS.esm.js";
 import "../../constants/designs/SHADOW_STYLES.esm.js";
@@ -11,43 +11,44 @@ import "../../constants/designs/TEXT_COLORS.esm.js";
 import "../../constants/designs/THEME_BREAKPOINTS.esm.js";
 import "../Theme/ThemeProvider.context.esm.js";
 import "../Buttons/Button.component.esm.js";
-import M from "../Buttons/IconButton.component.esm.js";
-import { ICON_BUTTON_VARIANT_MAP as j } from "../Buttons/IconButton.types.esm.js";
+import { BUTTON_VARIANT_MAP as R } from "../Buttons/Button.types.esm.js";
+import j from "../Buttons/IconButton.component.esm.js";
 import "../Buttons/ScrollToTop.component.esm.js";
-import { useLayoutSideActions as b, useLayoutSideStyles as k } from "./LayoutSide.hooks.esm.js";
-const n = p.memo(
+import { useLayoutSideActions as D, useLayoutSideStyles as b } from "./LayoutSide.hooks.esm.js";
+const k = p.memo(
   p.forwardRef(
     ({
-      className: S,
-      style: y,
+      className: N,
+      style: S,
       children: t,
-      expandedWidth: N = 280,
+      expandedWidth: y = 280,
       collapsedWidth: r = 80,
       collapsible: f = !1,
       collapsed: A,
       onCollapsedChange: L,
-      renderCollapseButton: a,
+      renderCollapseButton: l,
       renderHeader: i,
       renderMenu: m,
       renderBottom: s,
-      ..._
-    }, C) => {
-      const { collapsed: o, toggle: l } = b({
+      ...E
+    }, O) => {
+      const { collapsed: o, toggle: a } = D({
         collapsed: A,
         onCollapsedChange: L
-      }), { componentStyle: E, collapseButtonStyle: c } = k({
-        expandedWidth: N,
+      }), { componentStyle: T, collapseButtonStyle: c } = b({
+        expandedWidth: y,
         collapsedWidth: r,
         collapsed: o
-      }), O = p.useMemo(() => f ? a ? a(o, l) : /* @__PURE__ */ I(
-        M,
+      }), _ = p.useMemo(() => f ? l ? l(o, a) : /* @__PURE__ */ g(
+        j,
         {
           icon: o ? "solar:arrow-right-bold" : "solar:arrow-left-bold",
-          variant: j.CIRCLE,
-          onClick: l,
+          variant: R.CONTAINED,
+          circle: !0,
+          onClick: a,
           style: c
         }
-      ) : null, [f, o, l, a, c]), x = p.useMemo(() => t ? typeof t == "function" ? t(o) : t : /* @__PURE__ */ u(T, { children: [
+      ) : null, [f, o, a, l, c]), x = p.useMemo(() => t ? typeof t == "function" ? t(o) : t : /* @__PURE__ */ u(C, { children: [
         i == null ? void 0 : i(o),
         m == null ? void 0 : m(o),
         s == null ? void 0 : s(o)
@@ -56,12 +57,12 @@ const n = p.memo(
         P,
         {
           as: "aside",
-          ref: C,
-          className: g(w.LayoutSide, S),
-          style: { ...E, ...y },
-          ..._,
+          ref: O,
+          className: I(M.LayoutSide, N),
+          style: { ...T, ...S },
+          ...E,
           children: [
-            O,
+            _,
             x
           ]
         }
@@ -69,7 +70,7 @@ const n = p.memo(
     }
   )
 );
-n.displayName = R.LayoutSide;
+k.displayName = w.LayoutSide;
 export {
-  n as default
+  k as default
 };

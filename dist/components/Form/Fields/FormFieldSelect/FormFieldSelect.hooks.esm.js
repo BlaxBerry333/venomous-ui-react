@@ -67,18 +67,18 @@ function $({
   r.useEffect(() => {
     const e = V == null ? void 0 : V.current;
     if (!e || i) return;
-    const a = e.form;
-    if (!a) return;
+    const u = e.form;
+    if (!u) return;
     const s = () => {
       k(t ? l ?? [] : l), o(!1), m(-1);
     };
-    return a.addEventListener("reset", s), () => a.removeEventListener("reset", s);
+    return u.addEventListener("reset", s), () => u.removeEventListener("reset", s);
   }, [i, l, t, V]);
   const { isHovered: H, MouseEnterEvent: U, MouseLeaveEvent: _ } = J({
     disabled: d,
     onMouseEnter: T,
     onMouseLeave: K
-  }), { MouseDownEvent: u, MouseUpEvent: c } = Q({
+  }), { MouseDownEvent: a, MouseUpEvent: c } = Q({
     disabled: d,
     onMouseDown: h,
     onMouseUp: B
@@ -91,17 +91,17 @@ function $({
     () => ({
       onMouseEnter: U,
       onMouseLeave: x,
-      onMouseDown: u,
+      onMouseDown: a,
       onMouseUp: c
     }),
-    [U, x, u, c]
+    [U, x, a, c]
   ), L = r.useMemo(() => {
     if (t) {
       const e = Array.isArray(p) ? p : [];
-      return n.filter((a) => e.includes(a.value));
+      return n.filter((u) => e.includes(u.value));
     } else {
-      const e = p, a = n.find((s) => s.value === e);
-      return a ? [a] : [];
+      const e = p, u = n.find((s) => s.value === e);
+      return u ? [u] : [];
     }
   }, [n, p, t]), b = t ? void 0 : L[0], D = r.useCallback(
     (e) => {
@@ -128,14 +128,14 @@ function $({
       if (!d)
         switch (e.key) {
           case "ArrowDown":
-            e.preventDefault(), v ? m((a) => {
-              const s = a + 1;
+            e.preventDefault(), v ? m((u) => {
+              const s = u + 1;
               return s >= n.length ? 0 : s;
             }) : o(!0);
             break;
           case "ArrowUp":
-            e.preventDefault(), v ? m((a) => {
-              const s = a - 1;
+            e.preventDefault(), v ? m((u) => {
+              const s = u - 1;
               return s < 0 ? n.length - 1 : s;
             }) : o(!0);
             break;
@@ -211,7 +211,7 @@ function ie({
   onMouseUp: _
 }) {
   const {
-    selectedOption: u,
+    selectedOption: a,
     selectedOptions: c,
     open: x,
     filteredOptions: I,
@@ -234,7 +234,7 @@ function ie({
     onMouseLeave: H,
     onMouseDown: U,
     onMouseUp: _
-  }), { wrapperStyle: e, dropdownStyle: a } = Z({
+  }), { wrapperStyle: e, dropdownStyle: u } = Z({
     variant: d,
     fullWidth: V,
     error: i,
@@ -246,37 +246,41 @@ function ie({
   }), { actualValue: s, selectedValuesSet: P } = r.useMemo(() => {
     if (!t)
       return {
-        actualValue: (u == null ? void 0 : u.value) ?? "",
+        actualValue: (a == null ? void 0 : a.value) ?? "",
         selectedValuesSet: null
       };
     const F = [], y = /* @__PURE__ */ new Set();
     for (const q of c)
       F.push(q.value), y.add(q.value);
     return { actualValue: F, selectedValuesSet: y };
-  }, [t, u, c]), A = r.useMemo(() => {
+  }, [t, a, c]), A = r.useMemo(() => {
     if (!t)
-      return (u == null ? void 0 : u.label) || M;
+      return (a == null ? void 0 : a.label) || M;
     if (c.length === 0)
       return M;
     let F = c[0].label;
     for (let y = 1; y < c.length; y++)
       F += ", " + c[y].label;
     return F;
-  }, [t, u, c, M]), W = r.useMemo(() => {
-    const F = t ? c.length > 0 : !!u, y = Number(h) * 0.8;
+  }, [t, a, c, M]), W = r.useMemo(() => {
+    const F = t ? c.length > 0 : !!a, y = Number(h) * 0.8;
     return {
       text: A,
       width: y,
-      opacity: F ? 1 : 0.5
+      opacity: F ? 1 : 0.5,
+      // 返回选中项信息供 trigger 使用
+      selectedOption: a,
+      selectedOptions: c,
+      multiple: t
     };
-  }, [A, t, u, c, h]), S = r.useMemo(
-    () => ({ ...a, ...o }),
-    [a, o]
+  }, [A, t, a, c, h]), S = r.useMemo(
+    () => ({ ...u, ...o }),
+    [u, o]
   ), Y = r.useMemo(() => m, [m]), j = r.useMemo(
     () => ({
       filteredOptions: I,
       selectedValuesSet: P,
-      selectedOption: u,
+      selectedOption: a,
       multiple: t,
       handleSelect: b,
       dropdownClassName: v,
@@ -287,7 +291,7 @@ function ie({
     [
       I,
       P,
-      u,
+      a,
       t,
       b,
       v,
