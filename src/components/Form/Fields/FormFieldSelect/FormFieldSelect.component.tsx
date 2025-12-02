@@ -204,7 +204,7 @@ const FormFieldSelect = React.memo(
             multiple={multiple}
             aria-hidden="true"
             tabIndex={-1}
-            onChange={undefined}
+            onChange={__NOOP}
             style={__HIDDEN_STYLE}
             {...props}
           >
@@ -281,6 +281,8 @@ const FormFieldSelect = React.memo(
 
 FormFieldSelect.displayName = COMPONENT_DISPLAY_NAMES.FormFieldSelect;
 export default FormFieldSelect;
+
+const __NOOP = () => {};
 
 const __HIDDEN_STYLE: React.CSSProperties = {
   position: "absolute",
