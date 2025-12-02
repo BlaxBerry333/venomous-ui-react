@@ -7,7 +7,6 @@ import { COMPONENT_CLASSNAME_NAMES, COMPONENT_DISPLAY_NAMES } from "@/constants"
 
 import { type ButtonRef } from "./Button.types";
 import IconButton from "./IconButton.component";
-import { ICON_BUTTON_VARIANT_MAP } from "./IconButton.types";
 
 const wrapper = ({ children }: { children: React.ReactNode }) => <Theme.Provider>{children}</Theme.Provider>;
 
@@ -62,7 +61,7 @@ describe("IconButton", () => {
   });
 
   it("applies circle variant correctly", () => {
-    const { container } = render(<IconButton icon="mdi:home" variant={ICON_BUTTON_VARIANT_MAP.CIRCLE} />, { wrapper });
+    const { container } = render(<IconButton icon="mdi:home" circle />, { wrapper });
 
     const button = container.querySelector<ButtonRef>("button");
     expect(button?.style.borderRadius).toBe("50%");
@@ -250,8 +249,8 @@ describe("IconButton", () => {
     expect(button?.style.height).toBe("50px");
   });
 
-  it("switches between variants correctly", () => {
-    const { container, rerender } = render(<IconButton icon="mdi:home" variant={ICON_BUTTON_VARIANT_MAP.SQUARE} />, {
+  it("switches between circle and square correctly", () => {
+    const { container, rerender } = render(<IconButton icon="mdi:home" />, {
       wrapper,
     });
 
@@ -260,7 +259,7 @@ describe("IconButton", () => {
 
     rerender(
       <Theme.Provider>
-        <IconButton icon="mdi:home" variant={ICON_BUTTON_VARIANT_MAP.CIRCLE} />
+        <IconButton icon="mdi:home" circle />
       </Theme.Provider>,
     );
 

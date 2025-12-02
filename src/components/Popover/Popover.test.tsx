@@ -6,7 +6,7 @@ import { Theme } from "@/components/Theme";
 import { COMPONENT_CLASSNAME_NAMES, COMPONENT_DISPLAY_NAMES } from "@/constants";
 
 import Popover from "./Popover.component";
-import { POPOVER_PLACEMENT_MAP, POPOVER_TRIGGER_MAP, type PopoverRef } from "./Popover.types";
+import { POPOVER_PLACEMENT_MAP, POPOVER_TRIGGER_EVENT_MAP, type PopoverRef } from "./Popover.types";
 
 const wrapper = ({ children }: { children: React.ReactNode }) => <Theme.Provider>{children}</Theme.Provider>;
 
@@ -17,7 +17,9 @@ describe("Popover", () => {
 
   it("renders trigger element correctly", () => {
     render(
-      <Popover content={<div>Popover Content</div>}>{({ ref }) => <button ref={ref}>Trigger Button</button>}</Popover>,
+      <Popover trigger={({ ref }) => <button ref={ref}>Trigger Button</button>}>
+        <div>Popover Content</div>
+      </Popover>,
       { wrapper },
     );
 
@@ -26,8 +28,8 @@ describe("Popover", () => {
 
   it("shows popover content when defaultOpen is true", async () => {
     render(
-      <Popover content={<div>Popover Content</div>} defaultOpen>
-        {({ ref }) => <button ref={ref}>Trigger</button>}
+      <Popover trigger={({ ref }) => <button ref={ref}>Trigger</button>} defaultOpen>
+        <div>Popover Content</div>
       </Popover>,
       { wrapper },
     );
@@ -37,10 +39,13 @@ describe("Popover", () => {
     });
   });
 
-  it("toggles popover on click when trigger is click", async () => {
+  it("toggles popover on click when triggerEvent is click", async () => {
     render(
-      <Popover content={<div>Click Content</div>} trigger={POPOVER_TRIGGER_MAP.CLICK}>
-        {({ ref }) => <button ref={ref}>Click Trigger</button>}
+      <Popover
+        trigger={({ ref }) => <button ref={ref}>Click Trigger</button>}
+        triggerEvent={POPOVER_TRIGGER_EVENT_MAP.CLICK}
+      >
+        <div>Click Content</div>
       </Popover>,
       { wrapper },
     );
@@ -53,10 +58,13 @@ describe("Popover", () => {
     });
   });
 
-  it("shows popover on hover when trigger is hover", async () => {
+  it("shows popover on hover when triggerEvent is hover", async () => {
     render(
-      <Popover content={<div>Hover Content</div>} trigger={POPOVER_TRIGGER_MAP.HOVER}>
-        {({ ref }) => <button ref={ref}>Hover Trigger</button>}
+      <Popover
+        trigger={({ ref }) => <button ref={ref}>Hover Trigger</button>}
+        triggerEvent={POPOVER_TRIGGER_EVENT_MAP.HOVER}
+      >
+        <div>Hover Content</div>
       </Popover>,
       { wrapper },
     );
@@ -69,35 +77,26 @@ describe("Popover", () => {
     });
   });
 
-  it("provides render props to children", () => {
-    const childrenFn = vi.fn(({ ref }) => <button ref={ref}>Trigger</button>);
+  it("provides render props to trigger function", () => {
+    const triggerFn = vi.fn(({ ref }) => <button ref={ref}>Trigger</button>);
 
-    render(<Popover content={<div>Content</div>}>{childrenFn}</Popover>, { wrapper });
-
-    expect(childrenFn).toHaveBeenCalled();
-    const props = childrenFn.mock.calls[0][0];
-    expect(props).toHaveProperty("ref");
-    expect(props).toHaveProperty("open");
-    expect(props).toHaveProperty("onToggle");
-  });
-
-  it("works in controlled mode with open=true", async () => {
     render(
-      <Popover content={<div>Controlled Content</div>} open={true}>
-        {({ ref }) => <button ref={ref}>Controlled Trigger</button>}
+      <Popover trigger={triggerFn}>
+        <div>Content</div>
       </Popover>,
       { wrapper },
     );
 
-    await waitFor(() => {
-      expect(screen.getByText("Controlled Content")).toBeDefined();
-    });
+    expect(triggerFn).toHaveBeenCalled();
+    const props = triggerFn.mock.calls[0][0];
+    expect(props).toHaveProperty("ref");
+    expect(props).toHaveProperty("isOpen");
   });
 
   it("applies custom className", async () => {
     render(
-      <Popover content={<div>Content</div>} className="custom-class" defaultOpen>
-        {({ ref }) => <button ref={ref}>Trigger</button>}
+      <Popover trigger={({ ref }) => <button ref={ref}>Trigger</button>} className="custom-class" defaultOpen>
+        <div>Content</div>
       </Popover>,
       { wrapper },
     );
@@ -111,8 +110,8 @@ describe("Popover", () => {
 
   it("applies custom styles", async () => {
     render(
-      <Popover content={<div>Content</div>} style={{ padding: "20px" }} defaultOpen>
-        {({ ref }) => <button ref={ref}>Trigger</button>}
+      <Popover trigger={({ ref }) => <button ref={ref}>Trigger</button>} style={{ padding: "20px" }} defaultOpen>
+        <div>Content</div>
       </Popover>,
       { wrapper },
     );
@@ -127,8 +126,8 @@ describe("Popover", () => {
     const ref = React.createRef<HTMLDivElement>();
 
     render(
-      <Popover content={<div>Content</div>} ref={ref} defaultOpen>
-        {({ ref: triggerRef }) => <button ref={triggerRef}>Trigger</button>}
+      <Popover trigger={({ ref: triggerRef }) => <button ref={triggerRef}>Trigger</button>} ref={ref} defaultOpen>
+        <div>Content</div>
       </Popover>,
       { wrapper },
     );
@@ -145,8 +144,8 @@ describe("Popover", () => {
 
   it("renders in Portal", async () => {
     render(
-      <Popover content={<div>Portal Content</div>} defaultOpen>
-        {({ ref }) => <button ref={ref}>Trigger</button>}
+      <Popover trigger={({ ref }) => <button ref={ref}>Trigger</button>} defaultOpen>
+        <div>Portal Content</div>
       </Popover>,
       { wrapper },
     );
@@ -159,8 +158,12 @@ describe("Popover", () => {
 
   it("accepts top placement", async () => {
     render(
-      <Popover content={<div>Top Content</div>} placement={POPOVER_PLACEMENT_MAP.TOP} defaultOpen>
-        {({ ref }) => <button ref={ref}>Trigger</button>}
+      <Popover
+        trigger={({ ref }) => <button ref={ref}>Trigger</button>}
+        placement={POPOVER_PLACEMENT_MAP.TOP}
+        defaultOpen
+      >
+        <div>Top Content</div>
       </Popover>,
       { wrapper },
     );
@@ -172,8 +175,12 @@ describe("Popover", () => {
 
   it("accepts bottom placement", async () => {
     render(
-      <Popover content={<div>Bottom Content</div>} placement={POPOVER_PLACEMENT_MAP.BOTTOM} defaultOpen>
-        {({ ref }) => <button ref={ref}>Trigger</button>}
+      <Popover
+        trigger={({ ref }) => <button ref={ref}>Trigger</button>}
+        placement={POPOVER_PLACEMENT_MAP.BOTTOM}
+        defaultOpen
+      >
+        <div>Bottom Content</div>
       </Popover>,
       { wrapper },
     );
@@ -185,8 +192,12 @@ describe("Popover", () => {
 
   it("accepts left placement", async () => {
     render(
-      <Popover content={<div>Left Content</div>} placement={POPOVER_PLACEMENT_MAP.LEFT} defaultOpen>
-        {({ ref }) => <button ref={ref}>Trigger</button>}
+      <Popover
+        trigger={({ ref }) => <button ref={ref}>Trigger</button>}
+        placement={POPOVER_PLACEMENT_MAP.LEFT}
+        defaultOpen
+      >
+        <div>Left Content</div>
       </Popover>,
       { wrapper },
     );
@@ -198,8 +209,12 @@ describe("Popover", () => {
 
   it("accepts right placement", async () => {
     render(
-      <Popover content={<div>Right Content</div>} placement={POPOVER_PLACEMENT_MAP.RIGHT} defaultOpen>
-        {({ ref }) => <button ref={ref}>Trigger</button>}
+      <Popover
+        trigger={({ ref }) => <button ref={ref}>Trigger</button>}
+        placement={POPOVER_PLACEMENT_MAP.RIGHT}
+        defaultOpen
+      >
+        <div>Right Content</div>
       </Popover>,
       { wrapper },
     );
@@ -211,8 +226,8 @@ describe("Popover", () => {
 
   it("applies custom offset", async () => {
     render(
-      <Popover content={<div>Offset Content</div>} offset={10} defaultOpen>
-        {({ ref }) => <button ref={ref}>Trigger</button>}
+      <Popover trigger={({ ref }) => <button ref={ref}>Trigger</button>} offset={10} defaultOpen>
+        <div>Offset Content</div>
       </Popover>,
       { wrapper },
     );
@@ -224,8 +239,8 @@ describe("Popover", () => {
 
   it("closes on click outside when autoCloseOnClickOutside is true", async () => {
     render(
-      <Popover content={<div>Click Outside Content</div>} autoCloseOnClickOutside={true} defaultOpen>
-        {({ ref }) => <button ref={ref}>Trigger</button>}
+      <Popover trigger={({ ref }) => <button ref={ref}>Trigger</button>} autoCloseOnClickOutside={true} defaultOpen>
+        <div>Click Outside Content</div>
       </Popover>,
       { wrapper },
     );
@@ -244,12 +259,12 @@ describe("Popover", () => {
   it("does not close on click outside in hover mode", async () => {
     render(
       <Popover
-        content={<div>Hover Content</div>}
-        trigger={POPOVER_TRIGGER_MAP.HOVER}
+        trigger={({ ref }) => <button ref={ref}>Hover Trigger</button>}
+        triggerEvent={POPOVER_TRIGGER_EVENT_MAP.HOVER}
         autoCloseOnClickOutside={true}
         defaultOpen
       >
-        {({ ref }) => <button ref={ref}>Hover Trigger</button>}
+        <div>Hover Content</div>
       </Popover>,
       { wrapper },
     );
@@ -264,25 +279,14 @@ describe("Popover", () => {
     expect(true).toBe(true);
   });
 
-  it("provides onToggle callback in render props", () => {
-    const childrenFn = vi.fn(({ ref, onToggle }) => (
-      <button ref={ref} onClick={onToggle}>
-        Toggle
-      </button>
-    ));
-
-    render(<Popover content={<div>Content</div>}>{childrenFn}</Popover>, { wrapper });
-
-    expect(childrenFn).toHaveBeenCalled();
-    const props = childrenFn.mock.calls[0][0];
-    expect(props).toHaveProperty("onToggle");
-    expect(typeof props.onToggle).toBe("function");
-  });
-
   it("hides popover on mouse leave in hover mode", async () => {
     render(
-      <Popover content={<div>Hover Leave Content</div>} trigger={POPOVER_TRIGGER_MAP.HOVER} defaultOpen>
-        {({ ref }) => <button ref={ref}>Hover Trigger</button>}
+      <Popover
+        trigger={({ ref }) => <button ref={ref}>Hover Trigger</button>}
+        triggerEvent={POPOVER_TRIGGER_EVENT_MAP.HOVER}
+        defaultOpen
+      >
+        <div>Hover Leave Content</div>
       </Popover>,
       { wrapper },
     );
@@ -313,8 +317,8 @@ describe("Popover", () => {
     }));
 
     render(
-      <Popover content={<div>Boundary Content</div>} defaultOpen>
-        {({ ref }) => {
+      <Popover
+        trigger={({ ref }) => {
           const buttonRef = (node: HTMLButtonElement | null) => {
             if (node) {
               node.getBoundingClientRect = mockGetBoundingClientRect;
@@ -323,6 +327,9 @@ describe("Popover", () => {
           };
           return <button ref={buttonRef}>Boundary Trigger</button>;
         }}
+        defaultOpen
+      >
+        <div>Boundary Content</div>
       </Popover>,
       { wrapper },
     );
@@ -334,8 +341,8 @@ describe("Popover", () => {
 
   it("updates position on window scroll", async () => {
     render(
-      <Popover content={<div>Scroll Content</div>} defaultOpen>
-        {({ ref }) => <button ref={ref}>Scroll Trigger</button>}
+      <Popover trigger={({ ref }) => <button ref={ref}>Scroll Trigger</button>} defaultOpen>
+        <div>Scroll Content</div>
       </Popover>,
       { wrapper },
     );
@@ -352,8 +359,8 @@ describe("Popover", () => {
 
   it("updates position on window resize", async () => {
     render(
-      <Popover content={<div>Resize Content</div>} defaultOpen>
-        {({ ref }) => <button ref={ref}>Resize Trigger</button>}
+      <Popover trigger={({ ref }) => <button ref={ref}>Resize Trigger</button>} defaultOpen>
+        <div>Resize Content</div>
       </Popover>,
       { wrapper },
     );
@@ -368,33 +375,24 @@ describe("Popover", () => {
     expect(true).toBe(true);
   });
 
-  it("handles controlled mode with onOpenChange callback", async () => {
-    const handleOpenChange = vi.fn();
+  it("provides isOpen state in trigger render props", async () => {
+    render(
+      <Popover
+        trigger={({ ref, isOpen }) => <button ref={ref}>{isOpen ? "Open" : "Closed"}</button>}
+        defaultOpen={false}
+      >
+        <div>Content</div>
+      </Popover>,
+      { wrapper },
+    );
 
-    const ControlledPopover = () => {
-      const [open, setOpen] = React.useState(false);
+    expect(screen.getByText("Closed")).toBeDefined();
 
-      return (
-        <Popover
-          content={<div>Controlled Open Change</div>}
-          open={open}
-          onOpenChange={(newOpen) => {
-            setOpen(newOpen);
-            handleOpenChange(newOpen);
-          }}
-        >
-          {({ ref }) => <button ref={ref}>Controlled Trigger</button>}
-        </Popover>
-      );
-    };
-
-    render(<ControlledPopover />, { wrapper });
-
-    const trigger = screen.getByText("Controlled Trigger");
+    const trigger = screen.getByText("Closed");
     fireEvent.click(trigger);
 
     await waitFor(() => {
-      expect(handleOpenChange).toHaveBeenCalledWith(true);
+      expect(screen.getByText("Open")).toBeDefined();
     });
   });
 });

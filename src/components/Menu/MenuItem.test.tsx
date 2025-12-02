@@ -56,16 +56,16 @@ describe("Menu.Item", () => {
     expect(screen.getByText("Menu Item Label")).toBeDefined();
   });
 
-  it("renders Icon correctly", () => {
-    render(<MenuItem Icon={<span data-testid="menu-icon">🏠</span>} label="Home" />, { wrapper });
+  it("renders StartIcon correctly", () => {
+    render(<MenuItem StartIcon={<span data-testid="menu-icon">🏠</span>} label="Home" />, { wrapper });
 
     expect(screen.getByTestId("menu-icon")).toBeDefined();
     expect(screen.getByText("Home")).toBeDefined();
   });
 
-  it("prioritizes children over label and Icon", () => {
+  it("prioritizes children over label and StartIcon", () => {
     render(
-      <MenuItem Icon={<span>Icon</span>} label="Label">
+      <MenuItem StartIcon={<span>Icon</span>} label="Label">
         <div>Custom Content</div>
       </MenuItem>,
       { wrapper },
@@ -136,28 +136,30 @@ describe("Menu.Item", () => {
   });
 
   it("applies custom spacing", () => {
-    const { container } = render(<MenuItem spacing={16} Icon={<span>Icon</span>} label="Item" />, { wrapper });
+    const { container } = render(<MenuItem spacing={16} StartIcon={<span>Icon</span>} label="Item" />, { wrapper });
 
     const menuItem = container.querySelector<MenuItemRef>(`li[class*='${COMPONENT_CLASSNAME_NAMES.MenuItem}']`);
     expect(menuItem?.style.gap).toBe("16px");
   });
 
   it("applies default spacing of 8px", () => {
-    const { container } = render(<MenuItem Icon={<span>Icon</span>} label="Item" />, { wrapper });
+    const { container } = render(<MenuItem StartIcon={<span>Icon</span>} label="Item" />, { wrapper });
 
     const menuItem = container.querySelector<MenuItemRef>(`li[class*='${COMPONENT_CLASSNAME_NAMES.MenuItem}']`);
     expect(menuItem?.style.gap).toBe("8px");
   });
 
-  it("applies custom LabelStyle", () => {
-    render(<MenuItem label="Styled Label" LabelStyle={{ fontSize: "20px" }} />, { wrapper });
+  it("applies custom LabelProps style", () => {
+    render(<MenuItem label="Styled Label" LabelProps={{ style: { fontSize: "20px" } }} />, { wrapper });
 
     const label = screen.getByText("Styled Label");
     expect(label.style.fontSize).toBe("20px");
   });
 
-  it("applies labelEllipsis correctly", () => {
-    render(<MenuItem label="Very Long Label Text That Should Be Truncated" labelEllipsis={1} />, { wrapper });
+  it("applies LabelProps ellipsis correctly", () => {
+    render(<MenuItem label="Very Long Label Text That Should Be Truncated" LabelProps={{ ellipsis: 1 }} />, {
+      wrapper,
+    });
 
     const label = screen.getByText("Very Long Label Text That Should Be Truncated");
     expect(label).toBeDefined();
@@ -204,14 +206,14 @@ describe("Menu.Item", () => {
     }
   });
 
-  it("renders without label (only Icon)", () => {
-    render(<MenuItem Icon={<span data-testid="icon-only">📄</span>} />, { wrapper });
+  it("renders without label (only StartIcon)", () => {
+    render(<MenuItem StartIcon={<span data-testid="icon-only">📄</span>} />, { wrapper });
 
     expect(screen.getByTestId("icon-only")).toBeDefined();
     expect(screen.queryByText("📄")).toBeDefined();
   });
 
-  it("renders without Icon (only label)", () => {
+  it("renders without StartIcon (only label)", () => {
     render(<MenuItem label="Label Only" />, { wrapper });
 
     expect(screen.getByText("Label Only")).toBeDefined();
