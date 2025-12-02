@@ -204,15 +204,17 @@ describe("Card", () => {
   });
 
   it("supports custom styles via Theme.Provider", () => {
-    const customStyles = {
+    const customComponentProps = {
       Card: {
-        padding: "32px",
-        borderRadius: "16px",
+        style: {
+          padding: "32px",
+          borderRadius: "16px",
+        },
       },
     };
 
     const customWrapper = ({ children }: { children: React.ReactNode }) => (
-      <Theme.Provider customStyles={customStyles}>{children}</Theme.Provider>
+      <Theme.Provider customComponentProps={customComponentProps}>{children}</Theme.Provider>
     );
 
     const { container } = render(<Card>Content</Card>, { wrapper: customWrapper });

@@ -147,15 +147,17 @@ describe("SpaceGrid", () => {
   });
 
   it("supports custom styles via Theme.Provider", () => {
-    const customStyles = {
+    const customComponentProps = {
       "Space.Grid": {
-        padding: "16px",
-        gap: "24px",
+        style: {
+          padding: "16px",
+          gap: "24px",
+        },
       },
     };
 
     const customWrapper = ({ children }: { children: React.ReactNode }) => (
-      <Theme.Provider customStyles={customStyles}>{children}</Theme.Provider>
+      <Theme.Provider customComponentProps={customComponentProps}>{children}</Theme.Provider>
     );
 
     const { container } = render(<SpaceGrid>Content</SpaceGrid>, { wrapper: customWrapper });

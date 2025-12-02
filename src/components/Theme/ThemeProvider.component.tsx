@@ -12,7 +12,7 @@ import {
 } from "./ThemeProvider.hooks";
 import type { ThemeProviderProps } from "./ThemeProvider.types";
 
-const ThemeProvider = React.memo<ThemeProviderProps>(({ children, customDesigns, customStyles }) => {
+const ThemeProvider = React.memo<ThemeProviderProps>(({ children, customDesigns, customComponentProps }) => {
   // ========== ThemeMode 状态 ==========
   const [themeMode, setThemeModeState] = React.useState<TThemeMode>(__getInitialThemeMode);
 
@@ -35,13 +35,13 @@ const ThemeProvider = React.memo<ThemeProviderProps>(({ children, customDesigns,
   const contextValue = React.useMemo(
     () => ({
       customDesigns,
-      customStyles,
+      customComponentProps,
       themeMode,
       setThemeMode,
       themePalette,
       setThemePalette,
     }),
-    [customDesigns, customStyles, themeMode, setThemeMode, themePalette, setThemePalette],
+    [customDesigns, customComponentProps, themeMode, setThemeMode, themePalette, setThemePalette],
   );
 
   return <ThemeProviderContext.Provider value={contextValue}>{children}</ThemeProviderContext.Provider>;

@@ -386,14 +386,16 @@ describe("TableContainer", () => {
     });
 
     it("supports custom styles via Theme.Provider", () => {
-      const customStyles = {
+      const customComponentProps = {
         Table: {
-          borderCollapse: "collapse" as const,
+          style: {
+            borderCollapse: "collapse" as const,
+          },
         },
       };
 
       const customWrapper = ({ children }: { children: React.ReactNode }) => (
-        <Theme.Provider customStyles={customStyles}>{children}</Theme.Provider>
+        <Theme.Provider customComponentProps={customComponentProps}>{children}</Theme.Provider>
       );
 
       const { container } = render(<TableContainer columns={mockColumns} rows={mockRows} />, {

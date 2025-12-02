@@ -28,15 +28,17 @@ describe("useCustomStyle", () => {
   });
 
   it("returns custom styles for a specific component", () => {
-    const customStyles = {
+    const customComponentProps = {
       [COMPONENT_DISPLAY_NAMES.Button]: {
-        backgroundColor: "#ff0000",
-        color: "#ffffff",
+        style: {
+          backgroundColor: "#ff0000",
+          color: "#ffffff",
+        },
       },
     };
 
     const customWrapper = ({ children }: { children: React.ReactNode }) => (
-      <Theme.Provider customStyles={customStyles}>{children}</Theme.Provider>
+      <Theme.Provider customComponentProps={customComponentProps}>{children}</Theme.Provider>
     );
 
     const { result } = renderHook(() => useCustomStyle({ displayName: COMPONENT_DISPLAY_NAMES.Button }), {
@@ -50,14 +52,16 @@ describe("useCustomStyle", () => {
   });
 
   it("returns empty object when component has no custom styles", () => {
-    const customStyles = {
+    const customComponentProps = {
       [COMPONENT_DISPLAY_NAMES.Button]: {
-        backgroundColor: "#ff0000",
+        style: {
+          backgroundColor: "#ff0000",
+        },
       },
     };
 
     const customWrapper = ({ children }: { children: React.ReactNode }) => (
-      <Theme.Provider customStyles={customStyles}>{children}</Theme.Provider>
+      <Theme.Provider customComponentProps={customComponentProps}>{children}</Theme.Provider>
     );
 
     const { result } = renderHook(() => useCustomStyle({ displayName: COMPONENT_DISPLAY_NAMES.Avatar }), {
@@ -68,20 +72,26 @@ describe("useCustomStyle", () => {
   });
 
   it("handles multiple component custom styles", () => {
-    const customStyles = {
+    const customComponentProps = {
       [COMPONENT_DISPLAY_NAMES.Button]: {
-        backgroundColor: "#ff0000",
+        style: {
+          backgroundColor: "#ff0000",
+        },
       },
       [COMPONENT_DISPLAY_NAMES.Avatar]: {
-        borderRadius: "50%",
+        style: {
+          borderRadius: "50%",
+        },
       },
       [COMPONENT_DISPLAY_NAMES.Card]: {
-        padding: "20px",
+        style: {
+          padding: "20px",
+        },
       },
     };
 
     const customWrapper = ({ children }: { children: React.ReactNode }) => (
-      <Theme.Provider customStyles={customStyles}>{children}</Theme.Provider>
+      <Theme.Provider customComponentProps={customComponentProps}>{children}</Theme.Provider>
     );
 
     const { result: buttonResult } = renderHook(() => useCustomStyle({ displayName: COMPONENT_DISPLAY_NAMES.Button }), {
@@ -102,41 +112,45 @@ describe("useCustomStyle", () => {
   });
 
   it("supports all valid CSS properties", () => {
-    const customStyles = {
+    const customComponentProps = {
       [COMPONENT_DISPLAY_NAMES.Box]: {
-        display: "flex",
-        flexDirection: "column" as const,
-        justifyContent: "center",
-        alignItems: "center",
-        margin: "10px",
-        padding: "20px",
-        backgroundColor: "#f0f0f0",
-        border: "1px solid #ccc",
-        borderRadius: "8px",
-        boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+        style: {
+          display: "flex",
+          flexDirection: "column" as const,
+          justifyContent: "center",
+          alignItems: "center",
+          margin: "10px",
+          padding: "20px",
+          backgroundColor: "#f0f0f0",
+          border: "1px solid #ccc",
+          borderRadius: "8px",
+          boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+        },
       },
     };
 
     const customWrapper = ({ children }: { children: React.ReactNode }) => (
-      <Theme.Provider customStyles={customStyles}>{children}</Theme.Provider>
+      <Theme.Provider customComponentProps={customComponentProps}>{children}</Theme.Provider>
     );
 
     const { result } = renderHook(() => useCustomStyle({ displayName: COMPONENT_DISPLAY_NAMES.Box }), {
       wrapper: customWrapper,
     });
 
-    expect(result.current).toEqual(customStyles[COMPONENT_DISPLAY_NAMES.Box]);
+    expect(result.current).toEqual(customComponentProps[COMPONENT_DISPLAY_NAMES.Box].style);
   });
 
   it("maintains stable references with useMemo", () => {
-    const customStyles = {
+    const customComponentProps = {
       [COMPONENT_DISPLAY_NAMES.Button]: {
-        backgroundColor: "#ff0000",
+        style: {
+          backgroundColor: "#ff0000",
+        },
       },
     };
 
     const customWrapper = ({ children }: { children: React.ReactNode }) => (
-      <Theme.Provider customStyles={customStyles}>{children}</Theme.Provider>
+      <Theme.Provider customComponentProps={customComponentProps}>{children}</Theme.Provider>
     );
 
     const { result, rerender } = renderHook(() => useCustomStyle({ displayName: COMPONENT_DISPLAY_NAMES.Button }), {
@@ -153,19 +167,23 @@ describe("useCustomStyle", () => {
   });
 
   it("handles nested component styles like FormField.Text", () => {
-    const customStyles = {
+    const customComponentProps = {
       [COMPONENT_DISPLAY_NAMES.FormFieldText]: {
-        border: "2px solid blue",
-        padding: "12px",
+        style: {
+          border: "2px solid blue",
+          padding: "12px",
+        },
       },
       [COMPONENT_DISPLAY_NAMES.FormFieldTextInput]: {
-        fontSize: "16px",
-        color: "#333",
+        style: {
+          fontSize: "16px",
+          color: "#333",
+        },
       },
     };
 
     const customWrapper = ({ children }: { children: React.ReactNode }) => (
-      <Theme.Provider customStyles={customStyles}>{children}</Theme.Provider>
+      <Theme.Provider customComponentProps={customComponentProps}>{children}</Theme.Provider>
     );
 
     const { result: fieldResult } = renderHook(
@@ -189,9 +207,9 @@ describe("useCustomStyle", () => {
     });
   });
 
-  it("returns empty object when customStyles is null or undefined", () => {
+  it("returns empty object when customComponentProps is undefined", () => {
     const customWrapper = ({ children }: { children: React.ReactNode }) => (
-      <Theme.Provider customStyles={undefined}>{children}</Theme.Provider>
+      <Theme.Provider customComponentProps={undefined}>{children}</Theme.Provider>
     );
 
     const { result } = renderHook(() => useCustomStyle({ displayName: COMPONENT_DISPLAY_NAMES.Button }), {

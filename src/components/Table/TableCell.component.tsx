@@ -6,6 +6,7 @@ import clsx from "clsx";
 
 import { Icon } from "@/components/Icon";
 import { COMPONENT_CLASSNAME_NAMES, COMPONENT_DISPLAY_NAMES } from "@/constants";
+import useCustomComponentProps from "@/hooks/useCustomComponentProps";
 
 import { useTableCellStyles } from "./TableCell.hooks";
 import {
@@ -22,12 +23,12 @@ const TableCell = React.memo(
       {
         className,
         style,
-        as: __as = TABLE_CELL_ELEMENT_MAP.TD,
-        align = TABLE_CELL_ALIGN_MAP.LEFT,
+        as: propAs,
+        align: propAlign,
         width,
-        bordered = false,
-        sortable = false,
-        sorted = false,
+        bordered: propBordered,
+        sortable: propSortable,
+        sorted: propSorted,
         sortOrder,
         onSortChange,
         children,
@@ -35,6 +36,18 @@ const TableCell = React.memo(
       },
       ref,
     ) => {
+      // ========== 获取 customComponentProps ==========
+      const customComponentProps = useCustomComponentProps<TableCellProps>({
+        displayName: COMPONENT_DISPLAY_NAMES.TableCell,
+      });
+
+      // ========== 合并 Props（优先级：直接传入 > customComponentProps > 默认值）==========
+      const __as = propAs ?? customComponentProps.as ?? TABLE_CELL_ELEMENT_MAP.TD;
+      const align = propAlign ?? customComponentProps.align ?? TABLE_CELL_ALIGN_MAP.LEFT;
+      const bordered = propBordered ?? customComponentProps.bordered ?? false;
+      const sortable = propSortable ?? customComponentProps.sortable ?? false;
+      const sorted = propSorted ?? customComponentProps.sorted ?? false;
+
       const { tableCellStyle } = useTableCellStyles({
         as: __as,
         align,

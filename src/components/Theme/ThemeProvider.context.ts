@@ -15,5 +15,5 @@ export const ThemeProviderContext = React.createContext<TThemeContextValue>({
   themePalette: PALETTE_COLORS.WOLFSBANE,
   setThemePalette: () => {},
   customDesigns: {},
-  customStyles: {},
+  customComponentProps: {},
 });

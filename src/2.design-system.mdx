@@ -80,44 +80,51 @@ You can override the built-in design tokens and styles of components by passing 
   code={`
 "use client";
 
-import { Theme } from "venomous-ui-react/components";
+import { Theme, BUTTON_VARIANT_MAP } from "venomous-ui-react/components";
 import { PALETTE_COLORS } from "venomous-ui-react/constants";
 import { getDarker, getLighter } from "venomous-ui-react/tools";
 
 export function App() {
   return (
     <Theme.Provider
-      /* override built-in components styles ( style attribute ) */
-      customStyles={{
+      /* override built-in components default props */
+      customComponentProps={{
         Button: {
-          backgroundImage: "url(https://github.githubassets.com/assets/universe_25_1-cloud-2-47e97c624870.webp)",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-          height: 60,
-          fontSize: 20,
+          variant: BUTTON_VARIANT_MAP.CONTAINED,
+          style: {
+            backgroundImage: "url(https://github.githubassets.com/assets/universe_25_1-cloud-2-47e97c624870.webp)",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            height: 60,
+            fontSize: 20,
+          },
         },
         Popover: {
-          backgroundImage: "url('/assets/backgrounds/01.avif')",
-          backgroundPosition: "center",
-          backgroundSize: "cover",
+          style: {
+            backgroundImage: "url('/assets/backgrounds/01.avif')",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+          },
         },
         Dialog: {
-          backgroundImage: "url('/assets/backgrounds/01.avif')",
-          backgroundPosition: "center",
-          backgroundSize: "cover",
+          style: {
+            backgroundImage: "url('/assets/backgrounds/01.avif')",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+          },
         },
       }}
 
       /* override built-in design tokens */
-      customDesign={{
+      customDesigns={{
         PaletteColors: PALETTE_COLORS.MAMBA,
         TextColors: {
           1: "#0c86ea",
           2: getDarker("#0c86ea", 0.2),
           3: getLighter("#0c86ea", 0.2),
           disabled: "#0c86ea",
-        }
+        },
       }}>
       {/* Your app content */}
       {/* All components go here */}

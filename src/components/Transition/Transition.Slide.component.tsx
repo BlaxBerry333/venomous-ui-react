@@ -6,6 +6,7 @@ import clsx from "clsx";
 
 import { Box } from "@/components/Box";
 import { COMPONENT_CLASSNAME_NAMES, COMPONENT_DISPLAY_NAMES } from "@/constants";
+import useCustomComponentProps from "@/hooks/useCustomComponentProps";
 import { useTransitionSlideStyles } from "./Transition.Slide.hooks";
 import {
   TRANSITION_SLIDE_DIRECTION_MAP,
@@ -19,15 +20,25 @@ const TransitionSlide = React.memo(
       {
         children,
         visible,
-        duration = 200,
-        direction = TRANSITION_SLIDE_DIRECTION_MAP.RIGHT,
-        distance = 100,
+        duration: propDuration,
+        direction: propDirection,
+        distance: propDistance,
         onFinish,
         className,
         style,
       },
       ref,
     ) => {
+      // ========== 获取 customComponentProps ==========
+      const customComponentProps = useCustomComponentProps<TransitionSlideProps>({
+        displayName: COMPONENT_DISPLAY_NAMES.TransitionSlide,
+      });
+
+      // ========== 合并 Props（优先级：直接传入 > customComponentProps > 默认值）==========
+      const duration = propDuration ?? customComponentProps.duration ?? 200;
+      const direction = propDirection ?? customComponentProps.direction ?? TRANSITION_SLIDE_DIRECTION_MAP.RIGHT;
+      const distance = propDistance ?? customComponentProps.distance ?? 100;
+
       const { componentStyle } = useTransitionSlideStyles({
         visible,
         duration,

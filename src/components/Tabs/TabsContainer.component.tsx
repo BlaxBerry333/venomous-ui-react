@@ -6,6 +6,7 @@ import clsx from "clsx";
 
 import { Space } from "@/components/Space";
 import { COMPONENT_CLASSNAME_NAMES, COMPONENT_DISPLAY_NAMES } from "@/constants";
+import useCustomComponentProps from "@/hooks/useCustomComponentProps";
 import { useTabsContainerStyles } from "./TabsContainer.hooks";
 import type { TabsContainerProps, TabsContainerRef } from "./TabsContainer.types";
 import TabsTabList from "./TabsTabList.component";
@@ -20,7 +21,7 @@ const TabsContainer = React.memo(
         activeTabValue,
         onTabChange,
         items,
-        column = false,
+        column: propColumn,
         TabStyle,
         TabListStyle,
         TabPanelStyle,
@@ -28,6 +29,14 @@ const TabsContainer = React.memo(
       },
       ref,
     ) => {
+      // ========== 获取 customComponentProps ==========
+      const customComponentProps = useCustomComponentProps<TabsContainerProps>({
+        displayName: COMPONENT_DISPLAY_NAMES.TabsContainer,
+      });
+
+      // ========== 合并 Props（优先级：直接传入 > customComponentProps > 默认值）==========
+      const column = propColumn ?? customComponentProps.column ?? false;
+
       const { componentStyle } = useTabsContainerStyles();
 
       // eslint-disable-next-line @typescript-eslint/no-unused-vars, unused-imports/no-unused-vars

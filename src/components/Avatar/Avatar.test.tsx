@@ -203,15 +203,17 @@ describe("Avatar", () => {
   });
 
   it("supports custom styles via Theme.Provider", () => {
-    const customStyles = {
+    const customComponentProps = {
       Avatar: {
-        borderRadius: "20px",
-        borderWidth: "2px",
+        style: {
+          borderRadius: "20px",
+          borderWidth: "2px",
+        },
       },
     };
 
     const customWrapper = ({ children }: { children: React.ReactNode }) => (
-      <Theme.Provider customStyles={customStyles}>{children}</Theme.Provider>
+      <Theme.Provider customComponentProps={customComponentProps}>{children}</Theme.Provider>
     );
 
     const { container } = render(<Avatar text="A" />, { wrapper: customWrapper });

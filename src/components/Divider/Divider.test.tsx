@@ -114,15 +114,17 @@ describe("Divider", () => {
   });
 
   it("supports custom styles via Theme.Provider", () => {
-    const customStyles = {
+    const customComponentProps = {
       Divider: {
-        margin: "20px 0",
-        borderWidth: "2px",
+        style: {
+          margin: "20px 0",
+          borderWidth: "2px",
+        },
       },
     };
 
     const customWrapper = ({ children }: { children: React.ReactNode }) => (
-      <Theme.Provider customStyles={customStyles}>{children}</Theme.Provider>
+      <Theme.Provider customComponentProps={customComponentProps}>{children}</Theme.Provider>
     );
 
     const { container } = render(<Divider />, { wrapper: customWrapper });

@@ -6,12 +6,22 @@ import clsx from "clsx";
 
 import { Transition } from "@/components/Transition";
 import { COMPONENT_CLASSNAME_NAMES, COMPONENT_DISPLAY_NAMES } from "@/constants";
+import useCustomComponentProps from "@/hooks/useCustomComponentProps";
 import { useTabsTabPanelStyles } from "./TabsTabPanel.hooks";
 import type { TabsTabPanelProps, TabsTabPanelRef } from "./TabsTabPanel.types";
 
 const TabsTabPanel = React.memo(
   React.forwardRef<TabsTabPanelRef, TabsTabPanelProps>(
-    ({ className, style, visible = false, keepMounted = false, children, ...props }, ref) => {
+    ({ className, style, visible: propVisible, keepMounted: propKeepMounted, children, ...props }, ref) => {
+      // ========== 获取 customComponentProps ==========
+      const customComponentProps = useCustomComponentProps<TabsTabPanelProps>({
+        displayName: COMPONENT_DISPLAY_NAMES.TabsTabPanel,
+      });
+
+      // ========== 合并 Props（优先级：直接传入 > customComponentProps > 默认值）==========
+      const visible = propVisible ?? customComponentProps.visible ?? false;
+      const keepMounted = propKeepMounted ?? customComponentProps.keepMounted ?? false;
+
       const { componentStyle } = useTabsTabPanelStyles();
 
       // ✅ 性能优化：不保持挂载时，直接不渲染

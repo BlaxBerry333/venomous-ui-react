@@ -8,12 +8,28 @@ import { Box } from "@/components/Box";
 import { Icon } from "@/components/Icon";
 import { Typography } from "@/components/Typographies";
 import { COMPONENT_CLASSNAME_NAMES, COMPONENT_DISPLAY_NAMES } from "@/constants";
+import useCustomComponentProps from "@/hooks/useCustomComponentProps";
 import { useAvatarActions, useAvatarStyles } from "./Avatar.hooks";
 import { type AvatarProps, type AvatarRef, AVATAR_SHAPE_MAP } from "./Avatar.types";
 
 const Avatar = React.memo(
   React.forwardRef<AvatarRef, AvatarProps>(
-    ({ className, style, shape = AVATAR_SHAPE_MAP.CIRCLE, width = 40, src, alt, text, ...props }, ref) => {
+    (
+      { className, style, shape: propShape, width: propWidth, src: propSrc, alt: propAlt, text: propText, ...props },
+      ref,
+    ) => {
+      // ========== 获取 customComponentProps ==========
+      const customComponentProps = useCustomComponentProps<AvatarProps>({
+        displayName: COMPONENT_DISPLAY_NAMES.Avatar,
+      });
+
+      // ========== 合并 Props（优先级：直接传入 > customComponentProps > 默认值）==========
+      const shape = propShape ?? customComponentProps.shape ?? AVATAR_SHAPE_MAP.CIRCLE;
+      const width = propWidth ?? customComponentProps.width ?? 40;
+      const src = propSrc ?? customComponentProps.src;
+      const alt = propAlt ?? customComponentProps.alt;
+      const text = propText ?? customComponentProps.text;
+
       const { componentStyle, insideImageStyle, insideIconStyle, insideTextStyle } = useAvatarStyles({
         shape,
         width,

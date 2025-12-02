@@ -8,12 +8,23 @@ import { Box } from "@/components/Box";
 import { Portal } from "@/components/Portal";
 import { Transition, type TransitionSlideProps } from "@/components/Transition";
 import { COMPONENT_CLASSNAME_NAMES, COMPONENT_DISPLAY_NAMES } from "@/constants";
+import useCustomComponentProps from "@/hooks/useCustomComponentProps";
 import { useNotificationContainerStyles, useNotificationManager } from "./Notification.hooks";
 import NotificationItem from "./Notification.Item";
 import { NOTIFICATION_POSITION_MAP, type NotificationProps } from "./Notification.types";
 
 const Notification = React.memo<NotificationProps>(
-  ({ className, style, position = "top-right", maxCount = 5, offset = 0 }) => {
+  ({ className, style, position: propPosition, maxCount: propMaxCount, offset: propOffset }) => {
+    // ========== 获取 customComponentProps ==========
+    const customComponentProps = useCustomComponentProps<NotificationProps>({
+      displayName: COMPONENT_DISPLAY_NAMES.Notification,
+    });
+
+    // ========== 合并 Props（优先级：直接传入 > customComponentProps > 默认值）==========
+    const position = propPosition ?? customComponentProps.position ?? "top-right";
+    const maxCount = propMaxCount ?? customComponentProps.maxCount ?? 5;
+    const offset = propOffset ?? customComponentProps.offset ?? 0;
+
     const { componentStyle } = useNotificationContainerStyles({ position, offset });
     const { notifications, handleClose } = useNotificationManager({ maxCount });
 

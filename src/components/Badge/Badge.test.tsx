@@ -347,15 +347,17 @@ describe("Badge", () => {
     });
 
     it("supports custom styles via Theme.Provider", () => {
-      const customStyles = {
+      const customComponentProps = {
         Badge: {
-          height: "30px",
-          borderRadius: "15px",
+          style: {
+            height: "30px",
+            borderRadius: "15px",
+          },
         },
       };
 
       const customWrapper = ({ children }: { children: React.ReactNode }) => (
-        <Theme.Provider customStyles={customStyles}>{children}</Theme.Provider>
+        <Theme.Provider customComponentProps={customComponentProps}>{children}</Theme.Provider>
       );
 
       const { container } = render(<Badge text="5" />, { wrapper: customWrapper });

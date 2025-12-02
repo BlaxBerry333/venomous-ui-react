@@ -8,6 +8,7 @@ import { Box } from "@/components/Box";
 import { FORM_FIELD_VARIANT_MAP } from "@/components/Form/_/FormFieldBase.types";
 import { Space } from "@/components/Space";
 import { COMPONENT_CLASSNAME_NAMES, COMPONENT_DISPLAY_NAMES } from "@/constants";
+import useCustomComponentProps from "@/hooks/useCustomComponentProps";
 import { useFormFieldTextActions, useFormFieldTextStyles } from "./FormFieldText.hooks";
 import type { FormFieldTextProps, FormFieldTextRef } from "./FormFieldText.types";
 
@@ -28,9 +29,9 @@ const FormFieldText = React.memo(
 
         value,
         onChange,
-        variant = FORM_FIELD_VARIANT_MAP.OUTLINED,
-        error = false,
-        fullWidth = false,
+        variant: propVariant,
+        error: propError,
+        fullWidth: propFullWidth,
         disabled,
         readOnly,
 
@@ -43,6 +44,16 @@ const FormFieldText = React.memo(
       },
       ref,
     ) => {
+      // ========== 获取 customComponentProps ==========
+      const customComponentProps = useCustomComponentProps<FormFieldTextProps>({
+        displayName: COMPONENT_DISPLAY_NAMES.FormFieldText,
+      });
+
+      // ========== 合并 Props（优先级：直接传入 > customComponentProps > 默认值）==========
+      const variant = propVariant ?? customComponentProps.variant ?? FORM_FIELD_VARIANT_MAP.OUTLINED;
+      const error = propError ?? customComponentProps.error ?? false;
+      const fullWidth = propFullWidth ?? customComponentProps.fullWidth ?? false;
+
       const { inputValue, isFocused, isHovered, handleChange, onFocus, onBlur, WrapperElementEvents } =
         useFormFieldTextActions({
           value,

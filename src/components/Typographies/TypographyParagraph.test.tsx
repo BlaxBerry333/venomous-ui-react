@@ -195,15 +195,17 @@ describe("TypographyParagraph", () => {
   });
 
   it("supports custom styles via Theme.Provider", () => {
-    const customStyles = {
+    const customComponentProps = {
       "Typography.Paragraph": {
-        fontSize: "22px",
-        fontWeight: "300",
+        style: {
+          fontSize: "22px",
+          fontWeight: "300",
+        },
       },
     };
 
     const customWrapper = ({ children }: { children: React.ReactNode }) => (
-      <Theme.Provider customStyles={customStyles}>{children}</Theme.Provider>
+      <Theme.Provider customComponentProps={customComponentProps}>{children}</Theme.Provider>
     );
 
     const { container } = render(<TypographyParagraph text="Paragraph" />, { wrapper: customWrapper });

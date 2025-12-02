@@ -7,6 +7,7 @@ import clsx from "clsx";
 import { Box } from "@/components/Box";
 import { BUTTON_VARIANT_MAP, IconButton } from "@/components/Buttons";
 import { COMPONENT_CLASSNAME_NAMES, COMPONENT_DISPLAY_NAMES } from "@/constants";
+import useCustomComponentProps from "@/hooks/useCustomComponentProps";
 import { useLayoutSideActions, useLayoutSideStyles } from "./LayoutSide.hooks";
 import type { LayoutSideProps, LayoutSideRef } from "./LayoutSide.types";
 
@@ -18,10 +19,10 @@ const LayoutSide = React.memo(
         style,
         children,
 
-        expandedWidth = 280,
-        collapsedWidth = 80,
+        expandedWidth: propExpandedWidth,
+        collapsedWidth: propCollapsedWidth,
 
-        collapsible = false,
+        collapsible: propCollapsible,
         collapsed,
         onCollapsedChange,
         renderCollapseButton,
@@ -34,6 +35,16 @@ const LayoutSide = React.memo(
       },
       ref,
     ) => {
+      // ========== 获取 customComponentProps ==========
+      const customComponentProps = useCustomComponentProps<LayoutSideProps>({
+        displayName: COMPONENT_DISPLAY_NAMES.LayoutSide,
+      });
+
+      // ========== 合并 Props（优先级：直接传入 > customComponentProps > 默认值）==========
+      const expandedWidth = propExpandedWidth ?? customComponentProps.expandedWidth ?? 280;
+      const collapsedWidth = propCollapsedWidth ?? customComponentProps.collapsedWidth ?? 80;
+      const collapsible = propCollapsible ?? customComponentProps.collapsible ?? false;
+
       const { collapsed: isCollapsed, toggle } = useLayoutSideActions({
         collapsed,
         onCollapsedChange,

@@ -425,14 +425,16 @@ describe("TableCell", () => {
     });
 
     it("supports custom styles via Theme.Provider", () => {
-      const customStyles = {
+      const customComponentProps = {
         "Table.Cell": {
-          backgroundColor: "rgb(250, 250, 250)",
+          style: {
+            backgroundColor: "rgb(250, 250, 250)",
+          },
         },
       };
 
       const customWrapper = ({ children }: { children: React.ReactNode }) => (
-        <Theme.Provider customStyles={customStyles}>{children}</Theme.Provider>
+        <Theme.Provider customComponentProps={customComponentProps}>{children}</Theme.Provider>
       );
 
       const { container } = render(

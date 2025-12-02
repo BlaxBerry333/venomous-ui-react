@@ -230,14 +230,16 @@ describe("TabsTab", () => {
     });
 
     it("supports custom styles via Theme.Provider", () => {
-      const customStyles = {
+      const customComponentProps = {
         "Tabs.Tab": {
-          backgroundColor: "rgb(245, 245, 245)",
+          style: {
+            backgroundColor: "rgb(245, 245, 245)",
+          },
         },
       };
 
       const customWrapper = ({ children }: { children: React.ReactNode }) => (
-        <Theme.Provider customStyles={customStyles}>{children}</Theme.Provider>
+        <Theme.Provider customComponentProps={customComponentProps}>{children}</Theme.Provider>
       );
 
       const { container } = render(<TabsTab value="tab1" label="Tab 1" />, { wrapper: customWrapper });

@@ -7,6 +7,7 @@ import { Backdrop } from "@/components/Backdrop";
 import { Box } from "@/components/Box";
 import { Portal } from "@/components/Portal";
 import { COMPONENT_CLASSNAME_NAMES, COMPONENT_DISPLAY_NAMES } from "@/constants";
+import useCustomComponentProps from "@/hooks/useCustomComponentProps";
 import { useDrawerActions, useDrawerStyles } from "./Drawer.hooks";
 import { type DrawerProps, type DrawerRef } from "./Drawer.types";
 
@@ -17,15 +18,26 @@ const Drawer = React.memo(
         className,
         style,
         children,
-        as: __as = "div",
-        open = false,
-        placement = "left",
+        as: propAs,
+        open: propOpen,
+        placement: propPlacement,
         onClickBackdrop,
-        autoCloseOnClickBackdrop = true,
+        autoCloseOnClickBackdrop: propAutoClose,
         ...props
       },
       ref,
     ) => {
+      // ========== 获取 customComponentProps ==========
+      const customComponentProps = useCustomComponentProps<DrawerProps>({
+        displayName: COMPONENT_DISPLAY_NAMES.Drawer,
+      });
+
+      // ========== 合并 Props（优先级：直接传入 > customComponentProps > 默认值）==========
+      const __as = propAs ?? customComponentProps.as ?? "div";
+      const open = propOpen ?? customComponentProps.open ?? false;
+      const placement = propPlacement ?? customComponentProps.placement ?? "left";
+      const autoCloseOnClickBackdrop = propAutoClose ?? customComponentProps.autoCloseOnClickBackdrop ?? true;
+
       const { componentStyle } = useDrawerStyles({ open, placement });
       const { handleBackdropClick } = useDrawerActions({
         autoCloseOnClickBackdrop,

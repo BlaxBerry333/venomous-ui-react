@@ -6,12 +6,22 @@ import clsx from "clsx";
 
 import { Box } from "@/components/Box";
 import { COMPONENT_CLASSNAME_NAMES, COMPONENT_DISPLAY_NAMES } from "@/constants";
+import useCustomComponentProps from "@/hooks/useCustomComponentProps";
 import { useProgressBarActions, useProgressBarStyles } from "./ProgressBar.hooks";
 import type { ProgressBarProps, ProgressBarRef } from "./ProgressBar.types";
 
 const ProgressBar = React.memo(
   React.forwardRef<ProgressBarRef, ProgressBarProps>(
-    ({ className, style, value, onChange, animated = false, color, ...props }, ref) => {
+    ({ className, style, value, onChange, animated: propAnimated, color: propColor, ...props }, ref) => {
+      // ========== 获取 customComponentProps ==========
+      const customComponentProps = useCustomComponentProps<ProgressBarProps>({
+        displayName: COMPONENT_DISPLAY_NAMES.ProgressBar,
+      });
+
+      // ========== 合并 Props（优先级：直接传入 > customComponentProps > 默认值）==========
+      const animated = propAnimated ?? customComponentProps.animated ?? false;
+      const color = propColor ?? customComponentProps.color;
+
       const { displayValue } = useProgressBarActions({ value, onChange, animated });
       const { containerStyle, insideBarStyle } = useProgressBarStyles({
         height: 8,

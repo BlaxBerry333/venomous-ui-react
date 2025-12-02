@@ -6,6 +6,7 @@ import clsx from "clsx";
 
 import { Transition } from "@/components/Transition";
 import { COMPONENT_CLASSNAME_NAMES, COMPONENT_DISPLAY_NAMES } from "@/constants";
+import useCustomComponentProps from "@/hooks/useCustomComponentProps";
 import IconButton from "./IconButton.component";
 import { useScrollToTopActions } from "./ScrollToTop.hooks";
 import type { ScrollToTopProps, ScrollToTopRef } from "./ScrollToTop.types";
@@ -18,13 +19,21 @@ const ScrollToTop = React.memo(
         style,
         children,
 
-        distance = 300,
+        distance: propDistance,
 
         onClick,
         ...props
       },
       ref,
     ) => {
+      // ========== 获取 customComponentProps ==========
+      const customComponentProps = useCustomComponentProps<ScrollToTopProps>({
+        displayName: COMPONENT_DISPLAY_NAMES.ScrollToTop,
+      });
+
+      // ========== 合并 Props（优先级：直接传入 > customComponentProps > 默认值）==========
+      const distance = propDistance ?? customComponentProps.distance ?? 300;
+
       // ========== Actions Hook ==========
       const { isVisible, handleClick } = useScrollToTopActions({
         distance,

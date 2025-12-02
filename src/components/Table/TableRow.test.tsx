@@ -158,14 +158,16 @@ describe("TableRow", () => {
   });
 
   it("supports custom styles via Theme.Provider", () => {
-    const customStyles = {
+    const customComponentProps = {
       "Table.Row": {
-        borderBottom: "1px solid rgb(200, 200, 200)",
+        style: {
+          borderBottom: "1px solid rgb(200, 200, 200)",
+        },
       },
     };
 
     const customWrapper = ({ children }: { children: React.ReactNode }) => (
-      <Theme.Provider customStyles={customStyles}>{children}</Theme.Provider>
+      <Theme.Provider customComponentProps={customComponentProps}>{children}</Theme.Provider>
     );
 
     const { container } = render(

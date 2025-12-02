@@ -231,15 +231,17 @@ describe("IconButton", () => {
   });
 
   it("supports custom styles via Theme.Provider", () => {
-    const customStyles = {
+    const customComponentProps = {
       IconButton: {
-        width: "50px",
-        height: "50px",
+        style: {
+          width: "50px",
+          height: "50px",
+        },
       },
     };
 
     const customWrapper = ({ children }: { children: React.ReactNode }) => (
-      <Theme.Provider customStyles={customStyles}>{children}</Theme.Provider>
+      <Theme.Provider customComponentProps={customComponentProps}>{children}</Theme.Provider>
     );
 
     const { container } = render(<IconButton icon="mdi:home" />, { wrapper: customWrapper });

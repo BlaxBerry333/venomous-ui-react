@@ -7,6 +7,7 @@ import clsx from "clsx";
 import { Space } from "@/components/Space";
 import { Typography } from "@/components/Typographies";
 import { COMPONENT_CLASSNAME_NAMES, COMPONENT_DISPLAY_NAMES } from "@/constants";
+import useCustomComponentProps from "@/hooks/useCustomComponentProps";
 import { useTabsTabActions, useTabsTabStyles } from "./TabsTab.hooks";
 import type { TabsTabProps, TabsTabRef } from "./TabsTab.types";
 
@@ -18,9 +19,9 @@ const TabsTab = React.memo(
         style,
         value,
         label,
-        selected = false,
-        disabled = false,
-        color,
+        selected: propSelected,
+        disabled: propDisabled,
+        color: propColor,
         prefix,
         suffix,
         onClick,
@@ -28,14 +29,28 @@ const TabsTab = React.memo(
         onMouseLeave,
         onMouseDown,
         onMouseUp,
-        column = false,
-        spacing = 4,
-        as = "div",
-        maxWidth,
+        column: propColumn,
+        spacing: propSpacing,
+        as: propAs,
+        maxWidth: propMaxWidth,
         ...props
       },
       ref,
     ) => {
+      // ========== 获取 customComponentProps ==========
+      const customComponentProps = useCustomComponentProps<TabsTabProps>({
+        displayName: COMPONENT_DISPLAY_NAMES.TabsTab,
+      });
+
+      // ========== 合并 Props（优先级：直接传入 > customComponentProps > 默认值）==========
+      const selected = propSelected ?? customComponentProps.selected ?? false;
+      const disabled = propDisabled ?? customComponentProps.disabled ?? false;
+      const color = propColor ?? customComponentProps.color;
+      const column = propColumn ?? customComponentProps.column ?? false;
+      const spacing = propSpacing ?? customComponentProps.spacing ?? 4;
+      const as = propAs ?? customComponentProps.as ?? "div";
+      const maxWidth = propMaxWidth ?? customComponentProps.maxWidth;
+
       const { isHovered, isClicked, handleClick, ElementEvents } = useTabsTabActions({
         value,
         selected,

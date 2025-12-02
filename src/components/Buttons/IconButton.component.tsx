@@ -6,6 +6,7 @@ import clsx from "clsx";
 
 import { Icon } from "@/components/Icon";
 import { COMPONENT_CLASSNAME_NAMES, COMPONENT_DISPLAY_NAMES } from "@/constants";
+import useCustomComponentProps from "@/hooks/useCustomComponentProps";
 import { useButtonActions } from "./Button.hooks";
 import { BUTTON_VARIANT_MAP } from "./Button.types";
 import { useIconButtonStyles } from "./IconButton.hooks";
@@ -19,11 +20,11 @@ const IconButton = React.memo(
         style,
         type = "button",
         icon,
-        disabled = false,
-        loading = false,
-        variant = BUTTON_VARIANT_MAP.CONTAINED,
-        circle = false,
-        color,
+        disabled: propDisabled,
+        loading: propLoading,
+        variant: propVariant,
+        circle: propCircle,
+        color: propColor,
         onMouseEnter,
         onMouseLeave,
         onMouseDown,
@@ -32,6 +33,18 @@ const IconButton = React.memo(
       },
       ref,
     ) => {
+      // ========== 获取 customComponentProps ==========
+      const customComponentProps = useCustomComponentProps<IconButtonProps>({
+        displayName: COMPONENT_DISPLAY_NAMES.IconButton,
+      });
+
+      // ========== 合并 Props（优先级：直接传入 > customComponentProps > 默认值）==========
+      const disabled = propDisabled ?? customComponentProps.disabled ?? false;
+      const loading = propLoading ?? customComponentProps.loading ?? false;
+      const variant = propVariant ?? customComponentProps.variant ?? BUTTON_VARIANT_MAP.CONTAINED;
+      const circle = propCircle ?? customComponentProps.circle ?? false;
+      const color = propColor ?? customComponentProps.color;
+
       const { ElementEvents, isHovered, isClicked } = useButtonActions({
         disabled,
         loading,

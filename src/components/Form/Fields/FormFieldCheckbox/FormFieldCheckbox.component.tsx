@@ -6,6 +6,7 @@ import clsx from "clsx";
 
 import { Icon } from "@/components/Icon";
 import { COMPONENT_CLASSNAME_NAMES, COMPONENT_DISPLAY_NAMES } from "@/constants";
+import useCustomComponentProps from "@/hooks/useCustomComponentProps";
 import { useFormFieldCheckboxActions, useFormFieldCheckboxStyles } from "./FormFieldCheckbox.hooks";
 import type { FormFieldCheckboxProps, FormFieldCheckboxRef } from "./FormFieldCheckbox.types";
 
@@ -19,8 +20,8 @@ const FormFieldCheckbox = React.memo(
         checked,
         defaultChecked,
         onChange,
-        disabled = false,
-        error = false,
+        disabled: propDisabled,
+        error: propError,
 
         onMouseEnter,
         onMouseLeave,
@@ -29,6 +30,15 @@ const FormFieldCheckbox = React.memo(
       },
       ref,
     ) => {
+      // ========== 获取 customComponentProps ==========
+      const customComponentProps = useCustomComponentProps<FormFieldCheckboxProps>({
+        displayName: COMPONENT_DISPLAY_NAMES.FormFieldCheckbox,
+      });
+
+      // ========== 合并 Props（优先级：直接传入 > customComponentProps > 默认值）==========
+      const disabled = propDisabled ?? customComponentProps.disabled ?? false;
+      const error = propError ?? customComponentProps.error ?? false;
+
       const {
         internalChecked,
         isFocused,

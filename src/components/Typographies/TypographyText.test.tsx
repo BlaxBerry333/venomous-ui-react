@@ -184,15 +184,17 @@ describe("TypographyText", () => {
   });
 
   it("supports custom styles via Theme.Provider", () => {
-    const customStyles = {
+    const customComponentProps = {
       "Typography.Text": {
-        fontSize: "20px",
-        fontWeight: "300",
+        style: {
+          fontSize: "20px",
+          fontWeight: "300",
+        },
       },
     };
 
     const customWrapper = ({ children }: { children: React.ReactNode }) => (
-      <Theme.Provider customStyles={customStyles}>{children}</Theme.Provider>
+      <Theme.Provider customComponentProps={customComponentProps}>{children}</Theme.Provider>
     );
 
     const { container } = render(<TypographyText text="Text" />, { wrapper: customWrapper });

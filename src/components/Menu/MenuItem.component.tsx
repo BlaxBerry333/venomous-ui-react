@@ -8,6 +8,7 @@ import { useButtonActions } from "@/components/Buttons/Button.hooks";
 import { Space } from "@/components/Space";
 import { Typography } from "@/components/Typographies";
 import { COMPONENT_CLASSNAME_NAMES, COMPONENT_DISPLAY_NAMES } from "@/constants";
+import useCustomComponentProps from "@/hooks/useCustomComponentProps";
 import { useMenuItemStyles } from "./MenuItem.hooks";
 import type { MenuItemProps, MenuItemRef } from "./MenuItem.types";
 
@@ -17,7 +18,7 @@ const MenuItem = React.memo(
       {
         className,
         style,
-        as: __as = "li",
+        as: propAs,
         children,
         StartIcon,
         EndIcon,
@@ -25,9 +26,9 @@ const MenuItem = React.memo(
         LabelProps,
         subLabel,
         SubLabelProps,
-        spacing = 8,
+        spacing: propSpacing,
         selected,
-        disabled = false,
+        disabled: propDisabled,
         onClick,
         onMouseEnter,
         onMouseLeave,
@@ -37,6 +38,16 @@ const MenuItem = React.memo(
       },
       ref,
     ) => {
+      // ========== 获取 customComponentProps ==========
+      const customComponentProps = useCustomComponentProps<MenuItemProps>({
+        displayName: COMPONENT_DISPLAY_NAMES.MenuItem,
+      });
+
+      // ========== 合并 Props（优先级：直接传入 > customComponentProps > 默认值）==========
+      const __as = propAs ?? customComponentProps.as ?? "li";
+      const spacing = propSpacing ?? customComponentProps.spacing ?? 8;
+      const disabled = propDisabled ?? customComponentProps.disabled ?? false;
+
       const clickable: boolean = !!onClick && !disabled;
 
       const { isHovered, isClicked, ElementEvents } = useButtonActions({

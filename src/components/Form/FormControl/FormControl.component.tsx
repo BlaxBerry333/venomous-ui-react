@@ -8,6 +8,7 @@ import { Space } from "@/components/Space";
 import { Typography } from "@/components/Typographies";
 import { COMPONENT_CLASSNAME_NAMES, COMPONENT_DISPLAY_NAMES, SEMANTIC_COLORS } from "@/constants";
 import { useThemeDesigns } from "@/hooks";
+import useCustomComponentProps from "@/hooks/useCustomComponentProps";
 import { FormLabel } from "../FormLabel";
 import type { FormControlProps, FormControlRef } from "./FormControl.types";
 
@@ -20,17 +21,30 @@ const FormControl = React.memo(
         label,
         children,
         message,
-        column = true,
-        spacing = 4,
-        reverse = false,
-        required = false,
-        isError = false,
-        disabled = false,
+        column: propColumn,
+        spacing: propSpacing,
+        reverse: propReverse,
+        required: propRequired,
+        isError: propIsError,
+        disabled: propDisabled,
         onMouseEnter,
         onMouseLeave,
       },
       ref,
     ) => {
+      // ========== 获取 customComponentProps ==========
+      const customComponentProps = useCustomComponentProps<FormControlProps>({
+        displayName: COMPONENT_DISPLAY_NAMES.FormControl,
+      });
+
+      // ========== 合并 Props（优先级：直接传入 > customComponentProps > 默认值）==========
+      const column = propColumn ?? customComponentProps.column ?? true;
+      const spacing = propSpacing ?? customComponentProps.spacing ?? 4;
+      const reverse = propReverse ?? customComponentProps.reverse ?? false;
+      const required = propRequired ?? customComponentProps.required ?? false;
+      const isError = propIsError ?? customComponentProps.isError ?? false;
+      const disabled = propDisabled ?? customComponentProps.disabled ?? false;
+
       const fieldId = React.useId();
       const { TextColors } = useThemeDesigns();
 

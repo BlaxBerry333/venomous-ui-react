@@ -2,7 +2,7 @@ import { ArgTypes, Canvas, Description, Heading, Markdown, Source, Subtitle, Tit
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { Box } from "@/components/Box";
-import { Button } from "@/components/Buttons";
+import { Button, BUTTON_VARIANT_MAP } from "@/components/Buttons";
 import { Space } from "@/components/Space";
 import { Typography } from "@/components/Typographies";
 import { getDarker, getLighter } from "@/tools";
@@ -61,9 +61,9 @@ function App() {
           <Heading>API</Heading>
           <ArgTypes />
 
-          <Heading>{CustomStyleExample.name}</Heading>
-          <Description of={CustomStyleExample} />
-          <Canvas of={CustomStyleExample} />
+          <Heading>{CustomComponentPropsExample.name}</Heading>
+          <Description of={CustomComponentPropsExample} />
+          <Canvas of={CustomComponentPropsExample} />
 
           <Heading>{CustomDesignsExample.name}</Heading>
           <Description of={CustomDesignsExample} />
@@ -88,26 +88,32 @@ export const Playground: Story = {
   },
 };
 
-export const CustomStyleExample: Story = {
-  name: "Custom Style Example",
+export const CustomComponentPropsExample: Story = {
+  name: "Custom Component Props Example",
   tags: ["!dev"],
   parameters: {
     docs: {
       description: {
         story:
-          "可以通过 `props.customStyles` 为指定的组件使用自定义样式去覆盖默认的样式。<br/>如下：内部的 `<Button>`使用了自定义样式，并且可以通过 `style` 属性进一步覆盖样式。",
+          "可以通过 `props.customComponentProps` 全局配置组件的默认 Props。<br/>" +
+          "优先级：**直接传入的 props > customComponentProps > 组件默认值**<br/><br/>" +
+          "如下示例：全局配置 Button 的 `variant` 为 `contained`、`style` 为自定义背景图片。" +
+          '第二个 Button 直接传入 `variant="outlined"` 覆盖了全局配置。',
       },
     },
   },
   args: {
-    customStyles: {
+    customComponentProps: {
       Button: {
-        backgroundImage: "url(https://github.githubassets.com/assets/universe_25_1-cloud-2-47e97c624870.webp)",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-        height: 60,
-        fontSize: 20,
+        variant: BUTTON_VARIANT_MAP.CONTAINED,
+        style: {
+          backgroundImage: "url(https://github.githubassets.com/assets/universe_25_1-cloud-2-47e97c624870.webp)",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          height: 60,
+          fontSize: 20,
+        },
       },
     },
   },
@@ -115,9 +121,10 @@ export const CustomStyleExample: Story = {
     return (
       <Theme.Provider {...args}>
         <Space.Flex spacing={16} style={{ padding: "16px", border: "1px solid grey" }}>
-          <Button text="custom component style" />
+          <Button text="使用全局 customComponentProps" />
           <Button
-            text="custom component style"
+            text="覆盖 variant"
+            variant={BUTTON_VARIANT_MAP.OUTLINED}
             style={{
               fontStyle: "italic",
               borderColor: "pink",

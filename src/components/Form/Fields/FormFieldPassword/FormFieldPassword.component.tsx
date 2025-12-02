@@ -9,6 +9,7 @@ import { FORM_FIELD_VARIANT_MAP } from "@/components/Form/_/FormFieldBase.types"
 import { Icon } from "@/components/Icon";
 import { Space } from "@/components/Space";
 import { COMPONENT_CLASSNAME_NAMES, COMPONENT_DISPLAY_NAMES } from "@/constants";
+import useCustomComponentProps from "@/hooks/useCustomComponentProps";
 import { useFormFieldPasswordActions, useFormFieldPasswordStyles } from "./FormFieldPassword.hooks";
 import type { FormFieldPasswordProps, FormFieldPasswordRef } from "./FormFieldPassword.types";
 
@@ -22,17 +23,17 @@ const FormFieldPassword = React.memo(
         wrapperStyle,
         prefixClassName,
         prefixStyle,
-        prefix = null,
+        prefix: propPrefix,
 
         value,
         onChange,
-        variant = FORM_FIELD_VARIANT_MAP.OUTLINED,
-        error = false,
-        fullWidth = false,
+        variant: propVariant,
+        error: propError,
+        fullWidth: propFullWidth,
         disabled,
         readOnly,
 
-        showVisibilityToggle = true,
+        showVisibilityToggle: propShowVisibilityToggle,
 
         onMouseEnter,
         onMouseLeave,
@@ -43,6 +44,18 @@ const FormFieldPassword = React.memo(
       },
       ref,
     ) => {
+      // ========== 获取 customComponentProps ==========
+      const customComponentProps = useCustomComponentProps<FormFieldPasswordProps>({
+        displayName: COMPONENT_DISPLAY_NAMES.FormFieldPassword,
+      });
+
+      // ========== 合并 Props（优先级：直接传入 > customComponentProps > 默认值）==========
+      const prefix = propPrefix ?? customComponentProps.prefix ?? null;
+      const variant = propVariant ?? customComponentProps.variant ?? FORM_FIELD_VARIANT_MAP.OUTLINED;
+      const error = propError ?? customComponentProps.error ?? false;
+      const fullWidth = propFullWidth ?? customComponentProps.fullWidth ?? false;
+      const showVisibilityToggle = propShowVisibilityToggle ?? customComponentProps.showVisibilityToggle ?? true;
+
       const {
         inputValue,
         isFocused,

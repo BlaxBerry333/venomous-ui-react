@@ -549,16 +549,18 @@ describe("ThemeProvider", () => {
 
   // ========== Custom Styles Tests ==========
   describe("Custom Styles", () => {
-    it("accepts customStyles prop", () => {
-      const customStyles = {
+    it("accepts customComponentProps prop", () => {
+      const customComponentProps = {
         Button: {
-          backgroundColor: "rgb(255, 0, 0)",
-          color: "white",
+          style: {
+            backgroundColor: "rgb(255, 0, 0)",
+            color: "white",
+          },
         },
       };
 
       const { getByText } = render(
-        <ThemeProvider customStyles={customStyles}>
+        <ThemeProvider customComponentProps={customComponentProps}>
           <div>Content</div>
         </ThemeProvider>,
       );
@@ -566,10 +568,12 @@ describe("ThemeProvider", () => {
       expect(getByText("Content")).toBeDefined();
     });
 
-    it("provides customStyles to children via context", () => {
-      const customStyles = {
+    it("provides customComponentProps to children via context", () => {
+      const customComponentProps = {
         Button: {
-          backgroundColor: "rgb(255, 0, 0)",
+          style: {
+            backgroundColor: "rgb(255, 0, 0)",
+          },
         },
       };
 
@@ -579,7 +583,7 @@ describe("ThemeProvider", () => {
       }
 
       const { getByTestId } = render(
-        <ThemeProvider customStyles={customStyles}>
+        <ThemeProvider customComponentProps={customComponentProps}>
           <TestComponentWithStyles />
         </ThemeProvider>,
       );
@@ -674,9 +678,9 @@ describe("ThemeProvider", () => {
       expect(getByText("Content")).toBeDefined();
     });
 
-    it("re-renders when customStyles change", () => {
+    it("re-renders when customComponentProps change", () => {
       const { rerender, getByText } = render(
-        <ThemeProvider customStyles={{ Button: { backgroundColor: "red" } }}>
+        <ThemeProvider customComponentProps={{ Button: { style: { backgroundColor: "red" } } }}>
           <div>Content</div>
         </ThemeProvider>,
       );
@@ -684,7 +688,7 @@ describe("ThemeProvider", () => {
       expect(getByText("Content")).toBeDefined();
 
       rerender(
-        <ThemeProvider customStyles={{ Button: { backgroundColor: "blue" } }}>
+        <ThemeProvider customComponentProps={{ Button: { style: { backgroundColor: "blue" } } }}>
           <div>Content</div>
         </ThemeProvider>,
       );

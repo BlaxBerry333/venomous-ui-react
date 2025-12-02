@@ -12,6 +12,7 @@ import { Popover } from "@/components/Popover";
 import { Space } from "@/components/Space";
 import { Typography } from "@/components/Typographies";
 import { COMPONENT_CLASSNAME_NAMES, COMPONENT_DISPLAY_NAMES } from "@/constants";
+import useCustomComponentProps from "@/hooks/useCustomComponentProps";
 import { useFormFieldSelectDisplay } from "./FormFieldSelect.hooks";
 import type { FormFieldSelectProps, FormFieldSelectRef } from "./FormFieldSelect.types";
 
@@ -26,23 +27,23 @@ const FormFieldSelect = React.memo(
         optionClassName,
         optionStyle,
 
-        multiple = false,
+        multiple: propMultiple,
         value,
         defaultValue,
         onChange,
-        placeholder = "",
+        placeholder: propPlaceholder,
         // eslint-disable-next-line react-x/no-unstable-default-props
         options = [],
-        maxDropdownHeight = 300,
+        maxDropdownHeight: propMaxDropdownHeight,
 
-        variant = FORM_FIELD_VARIANT_MAP.OUTLINED,
-        error = false,
-        fullWidth = false,
-        disabled = false,
+        variant: propVariant,
+        error: propError,
+        fullWidth: propFullWidth,
+        disabled: propDisabled,
 
         name,
         form,
-        required = false,
+        required: propRequired,
 
         onMouseEnter,
         onMouseLeave,
@@ -53,6 +54,21 @@ const FormFieldSelect = React.memo(
       },
       ref,
     ) => {
+      // ========== 获取 customComponentProps ==========
+      const customComponentProps = useCustomComponentProps<FormFieldSelectProps>({
+        displayName: COMPONENT_DISPLAY_NAMES.FormFieldSelect,
+      });
+
+      // ========== 合并 Props（优先级：直接传入 > customComponentProps > 默认值）==========
+      const multiple = propMultiple ?? customComponentProps.multiple ?? false;
+      const placeholder = propPlaceholder ?? customComponentProps.placeholder ?? "";
+      const maxDropdownHeight = propMaxDropdownHeight ?? customComponentProps.maxDropdownHeight ?? 300;
+      const variant = propVariant ?? customComponentProps.variant ?? FORM_FIELD_VARIANT_MAP.OUTLINED;
+      const error = propError ?? customComponentProps.error ?? false;
+      const fullWidth = propFullWidth ?? customComponentProps.fullWidth ?? false;
+      const disabled = propDisabled ?? customComponentProps.disabled ?? false;
+      const required = propRequired ?? customComponentProps.required ?? false;
+
       const [width, setWidth] = React.useState<number | undefined>(undefined);
       const selectRef = React.useRef<HTMLSelectElement>(null);
 

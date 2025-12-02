@@ -5,13 +5,37 @@ import React from "react";
 
 import { Box } from "@/components/Box";
 import { COMPONENT_CLASSNAME_NAMES, COMPONENT_DISPLAY_NAMES } from "@/constants";
+import useCustomComponentProps from "@/hooks/useCustomComponentProps";
 import { Typography } from "../Typographies";
 import { useChipActions, useChipStyles } from "./Chip.hooks";
 import type { ChipProps, ChipRef } from "./Chip.types";
 
 const Chip = React.memo(
   React.forwardRef<ChipRef, ChipProps>(
-    ({ className, style, label, StartIcon, EndIcon, variant, color, onClick, ...props }, ref) => {
+    (
+      {
+        className,
+        style,
+        label: propLabel,
+        StartIcon,
+        EndIcon,
+        variant: propVariant,
+        color: propColor,
+        onClick,
+        ...props
+      },
+      ref,
+    ) => {
+      // ========== 获取 customComponentProps ==========
+      const customComponentProps = useCustomComponentProps<ChipProps>({
+        displayName: COMPONENT_DISPLAY_NAMES.Chip,
+      });
+
+      // ========== 合并 Props（优先级：直接传入 > customComponentProps > 默认值）==========
+      const label = propLabel ?? customComponentProps.label;
+      const variant = propVariant ?? customComponentProps.variant;
+      const color = propColor ?? customComponentProps.color;
+
       const clickable: boolean = !!onClick;
 
       const { isHovered, isClicked, ElementEvents } = useChipActions({

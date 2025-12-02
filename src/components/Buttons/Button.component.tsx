@@ -6,6 +6,7 @@ import clsx from "clsx";
 
 import { Icon } from "@/components/Icon";
 import { COMPONENT_CLASSNAME_NAMES, COMPONENT_DISPLAY_NAMES } from "@/constants";
+import useCustomComponentProps from "@/hooks/useCustomComponentProps";
 import { useButtonActions, useButtonStyles } from "./Button.hooks";
 import { BUTTON_VARIANT_MAP, type ButtonProps, type ButtonRef } from "./Button.types";
 
@@ -17,11 +18,11 @@ const Button = React.memo(
         style,
         type = "button",
         text,
-        disabled = false,
-        loading = false,
-        variant = BUTTON_VARIANT_MAP.CONTAINED,
-        color,
-        fullWidth = false,
+        disabled: propDisabled,
+        loading: propLoading,
+        variant: propVariant,
+        color: propColor,
+        fullWidth: propFullWidth,
         onMouseEnter,
         onMouseLeave,
         onMouseDown,
@@ -30,6 +31,18 @@ const Button = React.memo(
       },
       ref,
     ) => {
+      // ========== 获取 customComponentProps ==========
+      const customComponentProps = useCustomComponentProps<ButtonProps>({
+        displayName: COMPONENT_DISPLAY_NAMES.Button,
+      });
+
+      // ========== 合并 Props（优先级：直接传入 > customComponentProps > 默认值）==========
+      const disabled = propDisabled ?? customComponentProps.disabled ?? false;
+      const loading = propLoading ?? customComponentProps.loading ?? false;
+      const variant = propVariant ?? customComponentProps.variant ?? BUTTON_VARIANT_MAP.CONTAINED;
+      const color = propColor ?? customComponentProps.color;
+      const fullWidth = propFullWidth ?? customComponentProps.fullWidth ?? false;
+
       const { isHovered, isClicked, ElementEvents } = useButtonActions({
         disabled,
         loading,

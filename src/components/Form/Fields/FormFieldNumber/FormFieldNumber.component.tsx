@@ -9,6 +9,7 @@ import { FORM_FIELD_VARIANT_MAP } from "@/components/Form/_/FormFieldBase.types"
 import { Icon } from "@/components/Icon";
 import { Space } from "@/components/Space";
 import { COMPONENT_CLASSNAME_NAMES, COMPONENT_DISPLAY_NAMES } from "@/constants";
+import useCustomComponentProps from "@/hooks/useCustomComponentProps";
 import { useFormFieldNumberActions, useFormFieldNumberStyles } from "./FormFieldNumber.hooks";
 import type { FormFieldNumberProps, FormFieldNumberRef } from "./FormFieldNumber.types";
 
@@ -45,20 +46,20 @@ const FormFieldNumber = React.memo(
         prefixStyle,
         suffixClassName,
         suffixStyle,
-        prefix = null,
-        suffix = null,
+        prefix: propPrefix,
+        suffix: propSuffix,
 
         value,
         onChange,
-        variant = FORM_FIELD_VARIANT_MAP.OUTLINED,
-        error = false,
-        fullWidth = false,
+        variant: propVariant,
+        error: propError,
+        fullWidth: propFullWidth,
         disabled,
         readOnly,
 
         min,
         max,
-        step = 1,
+        step: propStep,
 
         onMouseEnter,
         onMouseLeave,
@@ -69,6 +70,19 @@ const FormFieldNumber = React.memo(
       },
       ref,
     ) => {
+      // ========== 获取 customComponentProps ==========
+      const customComponentProps = useCustomComponentProps<FormFieldNumberProps>({
+        displayName: COMPONENT_DISPLAY_NAMES.FormFieldNumber,
+      });
+
+      // ========== 合并 Props（优先级：直接传入 > customComponentProps > 默认值）==========
+      const prefix = propPrefix ?? customComponentProps.prefix ?? null;
+      const suffix = propSuffix ?? customComponentProps.suffix ?? null;
+      const variant = propVariant ?? customComponentProps.variant ?? FORM_FIELD_VARIANT_MAP.OUTLINED;
+      const error = propError ?? customComponentProps.error ?? false;
+      const fullWidth = propFullWidth ?? customComponentProps.fullWidth ?? false;
+      const step = propStep ?? customComponentProps.step ?? 1;
+
       // 注入全局样式（仅在首次渲染时）
       React.useEffect(() => {
         injectHideSpinnerStyles();

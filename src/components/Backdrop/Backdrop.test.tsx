@@ -191,14 +191,16 @@ describe("Backdrop", () => {
   });
 
   it("supports custom styles via Theme.Provider", () => {
-    const customStyles = {
+    const customComponentProps = {
       Backdrop: {
-        backgroundColor: "rgba(255, 0, 0, 0.5)",
+        style: {
+          backgroundColor: "rgba(255, 0, 0, 0.5)",
+        },
       },
     };
 
     const customWrapper = ({ children }: { children: React.ReactNode }) => (
-      <Theme.Provider customStyles={customStyles}>{children}</Theme.Provider>
+      <Theme.Provider customComponentProps={customComponentProps}>{children}</Theme.Provider>
     );
 
     const { container } = render(<Backdrop open>Content</Backdrop>, { wrapper: customWrapper });

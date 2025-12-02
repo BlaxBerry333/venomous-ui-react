@@ -354,15 +354,17 @@ describe("Drawer", () => {
   });
 
   it("supports custom styles via Theme.Provider", async () => {
-    const customStyles = {
+    const customComponentProps = {
       Drawer: {
-        padding: "40px",
-        backgroundColor: "rgb(240, 240, 240)",
+        style: {
+          padding: "40px",
+          backgroundColor: "rgb(240, 240, 240)",
+        },
       },
     };
 
     const customWrapper = ({ children }: { children: React.ReactNode }) => (
-      <Theme.Provider customStyles={customStyles}>{children}</Theme.Provider>
+      <Theme.Provider customComponentProps={customComponentProps}>{children}</Theme.Provider>
     );
 
     const { baseElement } = render(<Drawer open>Content</Drawer>, { wrapper: customWrapper });

@@ -6,13 +6,22 @@ import clsx from "clsx";
 
 import { Portal } from "@/components/Portal";
 import { COMPONENT_CLASSNAME_NAMES, COMPONENT_DISPLAY_NAMES } from "@/constants";
+import useCustomComponentProps from "@/hooks/useCustomComponentProps";
 import { usePageScrollProgressActions, usePageScrollProgressBarStyles } from "./PageScrollProgressBar.hooks";
 import type { PageScrollProgressBarProps, PageScrollProgressBarRef } from "./PageScrollProgressBar.types";
 import ProgressBar from "./ProgressBar.component";
 
 const PageScrollProgressBar = React.memo(
   React.forwardRef<PageScrollProgressBarRef, PageScrollProgressBarProps>(
-    ({ className, style, color, disablePortal = false, ...props }, ref) => {
+    ({ className, style, color, disablePortal: propDisablePortal, ...props }, ref) => {
+      // ========== 获取 customComponentProps ==========
+      const customComponentProps = useCustomComponentProps<PageScrollProgressBarProps>({
+        displayName: COMPONENT_DISPLAY_NAMES.PageScrollProgressBar,
+      });
+
+      // ========== 合并 Props（优先级：直接传入 > customComponentProps > 默认值）==========
+      const disablePortal = propDisablePortal ?? customComponentProps.disablePortal ?? false;
+
       const { displayValue } = usePageScrollProgressActions();
       const { containerStyle } = usePageScrollProgressBarStyles({ color, disablePortal });
 
