@@ -1,35 +1,38 @@
-import { jsx as f } from "react/jsx-runtime";
-import o from "react";
-import S from "clsx";
-import c from "../Box/Box.component.esm.js";
-import { COMPONENT_DISPLAY_NAMES as N } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
-import { COMPONENT_CLASSNAME_NAMES as x } from "../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";
+import { jsx as u } from "react/jsx-runtime";
+import m from "react";
+import d from "clsx";
+import C from "../Box/Box.component.esm.js";
+import { COMPONENT_DISPLAY_NAMES as t } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
+import { COMPONENT_CLASSNAME_NAMES as _ } from "../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";
 import "../../constants/designs/BACKGROUND_COLORS.esm.js";
 import "../../constants/designs/BORDER_COLORS.esm.js";
 import "../../constants/designs/SHADOW_STYLES.esm.js";
 import "../../constants/designs/TEXT_COLORS.esm.js";
 import "../../constants/designs/THEME_BREAKPOINTS.esm.js";
 import "../Theme/ThemeProvider.context.esm.js";
-import { useSpaceFlexStyles as d } from "./SpaceFlex.hooks.esm.js";
-const n = o.memo(
-  o.forwardRef(
-    ({ className: m, style: r, column: t = !1, spacing: e = 0, as: p = "div", maxWidth: i = void 0, ...a }, s) => {
-      const { componentStyle: l } = d({ column: t, spacing: e });
-      return /* @__PURE__ */ f(
-        c,
+import y from "../../hooks/useCustomComponentProps/index.esm.js";
+import { useSpaceFlexStyles as A } from "./SpaceFlex.hooks.esm.js";
+const E = m.memo(
+  m.forwardRef(
+    ({ className: p, style: s, column: r, spacing: e, as: a, maxWidth: c, ...i }, n) => {
+      const o = y({
+        displayName: t.SpaceFlex
+      }), l = r ?? o.column ?? !1, f = e ?? o.spacing ?? 0, x = a ?? o.as ?? "div", S = c ?? o.maxWidth, { componentStyle: N } = A({ column: l, spacing: f });
+      return /* @__PURE__ */ u(
+        C,
         {
-          as: p,
-          maxWidth: i,
-          ref: s,
-          className: S(x.SpaceFlex, m),
-          style: { ...l, ...r },
-          ...a
+          as: x,
+          maxWidth: S,
+          ref: n,
+          className: d(_.SpaceFlex, p),
+          style: { ...N, ...s },
+          ...i
         }
       );
     }
   )
 );
-n.displayName = N.SpaceFlex;
+E.displayName = t.SpaceFlex;
 export {
-  n as default
+  E as default
 };

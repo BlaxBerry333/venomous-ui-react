@@ -1,74 +1,77 @@
-import { jsx as r, jsxs as c } from "react/jsx-runtime";
-import S from "react";
-import P from "clsx";
-import { COMPONENT_DISPLAY_NAMES as R } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
-import { COMPONENT_CLASSNAME_NAMES as v } from "../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";
+import { jsx as t, jsxs as v } from "react/jsx-runtime";
+import m from "react";
+import B from "clsx";
+import { COMPONENT_DISPLAY_NAMES as b } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
+import { COMPONENT_CLASSNAME_NAMES as H } from "../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";
 import "../../constants/designs/BACKGROUND_COLORS.esm.js";
 import "../../constants/designs/BORDER_COLORS.esm.js";
 import "../../constants/designs/SHADOW_STYLES.esm.js";
 import "../../constants/designs/TEXT_COLORS.esm.js";
 import "../../constants/designs/THEME_BREAKPOINTS.esm.js";
-import B from "./TableBody.component.esm.js";
-import n from "./TableCell.component.esm.js";
-import { TABLE_CELL_ELEMENT_MAP as d } from "./TableCell.types.esm.js";
-import { useTableContainerStyles as H, useTableSorting as j } from "./TableContainer.hooks.esm.js";
-import x from "./TableHead.component.esm.js";
+import j from "../../hooks/useCustomComponentProps/index.esm.js";
+import x from "./TableBody.component.esm.js";
+import d from "./TableCell.component.esm.js";
+import { TABLE_CELL_ELEMENT_MAP as n } from "./TableCell.types.esm.js";
+import { useTableContainerStyles as D, useTableSorting as z } from "./TableContainer.hooks.esm.js";
+import W from "./TableHead.component.esm.js";
 import p from "./TableRow.component.esm.js";
-function D({
-  className: m,
-  style: y,
-  columns: a,
-  rows: b,
+function Y({
+  className: y,
+  style: S,
+  columns: o,
+  rows: f,
   rowKey: i,
-  bordered: o = !1,
-  TableHeadStyle: f,
-  TableBodyStyle: T,
-  TableHeadRowStyle: h,
-  TableBodyRowStyle: C,
-  TableHeadCellStyle: g,
-  TableBodyCellStyle: E,
-  ...N
+  bordered: T,
+  TableHeadStyle: C,
+  TableBodyStyle: h,
+  TableHeadRowStyle: g,
+  TableBodyRowStyle: N,
+  TableHeadCellStyle: E,
+  TableBodyCellStyle: M,
+  ...c
 }) {
-  const { tableWrapperStyle: M, tableStyle: k } = H(), { sortedRows: A, currentSortColumn: s, currentSortOrder: _, handleSortChange: L } = j({
-    rows: b,
-    columns: a
-  }), O = S.useCallback(
+  const k = j({
+    displayName: b.Table
+  }), a = T ?? k.bordered ?? !1, { tableWrapperStyle: A, tableStyle: _ } = D(), { sortedRows: L, currentSortColumn: s, currentSortOrder: O, handleSortChange: P } = z({
+    rows: f,
+    columns: o
+  }), R = m.useCallback(
     (e, l) => String(i === void 0 ? l : typeof i == "function" ? i(e, l) : e[i]),
     [i]
   );
-  return /* @__PURE__ */ r("div", { className: P(v.Table, m), style: { ...M, ...y }, children: /* @__PURE__ */ c("table", { style: { ...k }, ...N, children: [
-    /* @__PURE__ */ r(x, { style: { ...f }, children: /* @__PURE__ */ r(p, { style: { ...h }, children: a.map((e) => /* @__PURE__ */ r(
-      n,
+  return /* @__PURE__ */ t("div", { className: B(H.Table, y), style: { ...A, ...S }, children: /* @__PURE__ */ v("table", { style: { ..._ }, ...c, children: [
+    /* @__PURE__ */ t(W, { style: { ...C }, children: /* @__PURE__ */ t(p, { style: { ...g }, children: o.map((e) => /* @__PURE__ */ t(
+      d,
       {
-        as: d.TH,
+        as: n.TH,
         align: e.align,
         width: e.width,
-        bordered: o,
+        bordered: a,
         sortable: e.sortable,
         sorted: s === e.key,
-        sortOrder: s === e.key ? _ : void 0,
-        onSortChange: () => L(e.key),
-        style: { ...g, ...e.TableHeadCellStyle },
+        sortOrder: s === e.key ? O : void 0,
+        onSortChange: () => P(e.key),
+        style: { ...E, ...e.TableHeadCellStyle },
         children: e.label
       },
       String(e.key)
     )) }) }),
-    /* @__PURE__ */ r(B, { style: { ...T }, children: A.map((e, l) => /* @__PURE__ */ r(p, { style: { ...C }, children: a.map((t) => /* @__PURE__ */ r(
-      n,
+    /* @__PURE__ */ t(x, { style: { ...h }, children: L.map((e, l) => /* @__PURE__ */ t(p, { style: { ...N }, children: o.map((r) => /* @__PURE__ */ t(
+      d,
       {
-        as: d.TD,
-        align: t.align,
-        width: t.width,
-        bordered: o,
-        style: { ...E, ...t.TableBodyCellStyle },
-        children: t.renderCell ? t.renderCell(e, l) : String(e[t.key] ?? "")
+        as: n.TD,
+        align: r.align,
+        width: r.width,
+        bordered: a,
+        style: { ...M, ...r.TableBodyCellStyle },
+        children: r.renderCell ? r.renderCell(e, l) : String(e[r.key] ?? "")
       },
-      String(t.key)
-    )) }, O(e, l))) })
+      String(r.key)
+    )) }, R(e, l))) })
   ] }) });
 }
-const z = S.memo(D);
-z.displayName = R.Table;
+const q = m.memo(Y);
+q.displayName = b.Table;
 export {
-  z as default
+  q as default
 };

@@ -1,0 +1,1 @@
+"use strict";Object.defineProperties(exports,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}});const t=require("react"),o=require("../../components/Theme/ThemeProvider.hooks.js");function u({displayName:r}){const{customComponentProps:e}=o.useThemeProviderContext();return t.useMemo(()=>r===void 0?{}:(e==null?void 0:e[r])||{},[e,r])}exports.default=u;

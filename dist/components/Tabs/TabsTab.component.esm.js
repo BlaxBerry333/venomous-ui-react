@@ -1,82 +1,85 @@
-import { jsxs as L, jsx as o } from "react/jsx-runtime";
-import a from "react";
-import O from "clsx";
-import { Space as _ } from "../Space/index.esm.js";
-import { Typography as g } from "../Typographies/index.esm.js";
-import { COMPONENT_DISPLAY_NAMES as k } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
-import { COMPONENT_CLASSNAME_NAMES as w } from "../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";
+import { jsxs as W, jsx as s } from "react/jsx-runtime";
+import i from "react";
+import j from "clsx";
+import { Space as R } from "../Space/index.esm.js";
+import { Typography as U } from "../Typographies/index.esm.js";
+import { COMPONENT_DISPLAY_NAMES as r } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
+import { COMPONENT_CLASSNAME_NAMES as F } from "../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";
 import "../../constants/designs/BACKGROUND_COLORS.esm.js";
 import "../../constants/designs/BORDER_COLORS.esm.js";
 import "../../constants/designs/SHADOW_STYLES.esm.js";
 import "../../constants/designs/TEXT_COLORS.esm.js";
 import "../../constants/designs/THEME_BREAKPOINTS.esm.js";
-import { useTabsTabActions as D, useTabsTabStyles as I } from "./TabsTab.hooks.esm.js";
-const P = a.memo(
-  a.forwardRef(
+import H from "../../hooks/useCustomComponentProps/index.esm.js";
+import { useTabsTabActions as Y, useTabsTabStyles as q } from "./TabsTab.hooks.esm.js";
+const z = i.memo(
+  i.forwardRef(
     ({
-      className: i,
-      style: l,
-      value: m,
-      label: p,
-      selected: s = !1,
-      disabled: t = !1,
-      color: c,
-      prefix: n,
-      suffix: r,
-      onClick: T,
-      onMouseEnter: f,
-      onMouseLeave: M,
-      onMouseDown: u,
-      onMouseUp: y,
-      column: b = !1,
-      spacing: d = 4,
-      as: E = "div",
-      maxWidth: N,
-      ...S
-    }, x) => {
-      const { isHovered: h, isClicked: A, handleClick: C, ElementEvents: e } = D({
-        value: m,
-        selected: s,
-        disabled: t,
-        onClick: T,
-        onMouseEnter: f,
-        onMouseLeave: M,
-        onMouseDown: u,
-        onMouseUp: y
-      }), { componentStyle: v } = I({
-        color: c,
-        selected: s,
-        disabled: t,
-        column: b,
-        isHovered: h,
-        isClicked: A
+      className: m,
+      style: c,
+      value: p,
+      label: d,
+      selected: u,
+      disabled: T,
+      color: b,
+      prefix: t,
+      suffix: n,
+      onClick: f,
+      onMouseEnter: M,
+      onMouseLeave: y,
+      onMouseDown: x,
+      onMouseUp: N,
+      column: h,
+      spacing: C,
+      as: E,
+      maxWidth: S,
+      ...g
+    }, A) => {
+      const o = H({
+        displayName: r.TabsTab
+      }), a = u ?? o.selected ?? !1, l = T ?? o.disabled ?? !1, v = b ?? o.color, P = h ?? o.column ?? !1, L = C ?? o.spacing ?? 4, O = E ?? o.as ?? "div", _ = S ?? o.maxWidth, { isHovered: k, isClicked: w, handleClick: D, ElementEvents: e } = Y({
+        value: p,
+        selected: a,
+        disabled: l,
+        onClick: f,
+        onMouseEnter: M,
+        onMouseLeave: y,
+        onMouseDown: x,
+        onMouseUp: N
+      }), { componentStyle: I } = q({
+        color: v,
+        selected: a,
+        disabled: l,
+        column: P,
+        isHovered: k,
+        isClicked: w
       });
-      return /* @__PURE__ */ L(
-        _.Flex,
+      return /* @__PURE__ */ W(
+        R.Flex,
         {
-          ref: x,
-          as: E,
-          maxWidth: N,
-          spacing: d,
-          className: O(w.TabsTab, i),
-          style: { ...v, ...l },
-          ...S,
-          onClick: C,
+          ref: A,
+          as: O,
+          maxWidth: _,
+          spacing: L,
+          className: j(F.TabsTab, m),
+          style: { ...I, ...c },
+          ...g,
+          onClick: D,
           onMouseEnter: e.onMouseEnter,
           onMouseLeave: e.onMouseLeave,
           onMouseDown: e.onMouseDown,
           onMouseUp: e.onMouseUp,
           children: [
-            n && /* @__PURE__ */ o("span", { style: { display: "inline-flex", alignItems: "center" }, children: n }),
-            /* @__PURE__ */ o(g.Text, { as: "span", text: p, style: { color: "inherit" } }),
-            r && /* @__PURE__ */ o("span", { style: { display: "inline-flex", alignItems: "center" }, children: r })
+            t && /* @__PURE__ */ s("span", { style: { display: "inline-flex", alignItems: "center" }, children: t }),
+            /* @__PURE__ */ s(U.Text, { as: "span", text: d, style: { color: "inherit" } }),
+            n && /* @__PURE__ */ s("span", { style: { display: "inline-flex", alignItems: "center" }, children: n })
           ]
         }
       );
     }
   )
 );
-P.displayName = k.TabsTab;
+z.displayName = r.TabsTab;
 export {
-  P as default
+  z as default
 };

@@ -1,73 +1,76 @@
-import { jsx as m, jsxs as u } from "react/jsx-runtime";
-import t from "react";
-import y from "clsx";
-import P from "../Icon/Icon.component.esm.js";
-import { COMPONENT_DISPLAY_NAMES as _ } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
-import { COMPONENT_CLASSNAME_NAMES as d } from "../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";
+import { jsx as n, jsxs as x } from "react/jsx-runtime";
+import s from "react";
+import I from "clsx";
+import R from "../Icon/Icon.component.esm.js";
+import { COMPONENT_DISPLAY_NAMES as p } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
+import { COMPONENT_CLASSNAME_NAMES as w } from "../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";
 import "../../constants/designs/BACKGROUND_COLORS.esm.js";
 import "../../constants/designs/BORDER_COLORS.esm.js";
 import "../../constants/designs/SHADOW_STYLES.esm.js";
 import "../../constants/designs/TEXT_COLORS.esm.js";
 import "../../constants/designs/THEME_BREAKPOINTS.esm.js";
 import "../Theme/ThemeProvider.context.esm.js";
-import { useTableCellStyles as x } from "./TableCell.hooks.esm.js";
-import { TABLE_CELL_ELEMENT_MAP as a, TABLE_CELL_ALIGN_MAP as I, TABLE_CELL_SORT_ORDER_MAP as n } from "./TableCell.types.esm.js";
-const R = t.memo(
-  t.forwardRef(
+import D from "../../hooks/useCustomComponentProps/index.esm.js";
+import { useTableCellStyles as O } from "./TableCell.hooks.esm.js";
+import { TABLE_CELL_ELEMENT_MAP as i, TABLE_CELL_ALIGN_MAP as v, TABLE_CELL_SORT_ORDER_MAP as m } from "./TableCell.types.esm.js";
+const B = s.memo(
+  s.forwardRef(
     ({
-      className: p,
+      className: c,
       style: f,
-      as: l = a.TD,
-      align: c = I.LEFT,
-      width: s,
-      bordered: E = !1,
-      sortable: r = !1,
-      sorted: e = !1,
-      sortOrder: i,
-      onSortChange: T,
-      children: C,
-      ...L
-    }, A) => {
-      const { tableCellStyle: N } = x({
-        as: l,
-        align: c,
-        width: s,
-        bordered: E,
+      as: d,
+      align: C,
+      width: E,
+      bordered: T,
+      sortable: _,
+      sorted: L,
+      sortOrder: t,
+      onSortChange: A,
+      children: b,
+      ...N
+    }, u) => {
+      const o = D({
+        displayName: p.TableCell
+      }), e = d ?? o.as ?? i.TD, S = C ?? o.align ?? v.LEFT, y = T ?? o.bordered ?? !1, r = _ ?? o.sortable ?? !1, l = L ?? o.sorted ?? !1, { tableCellStyle: M } = O({
+        as: e,
+        align: S,
+        width: E,
+        bordered: y,
         sortable: r,
-        sorted: e
-      }), S = l, M = t.useCallback(() => {
-        if (l !== a.TH || !r) return null;
-        let o = "solar:sort-vertical-linear";
-        return e && i === n.ASC ? o = "solar:alt-arrow-up-linear" : e && i === n.DESC && (o = "solar:alt-arrow-down-linear"), /* @__PURE__ */ m(
-          P,
+        sorted: l
+      }), P = e, g = s.useCallback(() => {
+        if (e !== i.TH || !r) return null;
+        let a = "solar:sort-vertical-linear";
+        return l && t === m.ASC ? a = "solar:alt-arrow-up-linear" : l && t === m.DESC && (a = "solar:alt-arrow-down-linear"), /* @__PURE__ */ n(
+          R,
           {
-            icon: o,
+            icon: a,
             style: {
               marginLeft: 8,
               verticalAlign: "middle",
-              opacity: e ? 1 : 0.5
+              opacity: l ? 1 : 0.5
             }
           }
         );
-      }, [l, r, e, i]);
-      return /* @__PURE__ */ m(
-        S,
+      }, [e, r, l, t]);
+      return /* @__PURE__ */ n(
+        P,
         {
-          ref: A,
-          className: y(d.TableCell, p),
-          style: { ...N, ...f },
-          onClick: r && l === a.TH ? T : void 0,
-          ...L,
-          children: /* @__PURE__ */ u("span", { style: { display: "inline-flex", alignItems: "center" }, children: [
-            C,
-            M()
+          ref: u,
+          className: I(w.TableCell, c),
+          style: { ...M, ...f },
+          onClick: r && e === i.TH ? A : void 0,
+          ...N,
+          children: /* @__PURE__ */ x("span", { style: { display: "inline-flex", alignItems: "center" }, children: [
+            b,
+            g()
           ] })
         }
       );
     }
   )
 );
-R.displayName = _.TableCell;
+B.displayName = p.TableCell;
 export {
-  R as default
+  B as default
 };

@@ -1,69 +1,72 @@
-import { jsx as T, jsxs as g } from "react/jsx-runtime";
-import f from "react";
+import { jsx as f, jsxs as M } from "react/jsx-runtime";
+import d from "react";
 import o from "clsx";
-import _ from "../Box/Box.component.esm.js";
-import { COMPONENT_DISPLAY_NAMES as c } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
-import { COMPONENT_CLASSNAME_NAMES as t } from "../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";
+import P from "../Box/Box.component.esm.js";
+import { COMPONENT_DISPLAY_NAMES as A } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
+import { COMPONENT_CLASSNAME_NAMES as r } from "../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";
 import "../../constants/designs/BACKGROUND_COLORS.esm.js";
 import "../../constants/designs/BORDER_COLORS.esm.js";
-import { SEMANTIC_COLORS as B } from "../../constants/designs/SEMANTIC_COLORS.esm.js";
+import { SEMANTIC_COLORS as O } from "../../constants/designs/SEMANTIC_COLORS.esm.js";
 import "../../constants/designs/SHADOW_STYLES.esm.js";
 import "../../constants/designs/TEXT_COLORS.esm.js";
 import "../../constants/designs/THEME_BREAKPOINTS.esm.js";
 import "../Theme/ThemeProvider.context.esm.js";
-import { Typography as A } from "../Typographies/index.esm.js";
-import { useBadgeStyles as M } from "./Badge.hooks.esm.js";
-import { BADGE_VARIANT_MAP as E, BADGE_PLACEMENT_MAP as x } from "./Badge.types.esm.js";
-const y = f.memo(
-  f.forwardRef(
+import { Typography as N } from "../Typographies/index.esm.js";
+import R from "../../hooks/useCustomComponentProps/index.esm.js";
+import { useBadgeStyles as u } from "./Badge.hooks.esm.js";
+import { BADGE_VARIANT_MAP as T, BADGE_PLACEMENT_MAP as v } from "./Badge.types.esm.js";
+const I = d.memo(
+  d.forwardRef(
     ({
-      className: r,
+      className: e,
       style: m,
-      children: e,
-      text: i,
-      variant: s = E.TEXT,
-      placement: N = x.TOP_RIGHT,
-      offset: d = 65,
-      color: S = B.ERROR,
+      children: s,
+      text: E,
+      variant: g,
+      placement: x,
+      offset: S,
+      color: B,
       ...a
-    }, p) => {
-      const n = !e, { componentStyle: l } = M({ variant: s, placement: N, offset: d, color: S, isStandalone: n });
-      return n ? /* @__PURE__ */ T(
-        A.Text,
+    }, i) => {
+      const t = R({
+        displayName: A.Badge
+      }), n = E ?? t.text, p = g ?? t.variant ?? T.TEXT, C = x ?? t.placement ?? v.TOP_RIGHT, _ = S ?? t.offset ?? 65, y = B ?? t.color ?? O.ERROR, c = !s, { componentStyle: l } = u({ variant: p, placement: C, offset: _, color: y, isStandalone: c });
+      return c ? /* @__PURE__ */ f(
+        N.Text,
         {
           as: "strong",
-          ref: p,
-          className: o(t.Badge, r),
+          ref: i,
+          className: o(r.Badge, e),
           style: { ...l, ...m },
-          text: String(i || ""),
+          text: String(n || ""),
           ...a
         }
-      ) : /* @__PURE__ */ g(
-        _,
+      ) : /* @__PURE__ */ M(
+        P,
         {
           as: "div",
-          className: o(t.BadgeContainer),
+          className: o(r.BadgeContainer),
           style: { position: "relative", display: "inline-block" },
           children: [
-            /* @__PURE__ */ T(
-              A.Text,
+            /* @__PURE__ */ f(
+              N.Text,
               {
                 as: "strong",
-                ref: p,
-                className: o(t.Badge, r),
+                ref: i,
+                className: o(r.Badge, e),
                 style: { ...l, ...m },
-                text: s === E.TEXT ? String(i || "") : "",
+                text: p === T.TEXT ? String(n || "") : "",
                 ...a
               }
             ),
-            e
+            s
           ]
         }
       );
     }
   )
 );
-y.displayName = c.Badge;
+I.displayName = A.Badge;
 export {
-  y as default
+  I as default
 };

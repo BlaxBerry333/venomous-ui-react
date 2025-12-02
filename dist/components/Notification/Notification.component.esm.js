@@ -1,64 +1,67 @@
-import { jsx as o } from "react/jsx-runtime";
-import n from "react";
-import p from "clsx";
-import N from "../Box/Box.component.esm.js";
-import { COMPONENT_DISPLAY_NAMES as O } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
-import { COMPONENT_CLASSNAME_NAMES as d } from "../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";
+import { jsx as t } from "react/jsx-runtime";
+import m from "react";
+import C from "clsx";
+import _ from "../Box/Box.component.esm.js";
+import { COMPONENT_DISPLAY_NAMES as a } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
+import { COMPONENT_CLASSNAME_NAMES as P } from "../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";
 import "../../constants/designs/BACKGROUND_COLORS.esm.js";
 import "../../constants/designs/BORDER_COLORS.esm.js";
 import "../../constants/designs/SHADOW_STYLES.esm.js";
 import "../../constants/designs/TEXT_COLORS.esm.js";
 import "../../constants/designs/THEME_BREAKPOINTS.esm.js";
 import "../Theme/ThemeProvider.context.esm.js";
-import u from "../Portal/Portal.component.esm.js";
-import { Transition as _ } from "../Transition/index.esm.js";
-import { useNotificationContainerStyles as E, useNotificationManager as M } from "./Notification.hooks.esm.js";
-import P from "./Notification.Item.esm.js";
-import { NOTIFICATION_POSITION_MAP as t } from "./Notification.types.esm.js";
-const S = n.memo(
-  ({ className: i, style: a, position: r = "top-right", maxCount: s = 5, offset: c = 0 }) => {
-    const { componentStyle: l } = E({ position: r, offset: c }), { notifications: m, handleClose: f } = M({ maxCount: s }), T = n.useMemo(
-      () => C(r),
-      [r]
+import E from "../Portal/Portal.component.esm.js";
+import { Transition as M } from "../Transition/index.esm.js";
+import S from "../../hooks/useCustomComponentProps/index.esm.js";
+import { useNotificationContainerStyles as I, useNotificationManager as h } from "./Notification.hooks.esm.js";
+import x from "./Notification.Item.esm.js";
+import { NOTIFICATION_POSITION_MAP as o } from "./Notification.types.esm.js";
+const A = m.memo(
+  ({ className: i, style: c, position: p, maxCount: f, offset: l }) => {
+    const r = S({
+      displayName: a.Notification
+    }), e = p ?? r.position ?? "top-right", N = f ?? r.maxCount ?? 5, T = l ?? r.offset ?? 0, { componentStyle: u } = I({ position: e, offset: T }), { notifications: s, handleClose: d } = h({ maxCount: N }), O = m.useMemo(
+      () => y(e),
+      [e]
     );
-    return m.length === 0 ? null : /* @__PURE__ */ o(u, { children: /* @__PURE__ */ o(
-      N,
+    return s.length === 0 ? null : /* @__PURE__ */ t(E, { children: /* @__PURE__ */ t(
+      _,
       {
         as: "div",
-        className: p(d.Notification, i),
-        style: { ...l, ...a },
-        children: m.map((e) => /* @__PURE__ */ o(
-          _.Slide,
+        className: C(P.Notification, i),
+        style: { ...u, ...c },
+        children: s.map((n) => /* @__PURE__ */ t(
+          M.Slide,
           {
-            visible: e.visible,
-            direction: T,
+            visible: n.visible,
+            direction: O,
             duration: 250,
             distance: 20,
             style: { marginBottom: 12 },
-            children: /* @__PURE__ */ o(P, { ...e, onClose: f })
+            children: /* @__PURE__ */ t(x, { ...n, onClose: d })
           },
-          e.id
+          n.id
         ))
       }
     ) });
   }
 );
-S.displayName = O.Notification;
-function C(i) {
+A.displayName = a.Notification;
+function y(i) {
   switch (i) {
-    case t.TOP_LEFT:
-    case t.BOTTOM_LEFT:
+    case o.TOP_LEFT:
+    case o.BOTTOM_LEFT:
       return "left";
-    case t.TOP_CENTER:
+    case o.TOP_CENTER:
       return "down";
-    case t.BOTTOM_CENTER:
+    case o.BOTTOM_CENTER:
       return "up";
-    case t.TOP_RIGHT:
-    case t.BOTTOM_RIGHT:
+    case o.TOP_RIGHT:
+    case o.BOTTOM_RIGHT:
     default:
       return "right";
   }
 }
 export {
-  S as default
+  A as default
 };

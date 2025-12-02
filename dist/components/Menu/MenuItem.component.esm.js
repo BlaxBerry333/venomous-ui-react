@@ -1,73 +1,76 @@
-import { jsx as o, jsxs as f, Fragment as F } from "react/jsx-runtime";
+import { jsx as i, jsxs as l, Fragment as H } from "react/jsx-runtime";
 import n from "react";
-import R from "clsx";
-import { useButtonActions as z } from "../Buttons/Button.hooks.esm.js";
-import { Space as B } from "../Space/index.esm.js";
-import { Typography as l } from "../Typographies/index.esm.js";
-import { COMPONENT_DISPLAY_NAMES as D } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
-import { COMPONENT_CLASSNAME_NAMES as H } from "../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";
+import Y from "clsx";
+import { useButtonActions as q } from "../Buttons/Button.hooks.esm.js";
+import { Space as G } from "../Space/index.esm.js";
+import { Typography as p } from "../Typographies/index.esm.js";
+import { COMPONENT_DISPLAY_NAMES as f } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
+import { COMPONENT_CLASSNAME_NAMES as J } from "../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";
 import "../../constants/designs/BACKGROUND_COLORS.esm.js";
 import "../../constants/designs/BORDER_COLORS.esm.js";
 import "../../constants/designs/SHADOW_STYLES.esm.js";
 import "../../constants/designs/TEXT_COLORS.esm.js";
 import "../../constants/designs/THEME_BREAKPOINTS.esm.js";
-import { useMenuItemStyles as Y } from "./MenuItem.hooks.esm.js";
-const q = n.memo(
+import K from "../../hooks/useCustomComponentProps/index.esm.js";
+import { useMenuItemStyles as Q } from "./MenuItem.hooks.esm.js";
+const U = n.memo(
   n.forwardRef(
     ({
-      className: h,
-      style: p,
-      as: y = "li",
-      children: a,
-      StartIcon: x,
-      EndIcon: N,
+      className: d,
+      style: u,
+      as: h,
+      children: y,
+      StartIcon: N,
+      EndIcon: x,
       label: c,
       LabelProps: e,
-      subLabel: s,
-      SubLabelProps: r,
-      spacing: u = 8,
-      selected: M,
-      disabled: m = !1,
+      subLabel: a,
+      SubLabelProps: m,
+      spacing: M,
+      selected: g,
+      disabled: A,
       onClick: t,
-      onMouseEnter: A,
-      onMouseLeave: E,
-      onMouseDown: d,
-      onMouseUp: g,
-      ...I
-    }, O) => {
-      const i = !!t && !m, { isHovered: S, isClicked: T, ElementEvents: _ } = z({
-        disabled: m,
-        onMouseEnter: A,
-        onMouseLeave: E,
-        onMouseDown: d,
-        onMouseUp: g
-      }), { componentStyle: j } = Y({
-        spacing: u,
-        selected: M,
-        disabled: m,
-        clickable: i,
-        isHovered: S,
-        isClicked: T
-      }), v = y, w = n.useCallback(
-        (C) => {
-          i && (t == null || t(C));
+      onMouseEnter: E,
+      onMouseLeave: I,
+      onMouseDown: _,
+      onMouseUp: C,
+      ...O
+    }, S) => {
+      const o = K({
+        displayName: f.MenuItem
+      }), T = h ?? o.as ?? "li", j = M ?? o.spacing ?? 8, r = A ?? o.disabled ?? !1, s = !!t && !r, { isHovered: v, isClicked: w, ElementEvents: F } = q({
+        disabled: r,
+        onMouseEnter: E,
+        onMouseLeave: I,
+        onMouseDown: _,
+        onMouseUp: C
+      }), { componentStyle: R } = Q({
+        spacing: j,
+        selected: g,
+        disabled: r,
+        clickable: s,
+        isHovered: v,
+        isClicked: w
+      }), z = T, B = n.useCallback(
+        (D) => {
+          s && (t == null || t(D));
         },
-        [i, t]
+        [s, t]
       );
-      return /* @__PURE__ */ o(
-        v,
+      return /* @__PURE__ */ i(
+        z,
         {
-          ref: O,
-          className: R(H.MenuItem, h),
-          style: { ...j, ...p },
-          onClick: w,
-          ...I,
-          ..._,
-          children: a || /* @__PURE__ */ f(F, { children: [
-            x,
-            /* @__PURE__ */ f(B.Flex, { column: !0, style: { flex: 1 }, children: [
-              c && /* @__PURE__ */ o(
-                l.Paragraph,
+          ref: S,
+          className: Y(J.MenuItem, d),
+          style: { ...R, ...u },
+          onClick: B,
+          ...O,
+          ...F,
+          children: y || /* @__PURE__ */ l(H, { children: [
+            N,
+            /* @__PURE__ */ l(G.Flex, { column: !0, style: { flex: 1 }, children: [
+              c && /* @__PURE__ */ i(
+                p.Paragraph,
                 {
                   text: c,
                   weight: "bold",
@@ -75,24 +78,24 @@ const q = n.memo(
                   style: { flex: 1, color: "inherit", userSelect: "inherit", ...e == null ? void 0 : e.style }
                 }
               ),
-              s && /* @__PURE__ */ o(
-                l.Paragraph,
+              a && /* @__PURE__ */ i(
+                p.Paragraph,
                 {
-                  text: s,
+                  text: a,
                   size: "CAPTION",
-                  ...r,
-                  style: { flex: 1, color: "inherit", userSelect: "inherit", ...r == null ? void 0 : r.style }
+                  ...m,
+                  style: { flex: 1, color: "inherit", userSelect: "inherit", ...m == null ? void 0 : m.style }
                 }
               )
             ] }),
-            N
+            x
           ] })
         }
       );
     }
   )
 );
-q.displayName = D.MenuItem;
+U.displayName = f.MenuItem;
 export {
-  q as default
+  U as default
 };

@@ -1,8 +1,8 @@
-import { jsx as n } from "react/jsx-runtime";
+import { jsx as N } from "react/jsx-runtime";
 import o from "react";
-import f from "clsx";
-import N from "../Box/Box.component.esm.js";
-import { COMPONENT_DISPLAY_NAMES as d } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
+import c from "clsx";
+import u from "../Box/Box.component.esm.js";
+import { COMPONENT_DISPLAY_NAMES as t } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
 import { COMPONENT_CLASSNAME_NAMES as l } from "../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";
 import "../../constants/designs/BACKGROUND_COLORS.esm.js";
 import "../../constants/designs/BORDER_COLORS.esm.js";
@@ -10,29 +10,32 @@ import "../../constants/designs/SHADOW_STYLES.esm.js";
 import "../../constants/designs/TEXT_COLORS.esm.js";
 import "../../constants/designs/THEME_BREAKPOINTS.esm.js";
 import "../Theme/ThemeProvider.context.esm.js";
-import { useTransitionFadeStyles as S } from "./Transition.Fade.hooks.esm.js";
-const c = o.memo(
+import S from "../../hooks/useCustomComponentProps/index.esm.js";
+import { useTransitionFadeStyles as T } from "./Transition.Fade.hooks.esm.js";
+const C = o.memo(
   o.forwardRef(
-    ({ className: r, style: t, children: m, visible: i, duration: a = 200, onFinish: e }, p) => {
-      const { componentStyle: s } = S({
-        visible: i,
-        duration: a,
-        onFinish: e
+    ({ className: r, style: m, children: i, visible: s, duration: a, onFinish: n }, e) => {
+      const p = S({
+        displayName: t.TransitionFade
+      }), d = a ?? p.duration ?? 200, { componentStyle: f } = T({
+        visible: s,
+        duration: d,
+        onFinish: n
       });
-      return /* @__PURE__ */ n(
-        N,
+      return /* @__PURE__ */ N(
+        u,
         {
           as: "div",
-          ref: p,
-          className: f(l.TransitionFade, r),
-          style: { ...s, ...t },
-          children: m
+          ref: e,
+          className: c(l.TransitionFade, r),
+          style: { ...f, ...m },
+          children: i
         }
       );
     }
   )
 );
-c.displayName = d.TransitionFade;
+C.displayName = t.TransitionFade;
 export {
-  c as default
+  C as default
 };

@@ -1,69 +1,72 @@
-import { jsx as M, jsxs as n, Fragment as p } from "react/jsx-runtime";
-import o from "react";
-import h from "clsx";
-import { Space as E } from "../../Space/index.esm.js";
-import { Typography as R } from "../../Typographies/index.esm.js";
-import { COMPONENT_DISPLAY_NAMES as _ } from "../../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
-import { COMPONENT_CLASSNAME_NAMES as I } from "../../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";
+import { jsx as E, jsxs as i, Fragment as a } from "react/jsx-runtime";
+import r from "react";
+import I from "clsx";
+import { Space as L } from "../../Space/index.esm.js";
+import { Typography as q } from "../../Typographies/index.esm.js";
+import { COMPONENT_DISPLAY_NAMES as N } from "../../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
+import { COMPONENT_CLASSNAME_NAMES as v } from "../../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";
 import "../../../constants/designs/BACKGROUND_COLORS.esm.js";
 import "../../../constants/designs/BORDER_COLORS.esm.js";
-import { SEMANTIC_COLORS as L } from "../../../constants/designs/SEMANTIC_COLORS.esm.js";
+import { SEMANTIC_COLORS as j } from "../../../constants/designs/SEMANTIC_COLORS.esm.js";
 import "../../../constants/designs/SHADOW_STYLES.esm.js";
 import "../../../constants/designs/TEXT_COLORS.esm.js";
 import "../../../constants/designs/THEME_BREAKPOINTS.esm.js";
-import g from "../../../hooks/useThemeDesigns/index.esm.js";
+import D from "../../../hooks/useThemeDesigns/index.esm.js";
 import "../../Theme/ThemeProvider.context.esm.js";
-import y from "../FormLabel/FormLabel.component.esm.js";
-const P = o.memo(
-  o.forwardRef(
+import w from "../../../hooks/useCustomComponentProps/index.esm.js";
+import Y from "../FormLabel/FormLabel.component.esm.js";
+const k = r.memo(
+  r.forwardRef(
     ({
-      className: N,
+      className: M,
       style: x,
-      label: s,
-      children: a,
-      message: c,
-      column: f = !0,
-      spacing: F = 4,
-      reverse: u = !1,
-      required: C = !1,
-      isError: r = !1,
-      disabled: t = !1,
-      onMouseEnter: S,
-      onMouseLeave: d
-    }, A) => {
-      const e = o.useId(), { TextColors: i } = g(), O = o.useMemo(() => t ? i.disabled : r ? L.ERROR : i[2], [t, r, i]), m = o.useMemo(() => a(e), [a, e]), l = o.useMemo(
-        () => s ? /* @__PURE__ */ M(y, { text: s, required: C, disabled: t, isError: r, htmlFor: e }) : null,
-        [s, C, t, r, e]
-      ), T = o.useMemo(() => f ? /* @__PURE__ */ n(p, { children: [
-        l,
+      label: l,
+      children: u,
+      message: d,
+      column: F,
+      spacing: S,
+      reverse: A,
+      required: O,
+      isError: T,
+      disabled: g,
+      onMouseEnter: h,
+      onMouseLeave: R
+    }, b) => {
+      const o = w({
+        displayName: N.FormControl
+      }), p = F ?? o.column ?? !0, P = S ?? o.spacing ?? 4, f = A ?? o.reverse ?? !1, C = O ?? o.required ?? !1, e = T ?? o.isError ?? !1, t = g ?? o.disabled ?? !1, s = r.useId(), { TextColors: c } = D(), _ = r.useMemo(() => t ? c.disabled : e ? j.ERROR : c[2], [t, e, c]), m = r.useMemo(() => u(s), [u, s]), n = r.useMemo(
+        () => l ? /* @__PURE__ */ E(Y, { text: l, required: C, disabled: t, isError: e, htmlFor: s }) : null,
+        [l, C, t, e, s]
+      ), y = r.useMemo(() => p ? /* @__PURE__ */ i(a, { children: [
+        n,
         m
-      ] }) : u ? /* @__PURE__ */ n(p, { children: [
+      ] }) : f ? /* @__PURE__ */ i(a, { children: [
         m,
-        l
-      ] }) : /* @__PURE__ */ n(p, { children: [
-        l,
+        n
+      ] }) : /* @__PURE__ */ i(a, { children: [
+        n,
         m
-      ] }), [f, u, l, m]);
-      return /* @__PURE__ */ n(
-        E.Flex,
+      ] }), [p, f, n, m]);
+      return /* @__PURE__ */ i(
+        L.Flex,
         {
-          ref: A,
-          column: f,
-          spacing: F,
-          className: h(I.FormControl, N),
+          ref: b,
+          column: p,
+          spacing: P,
+          className: I(v.FormControl, M),
           style: x,
-          onMouseEnter: S,
-          onMouseLeave: d,
+          onMouseEnter: h,
+          onMouseLeave: R,
           children: [
-            T,
-            c && /* @__PURE__ */ M(R.Text, { text: c, as: "small", color: O })
+            y,
+            d && /* @__PURE__ */ E(q.Text, { text: d, as: "small", color: _ })
           ]
         }
       );
     }
   )
 );
-P.displayName = _.FormControl;
+k.displayName = N.FormControl;
 export {
-  P as default
+  k as default
 };

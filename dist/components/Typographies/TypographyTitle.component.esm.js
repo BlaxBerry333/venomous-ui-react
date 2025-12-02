@@ -1,32 +1,35 @@
-import { jsx as l } from "react/jsx-runtime";
-import r from "react";
-import y from "clsx";
-import { COMPONENT_DISPLAY_NAMES as T } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
-import { COMPONENT_CLASSNAME_NAMES as f } from "../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";
+import { jsx as T } from "react/jsx-runtime";
+import t from "react";
+import f from "clsx";
+import { COMPONENT_DISPLAY_NAMES as p } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
+import { COMPONENT_CLASSNAME_NAMES as N } from "../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";
 import "../../constants/designs/BACKGROUND_COLORS.esm.js";
 import "../../constants/designs/BORDER_COLORS.esm.js";
 import "../../constants/designs/SHADOW_STYLES.esm.js";
 import "../../constants/designs/TEXT_COLORS.esm.js";
 import "../../constants/designs/THEME_BREAKPOINTS.esm.js";
-import { useTypographyTitleStyles as N } from "./TypographyTitle.hooks.esm.js";
-const c = r.memo(
-  r.forwardRef(
-    ({ className: t, style: m, as: o = "h3", text: p, color: e, ...i }, a) => {
-      const { componentStyle: s } = N({ as: o, color: e });
-      return /* @__PURE__ */ l(
-        o,
+import g from "../../hooks/useCustomComponentProps/index.esm.js";
+import { useTypographyTitleStyles as h } from "./TypographyTitle.hooks.esm.js";
+const S = t.memo(
+  t.forwardRef(
+    ({ className: m, style: s, as: e, text: a, color: i, ...l }, c) => {
+      const o = g({
+        displayName: p.TypographyTitle
+      }), r = e ?? o.as ?? "h3", y = i ?? o.color, { componentStyle: n } = h({ as: r, color: y });
+      return /* @__PURE__ */ T(
+        r,
         {
-          ref: a,
-          className: y(f.TypographyTitle, t),
-          style: { ...s, ...m },
-          ...i,
-          children: p
+          ref: c,
+          className: f(N.TypographyTitle, m),
+          style: { ...n, ...s },
+          ...l,
+          children: a
         }
       );
     }
   )
 );
-c.displayName = T.TypographyTitle;
+S.displayName = p.TypographyTitle;
 export {
-  c as default
+  S as default
 };

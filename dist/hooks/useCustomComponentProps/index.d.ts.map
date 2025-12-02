@@ -1,0 +1,1 @@
+{"version":3,"file":"index.d.ts","sourceRoot":"","sources":["../../../src/hooks/useCustomComponentProps/index.ts"],"names":[],"mappings":"AAKA,OAAO,KAAK,EAAE,qBAAqB,EAAE,MAAM,aAAa,CAAC;AAEzD;;;;;GAKG;AAEH,MAAM,CAAC,OAAO,UAAU,uBAAuB,CAAC,CAAC,GAAG,MAAM,CAAC,MAAM,EAAE,GAAG,CAAC,EAAE,EACvE,WAAW,GACZ,EAAE;IACD,WAAW,EAAE,SAAS,GAAG,qBAAqB,CAAC;CAChD,GAAG,OAAO,CAAC,CAAC,CAAC,CASb"}

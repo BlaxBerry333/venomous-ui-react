@@ -1,1 +1,1 @@
-{"version":3,"file":"Dialog.component.d.ts","sourceRoot":"","sources":["../../../src/components/Dialogs/Dialog.component.tsx"],"names":[],"mappings":"AAEA,OAAO,KAAK,MAAM,OAAO,CAAC;AAU1B,OAAO,KAAK,EAAE,WAAW,EAAa,MAAM,gBAAgB,CAAC;AAE7D,QAAA,MAAM,MAAM,kGAuCX,CAAC;AAGF,eAAe,MAAM,CAAC"}
+{"version":3,"file":"Dialog.component.d.ts","sourceRoot":"","sources":["../../../src/components/Dialogs/Dialog.component.tsx"],"names":[],"mappings":"AAEA,OAAO,KAAK,MAAM,OAAO,CAAC;AAW1B,OAAO,KAAK,EAAE,WAAW,EAAa,MAAM,gBAAgB,CAAC;AAE7D,QAAA,MAAM,MAAM,kGAkDX,CAAC;AAGF,eAAe,MAAM,CAAC"}

@@ -1,108 +1,111 @@
-import { jsxs as H, jsx as m } from "react/jsx-runtime";
-import p from "react";
-import e from "clsx";
-import n from "../../../Box/Box.component.esm.js";
-import { COMPONENT_DISPLAY_NAMES as U } from "../../../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
-import { COMPONENT_CLASSNAME_NAMES as t } from "../../../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";
+import { jsxs as z, jsx as m } from "react/jsx-runtime";
+import n from "react";
+import t from "clsx";
+import a from "../../../Box/Box.component.esm.js";
+import { COMPONENT_DISPLAY_NAMES as u } from "../../../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
+import { COMPONENT_CLASSNAME_NAMES as e } from "../../../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";
 import "../../../../constants/designs/BACKGROUND_COLORS.esm.js";
 import "../../../../constants/designs/BORDER_COLORS.esm.js";
 import "../../../../constants/designs/SHADOW_STYLES.esm.js";
 import "../../../../constants/designs/TEXT_COLORS.esm.js";
 import "../../../../constants/designs/THEME_BREAKPOINTS.esm.js";
 import "../../../Theme/ThemeProvider.context.esm.js";
-import { FORM_FIELD_VARIANT_MAP as Y } from "../../_/FormFieldBase.types.esm.js";
-import { Space as k } from "../../../Space/index.esm.js";
-import { useFormFieldTextActions as q, useFormFieldTextStyles as z } from "./FormFieldText.hooks.esm.js";
-const G = p.memo(
-  p.forwardRef(
+import { FORM_FIELD_VARIANT_MAP as G } from "../../_/FormFieldBase.types.esm.js";
+import { Space as J } from "../../../Space/index.esm.js";
+import K from "../../../../hooks/useCustomComponentProps/index.esm.js";
+import { useFormFieldTextActions as Q, useFormFieldTextStyles as X } from "./FormFieldText.hooks.esm.js";
+const Z = n.memo(
+  n.forwardRef(
     ({
-      className: a,
-      style: c,
-      wrapperClassName: u,
-      wrapperStyle: d,
-      prefixClassName: F,
-      prefixStyle: f,
-      suffixClassName: x,
-      suffixStyle: S,
-      prefix: i = null,
-      suffix: l = null,
-      value: s,
-      onChange: N,
-      variant: y = Y.OUTLINED,
-      error: T = !1,
-      fullWidth: A = !1,
+      className: c,
+      style: d,
+      wrapperClassName: f,
+      wrapperStyle: F,
+      prefixClassName: x,
+      prefixStyle: S,
+      suffixClassName: N,
+      suffixStyle: y,
+      prefix: l = null,
+      suffix: s = null,
+      value: p,
+      onChange: T,
+      variant: C,
+      error: h,
+      fullWidth: v,
       disabled: o,
       readOnly: r,
-      onMouseEnter: E,
-      onMouseLeave: C,
-      onMouseDown: M,
-      onMouseUp: P,
+      onMouseEnter: A,
+      onMouseLeave: E,
+      onMouseDown: P,
+      onMouseUp: M,
       ..._
-    }, h) => {
-      const { inputValue: v, isFocused: I, isHovered: L, handleChange: O, onFocus: R, onBlur: g, WrapperElementEvents: D } = q({
-        value: s,
-        onChange: N,
+    }, I) => {
+      const i = K({
+        displayName: u.FormFieldText
+      }), W = C ?? i.variant ?? G.OUTLINED, L = h ?? i.error ?? !1, O = v ?? i.fullWidth ?? !1, { inputValue: R, isFocused: g, isHovered: D, handleChange: V, onFocus: j, onBlur: w, WrapperElementEvents: B } = Q({
+        value: p,
+        onChange: T,
         disabled: o,
         readOnly: r,
-        onMouseEnter: E,
-        onMouseLeave: C,
-        onMouseDown: M,
-        onMouseUp: P
+        onMouseEnter: A,
+        onMouseLeave: E,
+        onMouseDown: P,
+        onMouseUp: M
       }), {
-        wrapperStyle: V,
-        inputStyle: j,
-        prefixStyle: w,
-        suffixStyle: B
-      } = z({
-        variant: y,
-        fullWidth: A,
-        error: T,
+        wrapperStyle: H,
+        inputStyle: U,
+        prefixStyle: Y,
+        suffixStyle: k
+      } = X({
+        variant: W,
+        fullWidth: O,
+        error: L,
         disabled: o,
         readOnly: r,
-        isFocused: I,
-        isHovered: L
-      }), W = s !== void 0 ? { value: v } : {};
-      return /* @__PURE__ */ H(
-        k.Flex,
+        isFocused: g,
+        isHovered: D
+      }), q = p !== void 0 ? { value: R } : {};
+      return /* @__PURE__ */ z(
+        J.Flex,
         {
           as: "div",
           spacing: 8,
-          className: e(t.FormFieldText, u),
-          style: { ...V, ...d },
-          ...D,
+          className: t(e.FormFieldText, f),
+          style: { ...H, ...F },
+          ...B,
           children: [
-            i && /* @__PURE__ */ m(
-              n,
+            l && /* @__PURE__ */ m(
+              a,
               {
                 as: "div",
-                className: e(t.FormFieldTextPrefix, F),
-                style: { ...w, ...f },
-                children: i
+                className: t(e.FormFieldTextPrefix, x),
+                style: { ...Y, ...S },
+                children: l
               }
             ),
             /* @__PURE__ */ m(
               "input",
               {
                 type: "text",
-                ref: h,
-                className: e(t.FormFieldTextInput, a),
-                style: { ...j, ...c },
-                ...W,
-                onChange: O,
-                onFocus: R,
-                onBlur: g,
+                ref: I,
+                className: t(e.FormFieldTextInput, c),
+                style: { ...U, ...d },
+                ...q,
+                onChange: V,
+                onFocus: j,
+                onBlur: w,
                 disabled: o,
                 readOnly: r,
                 ..._
               }
             ),
-            l && /* @__PURE__ */ m(
-              n,
+            s && /* @__PURE__ */ m(
+              a,
               {
                 as: "div",
-                className: e(t.FormFieldTextSuffix, x),
-                style: { ...B, ...S },
-                children: l
+                className: t(e.FormFieldTextSuffix, N),
+                style: { ...k, ...y },
+                children: s
               }
             )
           ]
@@ -111,7 +114,7 @@ const G = p.memo(
     }
   )
 );
-G.displayName = U.FormFieldText;
+Z.displayName = u.FormFieldText;
 export {
-  G as default
+  Z as default
 };

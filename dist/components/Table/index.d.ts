@@ -1,5 +1,5 @@
 export declare const Table: {
-    Container: <T>({ className, style, columns, rows, rowKey, bordered, TableHeadStyle, TableBodyStyle, TableHeadRowStyle, TableBodyRowStyle, TableHeadCellStyle, TableBodyCellStyle, ...props }: import("./TableContainer.types").TableContainerProps<T>) => import("react/jsx-runtime").JSX.Element;
+    Container: <T>({ className, style, columns, rows, rowKey, bordered: propBordered, TableHeadStyle, TableBodyStyle, TableHeadRowStyle, TableBodyRowStyle, TableHeadCellStyle, TableBodyCellStyle, ...props }: import("./TableContainer.types").TableContainerProps<T>) => import("react/jsx-runtime").JSX.Element;
     Head: import("react").NamedExoticComponent<import("./TableHead.types").TableHeadProps & import("react").RefAttributes<HTMLTableSectionElement>>;
     Body: import("react").NamedExoticComponent<import("./TableBody.types").TableBodyProps & import("react").RefAttributes<HTMLTableSectionElement>>;
     Row: import("react").NamedExoticComponent<import("./TableRow.types").TableRowProps & import("react").RefAttributes<HTMLTableRowElement>>;

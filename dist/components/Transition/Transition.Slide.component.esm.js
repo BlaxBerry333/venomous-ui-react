@@ -1,50 +1,53 @@
-import { jsx as N } from "react/jsx-runtime";
-import o from "react";
-import f from "clsx";
-import l from "../Box/Box.component.esm.js";
-import { COMPONENT_DISPLAY_NAMES as T } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
-import { COMPONENT_CLASSNAME_NAMES as d } from "../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";
+import { jsx as T } from "react/jsx-runtime";
+import t from "react";
+import u from "clsx";
+import A from "../Box/Box.component.esm.js";
+import { COMPONENT_DISPLAY_NAMES as i } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
+import { COMPONENT_CLASSNAME_NAMES as C } from "../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";
 import "../../constants/designs/BACKGROUND_COLORS.esm.js";
 import "../../constants/designs/BORDER_COLORS.esm.js";
 import "../../constants/designs/SHADOW_STYLES.esm.js";
 import "../../constants/designs/TEXT_COLORS.esm.js";
 import "../../constants/designs/THEME_BREAKPOINTS.esm.js";
 import "../Theme/ThemeProvider.context.esm.js";
-import { useTransitionSlideStyles as A } from "./Transition.Slide.hooks.esm.js";
-import { TRANSITION_SLIDE_DIRECTION_MAP as E } from "./Transition.Slide.types.esm.js";
-const I = o.memo(
-  o.forwardRef(
+import E from "../../hooks/useCustomComponentProps/index.esm.js";
+import { useTransitionSlideStyles as I } from "./Transition.Slide.hooks.esm.js";
+import { TRANSITION_SLIDE_DIRECTION_MAP as _ } from "./Transition.Slide.types.esm.js";
+const M = t.memo(
+  t.forwardRef(
     ({
       children: r,
-      visible: i,
-      duration: t = 200,
-      direction: m = E.RIGHT,
-      distance: e = 100,
+      visible: m,
+      duration: n,
+      direction: s,
+      distance: e,
       onFinish: p,
-      className: s,
-      style: a
-    }, n) => {
-      const { componentStyle: S } = A({
-        visible: i,
-        duration: t,
-        direction: m,
-        distance: e,
+      className: a,
+      style: d
+    }, c) => {
+      const o = E({
+        displayName: i.TransitionSlide
+      }), S = n ?? o.duration ?? 200, l = s ?? o.direction ?? _.RIGHT, N = e ?? o.distance ?? 100, { componentStyle: f } = I({
+        visible: m,
+        duration: S,
+        direction: l,
+        distance: N,
         onFinish: p
       });
-      return /* @__PURE__ */ N(
-        l,
+      return /* @__PURE__ */ T(
+        A,
         {
           as: "div",
-          ref: n,
-          className: f(d.TransitionSlide, s),
-          style: { ...S, ...a },
+          ref: c,
+          className: u(C.TransitionSlide, a),
+          style: { ...f, ...d },
           children: r
         }
       );
     }
   )
 );
-I.displayName = T.TransitionSlide;
+M.displayName = i.TransitionSlide;
 export {
-  I as default
+  M as default
 };

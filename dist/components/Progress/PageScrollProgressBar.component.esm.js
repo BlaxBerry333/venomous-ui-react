@@ -1,36 +1,39 @@
-import { jsx as s } from "react/jsx-runtime";
+import { jsx as e } from "react/jsx-runtime";
 import t from "react";
-import f from "clsx";
-import P from "../Portal/Portal.component.esm.js";
-import { COMPONENT_DISPLAY_NAMES as g } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
-import { COMPONENT_CLASSNAME_NAMES as S } from "../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";
+import g from "clsx";
+import S from "../Portal/Portal.component.esm.js";
+import { COMPONENT_DISPLAY_NAMES as a } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
+import { COMPONENT_CLASSNAME_NAMES as d } from "../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";
 import "../../constants/designs/BACKGROUND_COLORS.esm.js";
 import "../../constants/designs/BORDER_COLORS.esm.js";
 import "../../constants/designs/SHADOW_STYLES.esm.js";
 import "../../constants/designs/TEXT_COLORS.esm.js";
 import "../../constants/designs/THEME_BREAKPOINTS.esm.js";
-import { usePageScrollProgressActions as n, usePageScrollProgressBarStyles as N } from "./PageScrollProgressBar.hooks.esm.js";
-import u from "./ProgressBar.component.esm.js";
+import u from "../../hooks/useCustomComponentProps/index.esm.js";
+import { usePageScrollProgressActions as N, usePageScrollProgressBarStyles as B } from "./PageScrollProgressBar.hooks.esm.js";
+import y from "./ProgressBar.component.esm.js";
 const A = t.memo(
   t.forwardRef(
-    ({ className: a, style: m, color: r, disablePortal: o = !1, ...l }, i) => {
-      const { displayValue: p } = n(), { containerStyle: c } = N({ color: r, disablePortal: o }), e = /* @__PURE__ */ s(
-        u,
+    ({ className: m, style: l, color: r, disablePortal: i, ...p }, P) => {
+      const c = u({
+        displayName: a.PageScrollProgressBar
+      }), o = i ?? c.disablePortal ?? !1, { displayValue: n } = N(), { containerStyle: f } = B({ color: r, disablePortal: o }), s = /* @__PURE__ */ e(
+        y,
         {
-          ref: i,
-          className: f(S.PageScrollProgressBar, a),
-          style: { ...c, ...m },
-          value: p,
+          ref: P,
+          className: g(d.PageScrollProgressBar, m),
+          style: { ...f, ...l },
+          value: n,
           color: r,
           animated: !1,
-          ...l
+          ...p
         }
       );
-      return o ? e : /* @__PURE__ */ s(P, { children: e });
+      return o ? s : /* @__PURE__ */ e(S, { children: s });
     }
   )
 );
-A.displayName = g.PageScrollProgressBar;
+A.displayName = a.PageScrollProgressBar;
 export {
   A as default
 };

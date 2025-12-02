@@ -1,11 +1,14 @@
-import t from "react";
-import { useThemeProviderContext as o } from "../../components/Theme/ThemeProvider.hooks.esm.js";
-function f({
-  displayName: e
+import o from "react";
+import { useThemeProviderContext as u } from "../../components/Theme/ThemeProvider.hooks.esm.js";
+function i({
+  displayName: t
 }) {
-  const { customStyles: r } = o();
-  return t.useMemo(() => e === void 0 ? {} : (r == null ? void 0 : r[e]) || {}, [r, e]);
+  const { customComponentProps: e } = u();
+  return o.useMemo(() => {
+    var r;
+    return t === void 0 ? {} : ((r = e == null ? void 0 : e[t]) == null ? void 0 : r.style) || {};
+  }, [e, t]);
 }
 export {
-  f as default
+  i as default
 };

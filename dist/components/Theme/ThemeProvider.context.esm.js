@@ -7,7 +7,7 @@ import "../../constants/designs/SHADOW_STYLES.esm.js";
 import "../../constants/designs/TEXT_COLORS.esm.js";
 import "../../constants/designs/THEME_BREAKPOINTS.esm.js";
 import { getSystemThemeMode as o } from "../../tools/systems/getSystemThemeMode.esm.js";
-const d = e.createContext({
+const P = e.createContext({
   themeMode: o(),
   setThemeMode: () => {
   },
@@ -15,8 +15,8 @@ const d = e.createContext({
   setThemePalette: () => {
   },
   customDesigns: {},
-  customStyles: {}
+  customComponentProps: {}
 });
 export {
-  d as ThemeProviderContext
+  P as ThemeProviderContext
 };

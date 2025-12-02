@@ -1,46 +1,49 @@
-import { jsx as o } from "react/jsx-runtime";
-import l from "react";
-import f from "clsx";
-import { Transition as T } from "../Transition/index.esm.js";
-import { COMPONENT_DISPLAY_NAMES as b } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
-import { COMPONENT_CLASSNAME_NAMES as p } from "../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";
+import { jsx as e } from "react/jsx-runtime";
+import p from "react";
+import b from "clsx";
+import { Transition as c } from "../Transition/index.esm.js";
+import { COMPONENT_DISPLAY_NAMES as f } from "../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
+import { COMPONENT_CLASSNAME_NAMES as T } from "../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";
 import "../../constants/designs/BACKGROUND_COLORS.esm.js";
 import "../../constants/designs/BORDER_COLORS.esm.js";
 import "../../constants/designs/SHADOW_STYLES.esm.js";
 import "../../constants/designs/TEXT_COLORS.esm.js";
 import "../../constants/designs/THEME_BREAKPOINTS.esm.js";
+import P from "../../hooks/useCustomComponentProps/index.esm.js";
 import { useTabsTabPanelStyles as N } from "./TabsTabPanel.hooks.esm.js";
-const P = l.memo(
-  l.forwardRef(
-    ({ className: r, style: t, visible: a = !1, keepMounted: m = !1, children: e, ...i }, n) => {
-      const { componentStyle: s } = N();
-      return !m && !a ? null : m ? /* @__PURE__ */ o(
+const M = p.memo(
+  p.forwardRef(
+    ({ className: t, style: a, visible: u, keepMounted: d, children: r, ...s }, m) => {
+      const i = P({
+        displayName: f.TabsTabPanel
+      }), o = u ?? i.visible ?? !1, n = d ?? i.keepMounted ?? !1, { componentStyle: l } = N();
+      return !n && !o ? null : n ? /* @__PURE__ */ e(
         "div",
         {
-          ref: n,
-          className: f(p.TabsTabPanel, r),
+          ref: m,
+          className: b(T.TabsTabPanel, t),
           style: {
-            ...s,
-            display: a ? "block" : "none",
-            ...t
+            ...l,
+            display: o ? "block" : "none",
+            ...a
           },
-          ...i,
-          children: e
+          ...s,
+          children: r
         }
-      ) : /* @__PURE__ */ o(T.Fade, { visible: a, duration: 200, children: /* @__PURE__ */ o(
+      ) : /* @__PURE__ */ e(c.Fade, { visible: o, duration: 200, children: /* @__PURE__ */ e(
         "div",
         {
-          ref: n,
-          className: f(p.TabsTabPanel, r),
-          style: { ...s, ...t },
-          ...i,
-          children: e
+          ref: m,
+          className: b(T.TabsTabPanel, t),
+          style: { ...l, ...a },
+          ...s,
+          children: r
         }
       ) });
     }
   )
 );
-P.displayName = b.TabsTabPanel;
+M.displayName = f.TabsTabPanel;
 export {
-  P as default
+  M as default
 };
