@@ -8,7 +8,7 @@ import reactX from 'eslint-plugin-react-x'
 import reactDom from 'eslint-plugin-react-dom'
 
 export default tseslint.config(
-  { 
+  {
     ignores: [
       "node_modules/",
       "dist",
@@ -19,6 +19,7 @@ export default tseslint.config(
       "*.html",
       "*.lock",
       "storybook-static/",
+      "coverage/",
     ],
   },
   {
