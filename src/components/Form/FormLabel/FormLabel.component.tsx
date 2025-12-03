@@ -48,13 +48,10 @@ const FormLabel = React.memo(
           style={{ ...componentStyle, ...style }}
           {...props}
         >
-          {required && <Typography.Text text="*" as="strong" color={SEMANTIC_COLORS.ERROR} />}
-          <Typography.Text
-            text={text}
-            as="strong"
-            color={DynamicColor}
-            style={{ cursor: DynamicCursor, marginLeft: 4 }}
-          />
+          {required && (
+            <Typography.Text text="*" as="strong" color={SEMANTIC_COLORS.ERROR} style={{ marginRight: 4 }} />
+          )}
+          <Typography.Text text={text} as="strong" color={DynamicColor} style={{ cursor: DynamicCursor }} />
         </label>
       );
     },

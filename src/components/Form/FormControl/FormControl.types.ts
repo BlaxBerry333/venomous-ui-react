@@ -10,6 +10,12 @@ export interface FormControlProps
   label?: string;
 
   /**
+   * Extra content to display on the right side of the label row.
+   * Useful for links like "Forgot password?" or other actions.
+   */
+  LabelExtra?: React.ReactNode;
+
+  /**
    * Render prop for the field element.
    * Receives the auto-generated id for label association.
    */
@@ -39,9 +45,10 @@ export interface FormControlProps
   disabled?: boolean;
 
   /**
-   * Whether to reverse label and field position.
-   * - false: label before field (default)
-   * - true: field before label
+   * Whether to place field before label in horizontal layout (`column=false`).
+   * Only effective when `column=false`.
+   * - false: [Label] [Field] (default)
+   * - true: [Field] [Label] (useful for Checkbox/Switch)
    * @default false
    */
   reverse?: boolean;

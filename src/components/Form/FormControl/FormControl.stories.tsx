@@ -5,6 +5,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { Button } from "@/components/Buttons";
 import { FormField } from "@/components/Form";
+import { Icon } from "@/components/Icon";
 import { Space } from "@/components/Space";
 import { default as SpaceFlexStoriesMeta } from "@/components/Space/SpaceFlex.stories";
 import { FormControl } from "./index";
@@ -19,6 +20,18 @@ const meta = {
       type: { name: "string" },
       table: { type: { summary: "string" } },
       control: { type: "text" },
+    },
+    LabelExtra: {
+      description:
+        "Extra content to display on the right side of the label row. Useful for links like 'Forgot password?'.",
+      type: { name: "other", value: "React.ReactNode" },
+      table: { type: { summary: "React.ReactNode" } },
+      control: { type: "radio" },
+      options: [undefined, "ExtraElement"],
+      mapping: {
+        undefined: undefined,
+        ExtraElement: <Icon icon="solar:alarm-sleep-bold" />,
+      },
     },
     children: {
       description: "Render prop for the field element. Receives the auto-generated id.",
@@ -76,9 +89,10 @@ const meta = {
       },
     },
     reverse: {
-      description: "Whether to reverse label and field position when `column` is true.",
+      description:
+        "Whether to place field before label in horizontal layout (`column=false`). Useful for Checkbox/Switch scenarios.",
       type: { name: "boolean" },
-      if: { arg: "column" },
+      if: { arg: "column", eq: false },
       table: {
         type: { summary: "boolean" },
         defaultValue: { summary: "false" },
@@ -129,7 +143,7 @@ import { Theme, FormControl, FormField } from "venomous-ui-react/components";
 
 function App() {
   return (
-    <FormControl 
+    <FormControl
       label="Email"
       message="请输入您的邮箱"
       required
@@ -137,6 +151,16 @@ function App() {
       isError={false}
     >
       {(id) => <FormField.Text id={id} name="email" placeholder="you@example.com" fullWidth />}
+    </FormControl>
+
+    {/* With LabelExtra */}
+    <FormControl
+      label="Password"
+      LabelExtra={<a href="/forgot" style={{ fontSize: 12 }}>Forgot password?</a>}
+      message="请输入您的密码"
+      required
+    >
+      {(id) => <FormField.Password id={id} name="password" placeholder="••••••••" fullWidth />}
     </FormControl>
   );
 }
@@ -180,6 +204,7 @@ export const Playground: Story = {
   name: "Playground",
   args: {
     label: "Username",
+    LabelExtra: undefined,
     message: "请输入您的用户名",
     children: () => null,
     required: false,
@@ -191,7 +216,7 @@ export const Playground: Story = {
   },
   decorators: [
     (Story) => (
-      <div style={{ marginTop: "25%" }}>
+      <div style={{ marginTop: "25%", width: "max-content" }}>
         <Story />
       </div>
     ),
@@ -225,6 +250,7 @@ export const ControlledExample: Story = {
   },
   render: function RenderStory() {
     const [email, setEmail] = React.useState("");
+    const [password, setPassword] = React.useState("");
     const [username, setUsername] = React.useState("");
     const [country, setCountry] = React.useState("");
     const [agreed, setAgreed] = React.useState(false);
@@ -240,6 +266,7 @@ export const ControlledExample: Story = {
 
     const handleClear = () => {
       setEmail("");
+      setPassword("");
       setUsername("");
       setCountry("");
       setAgreed(false);
@@ -248,6 +275,7 @@ export const ControlledExample: Story = {
     const handleSubmit = () => {
       const data = {
         email,
+        password,
         username,
         country,
         agreed,
@@ -272,6 +300,21 @@ export const ControlledExample: Story = {
               placeholder="you@example.com"
               fullWidth
             />
+          )}
+        </FormControl>
+
+        <FormControl
+          label="Password"
+          LabelExtra={
+            <a href="#" style={{ fontSize: 12, color: "#1890ff" }}>
+              Forgot password?
+            </a>
+          }
+          message="请输入您的密码"
+          required
+        >
+          {(id) => (
+            <FormField.Password id={id} value={password} onChange={setPassword} placeholder="••••••••" fullWidth />
           )}
         </FormControl>
 
@@ -335,9 +378,9 @@ const countryOptions = [
   { label: "日本", value: "JP" },
 ];
 
-
 function App() {
   const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
   const [username, setUsername] = React.useState("");
   const [country, setCountry] = React.useState("");
   const [agreed, setAgreed] = React.useState(false);
@@ -347,13 +390,14 @@ function App() {
 
   const handleClear = () => {
     setEmail("");
+    setPassword("");
     setUsername("");
     setCountry("");
     setAgreed(false);
   };
 
   const handleSubmit = () => {
-    const data = { email, username, country, agreed };
+    const data = { email, password, username, country, agreed };
     alert(\`\${JSON.stringify(data, null, 2)}\`);
   };
 
@@ -373,6 +417,24 @@ function App() {
               onChange={setEmail}
               error={emailError}
               placeholder="you@example.com"
+              fullWidth
+            />
+          )}
+        </FormControl>
+
+        {/* 使用 LabelExtra 显示 "Forgot password?" 链接 */}
+        <FormControl
+          label="Password"
+          LabelExtra={<a href="#" style={{ fontSize: 12, color: "#1890ff" }}>Forgot password?</a>}
+          message="请输入您的密码"
+          required
+        >
+          {(id) => (
+            <FormField.Password
+              id={id}
+              value={password}
+              onChange={setPassword}
+              placeholder="••••••••"
               fullWidth
             />
           )}
