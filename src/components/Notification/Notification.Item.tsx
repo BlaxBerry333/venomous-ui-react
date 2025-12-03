@@ -54,6 +54,7 @@ const NotificationItem = React.memo<NotificationItemProps>(
         {closable && (
           <IconButton
             icon="solar:close-circle-linear"
+            variant="ghost"
             onClick={handleClose}
             color={DynamicColor}
             style={{ color: "inherit", alignSelf: "flex-start" }}
