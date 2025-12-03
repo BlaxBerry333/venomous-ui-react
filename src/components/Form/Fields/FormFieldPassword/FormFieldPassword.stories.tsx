@@ -13,6 +13,14 @@ const meta = {
   component: FormFieldPassword,
   tags: ["autodocs"],
   argTypes: {
+    name: {
+      description: "The name attribute for the input element. Used to identify the form data after submission.",
+      type: { name: "string" },
+      table: {
+        type: { summary: "string" },
+      },
+      control: { type: "text" },
+    },
     value: {
       description: "The value of the input.",
       type: { name: "string" },
@@ -171,42 +179,7 @@ function App() {
 
           <Heading>{WithPrefixExample.name}</Heading>
           <Description of={WithPrefixExample} />
-          <Canvas
-            of={WithPrefixExample}
-            sourceState="hidden"
-            source={{
-              code: `
-"use client";
-
-import React from "react";
-import { Theme, Space, Icon, FormFieldPassword } from "venomous-ui-react/components";
-
-function App() {
-  const [value1, setValue1] = React.useState<string>("mypassword");
-  const [value2, setValue2] = React.useState<string>("securepass");
-
-  return (
-    <Theme.Provider>
-      <Space.Flex column spacing={16}>
-        <FormFieldPassword
-          value={value1}
-          onChange={setValue1}
-          placeholder="带图标前缀"
-          prefix={<Icon icon="solar:lock-password-linear" />}
-        />
-        <FormFieldPassword 
-          value={value2} 
-          onChange={setValue2} 
-          placeholder="带文本前缀" 
-          prefix={<span>🔒</span>} 
-        />
-      </Space.Flex>
-    </Theme.Provider>
-  );
-}
-`.trim(),
-            }}
-          />
+          <Canvas of={WithPrefixExample} />
         </>
       ),
     },
@@ -219,6 +192,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Playground: Story = {
   name: "Playground",
+  argTypes: {
+    name: { table: { disable: true } },
+  },
   decorators: [
     (Story) => (
       <div style={{ paddingTop: "25%" }}>
@@ -242,6 +218,39 @@ export const WithPrefixExample: Story = {
   tags: ["!dev"],
   parameters: {
     layout: "centered",
+    docs: {
+      description: {
+        story: "使用 `prefix` 属性在密码输入框前添加图标或文本，增强视觉提示。",
+      },
+      source: {
+        code: `
+import React from "react";
+import { FormField, Icon, Space } from "venomous-ui-react/components";
+
+function App() {
+  const [value1, setValue1] = React.useState<string>("mypassword");
+  const [value2, setValue2] = React.useState<string>("securepass");
+
+  return (
+    <Space.Flex column spacing={16}>
+      <FormField.Password
+        value={value1}
+        onChange={setValue1}
+        placeholder="带图标前缀"
+        prefix={<Icon icon="solar:lock-password-linear" />}
+      />
+      <FormField.Password
+        value={value2}
+        onChange={setValue2}
+        placeholder="带文本前缀"
+        prefix={<span>🔒</span>}
+      />
+    </Space.Flex>
+  );
+}
+        `.trim(),
+      },
+    },
   },
   argTypes: {
     variant: { control: false, table: { disable: true } },

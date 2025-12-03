@@ -13,6 +13,14 @@ const meta = {
   component: FormFieldNumber,
   tags: ["autodocs"],
   argTypes: {
+    name: {
+      description: "The name attribute for the input element. Used to identify the form data after submission.",
+      type: { name: "string" },
+      table: {
+        type: { summary: "string" },
+      },
+      control: { type: "text" },
+    },
     value: {
       description: "The value of the input. When undefined, the input will be cleared.",
       table: {
@@ -222,59 +230,7 @@ function App() {
 
           <Heading>{WithMinMaxStepExample.name}</Heading>
           <Description of={WithMinMaxStepExample} />
-          <Canvas
-            of={WithMinMaxStepExample}
-            sourceState="hidden"
-            source={{
-              code: `
-"use client";
-
-import React from "react";
-import { Theme, Space, Icon, FormFieldNumber } from "venomous-ui-react/components";
-
-function App() {
-  const [ageValue, setAgeValue] = React.useState<number | undefined>(25);
-  const [priceValue, setPriceValue] = React.useState<number | undefined>(99.99);
-  const [quantityValue, setQuantityValue] = React.useState<number | undefined>(5);
-
-  return (
-    <Theme.Provider>
-      <Space.Flex column spacing={16}>
-        <FormFieldNumber
-          value={ageValue}
-          onChange={setAgeValue}
-          placeholder="年龄"
-          min={0}
-          max={120}
-          step={1}
-          prefix={<Icon icon="solar:user-linear" />}
-          suffix={<span>岁</span>}
-        />
-        <FormFieldNumber
-          value={priceValue}
-          onChange={setPriceValue}
-          placeholder="价格"
-          min={0}
-          step={0.01}
-          prefix={<span>$</span>}
-          suffix={<span>USD</span>}
-        />
-        <FormFieldNumber
-          value={quantityValue}
-          onChange={setQuantityValue}
-          placeholder="数量"
-          min={1}
-          max={999}
-          step={1}
-          prefix={<Icon icon="solar:box-linear" />}
-        />
-      </Space.Flex>
-    </Theme.Provider>
-  );
-}
-`.trim(),
-            }}
-          />
+          <Canvas of={WithMinMaxStepExample} />
         </>
       ),
     },
@@ -287,6 +243,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Playground: Story = {
   name: "Playground",
+  argTypes: {
+    name: { table: { disable: true } },
+  },
   decorators: [
     (Story) => (
       <div style={{ paddingTop: "25%" }}>
@@ -313,6 +272,56 @@ export const WithMinMaxStepExample: Story = {
   tags: ["!dev"],
   parameters: {
     layout: "centered",
+    docs: {
+      description: {
+        story: "使用 `min`、`max`、`step` 属性限制数字输入范围和步进值。",
+      },
+      source: {
+        code: `
+import React from "react";
+import { FormField, Icon, Space } from "venomous-ui-react/components";
+
+function App() {
+  const [ageValue, setAgeValue] = React.useState<number | undefined>(25);
+  const [priceValue, setPriceValue] = React.useState<number | undefined>(99.99);
+  const [quantityValue, setQuantityValue] = React.useState<number | undefined>(5);
+
+  return (
+    <Space.Flex column spacing={16}>
+      <FormField.Number
+        value={ageValue}
+        onChange={setAgeValue}
+        placeholder="年龄"
+        min={0}
+        max={120}
+        step={1}
+        prefix={<Icon icon="solar:user-linear" />}
+        suffix={<span>岁</span>}
+      />
+      <FormField.Number
+        value={priceValue}
+        onChange={setPriceValue}
+        placeholder="价格"
+        min={0}
+        step={0.01}
+        prefix={<span>$</span>}
+        suffix={<span>USD</span>}
+      />
+      <FormField.Number
+        value={quantityValue}
+        onChange={setQuantityValue}
+        placeholder="数量"
+        min={1}
+        max={999}
+        step={1}
+        prefix={<Icon icon="solar:box-linear" />}
+      />
+    </Space.Flex>
+  );
+}
+        `.trim(),
+      },
+    },
   },
   argTypes: {
     variant: { control: false, table: { disable: true } },

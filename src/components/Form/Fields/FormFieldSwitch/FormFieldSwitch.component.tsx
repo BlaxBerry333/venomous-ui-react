@@ -4,14 +4,14 @@ import React from "react";
 
 import clsx from "clsx";
 
-import { Icon } from "@/components/Icon";
+import { Box } from "@/components/Box";
 import { COMPONENT_CLASSNAME_NAMES, COMPONENT_DISPLAY_NAMES } from "@/constants";
 import useCustomComponentProps from "@/hooks/useCustomComponentProps";
-import { useFormFieldCheckboxActions, useFormFieldCheckboxStyles } from "./FormFieldCheckbox.hooks";
-import type { FormFieldCheckboxProps, FormFieldCheckboxRef } from "./FormFieldCheckbox.types";
+import { useFormFieldSwitchActions, useFormFieldSwitchStyles } from "./FormFieldSwitch.hooks";
+import type { FormFieldSwitchProps, FormFieldSwitchRef } from "./FormFieldSwitch.types";
 
-const FormFieldCheckbox = React.memo(
-  React.forwardRef<FormFieldCheckboxRef, FormFieldCheckboxProps>(
+const FormFieldSwitch = React.memo(
+  React.forwardRef<FormFieldSwitchRef, FormFieldSwitchProps>(
     (
       {
         className,
@@ -22,16 +22,13 @@ const FormFieldCheckbox = React.memo(
         onChange,
         disabled: propDisabled,
 
-        onMouseEnter,
-        onMouseLeave,
-
         ...props
       },
       ref,
     ) => {
       // ========== 获取 customComponentProps ==========
-      const customComponentProps = useCustomComponentProps<FormFieldCheckboxProps>({
-        displayName: COMPONENT_DISPLAY_NAMES.FormFieldCheckbox,
+      const customComponentProps = useCustomComponentProps<FormFieldSwitchProps>({
+        displayName: COMPONENT_DISPLAY_NAMES.FormFieldSwitch,
       });
 
       // ========== 合并 Props（优先级：直接传入 > customComponentProps > 默认值）==========
@@ -47,17 +44,15 @@ const FormFieldCheckbox = React.memo(
         handleBlur,
         handleClick,
         WrapperElementEvents,
-      } = useFormFieldCheckboxActions({
+      } = useFormFieldSwitchActions({
         checked,
         defaultChecked,
         onChange,
         disabled,
-        onMouseEnter,
-        onMouseLeave,
         externalRef: ref,
       });
 
-      const { checkboxStyle } = useFormFieldCheckboxStyles({
+      const { trackStyle, handleStyle } = useFormFieldSwitchStyles({
         checked: internalChecked,
         disabled,
         isHovered,
@@ -83,25 +78,27 @@ const FormFieldCheckbox = React.memo(
             {...props}
           />
 
-          {/* 自定义 UI */}
-          <Icon
-            className={clsx(COMPONENT_CLASSNAME_NAMES.FormFieldCheckbox, className)}
-            style={{ ...checkboxStyle, ...style }}
-            icon={internalChecked ? "fluent:checkbox-checked-24-filled" : "fluent:checkbox-unchecked-24-filled"}
+          {/* 自定义 Switch UI */}
+          <Box
+            as="div"
+            className={clsx(COMPONENT_CLASSNAME_NAMES.FormFieldSwitch, className)}
+            style={{ ...trackStyle, ...style }}
             onClick={handleClick}
-            onMouseEnter={WrapperElementEvents.onMouseEnter}
-            onMouseLeave={WrapperElementEvents.onMouseLeave}
-          />
+            {...WrapperElementEvents}
+          >
+            {/* Handle（滑块） */}
+            <span className={COMPONENT_CLASSNAME_NAMES.FormFieldSwitchHandle} style={handleStyle} />
+          </Box>
         </>
       );
     },
   ),
 );
 
-FormFieldCheckbox.displayName = COMPONENT_DISPLAY_NAMES.FormFieldCheckbox;
-export default FormFieldCheckbox;
+FormFieldSwitch.displayName = COMPONENT_DISPLAY_NAMES.FormFieldSwitch;
+export default FormFieldSwitch;
 
-// ========== 私有常量（文件底部，使用 __ 前缀）==========
+// ========== 私有常量 ==========
 const __HIDDEN_INPUT_STYLE: React.CSSProperties = {
   position: "absolute",
   opacity: 0,

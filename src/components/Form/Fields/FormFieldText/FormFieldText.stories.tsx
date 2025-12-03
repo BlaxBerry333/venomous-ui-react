@@ -13,6 +13,14 @@ const meta = {
   component: FormFieldText,
   tags: ["autodocs"],
   argTypes: {
+    name: {
+      description: "The name attribute for the input element. Used to identify the form data after submission.",
+      type: { name: "string" },
+      table: {
+        type: { summary: "string" },
+      },
+      control: { type: "text" },
+    },
     value: {
       description: "The value of the input.",
       type: { name: "string" },
@@ -196,53 +204,7 @@ function App() {
 
           <Heading>{WithPrefixSuffixExample.name}</Heading>
           <Description of={WithPrefixSuffixExample} />
-          <Canvas
-            of={WithPrefixSuffixExample}
-            sourceState="hidden"
-            source={{
-              code: `
-"use client";
-
-import React from "react";
-import { Theme, Space, Icon, FormFieldText } from "venomous-ui-react/components";
-
-function App() {
-  const [searchValue, setSearchValue] = React.useState<string>("");
-  const [urlValue, setUrlValue] = React.useState<string>("");
-  const [priceValue, setPriceValue] = React.useState<string>("");
-
-  return (
-    <Theme.Provider>
-      <Space.Flex column spacing={16} style={{ width: 300 }}>
-        <FormFieldText
-          value={searchValue}
-          onChange={setSearchValue}
-          placeholder="搜索..."
-          prefix={<Icon icon="lucide:search" />}
-          fullWidth
-        />
-        <FormFieldText
-          value={urlValue}
-          onChange={setUrlValue}
-          placeholder="example.com"
-          prefix={<span>https://</span>}
-          fullWidth
-        />
-        <FormFieldText
-          value={priceValue}
-          onChange={setPriceValue}
-          placeholder="0.00"
-          prefix={<span>$</span>}
-          suffix={<span>USD</span>}
-          fullWidth
-        />
-      </Space.Flex>
-    </Theme.Provider>
-  );
-}
-`.trim(),
-            }}
-          />
+          <Canvas of={WithPrefixSuffixExample} />
         </>
       ),
     },
@@ -255,6 +217,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Playground: Story = {
   name: "Playground",
+  argTypes: {
+    name: { table: { disable: true } },
+  },
   args: {
     value: "Hello world",
     variant: "outlined",
@@ -282,8 +247,51 @@ export const WithPrefixSuffixExample: Story = {
   tags: ["!dev"],
   parameters: {
     layout: "centered",
+    docs: {
+      description: {
+        story: "使用 `prefix` 和 `suffix` 属性在输入框前后添加自定义元素，如图标或文本。",
+      },
+      source: {
+        code: `
+import React from "react";
+import { FormField, Icon, Space } from "venomous-ui-react/components";
+
+function App() {
+  const [searchValue, setSearchValue] = React.useState<string>("");
+  const [urlValue, setUrlValue] = React.useState<string>("");
+  const [priceValue, setPriceValue] = React.useState<string>("");
+
+  return (
+    <Space.Flex column spacing={16} style={{ width: 300 }}>
+      <FormField.Text
+        value={searchValue}
+        onChange={setSearchValue}
+        placeholder="搜索..."
+        prefix={<Icon icon="lucide:search" />}
+        fullWidth
+      />
+      <FormField.Text
+        value={urlValue}
+        onChange={setUrlValue}
+        placeholder="example.com"
+        prefix={<span>https://</span>}
+        fullWidth
+      />
+      <FormField.Text
+        value={priceValue}
+        onChange={setPriceValue}
+        placeholder="0.00"
+        prefix={<span>$</span>}
+        suffix={<span>USD</span>}
+        fullWidth
+      />
+    </Space.Flex>
+  );
+}
+        `.trim(),
+      },
+    },
   },
-  args: Playground.args,
   render: function RenderStory() {
     const [searchValue, setSearchValue] = React.useState<string>("");
     const [urlValue, setUrlValue] = React.useState<string>("");

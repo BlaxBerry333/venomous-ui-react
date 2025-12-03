@@ -2,26 +2,22 @@
 
 import React from "react";
 
+import { COMPONENT_DISPLAY_NAMES } from "@/constants";
 import { useElementHoverEvents, useThemeDesigns } from "@/hooks";
 import useCustomStyle from "@/hooks/useCustomStyle";
 import { hexToRgba } from "@/tools";
-import type { FormFieldCheckboxProps } from "./FormFieldCheckbox.types";
+import type { FormFieldSwitchProps } from "./FormFieldSwitch.types";
 
 // ============================
-// useFormFieldCheckboxActions - 所有状态和事件逻辑
+// useFormFieldSwitchActions
 // ============================
-export function useFormFieldCheckboxActions({
+export function useFormFieldSwitchActions({
   checked,
   defaultChecked,
   onChange,
   disabled,
-  onMouseEnter,
-  onMouseLeave,
   externalRef,
-}: Pick<
-  FormFieldCheckboxProps,
-  "checked" | "defaultChecked" | "onChange" | "disabled" | "onMouseEnter" | "onMouseLeave"
-> & {
+}: Pick<FormFieldSwitchProps, "checked" | "defaultChecked" | "onChange" | "disabled"> & {
   externalRef?: React.ForwardedRef<HTMLInputElement>;
 }) {
   // ========== 内部状态 ==========
@@ -48,7 +44,6 @@ export function useFormFieldCheckboxActions({
     if (!form) return;
 
     const handleReset = () => {
-      // 重置内部状态到 defaultChecked
       setInternalChecked(defaultChecked ?? false);
     };
 
@@ -65,7 +60,6 @@ export function useFormFieldCheckboxActions({
       if (isInteractionDisabled) return;
       const newChecked = event.target.checked;
 
-      // 非受控模式下，更新内部状态
       if (!isControlled) {
         setInternalChecked(newChecked);
       }
@@ -87,7 +81,7 @@ export function useFormFieldCheckboxActions({
 
   const handleClick = React.useCallback(
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    (_: React.MouseEvent<SVGSVGElement>) => {
+    (_: React.MouseEvent<HTMLDivElement>) => {
       if (isInteractionDisabled) return;
       if (inputRef.current) {
         inputRef.current.click();
@@ -110,29 +104,20 @@ export function useFormFieldCheckboxActions({
   );
 
   // ========== 复用全局 hooks 处理 hover ==========
-  const { isHovered, MouseEnterEvent, MouseLeaveEvent } = useElementHoverEvents<SVGSVGElement>({
+  const { isHovered, MouseEnterEvent, MouseLeaveEvent } = useElementHoverEvents<HTMLDivElement>({
     disabled: isInteractionDisabled,
-    onMouseEnter,
-    onMouseLeave,
   });
 
   return React.useMemo(
     () => ({
-      // 状态
       internalChecked,
       isFocused,
       isHovered,
-
-      // Ref
       setRefs,
-
-      // 事件处理函数
       handleChange,
       handleFocus,
       handleBlur,
       handleClick,
-
-      // Wrapper 事件（供组件 spread）
       WrapperElementEvents: {
         onMouseEnter: MouseEnterEvent,
         onMouseLeave: MouseLeaveEvent,
@@ -154,39 +139,42 @@ export function useFormFieldCheckboxActions({
 }
 
 // ============================
-// useFormFieldCheckboxStyles - 仅样式计算
+// useFormFieldSwitchStyles
 // ============================
-export function useFormFieldCheckboxStyles({
+export function useFormFieldSwitchStyles({
   checked,
   disabled = false,
   isHovered,
   isFocused,
-}: Pick<FormFieldCheckboxProps, "checked" | "disabled"> & {
+}: Pick<FormFieldSwitchProps, "checked" | "disabled"> & {
   isHovered: boolean;
   isFocused: boolean;
 }) {
-  const { PaletteColors, TextColors } = useThemeDesigns();
-  const customCheckboxStyle = useCustomStyle({ displayName: "FormField.Checkbox" });
+  const { PaletteColors, BackgroundColors, BorderColors } = useThemeDesigns();
+  const customSwitchStyle = useCustomStyle({ displayName: COMPONENT_DISPLAY_NAMES.FormFieldSwitch });
+  const customHandleStyle = useCustomStyle({ displayName: COMPONENT_DISPLAY_NAMES.FormFieldSwitchHandle });
 
-  // ✅ 按功能拆分多个 Dynamic Styles，每个用 useMemo 优化
+  // ========== 固定尺寸配置 (medium) ==========
+  const sizeConfig = { width: 44, height: 24, handleSize: 18, padding: 3 };
 
   // ========== 主题色 ==========
   const themeColor = PaletteColors[1];
 
-  // Checkbox 视觉元素样式（Icon 组件颜色）
-  const DynamicCheckboxVariantStyles = React.useMemo<React.CSSProperties>(() => {
-    // 无论选中与否，都使用易识别的颜色
-    // 选中状态：主题色填充
-    // 未选中状态：使用深色边框，确保可见性
+  // ========== Track 样式 ==========
+  const DynamicTrackVariantStyles = React.useMemo<React.CSSProperties>(() => {
     return {
-      color: checked ? themeColor : TextColors[2],
+      width: sizeConfig.width,
+      height: sizeConfig.height,
+      borderRadius: sizeConfig.height / 2,
+      backgroundColor: checked ? themeColor : BackgroundColors[2],
+      borderColor: checked ? themeColor : BorderColors[2],
     };
-  }, [checked, themeColor, TextColors]);
+  }, [checked, themeColor, sizeConfig, BackgroundColors, BorderColors]);
 
-  const DynamicCheckboxStateStyles = React.useMemo<React.CSSProperties>(() => {
+  const DynamicTrackStateStyles = React.useMemo<React.CSSProperties>(() => {
     if (disabled) {
       return {
-        opacity: 0.6,
+        opacity: 0.5,
         cursor: "not-allowed",
       };
     }
@@ -195,22 +183,20 @@ export function useFormFieldCheckboxStyles({
     };
   }, [disabled]);
 
-  const DynamicCheckboxInteractionStyles = React.useMemo<React.CSSProperties>(() => {
+  const DynamicTrackInteractionStyles = React.useMemo<React.CSSProperties>(() => {
     if (disabled) return {};
 
-    // Focus 状态（优先级最高）- 类似其他 FormField 的外圈阴影
     if (isFocused) {
       return {
-        color: themeColor,
-        filter: `drop-shadow(0 0 0 ${hexToRgba(themeColor, 0.3)}) drop-shadow(0 0 4px ${hexToRgba(themeColor, 0.3)})`,
+        boxShadow: `0 0 0 3px ${hexToRgba(themeColor, 0.25)}`,
+        borderColor: themeColor,
         outline: "none",
       };
     }
 
-    // Hover 状态 - 显示主题色高亮
     if (isHovered) {
       return {
-        color: themeColor,
+        borderColor: themeColor,
         filter: "brightness(1.1)",
       };
     }
@@ -218,34 +204,84 @@ export function useFormFieldCheckboxStyles({
     return {};
   }, [disabled, isFocused, isHovered, themeColor]);
 
-  // ✅ 最终合并所有样式
-  const checkboxStyle = React.useMemo<React.CSSProperties>(
+  const trackStyle = React.useMemo<React.CSSProperties>(
     () => ({
       // 基础样式
       boxSizing: "border-box",
       WebkitTapHighlightColor: "transparent",
 
       // -- default styles --
+      position: "relative",
       display: "inline-flex",
+      alignItems: "center",
       flexShrink: 0,
-      fontSize: 20,
-      transition: "all 0.25s ease-in-out",
-      ...DynamicCheckboxVariantStyles,
-      ...DynamicCheckboxStateStyles,
-      ...DynamicCheckboxInteractionStyles,
+      borderWidth: 1,
+      borderStyle: "solid",
+      transition: "all 0.2s ease-in-out",
+      ...DynamicTrackVariantStyles,
+      ...DynamicTrackStateStyles,
+      ...DynamicTrackInteractionStyles,
 
       // -- custom styles --
-      ...customCheckboxStyle,
+      ...customSwitchStyle,
     }),
-    [DynamicCheckboxVariantStyles, DynamicCheckboxStateStyles, DynamicCheckboxInteractionStyles, customCheckboxStyle],
+    [DynamicTrackVariantStyles, DynamicTrackStateStyles, DynamicTrackInteractionStyles, customSwitchStyle],
   );
 
+  // ========== Handle 样式 ==========
+  const DynamicHandleInteractionStyles = React.useMemo<React.CSSProperties>(() => {
+    if (disabled) return {};
+
+    if (isFocused) {
+      return {
+        borderColor: themeColor,
+        boxShadow: `0 0 0 2px ${hexToRgba(themeColor, 0.3)}`,
+      };
+    }
+
+    if (isHovered) {
+      return {
+        borderColor: themeColor,
+        filter: "brightness(1.1)",
+      };
+    }
+
+    return {};
+  }, [disabled, isFocused, isHovered, themeColor]);
+
+  const handleStyle = React.useMemo<React.CSSProperties>(() => {
+    const translateX = checked ? sizeConfig.width - sizeConfig.handleSize - sizeConfig.padding * 2 : 0;
+
+    return {
+      // -- default styles --
+      boxSizing: "border-box",
+      position: "absolute",
+      left: sizeConfig.padding,
+      width: sizeConfig.handleSize,
+      height: sizeConfig.handleSize,
+      borderRadius: "50%",
+      backgroundColor: "#ffffff",
+      borderWidth: 1,
+      borderStyle: "solid",
+      borderColor: BorderColors[2],
+      boxShadow: "0 1px 3px rgba(0, 0, 0, 0.1)",
+      transition: "all 0.2s ease-in-out",
+      transform: `translateX(${translateX}px)`,
+      ...DynamicHandleInteractionStyles,
+
+      // -- custom styles --
+      ...customHandleStyle,
+    };
+  }, [checked, sizeConfig, BorderColors, DynamicHandleInteractionStyles, customHandleStyle]);
+
   return {
-    checkboxStyle,
+    trackStyle,
+    handleStyle,
     __: {
-      DynamicCheckboxVariantStyles,
-      DynamicCheckboxStateStyles,
-      DynamicCheckboxInteractionStyles,
+      DynamicTrackVariantStyles,
+      DynamicTrackStateStyles,
+      DynamicTrackInteractionStyles,
+      DynamicHandleInteractionStyles,
     },
   };
 }

@@ -5,11 +5,11 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { Button } from "@/components/Buttons";
 import { Space } from "@/components/Space";
-import { FormFieldCheckbox } from ".";
+import { FormFieldSwitch } from ".";
 
 const meta = {
-  title: "components/Form/Fields/<FormField.Checkbox>",
-  component: FormFieldCheckbox,
+  title: "components/Form/Fields/<FormField.Switch>",
+  component: FormFieldSwitch,
   tags: ["autodocs"],
   argTypes: {
     name: {
@@ -21,7 +21,7 @@ const meta = {
       control: { type: "text" },
     },
     checked: {
-      description: "Whether the checkbox is checked (controlled mode). Use with onChange for controlled mode.",
+      description: "Whether the switch is checked (controlled mode). Use with onChange for controlled mode.",
       type: { name: "boolean" },
       table: {
         type: { summary: "boolean" },
@@ -44,7 +44,7 @@ const meta = {
       table: { disable: true },
     },
     disabled: {
-      description: "Whether the checkbox is disabled. Native HTML attribute.",
+      description: "Whether the switch is disabled. Native HTML attribute.",
       type: { name: "boolean" },
       table: {
         type: { summary: "boolean" },
@@ -53,7 +53,7 @@ const meta = {
       control: { type: "boolean" },
     },
     className: {
-      description: "Additional CSS class name for the input element.",
+      description: "Additional CSS class name for the switch element.",
       type: { name: "string" },
       table: {
         type: { summary: "string" },
@@ -61,7 +61,7 @@ const meta = {
       control: false,
     },
     style: {
-      description: "Additional inline styles for the input element.",
+      description: "Additional inline styles for the switch element.",
       table: {
         type: { summary: "React.CSSProperties" },
       },
@@ -74,13 +74,13 @@ const meta = {
       page: () => (
         <>
           <Title />
-          <Subtitle>复选框组件</Subtitle>
+          <Subtitle>开关切换组件</Subtitle>
 
           <Markdown>
             {`
-用于处理用户的勾选行为，通常用于表单中的复选框。
+用于在两种状态之间切换的开关控件。
 
-基于内置组件 \`<Icon>\` + 原生 \`<input type="checkbox">\`，能继承使用 \`<Theme.Provider>\` 配置的全局主题化样式。
+基于 \`<Box>\` + 原生 \`<input type="checkbox">\`，能继承使用 \`<Theme.Provider>\` 配置的全局主题化样式。
 `}
           </Markdown>
 
@@ -98,7 +98,7 @@ function App() {
 
   return (
     <Theme.Provider>
-      <FormField.Checkbox checked={checked} onChange={setChecked} />
+      <FormField.Switch checked={checked} onChange={setChecked} />
     </Theme.Provider>
   );
 }
@@ -119,7 +119,7 @@ function App() {
       ),
     },
   },
-} satisfies Meta<typeof FormFieldCheckbox>;
+} satisfies Meta<typeof FormFieldSwitch>;
 
 export default meta;
 
@@ -142,7 +142,7 @@ export const Playground: Story = {
     React.useEffect(() => {
       setChecked(!!args.checked);
     }, [args.checked]);
-    return <FormFieldCheckbox {...args} checked={checked} onChange={setChecked} />;
+    return <FormFieldSwitch {...args} checked={checked} onChange={setChecked} />;
   },
 };
 
@@ -165,13 +165,11 @@ import { FormField } from "venomous-ui-react/components";
 
 function App() {
   const [checked, setChecked] = React.useState<boolean>(false);
-  const id = React.useId();
 
   return (
     <div>
-      <FormField.Checkbox id={id} checked={checked} onChange={setChecked} />
-      <label htmlFor={id}>我已阅读并同意用户协议</label>
-      <p>IAgree: {String(checked)}</p>
+      <FormField.Switch checked={checked} onChange={setChecked} />
+      <p>notifications: {String(checked)}</p>
     </div>
   );
 }
@@ -181,16 +179,10 @@ function App() {
   },
   render: function RenderStory() {
     const [checked, setChecked] = React.useState<boolean>(false);
-    const id = React.useId();
 
     return (
       <Space.Flex column spacing={24} style={{ padding: 24, maxWidth: 400 }}>
-        <Space.Flex spacing={8}>
-          <FormFieldCheckbox id={id} checked={checked} onChange={setChecked} />
-          <label htmlFor={id} style={{ cursor: "pointer" }}>
-            我已阅读并同意用户协议
-          </label>
-        </Space.Flex>
+        <FormFieldSwitch checked={checked} onChange={setChecked} />
 
         <div
           style={{
@@ -201,7 +193,7 @@ function App() {
             fontSize: 14,
           }}
         >
-          IAgree: {String(checked)}
+          notifications: {String(checked)}
         </div>
       </Space.Flex>
     );
@@ -227,13 +219,12 @@ import { Button, FormField } from "venomous-ui-react/components";
 
 function App() {
   const formRef = React.useRef<HTMLFormElement>(null);
-  const id = React.useId();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    const IAgree = formData.get("IAgree") === "on";
-    console.log({ IAgree });
+    const notifications = formData.get("notifications") === "on";
+    console.log({ notifications });
   };
 
   const handleReset = () => {
@@ -242,8 +233,7 @@ function App() {
 
   return (
     <form ref={formRef} onSubmit={handleSubmit} onReset={handleReset}>
-      <FormField.Checkbox id={id} name="IAgree" defaultChecked={true} />
-      <label htmlFor={id}>我已阅读并同意用户协议</label>
+      <FormField.Switch name="notifications" defaultChecked={true} />
       <Button type="submit" text="Submit" />
       <Button type="reset" text="Reset" variant="outlined" />
     </form>
@@ -256,14 +246,13 @@ function App() {
   render: function RenderStory() {
     const [submittedValue, setSubmittedValue] = React.useState<boolean | null>(null);
     const formRef = React.useRef<HTMLFormElement>(null);
-    const id = React.useId();
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
       const formData = new FormData(event.currentTarget);
-      const IAgree = formData.get("IAgree") === "on";
-      console.log({ IAgree });
-      setSubmittedValue(IAgree);
+      const notifications = formData.get("notifications") === "on";
+      console.log({ notifications });
+      setSubmittedValue(notifications);
     };
 
     const handleReset = () => {
@@ -275,12 +264,7 @@ function App() {
       <Space.Flex column spacing={24} style={{ padding: 24, maxWidth: 400 }}>
         <form ref={formRef} onSubmit={handleSubmit} onReset={handleReset}>
           <Space.Flex column spacing={16}>
-            <Space.Flex spacing={8}>
-              <FormFieldCheckbox id={id} name="IAgree" defaultChecked={true} />
-              <label htmlFor={id} style={{ cursor: "pointer" }}>
-                我已阅读并同意用户协议
-              </label>
-            </Space.Flex>
+            <FormFieldSwitch name="notifications" defaultChecked={true} />
 
             <Space.Flex spacing={12}>
               <Button type="submit" text="Submit" />
@@ -299,7 +283,7 @@ function App() {
               fontSize: 14,
             }}
           >
-            IAgree: {String(submittedValue)}
+            notifications: {String(submittedValue)}
           </div>
         )}
       </Space.Flex>

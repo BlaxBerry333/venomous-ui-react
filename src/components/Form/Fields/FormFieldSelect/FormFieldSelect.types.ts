@@ -69,6 +69,12 @@ interface FormFieldSelectBaseProps<T = any>
       "prefix" | "prefixClassName" | "prefixStyle" | "suffix" | "suffixClassName" | "suffixStyle"
     > {
   /**
+   * The name attribute for the select element.
+   * Used to identify the form data after submission.
+   */
+  name?: string;
+
+  /**
    * The placeholder of the select.
    */
   placeholder?: string;

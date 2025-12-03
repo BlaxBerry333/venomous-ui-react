@@ -53,6 +53,14 @@ const meta = {
   component: FormFieldSelect,
   tags: ["autodocs"],
   argTypes: {
+    name: {
+      description: "The name attribute for the select element. Used to identify the form data after submission.",
+      type: { name: "string" },
+      table: {
+        type: { summary: "string" },
+      },
+      control: { type: "text" },
+    },
     options: {
       description: "The options of the select dropdown.",
       type: { name: "other", value: "FormFieldSelectOption[]", required: true },
@@ -211,45 +219,21 @@ function App() {
 
           <Heading>Examples</Heading>
 
-          <Subtitle>
-            <code>{ControlledExample.name}</code>
-          </Subtitle>
+          <Heading>{ControlledExample.name}</Heading>
           <Description of={ControlledExample} />
-          <Canvas
-            of={ControlledExample}
-            sourceState="hidden"
-            source={{ code: ControlledExample.parameters?.docs?.source?.code }}
-          />
+          <Canvas of={ControlledExample} />
 
-          <Subtitle>
-            <code>{UncontrolledExample.name}</code>
-          </Subtitle>
+          <Heading>{UncontrolledExample.name}</Heading>
           <Description of={UncontrolledExample} />
-          <Canvas
-            of={UncontrolledExample}
-            sourceState="hidden"
-            source={{ code: UncontrolledExample.parameters?.docs?.source?.code }}
-          />
+          <Canvas of={UncontrolledExample} />
 
-          <Subtitle>
-            <code>{MultipleSelectExample.name}</code>
-          </Subtitle>
+          <Heading>{MultipleSelectExample.name}</Heading>
           <Description of={MultipleSelectExample} />
-          <Canvas
-            of={MultipleSelectExample}
-            sourceState="hidden"
-            source={{ code: MultipleSelectExample.parameters?.docs?.source?.code }}
-          />
+          <Canvas of={MultipleSelectExample} />
 
-          <Subtitle>
-            <code>{WithIconsExample.name}</code>
-          </Subtitle>
+          <Heading>{WithIconsExample.name}</Heading>
           <Description of={WithIconsExample} />
-          <Canvas
-            of={WithIconsExample}
-            sourceState="hidden"
-            source={{ code: WithIconsExample.parameters?.docs?.source?.code }}
-          />
+          <Canvas of={WithIconsExample} />
 
           <Heading>API</Heading>
           <ArgTypes />
@@ -265,6 +249,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Playground: Story = {
   name: "Playground",
+  argTypes: {
+    name: { table: { disable: true } },
+  },
   decorators: [
     (Story) => (
       <div style={{ paddingTop: "25%", paddingLeft: "10px" }}>

@@ -6,6 +6,12 @@ export interface FormFieldNumberProps
   extends Omit<React.InputHTMLAttributes<FormFieldNumberRef>, "value" | "onChange" | "type" | "size" | "prefix">,
     FormFieldBaseProps {
   /**
+   * The name attribute for the input element.
+   * Used to identify the form data after submission.
+   */
+  name?: string;
+
+  /**
    * The value of the input.
    * @description When undefined or empty, the input will be cleared.
    */
