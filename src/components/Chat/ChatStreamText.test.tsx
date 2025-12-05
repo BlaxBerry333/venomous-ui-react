@@ -1,6 +1,6 @@
-import { render, screen } from "@testing-library/react";
+import { act, render, screen } from "@testing-library/react";
 import React from "react";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { Theme } from "@/components/Theme";
 import { COMPONENT_CLASSNAME_NAMES, COMPONENT_DISPLAY_NAMES } from "@/constants";
@@ -13,6 +13,11 @@ const wrapper = ({ children }: { children: React.ReactNode }) => <Theme.Provider
 describe("ChatStreamText", () => {
   beforeEach(() => {
     localStorage.clear();
+    vi.useFakeTimers();
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
   });
 
   it("shows full text immediately when skipAnimation is true", () => {
@@ -99,5 +104,175 @@ describe("ChatStreamText", () => {
     const selector = `.${CSS.escape(COMPONENT_CLASSNAME_NAMES.ChatStreamText)}`;
     const streamText = container.querySelector(selector);
     expect(streamText?.tagName).toBe("SPAN");
+  });
+
+  // ========== Typing Animation Tests ==========
+  describe("Typing Animation", () => {
+    it("types text character by character", async () => {
+      // Hide cursor to make text content assertions cleaner
+      const { container } = render(<ChatStreamText text="Hello" speed={10} showCursor={false} />, { wrapper });
+
+      const selector = `.${CSS.escape(COMPONENT_CLASSNAME_NAMES.ChatStreamText)}`;
+      const streamText = container.querySelector(selector);
+
+      // Initially empty
+      expect(streamText?.textContent).toBe("");
+
+      // Advance timers to type first character
+      await act(async () => {
+        vi.advanceTimersByTime(10);
+      });
+      expect(streamText?.textContent).toBe("H");
+
+      // Type more characters
+      await act(async () => {
+        vi.advanceTimersByTime(10);
+      });
+      expect(streamText?.textContent).toBe("He");
+
+      // Complete the text
+      await act(async () => {
+        vi.advanceTimersByTime(30);
+      });
+      expect(streamText?.textContent).toBe("Hello");
+    });
+
+    it("calls onComplete when typing finishes (non-streaming)", async () => {
+      const handleComplete = vi.fn();
+      render(<ChatStreamText text="Hi" speed={10} onComplete={handleComplete} showCursor={false} />, { wrapper });
+
+      // Wait for typing to complete
+      await act(async () => {
+        vi.advanceTimersByTime(30); // 2 characters * 10ms + buffer
+      });
+
+      expect(handleComplete).toHaveBeenCalledTimes(1);
+    });
+
+    it("does not call onComplete while streaming", async () => {
+      const handleComplete = vi.fn();
+      render(<ChatStreamText text="Hi" speed={10} streaming onComplete={handleComplete} showCursor={false} />, {
+        wrapper,
+      });
+
+      // Wait for typing to complete
+      await act(async () => {
+        vi.advanceTimersByTime(50);
+      });
+
+      expect(handleComplete).not.toHaveBeenCalled();
+    });
+
+    it("handles empty text reset", async () => {
+      const { container, rerender } = render(<ChatStreamText text="Test" speed={10} showCursor={false} />, { wrapper });
+
+      const selector = `.${CSS.escape(COMPONENT_CLASSNAME_NAMES.ChatStreamText)}`;
+
+      // Type some text
+      await act(async () => {
+        vi.advanceTimersByTime(50);
+      });
+
+      // Reset with empty text
+      rerender(
+        <Theme.Provider>
+          <ChatStreamText text="" speed={10} showCursor={false} />
+        </Theme.Provider>,
+      );
+
+      const streamText = container.querySelector(selector);
+      expect(streamText?.textContent).toBe("");
+    });
+
+    it("handles streaming mode text update", async () => {
+      // Test that streaming mode types text correctly
+      const { container } = render(<ChatStreamText text="Hello World" speed={10} streaming showCursor={false} />, {
+        wrapper,
+      });
+
+      const selector = `.${CSS.escape(COMPONENT_CLASSNAME_NAMES.ChatStreamText)}`;
+      const streamText = container.querySelector(selector);
+
+      // Type partial text
+      await act(async () => {
+        vi.advanceTimersByTime(50);
+      });
+
+      // Should have typed some characters
+      expect(streamText?.textContent?.length).toBeGreaterThan(0);
+
+      // Complete the text
+      await act(async () => {
+        vi.advanceTimersByTime(100);
+      });
+
+      expect(streamText?.textContent).toBe("Hello World");
+    });
+
+    it("restarts typing when text changes completely", async () => {
+      const { container, rerender } = render(<ChatStreamText text="Hello" speed={10} showCursor={false} />, {
+        wrapper,
+      });
+
+      const selector = `.${CSS.escape(COMPONENT_CLASSNAME_NAMES.ChatStreamText)}`;
+
+      // Type initial text
+      await act(async () => {
+        vi.advanceTimersByTime(60);
+      });
+
+      // Change to completely different text
+      rerender(
+        <Theme.Provider>
+          <ChatStreamText text="World" speed={10} showCursor={false} />
+        </Theme.Provider>,
+      );
+
+      // Should restart from beginning
+      await act(async () => {
+        vi.advanceTimersByTime(10);
+      });
+
+      const streamText = container.querySelector(selector);
+      expect(streamText?.textContent).toBe("W");
+
+      // Complete the new text
+      await act(async () => {
+        vi.advanceTimersByTime(50);
+      });
+
+      expect(streamText?.textContent).toBe("World");
+    });
+
+    it("shows cursor during typing", () => {
+      render(<ChatStreamText text="Hi" speed={10} showCursor />, { wrapper });
+
+      // During typing, cursor should be visible
+      expect(screen.getByText("|")).toBeDefined();
+    });
+
+    it("hides cursor after typing completion (non-streaming)", async () => {
+      render(<ChatStreamText text="Hi" speed={10} showCursor />, { wrapper });
+
+      // Complete typing
+      await act(async () => {
+        vi.advanceTimersByTime(30);
+      });
+
+      // After completion (not streaming), cursor should be hidden
+      expect(screen.queryByText("|")).toBeNull();
+    });
+
+    it("keeps cursor visible while streaming even after text is typed", async () => {
+      render(<ChatStreamText text="Hi" speed={10} streaming showCursor />, { wrapper });
+
+      // Complete typing
+      await act(async () => {
+        vi.advanceTimersByTime(30);
+      });
+
+      // Cursor should still be visible because streaming is true
+      expect(screen.getByText("|")).toBeDefined();
+    });
   });
 });
