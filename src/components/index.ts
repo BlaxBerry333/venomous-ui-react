@@ -4,6 +4,7 @@ export * from "./Badge";
 export * from "./Box";
 export * from "./Buttons";
 export * from "./Cards";
+export * from "./Chat";
 export * from "./Chip";
 export * from "./Dialogs";
 export * from "./Divider";
