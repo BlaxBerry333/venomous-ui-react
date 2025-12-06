@@ -45,7 +45,7 @@ const meta = {
     cursor: {
       description: "Cursor character to display.",
       type: { name: "string" },
-      table: { type: { summary: "string" }, defaultValue: { summary: '"|"' } },
+      table: { type: { summary: "string" }, defaultValue: { summary: "｜" } },
       control: { type: "text" },
     },
     cursorBlinkSpeed: {
@@ -83,29 +83,25 @@ const meta = {
             code={`
 import { Theme, Chat } from "venomous-ui-react/components";
 
-function App() {
-  const [text, setText] = React.useState("");
+// 场景1：静态文本 + 打字效果（组件自动逐字显示）
+function TypewriterEffect() {
+  return (
+    <Theme.Provider>
+      <Chat.StreamText text="这是一段完整的文本，组件会自动逐字显示。" />
+    </Theme.Provider>
+  );
+}
 
-  // 模拟 AI 流式响应
-  React.useEffect(() => {
-    const fullText = "这是一段模拟的 AI 响应...";
-    let index = 0;
-    const timer = setInterval(() => {
-      if (index <= fullText.length) {
-        setText(fullText.slice(0, index));
-        index++;
-      } else {
-        clearInterval(timer);
-      }
-    }, 50);
-    return () => clearInterval(timer);
-  }, []);
+// 场景2：真实 SSE/WebSocket 流式数据
+function RealStreamingData() {
+  const { text, isStreaming } = useSSE("/api/chat"); // 你的流式 API
 
   return (
     <Theme.Provider>
       <Chat.StreamText
-        text={text}
-        streaming={text.length < fullText.length}
+        text={text}           // 来自 API 的实时数据
+        streaming={isStreaming}
+        skipAnimation         // 跳过内部动画，因为数据本身就是流式的
       />
     </Theme.Provider>
   );
@@ -116,13 +112,23 @@ function App() {
           <Heading>API</Heading>
           <ArgTypes />
 
-          <Heading>{StreamingSimulation.name}</Heading>
-          <Description of={StreamingSimulation} />
+          <Heading>{TypewriterEffect.name}</Heading>
+          <Description of={TypewriterEffect} />
           <Canvas
-            of={StreamingSimulation}
+            of={TypewriterEffect}
             sourceState="hidden"
             source={{
-              code: StreamingSimulation.parameters?.docs?.source?.code,
+              code: TypewriterEffect.parameters?.docs?.source?.code,
+            }}
+          />
+
+          <Heading>{RealStreamingData.name}</Heading>
+          <Description of={RealStreamingData} />
+          <Canvas
+            of={RealStreamingData}
+            sourceState="hidden"
+            source={{
+              code: RealStreamingData.parameters?.docs?.source?.code,
             }}
           />
 
@@ -169,14 +175,56 @@ const hideAllArgTypes = {
   onComplete: { table: { disable: true } },
 };
 
-export const StreamingSimulation: Story = {
-  name: "Streaming Simulation",
+export const TypewriterEffect: Story = {
+  name: "Typewriter Effect",
+  tags: ["!dev"],
+  argTypes: hideAllArgTypes,
+  args: Playground.args,
+  render: function TypewriterDemo() {
+    const [key, setKey] = React.useState(0);
+
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: 16, maxWidth: 500 }}>
+        <Button text="Replay" onClick={() => setKey((k) => k + 1)} />
+        <Card style={{ padding: 16, minHeight: 80 }}>
+          <Chat.StreamText
+            key={key}
+            text="This is a typewriter effect. The component automatically types the text character by character. No external state management needed!"
+            speed={30}
+            onComplete={() => console.log("Typing complete!")}
+          />
+        </Card>
+      </div>
+    );
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "打字机效果：直接传入完整文本，组件自动逐字显示。无需外部状态管理。",
+      },
+      source: {
+        code: `
+// 最简单的用法：直接传入完整文本
+<Chat.StreamText
+  text="This is a typewriter effect..."
+  speed={30}
+  onComplete={() => console.log("Typing complete!")}
+/>
+        `.trim(),
+      },
+    },
+  },
+};
+
+export const RealStreamingData: Story = {
+  name: "Real Streaming Data",
   tags: ["!dev"],
   argTypes: hideAllArgTypes,
   args: Playground.args,
   render: function StreamingDemo() {
+    // 模拟真实的 SSE/WebSocket 流式数据
     const fullText =
-      "This is a simulated AI response that demonstrates the streaming text effect. The text appears character by character, just like how AI models generate responses in real-time. Pretty cool, right?";
+      "This simulates real SSE streaming data from an API. The text arrives in chunks, just like how AI models send responses. When streaming=true and skipAnimation=true, the component displays text as it arrives without additional animation.";
     const [text, setText] = React.useState("");
     const [isStreaming, setIsStreaming] = React.useState(false);
 
@@ -185,6 +233,7 @@ export const StreamingSimulation: Story = {
       setIsStreaming(true);
       let index = 0;
 
+      // 模拟 SSE 数据到达（真实场景中这是来自 API 的数据）
       const timer = setInterval(() => {
         if (index <= fullText.length) {
           setText(fullText.slice(0, index));
@@ -198,17 +247,12 @@ export const StreamingSimulation: Story = {
 
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: 16, maxWidth: 500 }}>
-        <Button text="Start Streaming" onClick={startStreaming} disabled={isStreaming} />
-        <Card
-          style={{
-            padding: 16,
-            minHeight: 100,
-          }}
-        >
+        <Button text="Simulate SSE Stream" onClick={startStreaming} disabled={isStreaming} />
+        <Card style={{ padding: 16, minHeight: 100 }}>
           {text ? (
             <Chat.StreamText text={text} streaming={isStreaming} skipAnimation />
           ) : (
-            <span style={{ color: "#999" }}>Click the button to start...</span>
+            <span style={{ color: "#999" }}>Click to simulate SSE data...</span>
           )}
         </Card>
       </div>
@@ -217,42 +261,19 @@ export const StreamingSimulation: Story = {
   parameters: {
     docs: {
       description: {
-        story: "模拟流式输出场景，点击按钮开始模拟 AI 响应的流式输出效果。",
+        story:
+          "真实流式数据场景：当数据来自 SSE/WebSocket 时，使用 `skipAnimation` 跳过内部动画，因为数据本身就是流式到达的。",
       },
       source: {
         code: `
-const fullText = "This is a simulated AI response...";
-const [text, setText] = React.useState("");
-const [isStreaming, setIsStreaming] = React.useState(false);
+// 真实 SSE/WebSocket 场景
+const { text, isStreaming } = useSSE("/api/chat");
 
-const startStreaming = () => {
-  setText("");
-  setIsStreaming(true);
-  let index = 0;
-
-  const timer = setInterval(() => {
-    if (index <= fullText.length) {
-      setText(fullText.slice(0, index));
-      index++;
-    } else {
-      clearInterval(timer);
-      setIsStreaming(false);
-    }
-  }, 30);
-};
-
-return (
-  <div>
-    <Button text="Start Streaming" onClick={startStreaming} disabled={isStreaming} />
-    <Card style={{ padding: 16, minHeight: 100 }}>
-      {text ? (
-        <Chat.StreamText text={text} streaming={isStreaming} skipAnimation />
-      ) : (
-        <span style={{ color: "#999" }}>Click the button to start...</span>
-      )}
-    </Card>
-  </div>
-);
+<Chat.StreamText
+  text={text}           // 来自 API 的实时数据
+  streaming={isStreaming}
+  skipAnimation         // 跳过内部动画，数据本身就是流式的
+/>
         `.trim(),
       },
     },
@@ -265,31 +286,21 @@ export const WithChatBubble: Story = {
   args: Playground.args,
   argTypes: hideAllArgTypes,
   render: function BubbleDemo() {
-    const fullText = "This is an AI response displayed inside a chat bubble with the streaming text effect.";
-    const [text, setText] = React.useState("");
-    const [isStreaming, setIsStreaming] = React.useState(true);
-
-    React.useEffect(() => {
-      let index = 0;
-      const timer = setInterval(() => {
-        if (index <= fullText.length) {
-          setText(fullText.slice(0, index));
-          index++;
-        } else {
-          clearInterval(timer);
-          setIsStreaming(false);
-        }
-      }, 30);
-
-      return () => clearInterval(timer);
-    }, []);
+    const [key, setKey] = React.useState(0);
 
     return (
-      <div style={{ maxWidth: 500 }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: 16, maxWidth: 500 }}>
+        <Button text="Replay" onClick={() => setKey((k) => k + 1)} />
         <Chat.Bubble
           placement="left"
           Avatar={<Avatar text="AI" width={32} shape="circle" />}
-          message={<Chat.StreamText text={text} streaming={isStreaming} skipAnimation />}
+          message={
+            <Chat.StreamText
+              key={key}
+              text="This is an AI response displayed inside a chat bubble. The component handles the typewriter animation automatically!"
+              speed={25}
+            />
+          }
         />
       </div>
     );
@@ -297,35 +308,21 @@ export const WithChatBubble: Story = {
   parameters: {
     docs: {
       description: {
-        story: "在 `<Chat.Bubble>` 中使用 `<Chat.StreamText>` 实现流式输出效果。",
+        story: "在 `<Chat.Bubble>` 中使用 `<Chat.StreamText>` 实现打字机效果。直接传入完整文本即可。",
       },
       source: {
         code: `
-const fullText = "This is an AI response...";
-const [text, setText] = React.useState("");
-const [isStreaming, setIsStreaming] = React.useState(true);
-
-React.useEffect(() => {
-  let index = 0;
-  const timer = setInterval(() => {
-    if (index <= fullText.length) {
-      setText(fullText.slice(0, index));
-      index++;
-    } else {
-      clearInterval(timer);
-      setIsStreaming(false);
-    }
-  }, 30);
-  return () => clearInterval(timer);
-}, []);
-
-return (
-  <Chat.Bubble
-    placement="left"
-    Avatar={<Avatar text="AI" width={32} shape="circle" />}
-    message={<Chat.StreamText text={text} streaming={isStreaming} skipAnimation />}
-  />
-);
+// 简单用法：直接传入完整文本
+<Chat.Bubble
+  placement="left"
+  Avatar={<Avatar text="AI" width={32} shape="circle" />}
+  message={
+    <Chat.StreamText
+      text="This is an AI response..."
+      speed={25}
+    />
+  }
+/>
         `.trim(),
       },
     },
