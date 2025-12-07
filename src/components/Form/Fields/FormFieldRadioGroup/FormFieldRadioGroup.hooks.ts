@@ -18,7 +18,9 @@ export function useFormFieldRadioGroupActions<T = string>({
   disabled,
 }: Pick<FormFieldRadioGroupProps<T>, "value" | "defaultValue" | "onChange" | "disabled">) {
   // ========== 内部状态 ==========
-  const [internalValue, setInternalValue] = React.useState<T | undefined>(value ?? defaultValue);
+  const [internalValue, setInternalValue] = React.useState<T | undefined>(
+    () => (value ?? defaultValue) as T | undefined,
+  );
 
   // 判断是否为受控模式
   const isControlled = value !== undefined;

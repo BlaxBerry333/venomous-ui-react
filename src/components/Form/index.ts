@@ -36,7 +36,6 @@ export type {
   FormFieldRadioGroupProps,
   FormFieldRadioGroupRef,
   FormFieldRadioOption,
-  TFormFieldRadioGroupDirection,
 } from "./Fields/FormFieldRadioGroup";
 
 export { FormControl } from "./FormControl";

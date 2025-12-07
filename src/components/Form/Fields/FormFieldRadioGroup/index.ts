@@ -11,5 +11,4 @@ export type {
   FormFieldRadioGroupRef,
   FormFieldRadioItemProps,
   FormFieldRadioOption,
-  TFormFieldRadioGroupDirection,
 } from "./FormFieldRadioGroup.types";
