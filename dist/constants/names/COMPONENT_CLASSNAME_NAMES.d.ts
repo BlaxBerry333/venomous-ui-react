@@ -7,6 +7,11 @@ export declare const COMPONENT_CLASSNAME_NAMES: {
     readonly Box: "__VENOMOUS_UI__Box";
     readonly Button: "__VENOMOUS_UI__Button";
     readonly Card: "__VENOMOUS_UI__Card";
+    readonly ChatBubble: "__VENOMOUS_UI__Chat.Bubble";
+    readonly ChatBubbleAvatar: "__VENOMOUS_UI__Chat.Bubble-avatar";
+    readonly ChatBubbleContent: "__VENOMOUS_UI__Chat.Bubble-content";
+    readonly ChatBubbleMeta: "__VENOMOUS_UI__Chat.Bubble-meta";
+    readonly ChatStreamText: "__VENOMOUS_UI__Chat.StreamText";
     readonly Chip: "__VENOMOUS_UI__Chip";
     readonly Dialog: "__VENOMOUS_UI__Dialog";
     readonly Divider: "__VENOMOUS_UI__Divider";
@@ -27,6 +32,13 @@ export declare const COMPONENT_CLASSNAME_NAMES: {
     readonly FormFieldSelectDropdown: "__VENOMOUS_UI__FormField.Select-dropdown";
     readonly FormFieldSelectOption: "__VENOMOUS_UI__FormField.Select-option";
     readonly FormFieldCheckbox: "__VENOMOUS_UI__FormField.Checkbox";
+    readonly FormFieldTextarea: "__VENOMOUS_UI__FormField.Textarea";
+    readonly FormFieldTextareaInput: "__VENOMOUS_UI__FormField.Textarea-input";
+    readonly FormFieldSwitch: "__VENOMOUS_UI__FormField.Switch";
+    readonly FormFieldSwitchHandle: "__VENOMOUS_UI__FormField.Switch-handle";
+    readonly FormFieldRadioGroup: "__VENOMOUS_UI__FormField.RadioGroup";
+    readonly FormFieldRadioItem: "__VENOMOUS_UI__FormField.RadioGroup-item";
+    readonly FormFieldRadioItemRadio: "__VENOMOUS_UI__FormField.RadioGroup-item-radio";
     readonly FormLabel: "__VENOMOUS_UI__FormLabel";
     readonly FormControl: "__VENOMOUS_UI__FormControl";
     readonly Icon: "__VENOMOUS_UI__Icon";

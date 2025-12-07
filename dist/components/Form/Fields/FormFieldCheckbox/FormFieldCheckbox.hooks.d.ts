@@ -16,7 +16,7 @@ export declare function useFormFieldCheckboxActions({ checked, defaultChecked, o
         onMouseLeave: React.MouseEventHandler<SVGSVGElement>;
     };
 };
-export declare function useFormFieldCheckboxStyles({ checked, disabled, error, isHovered, isFocused, }: Pick<FormFieldCheckboxProps, "checked" | "disabled" | "error"> & {
+export declare function useFormFieldCheckboxStyles({ checked, disabled, isHovered, isFocused, }: Pick<FormFieldCheckboxProps, "checked" | "disabled"> & {
     isHovered: boolean;
     isFocused: boolean;
 }): {
@@ -25,7 +25,6 @@ export declare function useFormFieldCheckboxStyles({ checked, disabled, error, i
         DynamicCheckboxVariantStyles: React.CSSProperties;
         DynamicCheckboxStateStyles: React.CSSProperties;
         DynamicCheckboxInteractionStyles: React.CSSProperties;
-        DynamicCheckboxErrorStyles: React.CSSProperties;
     };
 };
 //# sourceMappingURL=FormFieldCheckbox.hooks.d.ts.map

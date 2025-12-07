@@ -49,6 +49,11 @@ export type FormFieldSelectRef = HTMLSelectElement;
  */
 interface FormFieldSelectBaseProps<T = any> extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, "onChange" | "value" | "defaultValue" | "defaultChecked" | "size" | "prefix" | "className" | "style" | "multiple">, Omit<FormFieldBaseProps, "prefix" | "prefixClassName" | "prefixStyle" | "suffix" | "suffixClassName" | "suffixStyle"> {
     /**
+     * The name attribute for the select element.
+     * Used to identify the form data after submission.
+     */
+    name?: string;
+    /**
      * The placeholder of the select.
      */
     placeholder?: string;

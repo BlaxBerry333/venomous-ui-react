@@ -6,6 +6,11 @@ export declare const COMPONENT_DISPLAY_NAMES: {
     readonly Box: "Box";
     readonly Button: "Button";
     readonly Card: "Card";
+    readonly ChatBubble: "Chat.Bubble";
+    readonly ChatBubbleAvatar: "Chat.Bubble-avatar";
+    readonly ChatBubbleContent: "Chat.Bubble-content";
+    readonly ChatBubbleMeta: "Chat.Bubble-meta";
+    readonly ChatStreamText: "Chat.StreamText";
     readonly Chip: "Chip";
     readonly Dialog: "Dialog";
     readonly Divider: "Divider";
@@ -29,6 +34,13 @@ export declare const COMPONENT_DISPLAY_NAMES: {
     readonly FormFieldSelectDropdown: "FormField.Select-dropdown";
     readonly FormFieldSelectOption: "FormField.Select-option";
     readonly FormFieldCheckbox: "FormField.Checkbox";
+    readonly FormFieldTextarea: "FormField.Textarea";
+    readonly FormFieldTextareaInput: "FormField.Textarea-input";
+    readonly FormFieldSwitch: "FormField.Switch";
+    readonly FormFieldSwitchHandle: "FormField.Switch-handle";
+    readonly FormFieldRadioGroup: "FormField.RadioGroup";
+    readonly FormFieldRadioItem: "FormField.RadioGroup-item";
+    readonly FormFieldRadioItemRadio: "FormField.RadioGroup-item-radio";
     readonly FormLabel: "FormLabel";
     readonly FormControl: "FormControl";
     readonly Icon: "Icon";

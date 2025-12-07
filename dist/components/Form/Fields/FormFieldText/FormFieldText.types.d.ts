@@ -2,6 +2,11 @@ import type { FormFieldBaseProps, FormFieldBaseRef } from "../../../../component
 export type FormFieldTextRef = FormFieldBaseRef;
 export interface FormFieldTextProps extends FormFieldBaseProps, Omit<React.InputHTMLAttributes<HTMLInputElement>, "value" | "onChange" | "size" | "prefix" | "type"> {
     /**
+     * The name attribute for the input element.
+     * Used to identify the form data after submission.
+     */
+    name?: string;
+    /**
      * The value of the input.
      */
     value?: string;

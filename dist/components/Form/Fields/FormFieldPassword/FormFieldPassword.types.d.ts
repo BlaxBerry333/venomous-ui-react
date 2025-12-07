@@ -2,6 +2,11 @@ import type { FormFieldBaseProps, FormFieldBaseRef } from "../../../../component
 export type FormFieldPasswordRef = FormFieldBaseRef;
 export interface FormFieldPasswordProps extends Omit<React.InputHTMLAttributes<FormFieldBaseRef>, "value" | "onChange" | "size" | "prefix" | "type">, Omit<FormFieldBaseProps, "suffix" | "suffixClassName" | "suffixStyle"> {
     /**
+     * The name attribute for the input element.
+     * Used to identify the form data after submission.
+     */
+    name?: string;
+    /**
      * The value of the input.
      */
     value?: string;

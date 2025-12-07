@@ -2,7 +2,7 @@ import { jsxs as d, jsx as l, Fragment as F } from "react/jsx-runtime";
 import i from "react";
 import f from "clsx";
 import de from "../../../Box/Box.component.esm.js";
-import { COMPONENT_DISPLAY_NAMES as x } from "../../../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
+import { COMPONENT_DISPLAY_NAMES as N } from "../../../../constants/names/COMPONENT_DISPLAY_NAMES.esm.js";
 import { COMPONENT_CLASSNAME_NAMES as h } from "../../../../constants/names/COMPONENT_CLASSNAME_NAMES.esm.js";
 import "../../../../constants/designs/BACKGROUND_COLORS.esm.js";
 import "../../../../constants/designs/BORDER_COLORS.esm.js";
@@ -21,16 +21,16 @@ import { useFormFieldSelectDisplay as he } from "./FormFieldSelect.hooks.esm.js"
 const Se = i.memo(
   i.forwardRef(
     ({
-      wrapperClassName: N,
-      wrapperStyle: w,
-      dropdownClassName: D,
-      dropdownStyle: O,
+      wrapperClassName: O,
+      wrapperStyle: x,
+      dropdownClassName: w,
+      dropdownStyle: D,
       optionClassName: P,
       optionStyle: L,
-      multiple: M,
+      multiple: _,
       value: y,
       defaultValue: b,
-      onChange: _,
+      onChange: M,
       placeholder: A,
       // eslint-disable-next-line react-x/no-unstable-default-props
       options: m = [],
@@ -49,8 +49,8 @@ const Se = i.memo(
       ...$
     }, a) => {
       const r = fe({
-        displayName: x.FormFieldSelect
-      }), p = M ?? r.multiple ?? !1, z = A ?? r.placeholder ?? "", G = W ?? r.maxDropdownHeight ?? 300, J = T ?? r.variant ?? me.OUTLINED, Q = k ?? r.error ?? !1, X = q ?? r.fullWidth ?? !1, u = H ?? r.disabled ?? !1, Z = j ?? r.required ?? !1, [ee, te] = i.useState(void 0), s = i.useRef(null);
+        displayName: N.FormFieldSelect
+      }), p = _ ?? r.multiple ?? !1, z = A ?? r.placeholder ?? "", G = W ?? r.maxDropdownHeight ?? 300, J = T ?? r.variant ?? me.OUTLINED, Q = k ?? r.error ?? !1, X = q ?? r.fullWidth ?? !1, u = H ?? r.disabled ?? !1, Z = j ?? r.required ?? !1, [ee, te] = i.useState(void 0), s = i.useRef(null);
       i.useEffect(() => {
         s.current && a && (typeof a == "function" ? a(s.current) : a.current = s.current);
       }, [a]);
@@ -66,7 +66,7 @@ const Se = i.memo(
         multiple: p,
         value: y,
         defaultValue: b,
-        onChange: _,
+        onChange: M,
         placeholder: z,
         variant: J,
         error: Q,
@@ -77,8 +77,8 @@ const Se = i.memo(
         autoCloseOnSelect: !0,
         isControlled: v,
         selectRef: s,
-        dropdownClassName: D,
-        dropdownStyle: O,
+        dropdownClassName: w,
+        dropdownStyle: D,
         optionClassName: P,
         optionStyle: L,
         onMouseEnter: B,
@@ -144,8 +144,8 @@ const Se = i.memo(
             multiple: p,
             "aria-hidden": "true",
             tabIndex: -1,
-            onChange: void 0,
-            style: ye,
+            onChange: ye,
+            style: be,
             ...$,
             children: p ? m.map((e) => /* @__PURE__ */ l("option", { value: String(e.value), children: e.label }, String(e.value))) : /* @__PURE__ */ d(F, { children: [
               /* @__PURE__ */ l("option", { value: "", hidden: !0 }),
@@ -167,8 +167,8 @@ const Se = i.memo(
                 ref: (n) => {
                   typeof e == "function" ? e(n) : e && "current" in e && (e.current = n), n && te(n.getBoundingClientRect().width);
                 },
-                className: f(h.FormFieldSelect, N),
-                style: { ...re, ...w },
+                className: f(h.FormFieldSelect, O),
+                style: { ...re, ...x },
                 tabIndex: u ? -1 : 0,
                 onKeyDown: oe,
                 spacing: 8,
@@ -199,8 +199,9 @@ const Se = i.memo(
     }
   )
 );
-Se.displayName = x.FormFieldSelect;
-const ye = {
+Se.displayName = N.FormFieldSelect;
+const ye = () => {
+}, be = {
   position: "absolute",
   opacity: 0,
   pointerEvents: "none",
